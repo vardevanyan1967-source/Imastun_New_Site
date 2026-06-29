@@ -1,0 +1,2088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Իմաստուն Ստուդիո — Imastun Studio</title>
+  <meta name="description" content="Իմաստուն Ստուդիո — Երաժշտություն, խոսք, արվեստ։ Silva Gulanyan, Go Hara, Narine Balasbekyan և այլ արտիստներ։" />
+  <meta name="keywords" content="Imastun Studio, Իմաստուն Ստուդիո, Silva Gulanyan, Go Hara, Narine Balasbekyan, հայկական երաժշտություն, Armenian music" />
+  <meta name="author" content="Imastun Studio" />
+  <meta property="og:title" content="Իմաստուն Ստուդիո — Imastun Studio" />
+  <meta property="og:description" content="Բարի գալուստ Իմաստուն Ստուդիո — այստեղ մենք երաժշտությունն ու խոսքը միավորում ենք" />
+  <meta property="og:image" content="logo.png" />
+  <meta property="og:type" content="music.playlist" />
+  <meta property="og:url" content="" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Իմաստուն Ստուդիո" />
+  <meta name="twitter:description" content="Բարի գալուստ Իմաստուն Ստուդիո" />
+  <meta name="twitter:image" content="logo.png" />
+  <meta name="theme-color" content="#c9a84c" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="logo.png" type="image/png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --gold-dim: rgba(201,168,76,0.18);
+      --bg: #080808;
+      --surface: #0f0f0f;
+      --surface2: #161616;
+      --border: rgba(201,168,76,0.15);
+      --text: #e8e2d5;
+      --text-dim: #7a7468;
+      --white: #f5f0e8;
+      --player-h: 88px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Syne', sans-serif;
+      overflow-x: hidden;
+      padding-bottom: var(--player-h);
+    }
+
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 32px;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    #bg-video {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      opacity: 0.85;
+      z-index: 0;
+    }
+
+    .hero-veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(8,8,8,0.4) 0%, rgba(8,8,8,0.1) 40%, rgba(8,8,8,0.7) 80%, rgba(8,8,8,1) 100%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+      padding: 0 24px;
+      animation: fadeUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-logo-corner {
+      position: absolute;
+      top: 24px;
+      left: 28px;
+      z-index: 3;
+      width: clamp(60px, 8vw, 90px);
+      height: auto;
+      filter: drop-shadow(0 0 16px rgba(201,168,76,0.6));
+    }
+
+    .hero-logo {
+      width: clamp(90px, 16vw, 160px);
+      height: auto;
+      filter: drop-shadow(0 0 32px rgba(201,168,76,0.5));
+      animation: logoPulse 4s ease-in-out infinite;
+    }
+
+    @keyframes logoPulse {
+      0%, 100% { filter: drop-shadow(0 0 28px rgba(201,168,76,0.45)); }
+      50%       { filter: drop-shadow(0 0 48px rgba(201,168,76,0.7)); }
+    }
+
+    .hero-arc-wrap {
+      filter: drop-shadow(0 0 40px rgba(201,168,76,0.5));
+      animation: fadeUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .hero-arc-svg { overflow: visible; }
+
+    .hero-studio {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(11px, 1.8vw, 14px);
+      letter-spacing: 0.45em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(18px, 2.8vw, 28px);
+      line-height: 1.2;
+      letter-spacing: 0.45em;
+      color: var(--white);
+      text-transform: uppercase;
+    }
+
+    .hero-title span { color: var(--gold); }
+    .hero-stats { position:absolute; top:120px; left:28px; z-index:3; display:flex; flex-direction:column; gap:13px; text-align:left; }
+    .hero-stat { text-align:left; }
+    .hero-stat .num { font-family:'Inter',sans-serif; font-size:26px; font-weight:700; color:var(--gold); line-height:1; text-shadow:0 2px 12px rgba(0,0,0,0.75); }
+    .hero-stat .lbl { font-family:'Inter',sans-serif; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#e8c97a; margin-bottom:4px; text-shadow:0 1px 8px rgba(0,0,0,0.85); }
+    @media (max-width:600px){ .hero-stats { top:98px; left:18px; gap:10px; } .hero-stat .num { font-size:22px; } }
+
+    .hero-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(16px, 2.4vw, 22px);
+      letter-spacing: 0.08em;
+      color: var(--text-dim);
+    }
+
+    .hero-cta {
+      margin-top: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 38px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s;
+      cursor: pointer;
+      background: transparent;
+    }
+
+    .hero-cta:hover { background: var(--gold); color: var(--bg); }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0.45;
+    }
+
+    .scroll-hint span { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); }
+
+    /* ── MARQUEE ── */
+    .hero-marquee-wrap {
+      position: absolute;
+      bottom: 90px;
+      left: 0; right: 0;
+      overflow: hidden;
+      z-index: 2;
+      mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+      -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+    }
+
+    .hero-marquee {
+      display: flex;
+      white-space: nowrap;
+      animation: marqueeScroll 28s linear infinite;
+    }
+
+    .hero-marquee span {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(13px, 1.6vw, 17px);
+      letter-spacing: 0.06em;
+      color: var(--gold);
+      padding-right: 0;
+      flex-shrink: 0;
+    }
+
+    @keyframes marqueeScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    #video-toggle {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      z-index: 3;
+      background: rgba(0,0,0,0.4);
+      border: 1px solid var(--border);
+      color: var(--gold);
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 32px;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    #video-toggle:hover { background: rgba(201,168,76,0.15); border-color: var(--gold); }
+
+    .scroll-hint .line {
+      width: 1px; height: 48px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollLine 1.8s ease-in-out infinite;
+    }
+
+    @keyframes scrollLine {
+      0%   { opacity: 1; transform: scaleY(1) translateY(0); }
+      100% { opacity: 0; transform: scaleY(0.4) translateY(20px); }
+    }
+
+    /* ── NAV ── */
+    #nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(8,8,8,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(20px, 5vw, 80px);
+      height: 64px;
+    }
+
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: 20px;
+      color: var(--gold); letter-spacing: 0.06em;
+    }
+
+    .nav-links { display: flex; gap: 36px; list-style: none; align-items: center; }
+
+    .nav-links a {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--text-dim);
+      text-decoration: none; transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-suno {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 7px 16px; border: 1px solid var(--border);
+      color: var(--gold) !important; font-size: 10px !important;
+      letter-spacing: 0.18em !important;
+      transition: background 0.2s, border-color 0.2s !important;
+    }
+
+    .nav-suno:hover { background: var(--gold-dim) !important; border-color: var(--gold) !important; }
+
+    /* ── SECTION ── */
+    .section { padding: clamp(60px, 10vw, 120px) clamp(20px, 6vw, 100px); }
+
+    .section-header { margin-bottom: 64px; display: flex; align-items: flex-end; gap: 24px; }
+
+    .section-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.35em;
+      text-transform: uppercase; color: var(--gold);
+      writing-mode: vertical-rl; transform: rotate(180deg); line-height: 1;
+    }
+
+    .section-heading {
+      font-family: 'Cormorant Garamond', serif; font-weight: 300;
+      font-size: clamp(36px, 6vw, 72px); line-height: 1.05; color: var(--white);
+    }
+
+    .section-heading em { font-style: italic; color: var(--gold); }
+
+    .gold-rule {
+      width: 100%; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0.35;
+    }
+
+    /* ── ARTIST GRID ── */
+    #artists-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2px;
+    }
+
+    /* ── SMALL CARDS ROW ── */
+    #small-cards-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 2px;
+      margin-top: 2px;
+    }
+
+    /* ── FULL ARTIST CARD ── */
+    .artist-card {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      overflow: hidden;
+      transition: border-color 0.3s, background 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-cover-wrap {
+      position: relative; width: 100%;
+      aspect-ratio: 1 / 1; overflow: hidden; background: #111;
+    }
+
+    .card-cover {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s;
+      opacity: 0.85;
+    }
+
+    .artist-card:hover .card-cover { transform: scale(1.06); opacity: 1; }
+
+    .card-cover-fallback {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 56px; font-weight: 300; color: var(--gold); opacity: 0.25;
+      background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
+    }
+
+    .card-cover-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(8,8,8,0.85) 0%, transparent 55%);
+    }
+
+    /* ── flowing gold border running around the perimeter ── */
+    @property --bAngle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+    .artist-card:not(.card-empty)::before {
+      content: ''; position: absolute; inset: 0; z-index: 4; pointer-events: none;
+      padding: 2px; border-radius: inherit;
+      background: conic-gradient(from var(--bAngle),
+        rgba(201,168,76,0) 0deg,
+        rgba(201,168,76,0) 235deg,
+        var(--gold) 300deg,
+        var(--gold-light) 332deg,
+        #fff6db 345deg,
+        var(--gold-light) 356deg,
+        rgba(201,168,76,0) 360deg);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+              mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+              mask-composite: exclude;
+      animation: borderFlow 4.5s linear infinite;
+      animation-delay: calc(var(--d, 0s) * -1);
+    }
+    @keyframes borderFlow { to { --bAngle: 360deg; } }
+    @media (prefers-reduced-motion: reduce) {
+      .artist-card:not(.card-empty)::before { animation: none; }
+    }
+
+    .card-body { padding: 20px 24px 24px; position: relative; }
+
+    .card-index {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+      color: var(--gold); opacity: 0.5; margin-bottom: 8px;
+    }
+
+    .card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(20px, 2.4vw, 26px); font-weight: 400;
+      line-height: 1.15; color: var(--white); margin-bottom: 6px;
+    }
+
+    .card-role {
+      font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--text-dim); margin-bottom: 14px;
+    }
+
+    .card-arrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold);
+      opacity: 0; transform: translateX(-8px);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .artist-card:hover .card-arrow,
+    .artist-card.active .card-arrow { opacity: 1; transform: translateX(0); }
+
+    .artist-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 100%; height: 2px; background: var(--gold);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .artist-card:hover::after,
+    .artist-card.active::after { transform: scaleX(1); }
+
+    .artist-card:hover,
+    .artist-card.active { background: var(--surface2); border-color: var(--gold-dim); }
+
+    /* ── SMALL CARD (no cover) — compact row ── */
+    .artist-card.card-empty {
+      flex-direction: row;
+      align-items: center;
+      padding: 16px 20px;
+      gap: 14px;
+      cursor: default;
+      min-height: 0;
+      height: 72px;
+    }
+
+    .artist-card.card-empty::after { display: none; }
+    .artist-card.card-empty:hover { background: var(--surface); border-color: var(--border); }
+    .artist-card.card-empty .card-arrow { display: none; }
+
+    .empty-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      border: 1px solid var(--border); background: #111;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px; color: var(--gold); opacity: 0.5; flex-shrink: 0;
+    }
+
+    .empty-info { flex: 1; min-width: 0; }
+
+    .empty-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px; color: var(--text); margin-bottom: 3px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+
+    .empty-role {
+      font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dim);
+    }
+
+    .soon-badge {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--bg);
+      background: var(--gold); padding: 3px 8px; flex-shrink: 0; opacity: 0.65;
+    }
+
+    /* ── EXPANDED PANEL ── */
+    .artist-panel {
+      display: none; grid-column: 1 / -1;
+      background: var(--surface2); border: 1px solid var(--border); border-top: none;
+      animation: panelOpen 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .artist-panel.open { display: block; }
+
+    @keyframes panelOpen {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .panel-inner { display: grid; grid-template-columns: 1fr 1fr; }
+
+    .panel-cover-col { position: relative; overflow: hidden; background: #0a0a0a; }
+
+    .panel-cover {
+      width: 100%; height: 100%; min-height: 200px;
+      object-fit: cover; display: block; opacity: 0.7;
+    }
+
+    .panel-cover-fallback-col {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 72px; font-weight: 300; color: var(--gold); opacity: 0.15;
+    }
+
+    .panel-content-col { padding: 32px clamp(20px, 4vw, 48px); }
+
+    .panel-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 24px; flex-wrap: wrap; gap: 12px;
+    }
+
+    .panel-title {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: clamp(20px, 2.8vw, 28px); color: var(--gold);
+    }
+
+    .panel-meta {
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+      margin-top: 4px;
+    }
+    .panel-role {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--text-dim);
+    }
+    .panel-stat {
+      font-size: 11px; color: var(--text-dim); letter-spacing: 0.05em;
+    }
+    .panel-stat strong { color: var(--gold-light); font-weight: 700; }
+
+    .panel-close {
+      background: none; border: 1px solid var(--border); color: var(--text-dim);
+      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+      padding: 6px 16px; cursor: pointer; font-family: 'Syne', sans-serif;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .panel-close:hover { border-color: var(--gold); color: var(--gold); }
+
+    .panel-tabs { display: flex; margin-bottom: 20px; border-bottom: 1px solid var(--border); }
+
+    .panel-tab {
+      background: none; border: none; padding: 10px 24px;
+      font-family: 'Syne', sans-serif; font-size: 10px; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dim);
+      cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .panel-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+    .panel-tab:hover:not(.active) { color: var(--text); }
+
+    .tab-pane { display: none; }
+    .tab-pane.active { display: block; }
+
+    /* ── TRACK LIST ── */
+    .track-list { display: flex; flex-direction: column; gap: 4px; }
+
+    .track-item {
+      display: grid; grid-template-columns: 28px 1fr auto auto;
+      align-items: center; gap: 14px; padding: 12px 16px;
+      background: rgba(255,255,255,0.02); border: 1px solid transparent;
+      border-radius: 2px; cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .track-item:hover { background: rgba(201,168,76,0.05); border-color: var(--border); }
+    .track-item.playing { background: rgba(201,168,76,0.08); border-color: rgba(201,168,76,0.3); }
+
+    .track-num { font-size: 11px; color: var(--text-dim); text-align: right; font-variant-numeric: tabular-nums; }
+    .track-item.playing .track-num { color: var(--gold); }
+
+    .track-name {
+      font-family: 'Cormorant Garamond', serif; font-size: 17px; color: var(--white);
+      white-space: normal; overflow: visible; word-break: break-word;
+    }
+
+    .track-item.playing .track-name { color: var(--gold-light); }
+
+    .new-badge {
+      font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
+      color: #0c0c0c; background: var(--gold); border-radius: 4px; padding: 2px 6px;
+      flex-shrink: 0; white-space: nowrap;
+    }
+
+    .track-play-btn {
+      width: 30px; height: 30px; border-radius: 50%;
+      border: 1px solid var(--border); background: none; color: var(--text-dim);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; flex-shrink: 0;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+
+    .track-play-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .track-item.playing .track-play-btn { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
+
+    /* ── VIDEO GRID ── */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+    }
+
+    .video-section-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 20px; opacity: 0.7;
+    }
+
+    .video-group { margin-bottom: 48px; }
+    .video-group:last-child { margin-bottom: 0; }
+
+    .video-card {
+      background: var(--surface); border: 1px solid var(--border);
+      overflow: hidden; transition: border-color 0.3s;
+    }
+
+    .video-card:hover { border-color: rgba(201,168,76,0.4); }
+
+    .video-card .yt-embed {
+      width: 100%; aspect-ratio: 16 / 9;
+      display: block; border: none; background: #000;
+    }
+
+    .video-card video {
+      width: 100%; display: block;
+      max-height: 200px; object-fit: cover; background: #000;
+    }
+
+    .video-meta { padding: 14px 18px; }
+
+    .video-title { font-family: 'Cormorant Garamond', serif; font-size: 17px; color: var(--white); }
+
+    .video-label {
+      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-top: 4px;
+    }
+
+    /* ── SUNO BANNER ── */
+    #suno-banner {
+      margin: 0 clamp(20px, 6vw, 100px) 48px;
+      border: 1px solid var(--border); background: var(--surface);
+      padding: 28px 36px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px; flex-wrap: wrap;
+    }
+
+    .suno-text h3 {
+      font-family: 'Cormorant Garamond', serif; font-size: 22px;
+      font-weight: 300; color: var(--white); margin-bottom: 6px;
+    }
+
+    .suno-text p { font-size: 11px; letter-spacing: 0.1em; color: var(--text-dim); }
+
+    .suno-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 12px 28px; border: 1px solid var(--gold);
+      color: var(--gold); font-family: 'Syne', sans-serif;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; text-decoration: none;
+      transition: background 0.3s, color 0.3s; flex-shrink: 0;
+    }
+
+    .suno-btn:hover { background: var(--gold); color: var(--bg); }
+
+    /* ── GLOBAL PLAYER ── */
+    #global-player {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      height: var(--player-h);
+      background: rgba(10,10,10,0.97); backdrop-filter: blur(28px);
+      border-top: 1px solid var(--border); z-index: 200;
+      display: flex; align-items: center;
+      padding: 0 clamp(16px, 4vw, 48px); gap: 20px;
+      transform: translateY(100%);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    #global-player.visible { transform: translateY(0); }
+
+    .gp-cover {
+      width: 52px; height: 52px; object-fit: cover;
+      border: 1px solid var(--border); flex-shrink: 0; background: #111;
+    }
+
+    .gp-info { display: flex; flex-direction: column; gap: 3px; min-width: 0; flex: 0 0 180px; }
+
+    .gp-artist {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+
+    .gp-song {
+      font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--white);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+
+    .gp-controls { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+
+    .gp-btn {
+      background: none; border: none; color: var(--text-dim);
+      cursor: pointer; padding: 6px;
+      display: flex; align-items: center; transition: color 0.2s;
+    }
+
+    .gp-btn:hover { color: var(--gold); }
+
+    .gp-play {
+      width: 44px; height: 44px; border-radius: 50%;
+      border: 1px solid var(--gold); background: none; color: var(--gold);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, color 0.2s; flex-shrink: 0;
+    }
+
+    .gp-play:hover { background: var(--gold); color: var(--bg); }
+
+    .gp-progress-wrap { flex: 1; display: flex; align-items: center; gap: 10px; min-width: 0; }
+
+    .gp-time { font-size: 12px; font-variant-numeric: tabular-nums; color: var(--text); flex-shrink: 0; width: 40px; font-weight: 600; }
+    .gp-time.right { text-align: right; }
+
+    .gp-bar { flex: 1; height: 3px; background: rgba(255,255,255,0.08); border-radius: 2px; cursor: pointer; }
+
+    .gp-bar-fill { height: 100%; background: var(--gold); border-radius: 2px; width: 0%; pointer-events: none; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 48px clamp(20px, 6vw, 100px);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 20px;
+    }
+
+    .footer-brand { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 24px; color: var(--gold); }
+
+    .footer-social { display: flex; gap: 16px; align-items: center; }
+
+    .social-btn {
+      width: 46px; height: 46px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold);
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+
+    .social-btn:hover { background: var(--gold); color: var(--bg); }
+    .social-btn svg { width: 22px; height: 22px; }
+    .footer-copy { font-size: 11px; letter-spacing: 0.1em; color: var(--text-dim); }
+    .empty-state { padding: 32px; color: var(--text-dim); font-size: 13px; letter-spacing: 0.1em; font-style: italic; }
+
+    /* ── SEARCH ── */
+    #search-toggle {
+      background: none; border: none; color: var(--text-dim);
+      cursor: pointer; padding: 6px; display: flex; align-items: center;
+      transition: color 0.2s;
+    }
+    #search-toggle:hover { color: var(--gold); }
+
+    #search-overlay {
+      position: fixed; inset: 0; z-index: 500;
+      background: rgba(8,8,8,0.96); backdrop-filter: blur(24px);
+      display: flex; flex-direction: column; align-items: center;
+      padding-top: 120px; padding-inline: clamp(20px,6vw,100px);
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    #search-overlay.open { opacity: 1; pointer-events: all; }
+
+    #search-input-wrap {
+      width: 100%; max-width: 680px; position: relative;
+    }
+    #search-input {
+      width: 100%; background: transparent;
+      border: none; border-bottom: 1px solid var(--gold);
+      color: var(--white); font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 5vw, 48px); font-weight: 300;
+      padding: 12px 48px 12px 0; outline: none; letter-spacing: 0.04em;
+    }
+    #search-input::placeholder { color: var(--text-dim); }
+    #search-close {
+      position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+      background: none; border: none; color: var(--text-dim);
+      cursor: pointer; font-size: 24px; padding: 4px;
+      transition: color 0.2s;
+    }
+    #search-close:hover { color: var(--gold); }
+
+    #search-hint {
+      font-size: 11px; letter-spacing: 0.25em; color: var(--text-dim);
+      text-transform: uppercase; margin-top: 16px; align-self: flex-start;
+      max-width: 680px; width: 100%;
+    }
+
+    #search-results {
+      width: 100%; max-width: 680px; margin-top: 32px;
+      display: flex; flex-direction: column; gap: 4px;
+      max-height: calc(100vh - 280px); overflow-y: auto;
+    }
+
+    .sr-item {
+      display: grid; grid-template-columns: auto 1fr auto;
+      align-items: center; gap: 16px;
+      padding: 14px 20px; background: rgba(255,255,255,0.02);
+      border: 1px solid transparent; border-radius: 2px; cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .sr-item:hover { background: rgba(201,168,76,0.07); border-color: var(--border); }
+
+    .sr-artist-tag {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--bg);
+      background: var(--gold); padding: 3px 8px; flex-shrink: 0; opacity: 0.8;
+    }
+    .sr-song-name {
+      font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--white);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .sr-play-icon { color: var(--text-dim); flex-shrink: 0; }
+    .sr-item:hover .sr-play-icon { color: var(--gold); }
+
+    .sr-no-results {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 22px; color: var(--text-dim); padding: 32px 0;
+    }
+
+    .messenger-btn {
+      position: fixed;
+      bottom: calc(var(--player-h) + 80px);
+      right: 24px;
+      z-index: 190;
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0084ff, #00c6ff);
+      border: none;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(0,132,255,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+    .messenger-btn:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(0,132,255,0.6); }
+    .messenger-btn svg { width: 28px; height: 28px; }
+
+    /* ── WHATSAPP ── */
+    #wa-btn {
+      position: fixed; bottom: calc(var(--player-h) + 16px); right: 24px;
+      width: 52px; height: 52px; border-radius: 50%;
+      background: #25D366; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(37,211,102,0.4);
+      text-decoration: none; z-index: 190;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    #wa-btn:hover { transform: scale(1.1); box-shadow: 0 6px 24px rgba(37,211,102,0.55); }
+
+    /* ── REVEAL ANIMATION ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-stagger.visible > * {
+      animation: reveal-fade-up 0.7s cubic-bezier(0.16,1,0.3,1) both;
+    }
+    .reveal-stagger.visible > *:nth-child(1) { animation-delay: 0.05s; }
+    .reveal-stagger.visible > *:nth-child(2) { animation-delay: 0.12s; }
+    .reveal-stagger.visible > *:nth-child(3) { animation-delay: 0.19s; }
+    .reveal-stagger.visible > *:nth-child(4) { animation-delay: 0.26s; }
+    .reveal-stagger.visible > *:nth-child(5) { animation-delay: 0.33s; }
+    .reveal-stagger.visible > *:nth-child(6) { animation-delay: 0.40s; }
+    .reveal-stagger.visible > *:nth-child(n+7) { animation-delay: 0.46s; }
+    @keyframes reveal-fade-up {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .reveal-stagger > * { opacity: 1 !important; transform: none !important; animation: none !important; transition: none !important; }
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+      .section-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .section-label { writing-mode: horizontal-tb; transform: none; }
+      .panel-inner { grid-template-columns: 1fr; }
+      .panel-cover-col { height: 120px; }
+      .panel-cover { object-fit: cover; object-position: top center; }
+      .panel-cover-col .panel-meta { padding: 12px 16px; }
+      .panel-cover-col .panel-name { font-size: 22px; }
+      .gp-info { flex: 0 0 120px; }
+      .gp-progress-wrap { display: none; }
+      footer { flex-direction: column; align-items: flex-start; }
+      #suno-banner { padding: 20px; }
+      .track-list { padding: 0 2px; }
+      .panel-content-col { padding: 16px 8px; }
+      .track-item { padding: 10px 8px; gap: 8px; }
+      .track-name { font-size: 15px; }
+    }
+    /* ── RECENTLY ADDED ── */
+    .recent-grid {
+      display: flex; gap: 14px; overflow-x: auto;
+      padding: 4px 0 14px; scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .recent-grid::-webkit-scrollbar { height: 6px; }
+    .recent-card {
+      flex: 0 0 auto; min-width: 200px; max-width: 250px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 10px; padding: 16px 18px; cursor: pointer;
+      scroll-snap-align: start; display: flex; flex-direction: column; gap: 8px;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .recent-card:hover { border-color: var(--gold-dim); transform: translateY(-2px); }
+    .recent-card .rc-top { display: flex; align-items: center; gap: 8px; }
+    .recent-card .rc-type {
+      font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--gold); font-family: 'Inter', sans-serif;
+    }
+    .recent-card .rc-badge { margin-left: auto; }
+    .recent-card .rc-title {
+      font-family: 'Cormorant Garamond', serif; font-size: 19px;
+      color: var(--white); line-height: 1.2;
+    }
+    .recent-card .rc-sub { font-size: 12px; color: var(--text-dim); font-family: 'Inter', sans-serif; }
+  </style>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHJJF7DQ29"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LHJJF7DQ29');
+  </script>
+</head>
+<body>
+
+<section id="hero">
+  <video id="bg-video" src="background.mp4" autoplay muted loop playsinline></video>
+  <img src="logo.png" alt="Imastun Studio" class="hero-logo-corner" />
+  <div class="hero-stats" id="hero-stats"></div>
+  <div class="hero-veil"></div>
+  <div class="hero-content reveal">
+    <h1 class="hero-title">IMA<span>STUN</span></h1>
+    <p class="hero-studio">Music Production Studio</p>
+
+    <a href="#artists" class="hero-cta">
+      Explore Artists
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+  <div class="hero-marquee-wrap">
+    <div class="hero-marquee">
+      <span>Բարի գալուստ Իմաստուն Ստուդիո&nbsp;&nbsp;✦&nbsp;&nbsp;Այստեղ մենք երաժշտությունն ու խոսքը միավորում ենք&nbsp;&nbsp;✦&nbsp;&nbsp;Երգերը դառնում են պատկերներ, իսկ պատկերները՝ պատմություններ&nbsp;&nbsp;✦&nbsp;&nbsp;Բարի գալուստ Իմաստուն Ստուդիո&nbsp;&nbsp;✦&nbsp;&nbsp;Այստեղ մենք երաժշտությունն ու խոսքը միավորում ենք&nbsp;&nbsp;✦&nbsp;&nbsp;Երգերը դառնում են պատկերներ, իսկ պատկերները՝ պատմություններ&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
+      <span aria-hidden="true">Բարի գալուստ Իմաստուն Ստուդիո&nbsp;&nbsp;✦&nbsp;&nbsp;Այստեղ մենք երաժշտությունն ու խոսքը միավորում ենք&nbsp;&nbsp;✦&nbsp;&nbsp;Երգերը դառնում են պատկերներ, իսկ պատկերները՝ պատմություններ&nbsp;&nbsp;✦&nbsp;&nbsp;Բարի գալուստ Իմաստուն Ստուդիո&nbsp;&nbsp;✦&nbsp;&nbsp;Այստեղ մենք երաժշտությունն ու խոսքը միավորում ենք&nbsp;&nbsp;✦&nbsp;&nbsp;Երգերը դառնում են պատկերներ, իսկ պատկերները՝ պատմություններ&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="line"></div>
+  </div>
+
+  <button id="video-toggle" onclick="toggleBgVideo()" title="Միացնել/Անջատել ֆոնային վիդեոն">
+    <svg id="vt-icon" width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <path d="M2 6h3l4-3v12l-4-3H2V6zM15 7l-4 4m0-4l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </svg>
+  </button>
+</section>
+
+<nav id="nav">
+  <div style="display:flex;align-items:center;gap:12px;">
+    <img src="logo.png" alt="Imastun Studio" style="height:36px;width:auto;filter:drop-shadow(0 0 8px rgba(201,168,76,0.5));" />
+    <span class="nav-brand">Imastun Studio</span>
+  </div>
+  <button id="search-toggle" title="Փնտրել">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M13 13l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+  </button>
+  <ul class="nav-links">
+    <li><a href="#artists">Artists</a></li>
+    <li><a href="#videos">Videos</a></li>
+    <li>
+      <a href="https://suno.com/playlist/3f17f55b-e782-47eb-b050-96b9cd55fc85" target="_blank" rel="noopener" class="nav-suno">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 2l7 4-7 4V2z" fill="currentColor"/></svg>
+        Silva Gulanyan
+      </a>
+    </li>
+    <li>
+      <a href="https://suno.com/playlist/5549f7fd-63d9-4e92-8223-167bfcbf15da" target="_blank" rel="noopener" class="nav-suno">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 2l7 4-7 4V2z" fill="currentColor"/></svg>
+        Go Hara
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<div class="gold-rule"></div>
+
+<section id="artists" class="section">
+  <div class="section-header reveal">
+    <span class="section-label">Artists</span>
+    <h2 class="section-heading">Our <em>Roster</em></h2>
+  </div>
+  <div id="artists-grid" class="reveal-stagger"></div>
+</section>
+
+<div class="gold-rule"></div>
+
+<section id="recent" class="section">
+  <div class="section-header reveal">
+    <span class="section-label">New</span>
+    <h2 class="section-heading">Վերջերս <em>Ավելացված</em></h2>
+  </div>
+  <div id="recent-grid" class="recent-grid"></div>
+</section>
+
+<div class="gold-rule" id="recent-rule"></div>
+
+<section id="videos" class="section">
+  <div class="section-header reveal">
+    <span class="section-label">Visual</span>
+    <h2 class="section-heading">Featured <em>Videos</em></h2>
+  </div>
+
+  <div id="suno-banner" class="reveal">
+    <div class="suno-text">
+      <h3>Լսիր Suno-ում</h3>
+      <p>Ընտրիր playlist</p>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <a href="https://suno.com/playlist/3f17f55b-e782-47eb-b050-96b9cd55fc85" target="_blank" rel="noopener" class="suno-btn">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 2l9 5-9 5V2z" fill="currentColor"/></svg>
+        Silva Gulanyan
+      </a>
+      <a href="https://suno.com/playlist/5549f7fd-63d9-4e92-8223-167bfcbf15da" target="_blank" rel="noopener" class="suno-btn">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 2l9 5-9 5V2z" fill="currentColor"/></svg>
+        Go Hara
+      </a>
+    </div>
+  </div>
+
+  <div id="video-grid" class="reveal-stagger"></div>
+</section>
+
+<div class="gold-rule"></div>
+
+<footer>
+  <span class="footer-brand">Imastun Studio</span>
+  <div class="footer-social">
+    <a href="https://www.instagram.com/vahanvardevanyan/" target="_blank" rel="noopener" class="social-btn" title="Instagram">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+      </svg>
+    </a>
+    <a href="https://www.youtube.com/@vahanvardevanyan4122" target="_blank" rel="noopener" class="social-btn" title="YouTube">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/>
+      </svg>
+    </a>
+    <a href="https://www.facebook.com/Vahan.Vardevanyan" target="_blank" rel="noopener" class="social-btn" title="Facebook">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+      </svg>
+    </a>
+    <a href="https://suno.com/playlist/3f17f55b-e782-47eb-b050-96b9cd55fc85" target="_blank" rel="noopener" class="social-btn" title="Suno">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+      </svg>
+    </a>
+  </div>
+  <span class="footer-copy">&copy; <span id="yr"></span> Imastun Studio. All rights reserved.</span>
+</footer>
+
+<a href="https://m.me/Vahan.Vardevanyan" target="_blank" rel="noopener" class="messenger-btn" title="Գրիր մեզ Messenger-ով">
+  <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2C6.477 2 2 6.145 2 11.243c0 2.908 1.438 5.504 3.687 7.205V22l3.37-1.85c.9.249 1.853.383 2.843.383 5.523 0 10-4.145 10-9.243S17.523 2 12 2zm1.043 12.44l-2.55-2.72-4.977 2.72 5.473-5.81 2.612 2.72 4.914-2.72-5.472 5.81z"/>
+  </svg>
+</a>
+
+<a id="wa-btn" href="https://wa.me/37499248363" target="_blank" rel="noopener" title="WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<div id="search-overlay">
+  <div id="search-input-wrap">
+    <input id="search-input" type="text" placeholder="Փնտրիր երգ կամ արտիստ…" autocomplete="off" spellcheck="false" />
+    <button id="search-close">✕</button>
+  </div>
+  <div id="search-hint">139 երգ · 7 արտիստ</div>
+  <div id="search-results"></div>
+</div>
+
+<div id="global-player">
+  <img class="gp-cover" id="gp-cover" src="" alt="" />
+  <div class="gp-info">
+    <div class="gp-artist" id="gp-artist">—</div>
+    <div class="gp-song" id="gp-song">—</div>
+  </div>
+  <div class="gp-controls">
+    <button class="gp-btn" id="gp-prev">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 3v12M14 3L7 9l7 6V3z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="gp-play" id="gp-play">
+      <svg id="gp-play-icon" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M5 3l10 6-10 6V3z" fill="currentColor"/></svg>
+    </button>
+    <button class="gp-btn" id="gp-next">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M14 3v12M4 3l7 6-7 6V3z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+  <div class="gp-progress-wrap">
+    <span class="gp-time" id="gp-cur">0:00</span>
+    <div class="gp-bar" id="gp-bar"><div class="gp-bar-fill" id="gp-fill"></div></div>
+    <span class="gp-time right" id="gp-dur">0:00</span>
+  </div>
+</div>
+
+<audio id="audio-engine" preload="none"></audio>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* REVEAL ON SCROLL */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  function observeReveal() {
+    document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => {
+      revealObserver.observe(el);
+    });
+  }
+  observeReveal();
+
+  const bgVideo = document.getElementById('bg-video');
+  let bgPaused = false;
+
+  function toggleBgVideo() {
+    if (bgVideo.muted) {
+      bgVideo.muted = false;
+      document.getElementById('vt-icon').innerHTML = `<path d="M2 6h3l4-3v12l-4-3H2V6zM13 6c1.5 1 2.5 2.8 2.5 4.5S14.5 14 13 15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`;
+    } else {
+      bgVideo.muted = true;
+      document.getElementById('vt-icon').innerHTML = `<path d="M2 6h3l4-3v12l-4-3H2V6zM15 7l-4 4m0-4l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`;
+    }
+  }
+
+  /* ══ DATA ══ */
+  const ARTISTS = [
+    {
+      id: 'imastun', name: 'Imastun', role: 'Poet & Lead Artist & Producer',
+      songs: ['Astghayin_Shghta_A','The Sun Cries Too(Արևն էլ է լաց լինում)','Vahan_Teryan_Gisher','B_Es_im_anush_Hayastani','El_ban_chunem_Remix','inchi-hamar','inch_e_koracy_qarcr','lur-heraxos','lur uji simfonia','luse arzaganq','Luse_Hekiat_A','Lrutyan_unker','Lsir_vordis','Katak_Yari_Ergu','Katak_Yari_Ergu rem','haverji-erty','hogu-arzaganq','Meghki_ezrin_Remix','shshnjatc','shshnjatc-noric','shepot','ser-anurji','siro-kenacy','Поцелуй_ветра','Vahan_Teryan_MEGhAVOR_AChKERU','qo-jinj-hogin'],
+      videos: []
+    },
+    {
+      id: 'silva-gulanyan', name: 'Silva Gulanyan', role: 'Vocalist & Songwriter',
+      songs: ['ergichy-dari','gij','gij-qamin','gortrik-ankun','im-tsovagur','inch-em-anelu','tsov-arev-achqer','Es_kez_sirum_em','Kez_khenti_nman_siraharvetsi_Duet_Tango','Ari_klini','Andzrevum_e','der-inz-voch-mek-chi-sirel-qo-pes','Akh_inch_anem_sirud_het','AKhor_vo_tsavits_tsnvats','Aryev_darnam','Che_chem_toghni_B','Ches_moranalu_003','Chisht_zhamanakin_At_The_Right_Time','Dran_Takotsu_003','Dzig_tarineri_luys_003','Erazankneri_aytsu_Part_Gisherva_002','Erb_verkers_hanger_dardzri_Lyrics_by_Silva_Gulanyan_003','Erku_khent_hogi_Duet_Silva_Gulanyan_004','Es_sirum_em_ko_zhpitu_B','Garun_er_003','Gisher_e_004','Gisherits_depi_luys_Silva_Gulanyan_005','Gitem_ches_galu_B','Gitem_hogis_A','Hetd_inch_e_katarvum','Im_erazats_ashkharu_003','inchu_es_ayskan_indz_otar_dardzel_004','Jaheli_nman_003','Karotum_em_Dream_of_You_002','Kenatsd_khmem_B_Brinderò_per_Te','xentern u lusiny','Ko_hmayki_gerin','Ko_koghkin_vorish_em_003','Es_irakan_em_004','frants_Harbel_em_vozum','Galis_e_mi_pah_003','Havat_em_vozum_003','Hayots_ashkarh_A','HERO_MOTIK_UNKERNERIS_003','hogu giny','Ka_mi_ashkharh_vor_srtov_e_karutsvats','kgam_sirelis','Kuratsats_achkin_luysu_003','Kuyr_eghbayr_003','Kyanku_Hrashk_e_005','Mer_Srterum_kanchu_004','Mtnets_arants_kez_Duet','Nrboren_Garnunk_003','Resta_nei_nostri_cuori','RokHetd_Inch_E_Katarvum_003','S_irum_em_kez_I_love_you','Sirir_indz_hogis_FRAM_Duet','Srteri_kanchu_003','Tesilk_Silva_Gulanyan_Remix_Remix','Tiezerk_Jinj_Lazur','Title_Mi_tanjir_hogis_Multilingual_Emotional_Duet_Lyrics_by_Silva_Gulanyan_002','melodia lubvi','Безумный Ветер Любви','agh & dagy','xerdvac karot','xerdvac karot patasxan','hiastapvac','nerqnapanak','qo cov achqeri kajcern em sirum','sirty xentacav','luse hrashq','Hay_aragil','lrutian tchich','qez karotelis','siro cnundy','qo_drakhtum_002','ser da ardioq','xortakvor nav','chem moracel','ipta hogis','ov e kimy','Nerir sirelis','The Sun Cries Too','Crazy Breeze of Love','xent siro qamin','karotiali shurterin','mek tari el ancav','Garun e bajc zun e arel','Curt xavaric','xind manuk','hima']
+    },
+    {
+      id: 'go-hara', name: 'Go Hara', role: 'Vocalist & Performer',
+      songs: ['ajs xarum mian ujern e haxtum','Anund_Kin_e_004','Arajin_hambuyru','Arevamutits_araj','Bari_gisher','duet_Спокойной_ночи_Remix_Remix','spakojnoj nochi (kin)','Ginin_prprel_e','gisherajin','daravor karnin','darnaham-ginin','Title_Es_arajva_pes_kez_karotum_em_Swiss_Pop_Ballad_Lyrics_by_Go_Hara_Remix_008','Im_poezian','la-fracise','pered rasvetom','kanchir-kgam','HANDIPOMNERI_AYS_KhAChMEROKOM','Hervits_Grkum em','Hravirir_indz_parelu_tangon','menq linelu enq','MI_TOGh_INDz_MENAK','Mi_siro_patmutyun','Vorenineri_latsogh_purakum_002','POETIS','Sirogisher_Go_Hara','cncir-users','fracuzhenka']
+    },
+    {
+      id: 'haj-poetner', name: 'Հայ Բանաստեղծներ', role: 'Armenian Poets · Songs',
+      cover: 'authors/haj-poetner/cover.jpg',
+      songs: [
+        'vahan-teryan/ananun ser','vahan-teryan/ashnan erg',
+        'vahan-teryan/elegia','vahan-teryan/estonakan',
+        'vahan-teryan/es chgitem ur en tanum heravor','vahan-teryan/es sirum em qo meravor achqery xor',
+        'vahan-teryan/iriknajam','vahan-teryan/hrajeshti gazel','vahan-teryan/hrashk argik',
+        'vahan-teryan/im xarar erekon e hima',
+        'vahan-teryan/xarar gisherov du kgas inz mot','vahan-teryan/xosqery vchit en u xorunk',
+        'vahan-teryan/mtnshar','vahan-teryan/sentimental erg',
+        'vahan-teryan/sev gisher e noric u husher anhamar',
+        'vahan-teryan/qo achqeri dem im achqery kujr',
+        'hamo-sahyan/amen aravot','hamo-sahyan/anund talis','hamo-sahyan/anzrev',
+        'hamo-sahyan/du inz torel eir menak','hamo-sahyan/hajastan aselis',
+        'hamo-sahyan/kanch','hamo-sahyan/tar inz jamanak roc','hamo-sahyan/tar inz jamanak',
+        'hamo-sahyan/torvochvoqi chkanchen roc','hamo-sahyan/torvochvoqi chkanchen',
+        'hamo-sahyan/vochinch chi poxvi',
+        'hamo-sahyan/hognel em','hamo-sahyan/mitegh ishxan u ter',
+        'hamo-sahyan/es chem karogh chnershnchvel','hamo-sahyan/es chem karogh chnershnchvel roc',
+        'hamo-sahyan/horovely','hamo-sahyan/covn er gisher er es ei u du',
+        'hamo-sahyan/vshtacel em amen inchic','hamo-sahyan/um hamar im ushqy gnac',
+        'hamo-sahyan/es u du','hamo-sahyan/inch taqcnem',
+        'hamo-sahyan/hajastan aselis roc','hamo-sahyan/torvochvoqi chkanchen 02roc',
+        'hamo-sahyan/mijocners','hamo-sahyan/ches asi voch mi barov','hamo-sahyan/inch arac mard em',
+        'parujr-sevak/erku siro aranqum','parujr-sevak/erku siro aranqum roc',
+        'parujr-sevak/menq qich enq sakajn mez haj en asum',
+        'parujr-sevak/miangamic tango','parujr-sevak/miangamic roc'
+      ]
+    },
+    {
+      id: 'narine-balasbekyan', name: 'Narine Balasbekyan', role: 'Vocalist & Composer',
+      songs: ['kiny','sirena-hima']
+    },
+    { id: 'nune-muradyan',  name: 'Nune Muradyan',  role: 'Vocalist & Lyricist',  songs: [] },
+    { id: 'lilit-aghasyan', name: 'Lilit Aghasyan', role: 'Vocalist & Arranger',   songs: [] },
+    { id: 'mareta-sargsyan',name: 'Mareta Sargsyan',role: 'Vocalist & Performer',  songs: [] },
+  ];
+
+  const YOUTUBE_VIDEOS = [
+    { id: 'hwJQd1c7a2o', title: 'Երգը արգելված զգացմունքների և կրքի մասին' },
+    { id: 'oYOGajRMR14', title: 'Հարբել եմ ուզում — Silva Gulanyan' },
+    { id: 'ELuGHclmaG4', title: 'Անանց սեր' },
+    { id: 'K5X98mk1gNI', title: 'Տեսիլք — խոսք՝ Silva Gulanyan' },
+    { id: 'AD26_sVy9_4', title: 'Глубокие глаза — слова: Silva Gulanyan + ИИ' },
+    { id: 'PHYDxIb72bc', title: 'SER — Սիրո մեկնաբանությունը ԱԻ օգնությամբ, խոսք՝ Գոհար Ասելեսյան' },
+    { id: 'iXyMRKrG5Fg', title: 'Ինտրիգներ, զգացմունքներ' },
+    { id: '9VpieIrIK9c', title: 'Դառնահամ գինի' },
+    { id: 'ZOxSBnBR8A0', title: 'Հավերժի երթը' },
+    { id: 'TNlmm4-OJ-M', title: 'Ֆրանսուհին' },
+    { id: 'top-tf4-yq8', title: 'Միանգամից', added: '2026-06-14' },
+    { id: '708BzJSK-8g', title: 'Հոգու արձագանք (Ձեր տողերը՝ իմ երգերում) — Հեղինակ Վահան և ԱԻ', added: '2026-06-18' },
+    { id: 'UhoHHqTDS_Y', title: 'Մենք քիչ ենք, բայց մեզ հայ են ասում', added: '2026-06-18' },
+    { id: 'HyLQwRscKV0', title: 'Համո Սահյան — Հայաստան ասելիս', added: '2026-06-23' },
+    { id: 't499to6k1u0', title: 'Համո Սահյան — Անունդ տալիս', added: '2026-06-23' },
+    { id: 'PjAUXeK2WGo', title: 'Համո Սահյան — Ծովն էր, գիշերն էր, ես էի ու դու', added: '2026-06-25' },
+  ];
+
+  const NEW_SONGS = {
+    "erku siro aranqum": "2026-06-13",
+    "erku siro aranqum roc": "2026-06-13",
+    "menq qich enq sakajn mez haj en asum": "2026-06-13",
+    "miangamic roc": "2026-06-13",
+    "miangamic tango": "2026-06-13",
+    "inch_e_koracy_qarcr": "2026-06-14",
+    "Katak_Yari_Ergu rem": "2026-06-15",
+    "hamo-sahyan/hognel em": "2026-06-25",
+    "hamo-sahyan/mitegh ishxan u ter": "2026-06-25",
+    "hamo-sahyan/es chem karogh chnershnchvel": "2026-06-25",
+    "hamo-sahyan/es chem karogh chnershnchvel roc": "2026-06-25",
+    "hamo-sahyan/horovely": "2026-06-25",
+    "hamo-sahyan/covn er gisher er es ei u du": "2026-06-25",
+    "hamo-sahyan/vshtacel em amen inchic": "2026-06-25",
+    "hamo-sahyan/um hamar im ushqy gnac": "2026-06-25",
+    "hamo-sahyan/es u du": "2026-06-25",
+    "hamo-sahyan/inch taqcnem": "2026-06-25",
+    "hamo-sahyan/hajastan aselis roc": "2026-06-25",
+    "hamo-sahyan/torvochvoqi chkanchen 02roc": "2026-06-25",
+    "hamo-sahyan/mijocners": "2026-06-27",
+    "hamo-sahyan/ches asi voch mi barov": "2026-06-27",
+    "hamo-sahyan/inch arac mard em": "2026-06-27",
+    "parujr-sevak/erku siro aranqum": "2026-06-27",
+    "parujr-sevak/erku siro aranqum roc": "2026-06-27",
+    "parujr-sevak/menq qich enq sakajn mez haj en asum": "2026-06-27",
+    "parujr-sevak/miangamic tango": "2026-06-27",
+    "parujr-sevak/miangamic roc": "2026-06-27"
+  };
+  function isNewSong(song) {
+    const added = NEW_SONGS[song];
+    if (!added) return false;
+    const days = (Date.now() - new Date(added).getTime()) / (1000*60*60*24);
+    return days >= 0 && days <= 30;
+  }
+
+  const SONG_NAMES = {"ergichy-dari": "Երգիչի դարի", "gij": "Գիժ", "gij-qamin": "Գիժ քամի", "gortrik-ankun": "Գողտրիկ անկյուն", "im-tsovagur": "Իմ ծովագյուղ", "inch-em-anelu": "Ինչ եմ անելու", "tsov-arev-achqer": "Ծով արև աչքեր", "cncir-users": "Ցնցիր ուսերս", "darnaham-ginin": "Դառնահամ գինի", "fracuzhenka": "Ֆրանսուհին", "gisherajin": "Գիշերային", "kanchir-kgam": "Կանչիր կգամ", "la-fracise": "Լա Ֆրանս", "kiny": "Կինը", "sirena-hima": "Սիրել հիմա", "haverji-erty": "Հավերժի երգը", "hogu-arzaganq": "Հոգու արձագանք", "inchi-hamar": "Ինչի համար", "lur-heraxos": "Լուռ հեռախոս", "qo-jinj-hogin": "Քո ջինջ հոգին", "ser-anurji": "Սեր անուրջի", "shepot": "Շշունջ", "shshnjatc": "Շշնջաց", "siro-kenacy": "Սիրո կենաց",
+    "Es_kez_sirum_em": "Ես քեզ սիրում եմ",
+    "Garun_er": "Գարուն էր",
+    "Kez_khenti_nman_siraharvetsi_Duet_Tango": "Քեզ խենթի նման սիրահարվեցի (Duet Tango)",
+    "Ari_klini": "Արի կլինի",
+    "Andzrevum_e": "Անձրևում է",
+    "der-inz-voch-mek-chi-sirel-qo-pes": "Դեռ ինձ ոչ մեկ չի սիրել քո պես",
+    "Anund_Kin_e_004": "Անուննդ կին է",
+    "Ginin_prprel_e": "Գինին փրփրել է",
+    "HANDIPOMNERI_AYS_KhAChMEROKOM": "Հանդիպումների այս խաչմերուկում",
+    "Hravirir_indz_parelu_tangon": "Հրավիրիր ինձ պարելու տանգո",
+    "Im_poezian": "Իմ պոեզիան",
+    "MI_TOGh_INDz_MENAK": "Մի թող ինձ մենակ",
+    "POETIS": "Պոետիս",
+    "Sirogisher_Go_Hara": "Սիրո գիշեր",
+    "Bari_gisher": "Բարի գիշեր",
+    "spakojnoj nochi (kin)": "Բարի գիշեր (ռուս)",
+    "Akh_inch_anem_sirud_het": "Ախ ինչ անեմ սիրուդ հետ",
+    "AKhor_vo_tsavits_tsnvats": "Ցավից ծնված",
+    "Aryev_darnam": "Արև դառնամ",
+    "Che_chem_toghni_B": "Չե չեմ թողնի",
+    "Ches_moranalu_003": "Չես մոռանալու",
+    "Chisht_zhamanakin_At_The_Right_Time": "Ճիշտ ժամանակին",
+    "Dran_Takotsu_003": "Դռան թակոց",
+    "Dzig_tarineri_luys_003": "Ձիգ տարիների լույս",
+    "Erazankneri_aytsu_Part_Gisherva_002": "Երազանքների այց գիշերվա",
+    "Erb_verkers_hanger_dardzri_Lyrics_by_Silva_Gulanyan_003": "Երբ երգերս հանգեր դարձան",
+    "Erku_khent_hogi_Duet_Silva_Gulanyan_004": "Երկու խենթ հոգի",
+    "Es_sirum_em_ko_zhpitu_B": "Ես սիրում եմ քո ժպիտը",
+    "Garun_er_003": "Գարուն է",
+    "Gisher_e_004": "Գիշեր է",
+    "Gisherits_depi_luys_Silva_Gulanyan_005": "Գիշերից լույս",
+    "Gitem_ches_galu_B": "Գիտեմ չես գալու",
+    "Gitem_hogis_A": "Գիտեմ հոգիս",
+    "Hetd_inch_e_katarvum": "Հետդ ինչ է կատարվում",
+    "Im_erazats_ashkharu_003": "Իմ երազած աշխարհում",
+    "inchu_es_ayskan_indz_otar_dardzel_004": "Ինչու ես այսքան ինձ օտար դարձել",
+    "Jaheli_nman_003": "Ջահելի նման",
+    "Karotum_em_Dream_of_You_002": "Կարոտում եմ",
+    "xerdvac karot": "Խեղդված կարոտ",
+    "Kenatsd_khmem_B_Brinderò_per_Te": "Կենացդ խմեմ",
+    "xentern u lusiny": "Խենթերն ու լուսինը",
+    "Ko_hmayki_gerin": "Քո հմայքի գերին",
+    "Ko_koghkin_vorish_em_003": "Քո կողքին ուրիշ եմ",
+    "Es_irakan_em_004": "Ես իրական եմ",
+    "frants_Harbel_em_vozum": "Ֆրանսերեն հարբել եմ ուզում",
+    "Galis_e_mi_pah_003": "Գալիս է մի պահ",
+    "Havat_em_vozum_003": "Հավատ եմ ուզում",
+    "Hayots_ashkarh_A": "Հայոց աշխարհ",
+    "HERO_MOTIK_UNKERNERIS_003": "Հեռու մոտիկ ընկերներիս",
+    "hogu giny": "Հողի գինը",
+    "Ka_mi_ashkharh_vor_srtov_e_karutsvats": "Սրտով կառուցված աշխարհ",
+    "kgam_sirelis": "Կգամ սիրելիս",
+    "Khortakvogh_nav_003": "Խորտակվող նավ",
+    "Kuratsats_achkin_luysu_003": "Կուրացած աչքի լույս",
+    "Kuyr_eghbayr_003": "Քույր եղբայր",
+    "Kyanku_Hrashk_e_005": "Հրաշք կյանք",
+    "Mer_Srterum_kanchu_004": "Կանչ մեր սրտերում",
+    "Mtnets_arants_kez_Duet": "Առանց քեզ մթնեց",
+    "Nrboren_Garnunk_003": "Նրբորեն գարունք",
+    "Resta_nei_nostri_cuori": "Մնա մեր սրտերում",
+    "RokHetd_Inch_E_Katarvum_003": "Հետդ ինչ է կատարվում",
+    "S_irum_em_kez_I_love_you": "Սիրում եմ քեզ",
+    "Sirir_indz_hogis_FRAM_Duet": "Սիրիր ինձ հոգիս",
+    "Srteri_kanchu_003": "Սրտերի կանչ",
+    "Tesilk_Silva_Gulanyan_Remix_Remix": "Տեսիլք",
+    "Tiezerk_Jinj_Lazur": "Ջինջ տիեզերք",
+    "Title_Mi_tanjir_hogis_Multilingual_Emotional_Duet_Lyrics_by_Silva_Gulanyan_002": "Մի տանջիր հոգիս բազմալեզու",
+    "melodia lubvi": "Սիրո երաժշտություն",
+    "lur uji simfonia": "Լուռ ուժի սիմֆոնիան",
+    "Vahan_Teryan_MEGhAVOR_AChKERU": "Քո մեղավոր աչքերը (Վ.Տ)",
+    "Поцелуй_ветра": "Քամու համբույրից (Հ.Ս)",
+    "erku siro aranqum": "Երկու սիրո արանքում",
+    "erku siro aranqum roc": "Երկու սիրո արանքում ռոկ",
+    "menq qich enq sakajn mez haj en asum": "Մեզ հայ են ասում",
+    "miangamic roc": "Միանգամից ռոկ",
+    "miangamic tango": "Միանգամից տանգո",
+    "inch_e_koracy_qarcr": "Ինչո՞ւ է կորածն այսքան քաղցրանում",
+    "vahan-teryan/ananun ser": "Անանուն սեր",
+    "vahan-teryan/ashnan erg": "Աշնաներգ",
+    "vahan-teryan/elegia": "Էլեգիա",
+    "vahan-teryan/es chgitem ur en tanum heravor": "Ես չգիտեմ ուր են տանում հեռավոր",
+    "vahan-teryan/es sirum em qo meravor achqery xor": "Ես սիրում եմ քո մեղավոր աչքերը խոր",
+    "vahan-teryan/estonakan": "Էստոնական",
+    "vahan-teryan/hrajeshti gazel": "Հրաժեշտի գազել",
+    "vahan-teryan/hrashk argik": "Հրաշք աղջիկ",
+    "vahan-teryan/im xarar erekon e hima": "Իմ խաղաղ երեկոն է հիմա",
+    "vahan-teryan/iriknajam": "Իրիկնաժամ",
+    "vahan-teryan/mtnshar": "Մթնշաղ",
+    "vahan-teryan/qo achqeri dem im achqery kujr": "Քո աչքերի դեմ իմ աչքերը կույր",
+    "vahan-teryan/sentimental erg": "Սենտիմենտալ երգ",
+    "vahan-teryan/sev gisher e noric u husher anhamar": "Սև գիշեր է նորից ու հուշեր անհամար",
+    "vahan-teryan/xarar gisherov du kgas inz mot": "Խաղաղ գիշերով դու կգաս ինձ մոտ",
+    "vahan-teryan/xosqery vchit en u xorunk": "Խոսքերը վճիտ են ու խորունկ",
+    "hamo-sahyan/amen aravot": "Ամեն առավոտ",
+    "hamo-sahyan/anund talis": "Անունդ տալիս",
+    "hamo-sahyan/anzrev": "Անձրև",
+    "hamo-sahyan/du inz torel eir menak": "Դու ինձ թողել էիր մենակ",
+    "hamo-sahyan/hajastan aselis": "Հայաստան ասելիս",
+    "hamo-sahyan/kanch": "Կանչ",
+    "hamo-sahyan/tar inz jamanak roc": "Տար ինձ ժամանակ (ռոք)",
+    "hamo-sahyan/tar inz jamanak": "Տար ինձ ժամանակ",
+    "hamo-sahyan/torvochvoqi chkanchen roc": "Թող ոչ ոքի չկանչեն (ռոք)",
+    "hamo-sahyan/torvochvoqi chkanchen": "Թող ոչ ոքի չկանչեն",
+    "hamo-sahyan/vochinch chi poxvi": "Ոչինչ չի փոխվի",
+    "hamo-sahyan/hognel em": "Հոգնել եմ",
+    "hamo-sahyan/mitegh ishxan u ter": "Մի տեղ իշխան ու տեր",
+    "hamo-sahyan/es chem karogh chnershnchvel": "Ես չեմ կարող չներշնչվել",
+    "hamo-sahyan/es chem karogh chnershnchvel roc": "Ես չեմ կարող չներշնչվել (ռոք)",
+    "hamo-sahyan/horovely": "Հորովելը",
+    "hamo-sahyan/covn er gisher er es ei u du": "Ծովն էր, գիշերն էր, ես էի և դու",
+    "hamo-sahyan/vshtacel em amen inchic": "Վշտացել եմ ամեն ինչ",
+    "hamo-sahyan/um hamar im ushqy gnac": "Ում համար իմ ուշքը գնաց",
+    "hamo-sahyan/es u du": "Ես և դու",
+    "hamo-sahyan/inch taqcnem": "Ի՞նչ թաքցնեմ",
+    "hamo-sahyan/hajastan aselis roc": "Հայաստան ասելիս (ռոք)",
+    "hamo-sahyan/torvochvoqi chkanchen 02roc": "Թող ոչ ոքի չկանչեն (02 ռոք)",
+    "hamo-sahyan/mijocners": "Միջոցներս",
+    "hamo-sahyan/ches asi voch mi barov": "Չես ասի ոչ մի բարով",
+    "hamo-sahyan/inch arac mard em": "Ինչ արած, մարդ եմ",
+    "parujr-sevak/erku siro aranqum": "Երկու սիրո արանքում",
+    "parujr-sevak/erku siro aranqum roc": "Երկու սիրո արանքում (ռոք)",
+    "parujr-sevak/menq qich enq sakajn mez haj en asum": "Մենք քիչ ենք, սակայն մեզ հայ են ասում",
+    "parujr-sevak/miangamic tango": "Միանգամից (տանգո)",
+    "parujr-sevak/miangamic roc": "Միանգամից (ռոք)",
+    "Astghayin_Shghta_A": "Աստղային շղթա",
+    "B_Es_im_anush_Hayastani": "Ես իմ անուշ Հայաստանի",
+    "El_ban_chunem_Remix": "Էլ բան չունեմ",
+    "Katak_Yari_Ergu": "Կատակ յարի երգը",
+    "Katak_Yari_Ergu rem": "Կատակ յարի երգը 2",
+    "Lrutyan_unker": "Լռության ընկեր",
+    "Lsir_vordis": "Լսիր որդիս",
+    "Luse_Hekiat_A": "Լուսե հեքիաթ",
+    "Meghki_ezrin_Remix": "Մեղքի եզրին (ռուսերեն)",
+    "shshnjatc-noric": "Շշնջաց նորից",
+    "Vahan_Teryan_Gisher": "Գիշեր (Վ.Տ)",
+    "Vahan_Teryan_MEGhAVOR_AChKERU_KhOR_LES_YEUX_COUPABLES_დამნაშავე_თვალები_ლრმა": "Քո մեղավոր աչքերը (Վ.Տ)",
+    "Поцелуй_ветра_КAMO_HAMBOY_Hamo_Sahyan_Remix": "Քամու համբույրից (Հ.Ս)",
+    "Arajin_hambuyru": "Առաջին համբույր",
+    "Arevamutits_araj": "Արևամուտից առաջ",
+    "duet_Спокойной_ночи_Remix_Remix": "Բարի գիշեր (դուետ ռուս)",
+    "Mi_siro_patmutyun": "Մի սիրո պատմություն",
+    "Title_Es_arajva_pes_kez_karotum_em_Swiss_Pop_Ballad_Lyrics_by_Go_Hara_Remix_008": "Ես առաջվա պես քեզ կարոտում եմ",
+    "Vorenineri_latsogh_purakum_002": "Ուռենիների լացող պուրակում",
+    "pered rasvetom": "Լուսաբացից առաջ",
+    "Безумный Ветер Любви": "Безумный Ветер Любви",
+    "agh & dagy": "Աղն ու դաղը",
+    "xerdvac karot patasxan": "Խեղդված կարոտ պատասխան",
+    "hiastapvac": "Հիասթափված",
+    "nerqnapanak": "Ներքնապանակ",
+    "qo cov achqeri kajcern em sirum": "Քո աչքերի կայծն եմ սիրում",
+    "sirty xentacav": "Սիրտս խենթացավ",
+    "luse hrashq": "Լուսե հրաշք",
+    "Hay_aragil": "Հայ արագիլ",
+    "lrutian tchich": "Լռության ճիչ",
+    "qez karotelis": "Քեզ կարոտելիս",
+    "siro cnundy": "Սիրո ծնունդ",
+    "khentern_vo_lusinu_006": "Խենթերն ու լուսինը",
+    "qo_drakhtum_002": "Քո դրախտում",
+    "ser da ardioq": "Սեր է դա արդիոք",
+    "xortakvor nav": "Խորտակվող նավ",
+    "chem moracel": "Չեմ մոռացել",
+    "ipta hogis": "Ժպտա հոգիս",
+    "ov e kimy": "Օվ է կինը",
+    "Nerir sirelis": "Ներիր սիրելիս",
+    "The Sun Cries Too": "The Sun Cries Too",
+    "Crazy Breeze of Love": "Crazy Breeze of Love",
+    "xent siro qamin":"Խենթ սիրո քամին",
+    "karotiali shurterin":"Կարոտիալի շուրթերին",
+    "mek tari el ancav":"Մեկ տարի էլ անցավ",
+    "Garun e bajc zun e arel":"Գարուն է բայց ձյուն է արել",
+    "Curt xavaric":"Ցուրտ խավարից",
+    "xind manuk":"Խինդ մանուկ",
+    "hima":"Հիմա",
+    "luse arzaganq": "Լուսե արձագանք",
+    "Hervits_Grkum em": "Հերվից գրկում եմ (Remix)",
+    "menq linelu enq": "Մենք լինելու ենք",
+    "daravor karnin": "Դարավոր կաղնի",
+    "ajs xarum mian ujern e haxtum": "Այս խաղում ուժեղն է հաղթում",
+    "The Sun Cries Too(Արևն էլ է լաց լինում)": "Արևն էլ է լացում (անգլ)"};
+
+  /* ══ PLAYLIST (flat) ══ */
+  const playlist = [];
+  ARTISTS.forEach(a => a.songs.forEach(s => playlist.push({
+    artistId: a.id, artistName: a.name, song: s,
+    src:   `audio/${a.id}/featured/${s}${s === 'nerqnapanak' ? '.wav' : '.mp3'}`,
+    cover: `authors/${a.id}/cover.jpg`,
+    label: SONG_NAMES[s] || formatName(s)
+  })));
+
+  /* ══ PLAYER ENGINE ══ */
+  const engine    = document.getElementById('audio-engine');
+  const engine2   = new Audio();
+  engine2.preload = 'auto';
+  const engines   = [engine, engine2];
+  let activeIdx   = 0;
+  const active    = () => engines[activeIdx];
+  const inactive  = () => engines[1 - activeIdx];
+  const CROSSFADE_SEC = 2.5;
+  let crossfadeTimer = null;
+
+  const gpEl      = document.getElementById('global-player');
+  const gpCover   = document.getElementById('gp-cover');
+  const gpArtist  = document.getElementById('gp-artist');
+  const gpSong    = document.getElementById('gp-song');
+  const gpPlayBtn = document.getElementById('gp-play');
+  const gpPlayIco = document.getElementById('gp-play-icon');
+  const gpPrev    = document.getElementById('gp-prev');
+  const gpNext    = document.getElementById('gp-next');
+  const gpBar     = document.getElementById('gp-bar');
+  const gpFill    = document.getElementById('gp-fill');
+  const gpCur     = document.getElementById('gp-cur');
+  const gpDur     = document.getElementById('gp-dur');
+
+  let currentIdx = -1, isPlaying = false;
+
+  const PLAY_SVG  = `<path d="M5 3l10 6-10 6V3z" fill="currentColor"/>`;
+  const PAUSE_SVG = `<rect x="4" y="3" width="3.5" height="12" rx="1" fill="currentColor"/><rect x="10.5" y="3" width="3.5" height="12" rx="1" fill="currentColor"/>`;
+
+  function setPlayIcon(p) { gpPlayIco.innerHTML = p ? PAUSE_SVG : PLAY_SVG; }
+  function fmtTime(s) { return isNaN(s) ? '0:00' : `${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,'0')}`; }
+
+  function cancelCrossfade() {
+    if (crossfadeTimer) { clearInterval(crossfadeTimer); crossfadeTimer = null; }
+    inactive().pause();
+    inactive().removeAttribute('src');
+    inactive().volume = 1;
+    active().volume = 1;
+  }
+
+  function loadTrack(idx, autoplay) {
+    if (idx < 0 || idx >= playlist.length) return;
+    cancelCrossfade();
+    currentIdx = idx;
+    const t = playlist[idx];
+    const eng = active();
+    eng.src = t.src;
+    eng.volume = 1;
+    gpCover.src = t.cover;
+    gpArtist.textContent = t.artistName;
+    gpSong.textContent = t.label;
+    gpEl.classList.add('visible');
+    gpFill.style.width = '0%';
+    gpCur.textContent = gpDur.textContent = '0:00';
+    highlightTrack(idx);
+    if (autoplay) eng.play().then(() => { isPlaying = true; setPlayIcon(true); }).catch(() => {});
+  }
+
+  function highlightTrack(idx) {
+    document.querySelectorAll('.track-item').forEach(el => {
+      const playing = parseInt(el.dataset.pidx) === idx;
+      el.classList.toggle('playing', playing);
+      const btn = el.querySelector('.track-play-btn');
+      if (btn) btn.innerHTML = (playing && isPlaying) ? iconPause() : iconPlay();
+    });
+  }
+
+  function playTrack(idx) {
+    if (idx === currentIdx && isPlaying) {
+      active().pause(); return;
+    }
+    const t = playlist[idx];
+    if (t && typeof gtag === 'function') {
+      gtag('event', 'play_song', { song_name: t.label, artist_name: t.artistName });
+    }
+    loadTrack(idx, true);
+  }
+
+  function startCrossfade() {
+    const nextIdx = currentIdx + 1;
+    if (nextIdx >= playlist.length || crossfadeTimer) return;
+    const cur = active();
+    const nxt = inactive();
+    const t = playlist[nextIdx];
+    nxt.src = t.src;
+    nxt.currentTime = 0;
+    nxt.volume = 0;
+    nxt.play().catch(() => {});
+
+    const steps = 30;
+    const stepMs = (CROSSFADE_SEC * 1000) / steps;
+    let i = 0;
+    crossfadeTimer = setInterval(() => {
+      i++;
+      const ratio = i / steps;
+      cur.volume = Math.max(0, 1 - ratio);
+      nxt.volume = Math.min(1, ratio);
+      if (i >= steps) {
+        clearInterval(crossfadeTimer);
+        crossfadeTimer = null;
+        activeIdx = 1 - activeIdx;
+        currentIdx = nextIdx;
+        gpCover.src = t.cover;
+        gpArtist.textContent = t.artistName;
+        gpSong.textContent = t.label;
+        gpFill.style.width = '0%';
+        highlightTrack(currentIdx);
+        cur.pause();
+        cur.currentTime = 0;
+        cur.volume = 1;
+      }
+    }, stepMs);
+  }
+
+  gpPlayBtn.addEventListener('click', () => {
+    if (currentIdx < 0) return;
+    if (isPlaying) {
+      active().pause();
+      if (crossfadeTimer) inactive().pause();
+      isPlaying = false; setPlayIcon(false); highlightTrack(currentIdx);
+    } else {
+      active().play().catch(() => {});
+      if (crossfadeTimer) inactive().play().catch(() => {});
+      isPlaying = true; setPlayIcon(true); highlightTrack(currentIdx);
+    }
+  });
+
+  gpPrev.addEventListener('click', () => { if (currentIdx > 0) playTrack(currentIdx - 1); });
+  gpNext.addEventListener('click', () => { if (currentIdx < playlist.length - 1) playTrack(currentIdx + 1); });
+
+  function setupEngine(eng) {
+    eng.addEventListener('timeupdate', () => {
+      if (eng !== active() || !eng.duration) return;
+      gpFill.style.width = (eng.currentTime / eng.duration * 100) + '%';
+      gpCur.textContent = fmtTime(eng.currentTime);
+      gpDur.textContent = fmtTime(eng.duration);
+      const remaining = eng.duration - eng.currentTime;
+      if (!crossfadeTimer && remaining > 0 && remaining <= CROSSFADE_SEC && currentIdx < playlist.length - 1) {
+        startCrossfade();
+      }
+    });
+    eng.addEventListener('play',  () => { if (eng === active()) { isPlaying = true;  setPlayIcon(true);  highlightTrack(currentIdx); } });
+    eng.addEventListener('pause', () => { if (eng === active() && !crossfadeTimer) { isPlaying = false; setPlayIcon(false); highlightTrack(currentIdx); } });
+    eng.addEventListener('ended', () => {
+      if (eng !== active() || crossfadeTimer) return;
+      if (currentIdx < playlist.length - 1) playTrack(currentIdx + 1);
+      else { isPlaying = false; setPlayIcon(false); }
+    });
+  }
+  setupEngine(engine);
+  setupEngine(engine2);
+
+  gpBar.addEventListener('click', e => {
+    const eng = active();
+    if (!eng.duration) return;
+    const r = gpBar.getBoundingClientRect();
+    eng.currentTime = ((e.clientX - r.left) / r.width) * eng.duration;
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.code === 'Space' && e.target === document.body) { e.preventDefault(); gpPlayBtn.click(); }
+  });
+
+  /* ══ BUILD VIDEO SECTION ══ */
+  const videoGrid = document.getElementById('video-grid');
+
+  // YouTube group
+  const ytGroup = document.createElement('div');
+  ytGroup.className = 'video-group';
+  ytGroup.innerHTML = '<div class="video-section-label">YouTube</div><div class="video-grid" id="yt-grid"></div>';
+  videoGrid.appendChild(ytGroup);
+  const ytGridEl = ytGroup.querySelector('#yt-grid');
+  function isNewVideo(addedDate) {
+    if (!addedDate) return false;
+    const days = (Date.now() - new Date(addedDate).getTime()) / (1000*60*60*24);
+    return days >= 0 && days <= 30;
+  }
+
+  YOUTUBE_VIDEOS.forEach(v => {
+    const card = document.createElement('div');
+    card.className = 'video-card';
+    card.innerHTML = `
+      <iframe class="yt-embed" src="https://www.youtube.com/embed/${v.id}"
+        title="${v.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen loading="lazy"></iframe>
+      <div class="video-meta">
+        <div class="video-title">${v.title}${isNewVideo(v.added) ? ' <span class="new-badge">NEW</span>' : ''}</div>
+        <div class="video-label">Imastun Studio · YouTube</div>
+      </div>`;
+    ytGridEl.appendChild(card);
+  });
+
+  // mp4 group (Imastun)
+  const imastun = ARTISTS.find(a => a.id === 'imastun');
+  if (imastun && imastun.videos && imastun.videos.length > 0) {
+    const mp4Group = document.createElement('div');
+    mp4Group.className = 'video-group';
+    mp4Group.innerHTML = '<div class="video-section-label">Imastun · Featured</div><div class="video-grid" id="mp4-grid"></div>';
+    videoGrid.appendChild(mp4Group);
+    const mp4GridEl = mp4Group.querySelector('#mp4-grid');
+    imastun.videos.forEach(vid => {
+      const card = document.createElement('div');
+      card.className = 'video-card';
+      card.innerHTML = `
+        <video controls preload="none" src="videos/imastun/featured/${vid}.mp4"></video>
+        <div class="video-meta">
+          <div class="video-title">${formatName(vid)}</div>
+          <div class="video-label">Imastun · Featured</div>
+        </div>`;
+      mp4GridEl.appendChild(card);
+    });
+  }
+
+  /* ══ BUILD ARTIST GRID ══ */
+  const grid = document.getElementById('artists-grid');
+
+  ARTISTS.forEach((artist, i) => {
+    const coverSrc = artist.cover || `authors/${artist.id}/cover.jpg`;
+    const initials = artist.name.split(' ').map(w => w[0]).join('');
+    const hasCover = ["imastun","silva-gulanyan","go-hara","haj-poetner"].includes(artist.id);
+    const hasSongs = artist.songs && artist.songs.length > 0;
+
+    /* small card — no cover */
+    if (!hasCover) {
+      const card = document.createElement("div");
+      card.className = "artist-card card-empty";
+      card.innerHTML = `
+        <div class="empty-avatar">${initials}</div>
+        <div class="empty-info">
+          <div class="empty-name">${artist.name}</div>
+          <div class="empty-role">${artist.role}</div>
+        </div>
+        <div class="soon-badge">${hasSongs ? "Listen" : "Շուտով"}</div>`;
+      grid.appendChild(card);
+      return;
+    }
+
+    /* full card */
+    const card = document.createElement('div');
+    card.className = 'artist-card';
+    card.dataset.id = artist.id;
+    card.style.setProperty('--d', (i * 0.9) + 's');
+    card.innerHTML = `
+      <div class="card-cover-wrap">
+        <div class="card-cover-fallback">${initials}</div>
+        <img class="card-cover" src="${coverSrc}" alt="${artist.name}" onerror="this.style.display='none'" />
+        <div class="card-cover-overlay"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-index">${String(i+1).padStart(2,'0')}</div>
+        <div class="card-name">${artist.name}</div>
+        <div class="card-role">${artist.role}</div>
+        <div class="card-arrow">Listen
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>`;
+
+    /* panel */
+    const panel = document.createElement('div');
+    panel.className = 'artist-panel';
+    panel.id = `panel-${artist.id}`;
+
+    const hasTabs = artist.videos && artist.videos.length > 0;
+    const tabsHtml = hasTabs ? `
+      <div class="panel-tabs">
+        <button class="panel-tab active" data-tab="audio">Music</button>
+        <button class="panel-tab" data-tab="video">Videos</button>
+      </div>` : '';
+    const videoPanelHtml = hasTabs
+      ? `<div class="tab-pane" id="tab-video-${artist.id}">${buildVideoPanel(artist)}</div>` : '';
+
+    panel.innerHTML = `
+      <div class="panel-inner">
+        <div class="panel-cover-col">
+          <div class="panel-cover-fallback-col">${initials}</div>
+          <img class="panel-cover" src="${coverSrc}" alt="${artist.name}" onerror="this.style.display='none'" />
+        </div>
+        <div class="panel-content-col">
+          <div class="panel-header">
+            <div>
+              <div class="panel-title">${artist.name}</div>
+              <div class="panel-meta">
+                <span class="panel-role">${artist.role.replace(/ & /g, ' · ')}</span>
+                ${hasSongs ? `<span class="panel-stat"><strong>${artist.songs.length}</strong> երգ</span><span class="panel-stat"><strong id="duration-stat-${artist.id}">…</strong> ժամ</span>` : ''}
+              </div>
+            </div>
+            <button class="panel-close">Close ✕</button>
+          </div>
+          ${tabsHtml}
+          <div class="tab-pane active" id="tab-audio-${artist.id}">${buildTracks(artist)}</div>
+          ${videoPanelHtml}
+        </div>
+      </div>`;
+
+    grid.appendChild(card);
+    grid.appendChild(panel);
+
+    if (hasTabs) {
+      panel.querySelectorAll('.panel-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          panel.querySelectorAll('.panel-tab').forEach(t => t.classList.remove('active'));
+          panel.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+          tab.classList.add('active');
+          panel.querySelector(`#tab-${tab.dataset.tab}-${artist.id}`).classList.add('active');
+        });
+      });
+    }
+
+    card.addEventListener('click', () => {
+      if (artist.id === 'silva-gulanyan') { window.location.href = 'silva-gulanyan.html'; return; }
+      const isOpen = panel.classList.contains('open');
+      grid.querySelectorAll('.artist-card').forEach(c => c.classList.remove('active'));
+      grid.querySelectorAll('.artist-panel').forEach(p => p.classList.remove('open'));
+      if (!isOpen) {
+        card.classList.add('active');
+        panel.classList.add('open');
+        if (artist.songs && artist.songs.length) calcArtistDuration(artist);
+        setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+      }
+    });
+
+    panel.querySelector('.panel-close').addEventListener('click', e => {
+      e.stopPropagation();
+      card.classList.remove('active');
+      panel.classList.remove('open');
+    });
+
+    panel.querySelectorAll('.track-item').forEach(item => {
+      item.addEventListener('click', () => playTrack(parseInt(item.dataset.pidx)));
+    });
+
+    panel.querySelectorAll('.track-fav-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        const active = toggleFav(btn.dataset.artist, btn.dataset.song);
+        btn.classList.toggle('fav-active', active);
+        btn.style.color = active ? '#ee0055' : 'var(--text-dim)';
+        btn.innerHTML = iconHeart(active);
+      });
+    });
+
+    panel.querySelectorAll('.track-share-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        shareSong(btn.dataset.artist, btn.dataset.song);
+      });
+    });
+  });
+
+  /* ══ SEARCH ══ */
+  const searchOverlay = document.getElementById('search-overlay');
+  const searchInput   = document.getElementById('search-input');
+  const searchResults = document.getElementById('search-results');
+  const searchHint    = document.getElementById('search-hint');
+  // Artists shown in stats: exclude the poets section and any artist flagged as not-counted
+  const NON_ARTIST_IDS = new Set(['haj-poetner', 'narine-balasbekyan']);
+  const artistCount = new Set(playlist.filter(t => !NON_ARTIST_IDS.has(t.artistId)).map(t => t.artistId)).size;
+  const poetCount = new Set(
+    playlist.filter(t => t.artistId === 'haj-poetner' && t.song.includes('/'))
+            .map(t => t.song.split('/')[0])
+  ).size;
+  const SEARCH_HINT = `${playlist.length} երգ`;
+  searchHint.textContent = SEARCH_HINT;
+  const heroStats = document.getElementById('hero-stats');
+  if (heroStats) {
+    heroStats.innerHTML =
+      `<div class="hero-stat"><div class="lbl">Երգ</div><div class="num">${playlist.length}</div></div>`;
+  }
+
+  /* ══ RECENTLY ADDED ══ */
+  function buildRecent() {
+    const grid = document.getElementById('recent-grid');
+    if (!grid) return;
+    const items = [];
+    playlist.forEach(t => {
+      if (isNewSong(t.song)) items.push({
+        type: 'Երգ', date: NEW_SONGS[t.song],
+        title: SONG_NAMES[t.song] || formatName(t.song),
+        sub: t.artistName,
+        action: () => playTrack(playlist.indexOf(t))
+      });
+    });
+    (typeof YOUTUBE_VIDEOS !== 'undefined' ? YOUTUBE_VIDEOS : []).forEach(v => {
+      if (isNewVideo(v.added)) items.push({
+        type: 'Տեսանյութ', date: v.added, title: v.title, sub: 'YouTube',
+        action: () => window.open('https://www.youtube.com/watch?v=' + v.id, '_blank', 'noopener')
+      });
+    });
+    items.sort((a, b) => new Date(b.date) - new Date(a.date));
+    if (!items.length) {
+      const sec = document.getElementById('recent');
+      const rule = document.getElementById('recent-rule');
+      if (sec) sec.style.display = 'none';
+      if (rule) rule.style.display = 'none';
+      return;
+    }
+    grid.innerHTML = '';
+    items.slice(0, 20).forEach(it => {
+      const card = document.createElement('div');
+      card.className = 'recent-card';
+      card.innerHTML = `<div class="rc-top"><span class="rc-type">${it.type}</span>` +
+        `<span class="rc-badge new-badge">NEW</span></div>` +
+        `<div class="rc-title">${it.title}</div><div class="rc-sub">${it.sub}</div>`;
+      card.addEventListener('click', it.action);
+      grid.appendChild(card);
+    });
+  }
+  buildRecent();
+
+  document.getElementById('search-toggle').addEventListener('click', openSearch);
+  document.getElementById('search-close').addEventListener('click', closeSearch);
+
+  document.addEventListener('keydown', e => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); openSearch(); }
+    if (e.key === 'Escape' && searchOverlay.classList.contains('open')) closeSearch();
+  });
+
+  function openSearch() {
+    searchOverlay.classList.add('open');
+    searchInput.value = '';
+    searchResults.innerHTML = '';
+    searchHint.textContent = SEARCH_HINT;
+    setTimeout(() => searchInput.focus(), 50);
+  }
+
+  function closeSearch() {
+    searchOverlay.classList.remove('open');
+    searchInput.blur();
+  }
+
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.trim().toLowerCase();
+    if (!q) { searchResults.innerHTML = ''; searchHint.textContent = SEARCH_HINT; return; }
+
+    const hits = playlist.filter(t => {
+      const songArm = (SONG_NAMES[t.song] || '').toLowerCase();
+      return songArm.includes(q) || t.song.toLowerCase().includes(q) || t.artistName.toLowerCase().includes(q);
+    });
+
+    searchHint.textContent = hits.length ? `${hits.length} արդյունք` : '';
+
+    if (!hits.length) {
+      searchResults.innerHTML = '<div class="sr-no-results">Ոչինչ չգտնվեց</div>';
+      return;
+    }
+
+    searchResults.innerHTML = hits.slice(0, 40).map(t => {
+      const pIdx = playlist.indexOf(t);
+      const label = SONG_NAMES[t.song] || formatName(t.song);
+      const shortArtist = t.artistName.split(' ')[0];
+      return `<div class="sr-item" data-pidx="${pIdx}">
+        <span class="sr-artist-tag">${shortArtist}</span>
+        <span class="sr-song-name">${label}</span>
+        <svg class="sr-play-icon" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 2l9 5-9 5V2z" fill="currentColor"/></svg>
+      </div>`;
+    }).join('');
+
+    searchResults.querySelectorAll('.sr-item').forEach(item => {
+      item.addEventListener('click', () => {
+        playTrack(parseInt(item.dataset.pidx));
+        closeSearch();
+      });
+    });
+  });
+
+
+  /* ── FAVORITES ── */
+  function getFavs(artistId) { try { return JSON.parse(localStorage.getItem(artistId + '_favorites') || '[]'); } catch(e) { return []; } }
+  function saveFavs(artistId, f) { localStorage.setItem(artistId + '_favorites', JSON.stringify(f)); }
+  function isFav(artistId, song) { return getFavs(artistId).includes(song); }
+  function toggleFav(artistId, song) {
+    let f = getFavs(artistId);
+    if (f.includes(song)) f = f.filter(s => s !== song);
+    else f.push(song);
+    saveFavs(artistId, f);
+    return f.includes(song);
+  }
+  function iconHeart(filled) {
+    return filled
+      ? `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`
+      : `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`;
+  }
+
+  const _durationDone = {};
+  function calcArtistDuration(artist) {
+    if (_durationDone[artist.id]) return;
+    _durationDone[artist.id] = true;
+    const tracks = playlist.filter(p => p.artistId === artist.id);
+    if (!tracks.length) return;
+    const promises = tracks.map(t => new Promise(resolve => {
+      const a = new Audio();
+      a.preload = 'metadata';
+      a.src = t.src;
+      a.addEventListener('loadedmetadata', () => resolve(a.duration || 0));
+      a.addEventListener('error', () => resolve(0));
+    }));
+    Promise.all(promises).then(durations => {
+      const total = durations.reduce((sum, d) => sum + (isFinite(d) ? d : 0), 0);
+      const totalMin = Math.round(total / 60);
+      const hours = Math.floor(totalMin / 60);
+      const mins = totalMin % 60;
+      const el = document.getElementById('duration-stat-' + artist.id);
+      if (el) el.textContent = hours > 0 ? `${hours}ժ ${mins}ր` : `${mins}ր`;
+    });
+  }
+
+  function buildTracks(artist) {
+    if (!artist.songs || !artist.songs.length)
+      return '<div class="empty-state">No tracks available yet.</div>';
+    let songs = artist.songs;
+    const nameOf = s => SONG_NAMES[s] || formatName(s);
+    const alpha = (a, b) => nameOf(a).localeCompare(nameOf(b), 'hy'); // Armenian alphabetical
+    if (artist.id === 'haj-poetner') {
+      const poet = s => s.startsWith('vahan-teryan/') ? 0 : s.startsWith('hamo-sahyan/') ? 1 : 2; // keep poets grouped
+      songs = artist.songs.slice().sort((a, b) => {
+        if (poet(a) !== poet(b)) return poet(a) - poet(b);
+        return alpha(a, b);
+      });
+    } else {
+      songs = artist.songs.slice().sort(alpha);
+    }
+    const poetName = s => s.startsWith('vahan-teryan/') ? 'Վահան Տերյան' : s.startsWith('hamo-sahyan/') ? 'Համո Սահյան' : s.startsWith('parujr-sevak/') ? 'Պարույր Սևակ' : '';
+    let lastPoet = null;
+    return `<div class="track-list">${songs.map((song, i) => {
+      const pIdx = playlist.findIndex(p => p.artistId === artist.id && p.song === song);
+      const fav = isFav(artist.id, song);
+      let header = '';
+      if (artist.id === 'haj-poetner') {
+        const pn = poetName(song);
+        if (pn && pn !== lastPoet) {
+          header = `<div class="poet-header" style="font-family:'Inter',sans-serif;font-size:13px;font-weight:700;color:#c9a84c;letter-spacing:0.08em;text-transform:uppercase;margin:18px 0 8px;padding-bottom:6px;border-bottom:1px solid rgba(201,168,76,0.25);">${pn}</div>`;
+          lastPoet = pn;
+        }
+      }
+      return header + `<div class="track-item" data-pidx="${pIdx}">
+        <span class="track-num">${String(i+1).padStart(2,'0')}</span>
+        <div class="track-name">${SONG_NAMES[song] || formatName(song)}</div>
+        ${isNewSong(song) ? '<span class="new-badge">NEW</span>' : ''}
+        <button class="track-fav-btn${fav ? ' fav-active' : ''}" data-artist="${artist.id}" data-song="${song}" style="background:none;border:none;cursor:pointer;color:${fav ? '#ee0055' : 'var(--text-dim)'};display:flex;align-items:center;padding:4px;transition:color 0.2s,transform 0.2s;">${iconHeart(fav)}</button>
+        <button class="track-share-btn" data-artist="${artist.id}" data-song="${song}" title="Կիսվել" style="background:none;border:none;cursor:pointer;color:var(--text-dim);display:flex;align-items:center;padding:4px;transition:color 0.2s;">${iconShare()}</button>
+        <button class="track-play-btn">${iconPlay()}</button>
+      </div>`;
+    }).join('')}</div>`;
+  }
+
+  function buildVideoPanel(artist) {
+    if (!artist.videos || !artist.videos.length)
+      return '<div class="empty-state">No videos available yet.</div>';
+    return `<div class="video-grid">${artist.videos.map(vid => `
+      <div class="video-card">
+        <video controls preload="none" src="videos/${artist.id}/featured/${vid}.mp4"></video>
+        <div class="video-meta">
+          <div class="video-title">${formatName(vid)}</div>
+          <div class="video-label">Featured Video</div>
+        </div>
+      </div>`).join('')}</div>`;
+  }
+
+  function formatName(slug) {
+    return slug.replace(/[-_]/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+  }
+
+  function iconPlay() {
+    return `<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 2l7 4-7 4V2z" fill="currentColor"/></svg>`;
+  }
+
+  function iconShare() {
+    return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>`;
+  }
+
+  function showToast(msg) {
+    let t = document.getElementById('app-toast');
+    if (!t) {
+      t = document.createElement('div');
+      t.id = 'app-toast';
+      t.style.cssText = 'position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:rgba(20,16,8,0.96);color:#f5f0e8;border:1px solid var(--gold);padding:12px 20px;border-radius:30px;font-family:Inter,sans-serif;font-size:14px;z-index:9999;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;box-shadow:0 8px 30px rgba(0,0,0,.5)';
+      document.body.appendChild(t);
+    }
+    t.textContent = msg;
+    requestAnimationFrame(() => { t.style.opacity = '1'; t.style.transform = 'translateX(-50%) translateY(0)'; });
+    clearTimeout(t._timer);
+    t._timer = setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translateX(-50%) translateY(20px)'; }, 2200);
+  }
+
+  function shareSong(artistId, song) {
+    const label = SONG_NAMES[song] || formatName(song);
+    const url = location.origin + '/?play=' + encodeURIComponent(artistId + '|' + song);
+    if (navigator.share) {
+      navigator.share({ title: label, text: label + ' — Imastun Studio', url }).catch(() => {});
+    } else if (navigator.clipboard) {
+      navigator.clipboard.writeText(url).then(() => showToast('Հղումը պատճենվեց ✓')).catch(() => showToast(url));
+    } else {
+      showToast(url);
+    }
+  }
+
+  // Open a shared song link: ?play=artistId|song
+  (function() {
+    const p = new URLSearchParams(location.search).get('play');
+    if (!p) return;
+    const parts = decodeURIComponent(p).split('|');
+    const aid = parts.shift();
+    const song = parts.join('|');
+    const idx = playlist.findIndex(t => t.artistId === aid && t.song === song);
+    if (idx >= 0) setTimeout(() => playTrack(idx), 700);
+  })();
+
+
+  function iconPause() {
+    return `<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="2" y="2" width="3" height="8" rx="0.8" fill="currentColor"/><rect x="7" y="2" width="3" height="8" rx="0.8" fill="currentColor"/></svg>`;
+  }
+</script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHJJF7DQ29"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LHJJF7DQ29');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Silva Gulanyan — Իմաստուն Ստուդիո</title>
+  <meta name="description" content="Silva Gulanyan — Վոկալիստ եւ բառերի հեղինակ։ 86 երգ Իմաստուն Ստուդիոյի կողմից։ Լսիր հայկական երաժշտություն։" />
+  <meta name="keywords" content="Silva Gulanyan, Սիլվա Գուլանյան, հայկական երաժշտություն, Armenian music, Imastun Studio, Իմաստուն Ստուդիո" />
+  <meta name="author" content="Imastun Studio" />
+  <meta property="og:title" content="Silva Gulanyan — Իմաստուն Ստուդիո" />
+  <meta property="og:description" content="Silva Gulanyan — Վոկալիստ եւ բառերի հեղինակ։ 86 երգ։" />
+  <meta property="og:image" content="authors/silva-gulanyan/cover.jpg" />
+  <meta property="og:type" content="music.musician" />
+  <meta property="og:url" content="https://imastun.org/silva-gulanyan" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Silva Gulanyan — Imastun Studio" />
+  <meta name="twitter:image" content="authors/silva-gulanyan/cover.jpg" />
+  <meta name="theme-color" content="#c9a84c" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="logo.png" type="image/png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+  <link rel="canonical" href="https://imastun.org/silva-gulanyan" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --gold-dim: rgba(201,168,76,0.18);
+      --bg: #080808;
+      --surface: #0f0f0f;
+      --surface2: #161616;
+      --border: rgba(201,168,76,0.15);
+      --text: #e8e2d5;
+      --text-dim: #7a7468;
+      --white: #f5f0e8;
+      --player-h: 88px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Syne', sans-serif; overflow-x: hidden; padding-bottom: var(--player-h); }
+
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+    /* NAV */
+    #nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(8,8,8,0.92); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(20px, 5vw, 80px); height: 64px;
+    }
+    .nav-brand { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 20px; color: var(--gold); letter-spacing: 0.06em; text-decoration: none; }
+    .nav-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--text-dim);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--gold); }
+
+    /* HERO */
+    #hero {
+      position: relative; min-height: 70vh;
+      display: flex; align-items: flex-end;
+      padding: clamp(40px,8vw,100px) clamp(20px,6vw,100px);
+      overflow: hidden;
+    }
+    .hero-cover {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover; object-position: center top;
+      opacity: 0.35;
+    }
+    .hero-veil {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(8,8,8,0.2) 0%, rgba(8,8,8,0.5) 50%, rgba(8,8,8,0.95) 100%);
+    }
+    .hero-content { position: relative; z-index: 2; }
+    .hero-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.35em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 16px;
+    }
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif; font-weight: 300;
+      font-size: clamp(48px, 8vw, 96px); line-height: 1;
+      color: var(--white); margin-bottom: 16px;
+    }
+    .hero-role {
+      font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--text-dim); margin-bottom: 32px;
+    }
+    .hero-stats { display: flex; gap: 40px; flex-wrap: wrap; }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif; font-size: 36px;
+      font-weight: 300; color: var(--gold); line-height: 1;
+    }
+    .stat-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dim); margin-top: 4px; }
+
+    .gold-rule { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.35; }
+
+    /* TRACK LIST */
+    #tracks-section { padding: clamp(40px,8vw,80px) clamp(20px,6vw,100px); }
+    .section-header { margin-bottom: 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .section-heading { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(28px, 4vw, 48px); color: var(--white); }
+    .section-heading em { font-style: italic; color: var(--gold); }
+
+    .track-list { display: flex; flex-direction: column; gap: 4px; }
+    .track-item {
+      display: grid; grid-template-columns: 40px 1fr auto auto;
+      align-items: center; gap: 16px; padding: 14px 20px;
+      background: rgba(255,255,255,0.02); border: 1px solid transparent;
+      border-radius: 2px; cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .track-item:hover { background: rgba(201,168,76,0.05); border-color: var(--border); }
+    .track-item.playing { background: rgba(201,168,76,0.08); border-color: rgba(201,168,76,0.3); }
+    .track-num { font-size: 12px; color: var(--text-dim); text-align: right; font-variant-numeric: tabular-nums; }
+    .track-item.playing .track-num { color: var(--gold); }
+    .track-name { font-family: 'Cormorant Garamond', serif; font-size: 19px; color: var(--white); white-space: normal; overflow: visible; word-break: break-word; }
+    .track-item.playing .track-name { color: var(--gold-light); }
+    .new-badge {
+      font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
+      color: #0c0c0c; background: var(--gold); border-radius: 4px; padding: 2px 6px;
+      flex-shrink: 0; white-space: nowrap;
+    }
+    .track-play-btn {
+      width: 32px; height: 32px; border-radius: 50%;
+      border: 1px solid var(--border); background: none; color: var(--text-dim);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; flex-shrink: 0; transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .track-play-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .track-item.playing .track-play-btn { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
+
+    .track-fav {
+      width: 28px; height: 28px; background: none; border: none;
+      cursor: pointer; color: var(--text-dim); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      transition: color 0.2s, transform 0.2s; padding: 0;
+    }
+    .track-fav:hover { color: #e05; transform: scale(1.2); }
+    .track-fav.active { color: #e05; }
+    .track-fav svg { width: 16px; height: 16px; }
+
+    /* GLOBAL PLAYER */
+    #global-player {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      height: var(--player-h); background: rgba(10,10,10,0.97);
+      backdrop-filter: blur(28px); border-top: 1px solid var(--border);
+      z-index: 200; display: flex; align-items: center;
+      padding: 0 clamp(16px,4vw,48px); gap: 20px;
+      transform: translateY(100%); transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #global-player.visible { transform: translateY(0); }
+    .gp-cover { width: 52px; height: 52px; object-fit: cover; border: 1px solid var(--border); flex-shrink: 0; background: #111; }
+    .gp-info { display: flex; flex-direction: column; gap: 3px; min-width: 0; flex: 0 0 180px; }
+    .gp-artist { font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .gp-song { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--white); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .gp-controls { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+    .gp-btn { background: none; border: none; color: var(--text-dim); cursor: pointer; padding: 6px; display: flex; align-items: center; transition: color 0.2s; }
+    .gp-btn:hover { color: var(--gold); }
+    .gp-play { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--gold); background: none; color: var(--gold); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s, color 0.2s; flex-shrink: 0; }
+    .gp-play:hover { background: var(--gold); color: var(--bg); }
+    .gp-progress-wrap { flex: 1; display: flex; align-items: center; gap: 10px; min-width: 0; }
+    .gp-time { font-size: 12px; font-variant-numeric: tabular-nums; color: var(--text); flex-shrink: 0; width: 40px; font-weight: 600; }
+    .gp-time.right { text-align: right; }
+    .gp-bar { flex: 1; height: 3px; background: rgba(255,255,255,0.08); border-radius: 2px; cursor: pointer; }
+    .gp-bar-fill { height: 100%; background: var(--gold); border-radius: 2px; width: 0%; pointer-events: none; }
+
+    .track-tabs { display: flex; gap: 8px; }
+    .track-tab {
+      background: none; border: 1px solid var(--border);
+      color: var(--text-dim); font-family: 'Syne', sans-serif;
+      font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; padding: 8px 18px; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .track-tab.active { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
+    .track-tab:hover:not(.active) { border-color: var(--gold); color: var(--gold); }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 32px clamp(20px,6vw,100px); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-brand { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 20px; color: var(--gold); text-decoration: none; }
+    .footer-copy { font-size: 11px; letter-spacing: 0.1em; color: var(--text-dim); }
+
+    @media (max-width: 700px) {
+      .hero-name { font-size: clamp(36px, 10vw, 64px); }
+      .gp-info { flex: 0 0 120px; }
+      .gp-progress-wrap { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="/" class="nav-back">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Imastun Studio
+  </a>
+  <a href="/" class="nav-brand">Imastun Studio</a>
+</nav>
+
+<section id="hero">
+  <img class="hero-cover" src="authors/silva-gulanyan/cover.jpg" alt="Silva Gulanyan" />
+  <div class="hero-veil"></div>
+  <div class="hero-content">
+    <div class="hero-label">Imastun Studio · Artist</div>
+    <h1 class="hero-name">Silva Gulanyan</h1>
+    <div class="hero-role">Poet · Vocalist · Songwriter</div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num" id="song-count-stat">92</div>
+        <div class="stat-label">Երգ</div>
+      </div>
+      <div>
+        <div class="stat-num" id="duration-stat">…</div>
+        <div class="stat-label">Ժամ</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+<section id="tracks-section">
+  <div class="section-header">
+    <h2 class="section-heading">Բոլոր <em>Երգերը</em></h2>
+    <div class="track-tabs">
+      <button class="track-tab active" id="tab-all">Բոլորը</button>
+      <button class="track-tab" id="tab-new">✨ Նոր</button>
+      <button class="track-tab" id="tab-favs">❤️ Սիրածները</button>
+    </div>
+  </div>
+  <div class="track-list" id="track-list"></div>
+  <div id="fav-empty" style="display:none; padding:32px; color:var(--text-dim); font-family:'Cormorant Garamond',serif; font-style:italic; font-size:20px;">Դեռ սիրած երգ չկա — սեղմիր ❤️</div>
+</section>
+
+<div class="gold-rule"></div>
+
+<footer>
+  <a href="/" class="footer-brand">Imastun Studio</a>
+  <span class="footer-copy">© <span id="yr"></span> Imastun Studio</span>
+</footer>
+
+<div id="global-player">
+  <img class="gp-cover" id="gp-cover" src="" alt="" />
+  <div class="gp-info">
+    <div class="gp-artist" id="gp-artist">Silva Gulanyan</div>
+    <div class="gp-song" id="gp-song">—</div>
+  </div>
+  <div class="gp-controls">
+    <button class="gp-btn" id="gp-prev">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 3v12M14 3L7 9l7 6V3z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="gp-play" id="gp-play">
+      <svg id="gp-play-icon" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M5 3l10 6-10 6V3z" fill="currentColor"/></svg>
+    </button>
+    <button class="gp-btn" id="gp-next">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M14 3v12M4 3l7 6-7 6V3z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+  <div class="gp-progress-wrap">
+    <span class="gp-time" id="gp-cur">0:00</span>
+    <div class="gp-bar" id="gp-bar"><div class="gp-bar-fill" id="gp-fill"></div></div>
+    <span class="gp-time right" id="gp-dur">0:00</span>
+  </div>
+</div>
+
+<audio id="audio-engine" preload="none"></audio>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  const ARTIST = {
+    id: 'silva-gulanyan',
+    name: 'Silva Gulanyan',
+    songs: ['Akh_inch_anem_sirud_het','agh & dagy','Andzrevum_e','Mtnets_arants_kez_Duet','Aryev_darnam','Ari_klini','Galis_e_mi_pah_003','Garun_er_003','Garun e bajc zun e arel','gij','gij-qamin','Gisher_e_004','Gisherits_depi_luys_Silva_Gulanyan_005','Gitem_hogis_A','Gitem_ches_galu_B','gortrik-ankun','der-inz-voch-mek-chi-sirel-qo-pes','Dran_Takotsu_003','Es_irakan_em_004','Es_sirum_em_ko_zhpitu_B','Es_kez_sirum_em','Erazankneri_aytsu_Part_Gisherva_002','Erb_verkers_hanger_dardzri_Lyrics_by_Silva_Gulanyan_003','ergichy-dari','Erku_khent_hogi_Duet_Silva_Gulanyan_004','ipta hogis','Im_erazats_ashkharu_003','im-tsovagur','inch-em-anelu','inchu_es_ayskan_indz_otar_dardzel_004','luse hrashq','lrutian tchich','xerdvac karot','xerdvac karot patasxan','xent siro qamin','xentern u lusiny','xind manuk','xortakvor nav','tsov-arev-achqer','Mer_Srterum_kanchu_004','karotiali shurterin','Karotum_em_Dream_of_You_002','kgam_sirelis','Kenatsd_khmem_B_Brinderò_per_Te','Kuratsats_achkin_luysu_003','Hay_aragil','Hayots_ashkarh_A','Havat_em_vozum_003','HERO_MOTIK_UNKERNERIS_003','Hetd_inch_e_katarvum','RokHetd_Inch_E_Katarvum_003','hiastapvac','hogu giny','Kyanku_Hrashk_e_005','Dzig_tarineri_luys_003','Chisht_zhamanakin_At_The_Right_Time','mek tari el ancav','Title_Mi_tanjir_hogis_Multilingual_Emotional_Duet_Lyrics_by_Silva_Gulanyan_002','Resta_nei_nostri_cuori','Nerir sirelis','nerqnapanak','Nrboren_Garnunk_003','Che_chem_toghni_B','chem moracel','Ches_moranalu_003','Jaheli_nman_003','Tiezerk_Jinj_Lazur','ser da ardioq','Sirir_indz_hogis_FRAM_Duet','melodia lubvi','siro cnundy','S_irum_em_kez_I_love_you','sirty xentacav','Srteri_kanchu_003','Ka_mi_ashkharh_vor_srtov_e_karutsvats','Tesilk_Silva_Gulanyan_Remix_Remix','AKhor_vo_tsavits_tsnvats','Curt xavaric','Kez_khenti_nman_siraharvetsi_Duet_Tango','qez karotelis','qo cov achqeri kajcern em sirum','qo_drakhtum_002','Ko_koghkin_vorish_em_003','Ko_hmayki_gerin','Kuyr_eghbayr_003','ov e kimy','frants_Harbel_em_vozum','Crazy Breeze of Love','The Sun Cries Too','Безумный Ветер Любви','hima','gjuk lusiny','gitem el inz ches spasum']
+  };
+
+  const NEW_SONGS = { "hima": "2026-06-15", "gjuk lusiny": "2026-06-27", "gitem el inz ches spasum": "2026-06-27" };
+  function isNewSong(song) {
+    const added = NEW_SONGS[song];
+    if (!added) return false;
+    const days = (Date.now() - new Date(added).getTime()) / (1000*60*60*24);
+    return days >= 0 && days <= 30;
+  }
+  const SONG_NAMES = {"ergichy-dari":"Երգիչի դարի","gij":"Գիժ","gij-qamin":"Գիժ քամի","gortrik-ankun":"Գողտրիկ անկյուն","im-tsovagur":"Իմ ծովագյուղ","inch-em-anelu":"Ինչ եմ անելու","tsov-arev-achqer":"Ծով արև աչքեր","Es_kez_sirum_em":"Ես քեզ սիրում եմ","Kez_khenti_nman_siraharvetsi_Duet_Tango":"Քեզ խենթի նման սիրահարվեցի (Duet Tango)","Ari_klini":"Արի կլինի","Andzrevum_e":"Անձրևում է","der-inz-voch-mek-chi-sirel-qo-pes":"Դեռ ինձ ոչ մեկ չի սիրել քո պես","Akh_inch_anem_sirud_het":"Ախ ինչ անեմ սիրուդ հետ","AKhor_vo_tsavits_tsnvats":"Ցավից ծնված","Aryev_darnam":"Արև դառնամ","Che_chem_toghni_B":"Չե չեմ թողնի","Ches_moranalu_003":"Չես մոռանալու","Chisht_zhamanakin_At_The_Right_Time":"Ճիշտ ժամանակին","Dran_Takotsu_003":"Դռան թակոց","Dzig_tarineri_luys_003":"Ձիգ տարիների լույս","Erazankneri_aytsu_Part_Gisherva_002":"Երազանքների այց գիշերվա","Erb_verkers_hanger_dardzri_Lyrics_by_Silva_Gulanyan_003":"Երբ երգերս հանգեր դարձան","Erku_khent_hogi_Duet_Silva_Gulanyan_004":"Երկու խենթ հոգի","Es_sirum_em_ko_zhpitu_B":"Ես սիրում եմ քո ժպիտը","Garun_er_003":"Գարուն է","Gisher_e_004":"Գիշեր է","Gisherits_depi_luys_Silva_Gulanyan_005":"Գիշերից լույս","Gitem_ches_galu_B":"Գիտեմ չես գալու","Gitem_hogis_A":"Գիտեմ հոգիս","Hetd_inch_e_katarvum":"Հետդ ինչ է կատարվում","Im_erazats_ashkharu_003":"Իմ երազած աշխարհում","inchu_es_ayskan_indz_otar_dardzel_004":"Ինչու ես այսքան ինձ օտար դարձել","Jaheli_nman_003":"Ջահելի նման","Karotum_em_Dream_of_You_002":"Կարոտում եմ","Kenatsd_khmem_B_Brinderò_per_Te":"Կենացդ խմեմ","xentern u lusiny":"Խենթերն ու լուսինը","Ko_hmayki_gerin":"Քո հմայքի գերին","Ko_koghkin_vorish_em_003":"Քո կողքին ուրիշ եմ","Es_irakan_em_004":"Ես իրական եմ","frants_Harbel_em_vozum":"Ֆրանսերեն հարբել եմ ուզում","Galis_e_mi_pah_003":"Գալիս է մի պահ","Havat_em_vozum_003":"Հավատ եմ ուզում","Hayots_ashkarh_A":"Հայոց աշխարհ","HERO_MOTIK_UNKERNERIS_003":"Հեռու մոտիկ ընկերներիս","hogu giny":"Հողի գինը","Ka_mi_ashkharh_vor_srtov_e_karutsvats":"Սրտով կառուցված աշխարհ","kgam_sirelis":"Կգամ սիրելիս","Khortakvogh_nav_003":"Խորտակվող նավ","Kuratsats_achkin_luysu_003":"Կուրացած աչքի լույս","Kuyr_eghbayr_003":"Քույր եղբայր","Kyanku_Hrashk_e_005":"Հրաշք կյանք","Mer_Srterum_kanchu_004":"Կանչ մեր սրտերում","Mtnets_arants_kez_Duet":"Առանց քեզ մթնեց","Nrboren_Garnunk_003":"Նրբորեն գարունք","Resta_nei_nostri_cuori":"Մնա մեր սրտերում","RokHetd_Inch_E_Katarvum_003":"Հետդ ինչ է կատարվում","S_irum_em_kez_I_love_you":"Սիրում եմ քեզ","Sirir_indz_hogis_FRAM_Duet":"Սիրիր ինձ հոգիս","Srteri_kanchu_003":"Սրտերի կանչ","Tesilk_Silva_Gulanyan_Remix_Remix":"Տեսիլք","Tiezerk_Jinj_Lazur":"Ջինջ տիեզերք","Title_Mi_tanjir_hogis_Multilingual_Emotional_Duet_Lyrics_by_Silva_Gulanyan_002":"Մի տանջիր հոգիս բազմալեզու","melodia lubvi":"Սիրո երաժշտություն","Безумный Ветер Любви":"Безумный Ветер Любви","agh & dagy":"Աղն ու դաղը","xerdvac karot":"Խեղդված կարոտ","xerdvac karot patasxan":"Խեղդված կարոտ պատասխան","hiastapvac":"Հիասթափված","nerqnapanak":"Ներքնապանակ","qo cov achqeri kajcern em sirum":"Քո աչքերի կայծն եմ սիրում","sirty xentacav":"Սիրտս խենթացավ","luse hrashq":"Լուսե հրաշք","Hay_aragil":"Հայ արագիլ","lrutian tchich":"Լռության ճիչ","qez karotelis":"Քեզ կարոտելիս","siro cnundy":"Սիրո ծնունդ","qo_drakhtum_002":"Քո դրախտում","ser da ardioq":"Սեր է դա արդիոք","xortakvor nav":"Խորտակվող նավ","chem moracel":"Չեմ մոռացել","ipta hogis":"Ժպտա հոգիս","ov e kimy":"Օվ է կինը","Nerir sirelis":"Ներիր սիրելիս","The Sun Cries Too":"The Sun Cries Too","Crazy Breeze of Love":"Crazy Breeze of Love","karotiali shurterin":"Կարոտիալի շուրթերին","mek tari el ancav":"Մեկ տարի էլ անցավ","Garun e bajc zun e arel":"Գարուն է բայց ձյուն է արել","Curt xavaric":"Ցուրտ խավարից","xind manuk":"Խինդ մանուկ","hima":"Հիմա","gjuk lusiny":"Գժուկ լուսին","gitem el inz ches spasum":"Գիտեմ էլ ինձ չես սպասում"};
+
+  const playlist = ARTIST.songs.map((song, i) => ({
+    index: i,
+    song,
+    src: `audio/${ARTIST.id}/featured/${song}${song === 'nerqnapanak' ? '.wav' : '.mp3'}`,
+    cover: `authors/${ARTIST.id}/cover.jpg`,
+    label: SONG_NAMES[song] || song.replace(/[-_]/g,' ').replace(/\b\w/g,c=>c.toUpperCase())
+  }));
+
+  // Show the full list in Armenian alphabetical order by song name
+  playlist.sort((a, b) => a.label.localeCompare(b.label, 'hy'));
+
+  /* FAVORITES */
+  const FAV_KEY = 'silva_favorites';
+  function getFavs() { try { return JSON.parse(localStorage.getItem(FAV_KEY) || '[]'); } catch(e) { return []; } }
+  function saveFavs(f) { localStorage.setItem(FAV_KEY, JSON.stringify(f)); }
+  function isFav(song) { return getFavs().includes(song); }
+  function toggleFav(song) {
+    let f = getFavs();
+    if (f.includes(song)) f = f.filter(s => s !== song);
+    else f.push(song);
+    saveFavs(f);
+    return f.includes(song);
+  }
+
+  function iconHeart(filled) {
+    return filled
+      ? `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`
+      : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`;
+  }
+
+  /* TABS */
+  let mode = 'all';
+  function setTab(m) {
+    mode = m;
+    ['all','new','favs'].forEach(x =>
+      document.getElementById('tab-'+x).classList.toggle('active', x === m));
+    renderTracks();
+  }
+  document.getElementById('tab-all').addEventListener('click', () => setTab('all'));
+  document.getElementById('tab-new').addEventListener('click', () => setTab('new'));
+  document.getElementById('tab-favs').addEventListener('click', () => setTab('favs'));
+
+  function renderTracks() {
+    const trackList = document.getElementById('track-list');
+    const favEmpty = document.getElementById('fav-empty');
+    let items = playlist;
+    if (mode === 'favs') items = playlist.filter(t => isFav(t.song));
+    else if (mode === 'new') items = playlist.filter(t => isNewSong(t.song));
+    trackList.innerHTML = '';
+    if (items.length === 0 && (mode === 'favs' || mode === 'new')) {
+      favEmpty.textContent = mode === 'favs' ? 'Դեռ սիրած երգ չկա — սեղմիր ❤️' : 'Նոր երգ չկա';
+      favEmpty.style.display = 'block';
+      return;
+    }
+    favEmpty.style.display = 'none';
+    items.forEach((t, i) => {
+      const realIdx = playlist.indexOf(t);
+      const div = document.createElement('div');
+      div.className = 'track-item';
+      div.dataset.idx = realIdx;
+      div.innerHTML = `
+        <span class="track-num">${String(i+1).padStart(2,'0')}</span>
+        <div class="track-name">${t.label}</div>
+        ${isNewSong(t.song) ? '<span class="new-badge">NEW</span>' : ''}
+        <button class="track-fav${isFav(t.song) ? ' active' : ''}" data-song="${t.song}">${iconHeart(isFav(t.song))}</button>
+        <button class="track-play-btn">${iconPlay()}</button>`;
+      div.addEventListener('click', () => playTrack(realIdx));
+      div.querySelector('.track-fav').addEventListener('click', e => {
+        e.stopPropagation();
+        const btn = e.currentTarget;
+        const active = toggleFav(t.song);
+        btn.classList.toggle('active', active);
+        btn.innerHTML = iconHeart(active);
+        if (mode === 'favs' && !active) renderTracks();
+      });
+      trackList.appendChild(div);
+    });
+  }
+
+  renderTracks();
+
+  /* TOTAL DURATION */
+  function calcTotalDuration() {
+    const promises = playlist.map(t => new Promise(resolve => {
+      const a = new Audio();
+      a.preload = 'metadata';
+      a.src = t.src;
+      a.addEventListener('loadedmetadata', () => resolve(a.duration || 0));
+      a.addEventListener('error', () => resolve(0));
+    }));
+    Promise.all(promises).then(durations => {
+      const total = durations.reduce((sum, d) => sum + (isFinite(d) ? d : 0), 0);
+      const totalMin = Math.round(total / 60);
+      const hours = Math.floor(totalMin / 60);
+      const mins = totalMin % 60;
+      const el = document.getElementById('duration-stat');
+      if (el) el.textContent = hours > 0 ? `${hours}ժ ${mins}ր` : `${mins}ր`;
+    });
+  }
+  calcTotalDuration();
+
+  // Keep the "Երգ" stat in sync with the actual number of songs
+  (function(){
+    const el = document.getElementById('song-count-stat');
+    if (el) el.textContent = ARTIST.songs.length;
+  })();
+
+
+  /* PLAYER */
+  const engine    = document.getElementById('audio-engine');
+  const engine2   = new Audio();
+  engine2.preload = 'auto';
+  const engines   = [engine, engine2];
+  let activeIdx   = 0;
+  const active    = () => engines[activeIdx];
+  const inactive  = () => engines[1 - activeIdx];
+  const CROSSFADE_SEC = 2.5;
+  let crossfadeTimer = null;
+
+  const gpEl      = document.getElementById('global-player');
+  const gpCover   = document.getElementById('gp-cover');
+  const gpArtist  = document.getElementById('gp-artist');
+  const gpSong    = document.getElementById('gp-song');
+  const gpPlayBtn = document.getElementById('gp-play');
+  const gpPlayIco = document.getElementById('gp-play-icon');
+  const gpPrev    = document.getElementById('gp-prev');
+  const gpNext    = document.getElementById('gp-next');
+  const gpBar     = document.getElementById('gp-bar');
+  const gpFill    = document.getElementById('gp-fill');
+  const gpCur     = document.getElementById('gp-cur');
+  const gpDur     = document.getElementById('gp-dur');
+
+  let currentIdx = -1, isPlaying = false;
+  const PLAY_SVG  = `<path d="M5 3l10 6-10 6V3z" fill="currentColor"/>`;
+  const PAUSE_SVG = `<rect x="4" y="3" width="3.5" height="12" rx="1" fill="currentColor"/><rect x="10.5" y="3" width="3.5" height="12" rx="1" fill="currentColor"/>`;
+
+  function setPlayIcon(p) { gpPlayIco.innerHTML = p ? PAUSE_SVG : PLAY_SVG; }
+  function fmtTime(s) { return isNaN(s) ? '0:00' : `${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,'0')}`; }
+  function iconPlay()  { return `<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 2l7 4-7 4V2z" fill="currentColor"/></svg>`; }
+  function iconPause() { return `<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="2" y="2" width="3" height="8" rx="0.8" fill="currentColor"/><rect x="7" y="2" width="3" height="8" rx="0.8" fill="currentColor"/></svg>`; }
+
+  function highlightTrack(idx) {
+    document.querySelectorAll('.track-item').forEach(el => {
+      const playing = parseInt(el.dataset.idx) === idx;
+      el.classList.toggle('playing', playing);
+      const btn = el.querySelector('.track-play-btn');
+      if (btn) btn.innerHTML = (playing && isPlaying) ? iconPause() : iconPlay();
+    });
+  }
+
+  function cancelCrossfade() {
+    if (crossfadeTimer) { clearInterval(crossfadeTimer); crossfadeTimer = null; }
+    inactive().pause();
+    inactive().removeAttribute('src');
+    inactive().volume = 1;
+    active().volume = 1;
+  }
+
+  function startCrossfade() {
+    const nextIdx = currentIdx + 1;
+    if (nextIdx >= playlist.length || crossfadeTimer) return;
+    const cur = active();
+    const nxt = inactive();
+    const t = playlist[nextIdx];
+    nxt.src = t.src;
+    nxt.currentTime = 0;
+    nxt.volume = 0;
+    nxt.play().catch(() => {});
+
+    const steps = 30;
+    const stepMs = (CROSSFADE_SEC * 1000) / steps;
+    let i = 0;
+    crossfadeTimer = setInterval(() => {
+      i++;
+      const ratio = i / steps;
+      cur.volume = Math.max(0, 1 - ratio);
+      nxt.volume = Math.min(1, ratio);
+      if (i >= steps) {
+        clearInterval(crossfadeTimer);
+        crossfadeTimer = null;
+        activeIdx = 1 - activeIdx;
+        currentIdx = nextIdx;
+        gpCover.src = t.cover;
+        gpSong.textContent = t.label;
+        gpFill.style.width = '0%';
+        highlightTrack(currentIdx);
+        cur.pause();
+        cur.currentTime = 0;
+        cur.volume = 1;
+      }
+    }, stepMs);
+  }
+
+  function playTrack(idx) {
+    if (idx < 0 || idx >= playlist.length) return;
+    if (idx === currentIdx && isPlaying) { active().pause(); return; }
+    cancelCrossfade();
+    currentIdx = idx;
+    const t = playlist[idx];
+    if (typeof gtag === 'function') {
+      gtag('event', 'play_song', { song_name: t.label, artist_name: ARTIST.name });
+    }
+    const eng = active();
+    eng.src = t.src;
+    eng.volume = 1;
+    gpCover.src = t.cover;
+    gpArtist.textContent = ARTIST.name;
+    gpSong.textContent = t.label;
+    gpEl.classList.add('visible');
+    gpFill.style.width = '0%';
+    gpCur.textContent = gpDur.textContent = '0:00';
+    highlightTrack(idx);
+    eng.play().then(() => { isPlaying = true; setPlayIcon(true); }).catch(() => {});
+  }
+
+  gpPlayBtn.addEventListener('click', () => {
+    if (currentIdx < 0) return;
+    if (isPlaying) {
+      active().pause();
+      if (crossfadeTimer) inactive().pause();
+      isPlaying = false; setPlayIcon(false); highlightTrack(currentIdx);
+    } else {
+      active().play().catch(() => {});
+      if (crossfadeTimer) inactive().play().catch(() => {});
+      isPlaying = true; setPlayIcon(true); highlightTrack(currentIdx);
+    }
+  });
+
+  gpPrev.addEventListener('click', () => { if (currentIdx > 0) playTrack(currentIdx - 1); });
+  gpNext.addEventListener('click', () => { if (currentIdx < playlist.length - 1) playTrack(currentIdx + 1); });
+
+  function setupEngine(eng) {
+    eng.addEventListener('timeupdate', () => {
+      if (eng !== active() || !eng.duration) return;
+      gpFill.style.width = (eng.currentTime / eng.duration * 100) + '%';
+      gpCur.textContent = fmtTime(eng.currentTime);
+      gpDur.textContent = fmtTime(eng.duration);
+      const remaining = eng.duration - eng.currentTime;
+      if (!crossfadeTimer && remaining > 0 && remaining <= CROSSFADE_SEC && currentIdx < playlist.length - 1) {
+        startCrossfade();
+      }
+    });
+    eng.addEventListener('play',  () => { if (eng === active()) { isPlaying = true;  setPlayIcon(true);  highlightTrack(currentIdx); } });
+    eng.addEventListener('pause', () => { if (eng === active() && !crossfadeTimer) { isPlaying = false; setPlayIcon(false); highlightTrack(currentIdx); } });
+    eng.addEventListener('ended', () => {
+      if (eng !== active() || crossfadeTimer) return;
+      if (currentIdx < playlist.length - 1) playTrack(currentIdx + 1);
+      else { isPlaying = false; setPlayIcon(false); }
+    });
+  }
+  setupEngine(engine);
+  setupEngine(engine2);
+
+  gpBar.addEventListener('click', e => {
+    const eng = active();
+    if (!eng.duration) return;
+    const r = gpBar.getBoundingClientRect();
+    eng.currentTime = ((e.clientX - r.left) / r.width) * eng.duration;
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.code === 'Space' && e.target === document.body) { e.preventDefault(); gpPlayBtn.click(); }
+  });
+</script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  }
+</script>
+</body>
+</html>
