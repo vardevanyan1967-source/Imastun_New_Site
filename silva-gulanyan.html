@@ -374,6 +374,7 @@
         <div class="track-name">${t.label}</div>
         ${isNewSong(t.song) ? '<span class="new-badge">NEW</span>' : ''}
         <button class="track-fav${isFav(t.song) ? ' active' : ''}" data-song="${t.song}">${iconHeart(isFav(t.song))}</button>
+        <button class="track-share-btn" data-song="${t.song}" style="background:none;border:none;cursor:pointer;color:var(--text-dim);display:flex;align-items:center;padding:4px;transition:color 0.2s;" title="Կիսվել"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button>
         <button class="track-play-btn">${iconPlay()}</button>`;
       div.addEventListener('click', () => playTrack(realIdx));
       div.querySelector('.track-fav').addEventListener('click', e => {
@@ -383,6 +384,24 @@
         btn.classList.toggle('active', active);
         btn.innerHTML = iconHeart(active);
         if (mode === 'favs' && !active) renderTracks();
+      });
+      div.querySelector('.track-share-btn').addEventListener('click', e => {
+        e.stopPropagation();
+        const songName = t.label;
+        const shareData = {
+          title: `${songName} — Silva Gulanyan`,
+          text: `🎵 ${songName} — Silva Gulanyan\nListen on Imastun Studio`,
+          url: 'https://imastun.org/silva-gulanyan'
+        };
+        if (navigator.share) {
+          navigator.share(shareData).catch(() => {});
+        } else {
+          navigator.clipboard.writeText('https://imastun.org/silva-gulanyan').then(() => {
+            const btn = e.currentTarget;
+            btn.style.color = 'var(--gold)';
+            setTimeout(() => btn.style.color = 'var(--text-dim)', 1500);
+          }).catch(() => {});
+        }
       });
       trackList.appendChild(div);
     });
