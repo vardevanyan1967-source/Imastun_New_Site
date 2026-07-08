@@ -151,11 +151,6 @@
     }
 
     .hero-title span { color: var(--gold); }
-    .hero-stats { position:absolute; top:120px; left:28px; z-index:3; display:flex; flex-direction:column; gap:13px; text-align:left; }
-    .hero-stat { text-align:left; }
-    .hero-stat .num { font-family:'Inter',sans-serif; font-size:26px; font-weight:700; color:var(--gold); line-height:1; text-shadow:0 2px 12px rgba(0,0,0,0.75); }
-    .hero-stat .lbl { font-family:'Inter',sans-serif; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#e8c97a; margin-bottom:4px; text-shadow:0 1px 8px rgba(0,0,0,0.85); }
-    @media (max-width:600px){ .hero-stats { top:98px; left:18px; gap:10px; } .hero-stat .num { font-size:22px; } }
 
     .hero-tagline {
       font-family: 'Cormorant Garamond', serif;
@@ -377,31 +372,6 @@
     .card-cover-overlay {
       position: absolute; inset: 0;
       background: linear-gradient(to top, rgba(8,8,8,0.85) 0%, transparent 55%);
-    }
-
-    /* ── flowing gold border running around the perimeter ── */
-    @property --bAngle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
-    .artist-card:not(.card-empty)::before {
-      content: ''; position: absolute; inset: 0; z-index: 4; pointer-events: none;
-      padding: 2px; border-radius: inherit;
-      background: conic-gradient(from var(--bAngle),
-        rgba(201,168,76,0) 0deg,
-        rgba(201,168,76,0) 235deg,
-        var(--gold) 300deg,
-        var(--gold-light) 332deg,
-        #fff6db 345deg,
-        var(--gold-light) 356deg,
-        rgba(201,168,76,0) 360deg);
-      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor;
-              mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-              mask-composite: exclude;
-      animation: borderFlow 4.5s linear infinite;
-      animation-delay: calc(var(--d, 0s) * -1);
-    }
-    @keyframes borderFlow { to { --bAngle: 360deg; } }
-    @media (prefers-reduced-motion: reduce) {
-      .artist-card:not(.card-empty)::before { animation: none; }
     }
 
     .card-body { padding: 20px 24px 24px; position: relative; }
@@ -916,32 +886,6 @@
       .track-item { padding: 10px 8px; gap: 8px; }
       .track-name { font-size: 15px; }
     }
-    /* ── RECENTLY ADDED ── */
-    .recent-grid {
-      display: flex; gap: 14px; overflow-x: auto;
-      padding: 4px 0 14px; scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-    }
-    .recent-grid::-webkit-scrollbar { height: 6px; }
-    .recent-card {
-      flex: 0 0 auto; min-width: 200px; max-width: 250px;
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 10px; padding: 16px 18px; cursor: pointer;
-      scroll-snap-align: start; display: flex; flex-direction: column; gap: 8px;
-      transition: border-color 0.25s, transform 0.25s;
-    }
-    .recent-card:hover { border-color: var(--gold-dim); transform: translateY(-2px); }
-    .recent-card .rc-top { display: flex; align-items: center; gap: 8px; }
-    .recent-card .rc-type {
-      font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--gold); font-family: 'Inter', sans-serif;
-    }
-    .recent-card .rc-badge { margin-left: auto; }
-    .recent-card .rc-title {
-      font-family: 'Cormorant Garamond', serif; font-size: 19px;
-      color: var(--white); line-height: 1.2;
-    }
-    .recent-card .rc-sub { font-size: 12px; color: var(--text-dim); font-family: 'Inter', sans-serif; }
   </style>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHJJF7DQ29"></script>
@@ -957,7 +901,6 @@
 <section id="hero">
   <video id="bg-video" src="background.mp4" autoplay muted loop playsinline></video>
   <img src="logo.png" alt="Imastun Studio" class="hero-logo-corner" />
-  <div class="hero-stats" id="hero-stats"></div>
   <div class="hero-veil"></div>
   <div class="hero-content reveal">
     <h1 class="hero-title">IMA<span>STUN</span></h1>
@@ -1024,16 +967,6 @@
 </section>
 
 <div class="gold-rule"></div>
-
-<section id="recent" class="section">
-  <div class="section-header reveal">
-    <span class="section-label">New</span>
-    <h2 class="section-heading">Վերջերս <em>Ավելացված</em></h2>
-  </div>
-  <div id="recent-grid" class="recent-grid"></div>
-</section>
-
-<div class="gold-rule" id="recent-rule"></div>
 
 <section id="videos" class="section">
   <div class="section-header reveal">
@@ -1172,12 +1105,12 @@
   const ARTISTS = [
     {
       id: 'imastun', name: 'Imastun', role: 'Poet & Lead Artist & Producer',
-      songs: ['Astghayin_Shghta_A','The Sun Cries Too(Արևն էլ է լաց լինում)','Vahan_Teryan_Gisher','B_Es_im_anush_Hayastani','El_ban_chunem_Remix','inchi-hamar','inch_e_koracy_qarcr','lur-heraxos','lur uji simfonia','luse arzaganq','Luse_Hekiat_A','Lrutyan_unker','Lsir_vordis','Katak_Yari_Ergu','Katak_Yari_Ergu rem','haverji-erty','hogu-arzaganq','Meghki_ezrin_Remix','shshnjatc','shshnjatc-noric','shepot','ser-anurji','siro-kenacy','Поцелуй_ветра','Vahan_Teryan_MEGhAVOR_AChKERU','qo-jinj-hogin','pastayannaya jajda','andadar carav','The Eternal Thirst'],
-      videos: []
+      songs: ['Astghayin_Shghta_A','The Sun Cries Too(Արևն էլ է լաց լինում)','Vahan_Teryan_Gisher','erku siro aranqum','erku siro aranqum roc','B_Es_im_anush_Hayastani','El_ban_chunem_Remix','inchi-hamar','inch_e_koracy_qarcr','lur-heraxos','lur uji simfonia','luse arzaganq','Luse_Hekiat_A','Lrutyan_unker','Lsir_vordis','Katak_Yari_Ergu','Katak_Yari_Ergu rem','haverji-erty','hogu-arzaganq','menq qich enq sakajn mez haj en asum','Meghki_ezrin_Remix','miangamic roc','miangamic tango','shshnjatc','shshnjatc-noric','shepot','ser-anurji','siro-kenacy','Поцелуй_ветра','Vahan_Teryan_MEGhAVOR_AChKERU','qo-jinj-hogin'],
+      videos: ['aqlorakanchic-araj','frenchwoman','haverji-erty','porcvats-ser','siro-kenacy']
     },
     {
       id: 'silva-gulanyan', name: 'Silva Gulanyan', role: 'Vocalist & Songwriter',
-      songs: ['ergichy-dari','gij','gij-qamin','gortrik-ankun','im-tsovagur','inch-em-anelu','tsov-arev-achqer','Es_kez_sirum_em','Kez_khenti_nman_siraharvetsi_Duet_Tango','Ari_klini','Andzrevum_e','der-inz-voch-mek-chi-sirel-qo-pes','Akh_inch_anem_sirud_het','AKhor_vo_tsavits_tsnvats','Aryev_darnam','Che_chem_toghni_B','Ches_moranalu_003','Chisht_zhamanakin_At_The_Right_Time','Dran_Takotsu_003','Dzig_tarineri_luys_003','Erazankneri_aytsu_Part_Gisherva_002','Erb_verkers_hanger_dardzri_Lyrics_by_Silva_Gulanyan_003','Erku_khent_hogi_Duet_Silva_Gulanyan_004','Es_sirum_em_ko_zhpitu_B','Garun_er_003','Gisher_e_004','Gisherits_depi_luys_Silva_Gulanyan_005','Gitem_ches_galu_B','Gitem_hogis_A','Hetd_inch_e_katarvum','Im_erazats_ashkharu_003','inchu_es_ayskan_indz_otar_dardzel_004','Jaheli_nman_003','Karotum_em_Dream_of_You_002','Kenatsd_khmem_B_Brinderò_per_Te','xentern u lusiny','Ko_hmayki_gerin','Ko_koghkin_vorish_em_003','Es_irakan_em_004','frants_Harbel_em_vozum','Galis_e_mi_pah_003','Havat_em_vozum_003','Hayots_ashkarh_A','HERO_MOTIK_UNKERNERIS_003','hogu giny','Ka_mi_ashkharh_vor_srtov_e_karutsvats','kgam_sirelis','Kuratsats_achkin_luysu_003','Kuyr_eghbayr_003','Kyanku_Hrashk_e_005','Mer_Srterum_kanchu_004','Mtnets_arants_kez_Duet','Nrboren_Garnunk_003','Resta_nei_nostri_cuori','RokHetd_Inch_E_Katarvum_003','S_irum_em_kez_I_love_you','Sirir_indz_hogis_FRAM_Duet','Srteri_kanchu_003','Tesilk_Silva_Gulanyan_Remix_Remix','Tiezerk_Jinj_Lazur','Title_Mi_tanjir_hogis_Multilingual_Emotional_Duet_Lyrics_by_Silva_Gulanyan_002','melodia lubvi','Безумный Ветер Любви','agh & dagy','xerdvac karot','xerdvac karot patasxan','hiastapvac','nerqnapanak','qo cov achqeri kajcern em sirum','sirty xentacav','luse hrashq','Hay_aragil','lrutian tchich','qez karotelis','siro cnundy','qo_drakhtum_002','ser da ardioq','xortakvor nav','chem moracel','ipta hogis','ov e kimy','Nerir sirelis','The Sun Cries Too','Crazy Breeze of Love','xent siro qamin','karotiali shurterin','mek tari el ancav','Garun e bajc zun e arel','Curt xavaric','xind manuk','hima','byur harvacneric','mern zepur','ser eir xarum','erazi kyamq roc','erazi kyanq','ti pridyosh komne',"The Night's Embrace",'xararutun ber','ti moy kislarod','My Endless Dream']
+      songs: ['ergichy-dari','gij','gij-qamin','gortrik-ankun','im-tsovagur','inch-em-anelu','tsov-arev-achqer','Es_kez_sirum_em','Kez_khenti_nman_siraharvetsi_Duet_Tango','Ari_klini','Andzrevum_e','der-inz-voch-mek-chi-sirel-qo-pes','Akh_inch_anem_sirud_het','AKhor_vo_tsavits_tsnvats','Aryev_darnam','Che_chem_toghni_B','Ches_moranalu_003','Chisht_zhamanakin_At_The_Right_Time','Dran_Takotsu_003','Dzig_tarineri_luys_003','Erazankneri_aytsu_Part_Gisherva_002','Erb_verkers_hanger_dardzri_Lyrics_by_Silva_Gulanyan_003','Erku_khent_hogi_Duet_Silva_Gulanyan_004','Es_sirum_em_ko_zhpitu_B','Garun_er_003','Gisher_e_004','Gisherits_depi_luys_Silva_Gulanyan_005','Gitem_ches_galu_B','Gitem_hogis_A','Hetd_inch_e_katarvum','Im_erazats_ashkharu_003','inchu_es_ayskan_indz_otar_dardzel_004','Jaheli_nman_003','Karotum_em_Dream_of_You_002','Kenatsd_khmem_B_Brinderò_per_Te','xentern u lusiny','Ko_hmayki_gerin','Ko_koghkin_vorish_em_003','Es_irakan_em_004','frants_Harbel_em_vozum','Galis_e_mi_pah_003','Havat_em_vozum_003','Hayots_ashkarh_A','HERO_MOTIK_UNKERNERIS_003','hogu giny','Ka_mi_ashkharh_vor_srtov_e_karutsvats','kgam_sirelis','Kuratsats_achkin_luysu_003','Kuyr_eghbayr_003','Kyanku_Hrashk_e_005','Mer_Srterum_kanchu_004','Mtnets_arants_kez_Duet','Nrboren_Garnunk_003','Resta_nei_nostri_cuori','RokHetd_Inch_E_Katarvum_003','S_irum_em_kez_I_love_you','Sirir_indz_hogis_FRAM_Duet','Srteri_kanchu_003','Tesilk_Silva_Gulanyan_Remix_Remix','Tiezerk_Jinj_Lazur','Title_Mi_tanjir_hogis_Multilingual_Emotional_Duet_Lyrics_by_Silva_Gulanyan_002','melodia lubvi','Безумный Ветер Любви','agh & dagy','xerdvac karot','xerdvac karot patasxan','hiastapvac','nerqnapanak','qo cov achqeri kajcern em sirum','sirty xentacav','luse hrashq','Hay_aragil','lrutian tchich','qez karotelis','siro cnundy','qo_drakhtum_002','ser da ardioq','xortakvor nav','chem moracel','ipta hogis','ov e kimy','Nerir sirelis','The Sun Cries Too','Crazy Breeze of Love','xent siro qamin','karotiali shurterin','mek tari el ancav','Garun e bajc zun e arel','Curt xavaric','xind manuk','hima']
     },
     {
       id: 'go-hara', name: 'Go Hara', role: 'Vocalist & Performer',
@@ -1200,27 +1133,7 @@
         'hamo-sahyan/du inz torel eir menak','hamo-sahyan/hajastan aselis',
         'hamo-sahyan/kanch','hamo-sahyan/tar inz jamanak roc','hamo-sahyan/tar inz jamanak',
         'hamo-sahyan/torvochvoqi chkanchen roc','hamo-sahyan/torvochvoqi chkanchen',
-        'hamo-sahyan/vochinch chi poxvi',
-        'hamo-sahyan/hognel em','hamo-sahyan/mitegh ishxan u ter',
-        'hamo-sahyan/es chem karogh chnershnchvel','hamo-sahyan/es chem karogh chnershnchvel roc',
-        'hamo-sahyan/horovely','hamo-sahyan/covn er gisher er es ei u du',
-        'hamo-sahyan/vshtacel em amen inchic','hamo-sahyan/um hamar im ushqy gnac',
-        'hamo-sahyan/es u du','hamo-sahyan/inch taqcnem',
-        'hamo-sahyan/hajastan aselis roc','hamo-sahyan/torvochvoqi chkanchen 02roc',
-        'hamo-sahyan/mijocners','hamo-sahyan/ches asi voch mi barov','hamo-sahyan/inch arac mard em',
-        'hamo-sahyan/proshay','hamo-sahyan/ya xotel razdeliat','hamo-sahyan/axr es inchpes ver kenam gnam',
-        'hamo-sahyan/mer lezun','hamo-sahyan/nash yazik','hamo-sahyan/Our Language',
-        'hamo-sahyan/kak je mne uyti','hamo-sahyan/How Can I Just Leave','hamo-sahyan/chto bilo to bilo',
-        'hamo-sahyan/vsem kem ya bil','hamo-sahyan/uznat menya ne tak prosto',
-        'hamo-sahyan/moi sredstva moi zaboti','hamo-sahyan/moya neprojitaya jizn',
-        'hamo-sahyan/inch anem mairik','hamo-sahyan/mama','hamo-sahyan/arajin ser',
-        'hamo-sahyan/pervaya lubov','hamo-sahyan/My First Love','hamo-sahyan/kgam',
-        'hamo-sahyan/vsio ravno pridu','hamo-sahyan/I Will Come Anyway','hamo-sahyan/paceluy vetra',
-        "hamo-sahyan/The Forest's Whisper",'hamo-sahyan/qamu hamburic',
-        'hamo-sahyan/dojd','hamo-sahyan/dojd roc','hamo-sahyan/The Thunderstorm',
-        'parujr-sevak/erku siro aranqum','parujr-sevak/erku siro aranqum roc',
-        'parujr-sevak/menq qich enq sakajn mez haj en asum',
-        'parujr-sevak/miangamic tango','parujr-sevak/miangamic roc'
+        'hamo-sahyan/vochinch chi poxvi'
       ]
     },
     {
@@ -1233,8 +1146,6 @@
   ];
 
   const YOUTUBE_VIDEOS = [
-    { id: '4XVtSZdRpaA', title: 'Անձրևը միավորեց նրանց', added: '2026-07-05' },
-    { id: 'KtFVQF0Fkzc', title: 'Go Hara — Անունդ Կին է (Твое имя женщина)', added: '2026-07-03' },
     { id: 'hwJQd1c7a2o', title: 'Երգը արգելված զգացմունքների և կրքի մասին' },
     { id: 'oYOGajRMR14', title: 'Հարբել եմ ուզում — Silva Gulanyan' },
     { id: 'ELuGHclmaG4', title: 'Անանց սեր' },
@@ -1250,67 +1161,16 @@
     { id: 'UhoHHqTDS_Y', title: 'Մենք քիչ ենք, բայց մեզ հայ են ասում', added: '2026-06-18' },
     { id: 'HyLQwRscKV0', title: 'Համո Սահյան — Հայաստան ասելիս', added: '2026-06-23' },
     { id: 't499to6k1u0', title: 'Համո Սահյան — Անունդ տալիս', added: '2026-06-23' },
-    { id: 'PjAUXeK2WGo', title: 'Համո Սահյան — Ծովն էր, գիշերն էր, ես էի ու դու', added: '2026-06-25' },
   ];
 
   const NEW_SONGS = {
-    "pastayannaya jajda": "2026-07-05",
-    "andadar carav": "2026-07-05",
-    "The Eternal Thirst": "2026-07-05",
     "erku siro aranqum": "2026-06-13",
     "erku siro aranqum roc": "2026-06-13",
     "menq qich enq sakajn mez haj en asum": "2026-06-13",
     "miangamic roc": "2026-06-13",
     "miangamic tango": "2026-06-13",
     "inch_e_koracy_qarcr": "2026-06-14",
-    "Katak_Yari_Ergu rem": "2026-06-15",
-    "hamo-sahyan/hognel em": "2026-06-25",
-    "hamo-sahyan/mitegh ishxan u ter": "2026-06-25",
-    "hamo-sahyan/es chem karogh chnershnchvel": "2026-06-25",
-    "hamo-sahyan/es chem karogh chnershnchvel roc": "2026-06-25",
-    "hamo-sahyan/horovely": "2026-06-25",
-    "hamo-sahyan/covn er gisher er es ei u du": "2026-06-25",
-    "hamo-sahyan/vshtacel em amen inchic": "2026-06-25",
-    "hamo-sahyan/um hamar im ushqy gnac": "2026-06-25",
-    "hamo-sahyan/es u du": "2026-06-25",
-    "hamo-sahyan/inch taqcnem": "2026-06-25",
-    "hamo-sahyan/hajastan aselis roc": "2026-06-25",
-    "hamo-sahyan/torvochvoqi chkanchen 02roc": "2026-06-25",
-    "hamo-sahyan/mijocners": "2026-06-27",
-    "hamo-sahyan/ches asi voch mi barov": "2026-06-27",
-    "hamo-sahyan/inch arac mard em": "2026-06-27",
-    "hamo-sahyan/proshay": "2026-06-30",
-    "hamo-sahyan/ya xotel razdeliat": "2026-06-30",
-    "hamo-sahyan/axr es inchpes ver kenam gnam": "2026-06-30",
-    "hamo-sahyan/mer lezun": "2026-06-30",
-    "hamo-sahyan/nash yazik": "2026-06-30",
-    "hamo-sahyan/Our Language": "2026-06-30",
-    "hamo-sahyan/kak je mne uyti": "2026-06-30",
-    "hamo-sahyan/How Can I Just Leave": "2026-06-30",
-    "hamo-sahyan/chto bilo to bilo": "2026-06-30",
-    "hamo-sahyan/vsem kem ya bil": "2026-06-30",
-    "hamo-sahyan/uznat menya ne tak prosto": "2026-06-30",
-    "hamo-sahyan/moi sredstva moi zaboti": "2026-06-30",
-    "hamo-sahyan/moya neprojitaya jizn": "2026-06-30",
-    "hamo-sahyan/inch anem mairik": "2026-07-01",
-    "hamo-sahyan/mama": "2026-07-01",
-    "hamo-sahyan/arajin ser": "2026-07-01",
-    "hamo-sahyan/pervaya lubov": "2026-07-01",
-    "hamo-sahyan/My First Love": "2026-07-01",
-    "hamo-sahyan/kgam": "2026-07-01",
-    "hamo-sahyan/vsio ravno pridu": "2026-07-01",
-    "hamo-sahyan/I Will Come Anyway": "2026-07-01",
-    "hamo-sahyan/paceluy vetra": "2026-07-01",
-    "hamo-sahyan/The Forest's Whisper": "2026-07-01",
-    "hamo-sahyan/qamu hamburic": "2026-07-01",
-    "hamo-sahyan/dojd": "2026-07-02",
-    "hamo-sahyan/dojd roc": "2026-07-02",
-    "hamo-sahyan/The Thunderstorm": "2026-07-02",
-    "parujr-sevak/erku siro aranqum": "2026-06-27",
-    "parujr-sevak/erku siro aranqum roc": "2026-06-27",
-    "parujr-sevak/menq qich enq sakajn mez haj en asum": "2026-06-27",
-    "parujr-sevak/miangamic tango": "2026-06-27",
-    "parujr-sevak/miangamic roc": "2026-06-27"
+    "Katak_Yari_Ergu rem": "2026-06-15"
   };
   function isNewSong(song) {
     const added = NEW_SONGS[song];
@@ -1319,7 +1179,7 @@
     return days >= 0 && days <= 30;
   }
 
-  const SONG_NAMES = {"pastayannaya jajda": "Постоянная жажда", "andadar carav": "Անդադար ծարավ", "The Eternal Thirst": "The Eternal Thirst", "ergichy-dari": "Երգիչի դարի", "gij": "Գիժ", "gij-qamin": "Գիժ քամի", "gortrik-ankun": "Գողտրիկ անկյուն", "im-tsovagur": "Իմ ծովագյուղ", "inch-em-anelu": "Ինչ եմ անելու", "tsov-arev-achqer": "Ծով արև աչքեր", "cncir-users": "Ցնցիր ուսերս", "darnaham-ginin": "Դառնահամ գինի", "fracuzhenka": "Ֆրանսուհին", "gisherajin": "Գիշերային", "kanchir-kgam": "Կանչիր կգամ", "la-fracise": "Լա Ֆրանս", "kiny": "Կինը", "sirena-hima": "Սիրել հիմա", "haverji-erty": "Հավերժի երգը", "hogu-arzaganq": "Հոգու արձագանք", "inchi-hamar": "Ինչի համար", "lur-heraxos": "Լուռ հեռախոս", "qo-jinj-hogin": "Քո ջինջ հոգին", "ser-anurji": "Սեր անուրջի", "shepot": "Շշունջ", "shshnjatc": "Շշնջաց", "siro-kenacy": "Սիրո կենաց",
+  const SONG_NAMES = {"ergichy-dari": "Երգիչի դարի", "gij": "Գիժ", "gij-qamin": "Գիժ քամի", "gortrik-ankun": "Գողտրիկ անկյուն", "im-tsovagur": "Իմ ծովագյուղ", "inch-em-anelu": "Ինչ եմ անելու", "tsov-arev-achqer": "Ծով արև աչքեր", "cncir-users": "Ցնցիր ուսերս", "darnaham-ginin": "Դառնահամ գինի", "fracuzhenka": "Ֆրանսուհին", "gisherajin": "Գիշերային", "kanchir-kgam": "Կանչիր կգամ", "la-fracise": "Լա Ֆրանս", "kiny": "Կինը", "sirena-hima": "Սիրել հիմա", "haverji-erty": "Հավերժի երգը", "hogu-arzaganq": "Հոգու արձագանք", "inchi-hamar": "Ինչի համար", "lur-heraxos": "Լուռ հեռախոս", "qo-jinj-hogin": "Քո ջինջ հոգին", "ser-anurji": "Սեր անուրջի", "shepot": "Շշունջ", "shshnjatc": "Շշնջաց", "siro-kenacy": "Սիրո կենաց",
     "Es_kez_sirum_em": "Ես քեզ սիրում եմ",
     "Garun_er": "Գարուն էր",
     "Kez_khenti_nman_siraharvetsi_Duet_Tango": "Քեզ խենթի նման սիրահարվեցի (Duet Tango)",
@@ -1424,53 +1284,6 @@
     "hamo-sahyan/torvochvoqi chkanchen roc": "Թող ոչ ոքի չկանչեն (ռոք)",
     "hamo-sahyan/torvochvoqi chkanchen": "Թող ոչ ոքի չկանչեն",
     "hamo-sahyan/vochinch chi poxvi": "Ոչինչ չի փոխվի",
-    "hamo-sahyan/hognel em": "Հոգնել եմ",
-    "hamo-sahyan/mitegh ishxan u ter": "Մի տեղ իշխան ու տեր",
-    "hamo-sahyan/es chem karogh chnershnchvel": "Ես չեմ կարող չներշնչվել",
-    "hamo-sahyan/es chem karogh chnershnchvel roc": "Ես չեմ կարող չներշնչվել (ռոք)",
-    "hamo-sahyan/horovely": "Հորովելը",
-    "hamo-sahyan/covn er gisher er es ei u du": "Ծովն էր, գիշերն էր, ես էի և դու",
-    "hamo-sahyan/vshtacel em amen inchic": "Վշտացել եմ ամեն ինչ",
-    "hamo-sahyan/um hamar im ushqy gnac": "Ում համար իմ ուշքը գնաց",
-    "hamo-sahyan/es u du": "Ես և դու",
-    "hamo-sahyan/inch taqcnem": "Ի՞նչ թաքցնեմ",
-    "hamo-sahyan/hajastan aselis roc": "Հայաստան ասելիս (ռոք)",
-    "hamo-sahyan/torvochvoqi chkanchen 02roc": "Թող ոչ ոքի չկանչեն (02 ռոք)",
-    "hamo-sahyan/mijocners": "Միջոցներս",
-    "hamo-sahyan/ches asi voch mi barov": "Չես ասի ոչ մի բարով",
-    "hamo-sahyan/inch arac mard em": "Ինչ արած, մարդ եմ",
-    "hamo-sahyan/proshay": "Прощай",
-    "hamo-sahyan/ya xotel razdeliat": "Я хотел бы разделять с тобой",
-    "hamo-sahyan/axr es inchpes ver kenam gnam": "Ախր ես ինչպես վեր կենամ գնամ",
-    "hamo-sahyan/mer lezun": "Մեր լեզուն",
-    "hamo-sahyan/nash yazik": "Наш язык",
-    "hamo-sahyan/Our Language": "Our Language",
-    "hamo-sahyan/kak je mne uyti": "Как же мне уйти",
-    "hamo-sahyan/How Can I Just Leave": "How Can I Just Leave",
-    "hamo-sahyan/chto bilo to bilo": "Что было, то было",
-    "hamo-sahyan/vsem kem ya bil": "Всё, кем я был",
-    "hamo-sahyan/uznat menya ne tak prosto": "Узнать меня совсем непросто",
-    "hamo-sahyan/moi sredstva moi zaboti": "Мои средства... Мои заботы...",
-    "hamo-sahyan/moya neprojitaya jizn": "Моя непрожитая жизнь",
-    "hamo-sahyan/inch anem mairik": "Ի՞նչ անեմ, մայրիկ",
-    "hamo-sahyan/mama": "Мама",
-    "hamo-sahyan/arajin ser": "Առաջին սերս",
-    "hamo-sahyan/pervaya lubov": "Первая любовь моя",
-    "hamo-sahyan/My First Love": "My First Love",
-    "hamo-sahyan/kgam": "Կգամ",
-    "hamo-sahyan/vsio ravno pridu": "Всё равно я приду",
-    "hamo-sahyan/I Will Come Anyway": "I Will Come Anyway",
-    "hamo-sahyan/paceluy vetra": "Поцелуй ветра",
-    "hamo-sahyan/The Forest's Whisper": "The Forest's Whisper",
-    "hamo-sahyan/qamu hamburic": "Քամու համբյուրից",
-    "hamo-sahyan/dojd": "Дождь",
-    "hamo-sahyan/dojd roc": "Дождь (рок)",
-    "hamo-sahyan/The Thunderstorm": "The Thunderstorm",
-    "parujr-sevak/erku siro aranqum": "Երկու սիրո արանքում",
-    "parujr-sevak/erku siro aranqum roc": "Երկու սիրո արանքում (ռոք)",
-    "parujr-sevak/menq qich enq sakajn mez haj en asum": "Մենք քիչ ենք, սակայն մեզ հայ են ասում",
-    "parujr-sevak/miangamic tango": "Միանգամից (տանգո)",
-    "parujr-sevak/miangamic roc": "Միանգամից (ռոք)",
     "Astghayin_Shghta_A": "Աստղային շղթա",
     "B_Es_im_anush_Hayastani": "Ես իմ անուշ Հայաստանի",
     "El_ban_chunem_Remix": "Էլ բան չունեմ",
@@ -1606,10 +1419,6 @@
   function playTrack(idx) {
     if (idx === currentIdx && isPlaying) {
       active().pause(); return;
-    }
-    const t = playlist[idx];
-    if (t && typeof gtag === 'function') {
-      gtag('event', 'play_song', { song_name: t.label, artist_name: t.artistName });
     }
     loadTrack(idx, true);
   }
@@ -1777,7 +1586,6 @@
     const card = document.createElement('div');
     card.className = 'artist-card';
     card.dataset.id = artist.id;
-    card.style.setProperty('--d', (i * 0.9) + 's');
     card.innerHTML = `
       <div class="card-cover-wrap">
         <div class="card-cover-fallback">${initials}</div>
@@ -1880,7 +1688,24 @@
     panel.querySelectorAll('.track-share-btn').forEach(btn => {
       btn.addEventListener('click', e => {
         e.stopPropagation();
-        shareSong(btn.dataset.artist, btn.dataset.song);
+        const artistId = btn.dataset.artist;
+        const song = btn.dataset.song;
+        const songName = SONG_NAMES[song] || formatName(song);
+        const artistName = ARTISTS.find(a => a.id === artistId)?.name || 'Imastun Studio';
+        const url = `https://imastun.org/#${artistId}`;
+        const shareData = {
+          title: `${songName} — ${artistName}`,
+          text: `🎵 ${songName} — ${artistName}\nListen on Imastun Studio`,
+          url: url
+        };
+        if (navigator.share) {
+          navigator.share(shareData).catch(() => {});
+        } else {
+          navigator.clipboard.writeText(url).then(() => {
+            btn.style.color = 'var(--gold)';
+            setTimeout(() => btn.style.color = 'var(--text-dim)', 1500);
+          }).catch(() => {});
+        }
       });
     });
   });
@@ -1890,60 +1715,6 @@
   const searchInput   = document.getElementById('search-input');
   const searchResults = document.getElementById('search-results');
   const searchHint    = document.getElementById('search-hint');
-  // Artists shown in stats: exclude the poets section and any artist flagged as not-counted
-  const NON_ARTIST_IDS = new Set(['haj-poetner', 'narine-balasbekyan']);
-  const artistCount = new Set(playlist.filter(t => !NON_ARTIST_IDS.has(t.artistId)).map(t => t.artistId)).size;
-  const poetCount = new Set(
-    playlist.filter(t => t.artistId === 'haj-poetner' && t.song.includes('/'))
-            .map(t => t.song.split('/')[0])
-  ).size;
-  const SEARCH_HINT = `${playlist.length} երգ`;
-  searchHint.textContent = SEARCH_HINT;
-  const heroStats = document.getElementById('hero-stats');
-  if (heroStats) {
-    heroStats.innerHTML =
-      `<div class="hero-stat"><div class="lbl">Երգ</div><div class="num">${playlist.length}</div></div>`;
-  }
-
-  /* ══ RECENTLY ADDED ══ */
-  function buildRecent() {
-    const grid = document.getElementById('recent-grid');
-    if (!grid) return;
-    const items = [];
-    playlist.forEach(t => {
-      if (isNewSong(t.song)) items.push({
-        type: 'Երգ', date: NEW_SONGS[t.song],
-        title: SONG_NAMES[t.song] || formatName(t.song),
-        sub: t.artistName,
-        action: () => playTrack(playlist.indexOf(t))
-      });
-    });
-    (typeof YOUTUBE_VIDEOS !== 'undefined' ? YOUTUBE_VIDEOS : []).forEach(v => {
-      if (isNewVideo(v.added)) items.push({
-        type: 'Տեսանյութ', date: v.added, title: v.title, sub: 'YouTube',
-        action: () => window.open('https://www.youtube.com/watch?v=' + v.id, '_blank', 'noopener')
-      });
-    });
-    items.sort((a, b) => new Date(b.date) - new Date(a.date));
-    if (!items.length) {
-      const sec = document.getElementById('recent');
-      const rule = document.getElementById('recent-rule');
-      if (sec) sec.style.display = 'none';
-      if (rule) rule.style.display = 'none';
-      return;
-    }
-    grid.innerHTML = '';
-    items.slice(0, 20).forEach(it => {
-      const card = document.createElement('div');
-      card.className = 'recent-card';
-      card.innerHTML = `<div class="rc-top"><span class="rc-type">${it.type}</span>` +
-        `<span class="rc-badge new-badge">NEW</span></div>` +
-        `<div class="rc-title">${it.title}</div><div class="rc-sub">${it.sub}</div>`;
-      card.addEventListener('click', it.action);
-      grid.appendChild(card);
-    });
-  }
-  buildRecent();
 
   document.getElementById('search-toggle').addEventListener('click', openSearch);
   document.getElementById('search-close').addEventListener('click', closeSearch);
@@ -1957,7 +1728,7 @@
     searchOverlay.classList.add('open');
     searchInput.value = '';
     searchResults.innerHTML = '';
-    searchHint.textContent = SEARCH_HINT;
+    searchHint.textContent = '139 երգ · 7 արտիստ';
     setTimeout(() => searchInput.focus(), 50);
   }
 
@@ -1968,7 +1739,7 @@
 
   searchInput.addEventListener('input', () => {
     const q = searchInput.value.trim().toLowerCase();
-    if (!q) { searchResults.innerHTML = ''; searchHint.textContent = SEARCH_HINT; return; }
+    if (!q) { searchResults.innerHTML = ''; searchHint.textContent = '139 երգ · 7 արտիստ'; return; }
 
     const hits = playlist.filter(t => {
       const songArm = (SONG_NAMES[t.song] || '').toLowerCase();
@@ -2045,37 +1816,15 @@
   function buildTracks(artist) {
     if (!artist.songs || !artist.songs.length)
       return '<div class="empty-state">No tracks available yet.</div>';
-    let songs = artist.songs;
-    const nameOf = s => SONG_NAMES[s] || formatName(s);
-    const alpha = (a, b) => nameOf(a).localeCompare(nameOf(b), 'hy'); // Armenian alphabetical
-    if (artist.id === 'haj-poetner') {
-      const poet = s => s.startsWith('vahan-teryan/') ? 0 : s.startsWith('hamo-sahyan/') ? 1 : 2; // keep poets grouped
-      songs = artist.songs.slice().sort((a, b) => {
-        if (poet(a) !== poet(b)) return poet(a) - poet(b);
-        return alpha(a, b);
-      });
-    } else {
-      songs = artist.songs.slice().sort(alpha);
-    }
-    const poetName = s => s.startsWith('vahan-teryan/') ? 'Վահան Տերյան' : s.startsWith('hamo-sahyan/') ? 'Համո Սահյան' : s.startsWith('parujr-sevak/') ? 'Պարույր Սևակ' : '';
-    let lastPoet = null;
-    return `<div class="track-list">${songs.map((song, i) => {
+    return `<div class="track-list">${artist.songs.map((song, i) => {
       const pIdx = playlist.findIndex(p => p.artistId === artist.id && p.song === song);
       const fav = isFav(artist.id, song);
-      let header = '';
-      if (artist.id === 'haj-poetner') {
-        const pn = poetName(song);
-        if (pn && pn !== lastPoet) {
-          header = `<div class="poet-header" style="font-family:'Inter',sans-serif;font-size:13px;font-weight:700;color:#c9a84c;letter-spacing:0.08em;text-transform:uppercase;margin:18px 0 8px;padding-bottom:6px;border-bottom:1px solid rgba(201,168,76,0.25);">${pn}</div>`;
-          lastPoet = pn;
-        }
-      }
-      return header + `<div class="track-item" data-pidx="${pIdx}">
+      return `<div class="track-item" data-pidx="${pIdx}">
         <span class="track-num">${String(i+1).padStart(2,'0')}</span>
-        <div class="track-name">${SONG_NAMES[song] || formatName(song)}</div>
+        <div class="track-name">${artist.id === 'haj-poetner' ? `<span style="font-size:10px;opacity:0.55;margin-right:6px;font-family:'Inter',sans-serif;letter-spacing:0.05em;">${song.startsWith('vahan-teryan/') ? 'ՎՏ' : 'ՀՍ'}</span>` : ''}${SONG_NAMES[song] || formatName(song)}</div>
         ${isNewSong(song) ? '<span class="new-badge">NEW</span>' : ''}
         <button class="track-fav-btn${fav ? ' fav-active' : ''}" data-artist="${artist.id}" data-song="${song}" style="background:none;border:none;cursor:pointer;color:${fav ? '#ee0055' : 'var(--text-dim)'};display:flex;align-items:center;padding:4px;transition:color 0.2s,transform 0.2s;">${iconHeart(fav)}</button>
-        <button class="track-share-btn" data-artist="${artist.id}" data-song="${song}" title="Կիսվել" style="background:none;border:none;cursor:pointer;color:var(--text-dim);display:flex;align-items:center;padding:4px;transition:color 0.2s;">${iconShare()}</button>
+        <button class="track-share-btn" data-artist="${artist.id}" data-song="${song}" style="background:none;border:none;cursor:pointer;color:var(--text-dim);display:flex;align-items:center;padding:4px;transition:color 0.2s;" title="Կիսվել"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button>
         <button class="track-play-btn">${iconPlay()}</button>
       </div>`;
     }).join('')}</div>`;
@@ -2101,48 +1850,6 @@
   function iconPlay() {
     return `<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 2l7 4-7 4V2z" fill="currentColor"/></svg>`;
   }
-
-  function iconShare() {
-    return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>`;
-  }
-
-  function showToast(msg) {
-    let t = document.getElementById('app-toast');
-    if (!t) {
-      t = document.createElement('div');
-      t.id = 'app-toast';
-      t.style.cssText = 'position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:rgba(20,16,8,0.96);color:#f5f0e8;border:1px solid var(--gold);padding:12px 20px;border-radius:30px;font-family:Inter,sans-serif;font-size:14px;z-index:9999;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;box-shadow:0 8px 30px rgba(0,0,0,.5)';
-      document.body.appendChild(t);
-    }
-    t.textContent = msg;
-    requestAnimationFrame(() => { t.style.opacity = '1'; t.style.transform = 'translateX(-50%) translateY(0)'; });
-    clearTimeout(t._timer);
-    t._timer = setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translateX(-50%) translateY(20px)'; }, 2200);
-  }
-
-  function shareSong(artistId, song) {
-    const label = SONG_NAMES[song] || formatName(song);
-    const url = location.origin + '/?play=' + encodeURIComponent(artistId + '|' + song);
-    if (navigator.share) {
-      navigator.share({ title: label, text: label + ' — Imastun Studio', url }).catch(() => {});
-    } else if (navigator.clipboard) {
-      navigator.clipboard.writeText(url).then(() => showToast('Հղումը պատճենվեց ✓')).catch(() => showToast(url));
-    } else {
-      showToast(url);
-    }
-  }
-
-  // Open a shared song link: ?play=artistId|song
-  (function() {
-    const p = new URLSearchParams(location.search).get('play');
-    if (!p) return;
-    const parts = decodeURIComponent(p).split('|');
-    const aid = parts.shift();
-    const song = parts.join('|');
-    const idx = playlist.findIndex(t => t.artistId === aid && t.song === song);
-    if (idx >= 0) setTimeout(() => playTrack(idx), 700);
-  })();
-
 
   function iconPause() {
     return `<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="2" y="2" width="3" height="8" rx="0.8" fill="currentColor"/><rect x="7" y="2" width="3" height="8" rx="0.8" fill="currentColor"/></svg>`;

@@ -2,14 +2,6 @@
 <html lang="hy">
 <head>
   <meta charset="UTF-8" />
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHJJF7DQ29"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-LHJJF7DQ29');
-  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Silva Gulanyan — Իմաստուն Ստուդիո</title>
   <meta name="description" content="Silva Gulanyan — Վոկալիստ եւ բառերի հեղինակ։ 86 երգ Իմաստուն Ստուդիոյի կողմից։ Լսիր հայկական երաժշտություն։" />
@@ -222,7 +214,7 @@
     <div class="hero-role">Poet · Vocalist · Songwriter</div>
     <div class="hero-stats">
       <div>
-        <div class="stat-num" id="song-count-stat">92</div>
+        <div class="stat-num">92</div>
         <div class="stat-label">Երգ</div>
       </div>
       <div>
@@ -240,11 +232,9 @@
     <h2 class="section-heading">Բոլոր <em>Երգերը</em></h2>
     <div class="track-tabs">
       <button class="track-tab active" id="tab-all">Բոլորը</button>
-      <button class="track-tab" id="tab-new">✨ Նոր</button>
       <button class="track-tab" id="tab-favs">❤️ Սիրածները</button>
     </div>
   </div>
-  <input type="text" id="track-search" placeholder="🔍  Փնտրել երգ..." autocomplete="off" style="width:100%; box-sizing:border-box; margin:14px 0 8px; padding:12px 16px; background:rgba(255,255,255,0.04); border:1px solid var(--border); border-radius:10px; color:var(--text); font-family:'Inter',sans-serif; font-size:15px; outline:none; transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--border)'" />
   <div class="track-list" id="track-list"></div>
   <div id="fav-empty" style="display:none; padding:32px; color:var(--text-dim); font-family:'Cormorant Garamond',serif; font-style:italic; font-size:20px;">Դեռ սիրած երգ չկա — սեղմիր ❤️</div>
 </section>
@@ -288,17 +278,17 @@
   const ARTIST = {
     id: 'silva-gulanyan',
     name: 'Silva Gulanyan',
-    songs: ['Akh_inch_anem_sirud_het','agh & dagy','Andzrevum_e','Mtnets_arants_kez_Duet','Aryev_darnam','Ari_klini','Galis_e_mi_pah_003','Garun_er_003','Garun e bajc zun e arel','gij','gij-qamin','Gisher_e_004','Gisherits_depi_luys_Silva_Gulanyan_005','Gitem_hogis_A','Gitem_ches_galu_B','gortrik-ankun','der-inz-voch-mek-chi-sirel-qo-pes','Dran_Takotsu_003','Es_irakan_em_004','Es_sirum_em_ko_zhpitu_B','Es_kez_sirum_em','Erazankneri_aytsu_Part_Gisherva_002','Erb_verkers_hanger_dardzri_Lyrics_by_Silva_Gulanyan_003','ergichy-dari','Erku_khent_hogi_Duet_Silva_Gulanyan_004','ipta hogis','Im_erazats_ashkharu_003','im-tsovagur','inch-em-anelu','inchu_es_ayskan_indz_otar_dardzel_004','luse hrashq','lrutian tchich','xerdvac karot','xerdvac karot patasxan','xent siro qamin','xentern u lusiny','xind manuk','xortakvor nav','tsov-arev-achqer','Mer_Srterum_kanchu_004','karotiali shurterin','Karotum_em_Dream_of_You_002','kgam_sirelis','Kenatsd_khmem_B_Brinderò_per_Te','Kuratsats_achkin_luysu_003','Hay_aragil','Hayots_ashkarh_A','Havat_em_vozum_003','HERO_MOTIK_UNKERNERIS_003','Hetd_inch_e_katarvum','RokHetd_Inch_E_Katarvum_003','hiastapvac','hogu giny','Kyanku_Hrashk_e_005','Dzig_tarineri_luys_003','Chisht_zhamanakin_At_The_Right_Time','mek tari el ancav','Title_Mi_tanjir_hogis_Multilingual_Emotional_Duet_Lyrics_by_Silva_Gulanyan_002','Resta_nei_nostri_cuori','Nerir sirelis','nerqnapanak','Nrboren_Garnunk_003','Che_chem_toghni_B','chem moracel','Ches_moranalu_003','Jaheli_nman_003','Tiezerk_Jinj_Lazur','ser da ardioq','Sirir_indz_hogis_FRAM_Duet','melodia lubvi','siro cnundy','S_irum_em_kez_I_love_you','sirty xentacav','Srteri_kanchu_003','Ka_mi_ashkharh_vor_srtov_e_karutsvats','Tesilk_Silva_Gulanyan_Remix_Remix','AKhor_vo_tsavits_tsnvats','Curt xavaric','Kez_khenti_nman_siraharvetsi_Duet_Tango','qez karotelis','qo cov achqeri kajcern em sirum','qo_drakhtum_002','Ko_koghkin_vorish_em_003','Ko_hmayki_gerin','Kuyr_eghbayr_003','ov e kimy','frants_Harbel_em_vozum','Crazy Breeze of Love','The Sun Cries Too','Безумный Ветер Любви','hima','gjuk lusiny','gitem el inz ches spasum','byur harvacneric','mern zepur','ser eir xarum','erazi kyamq roc','erazi kyanq','ti pridyosh komne',"The Night's Embrace",'xararutun ber','ti moy kislarod','My Endless Dream']
+    songs: ['Akh_inch_anem_sirud_het','agh & dagy','Andzrevum_e','Mtnets_arants_kez_Duet','Aryev_darnam','Ari_klini','Galis_e_mi_pah_003','Garun_er_003','Garun e bajc zun e arel','gij','gij-qamin','Gisher_e_004','Gisherits_depi_luys_Silva_Gulanyan_005','Gitem_hogis_A','Gitem_ches_galu_B','gortrik-ankun','der-inz-voch-mek-chi-sirel-qo-pes','Dran_Takotsu_003','Es_irakan_em_004','Es_sirum_em_ko_zhpitu_B','Es_kez_sirum_em','Erazankneri_aytsu_Part_Gisherva_002','Erb_verkers_hanger_dardzri_Lyrics_by_Silva_Gulanyan_003','ergichy-dari','Erku_khent_hogi_Duet_Silva_Gulanyan_004','ipta hogis','Im_erazats_ashkharu_003','im-tsovagur','inch-em-anelu','inchu_es_ayskan_indz_otar_dardzel_004','luse hrashq','lrutian tchich','xerdvac karot','xerdvac karot patasxan','xent siro qamin','xentern u lusiny','xind manuk','xortakvor nav','tsov-arev-achqer','Mer_Srterum_kanchu_004','karotiali shurterin','Karotum_em_Dream_of_You_002','kgam_sirelis','Kenatsd_khmem_B_Brinderò_per_Te','Kuratsats_achkin_luysu_003','Hay_aragil','Hayots_ashkarh_A','Havat_em_vozum_003','HERO_MOTIK_UNKERNERIS_003','Hetd_inch_e_katarvum','RokHetd_Inch_E_Katarvum_003','hiastapvac','hogu giny','Kyanku_Hrashk_e_005','Dzig_tarineri_luys_003','Chisht_zhamanakin_At_The_Right_Time','mek tari el ancav','Title_Mi_tanjir_hogis_Multilingual_Emotional_Duet_Lyrics_by_Silva_Gulanyan_002','Resta_nei_nostri_cuori','Nerir sirelis','nerqnapanak','Nrboren_Garnunk_003','Che_chem_toghni_B','chem moracel','Ches_moranalu_003','Jaheli_nman_003','Tiezerk_Jinj_Lazur','ser da ardioq','Sirir_indz_hogis_FRAM_Duet','melodia lubvi','siro cnundy','S_irum_em_kez_I_love_you','sirty xentacav','Srteri_kanchu_003','Ka_mi_ashkharh_vor_srtov_e_karutsvats','Tesilk_Silva_Gulanyan_Remix_Remix','AKhor_vo_tsavits_tsnvats','Curt xavaric','Kez_khenti_nman_siraharvetsi_Duet_Tango','qez karotelis','qo cov achqeri kajcern em sirum','qo_drakhtum_002','Ko_koghkin_vorish_em_003','Ko_hmayki_gerin','Kuyr_eghbayr_003','ov e kimy','frants_Harbel_em_vozum','Crazy Breeze of Love','The Sun Cries Too','Безумный Ветер Любви','hima']
   };
 
-  const NEW_SONGS = { "hima": "2026-06-15", "gjuk lusiny": "2026-06-27", "gitem el inz ches spasum": "2026-06-27", "byur harvacneric": "2026-07-02", "mern zepur": "2026-07-02", "ser eir xarum": "2026-07-02", "erazi kyamq roc": "2026-07-05", "erazi kyanq": "2026-07-05", "ti pridyosh komne": "2026-07-05", "The Night's Embrace": "2026-07-05", "xararutun ber": "2026-07-05", "ti moy kislarod": "2026-07-05", "My Endless Dream": "2026-07-05" };
+  const NEW_SONGS = { "hima": "2026-06-15" };
   function isNewSong(song) {
     const added = NEW_SONGS[song];
     if (!added) return false;
     const days = (Date.now() - new Date(added).getTime()) / (1000*60*60*24);
     return days >= 0 && days <= 30;
   }
-  const SONG_NAMES = {"ergichy-dari":"Երգիչի դարի","gij":"Գիժ","gij-qamin":"Գիժ քամի","gortrik-ankun":"Գողտրիկ անկյուն","im-tsovagur":"Իմ ծովագյուղ","inch-em-anelu":"Ինչ եմ անելու","tsov-arev-achqer":"Ծով արև աչքեր","Es_kez_sirum_em":"Ես քեզ սիրում եմ","Kez_khenti_nman_siraharvetsi_Duet_Tango":"Քեզ խենթի նման սիրահարվեցի (Duet Tango)","Ari_klini":"Արի կլինի","Andzrevum_e":"Անձրևում է","der-inz-voch-mek-chi-sirel-qo-pes":"Դեռ ինձ ոչ մեկ չի սիրել քո պես","Akh_inch_anem_sirud_het":"Ախ ինչ անեմ սիրուդ հետ","AKhor_vo_tsavits_tsnvats":"Ցավից ծնված","Aryev_darnam":"Արև դառնամ","Che_chem_toghni_B":"Չե չեմ թողնի","Ches_moranalu_003":"Չես մոռանալու","Chisht_zhamanakin_At_The_Right_Time":"Ճիշտ ժամանակին","Dran_Takotsu_003":"Դռան թակոց","Dzig_tarineri_luys_003":"Ձիգ տարիների լույս","Erazankneri_aytsu_Part_Gisherva_002":"Երազանքների այց գիշերվա","Erb_verkers_hanger_dardzri_Lyrics_by_Silva_Gulanyan_003":"Երբ երգերս հանգեր դարձան","Erku_khent_hogi_Duet_Silva_Gulanyan_004":"Երկու խենթ հոգի","Es_sirum_em_ko_zhpitu_B":"Ես սիրում եմ քո ժպիտը","Garun_er_003":"Գարուն է","Gisher_e_004":"Գիշեր է","Gisherits_depi_luys_Silva_Gulanyan_005":"Գիշերից լույս","Gitem_ches_galu_B":"Գիտեմ չես գալու","Gitem_hogis_A":"Գիտեմ հոգիս","Hetd_inch_e_katarvum":"Հետդ ինչ է կատարվում","Im_erazats_ashkharu_003":"Իմ երազած աշխարհում","inchu_es_ayskan_indz_otar_dardzel_004":"Ինչու ես այսքան ինձ օտար դարձել","Jaheli_nman_003":"Ջահելի նման","Karotum_em_Dream_of_You_002":"Կարոտում եմ","Kenatsd_khmem_B_Brinderò_per_Te":"Կենացդ խմեմ","xentern u lusiny":"Խենթերն ու լուսինը","Ko_hmayki_gerin":"Քո հմայքի գերին","Ko_koghkin_vorish_em_003":"Քո կողքին ուրիշ եմ","Es_irakan_em_004":"Ես իրական եմ","frants_Harbel_em_vozum":"Ֆրանսերեն հարբել եմ ուզում","Galis_e_mi_pah_003":"Գալիս է մի պահ","Havat_em_vozum_003":"Հավատ եմ ուզում","Hayots_ashkarh_A":"Հայոց աշխարհ","HERO_MOTIK_UNKERNERIS_003":"Հեռու մոտիկ ընկերներիս","hogu giny":"Հողի գինը","Ka_mi_ashkharh_vor_srtov_e_karutsvats":"Սրտով կառուցված աշխարհ","kgam_sirelis":"Կգամ սիրելիս","Khortakvogh_nav_003":"Խորտակվող նավ","Kuratsats_achkin_luysu_003":"Կուրացած աչքի լույս","Kuyr_eghbayr_003":"Քույր եղբայր","Kyanku_Hrashk_e_005":"Հրաշք կյանք","Mer_Srterum_kanchu_004":"Կանչ մեր սրտերում","Mtnets_arants_kez_Duet":"Առանց քեզ մթնեց","Nrboren_Garnunk_003":"Նրբորեն գարունք","Resta_nei_nostri_cuori":"Մնա մեր սրտերում","RokHetd_Inch_E_Katarvum_003":"Հետդ ինչ է կատարվում","S_irum_em_kez_I_love_you":"Սիրում եմ քեզ","Sirir_indz_hogis_FRAM_Duet":"Սիրիր ինձ հոգիս","Srteri_kanchu_003":"Սրտերի կանչ","Tesilk_Silva_Gulanyan_Remix_Remix":"Տեսիլք","Tiezerk_Jinj_Lazur":"Ջինջ տիեզերք","Title_Mi_tanjir_hogis_Multilingual_Emotional_Duet_Lyrics_by_Silva_Gulanyan_002":"Մի տանջիր հոգիս բազմալեզու","melodia lubvi":"Սիրո երաժշտություն","Безумный Ветер Любви":"Безумный Ветер Любви","agh & dagy":"Աղն ու դաղը","xerdvac karot":"Խեղդված կարոտ","xerdvac karot patasxan":"Խեղդված կարոտ պատասխան","hiastapvac":"Հիասթափված","nerqnapanak":"Ներքնապանակ","qo cov achqeri kajcern em sirum":"Քո աչքերի կայծն եմ սիրում","sirty xentacav":"Սիրտս խենթացավ","luse hrashq":"Լուսե հրաշք","Hay_aragil":"Հայ արագիլ","lrutian tchich":"Լռության ճիչ","qez karotelis":"Քեզ կարոտելիս","siro cnundy":"Սիրո ծնունդ","qo_drakhtum_002":"Քո դրախտում","ser da ardioq":"Սեր է դա արդիոք","xortakvor nav":"Խորտակվող նավ","chem moracel":"Չեմ մոռացել","ipta hogis":"Ժպտա հոգիս","ov e kimy":"Օվ է կինը","Nerir sirelis":"Ներիր սիրելիս","The Sun Cries Too":"The Sun Cries Too","Crazy Breeze of Love":"Crazy Breeze of Love","xent siro qamin":"Խենթ սիրո քամին","karotiali shurterin":"Կարոտիալի շուրթերին","mek tari el ancav":"Մեկ տարի էլ անցավ","Garun e bajc zun e arel":"Գարուն է բայց ձյուն է արել","Curt xavaric":"Ցուրտ խավարից","xind manuk":"Խինդ մանուկ","hima":"Հիմա","gjuk lusiny":"Գժուկ լուսին","gitem el inz ches spasum":"Գիտեմ էլ ինձ չես սպասում","byur harvacneric":"Բյուր հարվածներից","mern zepur":"Մեղմ զեփյուռը","ser eir xarum":"Սեր էիր խաղում","erazi kyamq roc":"Երազի կայանք (ռոք)","erazi kyanq":"Երազի կայանք","ti pridyosh komne":"Ты придёшь ко мне","The Night's Embrace":"The Night's Embrace","xararutun ber":"Խաղաղություն բեր","ti moy kislarod":"Ты мой кислород","My Endless Dream":"My Endless Dream"};
+  const SONG_NAMES = {"ergichy-dari":"Երգիչի դարի","gij":"Գիժ","gij-qamin":"Գիժ քամի","gortrik-ankun":"Գողտրիկ անկյուն","im-tsovagur":"Իմ ծովագյուղ","inch-em-anelu":"Ինչ եմ անելու","tsov-arev-achqer":"Ծով արև աչքեր","Es_kez_sirum_em":"Ես քեզ սիրում եմ","Kez_khenti_nman_siraharvetsi_Duet_Tango":"Քեզ խենթի նման սիրահարվեցի (Duet Tango)","Ari_klini":"Արի կլինի","Andzrevum_e":"Անձրևում է","der-inz-voch-mek-chi-sirel-qo-pes":"Դեռ ինձ ոչ մեկ չի սիրել քո պես","Akh_inch_anem_sirud_het":"Ախ ինչ անեմ սիրուդ հետ","AKhor_vo_tsavits_tsnvats":"Ցավից ծնված","Aryev_darnam":"Արև դառնամ","Che_chem_toghni_B":"Չե չեմ թողնի","Ches_moranalu_003":"Չես մոռանալու","Chisht_zhamanakin_At_The_Right_Time":"Ճիշտ ժամանակին","Dran_Takotsu_003":"Դռան թակոց","Dzig_tarineri_luys_003":"Ձիգ տարիների լույս","Erazankneri_aytsu_Part_Gisherva_002":"Երազանքների այց գիշերվա","Erb_verkers_hanger_dardzri_Lyrics_by_Silva_Gulanyan_003":"Երբ երգերս հանգեր դարձան","Erku_khent_hogi_Duet_Silva_Gulanyan_004":"Երկու խենթ հոգի","Es_sirum_em_ko_zhpitu_B":"Ես սիրում եմ քո ժպիտը","Garun_er_003":"Գարուն է","Gisher_e_004":"Գիշեր է","Gisherits_depi_luys_Silva_Gulanyan_005":"Գիշերից լույս","Gitem_ches_galu_B":"Գիտեմ չես գալու","Gitem_hogis_A":"Գիտեմ հոգիս","Hetd_inch_e_katarvum":"Հետդ ինչ է կատարվում","Im_erazats_ashkharu_003":"Իմ երազած աշխարհում","inchu_es_ayskan_indz_otar_dardzel_004":"Ինչու ես այսքան ինձ օտար դարձել","Jaheli_nman_003":"Ջահելի նման","Karotum_em_Dream_of_You_002":"Կարոտում եմ","Kenatsd_khmem_B_Brinderò_per_Te":"Կենացդ խմեմ","xentern u lusiny":"Խենթերն ու լուսինը","Ko_hmayki_gerin":"Քո հմայքի գերին","Ko_koghkin_vorish_em_003":"Քո կողքին ուրիշ եմ","Es_irakan_em_004":"Ես իրական եմ","frants_Harbel_em_vozum":"Ֆրանսերեն հարբել եմ ուզում","Galis_e_mi_pah_003":"Գալիս է մի պահ","Havat_em_vozum_003":"Հավատ եմ ուզում","Hayots_ashkarh_A":"Հայոց աշխարհ","HERO_MOTIK_UNKERNERIS_003":"Հեռու մոտիկ ընկերներիս","hogu giny":"Հողի գինը","Ka_mi_ashkharh_vor_srtov_e_karutsvats":"Սրտով կառուցված աշխարհ","kgam_sirelis":"Կգամ սիրելիս","Khortakvogh_nav_003":"Խորտակվող նավ","Kuratsats_achkin_luysu_003":"Կուրացած աչքի լույս","Kuyr_eghbayr_003":"Քույր եղբայր","Kyanku_Hrashk_e_005":"Հրաշք կյանք","Mer_Srterum_kanchu_004":"Կանչ մեր սրտերում","Mtnets_arants_kez_Duet":"Առանց քեզ մթնեց","Nrboren_Garnunk_003":"Նրբորեն գարունք","Resta_nei_nostri_cuori":"Մնա մեր սրտերում","RokHetd_Inch_E_Katarvum_003":"Հետդ ինչ է կատարվում","S_irum_em_kez_I_love_you":"Սիրում եմ քեզ","Sirir_indz_hogis_FRAM_Duet":"Սիրիր ինձ հոգիս","Srteri_kanchu_003":"Սրտերի կանչ","Tesilk_Silva_Gulanyan_Remix_Remix":"Տեսիլք","Tiezerk_Jinj_Lazur":"Ջինջ տիեզերք","Title_Mi_tanjir_hogis_Multilingual_Emotional_Duet_Lyrics_by_Silva_Gulanyan_002":"Մի տանջիր հոգիս բազմալեզու","melodia lubvi":"Սիրո երաժշտություն","Безумный Ветер Любви":"Безумный Ветер Любви","agh & dagy":"Աղն ու դաղը","xerdvac karot":"Խեղդված կարոտ","xerdvac karot patasxan":"Խեղդված կարոտ պատասխան","hiastapvac":"Հիասթափված","nerqnapanak":"Ներքնապանակ","qo cov achqeri kajcern em sirum":"Քո աչքերի կայծն եմ սիրում","sirty xentacav":"Սիրտս խենթացավ","luse hrashq":"Լուսե հրաշք","Hay_aragil":"Հայ արագիլ","lrutian tchich":"Լռության ճիչ","qez karotelis":"Քեզ կարոտելիս","siro cnundy":"Սիրո ծնունդ","qo_drakhtum_002":"Քո դրախտում","ser da ardioq":"Սեր է դա արդիոք","xortakvor nav":"Խորտակվող նավ","chem moracel":"Չեմ մոռացել","ipta hogis":"Ժպտա հոգիս","ov e kimy":"Օվ է կինը","Nerir sirelis":"Ներիր սիրելիս","The Sun Cries Too":"The Sun Cries Too","Crazy Breeze of Love":"Crazy Breeze of Love","karotiali shurterin":"Կարոտիալի շուրթերին","mek tari el ancav":"Մեկ տարի էլ անցավ","Garun e bajc zun e arel":"Գարուն է բայց ձյուն է արել","Curt xavaric":"Ցուրտ խավարից","xind manuk":"Խինդ մանուկ","hima":"Հիմա"};
 
   const playlist = ARTIST.songs.map((song, i) => ({
     index: i,
@@ -307,9 +297,6 @@
     cover: `authors/${ARTIST.id}/cover.jpg`,
     label: SONG_NAMES[song] || song.replace(/[-_]/g,' ').replace(/\b\w/g,c=>c.toUpperCase())
   }));
-
-  // Show the full list in Armenian alphabetical order by song name
-  playlist.sort((a, b) => a.label.localeCompare(b.label, 'hy'));
 
   /* FAVORITES */
   const FAV_KEY = 'silva_favorites';
@@ -331,35 +318,26 @@
   }
 
   /* TABS */
-  let mode = 'all';
-  function setTab(m) {
-    mode = m;
-    ['all','new','favs'].forEach(x =>
-      document.getElementById('tab-'+x).classList.toggle('active', x === m));
+  let showFavs = false;
+  document.getElementById('tab-all').addEventListener('click', () => {
+    showFavs = false;
+    document.getElementById('tab-all').classList.add('active');
+    document.getElementById('tab-favs').classList.remove('active');
     renderTracks();
-  }
-  document.getElementById('tab-all').addEventListener('click', () => setTab('all'));
-  document.getElementById('tab-new').addEventListener('click', () => setTab('new'));
-  document.getElementById('tab-favs').addEventListener('click', () => setTab('favs'));
-
-  let searchQuery = '';
-  const searchInput = document.getElementById('track-search');
-  if (searchInput) searchInput.addEventListener('input', e => {
-    searchQuery = e.target.value.trim().toLowerCase();
+  });
+  document.getElementById('tab-favs').addEventListener('click', () => {
+    showFavs = true;
+    document.getElementById('tab-favs').classList.add('active');
+    document.getElementById('tab-all').classList.remove('active');
     renderTracks();
   });
 
   function renderTracks() {
     const trackList = document.getElementById('track-list');
     const favEmpty = document.getElementById('fav-empty');
-    let items = playlist;
-    if (mode === 'favs') items = playlist.filter(t => isFav(t.song));
-    else if (mode === 'new') items = playlist.filter(t => isNewSong(t.song));
-    if (searchQuery) items = items.filter(t =>
-      t.label.toLowerCase().includes(searchQuery) || t.song.toLowerCase().includes(searchQuery));
+    const items = showFavs ? playlist.filter(t => isFav(t.song)) : playlist;
     trackList.innerHTML = '';
-    if (items.length === 0) {
-      favEmpty.textContent = searchQuery ? 'Ոչինչ չգտնվեց' : (mode === 'favs' ? 'Դեռ սիրած երգ չկա — սեղմիր ❤️' : 'Նոր երգ չկա');
+    if (showFavs && items.length === 0) {
       favEmpty.style.display = 'block';
       return;
     }
@@ -374,6 +352,7 @@
         <div class="track-name">${t.label}</div>
         ${isNewSong(t.song) ? '<span class="new-badge">NEW</span>' : ''}
         <button class="track-fav${isFav(t.song) ? ' active' : ''}" data-song="${t.song}">${iconHeart(isFav(t.song))}</button>
+        <button class="track-share-btn" data-song="${t.song}" style="background:none;border:none;cursor:pointer;color:var(--text-dim);display:flex;align-items:center;padding:4px;transition:color 0.2s;" title="Կիսվել"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button>
         <button class="track-play-btn">${iconPlay()}</button>`;
       div.addEventListener('click', () => playTrack(realIdx));
       div.querySelector('.track-fav').addEventListener('click', e => {
@@ -382,7 +361,24 @@
         const active = toggleFav(t.song);
         btn.classList.toggle('active', active);
         btn.innerHTML = iconHeart(active);
-        if (mode === 'favs' && !active) renderTracks();
+        if (showFavs && !active) renderTracks();
+      });
+      div.querySelector('.track-share-btn').addEventListener('click', e => {
+        e.stopPropagation();
+        const songName = t.label;
+        const shareData = {
+          title: `${songName} — Silva Gulanyan`,
+          text: `🎵 ${songName} — Silva Gulanyan\nListen on Imastun Studio`,
+          url: 'https://imastun.org/silva-gulanyan'
+        };
+        if (navigator.share) {
+          navigator.share(shareData).catch(() => {});
+        } else {
+          navigator.clipboard.writeText('https://imastun.org/silva-gulanyan').then(() => {
+            e.currentTarget.style.color = 'var(--gold)';
+            setTimeout(() => e.currentTarget.style.color = 'var(--text-dim)', 1500);
+          }).catch(() => {});
+        }
       });
       trackList.appendChild(div);
     });
@@ -410,11 +406,6 @@
   }
   calcTotalDuration();
 
-  // Keep the "Երգ" stat in sync with the actual number of songs
-  (function(){
-    const el = document.getElementById('song-count-stat');
-    if (el) el.textContent = ARTIST.songs.length;
-  })();
 
 
   /* PLAYER */
@@ -508,9 +499,6 @@
     cancelCrossfade();
     currentIdx = idx;
     const t = playlist[idx];
-    if (typeof gtag === 'function') {
-      gtag('event', 'play_song', { song_name: t.label, artist_name: ARTIST.name });
-    }
     const eng = active();
     eng.src = t.src;
     eng.volume = 1;
