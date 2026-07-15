@@ -2180,9 +2180,13 @@
     hits.sort((a, b) => {
       const la = (SONG_NAMES[a.song] || formatName(a.song)).toLowerCase();
       const lb = (SONG_NAMES[b.song] || formatName(b.song)).toLowerCase();
-      const aStarts = la.startsWith(q) ? 0 : 1;
-      const bStarts = lb.startsWith(q) ? 0 : 1;
-      if (aStarts !== bStarts) return aStarts - bStarts;
+      const rank = (t, label) => {
+        if (label.startsWith(q)) return 0;
+        if (label.includes(q)) return 1;
+        return 2; // matched only via artist name
+      };
+      const ra = rank(a, la), rb = rank(b, lb);
+      if (ra !== rb) return ra - rb;
       return la.localeCompare(lb, 'hy');
     });
 
@@ -2392,14 +2396,21 @@
       const placeholder = document.createElement('div');
       placeholder.className = 'video-card-placeholder';
       placeholder.style.height = rect.height + 'px';
+      placeholder._isPlaceholderFor = card;
       card.parentNode.insertBefore(placeholder, card);
       card._placeholder = placeholder;
+      videoFloatObserver.unobserve(card);
+      videoFloatObserver.observe(placeholder);
+      document.body.appendChild(card); // escape any transformed ancestor so position:fixed is relative to the real viewport
       card.classList.add('video-floating');
     } else {
       card.classList.remove('video-floating');
       if (card._placeholder) {
+        videoFloatObserver.unobserve(card._placeholder);
+        card._placeholder.parentNode.insertBefore(card, card._placeholder);
         card._placeholder.remove();
         card._placeholder = null;
+        videoFloatObserver.observe(card);
       }
     }
   }
@@ -2423,11 +2434,15 @@
 
   const videoFloatObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.target !== currentVideoCard) return;
-      if (entry.intersectionRatio < 0.05) {
-        setFloating(entry.target, true);
-      } else if (entry.intersectionRatio > 0.6) {
-        setFloating(entry.target, false);
+      const target = entry.target;
+      const card = target._isPlaceholderFor || target;
+      if (card !== currentVideoCard) return;
+      if (target === card) {
+        // watching the card in its normal position — scrolled out means float it
+        if (entry.intersectionRatio < 0.05) setFloating(card, true);
+      } else {
+        // watching the placeholder left behind while floating — back in view means un-float
+        if (entry.intersectionRatio > 0.6) setFloating(card, false);
       }
     });
   }, { threshold: [0, 0.05, 0.6, 1] });
@@ -2467,6 +2482,26 @@
         const closeBtn = card.querySelector('.video-float-close');
         if (closeBtn) closeBtn.addEventListener('click', () => { player.pauseVideo(); videoStoppedPlaying(card); });
       });
+
+      // Robust fallback: poll actual player state every second in case an
+      // onStateChange event was missed (e.g. player instrumented after play started)
+      setInterval(() => {
+        Object.keys(ytPlayerInstances).forEach(id => {
+          const player = ytPlayerInstances[id];
+          if (!player || typeof player.getPlayerState !== 'function') return;
+          let state;
+          try { state = player.getPlayerState(); } catch (e) { return; }
+          const iframe = document.getElementById(id);
+          if (!iframe) return;
+          const card = iframe.closest('.video-card');
+          if (!card) return;
+          if (state === YT.PlayerState.PLAYING && currentVideoCard !== card) {
+            videoStartedPlaying(card, () => player.pauseVideo());
+          } else if (state !== YT.PlayerState.PLAYING && currentVideoCard === card) {
+            videoStoppedPlaying(card);
+          }
+        });
+      }, 1000);
     });
   }
 
