@@ -1283,6 +1283,18 @@
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
         revealObserver.unobserve(entry.target);
+        // The reveal-fade-up animation (fill-mode: both) leaves a lingering
+        // `transform` on children, which creates a new containing block and
+        // breaks position:fixed descendants (e.g. floating video). Clear it
+        // once the entrance animation has finished playing.
+        if (entry.target.classList.contains('reveal-stagger')) {
+          setTimeout(() => {
+            Array.from(entry.target.children).forEach(child => {
+              child.style.animation = 'none';
+              child.style.transform = '';
+            });
+          }, 1500);
+        }
       }
     });
   }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
@@ -2401,7 +2413,6 @@
       card._placeholder = placeholder;
       videoFloatObserver.unobserve(card);
       videoFloatObserver.observe(placeholder);
-      document.body.appendChild(card); // escape any transformed ancestor so position:fixed is relative to the real viewport
       card.classList.add('video-floating');
     } else {
       card.classList.remove('video-floating');
