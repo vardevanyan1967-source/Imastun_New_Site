@@ -732,6 +732,7 @@
     }
     .video-card.video-floating .video-float-close { display: flex; }
     .video-card { position: relative; }
+    .video-card-placeholder { width: 100%; }
 
     .video-meta { padding: 14px 18px; }
 
@@ -2176,6 +2177,15 @@
       return songArm.includes(q) || t.song.toLowerCase().includes(q) || t.artistName.toLowerCase().includes(q);
     });
 
+    hits.sort((a, b) => {
+      const la = (SONG_NAMES[a.song] || formatName(a.song)).toLowerCase();
+      const lb = (SONG_NAMES[b.song] || formatName(b.song)).toLowerCase();
+      const aStarts = la.startsWith(q) ? 0 : 1;
+      const bStarts = lb.startsWith(q) ? 0 : 1;
+      if (aStarts !== bStarts) return aStarts - bStarts;
+      return la.localeCompare(lb, 'hy');
+    });
+
     searchHint.textContent = hits.length ? `${hits.length} արդյունք` : '';
 
     if (!hits.length) {
@@ -2375,10 +2385,29 @@
     }
   }
 
+  function setFloating(card, floating) {
+    if (floating) {
+      if (card.classList.contains('video-floating')) return;
+      const rect = card.getBoundingClientRect();
+      const placeholder = document.createElement('div');
+      placeholder.className = 'video-card-placeholder';
+      placeholder.style.height = rect.height + 'px';
+      card.parentNode.insertBefore(placeholder, card);
+      card._placeholder = placeholder;
+      card.classList.add('video-floating');
+    } else {
+      card.classList.remove('video-floating');
+      if (card._placeholder) {
+        card._placeholder.remove();
+        card._placeholder = null;
+      }
+    }
+  }
+
   function videoStartedPlaying(card, stopFn) {
     if (currentVideoCard && currentVideoCard !== card && currentVideoStop) {
       currentVideoStop();
-      currentVideoCard.classList.remove('video-floating');
+      setFloating(currentVideoCard, false);
     }
     currentVideoCard = card;
     currentVideoStop = stopFn;
@@ -2386,7 +2415,7 @@
 
   function videoStoppedPlaying(card) {
     if (currentVideoCard === card) {
-      card.classList.remove('video-floating');
+      setFloating(card, false);
       currentVideoCard = null;
       currentVideoStop = null;
     }
@@ -2396,9 +2425,9 @@
     entries.forEach(entry => {
       if (entry.target !== currentVideoCard) return;
       if (entry.intersectionRatio < 0.05) {
-        entry.target.classList.add('video-floating');
+        setFloating(entry.target, true);
       } else if (entry.intersectionRatio > 0.6) {
-        entry.target.classList.remove('video-floating');
+        setFloating(entry.target, false);
       }
     });
   }, { threshold: [0, 0.05, 0.6, 1] });
