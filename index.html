@@ -11,7 +11,7 @@
   <meta property="og:description" content="Բարի գալուստ Իմաստուն Ստուդիո — այստեղ մենք երաժշտությունն ու խոսքը միավորում ենք" />
   <meta property="og:image" content="logo.png" />
   <meta property="og:type" content="music.playlist" />
-  <meta property="og:url" content="https://imastun.org" />
+  <meta property="og:url" content="" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Իմաստուն Ստուդիո" />
   <meta name="twitter:description" content="Բարի գալուստ Իմաստուն Ստուդիո" />
@@ -713,8 +713,8 @@
 
     /* ── FLOATING (PIP) VIDEO ── */
     .video-card.video-floating {
-      position: fixed; right: 16px; bottom: calc(var(--player-h) + 16px);
-      width: 260px; max-width: 40vw; z-index: 250;
+      position: fixed; left: 16px; bottom: calc(var(--player-h) + 16px);
+      width: 260px; max-width: 40vw; z-index: 240;
       box-shadow: 0 12px 40px rgba(0,0,0,0.6);
       border-color: var(--gold);
       animation: video-float-in 0.3s ease;
@@ -823,7 +823,7 @@
     .gp-progress-wrap { flex: 1; display: flex; align-items: center; gap: 10px; min-width: 0; }
 
     #similar-panel {
-      position: fixed; right: 16px; bottom: calc(var(--player-h) + 10px);
+      position: fixed; left: 16px; bottom: calc(var(--player-h) + 10px);
       width: 300px; max-width: 88vw; max-height: 340px; overflow-y: auto;
       background: rgba(10,10,10,0.98); backdrop-filter: blur(24px);
       border: 1px solid var(--gold); border-radius: 4px;
