@@ -1393,6 +1393,10 @@
       id: 'narine-balasbekyan', name: 'Narine Balasbekyan', role: 'Vocalist & Composer',
       songs: ['kiny','sirena-hima']
     },
+    {
+      id: 'shakespeare-reimagined', name: 'Shakespeare Reimagined', role: 'Sonnets in Song',
+      songs: []
+    },
     { id: 'nune-muradyan',  name: 'Nune Muradyan',  role: 'Vocalist & Lyricist',  songs: [] },
     { id: 'lilit-aghasyan', name: 'Lilit Aghasyan', role: 'Vocalist & Arranger',   songs: [] },
     { id: 'mareta-sargsyan',name: 'Mareta Sargsyan',role: 'Vocalist & Performer',  songs: [] },
@@ -2011,7 +2015,7 @@
   ARTISTS.forEach((artist, i) => {
     const coverSrc = artist.cover || `authors/${artist.id}/cover.jpg`;
     const initials = artist.name.split(' ').map(w => w[0]).join('');
-    const hasCover = ["imastun","silva-gulanyan","go-hara","haj-poetner"].includes(artist.id);
+    const hasCover = ["imastun","silva-gulanyan","go-hara","haj-poetner","shakespeare-reimagined"].includes(artist.id);
     const hasSongs = artist.songs && artist.songs.length > 0;
 
     /* small card — no cover */
