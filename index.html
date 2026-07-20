@@ -2340,6 +2340,9 @@
         if (poet(a) !== poet(b)) return poet(a) - poet(b);
         return alpha(a, b);
       });
+    } else if (artist.id === 'shakespeare-reimagined') {
+      const numOf = s => { const m = s.match(/(\d+)/); return m ? parseInt(m[1], 10) : 999; };
+      songs = artist.songs.slice().sort((a, b) => numOf(a) - numOf(b));
     } else {
       songs = artist.songs.slice().sort(alpha);
     }
