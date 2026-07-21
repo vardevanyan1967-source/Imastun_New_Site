@@ -4,12 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Իմաստուն Ստուդիո — Imastun Studio</title>
-  <meta name="description" content="Իմաստուն Ստուդիո — Երաժշտություն, խոսք, արվեստ։ Silva Gulanyan, Go Hara, Narine Balasbekyan և այլ արտիստներ։" />
+  <meta name="description" content="Իմաստուն Ստուդիո — հայկական երաժշտության ստուդիո՝ Սիլվա Ղուլանյան, Գո Հարա, Հայ բանաստեղծների երգեր (Տերյան, Սահյան, Սևակ) և Shakespeare Reimagined նախագիծը։ 300+ երգ, տեսահոլովակներ, բանաստեղծություն երաժշտության մեջ։" />
+  <meta name="keywords" content="հայկական երաժշտություն, Իմաստուն Ստուդիո, Silva Gulanyan, Go Hara, Vahan Teryan, Hamo Sahyan, Paruyr Sevak, Armenian music, Armenian poetry songs" />
   <meta name="keywords" content="Imastun Studio, Իմաստուն Ստուդիո, Silva Gulanyan, Go Hara, Narine Balasbekyan, հայկական երաժշտություն, Armenian music" />
   <meta name="author" content="Imastun Studio" />
   <meta property="og:title" content="Իմաստուն Ստուդիո — Imastun Studio" />
-  <meta property="og:description" content="Բարի գալուստ Իմաստուն Ստուդիո — այստեղ մենք երաժշտությունն ու խոսքը միավորում ենք" />
+  <meta property="og:description" content="Հայկական երաժշտության ստուդիո՝ 300+ երգ, հայ բանաստեղծների ստեղծագործություններ երաժշտության մեջ, Shakespeare Reimagined նախագիծը և ավելին։" />
   <meta property="og:image" content="logo.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    "name": "Imastun Studio",
+    "alternateName": "Իմաստուն Ստուդիո",
+    "url": "https://imastun.org/",
+    "logo": "https://imastun.org/logo.png",
+    "description": "Հայկական երաժշտության ստուդիո՝ բանաստեղծություն և երաժշտություն միասին։",
+    "genre": ["Armenian music", "Poetry in music"],
+    "sameAs": [
+      "https://www.instagram.com/vahanvardevanyan",
+      "https://www.youtube.com/@vahanvardevanyan4122",
+      "https://www.facebook.com/Vahan.Vardevanyan"
+    ]
+  }
+  </script>
   <meta property="og:type" content="music.playlist" />
   <meta property="og:url" content="" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -1742,6 +1760,29 @@
     label: SONG_NAMES[s] || formatName(s)
   })));
 
+  /* ══ SEO: structured data for all songs (MusicRecording) ══ */
+  (function injectMusicRecordingSchema() {
+    const items = playlist.slice(0, 300).map((t, idx) => ({
+      "@type": "MusicRecording",
+      "position": idx + 1,
+      "name": t.label,
+      "byArtist": { "@type": "MusicGroup", "name": t.artistName },
+      "url": `https://imastun.org/?play=${encodeURIComponent(t.song)}`
+    }));
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "MusicAlbum",
+      "name": "Imastun Studio — Ամբողջ կատալոգ",
+      "byArtist": { "@type": "MusicGroup", "name": "Imastun Studio" },
+      "numTracks": playlist.length,
+      "track": items
+    };
+    const s = document.createElement('script');
+    s.type = 'application/ld+json';
+    s.textContent = JSON.stringify(schema);
+    document.head.appendChild(s);
+  })();
+
   /* ══ PLAYER ENGINE ══ */
   const engine    = document.getElementById('audio-engine');
   const engine2   = new Audio();
@@ -1789,7 +1830,7 @@
     similarPanel.innerHTML = `<div class="similar-panel-title">Նմանատիպ երգեր</div>` +
       candidates.map(({ p, i }) => `
         <div class="similar-item" data-idx="${i}">
-          <img src="${p.cover}" alt="" onerror="this.style.visibility='hidden'" />
+          <img src="${p.cover}" alt="${p.label} — ${p.artistName}" loading="lazy" decoding="async" onerror="this.style.visibility='hidden'" />
           <div>
             <div class="si-name">${p.label}</div>
             <div class="si-artist">${p.artistName}</div>
@@ -2045,7 +2086,7 @@
     card.innerHTML = `
       <div class="card-cover-wrap">
         <div class="card-cover-fallback">${initials}</div>
-        <img class="card-cover" src="${coverSrc}" alt="${artist.name}" onerror="this.style.display='none'" />
+        <img class="card-cover" src="${coverSrc}" alt="${artist.name}" loading="lazy" decoding="async" onerror="this.style.display='none'" />
         <div class="card-cover-overlay"></div>
       </div>
       <div class="card-body">
@@ -2075,7 +2116,7 @@
       <div class="panel-inner">
         <div class="panel-cover-col">
           <div class="panel-cover-fallback-col">${initials}</div>
-          <img class="panel-cover" src="${coverSrc}" alt="${artist.name}" onerror="this.style.display='none'" />
+          <img class="panel-cover" src="${coverSrc}" alt="${artist.name}" loading="lazy" decoding="async" onerror="this.style.display='none'" />
         </div>
         <div class="panel-content-col">
           <div class="panel-header">
