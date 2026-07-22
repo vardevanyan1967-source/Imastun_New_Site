@@ -2283,14 +2283,14 @@
   }
 
   searchInput.addEventListener('input', () => {
-    const q = searchInput.value.trim().toLowerCase();
+    const q = searchInput.value.trim().toLowerCase().normalize('NFC');
     if (!q) { searchResults.innerHTML = ''; searchHint.textContent = SEARCH_HINT; return; }
 
     const hits = playlist.filter(t => {
-      const songArm = (SONG_NAMES[t.song] || '').toLowerCase();
+      const songArm = (SONG_NAMES[t.song] || '').toLowerCase().normalize('NFC');
       const poetKey = Object.keys(POET_NAMES).find(p => t.song.startsWith(p));
-      const poet = poetKey ? POET_NAMES[poetKey].toLowerCase() : '';
-      return songArm.includes(q) || t.song.toLowerCase().includes(q) || t.artistName.toLowerCase().includes(q) || poet.includes(q);
+      const poet = poetKey ? POET_NAMES[poetKey].toLowerCase().normalize('NFC') : '';
+      return songArm.includes(q) || t.song.toLowerCase().normalize('NFC').includes(q) || t.artistName.toLowerCase().normalize('NFC').includes(q) || poet.includes(q);
     });
 
     hits.sort((a, b) => {
