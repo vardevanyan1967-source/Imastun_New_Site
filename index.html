@@ -1218,6 +1218,14 @@
 
 <div class="gold-rule"></div>
 
+<section id="comments-section" style="max-width:720px;margin:40px auto;padding:0 20px;">
+  <h3 style="color:var(--gold,#c9a24b);font-size:20px;margin-bottom:16px;text-align:center;">Մեկնաբանություններ</h3>
+  <div id="fb-root"></div>
+  <div class="fb-comments" data-href="https://imastun.org/" data-width="100%" data-numposts="10"></div>
+</section>
+
+<div class="gold-rule"></div>
+
 <footer>
   <span class="footer-brand">Imastun Studio</span>
   <div class="footer-social">
@@ -1424,6 +1432,7 @@
   ];
 
   const YOUTUBE_VIDEOS = [
+    { id: 'LEbXXUewRQE', title: 'Քեզ խենթի նման սիրահարվեցի — Silva Gulanyan', added: '2026-07-22' },
     { id: '18bUBT3sjQE', title: 'Ամենալուսավոր ուղենիշը — Imastun Studio (Պաշտոնական կինեմատոգրաֆիկ բալլադ)', added: '2026-07-17' },
     { id: '8_2pJwPY2ao', title: 'The Eternal Thirst — Imastun Studio (Official Cinematic Ballad)', added: '2026-07-17' },
     { id: 'vfxN5jDPNfI', title: 'Самый светлый ориентир — Imastun Studio (Official Cinematic Love Ballad)', added: '2026-07-15' },
@@ -2663,5 +2672,8 @@
       navigator.serviceWorker.register('sw.js').catch(() => {});
     }
   </script>
+  <script async defer crossorigin="anonymous"
+    src="https://connect.facebook.net/hy_AM/sdk.js#xfbml=1&version=v19.0"
+    nonce="imastun"></script>
 </body>
 </html>
