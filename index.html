@@ -1424,8 +1424,8 @@
       songs: [
         'Սոնետ 1','Սոնետ 2','Սոնետ 3','Սոնետ 4','Սոնետ 5','Սոնետ 6',
         'Սոնետ 7','Սոնետ 8','Սոնետ 9','Սոնետ 10','Սոնետ 11','Սոնետ 12',
-        'Սոնետ 13','Սոնետ 14','Սոնետ 15','Սոնետ 16','Սոնետ 17','Սոնետ 18',
-        'Սոնետ 19','Սոնետ 20','Սոնետ 21','Սոնետ 22'
+        'Սոնետ  13','Սոնետ  14','Սոնետ  15','Սոնետ  16','Սոնետ  17','Սոնետ  18',
+        'Սոնետ  19','Սոնետ  20','Սոնետ  21','Սոնետ  22'
       ]
     },
     { id: 'nune-muradyan',  name: 'Nune Muradyan',  role: 'Vocalist & Lyricist',  songs: [] },
@@ -2396,7 +2396,12 @@
       const numOf = s => { const m = s.match(/(\d+)/); return m ? parseInt(m[1], 10) : 999; };
       songs = artist.songs.slice().sort((a, b) => numOf(a) - numOf(b));
     } else {
-      songs = artist.songs.slice().sort(alpha);
+      const newest = s => NEW_SONGS[s] ? new Date(NEW_SONGS[s]).getTime() : 0;
+      songs = artist.songs.slice().sort((a, b) => {
+        const d = newest(b) - newest(a);
+        if (d !== 0) return d;
+        return alpha(a, b);
+      });
     }
     const poetName = s => { const p = Object.keys(POET_NAMES).find(p => s.startsWith(p)); return p ? POET_NAMES[p] : ''; };
     let lastPoet = null;
