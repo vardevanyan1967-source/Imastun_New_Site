@@ -2447,7 +2447,7 @@
         }
       }
       const label = SONG_NAMES[song] || formatName(song);
-      const trackColor = detectColor(label);
+      const trackColor = artist.id === 'shakespeare-reimagined' ? '#9fd88a' : (NEW_SONGS[song] === '2026-07-25' ? '#9fd88a' : detectColor(label));
       return header + `<div class="track-item" data-pidx="${pIdx}">
         <span class="track-num">${String(i+1).padStart(2,'0')}</span>
         <div class="track-name" style="color:${trackColor};">${label}</div>
