@@ -403,14 +403,24 @@
       return;
     }
     favEmpty.style.display = 'none';
+    const detectColor = txt => {
+      const hasHy = /[\u0530-\u058F]/.test(txt);
+      const hasRu = /[\u0400-\u04FF]/.test(txt);
+      const hasEn = /[a-zA-Z]/.test(txt);
+      const count = [hasHy, hasRu, hasEn].filter(Boolean).length;
+      if (count >= 3) return '#9fd88a';
+      if (count === 2) return '#7bb3e0';
+      return '';
+    };
     items.forEach((t, i) => {
       const realIdx = playlist.indexOf(t);
       const div = document.createElement('div');
       div.className = 'track-item';
       div.dataset.idx = realIdx;
+      const trackColor = detectColor(t.label);
       div.innerHTML = `
         <span class="track-num">${String(i+1).padStart(2,'0')}</span>
-        <div class="track-name">${t.label}</div>
+        <div class="track-name"${trackColor ? ` style="color:${trackColor};"` : ''}>${t.label}</div>
         ${isNewSong(t.song) ? '<span class="new-badge">NEW</span>' : ''}
         <button class="track-fav${isFav(t.song) ? ' active' : ''}" data-song="${t.song}">${iconHeart(isFav(t.song))}</button>
         <button class="track-share-btn" data-song="${t.song}" style="background:none;border:none;cursor:pointer;color:var(--text-dim);display:flex;align-items:center;padding:4px;transition:color 0.2s;" title="Կիսվել"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button>

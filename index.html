@@ -1404,6 +1404,9 @@
         "hamo-sahyan/The Forest's Whisper",'hamo-sahyan/qamu hamburic',
         'hamo-sahyan/dojd','hamo-sahyan/dojd roc','hamo-sahyan/The Thunderstorm',
         'hamo-sahyan/The One in Vain','hamo-sahyan/Փնտրում ես դու',
+        'hamo-sahyan/ev chimacanq te inchu','hamo-sahyan/ka mi tulutun','hamo-sahyan/papy',
+        'hamo-sahyan/inchu hishecri','hamo-sahyan/duq lavn eq mardiq','hamo-sahyan/guce henc ajster',
+        'hamo-sahyan/es kuzei ',
         'vahan-teryan/Autumn and Rain  Աշուն Է անձրև',
         'vahan-teryan/Golden Stars in Blue(Տխուր զրույց)',
         'vahan-teryan/Աշուն Է անձրև','vahan-teryan/Կարոտ','vahan-teryan/Մոռանալ',
@@ -1425,7 +1428,11 @@
         'Սոնետ 1','Սոնետ 2','Սոնետ 3','Սոնետ 4','Սոնետ 5','Սոնետ 6',
         'Սոնետ 7','Սոնետ 8','Սոնետ 9','Սոնետ 10','Սոնետ 11','Սոնետ 12',
         'Սոնետ  13','Սոնետ  14','Սոնետ  15','Սոնետ  16','Սոնետ  17','Սոնետ  18',
-        'Սոնետ  19','Սոնետ  20','Սոնետ  21','Սոնետ  22'
+        'Սոնետ  19','Սոնետ  20','Սոնետ  21','Սոնետ  22',
+        'Սոնետ  23','Սոնետ  24','Սոնետ  25','Սոնետ  26','Սոնետ  27','Սոնետ  28',
+        'Սոնետ  29','Սոնետ  30','Սոնետ  31','Սոնետ  32','Սոնետ  33','Սոնետ  34',
+        'Սոնետ  35','Սոնետ  36','Սոնետ  37','Սոնետ  38','Սոնետ  39','Սոնետ  40',
+        'Սոնետ  41','Սոնետ  42','Սոնետ  43','Սոնետ  44'
       ]
     },
     { id: 'nune-muradyan',  name: 'Nune Muradyan',  role: 'Vocalist & Lyricist',  songs: [] },
@@ -1462,6 +1469,13 @@
   const NEW_SONGS = {
     "ughernery-lac-chen-linum": "2026-07-20","te karotum es": "2026-07-22","Tchaxr e pargevum ": "2026-07-22","lok cav u dard": "2026-07-22","gjuk lusiny": "2026-07-22","gitem el inz ches spasum": "2026-07-22",
     "hamo-sahyan/The One in Vain": "2026-07-20",
+    "hamo-sahyan/ev chimacanq te inchu": "2026-07-25",
+    "hamo-sahyan/ka mi tulutun": "2026-07-25",
+    "hamo-sahyan/papy": "2026-07-25",
+    "hamo-sahyan/inchu hishecri": "2026-07-25",
+    "hamo-sahyan/duq lavn eq mardiq": "2026-07-25",
+    "hamo-sahyan/guce henc ajster": "2026-07-25",
+    "hamo-sahyan/es kuzei ": "2026-07-25",
     "hamo-sahyan/Փնտրում ես դու": "2026-07-20",
     "vahan-teryan/Autumn and Rain  Աշուն Է անձրև": "2026-07-20",
     "vahan-teryan/Golden Stars in Blue(Տխուր զրույց)": "2026-07-20",
@@ -1688,6 +1702,13 @@
     "hamo-sahyan/dojd roc": "Дождь (рок)",
     "hamo-sahyan/The Thunderstorm": "The Thunderstorm",
     "hamo-sahyan/The One in Vain": "The One in Vain",
+    "hamo-sahyan/ev chimacanq te inchu": "Եվ չիմացանք թե ինչու",
+    "hamo-sahyan/ka mi tulutun": "Կա մի թուլություն",
+    "hamo-sahyan/papy": "Պապը",
+    "hamo-sahyan/inchu hishecri": "Ինչու հիշեցրի",
+    "hamo-sahyan/duq lavn eq mardiq": "Դուք լավն եք, մարդիկ",
+    "hamo-sahyan/guce henc ajster": "Գուցե հենց այստեղ",
+    "hamo-sahyan/es kuzei ": "Ես կուզեի",
     "hamo-sahyan/Փնտրում ես դու": "Փնտրում ես դու",
     "vahan-teryan/Autumn and Rain  Աշուն Է անձրև": "Autumn and Rain (Աշուն է, անձրև)",
     "vahan-teryan/Golden Stars in Blue(Տխուր զրույց)": "Golden Stars in Blue (Տխուր զրույց)",
@@ -2404,6 +2425,15 @@
       });
     }
     const poetName = s => { const p = Object.keys(POET_NAMES).find(p => s.startsWith(p)); return p ? POET_NAMES[p] : ''; };
+    const detectColor = txt => {
+      const hasHy = /[\u0530-\u058F]/.test(txt);
+      const hasRu = /[\u0400-\u04FF]/.test(txt);
+      const hasEn = /[a-zA-Z]/.test(txt);
+      const count = [hasHy, hasRu, hasEn].filter(Boolean).length;
+      if (count >= 3) return '#9fd88a';       // 3 languages: green
+      if (count === 2) return '#7bb3e0';      // 2 languages: blue
+      return '';                              // single language: default (white)
+    };
     let lastPoet = null;
     return `<div class="track-list">${songs.map((song, i) => {
       const pIdx = playlist.findIndex(p => p.artistId === artist.id && p.song === song);
@@ -2416,9 +2446,11 @@
           lastPoet = pn;
         }
       }
+      const label = SONG_NAMES[song] || formatName(song);
+      const trackColor = detectColor(label);
       return header + `<div class="track-item" data-pidx="${pIdx}">
         <span class="track-num">${String(i+1).padStart(2,'0')}</span>
-        <div class="track-name">${SONG_NAMES[song] || formatName(song)}</div>
+        <div class="track-name" style="color:${trackColor};">${label}</div>
         ${isNewSong(song) ? '<span class="new-badge">NEW</span>' : ''}
         <button class="track-fav-btn${fav ? ' fav-active' : ''}" data-artist="${artist.id}" data-song="${song}" style="background:none;border:none;cursor:pointer;color:${fav ? '#ee0055' : 'var(--text-dim)'};display:flex;align-items:center;padding:4px;transition:color 0.2s,transform 0.2s;">${iconHeart(fav)}</button>
         <button class="track-share-btn" data-artist="${artist.id}" data-song="${song}" title="Կիսվել" aria-label="Կիսվել այս երգով" style="background:none;border:none;cursor:pointer;color:var(--text-dim);display:flex;align-items:center;padding:4px;transition:color 0.2s;">${iconShare()}</button>
