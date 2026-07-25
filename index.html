@@ -2447,7 +2447,21 @@
         }
       }
       const label = SONG_NAMES[song] || formatName(song);
-      const trackColor = artist.id === 'shakespeare-reimagined' ? '#9fd88a' : (NEW_SONGS[song] === '2026-07-25' ? '#9fd88a' : detectColor(label));
+      const TRILINGUAL_OVERRIDE = new Set([
+        'Vorenineri_latsogh_purakum_002',
+        'vahan-teryan/Golden Stars in Blue(Տխուր զրույց)','vahan-teryan/Կարոտ','vahan-teryan/Մոռանալ',
+        'hamo-sahyan/The One in Vain','hamo-sahyan/guce henc ajster','hamo-sahyan/duq lavn eq mardiq',
+        'hamo-sahyan/es kuzei ','hamo-sahyan/ev chimacanq te inchu',
+        'hamo-sahyan/inchu hishecri','hamo-sahyan/ka mi tulutun','hamo-sahyan/Փնտրում ես դու'
+      ]);
+      const BILINGUAL_OVERRIDE = new Set([
+        'vahan-teryan/Աշուն Է անձրև', 'Katak_Yari_Ergu rem',
+        'Astghayin_Shghta_A', 'Vahan_Teryan_Gisher', 'Поцелуй_ветра', 'Vahan_Teryan_MEGhAVOR_AChKERU'
+      ]);
+      const trackColor = artist.id === 'shakespeare-reimagined' ? '#9fd88a'
+        : TRILINGUAL_OVERRIDE.has(song) ? '#9fd88a'
+        : BILINGUAL_OVERRIDE.has(song) ? '#7bb3e0'
+        : (NEW_SONGS[song] === '2026-07-25' ? '#9fd88a' : detectColor(label));
       return header + `<div class="track-item" data-pidx="${pIdx}">
         <span class="track-num">${String(i+1).padStart(2,'0')}</span>
         <div class="track-name" style="color:${trackColor};">${label}</div>
