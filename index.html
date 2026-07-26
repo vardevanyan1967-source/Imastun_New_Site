@@ -2569,16 +2569,16 @@
       const hasRu = /[\u0400-\u04FF]/.test(txt);
       const hasEn = /[a-zA-Z]/.test(txt);
       const count = [hasHy, hasRu, hasEn].filter(Boolean).length;
-      if (count >= 3) return '#9fd88a';       // 3 languages: green
-      if (count === 2) return '#7bb3e0';      // 2 languages: blue
+      if (count >= 3) return '#4ade80';       // 3 languages: green
+      if (count === 2) return '#38bdf8';      // 2 languages: blue
       return '';                              // single language: default (white)
     };
     let lastPoet = null;
     const langLegend = `<div class="lang-legend" style="font-family:'Inter',sans-serif;margin:0 0 14px;padding-bottom:10px;border-bottom:1px solid rgba(201,168,76,0.15);">
       <div style="font-size:9.5px;color:var(--text-dim);opacity:0.65;letter-spacing:0.03em;margin-bottom:6px;">Երգի տեքստի լեզուների քանակը · Число языков в тексте песни · Song text language count</div>
       <div style="display:flex;gap:16px;align-items:center;font-size:11px;color:var(--text-dim);flex-wrap:wrap;">
-        <span style="display:flex;align-items:center;gap:5px;"><span style="width:8px;height:8px;border-radius:50%;background:#9fd88a;display:inline-block;"></span>3</span>
-        <span style="display:flex;align-items:center;gap:5px;"><span style="width:8px;height:8px;border-radius:50%;background:#7bb3e0;display:inline-block;"></span>2</span>
+        <span style="display:flex;align-items:center;gap:5px;"><span style="width:8px;height:8px;border-radius:50%;background:#4ade80;display:inline-block;"></span>3</span>
+        <span style="display:flex;align-items:center;gap:5px;"><span style="width:8px;height:8px;border-radius:50%;background:#38bdf8;display:inline-block;"></span>2</span>
         <span style="display:flex;align-items:center;gap:5px;"><span style="width:8px;height:8px;border-radius:50%;background:#f5f0e8;display:inline-block;border:1px solid rgba(255,255,255,0.3);"></span>1</span>
       </div>
     </div>`;
@@ -2605,15 +2605,15 @@
         'Jaheli_nman_003','Tiezerk_Jinj_Lazur','ser da ardioq','Քո ժպիտները հավաքեմ','ughernery-lac-chen-linum','Ches_moranalu_003'
       ]);
       const BILINGUAL_OVERRIDE = new Set([
-        'vahan-teryan/Աշուն Է անձրև', 'Katak_Yari_Ergu rem',
+        'vahan-teryan/Աշուն Է անձրև',
         'Astghayin_Shghta_A', 'Vahan_Teryan_Gisher', 'Поцелуй_ветра', 'Vahan_Teryan_MEGhAVOR_AChKERU',
         'Es_kez_sirum_em','Hay_aragil','Tchaxr e pargevum ','Chisht_zhamanakin_At_The_Right_Time','Sirir_indz_hogis_FRAM_Duet',
         'S_irum_em_kez_I_love_you','sirty xentacav','Ka_mi_ashkharh_vor_srtov_e_karutsvats','Ko_koghkin_vorish_em_003','melodia lubvi'
       ]);
-      const trackColor = artist.id === 'shakespeare-reimagined' ? '#9fd88a'
-        : TRILINGUAL_OVERRIDE.has(song) ? '#9fd88a'
-        : BILINGUAL_OVERRIDE.has(song) ? '#7bb3e0'
-        : (NEW_SONGS[song] === '2026-07-25' ? '#9fd88a' : detectColor(label));
+      const trackColor = artist.id === 'shakespeare-reimagined' ? '#4ade80'
+        : TRILINGUAL_OVERRIDE.has(song) ? '#4ade80'
+        : BILINGUAL_OVERRIDE.has(song) ? '#38bdf8'
+        : (NEW_SONGS[song] === '2026-07-25' ? '#4ade80' : detectColor(label));
       const subtitle = SONG_SUBTITLES[song];
       const subtitleParts = subtitle ? [subtitle.hy, subtitle.en, subtitle.ru].filter(Boolean) : [];
       const subtitleHtml = subtitleParts.length ? `<div class="track-subtitle" style="font-size:11px;color:var(--text-dim);opacity:0.7;margin-top:2px;">${subtitleParts.join(' · ')}</div>` : '';
