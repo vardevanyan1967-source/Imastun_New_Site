@@ -1366,7 +1366,7 @@
     },
     {
       id: 'go-hara', name: 'Go Hara', role: 'Vocalist & Performer',
-      songs: ['ajs xarum mian ujern e haxtum','Anund_Kin_e_004','Arajin_hambuyru','Arevamutits_araj','Bari_gisher','duet_Спокойной_ночи_Remix_Remix','spakojnoj nochi (kin)','Ginin_prprel_e','gisherajin','daravor karnin','darnaham-ginin','Title_Es_arajva_pes_kez_karotum_em_Swiss_Pop_Ballad_Lyrics_by_Go_Hara_Remix_008','Im_poezian','la-fracise','pered rasvetom','kanchir-kgam','HANDIPOMNERI_AYS_KhAChMEROKOM','Hervits_Grkum em','Hravirir_indz_parelu_tangon','menq linelu enq','MI_TOGh_INDz_MENAK','Mi_siro_patmutyun','Vorenineri_latsogh_purakum_002','POETIS','Sirogisher_Go_Hara','cncir-users','fracuzhenka','My Mirror True','Зеркало моё','Իմ հայելի','Fragile Cry Has Risen Like','Во мне поднялся хрупкий плач','Փխրուն Լաց','Եվ ինչ է սերը','Չնոտագրված լռություն',"I'm tired of being strong",'устала быть сильной','hognel em ujer kin lineluc']
+      songs: ['ajs xarum mian ujern e haxtum','Anund_Kin_e_004','Arajin_hambuyru','Arevamutits_araj','Bari_gisher','duet_Спокойной_ночи_Remix_Remix','spakojnoj nochi (kin)','Ginin_prprel_e','gisherajin','daravor karnin','darnaham-ginin','Title_Es_arajva_pes_kez_karotum_em_Swiss_Pop_Ballad_Lyrics_by_Go_Hara_Remix_008','Im_poezian','la-fracise','pered rasvetom','kanchir-kgam','HANDIPOMNERI_AYS_KhAChMEROKOM','Hervits_Grkum em','Hravirir_indz_parelu_tangon','menq linelu enq','MI_TOGh_INDz_MENAK','Mi_siro_patmutyun','urenineri lacor purakum','POETIS','Sirogisher_Go_Hara','cncir-users','fracuzhenka','My Mirror True','Зеркало моё','Իմ հայելի','Fragile Cry Has Risen Like','Во мне поднялся хрупкий плач','Փխրուն Լաց','Եվ ինչ է սերը','Չնոտագրված լռություն',"I'm tired of being strong",'устала быть сильной','hognel em ujer kin lineluc']
     },
     {
       id: 'haj-poetner', name: 'Հայ Բանաստեղծներ', role: 'Armenian Poets · Songs',
@@ -1745,7 +1745,7 @@
     "duet_Спокойной_ночи_Remix_Remix": "Բարի գիշեր (դուետ ռուս)",
     "Mi_siro_patmutyun": "Մի սիրո պատմություն",
     "Title_Es_arajva_pes_kez_karotum_em_Swiss_Pop_Ballad_Lyrics_by_Go_Hara_Remix_008": "Ես առաջվա պես քեզ կարոտում եմ",
-    "Vorenineri_latsogh_purakum_002": "Ուռենիների լացող պուրակում",
+    "urenineri lacor purakum": "Ուռենիների լացող պուրակում",
     "pered rasvetom": "Լուսաբացից առաջ",
     "Безумный Ветер Любви": "Безумный Ветер Любви",
     "agh & dagy": "Աղն ու դաղը",
@@ -1885,7 +1885,7 @@
     "menq linelu enq": {en:"We Are Meant to Be", ru:"Мы будем вместе"},
     "MI_TOGh_INDz_MENAK": {en:"Don't Leave Me Alone", ru:"Не оставляй меня одну"},
     "Mi_siro_patmutyun": {en:"A Love Story", ru:"История одной любви"},
-    "Vorenineri_latsogh_purakum_002": {en:"In the Weeping Willow Grove", ru:"В плачущей роще ив"},
+    "urenineri lacor purakum": {en:"In the Weeping Willow Grove", ru:"В плачущей роще ив"},
     "POETIS": {en:"My Poet", ru:"Мой поэт"},
     "Sirogisher_Go_Hara": {en:"Night of Love", ru:"Ночь любви"},
     "cncir-users": {en:"Shake My Shoulders", ru:"Встряхни мои плечи"},
@@ -2568,9 +2568,10 @@
     }
     const poetName = s => { const p = Object.keys(POET_NAMES).find(p => s.startsWith(p)); return p ? POET_NAMES[p] : ''; };
     const detectColor = txt => {
-      const hasHy = /[\u0530-\u058F]/.test(txt);
-      const hasRu = /[\u0400-\u04FF]/.test(txt);
-      const hasEn = /[a-zA-Z]/.test(txt);
+      const stripped = txt.replace(/\([^)]*\)/g, '');
+      const hasHy = /[\u0530-\u058F]/.test(stripped);
+      const hasRu = /[\u0400-\u04FF]/.test(stripped);
+      const hasEn = /[a-zA-Z]/.test(stripped);
       const count = [hasHy, hasRu, hasEn].filter(Boolean).length;
       if (count >= 3) return '#4ade80';       // 3 languages: green
       if (count === 2) return '#38bdf8';      // 2 languages: blue
@@ -2598,7 +2599,6 @@
       }
       const label = SONG_NAMES[song] || formatName(song);
       const TRILINGUAL_OVERRIDE = new Set([
-        'Vorenineri_latsogh_purakum_002',
         'vahan-teryan/Golden Stars in Blue(Տխուր զրույց)','vahan-teryan/Կարոտ','vahan-teryan/Մոռանալ',
         'hamo-sahyan/The One in Vain','hamo-sahyan/guce henc ajster','hamo-sahyan/duq lavn eq mardiq',
         'hamo-sahyan/es kuzei ','hamo-sahyan/ev chimacanq te inchu',
