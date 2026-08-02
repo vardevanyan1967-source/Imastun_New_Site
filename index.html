@@ -875,7 +875,8 @@
     .gp-time { font-size: 12px; font-variant-numeric: tabular-nums; color: var(--text); flex-shrink: 0; width: 40px; font-weight: 600; }
     .gp-time.right { text-align: right; }
 
-    .gp-bar { flex: 1; height: 3px; background: rgba(255,255,255,0.08); border-radius: 2px; cursor: pointer; }
+    .gp-bar { flex: 1; height: 3px; background: rgba(255,255,255,0.08); border-radius: 2px; cursor: pointer; touch-action: none; position: relative; }
+    .gp-bar::before { content: ''; position: absolute; top: -10px; left: 0; right: 0; bottom: -10px; }
 
     .gp-bar-fill { height: 100%; background: var(--gold); border-radius: 2px; width: 0%; pointer-events: none; }
 
@@ -1041,6 +1042,7 @@
 
     /* ── MOBILE ── */
     @media (max-width: 700px) {
+      :root { --player-h: 122px; }
       .nav-links { display: none; }
       #artists-grid { grid-template-columns: repeat(2, 1fr); }
       #small-cards-row { grid-template-columns: repeat(2, 1fr); }
@@ -1057,8 +1059,13 @@
       .panel-cover { object-fit: cover; object-position: top center; }
       .panel-cover-col .panel-meta { padding: 12px 16px; }
       .panel-cover-col .panel-name { font-size: 22px; }
-      .gp-info { flex: 0 0 120px; }
-      .gp-progress-wrap { display: none; }
+      #global-player { flex-wrap: wrap; align-content: center; row-gap: 6px; padding: 10px clamp(14px, 4vw, 24px); }
+      .gp-cover { width: 40px; height: 40px; }
+      .gp-info { flex: 1 1 auto; min-width: 0; }
+      .gp-controls { gap: 8px; }
+      .gp-btn, .gp-play { padding: 4px; }
+      .gp-progress-wrap { display: flex; flex: 0 0 100%; order: 10; gap: 8px; }
+      .gp-time { font-size: 11px; width: 34px; }
       footer { flex-direction: column; align-items: flex-start; }
       #suno-banner { padding: 20px; }
       .track-list { padding: 0 2px; }
@@ -1366,7 +1373,7 @@
     },
     {
       id: 'go-hara', name: 'Go Hara', role: 'Vocalist & Performer',
-      songs: ['ajs xarum mian ujern e haxtum','Anund_Kin_e_004','Arajin_hambuyru','Arevamutits_araj','Bari_gisher','duet_Спокойной_ночи_Remix_Remix','spakojnoj nochi (kin)','Ginin_prprel_e','gisherajin','daravor karnin','darnaham-ginin','Title_Es_arajva_pes_kez_karotum_em_Swiss_Pop_Ballad_Lyrics_by_Go_Hara_Remix_008','Im_poezian','la-fracise','pered rasvetom','kanchir-kgam','HANDIPOMNERI_AYS_KhAChMEROKOM','Hervits_Grkum em','Hravirir_indz_parelu_tangon','menq linelu enq','MI_TOGh_INDz_MENAK','Mi_siro_patmutyun','urenineri lacor purakum','POETIS','Sirogisher_Go_Hara','cncir-users','fracuzhenka','My Mirror True','Зеркало моё','Իմ հայելի','Fragile Cry Has Risen Like','Во мне поднялся хрупкий плач','Փխրուն Լաց','Եվ ինչ է սերը','Չնոտագրված լռություն',"I'm tired of being strong",'устала быть сильной','hognel em ujer kin lineluc']
+      songs: ['ajs xarum mian ujern e haxtum','Anund_Kin_e_004','Arajin_hambuyru','Arevamutits_araj','Bari_gisher','duet_Спокойной_ночи_Remix_Remix','spakojnoj nochi (kin)','Ginin_prprel_e','gisherajin','daravor karnin','darnaham-ginin','Title_Es_arajva_pes_kez_karotum_em_Swiss_Pop_Ballad_Lyrics_by_Go_Hara_Remix_008','Im_poezian','la-fracise','pered rasvetom','kanchir-kgam','HANDIPOMNERI_AYS_KhAChMEROKOM','Hervits_Grkum em','Hravirir_indz_parelu_tangon','menq linelu enq','MI_TOGh_INDz_MENAK','Mi_siro_patmutyun','urenineri lacor purakum','POETIS','Sirogisher_Go_Hara','cncir-users','fracuzhenka','My Mirror True','Зеркало моё','Իմ հայելի','Fragile Cry Has Risen Like','Во мне поднялся хрупкий плач','Փխրուն Լաց','Եվ ինչ է սերը','Չնոտագրված լռություն',"I'm tired of being strong",'устала быть сильной','hognel em ujer kin lineluc','Հայաստան, մեր սուրբ տուն','Армения, наш святой дом','Armenia, Our Sacred Home']
     },
     {
       id: 'haj-poetner', name: 'Հայ Բանաստեղծներ', role: 'Armenian Poets · Songs',
@@ -1471,6 +1478,7 @@
   ];
 
   const NEW_SONGS = {
+    "Հայաստան, մեր սուրբ տուն": "2026-08-02","Армения, наш святой дом": "2026-08-02","Armenia, Our Sacred Home": "2026-08-02",
     "Սոնետ  45": "2026-08-01","Սոնետ  46": "2026-08-01","Սոնետ  47": "2026-08-01","Սոնետ  48": "2026-08-01","Սոնետ  49": "2026-08-01","Սոնետ  50": "2026-08-01",
     "Սոնետ  51": "2026-08-01","Սոնետ  52": "2026-08-01","Սոնետ  53": "2026-08-01","Սոնետ  54": "2026-08-01","Սոնետ  55": "2026-08-01","Սոնետ  56": "2026-08-01",
     "Սոնետ  57": "2026-08-01","Սոնետ  58": "2026-08-01","Սոնետ  59": "2026-08-01","Սոնետ  60": "2026-08-01",
@@ -2061,6 +2069,7 @@
     gpFill.style.width = '0%';
     gpCur.textContent = gpDur.textContent = '0:00';
     highlightTrack(idx);
+    updateMediaSession(t);
     if (autoplay) eng.play().then(() => { isPlaying = true; setPlayIcon(true); }).catch(() => {});
     try {
       localStorage.setItem('imastun_last_track', JSON.stringify({ artistId: t.artistId, song: t.song, label: t.label, artistName: t.artistName }));
@@ -2120,6 +2129,7 @@
         gpSong.textContent = t.label;
         gpFill.style.width = '0%';
         highlightTrack(currentIdx);
+        updateMediaSession(t);
         cur.pause();
         cur.currentTime = 0;
         cur.volume = 1;
@@ -2165,12 +2175,77 @@
   setupEngine(engine);
   setupEngine(engine2);
 
-  gpBar.addEventListener('click', e => {
+  /* ══ MEDIA SESSION (lock screen / headphone controls) ══ */
+  function updateMediaSession(t) {
+    if (!('mediaSession' in navigator)) return;
+    try {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: t.label,
+        artist: t.artistName,
+        album: 'Imastun Studio',
+        artwork: t.cover ? [
+          { src: t.cover, sizes: '512x512', type: 'image/jpeg' }
+        ] : []
+      });
+    } catch (e) {}
+  }
+  if ('mediaSession' in navigator) {
+    navigator.mediaSession.setActionHandler('play', () => gpPlayBtn.click());
+    navigator.mediaSession.setActionHandler('pause', () => gpPlayBtn.click());
+    navigator.mediaSession.setActionHandler('previoustrack', () => gpPrev.click());
+    navigator.mediaSession.setActionHandler('nexttrack', () => gpNext.click());
+    navigator.mediaSession.setActionHandler('seekto', details => {
+      const eng = active();
+      if (eng.duration && details.seekTime != null) {
+        eng.currentTime = details.seekTime;
+        gpFill.style.width = (details.seekTime / eng.duration * 100) + '%';
+      }
+    });
+  }
+
+  /* ══ SWIPE GESTURE (mobile: swipe song info to skip track) ══ */
+  (function setupSwipe() {
+    const zone = document.querySelector('.gp-info') || gpEl;
+    let startX = 0, startY = 0, tracking = false;
+    zone.addEventListener('touchstart', e => {
+      if (!e.touches.length) return;
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      tracking = true;
+    }, { passive: true });
+    zone.addEventListener('touchend', e => {
+      if (!tracking) return;
+      tracking = false;
+      const touch = e.changedTouches[0];
+      const dx = touch.clientX - startX;
+      const dy = touch.clientY - startY;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+        if (dx < 0) { if (currentIdx < playlist.length - 1) playTrack(currentIdx + 1); }
+        else { if (currentIdx > 0) playTrack(currentIdx - 1); }
+      }
+    }, { passive: true });
+  })();
+
+  function seekFromClientX(clientX) {
     const eng = active();
     if (!eng.duration) return;
     const r = gpBar.getBoundingClientRect();
-    eng.currentTime = ((e.clientX - r.left) / r.width) * eng.duration;
+    const ratio = Math.min(1, Math.max(0, (clientX - r.left) / r.width));
+    eng.currentTime = ratio * eng.duration;
+    gpFill.style.width = (ratio * 100) + '%';
+    gpCur.textContent = fmtTime(eng.currentTime);
+  }
+  let barDragging = false;
+  gpBar.addEventListener('pointerdown', e => {
+    barDragging = true;
+    gpBar.setPointerCapture(e.pointerId);
+    seekFromClientX(e.clientX);
   });
+  gpBar.addEventListener('pointermove', e => {
+    if (barDragging) seekFromClientX(e.clientX);
+  });
+  gpBar.addEventListener('pointerup', e => { barDragging = false; });
+  gpBar.addEventListener('pointercancel', () => { barDragging = false; });
 
   document.addEventListener('keydown', e => {
     if (e.code === 'Space' && e.target === document.body) { e.preventDefault(); gpPlayBtn.click(); }
