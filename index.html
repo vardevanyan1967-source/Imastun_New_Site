@@ -305,8 +305,12 @@
 
     .hero-marquee {
       display: flex;
+      width: max-content;
+      min-width: max-content;
+      gap: 64px;
       white-space: nowrap;
-      animation: marqueeScroll 28s linear infinite;
+      will-change: transform;
+      animation: marqueeScroll 52s linear infinite;
     }
 
     .hero-marquee span {
@@ -319,9 +323,15 @@
       color: var(--gold-light);
       text-shadow: 0 1px 8px rgba(0,0,0,.85), 0 0 10px rgba(201,168,76,.24);
       padding-right: 0;
-      flex-shrink: 0;
+      display: block;
+      flex: 0 0 auto;
+      width: max-content;
     }
     @media (max-width:520px) {
+      .hero-marquee {
+        gap: 40px;
+        animation-duration: 44s;
+      }
       .hero-marquee span {
         font-size: 17px;
         font-weight: 700;
@@ -331,8 +341,14 @@
     }
 
     @keyframes marqueeScroll {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
+      from { transform: translate3d(0,0,0); }
+      to   { transform: translate3d(calc(-50% - 32px),0,0); }
+    }
+    @media (max-width:520px) {
+      @keyframes marqueeScroll {
+        from { transform: translate3d(0,0,0); }
+        to   { transform: translate3d(calc(-50% - 20px),0,0); }
+      }
     }
 
     #video-toggle {
