@@ -1172,7 +1172,10 @@
     .nav-search-visible { position:relative; display:flex; align-items:center; width:clamp(180px,24vw,320px); }
     .nav-search-visible input { width:100%; min-height:42px; padding:9px 42px 9px 14px; border:1px solid var(--border); border-radius:22px; background:var(--surface); color:var(--text); font:14px 'Syne',sans-serif; }
     .nav-search-visible button { position:absolute; right:3px; width:36px; height:36px; border:0; border-radius:50%; background:transparent; color:var(--gold); cursor:pointer; }
-    .language-select { min-height:42px; border:1px solid var(--border); border-radius:22px; background:var(--surface); color:var(--text); padding:0 12px; font:600 12px 'Syne',sans-serif; cursor:pointer; }
+    .language-buttons { display:flex; align-items:center; gap:5px; padding:3px; border:1px solid var(--border); border-radius:24px; background:var(--surface); }
+    .language-button { min-width:44px; min-height:36px; padding:0 9px; border:0; border-radius:18px; background:transparent; color:var(--gold-light); font:700 12px 'Syne',sans-serif; cursor:pointer; transition:background .2s,color .2s,box-shadow .2s; }
+    .language-button:hover { background:var(--gold-dim); }
+    .language-button.active { background:var(--gold); color:#080808; box-shadow:0 0 14px rgba(201,168,76,.28); }
     #mobile-menu-toggle { display:none; width:44px; height:44px; border:1px solid var(--border); border-radius:50%; background:var(--surface); color:var(--gold); cursor:pointer; align-items:center; justify-content:center; }
     #mobile-menu-toggle .bars, #mobile-menu-toggle .bars::before, #mobile-menu-toggle .bars::after { display:block; width:19px; height:2px; background:currentColor; content:''; position:relative; transition:.2s; }
     #mobile-menu-toggle .bars::before { position:absolute; top:-6px; }
@@ -1182,7 +1185,7 @@
     #mobile-menu-toggle[aria-expanded="true"] .bars::after { top:0; transform:rotate(-45deg); }
     .quick-nav { position:sticky; top:64px; z-index:90; display:flex; gap:8px; overflow-x:auto; padding:9px clamp(16px,5vw,80px); background:rgba(8,8,8,.94); border-bottom:1px solid var(--border); scrollbar-width:none; }
     .quick-nav::-webkit-scrollbar { display:none; }
-    .quick-nav a { flex:0 0 auto; min-height:40px; display:inline-flex; align-items:center; padding:8px 15px; border:1px solid var(--border); border-radius:20px; color:var(--text); text-decoration:none; font-size:12px; }
+    .quick-nav a { flex:0 0 auto; min-height:48px; display:inline-flex; align-items:center; justify-content:center; padding:10px 20px; border:1px solid rgba(201,168,76,.48); border-radius:24px; color:var(--gold-light); text-decoration:none; font-size:14px; font-weight:700; letter-spacing:.02em; background:rgba(201,168,76,.06); }
     .quick-nav a:hover, .quick-nav a:focus-visible { color:var(--gold); border-color:var(--gold); }
     [id] { scroll-margin-top:126px; }
     #search-overlay[aria-hidden="true"] { visibility:hidden; }
@@ -1201,7 +1204,8 @@
     @media (max-width:520px) {
       .nav-home img { height:31px !important; }
       .nav-brand { max-width:116px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-      .language-select { padding:0 8px; }
+      .language-buttons { order:2; width:100%; justify-content:center; margin-top:2px; }
+      .language-button { flex:1; max-width:92px; font-size:14px; }
       #theme-toggle { min-width:42px; min-height:42px; justify-content:center; }
     }
   </style>
@@ -1265,9 +1269,11 @@
     </button>
   </form>
   <div class="nav-actions">
-    <select id="language-select" class="language-select" aria-label="Ընտրել լեզուն" data-i18n-aria="languageLabel">
-      <option value="hy">Հայ</option><option value="ru">Рус</option><option value="en">Eng</option>
-    </select>
+    <div id="language-buttons" class="language-buttons" role="group" aria-label="Ընտրել լեզուն" data-i18n-aria="languageLabel">
+      <button type="button" class="language-button" data-lang="hy" lang="hy">Հայ</button>
+      <button type="button" class="language-button" data-lang="ru" lang="ru">Рус</button>
+      <button type="button" class="language-button" data-lang="en" lang="en">Eng</button>
+    </div>
     <button id="search-toggle" type="button" hidden aria-hidden="true" tabindex="-1"></button>
     <button id="theme-toggle" title="Բաց/Մուգ ռեժիմ" aria-label="Փոխարկել բաց և մուգ ռեժիմների միջև">
       <svg id="theme-icon" width="19" height="19" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2a8 8 0 108 8 6.5 6.5 0 01-8-8z" fill="currentColor"/></svg>
@@ -3318,7 +3324,7 @@
       ru: { skip:'Перейти к основному содержанию', searchLabel:'Найти песню или исполнителя', searchPlaceholder:'Найти песню или исполнителя…', searchButton:'Начать поиск', languageLabel:'Выбрать язык', menuOpen:'Открыть меню', menuClose:'Закрыть меню', quickNav:'Быстрые переходы', searchTitle:'Поиск по сайту', artists:'Исполнители', new:'Новинки', videos:'Видео', support:'Поддержать', comments:'Комментарии' },
       en: { skip:'Skip to main content', searchLabel:'Find a song or artist', searchPlaceholder:'Find a song or artist…', searchButton:'Start search', languageLabel:'Choose language', menuOpen:'Open menu', menuClose:'Close menu', quickNav:'Quick links', searchTitle:'Site search', artists:'Artists', new:'New', videos:'Videos', support:'Support', comments:'Comments' }
     };
-    const languageSelect = document.getElementById('language-select');
+    const languageButtons = Array.from(document.querySelectorAll('.language-button'));
     const menuButton = document.getElementById('mobile-menu-toggle');
     const menu = document.getElementById('primary-nav-links');
     const overlay = document.getElementById('search-overlay');
@@ -3329,14 +3335,18 @@
     function applyLanguage(next) {
       locale = translations[next] ? next : 'hy';
       document.documentElement.lang = locale;
-      languageSelect.value = locale;
+      languageButtons.forEach(button => {
+        const active = button.dataset.lang === locale;
+        button.classList.toggle('active', active);
+        button.setAttribute('aria-pressed', String(active));
+      });
       document.querySelectorAll('[data-i18n]').forEach(el => { const key=el.dataset.i18n; if(translations[locale][key]) el.textContent=translations[locale][key]; });
       document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { const key=el.dataset.i18nPlaceholder; if(translations[locale][key]) el.placeholder=translations[locale][key]; });
       document.querySelectorAll('[data-i18n-aria]').forEach(el => { const key=el.dataset.i18nAria; if(translations[locale][key]) el.setAttribute('aria-label',translations[locale][key]); });
       try { localStorage.setItem('imastun_language', locale); } catch (e) {}
     }
     applyLanguage(locale);
-    languageSelect.addEventListener('change', e => applyLanguage(e.target.value));
+    languageButtons.forEach(button => button.addEventListener('click', () => applyLanguage(button.dataset.lang)));
 
     function setMenu(open) {
       menu.classList.toggle('open', open);
