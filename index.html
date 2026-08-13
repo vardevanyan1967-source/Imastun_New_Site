@@ -1184,9 +1184,9 @@
     #mobile-menu-toggle[aria-expanded="true"] .bars { background:transparent; }
     #mobile-menu-toggle[aria-expanded="true"] .bars::before { top:0; transform:rotate(45deg); }
     #mobile-menu-toggle[aria-expanded="true"] .bars::after { top:0; transform:rotate(-45deg); }
-    .quick-nav { position:sticky; top:64px; z-index:90; display:flex; gap:8px; overflow-x:auto; padding:9px clamp(16px,5vw,80px); background:rgba(8,8,8,.94); border-bottom:1px solid var(--border); scrollbar-width:none; }
+    .quick-nav { position:sticky; top:64px; z-index:90; display:flex; justify-content:center; gap:10px; width:100%; padding:10px clamp(16px,5vw,80px); background:rgba(8,8,8,.94); border-bottom:1px solid var(--border); scrollbar-width:none; }
     .quick-nav::-webkit-scrollbar { display:none; }
-    .quick-nav a { flex:0 0 auto; min-height:48px; display:inline-flex; align-items:center; justify-content:center; padding:10px 20px; border:1px solid rgba(201,168,76,.48); border-radius:24px; color:var(--gold-light); text-decoration:none; font-size:14px; font-weight:700; letter-spacing:.02em; background:rgba(201,168,76,.06); }
+    .quick-nav a { flex:0 1 190px; min-width:140px; min-height:50px; display:inline-flex; align-items:center; justify-content:center; padding:10px 18px; border:1px solid rgba(201,168,76,.58); border-radius:25px; color:var(--gold-light); text-decoration:none; text-align:center; font-size:14px; font-weight:700; letter-spacing:.02em; background:rgba(201,168,76,.06); }
     .quick-nav a:hover, .quick-nav a:focus-visible { color:#fff2bd; border-color:var(--gold); background:rgba(201,168,76,.14); }
     [id] { scroll-margin-top:126px; }
     #search-overlay[aria-hidden="true"] { visibility:hidden; }
@@ -1200,7 +1200,8 @@
       #nav .nav-links.open { display:flex; }
       #nav .nav-links li { width:100%; }
       #nav .nav-links a { display:flex; align-items:center; min-height:48px; width:100%; padding:10px 12px; border-bottom:1px solid var(--border); }
-      .quick-nav { position:relative; top:0; }
+      .quick-nav { position:relative; top:0; justify-content:flex-start; overflow-x:auto; }
+      .quick-nav a { flex:0 0 auto; min-width:150px; }
     }
     @media (max-width:520px) {
       .nav-home img { height:31px !important; }
