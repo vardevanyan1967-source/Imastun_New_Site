@@ -310,13 +310,24 @@
     }
 
     .hero-marquee span {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: clamp(13px, 1.6vw, 17px);
-      letter-spacing: 0.06em;
-      color: var(--gold);
+      font-family: Georgia, 'Noto Serif Armenian', 'Noto Serif', serif;
+      font-style: normal;
+      font-size: clamp(16px, 1.7vw, 20px);
+      font-weight: 700;
+      line-height: 1.45;
+      letter-spacing: 0.035em;
+      color: var(--gold-light);
+      text-shadow: 0 1px 8px rgba(0,0,0,.85), 0 0 10px rgba(201,168,76,.24);
       padding-right: 0;
       flex-shrink: 0;
+    }
+    @media (max-width:520px) {
+      .hero-marquee span {
+        font-size: 17px;
+        font-weight: 700;
+        line-height: 1.5;
+        letter-spacing: 0.02em;
+      }
     }
 
     @keyframes marqueeScroll {
