@@ -1209,11 +1209,11 @@
       .nav-home { order:1; width:100%; justify-content:center; gap:10px; }
       .nav-home img { height:36px !important; }
       .nav-brand { max-width:none; font-size:20px; white-space:nowrap; overflow:visible; }
-      .nav-actions { order:2; width:100%; margin:0; display:grid; grid-template-columns:46px minmax(0,1fr) 46px; gap:8px; align-items:center; }
-      #mobile-menu-toggle { order:1; width:46px; height:46px; }
-      .language-buttons { order:2; width:100%; min-width:0; justify-content:center; margin:0; }
+      .nav-actions { order:2; position:relative; width:100%; min-height:50px; margin:0; display:flex; align-items:center; justify-content:center; }
+      #mobile-menu-toggle { position:absolute; left:0; top:2px; width:46px; height:46px; }
+      .language-buttons { width:min(220px,calc(100% - 108px)); min-width:0; justify-content:center; margin:0 auto; }
       .language-button { flex:1; min-width:0; max-width:none; padding:0 7px; font-size:14px; }
-      #theme-toggle { order:3; width:46px; min-width:46px; min-height:46px; justify-content:center; border:1px solid var(--border); border-radius:50%; background:var(--surface); }
+      #theme-toggle { position:absolute; right:0; top:2px; width:46px; min-width:46px; min-height:46px; justify-content:center; border:1px solid var(--border); border-radius:50%; background:var(--surface); }
       .nav-search-visible { order:3; flex:0 0 100%; width:100%; min-width:0; }
       .nav-search-visible input { min-height:50px; font-size:16px; }
       #nav .nav-links { order:4; }
