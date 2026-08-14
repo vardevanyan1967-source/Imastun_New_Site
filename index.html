@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hy">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -35,6 +35,9 @@
   <meta name="twitter:description" content="Բարի գալուստ Իմաստուն Ստուդիո" />
   <meta name="twitter:image" content="logo.png" />
   <meta name="theme-color" content="#c9a84c" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="logo.png" type="image/png" />
   <link rel="apple-touch-icon" href="logo.png" />
@@ -302,23 +305,50 @@
 
     .hero-marquee {
       display: flex;
+      width: max-content;
+      min-width: max-content;
+      gap: 64px;
       white-space: nowrap;
-      animation: marqueeScroll 28s linear infinite;
+      will-change: transform;
+      animation: marqueeScroll 52s linear infinite;
     }
 
     .hero-marquee span {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: clamp(13px, 1.6vw, 17px);
-      letter-spacing: 0.06em;
-      color: var(--gold);
+      font-family: Georgia, 'Noto Serif Armenian', 'Noto Serif', serif;
+      font-style: normal;
+      font-size: clamp(16px, 1.7vw, 20px);
+      font-weight: 700;
+      line-height: 1.45;
+      letter-spacing: 0.035em;
+      color: var(--gold-light);
+      text-shadow: 0 1px 8px rgba(0,0,0,.85), 0 0 10px rgba(201,168,76,.24);
       padding-right: 0;
-      flex-shrink: 0;
+      display: block;
+      flex: 0 0 auto;
+      width: max-content;
+    }
+    @media (max-width:520px) {
+      .hero-marquee {
+        gap: 40px;
+        animation-duration: 44s;
+      }
+      .hero-marquee span {
+        font-size: 17px;
+        font-weight: 700;
+        line-height: 1.5;
+        letter-spacing: 0.02em;
+      }
     }
 
     @keyframes marqueeScroll {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
+      from { transform: translate3d(0,0,0); }
+      to   { transform: translate3d(calc(-50% - 32px),0,0); }
+    }
+    @media (max-width:520px) {
+      @keyframes marqueeScroll {
+        from { transform: translate3d(0,0,0); }
+        to   { transform: translate3d(calc(-50% - 20px),0,0); }
+      }
     }
 
     #video-toggle {
@@ -370,7 +400,7 @@
       color: var(--gold); letter-spacing: 0.06em;
     }
 
-    .nav-links { display: flex; gap: 36px; list-style: none; align-items: center; }
+    .nav-links { display: none; gap: 36px; list-style: none; align-items: center; }
 
     .nav-links a {
       font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
@@ -1158,6 +1188,167 @@
       color: var(--white); line-height: 1.2;
     }
     .recent-card .rc-sub { font-size: 12px; color: var(--text-dim); font-family: 'Inter', sans-serif; }
+
+    /* Mobile navigation, visible search, language switcher and accessibility */
+    .sr-only { position:absolute !important; width:1px !important; height:1px !important; padding:0 !important; margin:-1px !important; overflow:hidden !important; clip:rect(0,0,0,0) !important; white-space:nowrap !important; border:0 !important; }
+    .skip-link { position:fixed; top:8px; left:8px; z-index:10000; transform:translateY(-160%); background:var(--gold); color:#080808; padding:10px 14px; border-radius:6px; font-weight:700; text-decoration:none; }
+    .skip-link:focus { transform:translateY(0); }
+    :focus-visible { outline:3px solid var(--gold-light); outline-offset:3px; }
+    #nav { gap:14px; }
+    .nav-home { display:flex; align-items:center; gap:12px; color:inherit; text-decoration:none; min-width:max-content; }
+    .nav-actions { display:flex; align-items:center; gap:8px; margin-left:auto; }
+    .nav-search-visible { position:relative; display:flex; align-items:center; flex:1 1 520px; width:auto; min-width:260px; max-width:none; }
+    .nav-search-visible input { width:100%; min-height:46px; padding:10px 48px 10px 18px; border:1px solid rgba(201,168,76,.55); border-radius:24px; background:var(--surface); color:var(--gold-light); caret-color:var(--gold); font:600 15px 'Syne',sans-serif; letter-spacing:.01em; }
+    .nav-search-visible input::placeholder { color:var(--gold-light); opacity:.92; }
+    .nav-search-visible button { position:absolute; right:3px; width:36px; height:36px; border:0; border-radius:50%; background:transparent; color:var(--gold); cursor:pointer; }
+    .language-buttons { display:flex; align-items:center; gap:5px; padding:3px; border:1px solid var(--border); border-radius:24px; background:var(--surface); }
+    .language-button { min-width:44px; min-height:36px; padding:0 9px; border:0; border-radius:18px; background:transparent; color:var(--gold-light); font:700 12px 'Syne',sans-serif; cursor:pointer; transition:background .2s,color .2s,box-shadow .2s; }
+    .language-button:hover { background:var(--gold-dim); }
+    .language-button.active { background:var(--gold); color:#080808; box-shadow:0 0 14px rgba(201,168,76,.28); }
+    #mobile-menu-toggle { display:none; width:44px; height:44px; border:1px solid var(--border); border-radius:50%; background:var(--surface); color:var(--gold); cursor:pointer; align-items:center; justify-content:center; }
+    #mobile-menu-toggle .bars, #mobile-menu-toggle .bars::before, #mobile-menu-toggle .bars::after { display:block; width:19px; height:2px; background:currentColor; content:''; position:relative; transition:.2s; }
+    #mobile-menu-toggle .bars::before { position:absolute; top:-6px; }
+    #mobile-menu-toggle .bars::after { position:absolute; top:6px; }
+    #mobile-menu-toggle[aria-expanded="true"] .bars { background:transparent; }
+    #mobile-menu-toggle[aria-expanded="true"] .bars::before { top:0; transform:rotate(45deg); }
+    #mobile-menu-toggle[aria-expanded="true"] .bars::after { top:0; transform:rotate(-45deg); }
+    .quick-nav { position:sticky; top:64px; z-index:90; display:flex; justify-content:center; gap:10px; width:100%; padding:10px clamp(16px,5vw,80px); background:rgba(8,8,8,.94); border-bottom:1px solid var(--border); scrollbar-width:none; }
+    .quick-nav::-webkit-scrollbar { display:none; }
+    .quick-nav a { flex:0 1 190px; min-width:140px; min-height:50px; display:inline-flex; align-items:center; justify-content:center; padding:10px 18px; border:1px solid rgba(201,168,76,.58); border-radius:25px; color:var(--gold-light); text-decoration:none; text-align:center; font-size:14px; font-weight:700; letter-spacing:.02em; background:rgba(201,168,76,.06); }
+    .quick-nav a:hover, .quick-nav a:focus-visible { color:#fff2bd; border-color:var(--gold); background:rgba(201,168,76,.14); }
+    [id] { scroll-margin-top:126px; }
+    #search-overlay[aria-hidden="true"] { visibility:hidden; }
+    @media (max-width:900px) {
+      #nav { height:auto; min-height:64px; padding:10px 16px; flex-wrap:wrap; }
+      .nav-brand { font-size:17px; }
+      .nav-search-visible { order:5; width:100%; }
+      .nav-actions { margin-left:auto; }
+      #mobile-menu-toggle { display:flex; }
+      #nav .nav-links { display:none; order:6; width:100%; flex-direction:column; align-items:stretch; gap:0; padding:8px 0 4px; }
+      #nav .nav-links.open { display:flex; }
+      #nav .nav-links li { width:100%; }
+      #nav .nav-links a { display:flex; align-items:center; min-height:48px; width:100%; padding:10px 12px; border-bottom:1px solid var(--border); }
+      .quick-nav { position:relative; top:0; justify-content:flex-start; overflow-x:auto; }
+      .quick-nav a { flex:0 0 auto; min-width:150px; }
+    }
+    /* ── APP INSTALL PROMPT ── */
+    #app-install-prompt {
+      position:fixed;
+      left:24px;
+      bottom:24px;
+      z-index:240;
+      width:min(390px,calc(100vw - 48px));
+      display:none;
+      align-items:center;
+      gap:12px;
+      padding:14px;
+      border:1px solid rgba(201,168,76,.5);
+      border-radius:20px;
+      background:rgba(15,15,15,.96);
+      color:var(--text);
+      box-shadow:0 14px 40px rgba(0,0,0,.55),0 0 22px rgba(201,168,76,.12);
+      backdrop-filter:blur(14px);
+    }
+    #app-install-prompt.show { display:flex; }
+    .install-app-icon {
+      width:50px;
+      height:50px;
+      flex:0 0 50px;
+      border-radius:13px;
+      object-fit:cover;
+      box-shadow:0 0 16px rgba(201,168,76,.3);
+    }
+    .install-app-copy { min-width:0; flex:1; }
+    .install-app-title {
+      display:block;
+      margin-bottom:3px;
+      color:var(--gold-light);
+      font:600 17px/1.15 'Syne',sans-serif;
+    }
+    .install-app-text { color:var(--text-dim); font:500 12px/1.35 'Syne',sans-serif; }
+    .install-app-actions { display:flex; align-items:center; gap:7px; margin-top:9px; }
+    #install-app-button {
+      min-height:38px;
+      padding:8px 14px;
+      border:1px solid var(--gold);
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--gold),var(--gold-light));
+      color:#171208;
+      font:700 12px/1 'Syne',sans-serif;
+      cursor:pointer;
+    }
+    #dismiss-install-button {
+      min-height:38px;
+      padding:8px 10px;
+      border:0;
+      background:transparent;
+      color:var(--text-dim);
+      font:600 12px/1 'Syne',sans-serif;
+      cursor:pointer;
+    }
+    #close-install-prompt {
+      position:absolute;
+      top:5px;
+      right:7px;
+      width:32px;
+      height:32px;
+      border:0;
+      background:transparent;
+      color:var(--text-dim);
+      font-size:18px;
+      cursor:pointer;
+    }
+
+    @media (max-width:520px) {
+      #nav { flex-direction:column; gap:10px; padding:12px 14px; }
+      .nav-home { order:1; width:100%; justify-content:center; gap:10px; }
+      .nav-home img { height:36px !important; }
+      .nav-brand { max-width:none; font-size:20px; white-space:nowrap; overflow:visible; }
+      .nav-actions { order:2; position:relative; width:100%; min-height:50px; margin:0; display:flex; align-items:center; justify-content:center; }
+      #mobile-menu-toggle { position:absolute; left:0; top:2px; width:46px; height:46px; }
+      .language-buttons { width:min(220px,calc(100% - 108px)); min-width:0; justify-content:center; margin:0 auto; }
+      .language-button { flex:1; min-width:0; max-width:none; padding:0 7px; font-size:14px; }
+      #theme-toggle { position:absolute; right:0; top:2px; width:46px; min-width:46px; min-height:46px; justify-content:center; border:1px solid var(--border); border-radius:50%; background:var(--surface); }
+      .nav-search-visible { order:3; flex:0 0 100%; width:100%; min-width:0; }
+      .nav-search-visible input { min-height:50px; font-size:16px; }
+      #nav .nav-links { order:4; }
+      .quick-nav { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); justify-content:stretch; gap:9px; width:100%; overflow:visible; padding:10px 14px; }
+      .quick-nav a { width:100%; min-width:0; min-height:52px; padding:10px 8px; font-size:14px; white-space:normal; }
+      .quick-nav a:last-child { grid-column:1 / -1; }
+      #app-install-prompt {
+        left:12px;
+        right:68px;
+        bottom:calc(var(--player-h) + 12px);
+        width:auto;
+        padding:11px;
+        border-radius:17px;
+      }
+      .install-app-icon { width:42px; height:42px; flex-basis:42px; }
+      .install-app-title { font-size:14px; padding-right:16px; }
+      .install-app-text { font-size:11px; }
+      .install-app-actions { margin-top:7px; }
+      #install-app-button, #dismiss-install-button { min-height:34px; padding:7px 10px; font-size:11px; }
+      /* Keep floating contact controls compact on narrow screens. */
+      #donate-float-btn,
+      .messenger-btn,
+      #wa-btn {
+        right:12px;
+        width:44px;
+        height:44px;
+      }
+      #wa-btn { bottom:calc(var(--player-h) + 12px); }
+      .messenger-btn { bottom:calc(var(--player-h) + 64px); }
+      #donate-float-btn {
+        bottom:calc(var(--player-h) + 116px);
+        font-size:20px;
+      }
+      .messenger-btn svg,
+      #wa-btn svg { width:24px; height:24px; }
+      #resume-banner { bottom:calc(var(--player-h) + 10px); width:calc(100vw - 28px); max-width:none; padding:14px 42px 14px 14px; border-radius:22px; flex-wrap:wrap; gap:10px; font-size:13px; line-height:1.4; }
+      #resume-banner #rb-text { flex:1 1 100%; padding-right:4px; }
+      #resume-banner #rb-play { flex:0 0 auto; }
+      #resume-banner .rb-close { position:absolute; top:8px; right:8px; }
+    }
   </style>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHJJF7DQ29"></script>
@@ -1169,6 +1360,7 @@
   </script>
 </head>
 <body>
+<a class="skip-link" href="#artists" data-i18n="skip">Անցնել հիմնական բովանդակությանը</a>
 
 <section id="hero">
   <video id="bg-video" src="background.mp4" autoplay muted loop playsinline></video>
@@ -1186,8 +1378,8 @@
   </div>
   <div class="hero-marquee-wrap">
     <div class="hero-marquee">
-      <span>Բարի գալուստ Իմաստուն Ստուդիո&nbsp;&nbsp;✦&nbsp;&nbsp;Այստեղ մենք երաժշտությունն ու խոսքը միավորում ենք&nbsp;&nbsp;✦&nbsp;&nbsp;Երգերը դառնում են պատկերներ, իսկ պատկերները՝ պատմություններ&nbsp;&nbsp;✦&nbsp;&nbsp;Բարի գալուստ Իմաստուն Ստուդիո&nbsp;&nbsp;✦&nbsp;&nbsp;Այստեղ մենք երաժշտությունն ու խոսքը միավորում ենք&nbsp;&nbsp;✦&nbsp;&nbsp;Երգերը դառնում են պատկերներ, իսկ պատկերները՝ պատմություններ&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
-      <span aria-hidden="true">Բարի գալուստ Իմաստուն Ստուդիո&nbsp;&nbsp;✦&nbsp;&nbsp;Այստեղ մենք երաժշտությունն ու խոսքը միավորում ենք&nbsp;&nbsp;✦&nbsp;&nbsp;Երգերը դառնում են պատկերներ, իսկ պատկերները՝ պատմություններ&nbsp;&nbsp;✦&nbsp;&nbsp;Բարի գալուստ Իմաստուն Ստուդիո&nbsp;&nbsp;✦&nbsp;&nbsp;Այստեղ մենք երաժշտությունն ու խոսքը միավորում ենք&nbsp;&nbsp;✦&nbsp;&nbsp;Երգերը դառնում են պատկերներ, իսկ պատկերները՝ պատմություններ&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
+      <span data-i18n="marquee">Բարի գալուստ Իմաստուն Ստուդիո ✦ Այստեղ մենք երաժշտությունն ու խոսքը միավորում ենք ✦ Երգերը դառնում են պատկերներ, իսկ պատկերները՝ պատմություններ ✦ Բարի գալուստ Իմաստուն Ստուդիո ✦ Այստեղ մենք երաժշտությունն ու խոսքը միավորում ենք ✦ Երգերը դառնում են պատկերներ, իսկ պատկերները՝ պատմություններ ✦ </span>
+      <span data-i18n="marquee" aria-hidden="true">Բարի գալուստ Իմաստուն Ստուդիո ✦ Այստեղ մենք երաժշտությունն ու խոսքը միավորում ենք ✦ Երգերը դառնում են պատկերներ, իսկ պատկերները՝ պատմություններ ✦ Բարի գալուստ Իմաստուն Ստուդիո ✦ Այստեղ մենք երաժշտությունն ու խոսքը միավորում ենք ✦ Երգերը դառնում են պատկերներ, իսկ պատկերները՝ պատմություններ ✦ </span>
     </div>
   </div>
 
@@ -1205,34 +1397,44 @@
 
 <div id="page-loader"><div class="loader-spinner"></div></div>
 
-<nav id="nav">
-  <div style="display:flex;align-items:center;gap:12px;">
-    <img src="logo.png" alt="Imastun Studio" style="height:36px;width:auto;filter:drop-shadow(0 0 8px rgba(201,168,76,0.5));" />
+<nav id="nav" aria-label="Հիմնական նավիգացիա">
+  <a class="nav-home" href="#hero" aria-label="Imastun Studio՝ գլխավոր էջ">
+    <img src="logo.png" alt="" style="height:36px;width:auto;filter:drop-shadow(0 0 8px rgba(201,168,76,0.5));" />
     <span class="nav-brand">Imastun Studio</span>
+  </a>
+  <form class="nav-search-visible" id="visible-search-form" role="search">
+    <label class="sr-only" for="visible-search-input" data-i18n="searchLabel">Փնտրել երգ կամ արտիստ</label>
+    <input id="visible-search-input" type="search" placeholder="Փնտրել երգ կամ արտիստ…" data-i18n-placeholder="searchPlaceholder" autocomplete="off" />
+    <button type="submit" aria-label="Սկսել որոնումը" data-i18n-aria="searchButton">
+      <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M13 13l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+  </form>
+  <div class="nav-actions">
+    <div id="language-buttons" class="language-buttons" role="group" aria-label="Ընտրել լեզուն" data-i18n-aria="languageLabel">
+      <button type="button" class="language-button" data-lang="hy" lang="hy">Հայ</button>
+      <button type="button" class="language-button" data-lang="ru" lang="ru">Рус</button>
+      <button type="button" class="language-button" data-lang="en" lang="en">Eng</button>
+    </div>
+    <button id="search-toggle" type="button" hidden aria-hidden="true" tabindex="-1"></button>
+    <button id="theme-toggle" title="Բաց/Մուգ ռեժիմ" aria-label="Փոխարկել բաց և մուգ ռեժիմների միջև">
+      <svg id="theme-icon" width="19" height="19" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2a8 8 0 108 8 6.5 6.5 0 01-8-8z" fill="currentColor"/></svg>
+    </button>
+    <button id="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav-links" aria-label="Բացել մենյուն" data-i18n-aria="menuOpen"><span class="bars" aria-hidden="true"></span></button>
   </div>
-  <button id="search-toggle" title="Փնտրել" aria-label="Փնտրել երգ կամ արտիստ">
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M13 13l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-  </button>
-  <button id="theme-toggle" title="Բաց/Մուգ ռեժիմ" aria-label="Փոխարկել բաց և մուգ ռեժիմների միջև">
-    <svg id="theme-icon" width="19" height="19" viewBox="0 0 20 20" fill="none"><path d="M10 2a8 8 0 108 8 6.5 6.5 0 01-8-8z" fill="currentColor"/></svg>
-  </button>
-  <ul class="nav-links">
-    <li><a href="#artists">Artists</a></li>
-    <li><a href="#videos">Videos</a></li>
-    <li><a href="#donate-section">Donate</a></li>
-    <li>
-      <a href="https://suno.com/playlist/3f17f55b-e782-47eb-b050-96b9cd55fc85" target="_blank" rel="noopener" class="nav-suno">
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 2l7 4-7 4V2z" fill="currentColor"/></svg>
-        Silva Gulanyan
-      </a>
-    </li>
-    <li>
-      <a href="https://suno.com/playlist/5549f7fd-63d9-4e92-8223-167bfcbf15da" target="_blank" rel="noopener" class="nav-suno">
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 2l7 4-7 4V2z" fill="currentColor"/></svg>
-        Go Hara
-      </a>
-    </li>
+  <ul class="nav-links" id="primary-nav-links">
+    <li><a href="#artists" data-i18n="artists">Արտիստներ</a></li>
+    <li><a href="#recent" data-i18n="new">Նորություններ</a></li>
+    <li><a href="#videos" data-i18n="videos">Տեսանյութեր</a></li>
+    <li><a href="#donate-section" data-i18n="support">Աջակցել</a></li>
+    <li><a href="#comments-section" data-i18n="comments">Մեկնաբանություններ</a></li>
   </ul>
+</nav>
+<nav class="quick-nav" aria-label="Արագ անցումներ" data-i18n-aria="quickNav">
+  <a href="#artists" data-i18n="artists">Արտիստներ</a>
+  <a href="#recent" data-i18n="new">Նորություններ</a>
+  <a href="#videos" data-i18n="videos">Տեսանյութեր</a>
+  <a href="#donate-section" data-i18n="support">Աջակցել</a>
+  <a href="#comments-section" data-i18n="comments">Մեկնաբանություններ</a>
 </nav>
 
 <div class="gold-rule"></div>
@@ -1347,9 +1549,23 @@
 <a id="donate-float-btn" href="#donate-section" title="Աջակցիր Imastun Studio-ին">☕</a>
 
 
-<div id="search-overlay">
+<aside id="app-install-prompt" role="dialog" aria-live="polite" aria-labelledby="install-app-title" aria-describedby="install-app-text">
+  <img class="install-app-icon" src="logo.png" alt="" width="50" height="50" />
+  <div class="install-app-copy">
+    <strong class="install-app-title" id="install-app-title" data-i18n="installTitle">Տեղադրել Imastun Studio-ն</strong>
+    <p class="install-app-text" id="install-app-text" data-i18n="installText">Բացեք կայքը հավելվածի պես՝ գլխավոր էկրանից։</p>
+    <div class="install-app-actions">
+      <button id="install-app-button" type="button" data-i18n="installButton">Տեղադրել</button>
+      <button id="dismiss-install-button" type="button" data-i18n="installLater">Հետո</button>
+    </div>
+  </div>
+  <button id="close-install-prompt" type="button" aria-label="Փակել">×</button>
+</aside>
+
+<div id="search-overlay" role="dialog" aria-modal="true" aria-labelledby="search-dialog-title" aria-hidden="true">
+  <h2 id="search-dialog-title" class="sr-only" data-i18n="searchTitle">Կայքի որոնում</h2>
   <div id="search-input-wrap">
-    <input id="search-input" type="text" placeholder="Փնտրիր երգ կամ արտիստ…" autocomplete="off" spellcheck="false" />
+    <input id="search-input" type="search" placeholder="Փնտրիր երգ կամ արտիստ…" data-i18n-placeholder="searchPlaceholder" autocomplete="off" spellcheck="false" aria-describedby="search-hint" />
     <button id="search-close" aria-label="Փակել որոնումը">✕</button>
   </div>
   <div id="search-hint">139 երգ · 7 արտիստ</div>
@@ -1460,7 +1676,7 @@
     },
     {
       id: 'go-hara', name: 'Go Hara', role: 'Vocalist & Performer',
-      songs: ['ajs xarum mian ujern e haxtum','Anund_Kin_e_004','Arajin_hambuyru','Arevamutits_araj','Bari_gisher','duet_Спокойной_ночи_Remix_Remix','spakojnoj nochi (kin)','Ginin_prprel_e','gisherajin','daravor karnin','darnaham-ginin','Title_Es_arajva_pes_kez_karotum_em_Swiss_Pop_Ballad_Lyrics_by_Go_Hara_Remix_008','Im_poezian','la-fracise','pered rasvetom','kanchir-kgam','HANDIPOMNERI_AYS_KhAChMEROKOM','Hervits_Grkum em','Hravirir_indz_parelu_tangon','menq linelu enq','MI_TOGh_INDz_MENAK','Mi_siro_patmutyun','urenineri lacor purakum','POETIS','Sirogisher_Go_Hara','cncir-users','fracuzhenka','My Mirror True','Зеркало моё','Իմ հայելի','Fragile Cry Has Risen Like','Во мне поднялся хрупкий плач','Փխրուն Լաց','Եվ ինչ է սերը','Չնոտագրված լռություն',"I'm tired of being strong",'устала быть сильной','hognel em ujer kin lineluc','Հայաստան, մեր սուրբ տուն','Армения, наш святой дом','Armenia, Our Sacred Home']
+      songs: ['ajs xarum mian ujern e haxtum','Anund_Kin_e_004','Arajin_hambuyru','Arevamutits_araj','Bari_gisher','duet_Спокойной_ночи_Remix_Remix','spakojnoj nochi (kin)','Ginin_prprel_e','gisherajin','daravor karnin','darnaham-ginin','Title_Es_arajva_pes_kez_karotum_em_Swiss_Pop_Ballad_Lyrics_by_Go_Hara_Remix_008','Im_poezian','la-fracise','pered rasvetom','kanchir-kgam','HANDIPOMNERI_AYS_KhAChMEROKOM','Hervits_Grkum em','Hravirir_indz_parelu_tangon','menq linelu enq','MI_TOGh_INDz_MENAK','Mi_siro_patmutyun','urenineri lacor purakum','POETIS','Sirogisher_Go_Hara','cncir-users','fracuzhenka','My Mirror True','Зеркало моё','Իմ հայելի','Fragile Cry Has Risen Like','Во мне поднялся хрупкий плач','Փխրուն Լաց','Եվ ինչ է սերը','Չնոտագրված լռություն',"I'm tired of being strong",'устала быть сильной','hognel em ujer kin lineluc','Հայաստան, մեր սուրբ տուն','Армения, наш святой дом','Armenia, Our Sacred Home','Սիրելով գնամ','Я уйду любя','Ill Leave Still Loving You']
     },
     {
       id: 'haj-poetner', name: 'Հայ Բանաստեղծներ', role: 'Armenian Poets · Songs',
@@ -1710,7 +1926,10 @@
     'shiraz/': 'Հովհաննես Շիրազ', 'silva-kaputikyan/': 'Սիլվա Կապուտիկյան',
     'vahagn-davtyan/': 'Վահագն Դավթյան', 'hovhannes-tumanyan/': 'Հովհաննես Թումանյան'
   };
-  const SONG_NAMES = {"pastayannaya jajda": "Постоянная жажда", "andadar carav": "Անդադար ծարավ", "The Eternal Thirst": "The Eternal Thirst", "ergichy-dari": "Երգիչի դարի", "gij": "Գիժ", "gij-qamin": "Գիժ քամի", "gortrik-ankun": "Գողտրիկ անկյուն", "im-tsovagur": "Իմ ծովագյուղ", "inch-em-anelu": "Ինչ եմ անելու", "tsov-arev-achqer": "Ծով արև աչքեր", "cncir-users": "Ցնցիր ուսերս", "darnaham-ginin": "Դառնահամ գինի", "fracuzhenka": "Ֆրանսուհին", "gisherajin": "Գիշերային", "kanchir-kgam": "Կանչիր կգամ", "la-fracise": "Լա Ֆրանս", "kiny": "Կինը", "sirena-hima": "Սիրել հիմա", "haverji-erty": "Հավերժի երգը", "hogu-arzaganq": "Հոգու արձագանք", "inchi-hamar": "Ինչի համար", "lur-heraxos": "Լուռ հեռախոս", "qo-jinj-hogin": "Քո ջինջ հոգին", "ser-anurji": "Սեր անուրջի", "shepot": "Շշունջ", "shshnjatc": "Շշնջաց", "siro-kenacy": "Սիրո կենաց",
+  const SONG_NAMES = {
+    'Սիրելով գնամ': 'Սիրելով գնամ',
+    'Я уйду любя': 'Я уйду любя',
+    'Ill Leave Still Loving You': "I'll Leave Still Loving You","pastayannaya jajda": "Постоянная жажда", "andadar carav": "Անդադար ծարավ", "The Eternal Thirst": "The Eternal Thirst", "ergichy-dari": "Երգիչի դարի", "gij": "Գիժ", "gij-qamin": "Գիժ քամի", "gortrik-ankun": "Գողտրիկ անկյուն", "im-tsovagur": "Իմ ծովագյուղ", "inch-em-anelu": "Ինչ եմ անելու", "tsov-arev-achqer": "Ծով արև աչքեր", "cncir-users": "Ցնցիր ուսերս", "darnaham-ginin": "Դառնահամ գինի", "fracuzhenka": "Ֆրանսուհին", "gisherajin": "Գիշերային", "kanchir-kgam": "Կանչիր կգամ", "la-fracise": "Լա Ֆրանս", "kiny": "Կինը", "sirena-hima": "Սիրել հիմա", "haverji-erty": "Հավերժի երգը", "hogu-arzaganq": "Հոգու արձագանք", "inchi-hamar": "Ինչի համար", "lur-heraxos": "Լուռ հեռախոս", "qo-jinj-hogin": "Քո ջինջ հոգին", "ser-anurji": "Սեր անուրջի", "shepot": "Շշունջ", "shshnjatc": "Շշնջաց", "siro-kenacy": "Սիրո կենաց",
     "Es_kez_sirum_em": "Ես քեզ սիրում եմ",
     "Garun_er": "Գարուն էր",
     "Kez_khenti_nman_siraharvetsi_Duet_Tango": "Քեզ խենթի նման սիրահարվեցի (Duet Tango)",
@@ -3267,9 +3486,130 @@
   })();
 </script>
   <script>
+  (function enhanceNavigation() {
+    const translations = {
+      hy: { marquee:'Բարի գալուստ Իմաստուն Ստուդիո ✦ Այստեղ մենք երաժշտությունն ու խոսքը միավորում ենք ✦ Երգերը դառնում են պատկերներ, իսկ պատկերները՝ պատմություններ ✦ Բարի գալուստ Իմաստուն Ստուդիո ✦ Այստեղ մենք երաժշտությունն ու խոսքը միավորում ենք ✦ Երգերը դառնում են պատկերներ, իսկ պատկերները՝ պատմություններ ✦ ', skip:'Անցնել հիմնական բովանդակությանը', searchLabel:'Փնտրել երգ կամ արտիստ', searchPlaceholder:'Փնտրել երգ կամ արտիստ…', searchButton:'Սկսել որոնումը', languageLabel:'Ընտրել լեզուն', menuOpen:'Բացել մենյուն', menuClose:'Փակել մենյուն', quickNav:'Արագ անցումներ', searchTitle:'Կայքի որոնում', artists:'Արտիստներ', new:'Նորություններ', videos:'Տեսանյութեր', support:'Աջակցել', comments:'Մեկնաբանություններ', installTitle:'Տեղադրել Imastun Studio-ն', installText:'Բացեք կայքը հավելվածի պես՝ գլխավոր էկրանից։', installButton:'Տեղադրել', installLater:'Հետո', iosInstallText:'iPhone-ում սեղմեք Share, ապա՝ Add to Home Screen։' },
+      ru: { marquee:'Добро пожаловать в Imastun Studio ✦ Здесь мы соединяем музыку и слово ✦ Песни становятся образами, а образы — историями ✦ Добро пожаловать в Imastun Studio ✦ Здесь мы соединяем музыку и слово ✦ Песни становятся образами, а образы — историями ✦ ', skip:'Перейти к основному содержанию', searchLabel:'Найти песню или исполнителя', searchPlaceholder:'Найти песню или исполнителя…', searchButton:'Начать поиск', languageLabel:'Выбрать язык', menuOpen:'Открыть меню', menuClose:'Закрыть меню', quickNav:'Быстрые переходы', searchTitle:'Поиск по сайту', artists:'Исполнители', new:'Новинки', videos:'Видео', support:'Поддержать', comments:'Комментарии', installTitle:'Установить Imastun Studio', installText:'Открывайте сайт как приложение с главного экрана.', installButton:'Установить', installLater:'Позже', iosInstallText:'На iPhone нажмите «Поделиться», затем «На экран Домой».' },
+      en: { marquee:'Welcome to Imastun Studio ✦ Here we bring music and words together ✦ Songs become images, and images become stories ✦ Welcome to Imastun Studio ✦ Here we bring music and words together ✦ Songs become images, and images become stories ✦ ', skip:'Skip to main content', searchLabel:'Find a song or artist', searchPlaceholder:'Find a song or artist…', searchButton:'Start search', languageLabel:'Choose language', menuOpen:'Open menu', menuClose:'Close menu', quickNav:'Quick links', searchTitle:'Site search', artists:'Artists', new:'New', videos:'Videos', support:'Support', comments:'Comments', installTitle:'Install Imastun Studio', installText:'Open the site like an app from your home screen.', installButton:'Install', installLater:'Later', iosInstallText:'On iPhone, tap Share, then Add to Home Screen.' }
+    };
+    const languageButtons = Array.from(document.querySelectorAll('.language-button'));
+    const menuButton = document.getElementById('mobile-menu-toggle');
+    const menu = document.getElementById('primary-nav-links');
+    const overlay = document.getElementById('search-overlay');
+    let locale = 'hy';
+    try { locale = localStorage.getItem('imastun_language') || 'hy'; } catch (e) {}
+    if (!translations[locale]) locale = 'hy';
+
+    function applyLanguage(next) {
+      locale = translations[next] ? next : 'hy';
+      document.documentElement.lang = locale;
+      languageButtons.forEach(button => {
+        const active = button.dataset.lang === locale;
+        button.classList.toggle('active', active);
+        button.setAttribute('aria-pressed', String(active));
+      });
+      document.querySelectorAll('[data-i18n]').forEach(el => { const key=el.dataset.i18n; if(translations[locale][key]) el.textContent=translations[locale][key]; });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { const key=el.dataset.i18nPlaceholder; if(translations[locale][key]) el.placeholder=translations[locale][key]; });
+      document.querySelectorAll('[data-i18n-aria]').forEach(el => { const key=el.dataset.i18nAria; if(translations[locale][key]) el.setAttribute('aria-label',translations[locale][key]); });
+      try { localStorage.setItem('imastun_language', locale); } catch (e) {}
+    }
+    applyLanguage(locale);
+    languageButtons.forEach(button => button.addEventListener('click', () => applyLanguage(button.dataset.lang)));
+
+    function setMenu(open) {
+      menu.classList.toggle('open', open);
+      menuButton.setAttribute('aria-expanded', String(open));
+      menuButton.setAttribute('aria-label', translations[locale][open ? 'menuClose' : 'menuOpen']);
+    }
+    menuButton.addEventListener('click', () => setMenu(menuButton.getAttribute('aria-expanded') !== 'true'));
+    menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false)));
+    window.addEventListener('resize', () => { if (window.innerWidth > 900) setMenu(false); });
+
+    const visibleForm = document.getElementById('visible-search-form');
+    const visibleInput = document.getElementById('visible-search-input');
+    visibleForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const query = visibleInput.value.trim();
+      openSearch();
+      if (query) {
+        searchInput.value = query;
+        searchInput.dispatchEvent(new Event('input', { bubbles:true }));
+      }
+    });
+    document.getElementById('search-toggle')?.setAttribute('hidden','');
+    const originalOpen = openSearch;
+    const originalClose = closeSearch;
+    openSearch = function() { originalOpen(); overlay.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; };
+    closeSearch = function() { originalClose(); overlay.setAttribute('aria-hidden','true'); document.body.style.overflow=''; visibleInput.focus(); };
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeSearch(); });
+
+    let visibleSearchFrame = 0;
+    function forwardVisibleSearch() {
+      const query = visibleInput.value.trim();
+      if (!query) return;
+      if (!overlay.classList.contains('open')) openSearch();
+      searchInput.value = query;
+      searchInput.dispatchEvent(new Event('input', { bubbles:true }));
+    }
+    function scheduleVisibleSearch() {
+      cancelAnimationFrame(visibleSearchFrame);
+      visibleSearchFrame = requestAnimationFrame(forwardVisibleSearch);
+    }
+    ['input','keyup','change','search','compositionupdate','compositionend'].forEach(eventName => {
+      visibleInput.addEventListener(eventName, scheduleVisibleSearch);
+    });
+    visibleInput.addEventListener('paste', scheduleVisibleSearch);
+  })();
+  </script>
+  <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js').catch(() => {});
     }
+
+    (() => {
+      const prompt = document.getElementById('app-install-prompt');
+      const installButton = document.getElementById('install-app-button');
+      const dismissButton = document.getElementById('dismiss-install-button');
+      const closeButton = document.getElementById('close-install-prompt');
+      const promptText = document.getElementById('install-app-text');
+      let installEvent = null;
+      const standalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+      const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+      let dismissedAt = 0;
+      try { dismissedAt = Number(localStorage.getItem('imastun_install_dismissed') || 0); } catch (e) {}
+      const mayShow = !standalone && Date.now() - dismissedAt > 14 * 24 * 60 * 60 * 1000;
+
+      const hidePrompt = remember => {
+        prompt.classList.remove('show');
+        if (remember) {
+          try { localStorage.setItem('imastun_install_dismissed', String(Date.now())); } catch (e) {}
+        }
+      };
+
+      window.addEventListener('beforeinstallprompt', event => {
+        event.preventDefault();
+        installEvent = event;
+        if (mayShow) prompt.classList.add('show');
+      });
+
+      if (isIOS && mayShow) {
+        const currentLanguage = document.documentElement.lang || 'hy';
+        promptText.textContent = translations[currentLanguage]?.iosInstallText || translations.hy.iosInstallText;
+        installButton.hidden = true;
+        window.setTimeout(() => prompt.classList.add('show'), 1400);
+      }
+
+      installButton.addEventListener('click', async () => {
+        if (!installEvent) return;
+        prompt.classList.remove('show');
+        installEvent.prompt();
+        await installEvent.userChoice;
+        installEvent = null;
+      });
+      dismissButton.addEventListener('click', () => hidePrompt(true));
+      closeButton.addEventListener('click', () => hidePrompt(true));
+      window.addEventListener('appinstalled', () => hidePrompt(false));
+    })();
   </script>
   <script async defer crossorigin="anonymous"
     src="https://connect.facebook.net/hy_AM/sdk.js#xfbml=1&version=v19.0"
