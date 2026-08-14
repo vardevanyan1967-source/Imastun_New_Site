@@ -1231,6 +1231,74 @@
       .quick-nav { position:relative; top:0; justify-content:flex-start; overflow-x:auto; }
       .quick-nav a { flex:0 0 auto; min-width:150px; }
     }
+    /* ── APP INSTALL PROMPT ── */
+    #app-install-prompt {
+      position:fixed;
+      left:24px;
+      bottom:24px;
+      z-index:240;
+      width:min(390px,calc(100vw - 48px));
+      display:none;
+      align-items:center;
+      gap:12px;
+      padding:14px;
+      border:1px solid rgba(201,168,76,.5);
+      border-radius:20px;
+      background:rgba(15,15,15,.96);
+      color:var(--text);
+      box-shadow:0 14px 40px rgba(0,0,0,.55),0 0 22px rgba(201,168,76,.12);
+      backdrop-filter:blur(14px);
+    }
+    #app-install-prompt.show { display:flex; }
+    .install-app-icon {
+      width:50px;
+      height:50px;
+      flex:0 0 50px;
+      border-radius:13px;
+      object-fit:cover;
+      box-shadow:0 0 16px rgba(201,168,76,.3);
+    }
+    .install-app-copy { min-width:0; flex:1; }
+    .install-app-title {
+      display:block;
+      margin-bottom:3px;
+      color:var(--gold-light);
+      font:600 17px/1.15 'Syne',sans-serif;
+    }
+    .install-app-text { color:var(--text-dim); font:500 12px/1.35 'Syne',sans-serif; }
+    .install-app-actions { display:flex; align-items:center; gap:7px; margin-top:9px; }
+    #install-app-button {
+      min-height:38px;
+      padding:8px 14px;
+      border:1px solid var(--gold);
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--gold),var(--gold-light));
+      color:#171208;
+      font:700 12px/1 'Syne',sans-serif;
+      cursor:pointer;
+    }
+    #dismiss-install-button {
+      min-height:38px;
+      padding:8px 10px;
+      border:0;
+      background:transparent;
+      color:var(--text-dim);
+      font:600 12px/1 'Syne',sans-serif;
+      cursor:pointer;
+    }
+    #close-install-prompt {
+      position:absolute;
+      top:5px;
+      right:7px;
+      width:32px;
+      height:32px;
+      border:0;
+      background:transparent;
+      color:var(--text-dim);
+      font-size:18px;
+      cursor:pointer;
+    }
+
     @media (max-width:520px) {
       #nav { flex-direction:column; gap:10px; padding:12px 14px; }
       .nav-home { order:1; width:100%; justify-content:center; gap:10px; }
@@ -1247,6 +1315,19 @@
       .quick-nav { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); justify-content:stretch; gap:9px; width:100%; overflow:visible; padding:10px 14px; }
       .quick-nav a { width:100%; min-width:0; min-height:52px; padding:10px 8px; font-size:14px; white-space:normal; }
       .quick-nav a:last-child { grid-column:1 / -1; }
+      #app-install-prompt {
+        left:12px;
+        right:68px;
+        bottom:calc(var(--player-h) + 12px);
+        width:auto;
+        padding:11px;
+        border-radius:17px;
+      }
+      .install-app-icon { width:42px; height:42px; flex-basis:42px; }
+      .install-app-title { font-size:14px; padding-right:16px; }
+      .install-app-text { font-size:11px; }
+      .install-app-actions { margin-top:7px; }
+      #install-app-button, #dismiss-install-button { min-height:34px; padding:7px 10px; font-size:11px; }
       /* Keep floating contact controls compact on narrow screens. */
       #donate-float-btn,
       .messenger-btn,
@@ -1467,6 +1548,19 @@
 
 <a id="donate-float-btn" href="#donate-section" title="Աջակցիր Imastun Studio-ին">☕</a>
 
+
+<aside id="app-install-prompt" role="dialog" aria-live="polite" aria-labelledby="install-app-title" aria-describedby="install-app-text">
+  <img class="install-app-icon" src="logo.png" alt="" width="50" height="50" />
+  <div class="install-app-copy">
+    <strong class="install-app-title" id="install-app-title" data-i18n="installTitle">Տեղադրել Imastun Studio-ն</strong>
+    <p class="install-app-text" id="install-app-text" data-i18n="installText">Բացեք կայքը հավելվածի պես՝ գլխավոր էկրանից։</p>
+    <div class="install-app-actions">
+      <button id="install-app-button" type="button" data-i18n="installButton">Տեղադրել</button>
+      <button id="dismiss-install-button" type="button" data-i18n="installLater">Հետո</button>
+    </div>
+  </div>
+  <button id="close-install-prompt" type="button" aria-label="Փակել">×</button>
+</aside>
 
 <div id="search-overlay" role="dialog" aria-modal="true" aria-labelledby="search-dialog-title" aria-hidden="true">
   <h2 id="search-dialog-title" class="sr-only" data-i18n="searchTitle">Կայքի որոնում</h2>
@@ -3383,9 +3477,9 @@
   <script>
   (function enhanceNavigation() {
     const translations = {
-      hy: { marquee:'Բարի գալուստ Իմաստուն Ստուդիո ✦ Այստեղ մենք երաժշտությունն ու խոսքը միավորում ենք ✦ Երգերը դառնում են պատկերներ, իսկ պատկերները՝ պատմություններ ✦ Բարի գալուստ Իմաստուն Ստուդիո ✦ Այստեղ մենք երաժշտությունն ու խոսքը միավորում ենք ✦ Երգերը դառնում են պատկերներ, իսկ պատկերները՝ պատմություններ ✦ ', skip:'Անցնել հիմնական բովանդակությանը', searchLabel:'Փնտրել երգ կամ արտիստ', searchPlaceholder:'Փնտրել երգ կամ արտիստ…', searchButton:'Սկսել որոնումը', languageLabel:'Ընտրել լեզուն', menuOpen:'Բացել մենյուն', menuClose:'Փակել մենյուն', quickNav:'Արագ անցումներ', searchTitle:'Կայքի որոնում', artists:'Արտիստներ', new:'Նորություններ', videos:'Տեսանյութեր', support:'Աջակցել', comments:'Մեկնաբանություններ' },
-      ru: { marquee:'Добро пожаловать в Imastun Studio ✦ Здесь мы соединяем музыку и слово ✦ Песни становятся образами, а образы — историями ✦ Добро пожаловать в Imastun Studio ✦ Здесь мы соединяем музыку и слово ✦ Песни становятся образами, а образы — историями ✦ ', skip:'Перейти к основному содержанию', searchLabel:'Найти песню или исполнителя', searchPlaceholder:'Найти песню или исполнителя…', searchButton:'Начать поиск', languageLabel:'Выбрать язык', menuOpen:'Открыть меню', menuClose:'Закрыть меню', quickNav:'Быстрые переходы', searchTitle:'Поиск по сайту', artists:'Исполнители', new:'Новинки', videos:'Видео', support:'Поддержать', comments:'Комментарии' },
-      en: { marquee:'Welcome to Imastun Studio ✦ Here we bring music and words together ✦ Songs become images, and images become stories ✦ Welcome to Imastun Studio ✦ Here we bring music and words together ✦ Songs become images, and images become stories ✦ ', skip:'Skip to main content', searchLabel:'Find a song or artist', searchPlaceholder:'Find a song or artist…', searchButton:'Start search', languageLabel:'Choose language', menuOpen:'Open menu', menuClose:'Close menu', quickNav:'Quick links', searchTitle:'Site search', artists:'Artists', new:'New', videos:'Videos', support:'Support', comments:'Comments' }
+      hy: { marquee:'Բարի գալուստ Իմաստուն Ստուդիո ✦ Այստեղ մենք երաժշտությունն ու խոսքը միավորում ենք ✦ Երգերը դառնում են պատկերներ, իսկ պատկերները՝ պատմություններ ✦ Բարի գալուստ Իմաստուն Ստուդիո ✦ Այստեղ մենք երաժշտությունն ու խոսքը միավորում ենք ✦ Երգերը դառնում են պատկերներ, իսկ պատկերները՝ պատմություններ ✦ ', skip:'Անցնել հիմնական բովանդակությանը', searchLabel:'Փնտրել երգ կամ արտիստ', searchPlaceholder:'Փնտրել երգ կամ արտիստ…', searchButton:'Սկսել որոնումը', languageLabel:'Ընտրել լեզուն', menuOpen:'Բացել մենյուն', menuClose:'Փակել մենյուն', quickNav:'Արագ անցումներ', searchTitle:'Կայքի որոնում', artists:'Արտիստներ', new:'Նորություններ', videos:'Տեսանյութեր', support:'Աջակցել', comments:'Մեկնաբանություններ', installTitle:'Տեղադրել Imastun Studio-ն', installText:'Բացեք կայքը հավելվածի պես՝ գլխավոր էկրանից։', installButton:'Տեղադրել', installLater:'Հետո', iosInstallText:'iPhone-ում սեղմեք Share, ապա՝ Add to Home Screen։' },
+      ru: { marquee:'Добро пожаловать в Imastun Studio ✦ Здесь мы соединяем музыку и слово ✦ Песни становятся образами, а образы — историями ✦ Добро пожаловать в Imastun Studio ✦ Здесь мы соединяем музыку и слово ✦ Песни становятся образами, а образы — историями ✦ ', skip:'Перейти к основному содержанию', searchLabel:'Найти песню или исполнителя', searchPlaceholder:'Найти песню или исполнителя…', searchButton:'Начать поиск', languageLabel:'Выбрать язык', menuOpen:'Открыть меню', menuClose:'Закрыть меню', quickNav:'Быстрые переходы', searchTitle:'Поиск по сайту', artists:'Исполнители', new:'Новинки', videos:'Видео', support:'Поддержать', comments:'Комментарии', installTitle:'Установить Imastun Studio', installText:'Открывайте сайт как приложение с главного экрана.', installButton:'Установить', installLater:'Позже', iosInstallText:'На iPhone нажмите «Поделиться», затем «На экран Домой».' },
+      en: { marquee:'Welcome to Imastun Studio ✦ Here we bring music and words together ✦ Songs become images, and images become stories ✦ Welcome to Imastun Studio ✦ Here we bring music and words together ✦ Songs become images, and images become stories ✦ ', skip:'Skip to main content', searchLabel:'Find a song or artist', searchPlaceholder:'Find a song or artist…', searchButton:'Start search', languageLabel:'Choose language', menuOpen:'Open menu', menuClose:'Close menu', quickNav:'Quick links', searchTitle:'Site search', artists:'Artists', new:'New', videos:'Videos', support:'Support', comments:'Comments', installTitle:'Install Imastun Studio', installText:'Open the site like an app from your home screen.', installButton:'Install', installLater:'Later', iosInstallText:'On iPhone, tap Share, then Add to Home Screen.' }
     };
     const languageButtons = Array.from(document.querySelectorAll('.language-button'));
     const menuButton = document.getElementById('mobile-menu-toggle');
@@ -3443,6 +3537,51 @@
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js').catch(() => {});
     }
+
+    (() => {
+      const prompt = document.getElementById('app-install-prompt');
+      const installButton = document.getElementById('install-app-button');
+      const dismissButton = document.getElementById('dismiss-install-button');
+      const closeButton = document.getElementById('close-install-prompt');
+      const promptText = document.getElementById('install-app-text');
+      let installEvent = null;
+      const standalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+      const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+      let dismissedAt = 0;
+      try { dismissedAt = Number(localStorage.getItem('imastun_install_dismissed') || 0); } catch (e) {}
+      const mayShow = !standalone && Date.now() - dismissedAt > 14 * 24 * 60 * 60 * 1000;
+
+      const hidePrompt = remember => {
+        prompt.classList.remove('show');
+        if (remember) {
+          try { localStorage.setItem('imastun_install_dismissed', String(Date.now())); } catch (e) {}
+        }
+      };
+
+      window.addEventListener('beforeinstallprompt', event => {
+        event.preventDefault();
+        installEvent = event;
+        if (mayShow) prompt.classList.add('show');
+      });
+
+      if (isIOS && mayShow) {
+        const currentLanguage = document.documentElement.lang || 'hy';
+        promptText.textContent = translations[currentLanguage]?.iosInstallText || translations.hy.iosInstallText;
+        installButton.hidden = true;
+        window.setTimeout(() => prompt.classList.add('show'), 1400);
+      }
+
+      installButton.addEventListener('click', async () => {
+        if (!installEvent) return;
+        prompt.classList.remove('show');
+        installEvent.prompt();
+        await installEvent.userChoice;
+        installEvent = null;
+      });
+      dismissButton.addEventListener('click', () => hidePrompt(true));
+      closeButton.addEventListener('click', () => hidePrompt(true));
+      window.addEventListener('appinstalled', () => hidePrompt(false));
+    })();
   </script>
   <script async defer crossorigin="anonymous"
     src="https://connect.facebook.net/hy_AM/sdk.js#xfbml=1&version=v19.0"
