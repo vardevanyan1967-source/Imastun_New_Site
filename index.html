@@ -3584,14 +3584,17 @@
       let installEvent = null;
       const standalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
       const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
-      let dismissedAt = 0;
-      try { dismissedAt = Number(localStorage.getItem('imastun_install_dismissed') || 0); } catch (e) {}
-      const mayShow = !standalone && Date.now() - dismissedAt > 14 * 24 * 60 * 60 * 1000;
+      let dismissedThisSession = false;
+      try {
+        dismissedThisSession = sessionStorage.getItem('imastun_install_dismissed') === '1';
+        localStorage.removeItem('imastun_install_dismissed');
+      } catch (e) {}
+      const mayShow = !standalone && !dismissedThisSession;
 
       const hidePrompt = remember => {
         prompt.classList.remove('show');
         if (remember) {
-          try { localStorage.setItem('imastun_install_dismissed', String(Date.now())); } catch (e) {}
+          try { sessionStorage.setItem('imastun_install_dismissed', '1'); } catch (e) {}
         }
       };
 
@@ -3617,7 +3620,10 @@
       });
       dismissButton.addEventListener('click', () => hidePrompt(true));
       closeButton.addEventListener('click', () => hidePrompt(true));
-      window.addEventListener('appinstalled', () => hidePrompt(false));
+      window.addEventListener('appinstalled', () => {
+        hidePrompt(false);
+        try { sessionStorage.removeItem('imastun_install_dismissed'); } catch (e) {}
+      });
     })();
   </script>
   <script async defer crossorigin="anonymous"
