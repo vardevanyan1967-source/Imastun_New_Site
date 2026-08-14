@@ -3038,7 +3038,7 @@
     searchInput.blur();
   }
 
-  searchInput.addEventListener('input', () => {
+  function updateSearchResults() {
     const q = searchInput.value.trim().toLowerCase().normalize('NFC');
     if (!q) { searchResults.innerHTML = ''; searchHint.textContent = SEARCH_HINT; return; }
 
@@ -3090,7 +3090,18 @@
         closeSearch();
       });
     });
+  }
+
+  // Keep live search responsive on Android/Samsung keyboards and while composing Armenian/Russian text.
+  let searchUpdateFrame = 0;
+  function scheduleSearchUpdate() {
+    cancelAnimationFrame(searchUpdateFrame);
+    searchUpdateFrame = requestAnimationFrame(updateSearchResults);
+  }
+  ['input', 'keyup', 'change', 'search', 'compositionupdate', 'compositionend'].forEach(eventName => {
+    searchInput.addEventListener(eventName, scheduleSearchUpdate);
   });
+  searchInput.addEventListener('paste', scheduleSearchUpdate);
 
 
   /* ── FAVORITES ── */
@@ -3531,6 +3542,23 @@
     openSearch = function() { originalOpen(); overlay.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; };
     closeSearch = function() { originalClose(); overlay.setAttribute('aria-hidden','true'); document.body.style.overflow=''; visibleInput.focus(); };
     overlay.addEventListener('click', e => { if (e.target === overlay) closeSearch(); });
+
+    let visibleSearchFrame = 0;
+    function forwardVisibleSearch() {
+      const query = visibleInput.value.trim();
+      if (!query) return;
+      if (!overlay.classList.contains('open')) openSearch();
+      searchInput.value = query;
+      searchInput.dispatchEvent(new Event('input', { bubbles:true }));
+    }
+    function scheduleVisibleSearch() {
+      cancelAnimationFrame(visibleSearchFrame);
+      visibleSearchFrame = requestAnimationFrame(forwardVisibleSearch);
+    }
+    ['input','keyup','change','search','compositionupdate','compositionend'].forEach(eventName => {
+      visibleInput.addEventListener(eventName, scheduleVisibleSearch);
+    });
+    visibleInput.addEventListener('paste', scheduleVisibleSearch);
   })();
   </script>
   <script>
