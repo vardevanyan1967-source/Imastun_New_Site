@@ -2819,7 +2819,7 @@
     searchInput.blur();
   }
 
-  searchInput.addEventListener('input', () => {
+  function updateSearchResults() {
     const q = searchInput.value.trim().toLowerCase().normalize('NFC');
     if (!q) { searchResults.innerHTML = ''; searchHint.textContent = SEARCH_HINT; return; }
 
@@ -2871,7 +2871,18 @@
         closeSearch();
       });
     });
+  }
+
+  // Keep live search responsive on Android/Samsung keyboards and while composing Armenian/Russian text.
+  let searchUpdateFrame = 0;
+  function scheduleSearchUpdate() {
+    cancelAnimationFrame(searchUpdateFrame);
+    searchUpdateFrame = requestAnimationFrame(updateSearchResults);
+  }
+  ['input', 'keyup', 'change', 'search', 'compositionupdate', 'compositionend'].forEach(eventName => {
+    searchInput.addEventListener(eventName, scheduleSearchUpdate);
   });
+  searchInput.addEventListener('paste', scheduleSearchUpdate);
 
 
   /* ── FAVORITES ── */
