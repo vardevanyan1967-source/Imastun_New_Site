@@ -1769,6 +1769,9 @@
     { id: 'mareta-sargsyan',name: 'Mareta Sargsyan',role: 'Vocalist & Performer',  songs: [] },
   ];
 
+  const silvaArtist = ARTISTS.find(artist => artist.id === 'silva-gulanyan');
+  if (silvaArtist) silvaArtist.songs.push('ari-khmenq');
+
   const YOUTUBE_VIDEOS = [
     { id: 'fZ7PZgXzBFY', title: '', added: '2026-08-13' },
     { id: '_01ty-0xVSo', title: '', added: '2026-08-13' },
@@ -1816,6 +1819,7 @@
   ];
 
   const NEW_SONGS = {
+    "ari-khmenq": "2026-08-15",
     "Սոնետ  70": "2026-08-08","Սոնետ  71": "2026-08-08","Սոնետ  72": "2026-08-08","Սոնետ  73": "2026-08-08","Սոնետ  75": "2026-08-08","Սոնետ  76": "2026-08-08",
     "Սոնետ  77": "2026-08-08","Սոնետ  78": "2026-08-08","Սոնետ  79": "2026-08-08","Սոնետ  81": "2026-08-08","Սոնետ  82": "2026-08-08","Սոնետ  83": "2026-08-08",
     "Սոնետ  84": "2026-08-08","Սոնետ  85": "2026-08-08","Սոնետ  86": "2026-08-08","Սոնետ  87": "2026-08-08","Սոնետ  88": "2026-08-08","Սոնետ  89": "2026-08-08",
@@ -1927,6 +1931,7 @@
     'vahagn-davtyan/': 'Վահագն Դավթյան', 'hovhannes-tumanyan/': 'Հովհաննես Թումանյան'
   };
   const SONG_NAMES = {
+    'ari-khmenq': 'ԱՐԻ ԽՄԵՆՔ · ДАВАЙ ВЫПЬЕМ · BUVONS',
     'Սիրելով գնամ': 'Սիրելով գնամ',
     'Я уйду любя': 'Я уйду любя',
     'Ill Leave Still Loving You': "I'll Leave Still Loving You","pastayannaya jajda": "Постоянная жажда", "andadar carav": "Անդադար ծարավ", "The Eternal Thirst": "The Eternal Thirst", "ergichy-dari": "Երգիչի դարի", "gij": "Գիժ", "gij-qamin": "Գիժ քամի", "gortrik-ankun": "Գողտրիկ անկյուն", "im-tsovagur": "Իմ ծովագյուղ", "inch-em-anelu": "Ինչ եմ անելու", "tsov-arev-achqer": "Ծով արև աչքեր", "cncir-users": "Ցնցիր ուսերս", "darnaham-ginin": "Դառնահամ գինի", "fracuzhenka": "Ֆրանսուհին", "gisherajin": "Գիշերային", "kanchir-kgam": "Կանչիր կգամ", "la-fracise": "Լա Ֆրանս", "kiny": "Կինը", "sirena-hima": "Սիրել հիմա", "haverji-erty": "Հավերժի երգը", "hogu-arzaganq": "Հոգու արձագանք", "inchi-hamar": "Ինչի համար", "lur-heraxos": "Լուռ հեռախոս", "qo-jinj-hogin": "Քո ջինջ հոգին", "ser-anurji": "Սեր անուրջի", "shepot": "Շշունջ", "shshnjatc": "Շշնջաց", "siro-kenacy": "Սիրո կենաց",
