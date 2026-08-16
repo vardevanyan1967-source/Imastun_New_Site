@@ -2458,6 +2458,52 @@
   };
 
   /* ══ PLAYLIST (flat) ══ */
+  /* ══ PLAY COUNTER (Supabase) ══ */
+  const SUPABASE_URL = 'https://jcqkpqhaxkgfjcasklnq.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_7iNYB-HogL42o_luHkI-gg_KzPylN3c';
+  const playCountCache = {};
+
+  async function incrementPlayCount(songId) {
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/rpc/increment_play`, {
+        method: 'POST',
+        headers: {
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ p_song_id: songId })
+      });
+      if (!res.ok) return;
+      const newCount = await res.json();
+      playCountCache[songId] = newCount;
+      updatePlayCountBadges(songId, newCount);
+    } catch (e) {}
+  }
+
+  async function fetchAllPlayCounts() {
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/song_plays?select=song_id,play_count`, {
+        headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` }
+      });
+      if (!res.ok) return;
+      const rows = await res.json();
+      rows.forEach(r => { playCountCache[r.song_id] = r.play_count; });
+      Object.keys(playCountCache).forEach(id => updatePlayCountBadges(id, playCountCache[id]));
+    } catch (e) {}
+  }
+
+  function updatePlayCountBadges(songId, count) {
+    document.querySelectorAll(`.play-count-badge[data-song="${CSS.escape(songId)}"]`).forEach(el => {
+      el.textContent = `▶ ${count.toLocaleString('hy-AM')}`;
+    });
+  }
+
+  function iconPlayCount(songId) {
+    const count = playCountCache[songId];
+    return `<span class="play-count-badge" data-song="${songId}" style="font-size:10px;color:var(--text-dim);opacity:0.75;white-space:nowrap;">${count != null ? '▶ ' + count.toLocaleString('hy-AM') : ''}</span>`;
+  }
+
   const AUDIO_VERSIONS = Object.freeze({
     'go-hara|Սիրելով գնամ': 'b5e360f88c88',
     'go-hara|Я уйду любя': 'a4c22ad27185'
@@ -2621,6 +2667,7 @@
     if (t && typeof gtag === 'function') {
       gtag('event', 'play_song', { song_name: t.label, artist_name: t.artistName });
     }
+    if (t) incrementPlayCount(t.song);
     loadTrack(idx, true);
   }
 
@@ -3033,6 +3080,7 @@
     });
   }
   buildRecent();
+  fetchAllPlayCounts();
 
   document.getElementById('search-toggle').addEventListener('click', openSearch);
   document.getElementById('search-close').addEventListener('click', closeSearch);
@@ -3247,6 +3295,7 @@
           <div class="track-name" style="color:${trackColor};">${label}</div>
           ${subtitleHtml}
         </div>
+        ${iconPlayCount(song)}
         ${isNewSong(song) ? '<span class="new-badge">NEW</span>' : ''}
         <button class="track-fav-btn${fav ? ' fav-active' : ''}" data-artist="${artist.id}" data-song="${song}" style="background:none;border:none;cursor:pointer;color:${fav ? '#ee0055' : 'var(--text-dim)'};display:flex;align-items:center;padding:4px;transition:color 0.2s,transform 0.2s;">${iconHeart(fav)}</button>
         <button class="track-share-btn" data-artist="${artist.id}" data-song="${song}" title="Կիսվել" aria-label="Կիսվել այս երգով" style="background:none;border:none;cursor:pointer;color:var(--text-dim);display:flex;align-items:center;padding:4px;transition:color 0.2s;">${iconShare()}</button>
