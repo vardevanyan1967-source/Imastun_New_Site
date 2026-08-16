@@ -2547,6 +2547,26 @@
   /* ══ PLAYER ENGINE ══ */
   const engine    = document.getElementById('audio-engine');
   const engine2   = new Audio();
+
+  /* Unlock both audio elements on first user gesture so the background
+     (crossfade / auto-advance) engine is also allowed to autoplay later,
+     especially in Android WebView and mobile browsers that block
+     programmatic play() unless it was already unlocked by a real tap. */
+  let audioUnlocked = false;
+  function unlockAudioEngines() {
+    if (audioUnlocked) return;
+    audioUnlocked = true;
+    [engine, engine2].forEach(eng => {
+      const p = eng.play();
+      if (p && p.catch) p.catch(() => {});
+      eng.pause();
+      eng.currentTime = 0;
+    });
+    document.removeEventListener('touchstart', unlockAudioEngines);
+    document.removeEventListener('click', unlockAudioEngines);
+  }
+  document.addEventListener('touchstart', unlockAudioEngines, { once: true, passive: true });
+  document.addEventListener('click', unlockAudioEngines, { once: true });
   engine2.preload = 'auto';
   const engines   = [engine, engine2];
   let activeIdx   = 0;
@@ -2680,7 +2700,13 @@
     nxt.src = t.src;
     nxt.currentTime = 0;
     nxt.volume = 0;
-    nxt.play().catch(() => {});
+    nxt.play().catch(() => {
+      // Autoplay was blocked (e.g. Android WebView) — fall back to a
+      // normal hard-cut track change instead of stalling silently.
+      crossfadeTimer && clearInterval(crossfadeTimer);
+      crossfadeTimer = null;
+      playTrack(nextIdx);
+    });
 
     const steps = 30;
     const stepMs = (CROSSFADE_SEC * 1000) / steps;
