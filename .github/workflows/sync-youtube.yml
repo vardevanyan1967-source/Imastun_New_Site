@@ -1,4 +1,4 @@
-name: Sync YouTube videos
+name: Sync YouTube long videos
 
 on:
   workflow_dispatch:
@@ -15,7 +15,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Fetch YouTube and sync site
+      - name: Fetch YouTube long videos and sync site
         shell: python
         run: |
           import json
@@ -35,10 +35,25 @@ jobs:
               "yt": "http://www.youtube.com/xml/schemas/2015",
           }
 
+          def is_short(video_id):
+              # YouTube RSS does not expose a reliable Shorts flag. The public
+              # /shorts/<id> route resolves for Shorts; reject those entries.
+              req = urllib.request.Request(
+                  f"https://www.youtube.com/shorts/{video_id}",
+                  headers={"User-Agent": "Mozilla/5.0"}
+              )
+              try:
+                  with urllib.request.urlopen(req, timeout=15) as response:
+                      final_url = response.geturl()
+                  return "/shorts/" in final_url
+              except Exception as exc:
+                  # Fail closed: if classification is uncertain, do not add it.
+                  print(f"Skipping {video_id}: could not verify long-form status: {exc}")
+                  return True
+
           json_path = Path("youtube-videos.json")
           videos = json.loads(json_path.read_text(encoding="utf-8")) if json_path.exists() else []
 
-          # Remove duplicate IDs while preserving the first occurrence.
           unique = []
           seen = set()
           for item in videos:
@@ -53,21 +68,23 @@ jobs:
               video_id = entry.findtext("yt:videoId", default="", namespaces=ns)
               title = entry.findtext("atom:title", default="", namespaces=ns)
               published = entry.findtext("atom:published", default="", namespaces=ns)
-              if video_id and video_id not in seen:
-                  added = published[:10] if published else datetime.now(timezone.utc).date().isoformat()
-                  new_items.append({"id": video_id, "title": title, "added": added})
-                  seen.add(video_id)
+              if not video_id or video_id in seen:
+                  continue
+              if is_short(video_id):
+                  print(f"Ignoring Short: {video_id} — {title}")
+                  continue
+              added = published[:10] if published else datetime.now(timezone.utc).date().isoformat()
+              new_items.append({"id": video_id, "title": title, "added": added})
+              seen.add(video_id)
 
           if new_items:
               videos = list(reversed(new_items)) + videos
-              print(f"Added {len(new_items)} new video(s).")
+              print(f"Added {len(new_items)} new long video(s).")
           else:
-              print("No new videos.")
+              print("No new long videos.")
 
           json_path.write_text(json.dumps(videos, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-          # Keep the existing site renderer unchanged; only regenerate its
-          # YOUTUBE_VIDEOS data block from youtube-videos.json.
           def js_string(value):
               return json.dumps(value or "", ensure_ascii=False)
 
@@ -96,5 +113,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add youtube-videos.json index.html
-          git commit -m "Auto-sync YouTube videos"
+          git commit -m "Auto-sync YouTube long videos"
           git push
