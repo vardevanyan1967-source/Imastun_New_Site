@@ -1,0 +1,67 @@
+name: Sync YouTube videos
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 */6 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Fetch latest YouTube videos
+        shell: python
+        run: |
+          import json
+          import urllib.request
+          import xml.etree.ElementTree as ET
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          channel_id = "UC_PLACEHOLDER"
+          feed_url = f"https://www.youtube.com/feeds/videos.xml?channel_id={channel_id}"
+          with urllib.request.urlopen(feed_url, timeout=30) as response:
+              root = ET.fromstring(response.read())
+
+          ns = {
+              "atom": "http://www.w3.org/2005/Atom",
+              "yt": "http://www.youtube.com/xml/schemas/2015",
+          }
+
+          path = Path("youtube-videos.json")
+          videos = json.loads(path.read_text(encoding="utf-8")) if path.exists() else []
+          existing = {item.get("id") for item in videos}
+          new_items = []
+
+          for entry in root.findall("atom:entry", ns):
+              video_id = entry.findtext("yt:videoId", default="", namespaces=ns)
+              title = entry.findtext("atom:title", default="", namespaces=ns)
+              published = entry.findtext("atom:published", default="", namespaces=ns)
+              if video_id and video_id not in existing:
+                  added = published[:10] if published else datetime.now(timezone.utc).date().isoformat()
+                  new_items.append({"id": video_id, "title": title, "added": added})
+
+          if new_items:
+              videos = list(reversed(new_items)) + videos
+              path.write_text(json.dumps(videos, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+              print(f"Added {len(new_items)} new video(s).")
+          else:
+              print("No new videos.")
+
+      - name: Commit updated feed
+        run: |
+          if git diff --quiet -- youtube-videos.json; then
+            echo "Nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add youtube-videos.json
+          git commit -m "Auto-sync YouTube videos"
+          git push
