@@ -24,7 +24,7 @@ jobs:
           from datetime import datetime, timezone
           from pathlib import Path
 
-          channel_id = "UC_PLACEHOLDER"
+          channel_id = "UCsLXYCY4hBjGyJLm8qhAByQ"
           feed_url = f"https://www.youtube.com/feeds/videos.xml?channel_id={channel_id}"
           with urllib.request.urlopen(feed_url, timeout=30) as response:
               root = ET.fromstring(response.read())
