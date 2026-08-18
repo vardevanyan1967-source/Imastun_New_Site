@@ -15,10 +15,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Fetch latest YouTube videos
+      - name: Fetch YouTube and sync site
         shell: python
         run: |
           import json
+          import re
           import urllib.request
           import xml.etree.ElementTree as ET
           from datetime import datetime, timezone
@@ -34,34 +35,66 @@ jobs:
               "yt": "http://www.youtube.com/xml/schemas/2015",
           }
 
-          path = Path("youtube-videos.json")
-          videos = json.loads(path.read_text(encoding="utf-8")) if path.exists() else []
-          existing = {item.get("id") for item in videos}
-          new_items = []
+          json_path = Path("youtube-videos.json")
+          videos = json.loads(json_path.read_text(encoding="utf-8")) if json_path.exists() else []
 
+          # Remove duplicate IDs while preserving the first occurrence.
+          unique = []
+          seen = set()
+          for item in videos:
+              video_id = item.get("id")
+              if video_id and video_id not in seen:
+                  seen.add(video_id)
+                  unique.append(item)
+          videos = unique
+
+          new_items = []
           for entry in root.findall("atom:entry", ns):
               video_id = entry.findtext("yt:videoId", default="", namespaces=ns)
               title = entry.findtext("atom:title", default="", namespaces=ns)
               published = entry.findtext("atom:published", default="", namespaces=ns)
-              if video_id and video_id not in existing:
+              if video_id and video_id not in seen:
                   added = published[:10] if published else datetime.now(timezone.utc).date().isoformat()
                   new_items.append({"id": video_id, "title": title, "added": added})
+                  seen.add(video_id)
 
           if new_items:
               videos = list(reversed(new_items)) + videos
-              path.write_text(json.dumps(videos, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
               print(f"Added {len(new_items)} new video(s).")
           else:
               print("No new videos.")
 
-      - name: Commit updated feed
+          json_path.write_text(json.dumps(videos, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+          # Keep the existing site renderer unchanged; only regenerate its
+          # YOUTUBE_VIDEOS data block from youtube-videos.json.
+          def js_string(value):
+              return json.dumps(value or "", ensure_ascii=False)
+
+          rows = []
+          for item in videos:
+              fields = [f"id: {js_string(item.get('id'))}", f"title: {js_string(item.get('title'))}"]
+              if item.get("added"):
+                  fields.append(f"added: {js_string(item.get('added'))}")
+              rows.append("    { " + ", ".join(fields) + " },")
+          new_block = "  const YOUTUBE_VIDEOS = [\n" + "\n".join(rows) + "\n  ];"
+
+          index_path = Path("index.html")
+          html = index_path.read_text(encoding="utf-8")
+          pattern = r"  const YOUTUBE_VIDEOS = \[.*?\n  \];"
+          updated, count = re.subn(pattern, lambda m: new_block, html, count=1, flags=re.S)
+          if count != 1:
+              raise RuntimeError("Could not find exactly one YOUTUBE_VIDEOS block in index.html")
+          index_path.write_text(updated, encoding="utf-8")
+
+      - name: Commit updated YouTube data
         run: |
-          if git diff --quiet -- youtube-videos.json; then
+          if git diff --quiet -- youtube-videos.json index.html; then
             echo "Nothing to commit."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add youtube-videos.json
+          git add youtube-videos.json index.html
           git commit -m "Auto-sync YouTube videos"
           git push
