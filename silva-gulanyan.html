@@ -228,7 +228,8 @@
     @media (max-width: 700px) {
       .hero-name { font-size: clamp(36px, 10vw, 64px); }
       .gp-info { flex: 0 0 120px; }
-      .gp-progress-wrap { display: none; }
+      .gp-progress-wrap { flex: 0 0 100%; order: 10; }
+      #global-player { flex-wrap: wrap; align-content: center; row-gap: 6px; height: auto; min-height: var(--player-h); padding: 10px clamp(14px, 4vw, 24px); }
     }
   </style>
 </head>
@@ -524,6 +525,26 @@
   const CROSSFADE_SEC = 2.5;
   let crossfadeTimer = null;
 
+  /* Unlock both audio elements on first user gesture so the background
+     (crossfade / auto-advance) engine is also allowed to autoplay later,
+     especially in Android WebView and mobile browsers that block
+     programmatic play() unless it was already unlocked by a real tap. */
+  let audioUnlocked = false;
+  function unlockAudioEngines() {
+    if (audioUnlocked) return;
+    audioUnlocked = true;
+    [engine, engine2].forEach(eng => {
+      const p = eng.play();
+      if (p && p.catch) p.catch(() => {});
+      eng.pause();
+      eng.currentTime = 0;
+    });
+    document.removeEventListener('touchstart', unlockAudioEngines);
+    document.removeEventListener('click', unlockAudioEngines);
+  }
+  document.addEventListener('touchstart', unlockAudioEngines, { once: true, passive: true });
+  document.addEventListener('click', unlockAudioEngines, { once: true });
+
   const gpEl      = document.getElementById('global-player');
   const gpCover   = document.getElementById('gp-cover');
   const gpArtist  = document.getElementById('gp-artist');
@@ -572,7 +593,13 @@
     nxt.src = t.src;
     nxt.currentTime = 0;
     nxt.volume = 0;
-    nxt.play().catch(() => {});
+    nxt.play().catch(() => {
+      // Autoplay was blocked (e.g. Android WebView) — fall back to a
+      // normal hard-cut track change instead of stalling silently.
+      crossfadeTimer && clearInterval(crossfadeTimer);
+      crossfadeTimer = null;
+      playTrack(nextIdx);
+    });
 
     const steps = 30;
     const stepMs = (CROSSFADE_SEC * 1000) / steps;
