@@ -4,7 +4,6 @@
   function installPlayerFixes() {
     if (typeof playlist === 'undefined' || !Array.isArray(playlist)) return;
 
-    // Support both the main catalog (data-pidx) and the dedicated Silva page (data-idx).
     const trackSelector = '.track-item[data-pidx], .track-item[data-idx]';
     const rowIndex = row => {
       if (!row) return -1;
@@ -13,7 +12,6 @@
       return Number.isInteger(n) ? n : -1;
     };
 
-    // Follow the order that is actually visible inside the current track list.
     function visibleSequenceFor(idx) {
       const rows = Array.from(document.querySelectorAll(trackSelector));
       const row = rows.find(el => rowIndex(el) === idx);
@@ -35,7 +33,6 @@
       return target >= 0 && target < seq.length ? seq[target] : -1;
     }
 
-    // Disable the old crossfade path because it assumes currentIdx + 1.
     try { startCrossfade = function() {}; } catch (e) {}
 
     const stopAndPlayAdjacent = direction => event => {
@@ -82,6 +79,7 @@
         height: 32px !important;
         position: relative !important;
         z-index: 5 !important;
+        touch-action: manipulation !important;
       }
       #global-player.visible {
         display: flex !important;
@@ -90,9 +88,7 @@
         transform: translate3d(0,0,0) !important;
       }
       @media (max-width: 700px) {
-        .track-item {
-          overflow: visible !important;
-        }
+        .track-item { overflow: visible !important; }
         .track-item[data-pidx] {
           grid-template-columns: 24px minmax(0, 1fr) auto auto auto !important;
         }
@@ -115,23 +111,48 @@
     `;
     if (!document.getElementById(style.id)) document.head.appendChild(style);
 
+    function revealPlayer(row) {
+      if (typeof gpEl === 'undefined' || !gpEl) return;
+      const idx = rowIndex(row);
+      if (idx >= 0 && playlist[idx]) {
+        const t = playlist[idx];
+        if (typeof gpCover !== 'undefined' && gpCover && t.cover) gpCover.src = t.cover;
+        if (typeof gpArtist !== 'undefined' && gpArtist) gpArtist.textContent = t.artistName || '';
+        if (typeof gpSong !== 'undefined' && gpSong) gpSong.textContent = t.label || t.song || '';
+      }
+      gpEl.classList.add('visible');
+      gpEl.style.display = 'flex';
+      gpEl.style.visibility = 'visible';
+      gpEl.style.opacity = '1';
+      gpEl.style.transform = 'translate3d(0,0,0)';
+      requestAnimationFrame(() => gpEl.classList.add('visible'));
+    }
+
     function forcePlayerVisibleFromEvent(event) {
       const target = event.target;
       if (!target || !target.closest) return;
       const row = target.closest(trackSelector);
-      if (!row) return;
-      if (typeof gpEl !== 'undefined' && gpEl) {
-        gpEl.classList.add('visible');
-        gpEl.style.visibility = 'visible';
-        gpEl.style.opacity = '1';
-        requestAnimationFrame(() => gpEl.classList.add('visible'));
-      }
+      if (row) revealPlayer(row);
     }
 
-    // Android Chrome/WebView can delay the synthetic click; reveal on the real gesture.
+    // On Android, call playTrack directly from the real button gesture.
+    // This avoids cases where the generated row click is delayed or swallowed.
+    document.addEventListener('click', event => {
+      const target = event.target;
+      if (!target || !target.closest) return;
+      const playBtn = target.closest('.track-play-btn');
+      if (!playBtn) return;
+      const row = playBtn.closest(trackSelector);
+      const idx = rowIndex(row);
+      if (!row || idx < 0 || typeof playTrack !== 'function') return;
+      revealPlayer(row);
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      playTrack(idx);
+    }, true);
+
     document.addEventListener('touchstart', forcePlayerVisibleFromEvent, { passive: true, capture: true });
     document.addEventListener('pointerdown', forcePlayerVisibleFromEvent, { passive: true, capture: true });
-    document.addEventListener('click', forcePlayerVisibleFromEvent, true);
   }
 
   requestAnimationFrame(() => requestAnimationFrame(installPlayerFixes));
