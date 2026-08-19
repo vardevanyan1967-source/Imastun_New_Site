@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'imastun-shell-v5';
+const CACHE_VERSION = 'imastun-shell-v6';
 const APP_SHELL = ['./', './index.html', './manifest.json', './logo.png', './audio-player-fix.js'];
 
 function injectPlayerFix(response) {
@@ -8,7 +8,7 @@ function injectPlayerFix(response) {
 
   return response.text().then(html => {
     if (!html.includes('audio-player-fix.js')) {
-      html = html.replace('</body>', '  <script src="./audio-player-fix.js?v=314f1aa"></script>\n</body>');
+      html = html.replace('</body>', '  <script src="./audio-player-fix.js?v=bc3725a"></script>\n</body>');
     }
     const headers = new Headers(response.headers);
     headers.delete('content-length');
