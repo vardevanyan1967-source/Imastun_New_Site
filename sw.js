@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'imastun-shell-v3';
+const CACHE_VERSION = 'imastun-shell-v4';
 const APP_SHELL = ['./', './index.html', './manifest.json', './logo.png', './audio-player-fix.js'];
 
 function injectPlayerFix(response) {
@@ -8,7 +8,7 @@ function injectPlayerFix(response) {
 
   return response.text().then(html => {
     if (!html.includes('audio-player-fix.js')) {
-      html = html.replace('</body>', '  <script src="./audio-player-fix.js"></script>\n</body>');
+      html = html.replace('</body>', '  <script src="./audio-player-fix.js?v=4bfbbd6"></script>\n</body>');
     }
     const headers = new Headers(response.headers);
     headers.delete('content-length');
@@ -21,11 +21,21 @@ function injectPlayerFix(response) {
 }
 
 self.addEventListener('install', event => {
-  event.waitUntil(caches.open(CACHE_VERSION).then(cache => cache.addAll(APP_SHELL)).then(() => self.skipWaiting()));
+  event.waitUntil(
+    caches.open(CACHE_VERSION)
+      .then(cache => cache.addAll(APP_SHELL))
+      .then(() => self.skipWaiting())
+  );
 });
 
 self.addEventListener('activate', event => {
-  event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key !== CACHE_VERSION).map(key => caches.delete(key)))).then(() => self.clients.claim()));
+  event.waitUntil(
+    caches.keys()
+      .then(keys => Promise.all(keys.filter(key => key !== CACHE_VERSION).map(key => caches.delete(key))))
+      .then(() => self.clients.claim())
+      .then(() => self.clients.matchAll({ type: 'window', includeUncontrolled: true }))
+      .then(clients => Promise.all(clients.map(client => client.navigate(client.url).catch(() => null))))
+  );
 });
 
 self.addEventListener('fetch', event => {
