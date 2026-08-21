@@ -2598,6 +2598,8 @@
   const similarPanel = document.getElementById('similar-panel');
 
   let currentIdx = -1, isPlaying = false;
+  let playPending = false;
+  let playRequestToken = 0;
 
   function revealGlobalPlayerImmediately() {
     if (!gpEl) return;
@@ -2661,8 +2663,50 @@
     active().volume = 1;
   }
 
+  function requestPlayback(eng) {
+    const token = ++playRequestToken;
+    playPending = true;
+    // Treat a pending play() as active immediately. Remote MP3 startup can be
+    // slow, and another tap must pause/resume it instead of assigning src again.
+    isPlaying = true;
+    setPlayIcon(true);
+    highlightTrack(currentIdx);
+
+    let result;
+    try {
+      result = eng.play();
+    } catch (e) {
+      result = Promise.reject(e);
+    }
+    Promise.resolve(result).then(() => {
+      if (token !== playRequestToken || eng !== active()) return;
+      playPending = false;
+      isPlaying = !eng.paused;
+      setPlayIcon(isPlaying);
+      highlightTrack(currentIdx);
+    }).catch(() => {
+      if (token !== playRequestToken || eng !== active()) return;
+      playPending = false;
+      isPlaying = false;
+      setPlayIcon(false);
+      highlightTrack(currentIdx);
+    });
+  }
+
+  function pausePlayback(eng) {
+    ++playRequestToken;
+    playPending = false;
+    eng.pause();
+    isPlaying = false;
+    setPlayIcon(false);
+    highlightTrack(currentIdx);
+  }
+
   function loadTrack(idx, autoplay) {
     if (idx < 0 || idx >= playlist.length) return;
+    ++playRequestToken;
+    playPending = false;
+    isPlaying = false;
     cancelCrossfade();
     currentIdx = idx;
     const t = playlist[idx];
@@ -2680,7 +2724,7 @@
     gpCur.textContent = gpDur.textContent = '0:00';
     highlightTrack(idx);
     updateMediaSession(t);
-    if (autoplay) eng.play().then(() => { isPlaying = true; setPlayIcon(true); }).catch(() => {});
+    if (autoplay) requestPlayback(eng);
     try {
       localStorage.setItem('imastun_last_track', JSON.stringify({ artistId: t.artistId, song: t.song, label: t.label, artistName: t.artistName }));
     } catch (e) {}
@@ -2699,8 +2743,13 @@
   }
 
   function playTrack(idx) {
-    if (idx === currentIdx && isPlaying) {
-      active().pause(); return;
+    if (idx < 0 || idx >= playlist.length) return;
+    revealGlobalPlayerImmediately();
+    if (idx === currentIdx) {
+      const eng = active();
+      if (playPending || isPlaying || !eng.paused) pausePlayback(eng);
+      else requestPlayback(eng);
+      return;
     }
     const t = playlist[idx];
     if (t && typeof gtag === 'function') {
@@ -2709,6 +2758,53 @@
     if (t) incrementPlayCount(t.song);
     loadTrack(idx, true);
   }
+
+  // Android can delay or drop the synthetic click after a touch. Handle the
+  // real pointer gesture once, then suppress only its follow-up click so the
+  // track is never toggled twice by two competing event paths.
+  let directTrackGesture = null;
+  let lastDirectTrackTap = { idx: -1, at: 0 };
+
+  function trackIndexFromTarget(target) {
+    if (!target || !target.closest) return -1;
+    const button = target.closest('.track-play-btn');
+    const row = button && button.closest('.track-item[data-pidx]');
+    if (!row) return -1;
+    const idx = Number.parseInt(row.dataset.pidx, 10);
+    return Number.isInteger(idx) ? idx : -1;
+  }
+
+  document.addEventListener('pointerdown', event => {
+    const idx = trackIndexFromTarget(event.target);
+    directTrackGesture = idx < 0 ? null : {
+      pointerId: event.pointerId,
+      idx,
+      x: event.clientX,
+      y: event.clientY
+    };
+  }, true);
+
+  document.addEventListener('pointerup', event => {
+    const gesture = directTrackGesture;
+    directTrackGesture = null;
+    if (!gesture || gesture.pointerId !== event.pointerId) return;
+    const moved = Math.hypot(event.clientX - gesture.x, event.clientY - gesture.y);
+    if (moved > 14 || trackIndexFromTarget(event.target) !== gesture.idx) return;
+    lastDirectTrackTap = { idx: gesture.idx, at: performance.now() };
+    if (event.cancelable) event.preventDefault();
+    event.stopImmediatePropagation();
+    playTrack(gesture.idx);
+  }, true);
+
+  document.addEventListener('pointercancel', () => { directTrackGesture = null; }, true);
+
+  document.addEventListener('click', event => {
+    const idx = trackIndexFromTarget(event.target);
+    if (idx < 0 || idx !== lastDirectTrackTap.idx) return;
+    if (performance.now() - lastDirectTrackTap.at > 1200) return;
+    if (event.cancelable) event.preventDefault();
+    event.stopImmediatePropagation();
+  }, true);
 
   function startCrossfade() {
     const nextIdx = currentIdx + 1;
@@ -2756,14 +2852,13 @@
 
   gpPlayBtn.addEventListener('click', () => {
     if (currentIdx < 0) return;
-    if (isPlaying) {
-      active().pause();
+    revealGlobalPlayerImmediately();
+    if (playPending || isPlaying || !active().paused) {
+      pausePlayback(active());
       if (crossfadeTimer) inactive().pause();
-      isPlaying = false; setPlayIcon(false); highlightTrack(currentIdx);
     } else {
-      active().play().catch(() => {});
+      requestPlayback(active());
       if (crossfadeTimer) inactive().play().catch(() => {});
-      isPlaying = true; setPlayIcon(true); highlightTrack(currentIdx);
     }
   });
 
@@ -2781,8 +2876,8 @@
         startCrossfade();
       }
     });
-    eng.addEventListener('play',  () => { if (eng === active()) { isPlaying = true;  setPlayIcon(true);  highlightTrack(currentIdx); } });
-    eng.addEventListener('pause', () => { if (eng === active() && !crossfadeTimer) { isPlaying = false; setPlayIcon(false); highlightTrack(currentIdx); } });
+    eng.addEventListener('play',  () => { if (eng === active()) { playPending = false; isPlaying = true;  setPlayIcon(true);  highlightTrack(currentIdx); } });
+    eng.addEventListener('pause', () => { if (eng === active() && !crossfadeTimer) { playPending = false; isPlaying = false; setPlayIcon(false); highlightTrack(currentIdx); } });
     eng.addEventListener('ended', () => {
       if (eng !== active() || crossfadeTimer) return;
       if (currentIdx < playlist.length - 1) playTrack(currentIdx + 1);
