@@ -818,6 +818,27 @@
 
     .suno-btn:hover { background: var(--gold); color: var(--bg); }
 
+    /* ── PILOT NATIVE PLAYER ── */
+    #pilot-native-player {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      min-height: var(--player-h);
+      background: rgba(10,10,10,0.98); backdrop-filter: blur(28px);
+      border-top: 1px solid var(--gold); z-index: 195;
+      display: flex; align-items: center; gap: 20px;
+      padding: 12px clamp(16px, 4vw, 48px);
+    }
+
+    .pilot-native-meta { min-width: 240px; }
+    .pilot-native-kicker {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 4px;
+    }
+    .pilot-native-title {
+      font-family: 'Cormorant Garamond', serif; font-size: 18px;
+      color: var(--white); line-height: 1.15;
+    }
+    #pilot-native-audio { display: block; width: 100%; min-width: 0; }
+
     /* ── GLOBAL PLAYER ── */
     #global-player {
       position: fixed; bottom: 0; left: 0; right: 0;
@@ -830,11 +851,7 @@
       transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    #global-player.visible {
-      visibility: visible;
-      opacity: 1;
-      transform: translate3d(0, 0, 0) !important;
-    }
+    #global-player.visible { transform: translateY(0); }
 
     .gp-cover {
       width: 52px; height: 52px; object-fit: cover;
@@ -1157,6 +1174,10 @@
       .gp-btn, .gp-play { padding: 4px; }
       .gp-progress-wrap { display: flex; flex: 0 0 100%; order: 10; gap: 8px; }
       .gp-time { font-size: 11px; width: 34px; }
+      #pilot-native-player { flex-direction: column; align-items: stretch; justify-content: center; gap: 6px; padding: 8px 14px; }
+      .pilot-native-meta { min-width: 0; }
+      .pilot-native-kicker { margin-bottom: 2px; }
+      .pilot-native-title { font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
       footer { flex-direction: column; align-items: flex-start; }
       #suno-banner { padding: 20px; }
       #donate-section { padding: 24px 20px; }
@@ -1580,6 +1601,19 @@
   <span id="rb-text"></span>
   <button id="rb-play">Նվագարկել</button>
   <button class="rb-close" id="rb-close">✕</button>
+</div>
+
+<div id="pilot-native-player" role="region" aria-label="Փորձնական երգի նվագարկիչ">
+  <div class="pilot-native-meta">
+    <div class="pilot-native-kicker">Փորձնական երգ</div>
+    <div class="pilot-native-title">Կատակ յարի երգ պար 4 լեզվով</div>
+  </div>
+  <audio
+    id="pilot-native-audio"
+    controls
+    preload="none"
+    aria-label="Կատակ յարի երգ պար 4 լեզվով"
+    src="https://media.imastun.org/%D4%BF%D5%A1%D5%BF%D5%A1%D5%AF%20%D5%B5%D5%A1%D6%80%D5%AB%20%D5%A5%D6%80%D5%A3%20%D5%BA%D5%A1%D6%80%204%20%D5%AC%D5%A5%D5%A6%D5%BE%D5%B8%D5%BE.mp3"></audio>
 </div>
 
 <div id="global-player">
@@ -2511,9 +2545,9 @@
     'go-hara|Я уйду любя': 'a4c22ad27185'
   });
 
-  const AUDIO_OVERRIDES = Object.freeze({
-    'imastun|Կատակ յարի երգ պար 4 լեզվով': 'https://media.imastun.org/%D4%BF%D5%A1%D5%BF%D5%A1%D5%AF%20%D5%B5%D5%A1%D6%80%D5%AB%20%D5%A5%D6%80%D5%A3%20%D5%BA%D5%A1%D6%80%204%20%D5%AC%D5%A5%D5%A6%D5%BE%D5%B8%D5%BE.mp3'
-  });
+  const PILOT_TRACK_KEY = 'imastun|Կատակ յարի երգ պար 4 լեզվով';
+  const PILOT_AUDIO_URL = 'https://media.imastun.org/%D4%BF%D5%A1%D5%BF%D5%A1%D5%AF%20%D5%B5%D5%A1%D6%80%D5%AB%20%D5%A5%D6%80%D5%A3%20%D5%BA%D5%A1%D6%80%204%20%D5%AC%D5%A5%D5%A6%D5%BE%D5%B8%D5%BE.mp3';
+  const AUDIO_OVERRIDES = Object.freeze({ [PILOT_TRACK_KEY]: PILOT_AUDIO_URL });
 
   const playlist = [];
   ARTISTS.forEach(a => a.songs.forEach(s => {
@@ -2596,20 +2630,9 @@
   const gpDur     = document.getElementById('gp-dur');
   const gpSimilar = document.getElementById('gp-similar');
   const similarPanel = document.getElementById('similar-panel');
+  const pilotNativeAudio = document.getElementById('pilot-native-audio');
 
   let currentIdx = -1, isPlaying = false;
-  let playPending = false;
-  let playRequestToken = 0;
-
-  function revealGlobalPlayerImmediately() {
-    if (!gpEl) return;
-    gpEl.classList.add('visible');
-    gpEl.setAttribute('aria-hidden', 'false');
-    gpEl.style.setProperty('display', 'flex', 'important');
-    gpEl.style.setProperty('visibility', 'visible', 'important');
-    gpEl.style.setProperty('opacity', '1', 'important');
-    gpEl.style.setProperty('transform', 'translate3d(0,0,0)', 'important');
-  }
 
   function buildSimilarPanel() {
     if (currentIdx < 0) { similarPanel.innerHTML = ''; return; }
@@ -2663,56 +2686,24 @@
     active().volume = 1;
   }
 
-  function requestPlayback(eng) {
-    const token = ++playRequestToken;
-    playPending = true;
-    // Treat a pending play() as active immediately. Remote MP3 startup can be
-    // slow, and another tap must pause/resume it instead of assigning src again.
-    isPlaying = true;
-    setPlayIcon(true);
-    highlightTrack(currentIdx);
-
-    let result;
-    try {
-      result = eng.play();
-    } catch (e) {
-      result = Promise.reject(e);
-    }
-    Promise.resolve(result).then(() => {
-      if (token !== playRequestToken || eng !== active()) return;
-      playPending = false;
-      isPlaying = !eng.paused;
-      setPlayIcon(isPlaying);
-      highlightTrack(currentIdx);
-    }).catch(() => {
-      if (token !== playRequestToken || eng !== active()) return;
-      playPending = false;
-      isPlaying = false;
-      setPlayIcon(false);
-      highlightTrack(currentIdx);
-    });
-  }
-
-  function pausePlayback(eng) {
-    ++playRequestToken;
-    playPending = false;
-    eng.pause();
+  function togglePilotNativeAudio() {
+    if (!pilotNativeAudio) return;
+    cancelCrossfade();
+    active().pause();
     isPlaying = false;
     setPlayIcon(false);
-    highlightTrack(currentIdx);
+    highlightTrack(-1);
+    gpEl.classList.remove('visible');
+    if (pilotNativeAudio.paused) pilotNativeAudio.play().catch(() => {});
+    else pilotNativeAudio.pause();
   }
 
   function loadTrack(idx, autoplay) {
     if (idx < 0 || idx >= playlist.length) return;
-    ++playRequestToken;
-    playPending = false;
-    isPlaying = false;
+    if (pilotNativeAudio && !pilotNativeAudio.paused) pilotNativeAudio.pause();
     cancelCrossfade();
     currentIdx = idx;
     const t = playlist[idx];
-    // Reveal the controls synchronously from the user's tap. This must not
-    // wait for a large remote MP3 to return its metadata or first audio bytes.
-    revealGlobalPlayerImmediately();
     const eng = active();
     eng.src = t.src;
     eng.volume = 1;
@@ -2720,11 +2711,12 @@
     gpCover.alt = t.artistName + ' — ' + t.label;
     gpArtist.textContent = t.artistName;
     gpSong.textContent = t.label;
+    gpEl.classList.add('visible');
     gpFill.style.width = '0%';
     gpCur.textContent = gpDur.textContent = '0:00';
     highlightTrack(idx);
     updateMediaSession(t);
-    if (autoplay) requestPlayback(eng);
+    if (autoplay) eng.play().then(() => { isPlaying = true; setPlayIcon(true); }).catch(() => {});
     try {
       localStorage.setItem('imastun_last_track', JSON.stringify({ artistId: t.artistId, song: t.song, label: t.label, artistName: t.artistName }));
     } catch (e) {}
@@ -2744,77 +2736,24 @@
 
   function playTrack(idx) {
     if (idx < 0 || idx >= playlist.length) return;
-    revealGlobalPlayerImmediately();
-    if (idx === currentIdx) {
-      const eng = active();
-      if (playPending || isPlaying || !eng.paused) pausePlayback(eng);
-      else requestPlayback(eng);
+    const t = playlist[idx];
+    if (`${t.artistId}|${t.song}` === PILOT_TRACK_KEY) {
+      if (typeof gtag === 'function') {
+        gtag('event', 'play_song', { song_name: t.label, artist_name: t.artistName });
+      }
+      incrementPlayCount(t.song);
+      togglePilotNativeAudio();
       return;
     }
-    const t = playlist[idx];
+    if (idx === currentIdx && isPlaying) {
+      active().pause(); return;
+    }
     if (t && typeof gtag === 'function') {
       gtag('event', 'play_song', { song_name: t.label, artist_name: t.artistName });
     }
     if (t) incrementPlayCount(t.song);
     loadTrack(idx, true);
   }
-
-  // Android can delay or drop the synthetic click after a touch. Handle the
-  // real pointer gesture once on every surface that can launch a song, then
-  // suppress only its follow-up click so playback is never toggled twice.
-  let directTrackGesture = null;
-  let lastDirectTrackTap = { surface: null, idx: -1, at: 0 };
-
-  function directTrackTarget(target) {
-    if (!target || !target.closest) return null;
-    if (target.closest('.track-fav-btn, .track-share-btn, a')) return null;
-    const surface = target.closest([
-      '.track-item[data-pidx]',
-      '.sr-item[data-pidx]',
-      '.recent-card[data-pidx]',
-      '.similar-item[data-idx]'
-    ].join(','));
-    if (!surface) return null;
-    const raw = surface.dataset.pidx != null ? surface.dataset.pidx : surface.dataset.idx;
-    const idx = Number.parseInt(raw, 10);
-    return Number.isInteger(idx) && idx >= 0 ? { surface, idx } : null;
-  }
-
-  document.addEventListener('pointerdown', event => {
-    if (event.isPrimary === false) return;
-    const track = directTrackTarget(event.target);
-    directTrackGesture = !track ? null : {
-      pointerId: event.pointerId,
-      surface: track.surface,
-      idx: track.idx,
-      x: event.clientX,
-      y: event.clientY
-    };
-  }, true);
-
-  document.addEventListener('pointerup', event => {
-    const gesture = directTrackGesture;
-    directTrackGesture = null;
-    if (!gesture || gesture.pointerId !== event.pointerId) return;
-    const track = directTrackTarget(event.target);
-    const moved = Math.hypot(event.clientX - gesture.x, event.clientY - gesture.y);
-    if (!track || moved > 14 || track.idx !== gesture.idx || track.surface !== gesture.surface) return;
-    lastDirectTrackTap = { surface: track.surface, idx: track.idx, at: performance.now() };
-    if (event.cancelable) event.preventDefault();
-    event.stopImmediatePropagation();
-    playTrack(track.idx);
-    if (track.surface.classList.contains('sr-item')) closeSearch();
-  }, true);
-
-  document.addEventListener('pointercancel', () => { directTrackGesture = null; }, true);
-
-  document.addEventListener('click', event => {
-    const track = directTrackTarget(event.target);
-    if (!track || track.idx !== lastDirectTrackTap.idx || track.surface !== lastDirectTrackTap.surface) return;
-    if (performance.now() - lastDirectTrackTap.at > 1200) return;
-    if (event.cancelable) event.preventDefault();
-    event.stopImmediatePropagation();
-  }, true);
 
   function startCrossfade() {
     const nextIdx = currentIdx + 1;
@@ -2862,13 +2801,14 @@
 
   gpPlayBtn.addEventListener('click', () => {
     if (currentIdx < 0) return;
-    revealGlobalPlayerImmediately();
-    if (playPending || isPlaying || !active().paused) {
-      pausePlayback(active());
+    if (isPlaying) {
+      active().pause();
       if (crossfadeTimer) inactive().pause();
+      isPlaying = false; setPlayIcon(false); highlightTrack(currentIdx);
     } else {
-      requestPlayback(active());
+      active().play().catch(() => {});
       if (crossfadeTimer) inactive().play().catch(() => {});
+      isPlaying = true; setPlayIcon(true); highlightTrack(currentIdx);
     }
   });
 
@@ -2886,8 +2826,8 @@
         startCrossfade();
       }
     });
-    eng.addEventListener('play',  () => { if (eng === active()) { playPending = false; isPlaying = true;  setPlayIcon(true);  highlightTrack(currentIdx); } });
-    eng.addEventListener('pause', () => { if (eng === active() && !crossfadeTimer) { playPending = false; isPlaying = false; setPlayIcon(false); highlightTrack(currentIdx); } });
+    eng.addEventListener('play',  () => { if (eng === active()) { isPlaying = true;  setPlayIcon(true);  highlightTrack(currentIdx); } });
+    eng.addEventListener('pause', () => { if (eng === active() && !crossfadeTimer) { isPlaying = false; setPlayIcon(false); highlightTrack(currentIdx); } });
     eng.addEventListener('ended', () => {
       if (eng !== active() || crossfadeTimer) return;
       if (currentIdx < playlist.length - 1) playTrack(currentIdx + 1);
@@ -2896,6 +2836,16 @@
   }
   setupEngine(engine);
   setupEngine(engine2);
+  if (pilotNativeAudio) {
+    pilotNativeAudio.addEventListener('play', () => {
+      cancelCrossfade();
+      active().pause();
+      isPlaying = false;
+      setPlayIcon(false);
+      highlightTrack(-1);
+      gpEl.classList.remove('visible');
+    });
+  }
 
   /* ══ MEDIA SESSION (lock screen / headphone controls) ══ */
   function updateMediaSession(t) {
@@ -3196,13 +3146,12 @@
     const grid = document.getElementById('recent-grid');
     if (!grid) return;
     const items = [];
-    playlist.forEach((t, pIdx) => {
+    playlist.forEach(t => {
       if (isNewSong(t.song)) items.push({
         type: 'Երգ', date: NEW_SONGS[t.song],
         title: SONG_NAMES[t.song] || formatName(t.song),
         sub: t.artistName,
-        pIdx,
-        action: () => playTrack(pIdx)
+        action: () => playTrack(playlist.indexOf(t))
       });
     });
     (typeof YOUTUBE_VIDEOS !== 'undefined' ? YOUTUBE_VIDEOS : []).forEach(v => {
@@ -3223,7 +3172,6 @@
     items.slice(0, 20).forEach(it => {
       const card = document.createElement('div');
       card.className = 'recent-card';
-      if (Number.isInteger(it.pIdx)) card.dataset.pidx = String(it.pIdx);
       card.innerHTML = `<div class="rc-top"><span class="rc-type">${it.type}</span>` +
         `<span class="rc-badge new-badge">NEW</span></div>` +
         `<div class="rc-title">${it.title}</div><div class="rc-sub">${it.sub}</div>`;
@@ -3835,7 +3783,6 @@
       });
     })();
   </script>
-  <script src="./audio-player-fix.js?v=bc3725a-v8"></script>
   <script async defer crossorigin="anonymous"
     src="https://connect.facebook.net/hy_AM/sdk.js#xfbml=1&version=v19.0"
     nonce="imastun"></script>

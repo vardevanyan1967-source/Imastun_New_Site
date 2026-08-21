@@ -111,9 +111,8 @@
     `;
     if (!document.getElementById(style.id)) document.head.appendChild(style);
 
-    // Track-tap handling lives in index.html so search results, recent cards,
-    // artist rows and similar-song rows all share one gesture controller.
     // Keep this file focused on visible-sequence navigation, duration and CSS.
+    // The R2 pilot uses its own native audio controls in index.html.
   }
 
   requestAnimationFrame(() => requestAnimationFrame(installPlayerFixes));
