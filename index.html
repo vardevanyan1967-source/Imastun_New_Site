@@ -2507,13 +2507,18 @@
     'go-hara|Я уйду любя': 'a4c22ad27185'
   });
 
+  const AUDIO_OVERRIDES = Object.freeze({
+    'imastun|Կատակ յարի երգ պար 4 լեզվով': 'https://media.imastun.org/%D4%BF%D5%A1%D5%BF%D5%A1%D5%AF%20%D5%B5%D5%A1%D6%80%D5%AB%20%D5%A5%D6%80%D5%A3%20%D5%BA%D5%A1%D6%80%204%20%D5%AC%D5%A5%D5%A6%D5%BE%D5%B8%D5%BE.mp3'
+  });
+
   const playlist = [];
   ARTISTS.forEach(a => a.songs.forEach(s => {
     const ext = s === 'nerqnapanak' ? '.wav' : '.mp3';
-    const version = AUDIO_VERSIONS[`${a.id}|${s}`];
+    const songKey = `${a.id}|${s}`;
+    const version = AUDIO_VERSIONS[songKey];
     playlist.push({
       artistId: a.id, artistName: a.name, song: s,
-      src:   `audio/${a.id}/featured/${s}${ext}${version ? `?v=${version}` : ''}`,
+      src:   AUDIO_OVERRIDES[songKey] || `audio/${a.id}/featured/${s}${ext}${version ? `?v=${version}` : ''}`,
       cover: `authors/${a.id}/cover.jpg`,
       label: SONG_NAMES[s] || formatName(s)
     });
