@@ -33,18 +33,9 @@ self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys()
       .then(keys => Promise.all(keys.filter(key => key !== CACHE_VERSION).map(key => caches.delete(key))))
+      // Claim open pages without navigating them. A forced refresh here can
+      // arrive seconds after a song tap and make the newly opened player vanish.
       .then(() => self.clients.claim())
-      .then(() => self.clients.matchAll({ type: 'window', includeUncontrolled: true }))
-      .then(clients => Promise.all(clients.map(client => {
-        try {
-          const url = new URL(client.url);
-          if (url.searchParams.get('_playerfix') === PLAYER_FIX_VERSION) return null;
-          url.searchParams.set('_playerfix', PLAYER_FIX_VERSION);
-          return client.navigate(url.href).catch(() => null);
-        } catch (e) {
-          return null;
-        }
-      })))
   );
 });
 
