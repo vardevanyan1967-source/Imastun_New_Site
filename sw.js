@@ -1,5 +1,5 @@
-const CACHE_VERSION = 'imastun-shell-v8';
-const PLAYER_FIX_VERSION = 'bc3725a-v8';
+const CACHE_VERSION = 'imastun-shell-v7';
+const PLAYER_FIX_VERSION = 'bc3725a-v7';
 const APP_SHELL = ['./', './index.html', './manifest.json', './logo.png', './audio-player-fix.js'];
 
 function injectPlayerFix(response) {
