@@ -830,7 +830,11 @@
       transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    #global-player.visible { transform: translateY(0); }
+    #global-player.visible {
+      visibility: visible;
+      opacity: 1;
+      transform: translate3d(0, 0, 0) !important;
+    }
 
     .gp-cover {
       width: 52px; height: 52px; object-fit: cover;
@@ -2595,6 +2599,16 @@
 
   let currentIdx = -1, isPlaying = false;
 
+  function revealGlobalPlayerImmediately() {
+    if (!gpEl) return;
+    gpEl.classList.add('visible');
+    gpEl.setAttribute('aria-hidden', 'false');
+    gpEl.style.setProperty('display', 'flex', 'important');
+    gpEl.style.setProperty('visibility', 'visible', 'important');
+    gpEl.style.setProperty('opacity', '1', 'important');
+    gpEl.style.setProperty('transform', 'translate3d(0,0,0)', 'important');
+  }
+
   function buildSimilarPanel() {
     if (currentIdx < 0) { similarPanel.innerHTML = ''; return; }
     const t = playlist[currentIdx];
@@ -2652,6 +2666,9 @@
     cancelCrossfade();
     currentIdx = idx;
     const t = playlist[idx];
+    // Reveal the controls synchronously from the user's tap. This must not
+    // wait for a large remote MP3 to return its metadata or first audio bytes.
+    revealGlobalPlayerImmediately();
     const eng = active();
     eng.src = t.src;
     eng.volume = 1;
@@ -2659,7 +2676,6 @@
     gpCover.alt = t.artistName + ' — ' + t.label;
     gpArtist.textContent = t.artistName;
     gpSong.textContent = t.label;
-    gpEl.classList.add('visible');
     gpFill.style.width = '0%';
     gpCur.textContent = gpDur.textContent = '0:00';
     highlightTrack(idx);
