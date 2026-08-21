@@ -111,48 +111,9 @@
     `;
     if (!document.getElementById(style.id)) document.head.appendChild(style);
 
-    function revealPlayer(row) {
-      if (typeof gpEl === 'undefined' || !gpEl) return;
-      const idx = rowIndex(row);
-      if (idx >= 0 && playlist[idx]) {
-        const t = playlist[idx];
-        if (typeof gpCover !== 'undefined' && gpCover && t.cover) gpCover.src = t.cover;
-        if (typeof gpArtist !== 'undefined' && gpArtist) gpArtist.textContent = t.artistName || '';
-        if (typeof gpSong !== 'undefined' && gpSong) gpSong.textContent = t.label || t.song || '';
-      }
-      gpEl.classList.add('visible');
-      gpEl.style.display = 'flex';
-      gpEl.style.visibility = 'visible';
-      gpEl.style.opacity = '1';
-      gpEl.style.transform = 'translate3d(0,0,0)';
-      requestAnimationFrame(() => gpEl.classList.add('visible'));
-    }
-
-    function forcePlayerVisibleFromEvent(event) {
-      const target = event.target;
-      if (!target || !target.closest) return;
-      const row = target.closest(trackSelector);
-      if (row) revealPlayer(row);
-    }
-
-    // On Android, call playTrack directly from the real button gesture.
-    // This avoids cases where the generated row click is delayed or swallowed.
-    document.addEventListener('click', event => {
-      const target = event.target;
-      if (!target || !target.closest) return;
-      const playBtn = target.closest('.track-play-btn');
-      if (!playBtn) return;
-      const row = playBtn.closest(trackSelector);
-      const idx = rowIndex(row);
-      if (!row || idx < 0 || typeof playTrack !== 'function') return;
-      revealPlayer(row);
-      event.preventDefault();
-      event.stopImmediatePropagation();
-      playTrack(idx);
-    }, true);
-
-    document.addEventListener('touchstart', forcePlayerVisibleFromEvent, { passive: true, capture: true });
-    document.addEventListener('pointerdown', forcePlayerVisibleFromEvent, { passive: true, capture: true });
+    // Track-tap handling lives in index.html so search results, recent cards,
+    // artist rows and similar-song rows all share one gesture controller.
+    // Keep this file focused on visible-sequence navigation, duration and CSS.
   }
 
   requestAnimationFrame(() => requestAnimationFrame(installPlayerFixes));

@@ -2760,25 +2760,33 @@
   }
 
   // Android can delay or drop the synthetic click after a touch. Handle the
-  // real pointer gesture once, then suppress only its follow-up click so the
-  // track is never toggled twice by two competing event paths.
+  // real pointer gesture once on every surface that can launch a song, then
+  // suppress only its follow-up click so playback is never toggled twice.
   let directTrackGesture = null;
-  let lastDirectTrackTap = { idx: -1, at: 0 };
+  let lastDirectTrackTap = { surface: null, idx: -1, at: 0 };
 
-  function trackIndexFromTarget(target) {
-    if (!target || !target.closest) return -1;
-    const button = target.closest('.track-play-btn');
-    const row = button && button.closest('.track-item[data-pidx]');
-    if (!row) return -1;
-    const idx = Number.parseInt(row.dataset.pidx, 10);
-    return Number.isInteger(idx) ? idx : -1;
+  function directTrackTarget(target) {
+    if (!target || !target.closest) return null;
+    if (target.closest('.track-fav-btn, .track-share-btn, a')) return null;
+    const surface = target.closest([
+      '.track-item[data-pidx]',
+      '.sr-item[data-pidx]',
+      '.recent-card[data-pidx]',
+      '.similar-item[data-idx]'
+    ].join(','));
+    if (!surface) return null;
+    const raw = surface.dataset.pidx != null ? surface.dataset.pidx : surface.dataset.idx;
+    const idx = Number.parseInt(raw, 10);
+    return Number.isInteger(idx) && idx >= 0 ? { surface, idx } : null;
   }
 
   document.addEventListener('pointerdown', event => {
-    const idx = trackIndexFromTarget(event.target);
-    directTrackGesture = idx < 0 ? null : {
+    if (event.isPrimary === false) return;
+    const track = directTrackTarget(event.target);
+    directTrackGesture = !track ? null : {
       pointerId: event.pointerId,
-      idx,
+      surface: track.surface,
+      idx: track.idx,
       x: event.clientX,
       y: event.clientY
     };
@@ -2788,19 +2796,21 @@
     const gesture = directTrackGesture;
     directTrackGesture = null;
     if (!gesture || gesture.pointerId !== event.pointerId) return;
+    const track = directTrackTarget(event.target);
     const moved = Math.hypot(event.clientX - gesture.x, event.clientY - gesture.y);
-    if (moved > 14 || trackIndexFromTarget(event.target) !== gesture.idx) return;
-    lastDirectTrackTap = { idx: gesture.idx, at: performance.now() };
+    if (!track || moved > 14 || track.idx !== gesture.idx || track.surface !== gesture.surface) return;
+    lastDirectTrackTap = { surface: track.surface, idx: track.idx, at: performance.now() };
     if (event.cancelable) event.preventDefault();
     event.stopImmediatePropagation();
-    playTrack(gesture.idx);
+    playTrack(track.idx);
+    if (track.surface.classList.contains('sr-item')) closeSearch();
   }, true);
 
   document.addEventListener('pointercancel', () => { directTrackGesture = null; }, true);
 
   document.addEventListener('click', event => {
-    const idx = trackIndexFromTarget(event.target);
-    if (idx < 0 || idx !== lastDirectTrackTap.idx) return;
+    const track = directTrackTarget(event.target);
+    if (!track || track.idx !== lastDirectTrackTap.idx || track.surface !== lastDirectTrackTap.surface) return;
     if (performance.now() - lastDirectTrackTap.at > 1200) return;
     if (event.cancelable) event.preventDefault();
     event.stopImmediatePropagation();
@@ -3186,12 +3196,13 @@
     const grid = document.getElementById('recent-grid');
     if (!grid) return;
     const items = [];
-    playlist.forEach(t => {
+    playlist.forEach((t, pIdx) => {
       if (isNewSong(t.song)) items.push({
         type: 'Երգ', date: NEW_SONGS[t.song],
         title: SONG_NAMES[t.song] || formatName(t.song),
         sub: t.artistName,
-        action: () => playTrack(playlist.indexOf(t))
+        pIdx,
+        action: () => playTrack(pIdx)
       });
     });
     (typeof YOUTUBE_VIDEOS !== 'undefined' ? YOUTUBE_VIDEOS : []).forEach(v => {
@@ -3212,6 +3223,7 @@
     items.slice(0, 20).forEach(it => {
       const card = document.createElement('div');
       card.className = 'recent-card';
+      if (Number.isInteger(it.pIdx)) card.dataset.pidx = String(it.pIdx);
       card.innerHTML = `<div class="rc-top"><span class="rc-type">${it.type}</span>` +
         `<span class="rc-badge new-badge">NEW</span></div>` +
         `<div class="rc-title">${it.title}</div><div class="rc-sub">${it.sub}</div>`;
@@ -3823,7 +3835,7 @@
       });
     })();
   </script>
-  <script src="./audio-player-fix.js?v=bc3725a-v7"></script>
+  <script src="./audio-player-fix.js?v=bc3725a-v8"></script>
   <script async defer crossorigin="anonymous"
     src="https://connect.facebook.net/hy_AM/sdk.js#xfbml=1&version=v19.0"
     nonce="imastun"></script>
