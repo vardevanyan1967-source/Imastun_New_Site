@@ -983,6 +983,17 @@
     }, delay);
   }
 
+  function handleSeekCrossfade() {
+    if (!isPlaying || currentIdx < 0 || currentIdx >= playlist.length - 1 || crossfadeNextIdx >= 0) return;
+    const eng = active();
+    const duration = Number(eng.duration);
+    const current = Number(eng.currentTime || 0);
+    if (!Number.isFinite(duration) || duration <= 0 || !Number.isFinite(current)) return;
+    const remaining = duration - current;
+    if (remaining > 0 && remaining <= CROSSFADE_SEC) startCrossfade();
+    else if (remaining > CROSSFADE_SEC) scheduleCrossfade();
+  }
+
   function startCrossfade(targetIdx) {
     const nextIdx = Number.isInteger(targetIdx) ? targetIdx : currentIdx + 1;
     if (nextIdx >= playlist.length || crossfadeNextIdx >= 0) return;
@@ -1084,6 +1095,8 @@
     });
     eng.addEventListener('loadedmetadata', () => { if (eng === active()) scheduleCrossfade(); });
     eng.addEventListener('durationchange', () => { if (eng === active()) scheduleCrossfade(); });
+    eng.addEventListener('seeking', () => { if (eng === active()) handleSeekCrossfade(); });
+    eng.addEventListener('seeked', () => { if (eng === active()) handleSeekCrossfade(); });
     eng.addEventListener('play',  () => { if (eng === active()) { isPlaying = true;  setPlayIcon(true);  highlightTrack(currentIdx); scheduleCrossfade(); } });
     eng.addEventListener('pause', () => { if (eng === active() && !crossfadeTimer) { isPlaying = false; setPlayIcon(false); highlightTrack(currentIdx); } });
     eng.addEventListener('ended', () => {
