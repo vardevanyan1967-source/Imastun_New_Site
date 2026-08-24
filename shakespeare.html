@@ -1387,6 +1387,7 @@
   body.standalone-focus #artists-grid > .artist-card { display: none !important; }
   body.standalone-focus #artists-grid > .artist-panel { display: none !important; }
   body.standalone-focus #artists-grid > .artist-panel.open { display: block !important; }
+  body.standalone-focus #donate-section { display:block !important; opacity:1 !important; transform:none !important; visibility:visible !important; }
 </style>
 
 </head>
@@ -1643,12 +1644,20 @@
 <script>
   function copyDonateCard() {
     const num = '4578890080551169';
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(num).then(() => {
-        const m = document.getElementById('donateCopyMsg');
-        if (m) { m.style.display = 'block'; setTimeout(() => { m.style.display = 'none'; }, 2000); }
-      }).catch(() => {});
+    const message = document.getElementById('donateCopyMsg');
+    const showCopied = () => {
+      if (message) { message.textContent = 'Պատճենվեց ✓'; message.style.display = 'block'; setTimeout(() => { message.style.display = 'none'; }, 2000); }
+    };
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(num).then(showCopied).catch(() => {});
+      return;
     }
+    const field = document.createElement('textarea');
+    field.value = num; field.setAttribute('readonly', '');
+    field.style.position = 'fixed'; field.style.opacity = '0';
+    document.body.appendChild(field); field.select();
+    try { if (document.execCommand('copy')) showCopied(); } catch (e) {}
+    field.remove();
   }
 
   document.getElementById('yr').textContent = new Date().getFullYear();

@@ -141,6 +141,18 @@
       color: #0c0c0c; background: var(--gold); border-radius: 4px; padding: 2px 6px;
       flex-shrink: 0; white-space: nowrap;
     }
+    #donate-section { padding: 56px clamp(20px,6vw,100px); text-align:center; }
+    #donate-section h3 { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; color:var(--gold); margin-bottom:10px; }
+    #donate-section p { color:var(--text-dim); font-size:13px; margin-bottom:24px; }
+    .donate-card-wrap { display:flex; justify-content:center; }
+    .donate-card-inner { display:inline-block; min-width:min(100%,360px); padding:22px 28px; border:1px solid var(--border); background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(201,168,76,.02)); border-radius:12px; cursor:pointer; transition:border-color .2s,transform .2s; }
+    .donate-card-inner:hover { border-color:var(--gold); transform:translateY(-2px); }
+    .donate-card-label { margin:0 0 8px !important; color:var(--gold) !important; font-size:11px !important; letter-spacing:.15em; text-transform:uppercase; }
+    .donate-card-number { margin:0 !important; color:var(--white); font-family:'Inter',sans-serif; font-size:22px; letter-spacing:3px; font-weight:700; user-select:all; }
+    .donate-copy-msg { color:#4caf50 !important; font-size:12px !important; margin-top:8px !important; display:none; }
+    #donate-float-btn { position:fixed; bottom:calc(var(--player-h) + 144px); right:24px; width:52px; height:52px; border-radius:50%; background:linear-gradient(135deg,var(--gold),var(--gold-light)); color:#1a1409; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 18px rgba(201,168,76,.5); text-decoration:none; z-index:190; font-size:24px; transition:transform .2s,box-shadow .2s; }
+    #donate-float-btn:hover { transform:scale(1.1); box-shadow:0 6px 26px rgba(201,168,76,.7); }
+    @media (max-width:700px) { #donate-section { padding:32px 20px; } .donate-card-number { font-size:17px; letter-spacing:2px; } #donate-float-btn { right:12px; bottom:calc(var(--player-h) + 116px); width:44px; height:44px; font-size:20px; } }
     .track-play-btn {
       width: 32px; height: 32px; border-radius: 50%;
       border: 1px solid var(--border); background: none; color: var(--text-dim);
@@ -294,6 +306,18 @@
 
 <div class="gold-rule"></div>
 
+<section id="donate-section">
+  <h3>☕ Աջակցիր Imastun Studio-ին</h3>
+  <p>Եթե սիրում ես մեր երաժշտությունը, կարող ես աջակցել՝ ուղարկելով նվեր ցանկացած գումարով</p>
+  <div class="donate-card-wrap">
+    <div class="donate-card-inner" role="button" tabindex="0" aria-label="Պատճենել donation քարտի համարը" onclick="copyDonateCard()" onkeydown="if(event.key==='Enter'||event.key===' ') copyDonateCard()">
+      <p class="donate-card-label">Քարտի համար (Mastercard)</p>
+      <p class="donate-card-number" id="donateCardNum">4578 8900 8055 1169</p>
+      <p class="donate-copy-msg" id="donateCopyMsg">Պատճենվեց ✓</p>
+    </div>
+  </div>
+</section>
+
 <footer>
   <a href="/" class="footer-brand">Imastun Studio</a>
   <span class="footer-copy">© <span id="yr"></span> Imastun Studio</span>
@@ -308,6 +332,8 @@
 <a id="wa-btn" href="https://wa.me/37499248363" target="_blank" rel="noopener" title="WhatsApp">
   <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
+
+<a id="donate-float-btn" href="#donate-section" title="Աջակցիր Imastun Studio-ին" aria-label="Աջակցիր Imastun Studio-ին">☕</a>
 
 <div id="global-player">
   <img class="gp-cover" id="gp-cover" src="" alt="" />
@@ -336,6 +362,24 @@
 <audio id="audio-engine" preload="none"></audio>
 
 <script>
+  function copyDonateCard() {
+    const num = '4578890080551169';
+    const message = document.getElementById('donateCopyMsg');
+    const showCopied = () => {
+      if (message) { message.textContent = 'Պատճենվեց ✓'; message.style.display = 'block'; setTimeout(() => { message.style.display = 'none'; }, 2000); }
+    };
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(num).then(showCopied).catch(() => {});
+      return;
+    }
+    const field = document.createElement('textarea');
+    field.value = num; field.setAttribute('readonly', '');
+    field.style.position = 'fixed'; field.style.opacity = '0';
+    document.body.appendChild(field); field.select();
+    try { if (document.execCommand('copy')) showCopied(); } catch (e) {}
+    field.remove();
+  }
+
   document.getElementById('yr').textContent = new Date().getFullYear();
 
   const translations = {
