@@ -45,6 +45,7 @@
     $('#artist-cover').src = artist.cover;
     $('#artist-cover').alt = artist.name;
     $('#track-count').textContent = artist.songs.length;
+    document.querySelectorAll('.mobile-track-count').forEach((node) => { node.textContent = artist.songs.length; });
     $('#archive-count').textContent = `${artist.songs.length} tracks`;
 
     const menuToggle = $('#menu-toggle');
@@ -93,7 +94,9 @@
       probe.src = audioPath(artist, song);
     }))).then((durations) => {
       const total = durations.reduce((sum, value) => sum + value, 0);
-      if (durationValue) durationValue.textContent = total ? formatDuration(total) : '—';
+      const formattedDuration = total ? formatDuration(total) : '—';
+      if (durationValue) durationValue.textContent = formattedDuration;
+      document.querySelectorAll('.mobile-duration-stat').forEach((node) => { node.textContent = formattedDuration; });
     });
 
     const copyDonate = $('#copy-donate');

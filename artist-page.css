@@ -150,8 +150,14 @@ h2 { color: var(--white); font-family: 'Cormorant Garamond', Georgia, serif; fon
 .footer { display: flex; justify-content: space-between; gap: 16px; margin-top: 70px; padding-top: 18px; border-top: 1px solid var(--border); color: var(--muted); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
 .footer a { text-decoration: none; }
 .footer a:hover { color: var(--gold-light); }
-.donate-float { position: fixed; right: 22px; bottom: 112px; z-index: 18; width: 64px; height: 64px; display: grid; place-items: center; border: 1px solid var(--gold); border-radius: 50%; color: #261d09; background: var(--gold-light); box-shadow: 0 8px 24px rgba(0,0,0,.45); text-decoration: none; font-size: 28px; }
-.donate-float:hover { transform: translateY(-2px); background: var(--gold); }
+.mobile-profile-header { display: none; }
+.contact-float { position: fixed; right: 22px; z-index: 18; width: 56px; height: 56px; display: grid; place-items: center; border-radius: 50%; text-decoration: none; box-shadow: 0 6px 22px rgba(0,0,0,.4); }
+.contact-float svg { width: 28px; height: 28px; fill: currentColor; }
+.whatsapp-float { bottom: 40px; color: #fff; background: #25d366; }
+.messenger-float { bottom: 108px; color: #fff; background: #0084ff; }
+.donate-float { position: fixed; right: 22px; bottom: 176px; z-index: 18; width: 64px; height: 64px; display: grid; place-items: center; border: 1px solid var(--gold); border-radius: 50%; color: #261d09; background: var(--gold-light); box-shadow: 0 8px 24px rgba(0,0,0,.45); text-decoration: none; font-size: 28px; }
+.donate-float:hover, .contact-float:hover { transform: translateY(-2px); }
+.donate-float:hover { background: var(--gold); }
 body.light-mode { --bg: #f5f0e8; --surface: #fffaf1; --surface-2: #eee5d4; --text: #2e271c; --muted: #6f6455; --white: #1d1811; background: var(--bg); }
 body.light-mode .site-nav, body.light-mode .player { background: rgba(245,240,232,.94); }
 
@@ -174,6 +180,12 @@ body.light-mode .site-nav, body.light-mode .player { background: rgba(245,240,23
   .search-wrap { width: 100%; margin-top: 0; }
   .search { margin-top: 0; width: 100%; height: 58px; padding: 0 56px 0 24px; border: 2px solid var(--gold); border-radius: 34px; background: transparent; font-size: 18px; }
   .search-icon { right: 20px; font-size: 31px; }
+  .mobile-profile-header { display: flex; flex-direction: column; gap: 18px; margin: 0 8px 20px; padding: 0 0 12px; border-bottom: 1px solid var(--border); }
+  .mobile-profile-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .mobile-profile-meta .panel-role { font-size: 11px; letter-spacing: .18em; }
+  .mobile-profile-meta .panel-stat { font-size: 16px; }
+  .mobile-profile-meta .panel-stat strong { color: var(--gold-light); }
+  .panel-close { width: fit-content; color: var(--muted); border: 1px solid var(--border); background: transparent; padding: 12px 28px; font-size: 12px; letter-spacing: .18em; text-decoration: none; }
   .language-legend { margin: 0 8px 12px; padding-bottom: 14px; }
   .legend-copy { font-size: 13px; }
   .legend-items { gap: 20px; font-size: 15px; }
@@ -189,7 +201,11 @@ body.light-mode .site-nav, body.light-mode .player { background: rgba(245,240,23
   .play-btn { width: 44px; height: 44px; border-radius: 50%; font-size: 15px; }
   .support { order: 2; margin: 30px 8px 0; padding: 24px 14px; }
   .donate-number { font-size: 19px; letter-spacing: .03em; }
-  .donate-float { right: 16px; bottom: 88px; width: 58px; height: 58px; font-size: 25px; }
+  .contact-float { right: 12px; width: 58px; height: 58px; }
+  .contact-float svg { width: 28px; height: 28px; }
+  .whatsapp-float { bottom: 84px; }
+  .messenger-float { bottom: 148px; }
+  .donate-float { right: 12px; bottom: 212px; width: 58px; height: 58px; font-size: 25px; }
   .player { grid-template-columns: 1fr auto; gap: 4px 8px; padding: 8px 14px; min-height: 68px; border-radius: 20px 20px 0 0; }
   .now-title { font-size: 18px; }
   .player-controls { grid-column: 2; grid-row: 1 / span 2; }
