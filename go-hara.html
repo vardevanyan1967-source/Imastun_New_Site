@@ -1376,6 +1376,12 @@
   .standalone-back-wrap { max-width: 1120px; margin: 12px auto 0; padding: 0 20px; }
   .standalone-back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--gold, #c9a84c); font: 600 10px/1.2 'Syne', sans-serif; letter-spacing: .18em; text-decoration: none; text-transform: uppercase; }
   .standalone-back-link:hover { color: var(--gold-light, #e8c97a); }
+  .standalone-filter-tabs { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 18px; padding-bottom:12px; border-bottom:1px solid var(--border); }
+  .standalone-filter-tab { background:none; border:1px solid var(--border); color:var(--text-dim); font:600 10px 'Syne',sans-serif; letter-spacing:.08em; padding:8px 12px; cursor:pointer; transition:color .2s,border-color .2s,background .2s; }
+  .standalone-filter-tab:hover, .standalone-filter-tab.active { border-color:var(--gold); color:var(--gold); background:var(--gold-dim); }
+  .standalone-filter-tab .new-badge { margin-left:4px; }
+  .standalone-filter-empty { padding:24px 12px; color:var(--text-dim); font:italic 18px 'Cormorant Garamond',serif; text-align:center; }
+  @media (max-width:700px) { .standalone-filter-tabs { gap:6px; } .standalone-filter-tab { flex:1; min-width:0; padding:9px 6px; font-size:9px; } }
   body.standalone-focus #artists { padding-top: 18px; }
   body.standalone-focus #artists > .section-header { display: none !important; }
   body.standalone-focus #artists-grid > .artist-card { display: none !important; }
@@ -3748,6 +3754,47 @@
 (() => {
   const target = document.body.dataset.standaloneArtist;
   if (!target) return;
+  const addFilterControls = (panel) => {
+    const audioPane = panel.querySelector(`#tab-audio-${target}`);
+    if (!audioPane || audioPane.querySelector('.standalone-filter-tabs')) return;
+    const tabs = document.createElement('div');
+    tabs.className = 'standalone-filter-tabs';
+    tabs.innerHTML = `
+      <button type="button" class="standalone-filter-tab active" data-filter="all">Բոլորը / Все</button>
+      <button type="button" class="standalone-filter-tab" data-filter="new">✨ Նոր / Новинки <span class="new-badge filter-new-count">NEW</span></button>
+      <button type="button" class="standalone-filter-tab" data-filter="favorites">❤️ Սիրածները / Избранные</button>`;
+    audioPane.prepend(tabs);
+    const getItems = () => Array.from(audioPane.querySelectorAll('.track-item'));
+    const setFilter = (mode) => {
+      tabs.querySelectorAll('.standalone-filter-tab').forEach(button => button.classList.toggle('active', button.dataset.filter === mode));
+      const items = getItems();
+      let shown = 0;
+      items.forEach(item => {
+        const isNew = Boolean(item.querySelector('.new-badge'));
+        const isFavorite = Boolean(item.querySelector('.track-fav-btn.fav-active'));
+        const visible = mode === 'all' || (mode === 'new' && isNew) || (mode === 'favorites' && isFavorite);
+        item.style.display = visible ? '' : 'none';
+        if (visible) shown += 1;
+      });
+      const count = items.filter(item => item.querySelector('.new-badge')).length;
+      const countBadge = tabs.querySelector('.filter-new-count');
+      if (countBadge) countBadge.textContent = `NEW ${count}`;
+      let empty = audioPane.querySelector('.standalone-filter-empty');
+      if (!empty) { empty = document.createElement('div'); empty.className = 'standalone-filter-empty'; audioPane.appendChild(empty); }
+      empty.textContent = mode === 'new' ? 'Նոր երգ չկա / Новых песен нет' : 'Սիրած երգ չկա / Нет избранных песен';
+      empty.style.display = shown || mode === 'all' ? 'none' : 'block';
+    };
+    tabs.querySelectorAll('.standalone-filter-tab').forEach(button => button.addEventListener('click', () => setFilter(button.dataset.filter)));
+    panel.addEventListener('click', event => {
+      if (event.target.closest('.track-fav-btn')) {
+        window.setTimeout(() => {
+          const active = tabs.querySelector('.standalone-filter-tab.active');
+          if (active && active.dataset.filter === 'favorites') setFilter('favorites');
+        }, 0);
+      }
+    });
+    setFilter('all');
+  };
   const openTarget = () => {
     const grid = document.getElementById('artists-grid');
     const card = grid && grid.querySelector(`.artist-card[data-id="${target}"]`);
@@ -3759,6 +3806,7 @@
     grid.querySelectorAll('.artist-panel').forEach((item) => { if (item !== panel) item.remove(); });
     card.style.display = 'none';
     panel.classList.add('open');
+    addFilterControls(panel);
     document.body.classList.add('standalone-focus');
     return true;
   };
