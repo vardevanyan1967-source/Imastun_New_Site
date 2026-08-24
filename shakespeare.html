@@ -9,6 +9,9 @@
   <meta property="og:description" content="Շեքսպիրի սոնետների առանձին երաժշտական էջը։" />
   <meta property="og:image" content="authors/shakespeare-reimagined/cover.jpg" />
   <link rel="icon" href="logo.png" type="image/png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="canonical" href="https://imastun.org/shakespeare.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -47,6 +50,11 @@
         <div class="archive-heading">
           <div><div class="section-kicker">Shakespeare Reimagined / <span id="archive-count">140 tracks</span></div><h2 id="archive-title">Sonnets / Սոնետներ</h2></div>
           <input id="track-search" class="search" type="search" placeholder="Search sonnets / Որոնել" aria-label="Search sonnets" />
+          <div class="archive-tabs" role="tablist" aria-label="Sonnet filters">
+            <button class="archive-tab active" type="button" data-mode="all">Բոլորը</button>
+            <button class="archive-tab" type="button" data-mode="favorites">♥ Սիրածները</button>
+            <span id="share-status" class="copy-status" aria-live="polite"></span>
+          </div>
         </div>
         <div id="track-grid" class="track-grid" aria-live="polite"></div>
       </section>
@@ -80,6 +88,6 @@
     <div class="player-hint">Tap a sonnet to listen</div>
   </div>
 
-  <script src="artist-page.js"></script>
+  <script src="artist-page.js?v=20260824-4"></script>
 </body>
 </html>
