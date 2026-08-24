@@ -2974,8 +2974,8 @@
     }, delay);
   }
 
-  function startCrossfade() {
-    const nextIdx = currentIdx + 1;
+  function startCrossfade(targetIdx) {
+    const nextIdx = Number.isInteger(targetIdx) ? targetIdx : currentIdx + 1;
     if (nextIdx >= playlist.length || crossfadeNextIdx >= 0) return;
     if (crossfadeScheduleTimer) { clearTimeout(crossfadeScheduleTimer); crossfadeScheduleTimer = null; }
     const cur = active();
@@ -3055,7 +3055,11 @@
   });
 
   gpPrev.addEventListener('click', () => { if (currentIdx > 0) playTrack(currentIdx - 1); });
-  gpNext.addEventListener('click', () => { if (currentIdx < playlist.length - 1) playTrack(currentIdx + 1); });
+  gpNext.addEventListener('click', () => {
+    if (currentIdx < 0 || currentIdx >= playlist.length - 1 || crossfadeNextIdx >= 0) return;
+    if (isPlaying) startCrossfade(currentIdx + 1);
+    else playTrack(currentIdx + 1);
+  });
 
   function setupEngine(eng) {
     eng.addEventListener('timeupdate', () => {
