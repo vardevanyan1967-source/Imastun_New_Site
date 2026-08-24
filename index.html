@@ -4,13 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Իմաստուն Ստուդիո — Imastun Studio</title>
-  <meta name="description" content="Իմաստուն Ստուդիո — հայկական երաժշտության ստուդիո՝ Սիլվա Ղուլանյան, Գո Հարա, Հայ բանաստեղծների երգեր (Տերյան, Սահյան, Սևակ) և Shakespeare Reimagined նախագիծը։ 300+ երգ, տեսահոլովակներ, բանաստեղծություն երաժշտության մեջ։" />
+  <link rel="canonical" href="https://imastun.org/" />
+  <meta name="description" content="Իմաստուն Ստուդիո՝ հայկական երաժշտության ստուդիո։ Լսիր Սիլվա Գուլանյանի, Գո Հարայի, հայ բանաստեղծների և Shakespeare Reimagined նախագծի երգերը։" />
   <meta name="keywords" content="հայկական երաժշտություն, Իմաստուն Ստուդիո, Silva Gulanyan, Go Hara, Vahan Teryan, Hamo Sahyan, Paruyr Sevak, Armenian music, Armenian poetry songs" />
   <meta name="keywords" content="Imastun Studio, Իմաստուն Ստուդիո, Silva Gulanyan, Go Hara, Narine Balasbekyan, հայկական երաժշտություն, Armenian music" />
   <meta name="author" content="Imastun Studio" />
   <meta property="og:title" content="Իմաստուն Ստուդիո — Imastun Studio" />
   <meta property="og:description" content="Հայկական երաժշտության ստուդիո՝ 300+ երգ, հայ բանաստեղծների ստեղծագործություններ երաժշտության մեջ, Shakespeare Reimagined նախագիծը և ավելին։" />
-  <meta property="og:image" content="logo.png" />
+  <meta property="og:image" content="https://imastun.org/logo.png" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -29,7 +30,7 @@
   }
   </script>
   <meta property="og:type" content="music.playlist" />
-  <meta property="og:url" content="" />
+  <meta property="og:url" content="https://imastun.org/" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Իմաստուն Ստուդիո" />
   <meta name="twitter:description" content="Բարի գալուստ Իմաստուն Ստուդիո" />
@@ -2769,7 +2770,7 @@
 
   /* ══ SEO: structured data for all songs (MusicRecording) ══ */
   (function injectMusicRecordingSchema() {
-    const items = playlist.slice(0, 300).map((t, idx) => ({
+    const items = playlist.map((t, idx) => ({
       "@type": "MusicRecording",
       "position": idx + 1,
       "name": t.label,
@@ -2820,6 +2821,7 @@
   const inactive  = () => engines[1 - activeIdx];
   const CROSSFADE_SEC = 2.5;
   let crossfadeTimer = null;
+  let crossfadeNextIdx = -1;
 
   const gpEl      = document.getElementById('global-player');
   const gpCover   = document.getElementById('gp-cover');
@@ -2884,6 +2886,7 @@
 
   function cancelCrossfade() {
     if (crossfadeTimer) { clearInterval(crossfadeTimer); crossfadeTimer = null; }
+    crossfadeNextIdx = -1;
     inactive().pause();
     inactive().removeAttribute('src');
     inactive().volume = 1;
@@ -2943,21 +2946,18 @@
     const cur = active();
     const nxt = inactive();
     const t = playlist[nextIdx];
+    crossfadeNextIdx = nextIdx;
+    nxt.preload = 'auto';
     nxt.src = t.src;
     nxt.currentTime = 0;
     nxt.volume = 0;
-    nxt.play().catch(() => {
-      // Autoplay was blocked (e.g. Android WebView) — fall back to a
-      // normal hard-cut track change instead of stalling silently.
-      crossfadeTimer && clearInterval(crossfadeTimer);
-      crossfadeTimer = null;
-      playTrack(nextIdx);
-    });
 
     const steps = 30;
     const stepMs = (CROSSFADE_SEC * 1000) / steps;
     let i = 0;
     crossfadeTimer = setInterval(() => {
+      // Keep the transition safe if a user pauses or changes tracks mid-fade.
+      if (crossfadeNextIdx !== nextIdx) return;
       i++;
       const ratio = i / steps;
       cur.volume = Math.max(0, 1 - ratio);
@@ -2965,27 +2965,44 @@
       if (i >= steps) {
         clearInterval(crossfadeTimer);
         crossfadeTimer = null;
+        crossfadeNextIdx = -1;
         activeIdx = 1 - activeIdx;
         currentIdx = nextIdx;
+        const nextArtist = t.artistName || (typeof ARTIST !== 'undefined' ? ARTIST.name : 'Imastun Studio');
         gpCover.src = t.cover;
-        gpCover.alt = t.artistName + ' — ' + t.label;
-        gpArtist.textContent = t.artistName;
+        gpCover.alt = nextArtist + ' — ' + t.label;
+        gpArtist.textContent = nextArtist;
         gpSong.textContent = t.label;
         gpFill.style.width = '0%';
         highlightTrack(currentIdx);
-        updateMediaSession(t);
+        if (typeof updateMediaSession === 'function') updateMediaSession(t);
         cur.pause();
         cur.currentTime = 0;
         cur.volume = 1;
+        isPlaying = true;
+        setPlayIcon(true);
       }
     }, stepMs);
+
+    // Start the inactive engine only after the timer is armed. If a browser
+    // rejects autoplay, fall back to a normal next-track transition.
+    const playPromise = nxt.play();
+    if (playPromise && typeof playPromise.catch === 'function') {
+      playPromise.catch(() => {
+        if (crossfadeNextIdx !== nextIdx) return;
+        clearInterval(crossfadeTimer);
+        crossfadeTimer = null;
+        crossfadeNextIdx = -1;
+        playTrack(nextIdx);
+      });
+    }
   }
 
   gpPlayBtn.addEventListener('click', () => {
     if (currentIdx < 0) return;
     if (isPlaying) {
       active().pause();
-      if (crossfadeTimer) inactive().pause();
+      if (crossfadeTimer) cancelCrossfade();
       isPlaying = false; setPlayIcon(false); highlightTrack(currentIdx);
     } else {
       active().play().catch(() => {});
@@ -3011,7 +3028,36 @@
     eng.addEventListener('play',  () => { if (eng === active()) { isPlaying = true;  setPlayIcon(true);  highlightTrack(currentIdx); } });
     eng.addEventListener('pause', () => { if (eng === active() && !crossfadeTimer) { isPlaying = false; setPlayIcon(false); highlightTrack(currentIdx); } });
     eng.addEventListener('ended', () => {
-      if (eng !== active() || crossfadeTimer) return;
+      if (eng !== active()) return;
+      // If the current track reaches its natural end before the interval has
+      // completed (for example when a background tab throttles timers), hand
+      // control to the already-playing inactive engine instead of stopping.
+      if (crossfadeTimer && crossfadeNextIdx === currentIdx + 1) {
+        const nextIdx = crossfadeNextIdx;
+        const nxt = inactive();
+        clearInterval(crossfadeTimer);
+        crossfadeTimer = null;
+        crossfadeNextIdx = -1;
+        activeIdx = 1 - activeIdx;
+        currentIdx = nextIdx;
+        const t = playlist[nextIdx];
+        const nextArtist = t.artistName || (typeof ARTIST !== 'undefined' ? ARTIST.name : 'Imastun Studio');
+        nxt.volume = 1;
+        gpCover.src = t.cover;
+        gpCover.alt = nextArtist + ' — ' + t.label;
+        gpArtist.textContent = nextArtist;
+        gpSong.textContent = t.label;
+        gpFill.style.width = '0%';
+        highlightTrack(currentIdx);
+        if (typeof updateMediaSession === 'function') updateMediaSession(t);
+        eng.pause();
+        eng.currentTime = 0;
+        eng.volume = 1;
+        isPlaying = true;
+        setPlayIcon(true);
+        return;
+      }
+      if (crossfadeTimer) { clearInterval(crossfadeTimer); crossfadeTimer = null; crossfadeNextIdx = -1; }
       if (currentIdx < playlist.length - 1) playTrack(currentIdx + 1);
       else { isPlaying = false; setPlayIcon(false); }
     });

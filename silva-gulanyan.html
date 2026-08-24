@@ -12,14 +12,14 @@
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Silva Gulanyan — Իմաստուն Ստուդիո</title>
-  <meta name="description" content="Silva Gulanyan — Վոկալիստ եւ բառերի հեղինակ։ 145 երգ Իմաստուն Ստուդիոյի կողմից։ Լսիր հայկական երաժշտություն։" />
+  <meta name="description" content="Silva Gulanyan — վոկալիստ և բառերի հեղինակ։ Լսիր նրա երգերը Իմաստուն Ստուդիոյի պաշտոնական երաժշտական էջում։" />
   <meta name="keywords" content="Silva Gulanyan, Սիլվա Գուլանյան, հայկական երաժշտություն, Armenian music, Imastun Studio, Իմաստուն Ստուդիո" />
   <meta name="author" content="Imastun Studio" />
   <meta property="og:title" content="Silva Gulanyan — Իմաստուն Ստուդիո" />
   <meta property="og:description" content="Silva Gulanyan — Վոկալիստ եւ բառերի հեղինակ։ 145 երգ։" />
-  <meta property="og:image" content="authors/silva-gulanyan/cover.jpg" />
+  <meta property="og:image" content="https://imastun.org/authors/silva-gulanyan/cover.jpg" />
   <meta property="og:type" content="music.musician" />
-  <meta property="og:url" content="" />
+  <meta property="og:url" content="https://imastun.org/silva-gulanyan.html" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Silva Gulanyan — Imastun Studio" />
   <meta name="twitter:image" content="authors/silva-gulanyan/cover.jpg" />
@@ -27,7 +27,7 @@
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="logo.png" type="image/png" />
   <link rel="apple-touch-icon" href="logo.png" />
-  <link rel="canonical" href="https://imastun.org/silva-gulanyan" />
+  <link rel="canonical" href="https://imastun.org/silva-gulanyan.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -670,6 +670,30 @@
   // Show the full list in Armenian alphabetical order by song name
   playlist.sort((a, b) => a.label.localeCompare(b.label, 'hy'));
 
+  /* ══ SEO: complete Silva Gulanyan structured data ══ */
+  (function injectSilvaSchema() {
+    const items = playlist.map((t, idx) => ({
+      "@type": "MusicRecording",
+      "position": idx + 1,
+      "name": t.label,
+      "byArtist": { "@type": "Person", "name": "Silva Gulanyan" },
+      "url": `https://imastun.org/silva-gulanyan.html?play=${encodeURIComponent(t.song)}`
+    }));
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "MusicAlbum",
+      "name": "Silva Gulanyan — Իմաստուն Ստուդիո",
+      "url": "https://imastun.org/silva-gulanyan.html",
+      "byArtist": { "@type": "Person", "name": "Silva Gulanyan" },
+      "numTracks": items.length,
+      "track": items
+    };
+    const s = document.createElement('script');
+    s.type = 'application/ld+json';
+    s.textContent = JSON.stringify(schema);
+    document.head.appendChild(s);
+  })();
+
   /* FAVORITES */
   const FAV_KEY = 'silva_favorites';
   function getFavs() { try { return JSON.parse(localStorage.getItem(FAV_KEY) || '[]'); } catch(e) { return []; } }
@@ -834,6 +858,7 @@
   /* PLAYER */
   const engine    = document.getElementById('audio-engine');
   const engine2   = new Audio();
+  engine.preload = 'auto';
   engine2.preload = 'auto';
   const engines   = [engine, engine2];
   let activeIdx   = 0;
@@ -841,6 +866,7 @@
   const inactive  = () => engines[1 - activeIdx];
   const CROSSFADE_SEC = 2.5;
   let crossfadeTimer = null;
+  let crossfadeNextIdx = -1;
 
   /* Unlock both audio elements on first user gesture so the background
      (crossfade / auto-advance) engine is also allowed to autoplay later,
@@ -895,6 +921,7 @@
 
   function cancelCrossfade() {
     if (crossfadeTimer) { clearInterval(crossfadeTimer); crossfadeTimer = null; }
+    crossfadeNextIdx = -1;
     inactive().pause();
     inactive().removeAttribute('src');
     inactive().volume = 1;
@@ -907,21 +934,18 @@
     const cur = active();
     const nxt = inactive();
     const t = playlist[nextIdx];
+    crossfadeNextIdx = nextIdx;
+    nxt.preload = 'auto';
     nxt.src = t.src;
     nxt.currentTime = 0;
     nxt.volume = 0;
-    nxt.play().catch(() => {
-      // Autoplay was blocked (e.g. Android WebView) — fall back to a
-      // normal hard-cut track change instead of stalling silently.
-      crossfadeTimer && clearInterval(crossfadeTimer);
-      crossfadeTimer = null;
-      playTrack(nextIdx);
-    });
 
     const steps = 30;
     const stepMs = (CROSSFADE_SEC * 1000) / steps;
     let i = 0;
     crossfadeTimer = setInterval(() => {
+      // Keep the transition safe if a user pauses or changes tracks mid-fade.
+      if (crossfadeNextIdx !== nextIdx) return;
       i++;
       const ratio = i / steps;
       cur.volume = Math.max(0, 1 - ratio);
@@ -929,46 +953,44 @@
       if (i >= steps) {
         clearInterval(crossfadeTimer);
         crossfadeTimer = null;
+        crossfadeNextIdx = -1;
         activeIdx = 1 - activeIdx;
         currentIdx = nextIdx;
+        const nextArtist = t.artistName || (typeof ARTIST !== 'undefined' ? ARTIST.name : 'Imastun Studio');
         gpCover.src = t.cover;
+        gpCover.alt = nextArtist + ' — ' + t.label;
+        gpArtist.textContent = nextArtist;
         gpSong.textContent = t.label;
         gpFill.style.width = '0%';
         highlightTrack(currentIdx);
+        if (typeof updateMediaSession === 'function') updateMediaSession(t);
         cur.pause();
         cur.currentTime = 0;
         cur.volume = 1;
+        isPlaying = true;
+        setPlayIcon(true);
       }
     }, stepMs);
-  }
 
-  function playTrack(idx) {
-    if (idx < 0 || idx >= playlist.length) return;
-    if (idx === currentIdx && isPlaying) { active().pause(); return; }
-    cancelCrossfade();
-    currentIdx = idx;
-    const t = playlist[idx];
-    if (typeof gtag === 'function') {
-      gtag('event', 'play_song', { song_name: t.label, artist_name: ARTIST.name });
+    // Start the inactive engine only after the timer is armed. If a browser
+    // rejects autoplay, fall back to a normal next-track transition.
+    const playPromise = nxt.play();
+    if (playPromise && typeof playPromise.catch === 'function') {
+      playPromise.catch(() => {
+        if (crossfadeNextIdx !== nextIdx) return;
+        clearInterval(crossfadeTimer);
+        crossfadeTimer = null;
+        crossfadeNextIdx = -1;
+        playTrack(nextIdx);
+      });
     }
-    const eng = active();
-    eng.src = t.src;
-    eng.volume = 1;
-    gpCover.src = t.cover;
-    gpArtist.textContent = ARTIST.name;
-    gpSong.textContent = t.label;
-    gpEl.classList.add('visible');
-    gpFill.style.width = '0%';
-    gpCur.textContent = gpDur.textContent = '0:00';
-    highlightTrack(idx);
-    eng.play().then(() => { isPlaying = true; setPlayIcon(true); }).catch(() => {});
   }
 
   gpPlayBtn.addEventListener('click', () => {
     if (currentIdx < 0) return;
     if (isPlaying) {
       active().pause();
-      if (crossfadeTimer) inactive().pause();
+      if (crossfadeTimer) cancelCrossfade();
       isPlaying = false; setPlayIcon(false); highlightTrack(currentIdx);
     } else {
       active().play().catch(() => {});
@@ -994,7 +1016,36 @@
     eng.addEventListener('play',  () => { if (eng === active()) { isPlaying = true;  setPlayIcon(true);  highlightTrack(currentIdx); } });
     eng.addEventListener('pause', () => { if (eng === active() && !crossfadeTimer) { isPlaying = false; setPlayIcon(false); highlightTrack(currentIdx); } });
     eng.addEventListener('ended', () => {
-      if (eng !== active() || crossfadeTimer) return;
+      if (eng !== active()) return;
+      // If the current track reaches its natural end before the interval has
+      // completed (for example when a background tab throttles timers), hand
+      // control to the already-playing inactive engine instead of stopping.
+      if (crossfadeTimer && crossfadeNextIdx === currentIdx + 1) {
+        const nextIdx = crossfadeNextIdx;
+        const nxt = inactive();
+        clearInterval(crossfadeTimer);
+        crossfadeTimer = null;
+        crossfadeNextIdx = -1;
+        activeIdx = 1 - activeIdx;
+        currentIdx = nextIdx;
+        const t = playlist[nextIdx];
+        const nextArtist = t.artistName || (typeof ARTIST !== 'undefined' ? ARTIST.name : 'Imastun Studio');
+        nxt.volume = 1;
+        gpCover.src = t.cover;
+        gpCover.alt = nextArtist + ' — ' + t.label;
+        gpArtist.textContent = nextArtist;
+        gpSong.textContent = t.label;
+        gpFill.style.width = '0%';
+        highlightTrack(currentIdx);
+        if (typeof updateMediaSession === 'function') updateMediaSession(t);
+        eng.pause();
+        eng.currentTime = 0;
+        eng.volume = 1;
+        isPlaying = true;
+        setPlayIcon(true);
+        return;
+      }
+      if (crossfadeTimer) { clearInterval(crossfadeTimer); crossfadeTimer = null; crossfadeNextIdx = -1; }
       if (currentIdx < playlist.length - 1) playTrack(currentIdx + 1);
       else { isPlaying = false; setPlayIcon(false); }
     });
