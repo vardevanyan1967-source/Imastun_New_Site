@@ -23,7 +23,8 @@
   };
 
   const titleFor = (artist, song) => artist.labels?.[song] || displayNames[song] || song.replaceAll('_', ' ');
-  const audioPath = (artist, song) => `audio/${artist.id}/featured/${encodeURIComponent(song)}.mp3`;
+  const AUDIO_BASE_URL = 'https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio';
+  const audioPath = (artist, song) => `${AUDIO_BASE_URL}/${encodeURIComponent(artist.id)}/featured/${encodeURIComponent(song)}.mp3`;
 
   async function init() {
     let data;
