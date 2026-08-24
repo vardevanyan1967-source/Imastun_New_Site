@@ -1047,17 +1047,21 @@
       }, stepMs);
     };
 
+    // Arm the volume ramp immediately. The next engine is started in the
+    // same transition call, so the two sources overlap instead of waiting
+    // for a promise resolution and then falling into a late hard cut.
+    beginFade();
     const playPromise = nxt.play();
-    if (playPromise && typeof playPromise.then === 'function') {
-      playPromise.then(beginFade).catch(() => {
+    if (playPromise && typeof playPromise.catch === 'function') {
+      playPromise.catch(() => {
+        // Autoplay can still be rejected by a browser. Keep the current
+        // source intact until the emergency fallback is actually needed.
         if (crossfadeNextIdx !== nextIdx) return;
         clearInterval(crossfadeTimer);
         crossfadeTimer = null;
         crossfadeNextIdx = -1;
         playTrack(nextIdx);
       });
-    } else {
-      beginFade();
     }
   }
 
@@ -1204,6 +1208,7 @@
       engine.currentTime = Math.max(0, Math.min(engine.duration, engine.currentTime + seconds));
       if (fill) fill.style.width = `${engine.currentTime / engine.duration * 100}%`;
       if (cur) cur.textContent = format(engine.currentTime);
+      if (typeof handleSeekCrossfade === 'function') handleSeekCrossfade();
       updateA11y();
     };
 
