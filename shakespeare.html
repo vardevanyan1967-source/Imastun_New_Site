@@ -1560,6 +1560,50 @@
     @media (prefers-reduced-motion: reduce) {
       .gp-btn, .gp-play, .gp-bar-fill { transition: none; }
     }
+
+    /* IMastun Progress Slider v1 */
+    .gp-bar {
+      height: 8px;
+      cursor: grab;
+      touch-action: none;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.38);
+    }
+
+    .gp-bar:active,
+    .gp-bar.is-dragging { cursor: grabbing; }
+
+    .gp-bar:focus-visible {
+      outline: 2px solid rgba(239, 204, 128, 0.9);
+      outline-offset: 5px;
+    }
+
+    .gp-bar-fill {
+      position: relative;
+      min-width: 0;
+    }
+
+    .gp-bar-fill::after {
+      content: '';
+      position: absolute;
+      right: -6px;
+      top: 50%;
+      width: 12px;
+      height: 12px;
+      border: 2px solid #f4d58d;
+      border-radius: 50%;
+      background: #17130c;
+      box-shadow: 0 0 0 3px rgba(226, 188, 105, 0.12), 0 0 12px rgba(226, 188, 105, 0.55);
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    @media (max-width: 700px) {
+      .gp-bar { height: 9px; }
+      .gp-bar-fill::after { width: 13px; height: 13px; right: -6.5px; }
+    }
 </style>
 
 </head>
@@ -4006,5 +4050,69 @@
 })();
 </script>
 
+
+<script>
+  /* IMastun Progress Slider behavior v1 */
+  (() => {
+    const bar = document.getElementById('gp-bar');
+    if (!bar) return;
+    const fill = document.getElementById('gp-fill');
+    const cur = document.getElementById('gp-cur');
+    const dur = document.getElementById('gp-dur');
+    const getEngine = () => typeof active === 'function' ? active() : document.getElementById('audio-engine');
+    const format = (seconds) => typeof fmtTime === 'function' ? fmtTime(seconds) : '0:00';
+
+    bar.setAttribute('role', 'slider');
+    bar.setAttribute('aria-label', 'Երգի ընթացք');
+    bar.setAttribute('aria-valuemin', '0');
+    bar.setAttribute('aria-valuemax', '0');
+    bar.setAttribute('aria-valuenow', '0');
+    bar.setAttribute('aria-valuetext', '0:00 / 0:00');
+    if (!bar.hasAttribute('tabindex')) bar.setAttribute('tabindex', '0');
+
+    const updateA11y = () => {
+      const engine = getEngine();
+      const duration = Number.isFinite(engine?.duration) ? engine.duration : 0;
+      const current = Number.isFinite(engine?.currentTime) ? engine.currentTime : 0;
+      bar.setAttribute('aria-valuemax', String(Math.round(duration)));
+      bar.setAttribute('aria-valuenow', String(Math.round(current)));
+      bar.setAttribute('aria-valuetext', `${format(current)} / ${format(duration)}`);
+    };
+
+    const seekBy = (seconds) => {
+      const engine = getEngine();
+      if (!engine || !Number.isFinite(engine.duration) || engine.duration <= 0) return;
+      engine.currentTime = Math.max(0, Math.min(engine.duration, engine.currentTime + seconds));
+      if (fill) fill.style.width = `${engine.currentTime / engine.duration * 100}%`;
+      if (cur) cur.textContent = format(engine.currentTime);
+      updateA11y();
+    };
+
+    bar.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') { event.preventDefault(); seekBy(-5); }
+      else if (event.key === 'ArrowRight') { event.preventDefault(); seekBy(5); }
+      else if (event.key === 'PageDown') { event.preventDefault(); seekBy(-10); }
+      else if (event.key === 'PageUp') { event.preventDefault(); seekBy(10); }
+      else if (event.key === 'Home') {
+        event.preventDefault();
+        const engine = getEngine();
+        if (engine && Number.isFinite(engine.duration)) { engine.currentTime = 0; updateA11y(); }
+      } else if (event.key === 'End') {
+        event.preventDefault();
+        const engine = getEngine();
+        if (engine && Number.isFinite(engine.duration)) { engine.currentTime = engine.duration; updateA11y(); }
+      }
+    });
+
+    bar.addEventListener('pointerdown', () => bar.classList.add('is-dragging'));
+    ['pointerup', 'pointercancel', 'lostpointercapture'].forEach((name) => {
+      bar.addEventListener(name, () => bar.classList.remove('is-dragging'));
+    });
+
+    const enginesForA11y = typeof engines !== 'undefined' && Array.isArray(engines) ? engines : [getEngine()];
+    enginesForA11y.filter(Boolean).forEach((engine) => engine.addEventListener('timeupdate', updateA11y));
+    updateA11y();
+  })();
+</script>
 </body>
 </html>
