@@ -166,7 +166,7 @@ body.light-mode .site-nav, body.light-mode .player { background: rgba(245,240,23
   .language-btn { min-width: 75px; padding: 10px 14px; font-size: 16px; }
   main { display: flex; flex-direction: column; }
   .hero, .stats { display: none; }
-  .archive { order: 1; padding: 26px 18px 0; }
+  .archive { order: 1; padding: 26px 8px 0; }
   .archive-heading { display: block; margin-bottom: 18px; }
   .archive-heading > div:first-child { display: none; }
   .archive-tabs { justify-content: flex-end; margin-top: 12px; }
@@ -174,12 +174,12 @@ body.light-mode .site-nav, body.light-mode .player { background: rgba(245,240,23
   .search-wrap { width: 100%; margin-top: 0; }
   .search { margin-top: 0; width: 100%; height: 58px; padding: 0 56px 0 24px; border: 2px solid var(--gold); border-radius: 34px; background: transparent; font-size: 18px; }
   .search-icon { right: 20px; font-size: 31px; }
-  .language-legend { margin: 0 18px 12px; padding-bottom: 14px; }
+  .language-legend { margin: 0 8px 12px; padding-bottom: 14px; }
   .legend-copy { font-size: 13px; }
   .legend-items { gap: 20px; font-size: 15px; }
   .legend-dot { width: 11px; height: 11px; }
   .track-grid { grid-template-columns: 1fr; gap: 5px; }
-  .track { grid-template-columns: 32px minmax(0, 1fr) 122px; min-height: 78px; padding: 12px 12px; background: rgba(255,255,255,.035); }
+  .track { grid-template-columns: 28px minmax(0, 1fr) 112px; min-height: 78px; padding: 12px 8px; background: rgba(255,255,255,.035); }
   .track-number { font-size: 12px; }
   .track-title { font-size: 21px; line-height: 1.08; }
   .track-subtitle { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 9px; }
@@ -187,7 +187,7 @@ body.light-mode .site-nav, body.light-mode .player { background: rgba(245,240,23
   .icon-btn { padding: 5px; font-size: 22px; }
   .share-btn { font-size: 20px; }
   .play-btn { width: 44px; height: 44px; border-radius: 50%; font-size: 15px; }
-  .support { order: 2; margin: 30px 18px 0; padding: 24px 18px; }
+  .support { order: 2; margin: 30px 8px 0; padding: 24px 14px; }
   .donate-number { font-size: 19px; letter-spacing: .03em; }
   .donate-float { right: 16px; bottom: 88px; width: 58px; height: 58px; font-size: 25px; }
   .player { grid-template-columns: 1fr auto; gap: 4px 8px; padding: 8px 14px; min-height: 68px; border-radius: 20px 20px 0 0; }
@@ -196,5 +196,5 @@ body.light-mode .site-nav, body.light-mode .player { background: rgba(245,240,23
   .player-controls .action { min-width: 34px; height: 34px; padding: 6px 8px; }
   .player audio { width: 96px; height: 32px; }
   .player-hint { display: none; }
-  .footer { display: block; margin: 30px 18px 0; line-height: 1.8; }
+  .footer { display: block; margin: 30px 8px 0; line-height: 1.8; }
 }
