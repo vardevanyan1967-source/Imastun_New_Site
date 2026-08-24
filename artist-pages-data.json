@@ -55,7 +55,51 @@
       "Դու եկար",
       "Ты пришёл",
       "You Came"
-    ]
+    ],
+    "labels": {
+      "ajs xarum mian ujern e haxtum": "Այս խաղում ուժեղն է հաղթում",
+      "Anund_Kin_e_004": "Անուննդ կին է",
+      "Arajin_hambuyru": "Առաջին համբույր",
+      "Arevamutits_araj": "Արևամուտից առաջ",
+      "Bari_gisher": "Բարի գիշեր",
+      "duet_Спокойной_ночи_Remix_Remix": "Բարի գիշեր (դուետ ռուս)",
+      "spakojnoj nochi (kin)": "Բարի գիշեր (ռուս)",
+      "Ginin_prprel_e": "Գինին փրփրել է",
+      "gisherajin": "Գիշերային",
+      "daravor karnin": "Դարավոր կաղնի",
+      "darnaham-ginin": "Դառնահամ գինի",
+      "Title_Es_arajva_pes_kez_karotum_em_Swiss_Pop_Ballad_Lyrics_by_Go_Hara_Remix_008": "Ես առաջվա պես քեզ կարոտում եմ",
+      "Im_poezian": "Իմ պոեզիան",
+      "la-fracise": "Լա Ֆրանս",
+      "pered rasvetom": "Լուսաբացից առաջ",
+      "kanchir-kgam": "Կանչիր կգամ",
+      "HANDIPOMNERI_AYS_KhAChMEROKOM": "Հանդիպումների այս խաչմերուկում",
+      "Hervits_Grkum em": "Հերվից գրկում եմ (Remix)",
+      "Hravirir_indz_parelu_tangon": "Հրավիրիր ինձ պարելու տանգո",
+      "menq linelu enq": "Մենք լինելու ենք",
+      "MI_TOGh_INDz_MENAK": "Մի թող ինձ մենակ",
+      "Mi_siro_patmutyun": "Մի սիրո պատմություն",
+      "urenineri lacor purakum": "Ուռենիների լացող պուրակում",
+      "POETIS": "Պոետիս",
+      "Sirogisher_Go_Hara": "Սիրո գիշեր",
+      "cncir-users": "Ցնցիր ուսերս",
+      "fracuzhenka": "Ֆրանսուհին",
+      "My Mirror True": "My Mirror True",
+      "Зеркало моё": "Зеркало моё",
+      "Իմ հայելի": "Իմ հայելի",
+      "Fragile Cry Has Risen Like": "Fragile Cry Has Risen Like",
+      "Во мне поднялся хрупкий плач": "Во мне поднялся хрупкий плач",
+      "Փխրուն Լաց": "Փխրուն Լաց",
+      "Եվ ինչ է սերը": "Եվ ինչ է սերը",
+      "Չնոտագրված լռություն": "Չնոտագրված լռություն",
+      "hognel em ujer kin lineluc": "Հոգնել եմ ուժեղ կին լինելուց",
+      "Սիրելով գնամ": "Սիրելով գնամ",
+      "Я уйду любя": "Я уйду любя",
+      "Ill Leave Still Loving You": "I'll Leave Still Loving You",
+      "Դու եկար": "Դու եկար",
+      "Ты пришёл": "Ты пришёл",
+      "You Came": "You Came"
+    }
   },
   "shakespeare-reimagined": {
     "id": "shakespeare-reimagined",
@@ -206,6 +250,7 @@
       "Սոնետ  152",
       "Սոնետ  153",
       "Սոնետ  154"
-    ]
+    ],
+    "labels": {}
   }
 }

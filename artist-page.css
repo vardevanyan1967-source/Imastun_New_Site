@@ -94,8 +94,15 @@ h2 { color: var(--white); font-family: 'Cormorant Garamond', Georgia, serif; fon
 .track-number { color: var(--gold); font-size: 10px; letter-spacing: .1em; opacity: .65; }
 .track-title { color: var(--text); font-family: 'Cormorant Garamond', Georgia, serif; font-size: 20px; line-height: 1.05; overflow-wrap: anywhere; }
 .track-subtitle { color: var(--muted); font-size: 10px; margin-top: 4px; }
+.track-tools { display: flex; align-items: center; gap: 7px; }
+.icon-btn { border: 0; background: transparent; color: var(--muted); cursor: pointer; padding: 5px; font-size: 17px; line-height: 1; transition: color .2s, transform .2s; }
+.icon-btn:hover, .icon-btn.active { color: var(--gold); transform: scale(1.08); }
+.share-btn { font-size: 16px; }
 .play-btn { width: 32px; height: 32px; border: 1px solid var(--border); color: var(--gold); background: transparent; cursor: pointer; display: grid; place-items: center; }
 .play-btn:hover, .track.active .play-btn { background: var(--gold); color: #111; }
+.archive-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.archive-tab { border: 1px solid var(--border); color: var(--muted); background: transparent; cursor: pointer; padding: 8px 13px; font-size: 9px; letter-spacing: .14em; text-transform: uppercase; transition: .2s; }
+.archive-tab:hover, .archive-tab.active { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
 .empty { grid-column: 1 / -1; padding: 34px; border: 1px dashed var(--border); color: var(--muted); text-align: center; }
 
 .support {
@@ -136,6 +143,7 @@ h2 { color: var(--white); font-family: 'Cormorant Garamond', Georgia, serif; fon
   .intro { margin-left: auto; margin-right: auto; }
   .hero-actions { justify-content: center; }
   .archive-heading { display: block; }
+  .archive-tabs { margin-top: 16px; }
   .search { margin-top: 20px; width: 100%; }
   .track-grid { grid-template-columns: 1fr; }
   .player { grid-template-columns: 1fr; gap: 6px; padding: 10px 18px; }
