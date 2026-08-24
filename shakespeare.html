@@ -15,13 +15,28 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="artist-page.css" />
+  <link rel="stylesheet" href="artist-page.css?v=20260824-2" />
 </head>
 <body data-artist-id="shakespeare-reimagined">
   <div class="site-shell">
     <nav class="site-nav" aria-label="Կայքի նավիգացիա">
-      <a class="brand" href="index.html"><img src="logo.png" alt="Imastun Studio" /><span>Imastun Studio</span></a>
-      <a class="nav-link" href="index.html#artists">← Back to studio</a>
+      <div class="nav-brand-row">
+        <a class="brand" href="index.html"><img src="logo.png" alt="Imastun Studio" /><span>Imastun Studio</span></a>
+      </div>
+      <div class="nav-controls">
+        <button class="nav-icon menu-toggle" id="menu-toggle" type="button" aria-label="Բացել մենյուն" aria-expanded="false">☰</button>
+        <div class="language-switcher" role="group" aria-label="Լեզու">
+          <button class="language-btn active" type="button" data-lang="hy">Հայ</button>
+          <button class="language-btn" type="button" data-lang="ru">Рус</button>
+          <button class="language-btn" type="button" data-lang="en">Eng</button>
+        </div>
+        <button class="nav-icon theme-toggle" id="theme-toggle" type="button" aria-label="Փոխել թեման">☾</button>
+      </div>
+      <div class="mobile-menu" id="mobile-menu" hidden>
+        <a href="index.html#artists">← Back to studio</a>
+        <a href="#tracks">Explore the sonnets</a>
+        <a href="#support">Support / Աջակցություն</a>
+      </div>
     </nav>
 
     <main>
@@ -49,12 +64,16 @@
       <section class="archive" id="tracks" aria-labelledby="archive-title">
         <div class="archive-heading">
           <div><div class="section-kicker">Shakespeare Reimagined / <span id="archive-count">140 tracks</span></div><h2 id="archive-title">Sonnets / Սոնետներ</h2></div>
-          <input id="track-search" class="search" type="search" placeholder="Search sonnets / Որոնել" aria-label="Search sonnets" />
+          <div class="search-wrap"><input id="track-search" class="search" type="search" placeholder="Search sonnets / Որոնել" aria-label="Search sonnets" /><span class="search-icon" aria-hidden="true">⌕</span></div>
           <div class="archive-tabs" role="tablist" aria-label="Sonnet filters">
             <button class="archive-tab active" type="button" data-mode="all">Բոլորը</button>
             <button class="archive-tab" type="button" data-mode="favorites">♥ Սիրածները</button>
             <span id="share-status" class="copy-status" aria-live="polite"></span>
           </div>
+        </div>
+        <div class="language-legend" aria-label="Track language legend">
+          <div class="legend-copy">Երգի տեքստի լեզուների քանակը · Число языков в тексте песни · Song text language count</div>
+          <div class="legend-items"><span><i class="legend-dot three"></i>3</span><span><i class="legend-dot two"></i>2</span><span><i class="legend-dot one"></i>1</span></div>
         </div>
         <div id="track-grid" class="track-grid" aria-live="polite"></div>
       </section>
@@ -80,6 +99,7 @@
     </main>
 
     <footer class="footer"><span>© Imastun Studio</span><a href="index.html">Imastun Studio home</a></footer>
+    <a class="donate-float" href="#support" aria-label="Աջակցել Imastun Studio-ին">☕</a>
   </div>
 
   <div class="player" aria-label="Audio player">
@@ -88,6 +108,6 @@
     <div class="player-hint">Tap a sonnet to listen</div>
   </div>
 
-  <script src="artist-page.js?v=20260824-4"></script>
+  <script src="artist-page.js?v=20260824-5"></script>
 </body>
 </html>

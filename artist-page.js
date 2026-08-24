@@ -47,6 +47,37 @@
     $('#track-count').textContent = artist.songs.length;
     $('#archive-count').textContent = `${artist.songs.length} tracks`;
 
+    const menuToggle = $('#menu-toggle');
+    const mobileMenu = $('#mobile-menu');
+    menuToggle.addEventListener('click', () => {
+      const isOpen = mobileMenu.hasAttribute('hidden');
+      if (isOpen) mobileMenu.removeAttribute('hidden');
+      else mobileMenu.setAttribute('hidden', '');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+    mobileMenu.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+      mobileMenu.setAttribute('hidden', '');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }));
+
+    const themeToggle = $('#theme-toggle');
+    if (localStorage.getItem('imastun-theme') === 'light') document.body.classList.add('light-mode');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      localStorage.setItem('imastun-theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+    });
+
+    const savedLanguage = localStorage.getItem('imastun-language') || 'hy';
+    document.documentElement.lang = savedLanguage;
+    document.querySelectorAll('.language-btn').forEach((button) => {
+      button.classList.toggle('active', button.dataset.lang === savedLanguage);
+      button.addEventListener('click', () => {
+        document.documentElement.lang = button.dataset.lang;
+        localStorage.setItem('imastun-language', button.dataset.lang);
+        document.querySelectorAll('.language-btn').forEach((item) => item.classList.toggle('active', item === button));
+      });
+    });
+
     const durationValue = $('#duration-value');
     const formatDuration = (seconds) => {
       const minutes = Math.round(seconds / 60);
