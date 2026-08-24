@@ -442,10 +442,12 @@
 
   SONG_NAMES['ari-khmenq'] = 'ԱՐԻ ԽՄԵՆՔ · ДАВАЙ ВЫПЬЕМ · BUVONS';
 
+  const AUDIO_BASE_URL = 'https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio';
+
   const playlist = ARTIST.songs.map((song, i) => ({
     index: i,
     song,
-    src: `audio/${ARTIST.id}/featured/${song}${song === 'nerqnapanak' ? '.wav' : '.mp3'}`,
+    src: `${AUDIO_BASE_URL}/${encodeURIComponent(ARTIST.id)}/featured/${encodeURIComponent(song)}${song === 'nerqnapanak' ? '.wav' : '.mp3'}`,
     cover: `authors/${ARTIST.id}/cover.jpg`,
     label: SONG_NAMES[song] || song.replace(/[-_]/g,' ').replace(/\b\w/g,c=>c.toUpperCase())
   }));

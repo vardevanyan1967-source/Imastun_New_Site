@@ -2550,6 +2550,8 @@
     return `<span class="play-count-badge" data-song="${songId}" style="font-size:10px;color:var(--text-dim);opacity:0.75;white-space:nowrap;">${count != null ? '▶ ' + count.toLocaleString('hy-AM') : ''}</span>`;
   }
 
+  const AUDIO_BASE_URL = 'https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio';
+
   const AUDIO_VERSIONS = Object.freeze({
     'go-hara|Սիրելով գնամ': 'b5e360f88c88',
     'go-hara|Я уйду любя': 'a4c22ad27185'
@@ -2561,7 +2563,7 @@
     const version = AUDIO_VERSIONS[`${a.id}|${s}`];
     playlist.push({
       artistId: a.id, artistName: a.name, song: s,
-      src:   `audio/${a.id}/featured/${s}${ext}${version ? `?v=${version}` : ''}`,
+      src:   `${AUDIO_BASE_URL}/${encodeURIComponent(a.id)}/featured/${encodeURIComponent(s)}${ext}${version ? `?v=${version}` : ''}`,
       cover: `authors/${a.id}/cover.jpg`,
       label: SONG_NAMES[s] || formatName(s)
     });
