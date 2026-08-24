@@ -1373,6 +1373,9 @@
   body.standalone-focus > .gold-rule,
   body.standalone-focus #page-loader,
   body.standalone-focus footer { display: none !important; }
+  .standalone-back-wrap { max-width: 1120px; margin: 12px auto 0; padding: 0 20px; }
+  .standalone-back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--gold, #c9a84c); font: 600 10px/1.2 'Syne', sans-serif; letter-spacing: .18em; text-decoration: none; text-transform: uppercase; }
+  .standalone-back-link:hover { color: var(--gold-light, #e8c97a); }
   body.standalone-focus #artists { padding-top: 18px; }
   body.standalone-focus #artists > .section-header { display: none !important; }
   body.standalone-focus #artists-grid > .artist-card { display: none !important; }
@@ -1461,6 +1464,7 @@
 
 <div class="gold-rule"></div>
 
+<div class="standalone-back-wrap"><a class="standalone-back-link" href="index.html#artists">← Back to Imastun Studio</a></div>
 <section id="artists" class="section">
   <div class="section-header reveal">
     <span class="section-label">Artists</span>
