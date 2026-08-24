@@ -1389,6 +1389,177 @@
   body.standalone-focus #artists-grid > .artist-panel { display: none !important; }
   body.standalone-focus #artists-grid > .artist-panel.open { display: block !important; }
   body.standalone-focus #donate-section { display:block !important; opacity:1 !important; transform:none !important; visibility:visible !important; }
+
+    /* IMastun Player Redesign v1 */
+    #global-player {
+      min-height: 86px;
+      height: auto;
+      padding: 13px clamp(14px, 4vw, 52px);
+      gap: 15px;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(213, 171, 91, 0.12), transparent 34%),
+        linear-gradient(135deg, rgba(18, 18, 18, 0.98), rgba(8, 8, 8, 0.98));
+      border-top: 1px solid rgba(213, 171, 91, 0.42);
+      box-shadow: 0 -14px 40px rgba(0, 0, 0, 0.34), 0 -1px 0 rgba(255, 255, 255, 0.04) inset;
+      backdrop-filter: blur(24px);
+    }
+
+    #global-player::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -1px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(241, 207, 137, 0.88), transparent);
+      pointer-events: none;
+    }
+
+    .gp-cover {
+      width: 58px;
+      height: 58px;
+      border-radius: 13px;
+      border: 1px solid rgba(213, 171, 91, 0.58);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.38), 0 0 0 3px rgba(213, 171, 91, 0.06);
+    }
+
+    .gp-info {
+      flex: 1 1 220px;
+      gap: 4px;
+    }
+
+    .gp-artist {
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      color: #d8b66d;
+    }
+
+    .gp-song {
+      font-size: 22px;
+      line-height: 1.08;
+      letter-spacing: 0.01em;
+      text-shadow: 0 1px 14px rgba(0, 0, 0, 0.42);
+    }
+
+    .gp-controls {
+      gap: 6px;
+      padding: 4px 6px;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.045);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    .gp-btn {
+      width: 34px;
+      height: 34px;
+      padding: 0;
+      border-radius: 50%;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.66);
+      transition: color 160ms ease-out, background 160ms ease-out, transform 160ms ease-out;
+    }
+
+    .gp-btn:hover {
+      color: var(--gold);
+      background: rgba(213, 171, 91, 0.12);
+    }
+
+    .gp-btn:active,
+    .gp-play:active { transform: scale(0.96); }
+
+    .gp-play {
+      width: 48px;
+      height: 48px;
+      border: 1px solid #e3bd6f;
+      background: linear-gradient(145deg, rgba(229, 190, 111, 0.18), rgba(229, 190, 111, 0.04));
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28), 0 0 0 4px rgba(213, 171, 91, 0.06);
+      transition: background 160ms ease-out, color 160ms ease-out, transform 160ms ease-out, box-shadow 160ms ease-out;
+    }
+
+    .gp-play:hover {
+      background: linear-gradient(145deg, #e6c277, #bd8b3f);
+      color: #111;
+      box-shadow: 0 7px 20px rgba(213, 171, 91, 0.22), 0 0 0 4px rgba(213, 171, 91, 0.09);
+    }
+
+    .gp-progress-wrap {
+      flex: 1 1 300px;
+      gap: 11px;
+    }
+
+    .gp-time {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.62);
+      width: 38px;
+    }
+
+    .gp-bar {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.09);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 999px;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.36);
+      overflow: hidden;
+    }
+
+    .gp-bar-fill {
+      background: linear-gradient(90deg, #b9873f, #f0cf86);
+      box-shadow: 0 0 12px rgba(232, 192, 112, 0.38);
+      transition: width 120ms linear;
+    }
+
+    @media (max-width: 700px) {
+      #global-player {
+        min-height: 104px;
+        padding: 10px 12px 11px;
+        gap: 9px;
+      }
+
+      .gp-cover {
+        width: 46px;
+        height: 46px;
+        border-radius: 10px;
+      }
+
+      .gp-info {
+        flex: 1 1 0;
+        min-width: 0;
+      }
+
+      .gp-artist { font-size: 8px; letter-spacing: 0.14em; }
+      .gp-song { font-size: 17px; }
+
+      .gp-controls {
+        gap: 3px;
+        padding: 3px 4px;
+      }
+
+      .gp-btn {
+        width: 30px;
+        height: 30px;
+      }
+
+      .gp-play {
+        width: 40px;
+        height: 40px;
+      }
+
+      .gp-progress-wrap {
+        flex: 0 0 100%;
+        order: 10;
+        gap: 7px;
+      }
+
+      .gp-time {
+        font-size: 10px;
+        width: 34px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .gp-btn, .gp-play, .gp-bar-fill { transition: none; }
+    }
 </style>
 
 </head>
