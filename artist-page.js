@@ -47,6 +47,44 @@
     $('#track-count').textContent = artist.songs.length;
     $('#archive-count').textContent = `${artist.songs.length} tracks`;
 
+    const durationValue = $('#duration-value');
+    const formatDuration = (seconds) => {
+      const minutes = Math.round(seconds / 60);
+      const hours = Math.floor(minutes / 60);
+      const remainder = minutes % 60;
+      return hours ? `${hours}ժ ${remainder}ր` : `${remainder}ր`;
+    };
+    Promise.all(artist.songs.map((song) => new Promise((resolve) => {
+      const probe = new Audio();
+      probe.preload = 'metadata';
+      probe.addEventListener('loadedmetadata', () => resolve(Number.isFinite(probe.duration) ? probe.duration : 0), { once: true });
+      probe.addEventListener('error', () => resolve(0), { once: true });
+      probe.src = audioPath(artist, song);
+    }))).then((durations) => {
+      const total = durations.reduce((sum, value) => sum + value, 0);
+      if (durationValue) durationValue.textContent = total ? formatDuration(total) : '—';
+    });
+
+    const copyDonate = $('#copy-donate');
+    const copyStatus = $('#copy-status');
+    copyDonate.addEventListener('click', async () => {
+      const cardNumber = '4578 8900 8055 1169';
+      try {
+        await navigator.clipboard.writeText(cardNumber);
+      } catch (error) {
+        const helper = document.createElement('textarea');
+        helper.value = cardNumber;
+        helper.style.position = 'fixed';
+        helper.style.opacity = '0';
+        document.body.appendChild(helper);
+        helper.select();
+        document.execCommand('copy');
+        helper.remove();
+      }
+      copyStatus.textContent = 'Պատճենվեց ✓';
+      setTimeout(() => { copyStatus.textContent = ''; }, 2400);
+    });
+
     let currentIndex = -1;
     const audio = $('#audio');
     const nowTitle = $('#now-title');
