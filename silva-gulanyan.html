@@ -1000,15 +1000,19 @@
     // after the browser confirms that the second engine is playing.
     const beginFade = () => {
       if (crossfadeNextIdx !== nextIdx || crossfadeTimer) return;
-      const steps = 30;
+      const steps = 60;
       const stepMs = (CROSSFADE_SEC * 1000) / steps;
       let i = 0;
       crossfadeTimer = setInterval(() => {
         if (crossfadeNextIdx !== nextIdx) return;
         i++;
-        const ratio = i / steps;
-        cur.volume = Math.max(0, 1 - ratio);
-        nxt.volume = Math.min(1, ratio);
+        const ratio = Math.min(1, i / steps);
+        // Separate eased curves make the outgoing track fade out and the
+        // incoming track fade in smoothly instead of merely swapping levels.
+        const fadeOut = Math.cos(ratio * Math.PI / 2);
+        const fadeIn = Math.sin(ratio * Math.PI / 2);
+        cur.volume = Math.max(0, Math.min(1, fadeOut));
+        nxt.volume = Math.max(0, Math.min(1, fadeIn));
         if (i >= steps) {
           clearInterval(crossfadeTimer);
           crossfadeTimer = null;
