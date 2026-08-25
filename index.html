@@ -1572,50 +1572,6 @@
       .gp-bar { height: 9px; }
       .gp-bar-fill::after { width: 13px; height: 13px; right: -6.5px; }
     }
-    /* Compact phone player: one restrained now-playing strip, never a tall overlay. */
-    @media (max-width: 700px) {
-      :root { --player-h: 86px; }
-      #global-player {
-        height: var(--player-h);
-        min-height: 0;
-        box-sizing: border-box;
-        display: grid;
-        grid-template-columns: 42px minmax(0, 1fr) auto;
-        grid-template-rows: 1fr;
-        align-items: center;
-        gap: 8px;
-        padding: 0 12px;
-      }
-      #global-player.visible { display: grid !important; }
-      .gp-cover { width: 42px; height: 42px; border-radius: 7px; grid-column: 1; grid-row: 1; align-self: center; }
-      .gp-info { min-width: 0; width: auto; flex: none; gap: 1px; grid-column: 2; grid-row: 1; align-self: center; }
-      .gp-artist { font-size: 8px; letter-spacing: 0.12em; }
-      .gp-song { font-size: 18px; line-height: 1.05; }
-      .gp-controls { gap: 0; padding: 0; grid-column: 3; grid-row: 1; align-self: center; justify-self: end; }
-      .gp-btn { width: 26px; height: 32px; padding: 4px; justify-content: center; }
-      .gp-play { width: 38px; height: 38px; }
-      .gp-progress-wrap {
-        position: absolute;
-        left: 12px;
-        right: 12px;
-        bottom: 6px;
-        display: flex;
-        gap: 6px;
-        height: 10px;
-      }
-      .gp-time { width: 30px; font-size: 9px; }
-      .gp-bar { height: 5px; }
-      .gp-bar-fill::after { width: 10px; height: 10px; right: -5px; }
-      #wa-btn, .messenger-btn, #donate-float-btn {
-        right: 12px;
-        width: 40px;
-        height: 40px;
-      }
-      #wa-btn { bottom: calc(var(--player-h) + 10px); }
-      .messenger-btn { bottom: calc(var(--player-h) + 58px); }
-      #donate-float-btn { bottom: calc(var(--player-h) + 106px); font-size: 18px; }
-      .messenger-btn svg, #wa-btn svg { width: 21px; height: 21px; }
-    }
 </style>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHJJF7DQ29"></script>
@@ -2886,8 +2842,6 @@
     gpArtist.textContent = t.artistName;
     gpSong.textContent = t.label;
     gpEl.classList.add('visible');
-    if (window.matchMedia('(max-width: 700px)').matches) gpEl.style.setProperty('display', 'grid', 'important');
-    else gpEl.style.removeProperty('display');
     gpFill.style.width = '0%';
     gpCur.textContent = gpDur.textContent = '0:00';
     highlightTrack(idx);
