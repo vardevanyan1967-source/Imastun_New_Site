@@ -1605,6 +1605,40 @@
       .gp-bar { height: 9px; }
       .gp-bar-fill::after { width: 13px; height: 13px; right: -6.5px; }
     }
+    /* Stable player restoration: return to the pre-redesign proportions and controls. */
+    #global-player {
+      height: var(--player-h);
+      min-height: 0;
+      padding: 0 clamp(16px, 4vw, 48px);
+      gap: 20px;
+      background: rgba(10,10,10,0.97);
+      border-top: 1px solid var(--border);
+      box-shadow: none;
+      backdrop-filter: blur(28px);
+    }
+    #global-player::before { content: none; }
+    .gp-cover { width: 52px; height: 52px; border-radius: 0; border: 1px solid var(--border); box-shadow: none; }
+    .gp-info { flex: 0 0 180px; gap: 3px; }
+    .gp-artist { font-size: 10px; letter-spacing: 0.18em; color: var(--gold); }
+    .gp-song { font-size: 20px; line-height: normal; letter-spacing: normal; text-shadow: none; }
+    .gp-controls { gap: 12px; padding: 0; border: 0; border-radius: 0; background: none; box-shadow: none; }
+    .gp-btn { width: auto; height: auto; padding: 6px; border-radius: 0; color: var(--text-dim); transition: color 0.2s; }
+    .gp-btn:hover { color: var(--gold); background: none; }
+    .gp-play { width: 44px; height: 44px; border: 1px solid var(--gold); background: none; box-shadow: none; transition: background 0.2s, color 0.2s; }
+    .gp-play:hover { background: var(--gold); color: var(--bg); box-shadow: none; }
+    .gp-progress-wrap { flex: 1; gap: 10px; min-width: 0; }
+    .gp-time { font-size: 12px; color: var(--text); width: 40px; }
+    .gp-bar-fill { background: var(--gold); box-shadow: none; }
+    @media (max-width: 700px) {
+      :root { --player-h: 122px; }
+      #global-player { display: flex; flex-wrap: wrap; align-content: center; row-gap: 6px; padding: 10px clamp(14px, 4vw, 24px); gap: 20px; }
+      .gp-cover { width: 40px; height: 40px; border-radius: 0; }
+      .gp-info { flex: 1 1 0; min-width: 0; }
+      .gp-controls { gap: 8px; }
+      .gp-btn, .gp-play { padding: 4px; }
+      .gp-progress-wrap { display: flex; flex: 0 0 100%; order: 10; gap: 8px; }
+      .gp-time { font-size: 11px; width: 34px; }
+    }
 </style>
 
 </head>
