@@ -2804,10 +2804,38 @@
 
   /* ══ PLAYER ENGINE ══ */
   const engine    = document.getElementById('audio-engine');
-  engine.preload = 'none';
-  const engines   = [engine];
-  const active    = () => engine;
-  const inactive  = () => engine;
+  const engine2   = new Audio();
+
+  /* Unlock both audio elements on first user gesture so the background
+     (crossfade / auto-advance) engine is also allowed to autoplay later,
+     especially in Android WebView and mobile browsers that block
+     programmatic play() unless it was already unlocked by a real tap. */
+  let audioUnlocked = false;
+  function unlockAudioEngines() {
+    if (audioUnlocked) return;
+    audioUnlocked = true;
+    [engine, engine2].forEach(eng => {
+      const p = eng.play();
+      if (p && p.catch) p.catch(() => {});
+      eng.pause();
+      eng.currentTime = 0;
+    });
+    document.removeEventListener('touchstart', unlockAudioEngines);
+    document.removeEventListener('click', unlockAudioEngines);
+  }
+  document.addEventListener('touchstart', unlockAudioEngines, { once: true, passive: true });
+  document.addEventListener('click', unlockAudioEngines, { once: true });
+  engine.preload = 'auto';
+  engine2.preload = 'auto';
+  const engines   = [engine, engine2];
+  let activeIdx   = 0;
+  const active    = () => engines[activeIdx];
+  const inactive  = () => engines[1 - activeIdx];
+  const CROSSFADE_SEC = 10;
+  let crossfadeTimer = null;
+  let crossfadeNextIdx = -1;
+  let crossfadeScheduleTimer = null;
+  let crossfadeWatchdog = null;
 
   const gpEl      = document.getElementById('global-player');
   const gpCover   = document.getElementById('gp-cover');
@@ -2821,20 +2849,72 @@
   const gpFill    = document.getElementById('gp-fill');
   const gpCur     = document.getElementById('gp-cur');
   const gpDur     = document.getElementById('gp-dur');
+  const gpSimilar = document.getElementById('gp-similar');
+  const similarPanel = document.getElementById('similar-panel');
 
   let currentIdx = -1, isPlaying = false;
+
+  function buildSimilarPanel() {
+    if (currentIdx < 0) { similarPanel.innerHTML = ''; return; }
+    const t = playlist[currentIdx];
+    let candidates = playlist
+      .map((p, i) => ({ p, i }))
+      .filter(x => x.i !== currentIdx && x.p.artistId === t.artistId);
+    // shuffle and take up to 5
+    for (let i = candidates.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [candidates[i], candidates[j]] = [candidates[j], candidates[i]];
+    }
+    candidates = candidates.slice(0, 5);
+    if (!candidates.length) {
+      similarPanel.innerHTML = '<div class="similar-empty">Այլ երգ չկա այս կատարողից</div>';
+      return;
+    }
+    similarPanel.innerHTML = `<div class="similar-panel-title">Նմանատիպ երգեր</div>` +
+      candidates.map(({ p, i }) => `
+        <div class="similar-item" data-idx="${i}">
+          <img src="${p.cover}" alt="${p.label} — ${p.artistName}" loading="lazy" decoding="async" onerror="this.style.visibility='hidden'" />
+          <div>
+            <div class="si-name">${p.label}</div>
+            <div class="si-artist">${p.artistName}</div>
+          </div>
+        </div>`).join('');
+    similarPanel.querySelectorAll('.similar-item').forEach(el => {
+      el.addEventListener('click', () => {
+        playTrack(parseInt(el.dataset.idx));
+        similarPanel.classList.remove('open');
+      });
+    });
+  }
+
+  gpSimilar.addEventListener('click', () => {
+    if (!similarPanel.classList.contains('open')) buildSimilarPanel();
+    similarPanel.classList.toggle('open');
+  });
+
   const PLAY_SVG  = `<path d="M5 3l10 6-10 6V3z" fill="currentColor"/>`;
   const PAUSE_SVG = `<rect x="4" y="3" width="3.5" height="12" rx="1" fill="currentColor"/><rect x="10.5" y="3" width="3.5" height="12" rx="1" fill="currentColor"/>`;
 
   function setPlayIcon(p) { gpPlayIco.innerHTML = p ? PAUSE_SVG : PLAY_SVG; }
   function fmtTime(s) { return isNaN(s) ? '0:00' : `${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,'0')}`; }
 
+  function cancelCrossfade() {
+    if (crossfadeTimer) { clearInterval(crossfadeTimer); crossfadeTimer = null; }
+    if (crossfadeScheduleTimer) { clearTimeout(crossfadeScheduleTimer); crossfadeScheduleTimer = null; }
+    if (crossfadeWatchdog) { clearInterval(crossfadeWatchdog); crossfadeWatchdog = null; }
+    crossfadeNextIdx = -1;
+    inactive().pause();
+    inactive().removeAttribute('src');
+    inactive().volume = 1;
+    active().volume = 1;
+  }
+
   function loadTrack(idx, autoplay) {
     if (idx < 0 || idx >= playlist.length) return;
+    cancelCrossfade();
     currentIdx = idx;
     const t = playlist[idx];
     const eng = active();
-    eng.pause();
     eng.src = t.src;
     eng.volume = 1;
     gpCover.src = t.cover;
@@ -2846,7 +2926,7 @@
     gpCur.textContent = gpDur.textContent = '0:00';
     highlightTrack(idx);
     updateMediaSession(t);
-    if (autoplay) eng.play().then(() => { isPlaying = true; setPlayIcon(true); highlightTrack(currentIdx); }).catch(() => {});
+    if (autoplay) eng.play().then(() => { isPlaying = true; setPlayIcon(true); armCrossfadeWatchdog(); }).catch(() => {});
     try {
       localStorage.setItem('imastun_last_track', JSON.stringify({ artistId: t.artistId, song: t.song, label: t.label, artistName: t.artistName }));
     } catch (e) {}
@@ -2864,30 +2944,147 @@
   }
 
   function playTrack(idx) {
-    if (idx < 0 || idx >= playlist.length) return;
     if (idx === currentIdx && isPlaying) {
-      active().pause();
-      return;
+      active().pause(); return;
     }
     const t = playlist[idx];
-    if (t && typeof gtag === 'function') gtag('event', 'play_song', { song_name: t.label, artist_name: t.artistName });
+    if (t && typeof gtag === 'function') {
+      gtag('event', 'play_song', { song_name: t.label, artist_name: t.artistName });
+    }
     if (t) incrementPlayCount(t.song);
     loadTrack(idx, true);
+  }
+
+  function armCrossfadeWatchdog() {
+    if (crossfadeWatchdog) clearInterval(crossfadeWatchdog);
+    crossfadeWatchdog = setInterval(() => {
+      if (!isPlaying || currentIdx < 0 || currentIdx >= playlist.length - 1) return;
+      const eng = active();
+      if (!eng || !Number.isFinite(Number(eng.duration)) || eng.duration <= 0) return;
+      const remaining = eng.duration - eng.currentTime;
+      if (remaining > 0 && remaining <= CROSSFADE_SEC && crossfadeNextIdx < 0) startCrossfade();
+    }, 250);
+  }
+
+  function scheduleCrossfade() {
+    if (currentIdx < 0 || currentIdx >= playlist.length - 1 || crossfadeNextIdx >= 0 || crossfadeScheduleTimer) return;
+    const eng = active();
+    const duration = Number(eng.duration);
+    const remaining = duration - Number(eng.currentTime || 0);
+    if (!Number.isFinite(duration) || duration <= 0) return;
+    if (remaining <= CROSSFADE_SEC) {
+      startCrossfade();
+      return;
+    }
+    const trackAtSchedule = currentIdx;
+    const delay = Math.max(0, (remaining - CROSSFADE_SEC) * 1000);
+    crossfadeScheduleTimer = setTimeout(() => {
+      crossfadeScheduleTimer = null;
+      if (active() === eng && currentIdx === trackAtSchedule && crossfadeNextIdx < 0) startCrossfade();
+    }, delay);
+  }
+
+  function handleSeekCrossfade() {
+    if (!isPlaying || currentIdx < 0 || currentIdx >= playlist.length - 1 || crossfadeNextIdx >= 0) return;
+    const eng = active();
+    const duration = Number(eng.duration);
+    const current = Number(eng.currentTime || 0);
+    if (!Number.isFinite(duration) || duration <= 0 || !Number.isFinite(current)) return;
+    const remaining = duration - current;
+    if (remaining > 0 && remaining <= CROSSFADE_SEC) startCrossfade();
+    else if (remaining > CROSSFADE_SEC) scheduleCrossfade();
+  }
+
+  function startCrossfade(targetIdx) {
+    const nextIdx = Number.isInteger(targetIdx) ? targetIdx : currentIdx + 1;
+    if (nextIdx >= playlist.length || crossfadeNextIdx >= 0) return;
+    if (crossfadeScheduleTimer) { clearTimeout(crossfadeScheduleTimer); crossfadeScheduleTimer = null; }
+    const cur = active();
+    const nxt = inactive();
+    const t = playlist[nextIdx];
+    crossfadeNextIdx = nextIdx;
+    nxt.preload = 'auto';
+    nxt.src = t.src;
+    nxt.currentTime = 0;
+    nxt.volume = 0;
+
+    // Start loading the next song early, but begin the audible fade only
+    // after the browser confirms that the second engine is playing.
+    const beginFade = () => {
+      if (crossfadeNextIdx !== nextIdx || crossfadeTimer) return;
+      const steps = 60;
+      const stepMs = (CROSSFADE_SEC * 1000) / steps;
+      let i = 0;
+      crossfadeTimer = setInterval(() => {
+        if (crossfadeNextIdx !== nextIdx) return;
+        i++;
+        const ratio = Math.min(1, i / steps);
+        // Separate eased curves make the outgoing track fade out and the
+        // incoming track fade in smoothly instead of merely swapping levels.
+        const fadeOut = Math.cos(ratio * Math.PI / 2);
+        const fadeIn = Math.sin(ratio * Math.PI / 2);
+        cur.volume = Math.max(0, Math.min(1, fadeOut));
+        nxt.volume = Math.max(0, Math.min(1, fadeIn));
+        if (i >= steps) {
+          clearInterval(crossfadeTimer);
+          crossfadeTimer = null;
+          crossfadeNextIdx = -1;
+          activeIdx = 1 - activeIdx;
+          currentIdx = nextIdx;
+          const nextArtist = t.artistName || (typeof ARTIST !== 'undefined' ? ARTIST.name : 'Imastun Studio');
+          gpCover.src = t.cover;
+          gpCover.alt = nextArtist + ' — ' + t.label;
+          gpArtist.textContent = nextArtist;
+          gpSong.textContent = t.label;
+          gpFill.style.width = '0%';
+          highlightTrack(currentIdx);
+          if (typeof updateMediaSession === 'function') updateMediaSession(t);
+          cur.pause();
+          cur.currentTime = 0;
+          cur.volume = 1;
+          isPlaying = true;
+          setPlayIcon(true);
+        }
+      }, stepMs);
+    };
+
+    // Arm the volume ramp immediately. The next engine is started in the
+    // same transition call, so the two sources overlap instead of waiting
+    // for a promise resolution and then falling into a late hard cut.
+    beginFade();
+    const playPromise = nxt.play();
+    if (playPromise && typeof playPromise.catch === 'function') {
+      playPromise.catch(() => {
+        // Autoplay can still be rejected by a browser. Keep the current
+        // source intact until the emergency fallback is actually needed.
+        if (crossfadeNextIdx !== nextIdx) return;
+        clearInterval(crossfadeTimer);
+        crossfadeTimer = null;
+        crossfadeNextIdx = -1;
+        playTrack(nextIdx);
+      });
+    }
   }
 
   gpPlayBtn.addEventListener('click', () => {
     if (currentIdx < 0) return;
     if (isPlaying) {
       active().pause();
-      isPlaying = false;
-      setPlayIcon(false);
-      highlightTrack(currentIdx);
+      if (crossfadeNextIdx >= 0) cancelCrossfade();
+      isPlaying = false; setPlayIcon(false); highlightTrack(currentIdx);
     } else {
-      active().play().then(() => { isPlaying = true; setPlayIcon(true); highlightTrack(currentIdx); }).catch(() => {});
+      active().play().catch(() => {});
+      if (crossfadeNextIdx >= 0) inactive().play().catch(() => {});
+      isPlaying = true; setPlayIcon(true); highlightTrack(currentIdx); armCrossfadeWatchdog();
     }
   });
+
   gpPrev.addEventListener('click', () => { if (currentIdx > 0) playTrack(currentIdx - 1); });
-  gpNext.addEventListener('click', () => { if (currentIdx < playlist.length - 1) playTrack(currentIdx + 1); });
+  gpNext.addEventListener('click', () => {
+    if (currentIdx < 0 || currentIdx >= playlist.length - 1 || crossfadeNextIdx >= 0) return;
+    if (isPlaying) startCrossfade(currentIdx + 1);
+    else playTrack(currentIdx + 1);
+  });
 
   function setupEngine(eng) {
     eng.addEventListener('timeupdate', () => {
@@ -2895,27 +3092,63 @@
       gpFill.style.width = (eng.currentTime / eng.duration * 100) + '%';
       gpCur.textContent = fmtTime(eng.currentTime);
       gpDur.textContent = fmtTime(eng.duration);
+      const remaining = eng.duration - eng.currentTime;
+      if (crossfadeNextIdx < 0 && currentIdx < playlist.length - 1) {
+        if (remaining > 0 && remaining <= CROSSFADE_SEC) startCrossfade();
+        else scheduleCrossfade();
+      }
     });
-    eng.addEventListener('play', () => {
-      if (eng === active()) { isPlaying = true; setPlayIcon(true); highlightTrack(currentIdx); }
-    });
-    eng.addEventListener('pause', () => {
-      if (eng === active()) { isPlaying = false; setPlayIcon(false); highlightTrack(currentIdx); }
-    });
+    eng.addEventListener('loadedmetadata', () => { if (eng === active()) scheduleCrossfade(); });
+    eng.addEventListener('durationchange', () => { if (eng === active()) scheduleCrossfade(); });
+    eng.addEventListener('seeking', () => { if (eng === active()) handleSeekCrossfade(); });
+    eng.addEventListener('seeked', () => { if (eng === active()) handleSeekCrossfade(); });
+    eng.addEventListener('play',  () => { if (eng === active()) { isPlaying = true;  setPlayIcon(true);  highlightTrack(currentIdx); scheduleCrossfade(); } });
+    eng.addEventListener('pause', () => { if (eng === active() && !crossfadeTimer) { isPlaying = false; setPlayIcon(false); highlightTrack(currentIdx); } });
     eng.addEventListener('ended', () => {
       if (eng !== active()) return;
+      const pendingNext = crossfadeNextIdx === currentIdx + 1;
+      if (pendingNext && crossfadeTimer) {
+        const nextIdx = crossfadeNextIdx;
+        const nxt = inactive();
+        clearInterval(crossfadeTimer);
+        crossfadeTimer = null;
+        crossfadeNextIdx = -1;
+        activeIdx = 1 - activeIdx;
+        currentIdx = nextIdx;
+        const t = playlist[nextIdx];
+        const nextArtist = t.artistName || (typeof ARTIST !== 'undefined' ? ARTIST.name : 'Imastun Studio');
+        nxt.volume = 1;
+        gpCover.src = t.cover;
+        gpCover.alt = nextArtist + ' — ' + t.label;
+        gpArtist.textContent = nextArtist;
+        gpSong.textContent = t.label;
+        gpFill.style.width = '0%';
+        highlightTrack(currentIdx);
+        if (typeof updateMediaSession === 'function') updateMediaSession(t);
+        eng.pause();
+        eng.currentTime = 0;
+        eng.volume = 1;
+        isPlaying = true;
+        setPlayIcon(true);
+        return;
+      }
+      if (pendingNext) {
+        // The next file was still buffering when the current one ended.
+        // Use the normal transition rather than leaving the player silent.
+        const nextIdx = crossfadeNextIdx;
+        crossfadeNextIdx = -1;
+        playTrack(nextIdx);
+        return;
+      }
+      if (crossfadeTimer) { clearInterval(crossfadeTimer); crossfadeTimer = null; }
+      crossfadeNextIdx = -1;
       if (currentIdx < playlist.length - 1) playTrack(currentIdx + 1);
-      else { isPlaying = false; setPlayIcon(false); highlightTrack(currentIdx); }
+      else { isPlaying = false; setPlayIcon(false); }
     });
   }
   setupEngine(engine);
+  setupEngine(engine2);
 
-  gpBar.addEventListener('click', e => {
-    const eng = active();
-    if (!eng.duration) return;
-    const r = gpBar.getBoundingClientRect();
-    eng.currentTime = Math.max(0, Math.min(eng.duration, ((e.clientX - r.left) / r.width) * eng.duration));
-  });
   /* ══ MEDIA SESSION (lock screen / headphone controls) ══ */
   function updateMediaSession(t) {
     if (!('mediaSession' in navigator)) return;
@@ -2975,6 +3208,7 @@
     eng.currentTime = ratio * eng.duration;
     gpFill.style.width = (ratio * 100) + '%';
     gpCur.textContent = fmtTime(eng.currentTime);
+    if (typeof handleSeekCrossfade === 'function') handleSeekCrossfade();
   }
   let barDragging = false;
   gpBar.addEventListener('pointerdown', e => {
@@ -3904,6 +4138,7 @@
       engine.currentTime = Math.max(0, Math.min(engine.duration, engine.currentTime + seconds));
       if (fill) fill.style.width = `${engine.currentTime / engine.duration * 100}%`;
       if (cur) cur.textContent = format(engine.currentTime);
+      if (typeof handleSeekCrossfade === 'function') handleSeekCrossfade();
       updateA11y();
     };
 
