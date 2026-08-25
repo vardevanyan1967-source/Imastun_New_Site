@@ -2875,7 +2875,6 @@
     } catch (e) {}
     const rb = document.getElementById('resume-banner');
     if (rb) rb.classList.remove('visible');
-    if (similarPanel.classList.contains('open')) buildSimilarPanel();
   }
 
   function highlightTrack(idx) {
@@ -3722,10 +3721,20 @@
   })();
 
   /* ══ PAGE LOADER ══ */
-  window.addEventListener('load', () => {
-    const loader = document.getElementById('page-loader');
-    if (loader) setTimeout(() => loader.classList.add('hidden'), 150);
-  });
+  (() => {
+    const hidePageLoader = () => {
+      const loader = document.getElementById('page-loader');
+      if (loader) loader.classList.add('hidden');
+    };
+    // Decorative media must never keep the catalogue or fixed player hidden.
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => setTimeout(hidePageLoader, 150), { once: true });
+    } else {
+      setTimeout(hidePageLoader, 150);
+    }
+    window.addEventListener('load', hidePageLoader, { once: true });
+    setTimeout(hidePageLoader, 1200);
+  })();
 
   /* ══ RESUME LAST TRACK ══ */
   (function() {
