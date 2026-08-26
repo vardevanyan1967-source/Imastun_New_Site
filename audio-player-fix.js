@@ -112,7 +112,7 @@
     if (!document.getElementById(style.id)) document.head.appendChild(style);
 
     // Keep this file focused on visible-sequence navigation, duration and CSS.
-    // The R2 pilot uses its own native audio controls in index.html.
+    // R2-hosted tracks use the same global player and visible queue as local tracks.
   }
 
   requestAnimationFrame(() => requestAnimationFrame(installPlayerFixes));

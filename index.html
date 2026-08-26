@@ -5,12 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Իմաստուն Ստուդիո — Imastun Studio</title>
   <meta name="description" content="Իմաստուն Ստուդիո — հայկական երաժշտության ստուդիո՝ Սիլվա Ղուլանյան, Գո Հարա, Հայ բանաստեղծների երգեր (Տերյան, Սահյան, Սևակ) և Shakespeare Reimagined նախագիծը։ 300+ երգ, տեսահոլովակներ, բանաստեղծություն երաժշտության մեջ։" />
-  <meta name="keywords" content="հայկական երաժշտություն, Իմաստուն Ստուդիո, Silva Gulanyan, Go Hara, Vahan Teryan, Hamo Sahyan, Paruyr Sevak, Armenian music, Armenian poetry songs" />
-  <meta name="keywords" content="Imastun Studio, Իմաստուն Ստուդիո, Silva Gulanyan, Go Hara, Narine Balasbekyan, հայկական երաժշտություն, Armenian music" />
+  <meta name="keywords" content="հայկական երաժշտություն, Իմաստուն Ստուդիո, Imastun Studio, Silva Gulanyan, Go Hara, Narine Balasbekyan, Vahan Teryan, Hamo Sahyan, Paruyr Sevak, Armenian music, Armenian poetry songs" />
   <meta name="author" content="Imastun Studio" />
   <meta property="og:title" content="Իմաստուն Ստուդիո — Imastun Studio" />
   <meta property="og:description" content="Հայկական երաժշտության ստուդիո՝ 300+ երգ, հայ բանաստեղծների ստեղծագործություններ երաժշտության մեջ, Shakespeare Reimagined նախագիծը և ավելին։" />
-  <meta property="og:image" content="logo.png" />
+  <meta property="og:image" content="https://imastun.org/logo.png" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -29,18 +28,19 @@
   }
   </script>
   <meta property="og:type" content="music.playlist" />
-  <meta property="og:url" content="" />
+  <meta property="og:url" content="https://imastun.org/" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Իմաստուն Ստուդիո" />
   <meta name="twitter:description" content="Բարի գալուստ Իմաստուն Ստուդիո" />
-  <meta name="twitter:image" content="logo.png" />
+  <meta name="twitter:image" content="https://imastun.org/logo.png" />
   <meta name="theme-color" content="#c9a84c" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <link rel="manifest" href="manifest.json" />
-  <link rel="icon" href="logo.png" type="image/png" />
-  <link rel="apple-touch-icon" href="logo.png" />
+  <link rel="icon" href="icons/icon-192.png" type="image/png" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <link rel="canonical" href="https://imastun.org/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -818,27 +818,6 @@
 
     .suno-btn:hover { background: var(--gold); color: var(--bg); }
 
-    /* ── PILOT NATIVE PLAYER ── */
-    #pilot-native-player {
-      position: fixed; bottom: 0; left: 0; right: 0;
-      min-height: var(--player-h);
-      background: rgba(10,10,10,0.98); backdrop-filter: blur(28px);
-      border-top: 1px solid var(--gold); z-index: 195;
-      display: flex; align-items: center; gap: 20px;
-      padding: 12px clamp(16px, 4vw, 48px);
-    }
-
-    .pilot-native-meta { min-width: 240px; }
-    .pilot-native-kicker {
-      font-size: 9px; font-weight: 700; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 4px;
-    }
-    .pilot-native-title {
-      font-family: 'Cormorant Garamond', serif; font-size: 18px;
-      color: var(--white); line-height: 1.15;
-    }
-    #pilot-native-audio { display: block; width: 100%; min-width: 0; }
-
     /* ── GLOBAL PLAYER ── */
     #global-player {
       position: fixed; bottom: 0; left: 0; right: 0;
@@ -1174,10 +1153,6 @@
       .gp-btn, .gp-play { padding: 4px; }
       .gp-progress-wrap { display: flex; flex: 0 0 100%; order: 10; gap: 8px; }
       .gp-time { font-size: 11px; width: 34px; }
-      #pilot-native-player { flex-direction: column; align-items: stretch; justify-content: center; gap: 6px; padding: 8px 14px; }
-      .pilot-native-meta { min-width: 0; }
-      .pilot-native-kicker { margin-bottom: 2px; }
-      .pilot-native-title { font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
       footer { flex-direction: column; align-items: flex-start; }
       #suno-banner { padding: 20px; }
       #donate-section { padding: 24px 20px; }
@@ -1388,7 +1363,7 @@
 <a class="skip-link" href="#artists" data-i18n="skip">Անցնել հիմնական բովանդակությանը</a>
 
 <section id="hero">
-  <video id="bg-video" src="background.mp4" autoplay muted loop playsinline></video>
+  <video id="bg-video" src="background.mp4" preload="metadata" autoplay muted loop playsinline></video>
   <img src="logo.png" alt="Imastun Studio" class="hero-logo-corner" />
   <div class="hero-stats" id="hero-stats"></div>
   <div class="hero-veil"></div>
@@ -1603,19 +1578,6 @@
   <button class="rb-close" id="rb-close">✕</button>
 </div>
 
-<div id="pilot-native-player" role="region" aria-label="Փորձնական երգի նվագարկիչ">
-  <div class="pilot-native-meta">
-    <div class="pilot-native-kicker">Փորձնական երգ</div>
-    <div class="pilot-native-title">Կատակ յարի երգ պար 4 լեզվով</div>
-  </div>
-  <audio
-    id="pilot-native-audio"
-    controls
-    preload="none"
-    aria-label="Կատակ յարի երգ պար 4 լեզվով"
-    src="https://media.imastun.org/%D4%BF%D5%A1%D5%BF%D5%A1%D5%AF%20%D5%B5%D5%A1%D6%80%D5%AB%20%D5%A5%D6%80%D5%A3%20%D5%BA%D5%A1%D6%80%204%20%D5%AC%D5%A5%D5%A6%D5%BE%D5%B8%D5%BE.mp3"></audio>
-</div>
-
 <div id="global-player">
   <img class="gp-cover" id="gp-cover" src="" alt="" />
   <div class="gp-info">
@@ -1710,7 +1672,7 @@
     },
     {
       id: 'silva-gulanyan', name: 'Silva Gulanyan', role: 'Vocalist & Songwriter',
-      songs: ['ergichy-dari','gij','gij-qamin','gortrik-ankun','im-tsovagur','inch-em-anelu','tsov-arev-achqer','Es_kez_sirum_em','Kez_khenti_nman_siraharvetsi_Duet_Tango','Ari_klini','Andzrevum_e','der-inz-voch-mek-chi-sirel-qo-pes','Akh_inch_anem_sirud_het','AKhor_vo_tsavits_tsnvats','Aryev_darnam','Che_chem_toghni_B','Ches_moranalu_003','Chisht_zhamanakin_At_The_Right_Time','Dran_Takotsu_003','Dzig_tarineri_luys_003','Erazankneri_aytsu_Part_Gisherva_002','Erb_verkers_hanger_dardzri_Lyrics_by_Silva_Gulanyan_003','Erku_khent_hogi_Duet_Silva_Gulanyan_004','Es_sirum_em_ko_zhpitu_B','Garun_er_003','Gisher_e_004','Gisherits_depi_luys_Silva_Gulanyan_005','Gitem_ches_galu_B','Gitem_hogis_A','Hetd_inch_e_katarvum','Im_erazats_ashkharu_003','inchu_es_ayskan_indz_otar_dardzel_004','Jaheli_nman_003','Կարոտի խենթի','Kenatsd_khmem_B_Brinderò_per_Te','xentern u lusiny','Ko_hmayki_gerin','Ko_koghkin_vorish_em_003','Es_irakan_em_004','frants_Harbel_em_vozum','Galis_e_mi_pah_003','Havat_em_vozum_003','Hayots_ashkarh_A','HERO_MOTIK_UNKERNERIS_003','hogu giny','Ka_mi_ashkharh_vor_srtov_e_karutsvats','kgam_sirelis','Kuratsats_achkin_luysu_003','Kuyr_eghbayr_003','Kyanku_Hrashk_e_005','Mer_Srterum_kanchu_004','Mtnets_arants_kez_Duet','Nrboren_Garnunk_003','Resta_nei_nostri_cuori','RokHetd_Inch_E_Katarvum_003','S_irum_em_kez_I_love_you','Sirir_indz_hogis_FRAM_Duet','Srteri_kanchu_003','Tesilk_Silva_Gulanyan_Remix_Remix','Tiezerk_Jinj_Lazur','Title_Mi_tanjir_hogis_Multilingual_Emotional_Duet_Lyrics_by_Silva_Gulanyan_002','melodia lubvi','Безумный Ветер Любви','agh & dagy','xerdvac karot','xerdvac karot patasxan','hiastapvac','nerqnapanak','qo cov achqeri kajcern em sirum','sirty xentacav','luse hrashq','Hay_aragil','lrutian tchich','qez karotelis','siro cnundy','qo_drakhtum_002','ser da ardioq','xortakvor nav','chem moracel','ipta hogis','ov e kimy','Nerir sirelis','The Sun Cries Too','Crazy Breeze of Love','xent siro qamin','karotiali shurterin','mek tari el ancav','Garun e bajc zun e arel','Curt xavaric','xind manuk','hima','byur harvacneric','mern zepur','ser eir xarum','erazi kyamq roc','erazi kyanq','ti pridyosh komne',"The Night's Embrace",'xararutun ber','ti moy kislarod','My Endless Dream',"Կարոտի խենթի","Тоска по мне","The Song of the Spring Breeze","խենթի նման սիրահարվեցի","Светлый полёт","Քեզ դուրս եմ արել","Перед памятью злой","Powerless Against Memories","Դու իմ աշխարհն ես","Ты мой мир","You Are My World","Тоскуя по тебе","Longing for You","Քեզ կարոտելիս","Սիրել հենց հոգուն (1)","Любить лишь душу (1)","Love Unseen (1)","Սիրել հենց հոգուն","Любить лишь душу","Love Unseen","Թանկ հուշը","Сокровенный причал","Never a Stranger","Образы тоски","Ծովի մեջ աչքերդ","The Illusion of Longing","My Precious Love","My Precious Love драгоценная любовь","My Bright Dream (1)","My Bright Dream","խենթ խաղեր","Եղբայր իմ անգին","Мой светлый луч","My Only Light","Տիեզերական կինը րոց","Տիեզերական կինը","The Woman as the Universe","Տիեզերական կինը (Remastered)","Երանի գայիր(Just Like Before)","Դավաճան հայ","Իմ Քնքուշ Սառան","Քո ժպիտները հավաքեմ","ughernery-lac-chen-linum","te karotum es","Tchaxr e pargevum ","lok cav u dard","gjuk lusiny","gitem el inz ches spasum","cav anbujeli","ov em qez hamar","bjur u bjur angam","ete asem","gereckuhi"]
+      songs: ['ergichy-dari','gij','gij-qamin','gortrik-ankun','im-tsovagur','inch-em-anelu','tsov-arev-achqer','Es_kez_sirum_em','Kez_khenti_nman_siraharvetsi_Duet_Tango','Ari_klini','Andzrevum_e','der-inz-voch-mek-chi-sirel-qo-pes','Akh_inch_anem_sirud_het','AKhor_vo_tsavits_tsnvats','Aryev_darnam','Che_chem_toghni_B','Ches_moranalu_003','Chisht_zhamanakin_At_The_Right_Time','Dran_Takotsu_003','Dzig_tarineri_luys_003','Erazankneri_aytsu_Part_Gisherva_002','Erb_verkers_hanger_dardzri_Lyrics_by_Silva_Gulanyan_003','Erku_khent_hogi_Duet_Silva_Gulanyan_004','Es_sirum_em_ko_zhpitu_B','Garun_er_003','Gisher_e_004','Gisherits_depi_luys_Silva_Gulanyan_005','Gitem_ches_galu_B','Gitem_hogis_A','Hetd_inch_e_katarvum','Im_erazats_ashkharu_003','inchu_es_ayskan_indz_otar_dardzel_004','Jaheli_nman_003','Կարոտի խենթի','Kenatsd_khmem_B_Brinderò_per_Te','xentern u lusiny','Ko_hmayki_gerin','Ko_koghkin_vorish_em_003','Es_irakan_em_004','frants_Harbel_em_vozum','Galis_e_mi_pah_003','Havat_em_vozum_003','Hayots_ashkarh_A','HERO_MOTIK_UNKERNERIS_003','hogu giny','Ka_mi_ashkharh_vor_srtov_e_karutsvats','kgam_sirelis','Kuratsats_achkin_luysu_003','Kuyr_eghbayr_003','Kyanku_Hrashk_e_005','Mer_Srterum_kanchu_004','Mtnets_arants_kez_Duet','Nrboren_Garnunk_003','Resta_nei_nostri_cuori','RokHetd_Inch_E_Katarvum_003','S_irum_em_kez_I_love_you','Sirir_indz_hogis_FRAM_Duet','Srteri_kanchu_003','Tesilk_Silva_Gulanyan_Remix_Remix','Tiezerk_Jinj_Lazur','Title_Mi_tanjir_hogis_Multilingual_Emotional_Duet_Lyrics_by_Silva_Gulanyan_002','melodia lubvi','Безумный Ветер Любви','agh & dagy','xerdvac karot','xerdvac karot patasxan','hiastapvac','nerqnapanak','qo cov achqeri kajcern em sirum','sirty xentacav','luse hrashq','Hay_aragil','lrutian tchich','qez karotelis','siro cnundy','qo_drakhtum_002','ser da ardioq','xortakvor nav','chem moracel','jpta hogis','ov e kimy','Nerir sirelis','The Sun Cries Too','Crazy Breeze of Love','xent siro qamin','karotiali shurterin','mek tari el ancav','Garun e bajc zun e arel','Curt xavaric','xind manuk','hima','byur harvacneric','mern zepur','ser eir xarum','erazi kyamq roc','erazi kyanq','ti pridyosh komne',"The Night's Embrace",'xararutun ber','ti moy kislarod','My Endless Dream',"Тоска по мне","The Song of the Spring Breeze","խենթի նման սիրահարվեցի","Светлый полёт","Քեզ դուրս եմ արել","Перед памятью злой","Powerless Against Memories","Դու իմ աշխարհն ես","Ты мой мир","You Are My World","Тоскуя по тебе","Longing for You","Քեզ կարոտելիս","Սիրել հենց հոգուն (1)","Любить лишь душу (1)","Love Unseen (1)","Սիրել հենց հոգուն","Любить лишь душу","Love Unseen","Թանկ հուշը","Сокровенный причал","Never a Stranger","Образы тоски","Ծովի մեջ աչքերդ","The Illusion of Longing","My Precious Love","My Precious Love драгоценная любовь","My Bright Dream (1)","My Bright Dream","խենթ խաղեր","Եղբայր իմ անգին","Мой светлый луч","My Only Light","Տիեզերական կինը roc","Տիեզերական կինը","The Woman as the Universe","Տիեզերական կինը (Remastered)","Երանի գայիր(Just Like Before)","Դավաճան հայ","Իմ Քնքուշ Սևան","Քո ժպիտները հավաքեմ","ughernery-lac-chen-linum","te karotum es","Tchaxr e pargevum ","lok cav u dard","gjuk lusiny","gitem el inz ches spasum","cav anbujeli","ov em qez hamar","bjur u bjur angam","ete asem","gereckuhi"]
     },
     {
       id: 'go-hara', name: 'Go Hara', role: 'Vocalist & Performer',
@@ -1739,7 +1701,7 @@
         'hamo-sahyan/horovely','hamo-sahyan/covn er gisher er es ei u du',
         'hamo-sahyan/vshtacel em amen inchic','hamo-sahyan/um hamar im ushqy gnac',
         'hamo-sahyan/es u du','hamo-sahyan/inch taqcnem',
-        'hamo-sahyan/hajastan aselis roc','hamo-sahyan/torvochvoqi chkanchen 02roc',
+        'hamo-sahyan/hajastan aselis roc','hamo-sahyan/tor vochvoqi chkanchen02roc',
         'hamo-sahyan/mijocners','hamo-sahyan/ches asi voch mi barov','hamo-sahyan/inch arac mard em',
         'hamo-sahyan/proshay','hamo-sahyan/ya xotel razdeliat','hamo-sahyan/axr es inchpes ver kenam gnam',
         'hamo-sahyan/mer lezun','hamo-sahyan/nash yazik','hamo-sahyan/Our Language',
@@ -1761,7 +1723,7 @@
         'parujr-sevak/erku siro aranqum','parujr-sevak/erku siro aranqum roc',
         'parujr-sevak/menq qich enq sakajn mez haj en asum',
         'parujr-sevak/miangamic tango','parujr-sevak/miangamic roc',
-        'parujr-sevak/Սերն ինչ գույն ունի','parujr-sevak/What Color Is Love','parujr-sevak/Какого цвета любовь',
+        'parujr-sevak/ՍԵՐՆ ԻՆՉ ԳՈՒՅՆ ՈՒՆԻ','parujr-sevak/What Color Is Love','parujr-sevak/Какого цвета любовь',
         'avetik-isahakyan/Ախ կուզես լինիմ','aramayis-sahakyan/Ես կուզեի քո ճանապարհին',
         'shiraz/Իմ պատանի սիրտս','parujr-sevak/Նախանձում եմ',
         'silva-kaputikyan/Սեր','vahagn-davtyan/Սեր','hovhannes-tumanyan/Սիրում էի երբեմն քեզ'
@@ -1769,7 +1731,7 @@
     },
     {
       id: 'narine-balasbekyan', name: 'Narine Balasbekyan', role: 'Vocalist & Composer',
-      songs: ['kiny','sirena-hima']
+      songs: ['kiny','sirenq-hima']
     },
     {
       id: 'shakespeare-reimagined', name: 'Shakespeare Reimagined', role: 'Sonnets in Song',
@@ -1785,7 +1747,7 @@
         'Սոնետ  45','Սոնետ  46','Սոնետ  47','Սոնետ  48','Սոնետ  49','Սոնետ  50',
         'Սոնետ  51','Սոնետ  52','Սոնետ  53','Սոնետ  54','Սոնետ  55','Սոնետ  56',
         'Սոնետ  57','Սոնետ  58','Սոնետ  59','Սոնետ  60',
-        'Սոնետ 94','Սոնետ 121',
+        'Սոնետ 94','Սոնետ  121',
         'Սոնետ  70','Սոնետ  71','Սոնետ  72','Սոնետ  73','Սոնետ  75','Սոնետ  76',
         'Սոնետ  77','Սոնետ  78','Սոնետ  79','Սոնետ  81','Սոնետ  82','Սոնետ  83',
         'Սոնետ  84','Սոնետ  85','Սոնետ  86','Սոնետ  87','Սոնետ  88','Սոնետ  89',
@@ -1811,27 +1773,33 @@
   if (silvaArtist) silvaArtist.songs.push('ari-khmenq');
 
   const YOUTUBE_VIDEOS = [
-    { id: "nxwEVnSYeEM", title: "Я уйду лубя, Го Хара", added: "2026-08-15" },
+    { id: "fMnSIQxk-rE", title: "🇬🇧 THE MOON AND THE SUN — Silva Kaputikyan", added: "2026-08-23" },
+    { id: "4pIun9fXCAc", title: "🇷🇺 ЛУНА И СОЛНЦЕ — Сильва Капутикян", added: "2026-08-23" },
+    { id: "jXB_zvZEczg", title: "ԼՈՒՍԻՆՆ ՈՒ ԱՐևԸ, Սիլվա Կապուտիկյան", added: "2026-08-23" },
+    { id: "CypKoxj-_tc", title: "🇬🇧 You Came — lyrics by Gohar Aselesyan", added: "2026-08-21" },
+    { id: "CLEEZz24MmY", title: "🇷🇺 Ты пришла — слова Гоар Аселесян", added: "2026-08-21" },
+    { id: "GX_mmgkfl78", title: "Դու եկար, խոսքը Գոհար Ասելեսյանի", added: "2026-08-21" },
+    { id: "nxwEVnSYeEM", title: "Я уйду любя — Go Hara", added: "2026-08-15" },
     { id: "hpkcti95mQY", title: "I'll Leave Still Loving You, Go Hara", added: "2026-08-15" },
-    { id: "bziLW9nooWI", title: "ԱՐԻ ԽՄԵՆՔ։ДАВАЙ ВЫПЬЕ։МLET’S DRINK ,խսքը Սիլվա Գուլանյան", added: "2026-08-15" },
+    { id: "bziLW9nooWI", title: "ԱՐԻ ԽՄԵՆՔ · ДАВАЙ ВЫПЬЕМ · LET’S DRINK — խոսքը՝ Սիլվա Գուլանյան", added: "2026-08-15" },
     { id: "xNLAufJeHBY", title: "I'll Leave Still Loving You, Go Hara", added: "2026-08-14" },
-    { id: "fZ7PZgXzBFY", title: "YouTube video fZ7PZgXzBFY", added: "2026-08-13" },
-    { id: "_01ty-0xVSo", title: "YouTube video _01ty-0xVSo", added: "2026-08-13" },
-    { id: "hLtND_MXNXg", title: "YouTube video hLtND_MXNXg", added: "2026-08-13" },
-    { id: "WHBlrFaknHw", title: "YouTube video WHBlrFaknHw", added: "2026-08-13" },
-    { id: "VhIhFSHhA4I", title: "YouTube video VhIhFSHhA4I", added: "2026-08-11" },
-    { id: "4sgB4TeJa7I", title: "YouTube video 4sgB4TeJa7I", added: "2026-08-11" },
-    { id: "ZE3YMTomyTQ", title: "YouTube video ZE3YMTomyTQ", added: "2026-08-11" },
-    { id: "hRHPVBNPtJE", title: "YouTube video hRHPVBNPtJE", added: "2026-08-11" },
-    { id: "RNT5xHvFN18", title: "YouTube video RNT5xHvFN18", added: "2026-08-11" },
-    { id: "SwAgM8DT7qM", title: "YouTube video SwAgM8DT7qM", added: "2026-08-10" },
-    { id: "6WXOeHnHBTE", title: "YouTube video 6WXOeHnHBTE", added: "2026-08-10" },
-    { id: "3icWKE5hDlA", title: "YouTube video 3icWKE5hDlA", added: "2026-08-10" },
-    { id: "9dXWzUqbvQ4", title: "YouTube video 9dXWzUqbvQ4", added: "2026-08-06" },
-    { id: "yVK2Ll2ybJQ", title: "YouTube video yVK2Ll2ybJQ", added: "2026-08-06" },
-    { id: "NGbwcvId37o", title: "YouTube video NGbwcvId37o", added: "2026-08-06" },
-    { id: "7j2WNw7KiE4", title: "YouTube video 7j2WNw7KiE4", added: "2026-08-06" },
-    { id: "gqcDxZdxXBc", title: "YouTube video gqcDxZdxXBc", added: "2026-08-06" },
+    { id: "fZ7PZgXzBFY", title: "13 августа 2026 г. Սերն ի՞նչ գույն ունի", added: "2026-08-13" },
+    { id: "_01ty-0xVSo", title: "13 августа 2026 г. Какого цвета любовь", added: "2026-08-13" },
+    { id: "hLtND_MXNXg", title: "13 августа 2026 г. What Color Is Love", added: "2026-08-13" },
+    { id: "WHBlrFaknHw", title: "Սիրո խաղը չորս լեզվով", added: "2026-08-13" },
+    { id: "VhIhFSHhA4I", title: "11 августа 2026 г.", added: "2026-08-11" },
+    { id: "4sgB4TeJa7I", title: "11 августа 2026 г.", added: "2026-08-11" },
+    { id: "ZE3YMTomyTQ", title: "11 августа 2026 г.", added: "2026-08-11" },
+    { id: "hRHPVBNPtJE", title: "11 августа 2026 г.", added: "2026-08-11" },
+    { id: "RNT5xHvFN18", title: "11 августа 2026 г.", added: "2026-08-11" },
+    { id: "SwAgM8DT7qM", title: "7 августа 2026 г.", added: "2026-08-10" },
+    { id: "6WXOeHnHBTE", title: "10 августа 2026 г.", added: "2026-08-10" },
+    { id: "3icWKE5hDlA", title: "10 августа 2026 г.", added: "2026-08-10" },
+    { id: "9dXWzUqbvQ4", title: "4 августа 2026 г.", added: "2026-08-06" },
+    { id: "yVK2Ll2ybJQ", title: "5 августа 2026 г.", added: "2026-08-06" },
+    { id: "NGbwcvId37o", title: "6 августа 2026 г.", added: "2026-08-06" },
+    { id: "7j2WNw7KiE4", title: "6 августа 2026 г.", added: "2026-08-06" },
+    { id: "gqcDxZdxXBc", title: "6 августа 2026 г.", added: "2026-08-06" },
     { id: "LEbXXUewRQE", title: "Քեզ խենթի նման սիրահարվեցի — Silva Gulanyan", added: "2026-07-22" },
     { id: "18bUBT3sjQE", title: "Ամենալուսավոր ուղենիշը — Imastun Studio (Պաշտոնական կինեմատոգրաֆիկ բալլադ)", added: "2026-07-17" },
     { id: "8_2pJwPY2ao", title: "The Eternal Thirst — Imastun Studio (Official Cinematic Ballad)", added: "2026-07-17" },
@@ -1875,7 +1843,7 @@
     "Սոնետ  153": "2026-08-08","Սոնետ  154": "2026-08-08",
     "im ser": "2026-08-06","sirelis": "2026-08-06","taxicy vat margare e": "2026-08-06","ergi chapov": "2026-08-06","На расстоянии песни": "2026-08-06","A Song Away": "2026-08-06",
     "Կատակ Յարի Երգը": "2026-08-09","Roses in a Sieve": "2026-08-09","Ρόδα στο Κόσκινο": "2026-08-09","Песня шутка": "2026-08-09","ვარდები საცერში": "2026-08-09",
-    "parujr-sevak/Սերն ինչ գույն ունի": "2026-08-13","parujr-sevak/What Color Is Love": "2026-08-13","parujr-sevak/Какого цвета любовь": "2026-08-13",
+    "parujr-sevak/ՍԵՐՆ ԻՆՉ ԳՈՒՅՆ ՈՒՆԻ": "2026-08-13","parujr-sevak/What Color Is Love": "2026-08-13","parujr-sevak/Какого цвета любовь": "2026-08-13",
     "Կատակ յարի երգ պար 4 լեզվով": "2026-08-13",
     "Հայաստան, մեր սուրբ տուն": "2026-08-02","Армения, наш святой дом": "2026-08-02","Armenia, Our Sacred Home": "2026-08-02",
     "Սոնետ  45": "2026-08-01","Սոնետ  46": "2026-08-01","Սոնետ  47": "2026-08-01","Սոնետ  48": "2026-08-01","Սոնետ  49": "2026-08-01","Սոնետ  50": "2026-08-01",
@@ -1918,7 +1886,7 @@
     "hamo-sahyan/es u du": "2026-06-25",
     "hamo-sahyan/inch taqcnem": "2026-06-25",
     "hamo-sahyan/hajastan aselis roc": "2026-06-25",
-    "hamo-sahyan/torvochvoqi chkanchen 02roc": "2026-06-25",
+    "hamo-sahyan/tor vochvoqi chkanchen02roc": "2026-06-25",
     "hamo-sahyan/mijocners": "2026-06-27",
     "hamo-sahyan/ches asi voch mi barov": "2026-06-27",
     "hamo-sahyan/inch arac mard em": "2026-06-27",
@@ -1954,7 +1922,7 @@
     "parujr-sevak/menq qich enq sakajn mez haj en asum": "2026-06-27",
     "parujr-sevak/miangamic tango": "2026-06-27",
     "parujr-sevak/miangamic roc": "2026-06-27",
-    "Կարոտի խենթի":"2026-07-10","Тоска по мне":"2026-07-10","The Song of the Spring Breeze":"2026-07-10","խենթի նման սիրահարվեցի":"2026-07-10","Светлый полёт":"2026-07-10","Քեզ դուրս եմ արել":"2026-07-10","Перед памятью злой":"2026-07-10","Powerless Against Memories":"2026-07-10","Դու իմ աշխարհն ես":"2026-07-10","Ты мой мир":"2026-07-10","You Are My World":"2026-07-10","Тоскуя по тебе":"2026-07-10","Longing for You":"2026-07-10","Քեզ կարոտելիս":"2026-07-10","Սիրել հենց հոգուն (1)":"2026-07-10","Любить лишь душу (1)":"2026-07-10","Love Unseen (1)":"2026-07-10","Սիրել հենց հոգուն":"2026-07-10","Любить лишь душу":"2026-07-10","Love Unseen":"2026-07-10","Թանկ հուշը":"2026-07-10","Сокровенный причал":"2026-07-10","Never a Stranger":"2026-07-10","Образы тоски":"2026-07-10","Ծովի մեջ աչքերդ":"2026-07-10","The Illusion of Longing":"2026-07-10","My Precious Love":"2026-07-10","My Precious Love драгоценная любовь":"2026-07-10","My Bright Dream (1)":"2026-07-10","My Bright Dream":"2026-07-10","խենթ խաղեր":"2026-07-10","Եղբայր իմ անգին":"2026-07-10","Мой светлый луч":"2026-07-10","My Only Light":"2026-07-10","Տիեզերական կինը րոց":"2026-07-10","Տիեզերական կինը":"2026-07-10","The Woman as the Universe":"2026-07-10","Տիեզերական կինը (Remastered)":"2026-07-10","avetik-isahakyan/Ախ կուզես լինիմ":"2026-07-19","aramayis-sahakyan/Ես կուզեի քո ճանապարհին":"2026-07-19","shiraz/Իմ պատանի սիրտս":"2026-07-19","parujr-sevak/Նախանձում եմ":"2026-07-19","silva-kaputikyan/Սեր":"2026-07-19","vahagn-davtyan/Սեր":"2026-07-19","hovhannes-tumanyan/Սիրում էի երբեմն քեզ":"2026-07-19","My Mirror True":"2026-07-18","Зеркало моё":"2026-07-18","Իմ հայելի":"2026-07-18","Fragile Cry Has Risen Like":"2026-07-18","Во мне поднялся хрупкий плач":"2026-07-18","Փխրուն Լաց":"2026-07-18","Եվ ինչ է սերը":"2026-07-18","Չնոտագրված լռություն":"2026-07-19"
+    "Կարոտի խենթի":"2026-07-10","Тоска по мне":"2026-07-10","The Song of the Spring Breeze":"2026-07-10","խենթի նման սիրահարվեցի":"2026-07-10","Светлый полёт":"2026-07-10","Քեզ դուրս եմ արել":"2026-07-10","Перед памятью злой":"2026-07-10","Powerless Against Memories":"2026-07-10","Դու իմ աշխարհն ես":"2026-07-10","Ты мой мир":"2026-07-10","You Are My World":"2026-07-10","Тоскуя по тебе":"2026-07-10","Longing for You":"2026-07-10","Քեզ կարոտելիս":"2026-07-10","Սիրել հենց հոգուն (1)":"2026-07-10","Любить лишь душу (1)":"2026-07-10","Love Unseen (1)":"2026-07-10","Սիրել հենց հոգուն":"2026-07-10","Любить лишь душу":"2026-07-10","Love Unseen":"2026-07-10","Թանկ հուշը":"2026-07-10","Сокровенный причал":"2026-07-10","Never a Stranger":"2026-07-10","Образы тоски":"2026-07-10","Ծովի մեջ աչքերդ":"2026-07-10","The Illusion of Longing":"2026-07-10","My Precious Love":"2026-07-10","My Precious Love драгоценная любовь":"2026-07-10","My Bright Dream (1)":"2026-07-10","My Bright Dream":"2026-07-10","խենթ խաղեր":"2026-07-10","Եղբայր իմ անգին":"2026-07-10","Мой светлый луч":"2026-07-10","My Only Light":"2026-07-10","Տիեզերական կինը roc":"2026-07-10","Տիեզերական կինը":"2026-07-10","The Woman as the Universe":"2026-07-10","Տիեզերական կինը (Remastered)":"2026-07-10","avetik-isahakyan/Ախ կուզես լինիմ":"2026-07-19","aramayis-sahakyan/Ես կուզեի քո ճանապարհին":"2026-07-19","shiraz/Իմ պատանի սիրտս":"2026-07-19","parujr-sevak/Նախանձում եմ":"2026-07-19","silva-kaputikyan/Սեր":"2026-07-19","vahagn-davtyan/Սեր":"2026-07-19","hovhannes-tumanyan/Սիրում էի երբեմն քեզ":"2026-07-19","My Mirror True":"2026-07-18","Зеркало моё":"2026-07-18","Իմ հայելի":"2026-07-18","Fragile Cry Has Risen Like":"2026-07-18","Во мне поднялся хрупкий плач":"2026-07-18","Փխրուն Լաց":"2026-07-18","Եվ ինչ է սերը":"2026-07-18","Չնոտագրված լռություն":"2026-07-19"
   };
   function isNewSong(song) {
     const added = NEW_SONGS[song];
@@ -1973,7 +1941,7 @@
     'ari-khmenq': 'ԱՐԻ ԽՄԵՆՔ · ДАВАЙ ВЫПЬЕМ · BUVONS',
     'Սիրելով գնամ': 'Սիրելով գնամ',
     'Я уйду любя': 'Я уйду любя',
-    'Ill Leave Still Loving You': "I'll Leave Still Loving You","pastayannaya jajda": "Постоянная жажда", "andadar carav": "Անդադար ծարավ", "The Eternal Thirst": "The Eternal Thirst", "ergichy-dari": "Երգիչի դարի", "gij": "Գիժ", "gij-qamin": "Գիժ քամի", "gortrik-ankun": "Գողտրիկ անկյուն", "im-tsovagur": "Իմ ծովագյուղ", "inch-em-anelu": "Ինչ եմ անելու", "tsov-arev-achqer": "Ծով արև աչքեր", "cncir-users": "Ցնցիր ուսերս", "darnaham-ginin": "Դառնահամ գինի", "fracuzhenka": "Ֆրանսուհին", "gisherajin": "Գիշերային", "kanchir-kgam": "Կանչիր կգամ", "la-fracise": "Լա Ֆրանս", "kiny": "Կինը", "sirena-hima": "Սիրել հիմա", "haverji-erty": "Հավերժի երգը", "hogu-arzaganq": "Հոգու արձագանք", "inchi-hamar": "Ինչի համար", "lur-heraxos": "Լուռ հեռախոս", "qo-jinj-hogin": "Քո ջինջ հոգին", "ser-anurji": "Սեր անուրջի", "shepot": "Շշունջ", "shshnjatc": "Շշնջաց", "siro-kenacy": "Սիրո կենաց",
+    'Ill Leave Still Loving You': "I'll Leave Still Loving You","pastayannaya jajda": "Постоянная жажда", "andadar carav": "Անդադար ծարավ", "The Eternal Thirst": "The Eternal Thirst", "ergichy-dari": "Երգիչի դարի", "gij": "Գիժ", "gij-qamin": "Գիժ քամի", "gortrik-ankun": "Գողտրիկ անկյուն", "im-tsovagur": "Իմ ծովագյուղ", "inch-em-anelu": "Ինչ եմ անելու", "tsov-arev-achqer": "Ծով արև աչքեր", "cncir-users": "Ցնցիր ուսերս", "darnaham-ginin": "Դառնահամ գինի", "fracuzhenka": "Ֆրանսուհին", "gisherajin": "Գիշերային", "kanchir-kgam": "Կանչիր կգամ", "la-fracise": "Լա Ֆրանս", "kiny": "Կինը", "sirenq-hima": "Սիրել հիմա", "haverji-erty": "Հավերժի երգը", "hogu-arzaganq": "Հոգու արձագանք", "inchi-hamar": "Ինչի համար", "lur-heraxos": "Լուռ հեռախոս", "qo-jinj-hogin": "Քո ջինջ հոգին", "ser-anurji": "Սեր անուրջի", "shepot": "Շշունջ", "shshnjatc": "Շշնջաց", "siro-kenacy": "Սիրո կենաց",
     "Es_kez_sirum_em": "Ես քեզ սիրում եմ",
     "Garun_er": "Գարուն էր",
     "Kez_khenti_nman_siraharvetsi_Duet_Tango": "Քեզ խենթի նման սիրահարվեցի (Duet Tango)",
@@ -2089,7 +2057,7 @@
     "hamo-sahyan/es u du": "Ես և դու",
     "hamo-sahyan/inch taqcnem": "Ի՞նչ թաքցնեմ",
     "hamo-sahyan/hajastan aselis roc": "Հայաստան ասելիս (ռոք)",
-    "hamo-sahyan/torvochvoqi chkanchen 02roc": "Թող ոչ ոքի չկանչեն (02 ռոք)",
+    "hamo-sahyan/tor vochvoqi chkanchen02roc": "Թող ոչ ոքի չկանչեն (02 ռոք)",
     "hamo-sahyan/mijocners": "Միջոցներս",
     "hamo-sahyan/ches asi voch mi barov": "Չես ասի ոչ մի բարով",
     "hamo-sahyan/inch arac mard em": "Ինչ արած, մարդ եմ",
@@ -2184,7 +2152,7 @@
     "xortakvor nav": "Խորտակվող նավ",
     "chem moracel": "Չեմ մոռացել",
     "im ser": "Իմ սեր","sirelis": "Սիրելիս","taxicy vat margare e": "Թախիծը վատ մարգարե է","ergi chapov": "Երգի Չափով",
-    "ipta hogis": "Ժպտա հոգիս",
+    "jpta hogis": "Ժպտա հոգիս",
     "ov e kimy": "Օվ է կինը",
     "Nerir sirelis": "Ներիր սիրելիս",
     "The Sun Cries Too": "The Sun Cries Too",
@@ -2201,7 +2169,7 @@
     "menq linelu enq": "Մենք լինելու ենք",
     "daravor karnin": "Դարավոր կաղնի",
     "ajs xarum mian ujern e haxtum": "Այս խաղում ուժեղն է հաղթում",
-    "The Sun Cries Too(Արևն էլ է լաց լինում)": "Արևն էլ է լացում (անգլ)","Կարոտի խենթի":"Կարոտի խենթի","Тоска по мне":"Тоска по мне","The Song of the Spring Breeze":"The Song of the Spring Breeze","խենթի նման սիրահարվեցի":"խենթի նման սիրահարվեցի","Светлый полёт":"Светлый полёт","Քեզ դուրս եմ արել":"Քեզ դուրս եմ արել","Перед памятью злой":"Перед памятью злой","Powerless Against Memories":"Powerless Against Memories","Դու իմ աշխարհն ես":"Դու իմ աշխարհն ես","Ты мой мир":"Ты мой мир","You Are My World":"You Are My World","Тоскуя по тебе":"Тоскуя по тебе","Longing for You":"Longing for You","Քեզ կարոտելիս":"Քեզ կարոտելիս","Սիրել հենց հոգուն (1)":"Սիրել հենց հոգուն (1)","Любить лишь душу (1)":"Любить лишь душу (1)","Love Unseen (1)":"Love Unseen (1)","Սիրել հենց հոգուն":"Սիրել հենց հոգուն","Любить лишь душу":"Любить лишь душу","Love Unseen":"Love Unseen","Թանկ հուշը":"Թանկ հուշը","Сокровенный причал":"Сокровенный причал","Never a Stranger":"Never a Stranger","Образы тоски":"Образы тоски","Ծովի մեջ աչքերդ":"Ծովի մեջ աչքերդ","The Illusion of Longing":"The Illusion of Longing","My Precious Love":"My Precious Love","My Precious Love драгоценная любовь":"My Precious Love драгоценная любовь","My Bright Dream (1)":"My Bright Dream (1)","My Bright Dream":"My Bright Dream","խենթ խաղեր":"խենթ խաղեր","Եղբայր իմ անգին":"Եղբայր իմ անգին","Мой светлый луч":"Мой светлый луч","My Only Light":"My Only Light","Տիեզերական կինը րոց":"Տիեզերական կինը րոց","Տիեզերական կինը":"Տիեզերական կինը","The Woman as the Universe":"The Woman as the Universe","Տիեզերական կինը (Remastered)":"Տիեզերական կինը (Remastered)","Երանի գայիր(Just Like Before)":"Երանի գայիր (Just Like Before)","Դավաճան հայ":"Դավաճան հայ","Իմ Քնքուշ Սառան":"Իմ Քնքուշ Սառան","Քո ժպիտները հավաքեմ":"Քո ժպիտները հավաքեմ","ughernery-lac-chen-linum":"Ուժեղներն էլ լաց են լինում","te karotum es":"Թե կարոտում ես","Tchaxr e pargevum ":"Ճախր է պարգևում","lok cav u dard":"Լոկ ցավ ու դարդ","gjuk lusiny":"Գժուկ լուսին","gitem el inz ches spasum":"Գիտեմ էլ ինձ չես սպասում","My Mirror True":"My Mirror True","Зеркало моё":"Зеркало моё","Իմ հայելի":"Իմ հայելի","Fragile Cry Has Risen Like":"Fragile Cry Has Risen Like","Во мне поднялся хрупкий плач":"Во мне поднялся хрупкий плач","Փխրուն Լաց":"Փխրուն Լաց","Եվ ինչ է սերը":"Եվ ինչ է սերը","Չնոտագրված լռություն":"Չնոտագրված լռություն","hognel em ujer kin lineluc":"Հոգնել եմ ուժեղ կին լինելուց","cav anbujeli":"Ցավ անբուժելի","ov em qez hamar":"Ո՞վ եմ քեզ համար","bjur u bjur angam":"Բյուր ու բյուր անգամ","ete asem":"Եթե ասեմ","gereckuhi":"Գեղեցկուհի"};
+    "The Sun Cries Too(Արևն էլ է լաց լինում)": "Արևն էլ է լացում (անգլ)","Կարոտի խենթի":"Կարոտի խենթի","Тоска по мне":"Тоска по мне","The Song of the Spring Breeze":"The Song of the Spring Breeze","խենթի նման սիրահարվեցի":"խենթի նման սիրահարվեցի","Светлый полёт":"Светлый полёт","Քեզ դուրս եմ արել":"Քեզ դուրս եմ արել","Перед памятью злой":"Перед памятью злой","Powerless Against Memories":"Powerless Against Memories","Դու իմ աշխարհն ես":"Դու իմ աշխարհն ես","Ты мой мир":"Ты мой мир","You Are My World":"You Are My World","Тоскуя по тебе":"Тоскуя по тебе","Longing for You":"Longing for You","Քեզ կարոտելիս":"Քեզ կարոտելիս","Սիրել հենց հոգուն (1)":"Սիրել հենց հոգուն (1)","Любить лишь душу (1)":"Любить лишь душу (1)","Love Unseen (1)":"Love Unseen (1)","Սիրել հենց հոգուն":"Սիրել հենց հոգուն","Любить лишь душу":"Любить лишь душу","Love Unseen":"Love Unseen","Թանկ հուշը":"Թանկ հուշը","Сокровенный причал":"Сокровенный причал","Never a Stranger":"Never a Stranger","Образы тоски":"Образы тоски","Ծովի մեջ աչքերդ":"Ծովի մեջ աչքերդ","The Illusion of Longing":"The Illusion of Longing","My Precious Love":"My Precious Love","My Precious Love драгоценная любовь":"My Precious Love драгоценная любовь","My Bright Dream (1)":"My Bright Dream (1)","My Bright Dream":"My Bright Dream","խենթ խաղեր":"խենթ խաղեր","Եղբայր իմ անգին":"Եղբայր իմ անգին","Мой светлый луч":"Мой светлый луч","My Only Light":"My Only Light","Տիեզերական կինը roc":"Տիեզերական կինը roc","Տիեզերական կինը":"Տիեզերական կինը","The Woman as the Universe":"The Woman as the Universe","Տիեզերական կինը (Remastered)":"Տիեզերական կինը (Remastered)","Երանի գայիր(Just Like Before)":"Երանի գայիր (Just Like Before)","Դավաճան հայ":"Դավաճան հայ","Իմ Քնքուշ Սևան":"Իմ Քնքուշ Սևան","Քո ժպիտները հավաքեմ":"Քո ժպիտները հավաքեմ","ughernery-lac-chen-linum":"Ուժեղներն էլ լաց են լինում","te karotum es":"Թե կարոտում ես","Tchaxr e pargevum ":"Ճախր է պարգևում","lok cav u dard":"Լոկ ցավ ու դարդ","gjuk lusiny":"Գժուկ լուսին","gitem el inz ches spasum":"Գիտեմ էլ ինձ չես սպասում","My Mirror True":"My Mirror True","Зеркало моё":"Зеркало моё","Իմ հայելի":"Իմ հայելի","Fragile Cry Has Risen Like":"Fragile Cry Has Risen Like","Во мне поднялся хрупкий плач":"Во мне поднялся хрупкий плач","Փխրուն Լաց":"Փխրուն Լաց","Եվ ինչ է սերը":"Եվ ինչ է սերը","Չնոտագրված լռություն":"Չնոտագրված լռություն","hognel em ujer kin lineluc":"Հոգնել եմ ուժեղ կին լինելուց","cav anbujeli":"Ցավ անբուժելի","ov em qez hamar":"Ո՞վ եմ քեզ համար","bjur u bjur angam":"Բյուր ու բյուր անգամ","ete asem":"Եթե ասեմ","gereckuhi":"Գեղեցկուհի"};
 
   const SONG_SUBTITLES = {
     "vahan-teryan/ananun ser": {en:"Nameless Love", ru:"Безымянная любовь"},
@@ -2252,7 +2220,7 @@
     "hamo-sahyan/tar inz jamanak roc": {en:"Carry Me Away, Time (Rock)", ru:"Увези меня, время (рок)"},
     "hamo-sahyan/torvochvoqi chkanchen": {en:"Let No One Be Summoned", ru:"Пусть никого не зовут"},
     "hamo-sahyan/torvochvoqi chkanchen roc": {en:"Let No One Be Summoned (Rock)", ru:"Пусть никого не зовут (рок)"},
-    "hamo-sahyan/torvochvoqi chkanchen 02roc": {en:"Let No One Be Summoned (Rock 02)", ru:"Пусть никого не зовут (рок 02)"},
+    "hamo-sahyan/tor vochvoqi chkanchen02roc": {en:"Let No One Be Summoned (Rock 02)", ru:"Пусть никого не зовут (рок 02)"},
     "hamo-sahyan/vochinch chi poxvi": {en:"Nothing Will Change", ru:"Ничего не изменится"},
     "hamo-sahyan/hognel em": {en:"I'm Tired", ru:"Я устал"},
     "hamo-sahyan/mitegh ishxan u ter": {en:"Somewhere a Prince and Lord", ru:"Где-то князь и господин"},
@@ -2404,7 +2372,7 @@
     "Սոնետ  59": {hy:"Միգուցե անցյալի բանաստեղծներն արդեն նկարագրել են այս գեղեցկությունը"},
     "Սոնետ  60": {hy:"Ժամանակը կուլ է տալիս երիտասարդությունը, միայն տողերն են դիմադրում"},
     "Սոնետ 94": {hy:"Ուժ ունեցողները, ովքեր չարիք չեն գործում՝ ինքնատիրապետման գովքը"},
-    "Սոնետ 121": {hy:"Ավելի լավ է վատը լինել, քան անարդար դատապարտվել"},
+    "Սոնետ  121": {hy:"Ավելի լավ է վատը լինել, քան անարդար դատապարտվել"},
     "Սոնետ  70": {hy:"Զրպարտությունը հարվածում է լավագույններին, մեղադրանքը դեռ մեղք չի նշանակում"},
     "Սոնետ  71": {hy:"Մի սգա ինձ մահից հետո, մոռացիր ինձ"},
     "Սոնետ  72": {hy:"Մի գովաբանիր ինձ ավելին, քան արժանի եմ, մահից հետո"},
@@ -2488,7 +2456,7 @@
     "Ρόδα στο Κόσκινο": {hy:"Կատակ յարի երգի հունարեն տարբերակը"},
     "Песня шутка": {hy:"Կատակ յարի երգի ռուսերեն տարբերակը"},
     "ვარდები საცერში": {hy:"Կատակ յարի երգի վրացերեն տարբերակը"},
-    "parujr-sevak/Սերն ինչ գույն ունի": {en:"What Color Is Love", ru:"Какого цвета любовь"},
+    "parujr-sevak/ՍԵՐՆ ԻՆՉ ԳՈՒՅՆ ՈՒՆԻ": {en:"What Color Is Love", ru:"Какого цвета любовь"},
     "parujr-sevak/What Color Is Love": {hy:"Սերն ինչ գույն ունի — անգլերեն տարբերակը"},
     "parujr-sevak/Какого цвета любовь": {hy:"Սերն ինչ գույն ունի — ռուսերեն տարբերակը"}
   };
@@ -2608,7 +2576,7 @@
   }
   document.addEventListener('touchstart', unlockAudioEngines, { once: true, passive: true });
   document.addEventListener('click', unlockAudioEngines, { once: true });
-  engine2.preload = 'auto';
+  engine2.preload = 'none';
   const engines   = [engine, engine2];
   let activeIdx   = 0;
   const active    = () => engines[activeIdx];
@@ -2630,8 +2598,6 @@
   const gpDur     = document.getElementById('gp-dur');
   const gpSimilar = document.getElementById('gp-similar');
   const similarPanel = document.getElementById('similar-panel');
-  const pilotNativeAudio = document.getElementById('pilot-native-audio');
-
   let currentIdx = -1, isPlaying = false;
 
   function buildSimilarPanel() {
@@ -2686,21 +2652,8 @@
     active().volume = 1;
   }
 
-  function togglePilotNativeAudio() {
-    if (!pilotNativeAudio) return;
-    cancelCrossfade();
-    active().pause();
-    isPlaying = false;
-    setPlayIcon(false);
-    highlightTrack(-1);
-    gpEl.classList.remove('visible');
-    if (pilotNativeAudio.paused) pilotNativeAudio.play().catch(() => {});
-    else pilotNativeAudio.pause();
-  }
-
   function loadTrack(idx, autoplay) {
     if (idx < 0 || idx >= playlist.length) return;
-    if (pilotNativeAudio && !pilotNativeAudio.paused) pilotNativeAudio.pause();
     cancelCrossfade();
     currentIdx = idx;
     const t = playlist[idx];
@@ -2716,7 +2669,17 @@
     gpCur.textContent = gpDur.textContent = '0:00';
     highlightTrack(idx);
     updateMediaSession(t);
-    if (autoplay) eng.play().then(() => { isPlaying = true; setPlayIcon(true); }).catch(() => {});
+    if (autoplay) {
+      eng.play().then(() => {
+        isPlaying = true;
+        setPlayIcon(true);
+        highlightTrack(currentIdx);
+      }).catch(() => {
+        isPlaying = false;
+        setPlayIcon(false);
+        highlightTrack(currentIdx);
+      });
+    }
     try {
       localStorage.setItem('imastun_last_track', JSON.stringify({ artistId: t.artistId, song: t.song, label: t.label, artistName: t.artistName }));
     } catch (e) {}
@@ -2737,16 +2700,21 @@
   function playTrack(idx) {
     if (idx < 0 || idx >= playlist.length) return;
     const t = playlist[idx];
-    if (`${t.artistId}|${t.song}` === PILOT_TRACK_KEY) {
-      if (typeof gtag === 'function') {
-        gtag('event', 'play_song', { song_name: t.label, artist_name: t.artistName });
+    if (idx === currentIdx) {
+      if (isPlaying) {
+        active().pause();
+      } else {
+        active().play().then(() => {
+          isPlaying = true;
+          setPlayIcon(true);
+          highlightTrack(currentIdx);
+        }).catch(() => {
+          isPlaying = false;
+          setPlayIcon(false);
+          highlightTrack(currentIdx);
+        });
       }
-      incrementPlayCount(t.song);
-      togglePilotNativeAudio();
       return;
-    }
-    if (idx === currentIdx && isPlaying) {
-      active().pause(); return;
     }
     if (t && typeof gtag === 'function') {
       gtag('event', 'play_song', { song_name: t.label, artist_name: t.artistName });
@@ -2806,9 +2774,16 @@
       if (crossfadeTimer) inactive().pause();
       isPlaying = false; setPlayIcon(false); highlightTrack(currentIdx);
     } else {
-      active().play().catch(() => {});
+      active().play().then(() => {
+        isPlaying = true;
+        setPlayIcon(true);
+        highlightTrack(currentIdx);
+      }).catch(() => {
+        isPlaying = false;
+        setPlayIcon(false);
+        highlightTrack(currentIdx);
+      });
       if (crossfadeTimer) inactive().play().catch(() => {});
-      isPlaying = true; setPlayIcon(true); highlightTrack(currentIdx);
     }
   });
 
@@ -2836,16 +2811,6 @@
   }
   setupEngine(engine);
   setupEngine(engine2);
-  if (pilotNativeAudio) {
-    pilotNativeAudio.addEventListener('play', () => {
-      cancelCrossfade();
-      active().pause();
-      isPlaying = false;
-      setPlayIcon(false);
-      highlightTrack(-1);
-      gpEl.classList.remove('visible');
-    });
-  }
 
   /* ══ MEDIA SESSION (lock screen / headphone controls) ══ */
   function updateMediaSession(t) {
@@ -3053,7 +3018,7 @@
               <div class="panel-title">${artist.name}</div>
               <div class="panel-meta">
                 <span class="panel-role">${artist.role.replace(/ & /g, ' · ')}</span>
-                ${hasSongs ? `<span class="panel-stat"><strong>${artist.songs.length}</strong> երգ</span><span class="panel-stat"><strong id="duration-stat-${artist.id}">…</strong> ժամ</span>` : ''}
+                ${hasSongs ? `<span class="panel-stat"><strong>${artist.songs.length}</strong> երգ</span>` : ''}
               </div>
             </div>
             <button class="panel-close">Close ✕</button>
@@ -3086,7 +3051,6 @@
       if (!isOpen) {
         card.classList.add('active');
         panel.classList.add('open');
-        if (artist.songs && artist.songs.length) calcArtistDuration(artist);
         setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
       }
     });
@@ -3284,29 +3248,6 @@
     return filled
       ? `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`
       : `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`;
-  }
-
-  const _durationDone = {};
-  function calcArtistDuration(artist) {
-    if (_durationDone[artist.id]) return;
-    _durationDone[artist.id] = true;
-    const tracks = playlist.filter(p => p.artistId === artist.id);
-    if (!tracks.length) return;
-    const promises = tracks.map(t => new Promise(resolve => {
-      const a = new Audio();
-      a.preload = 'metadata';
-      a.src = t.src;
-      a.addEventListener('loadedmetadata', () => resolve(a.duration || 0));
-      a.addEventListener('error', () => resolve(0));
-    }));
-    Promise.all(promises).then(durations => {
-      const total = durations.reduce((sum, d) => sum + (isFinite(d) ? d : 0), 0);
-      const totalMin = Math.round(total / 60);
-      const hours = Math.floor(totalMin / 60);
-      const mins = totalMin % 60;
-      const el = document.getElementById('duration-stat-' + artist.id);
-      if (el) el.textContent = hours > 0 ? `${hours}ժ ${mins}ր` : `${mins}ր`;
-    });
   }
 
   function buildTracks(artist) {
@@ -3629,10 +3570,16 @@
   })();
 
   /* ══ PAGE LOADER ══ */
-  window.addEventListener('load', () => {
+  const hidePageLoader = () => {
     const loader = document.getElementById('page-loader');
     if (loader) setTimeout(() => loader.classList.add('hidden'), 150);
-  });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', hidePageLoader, { once: true });
+  } else {
+    hidePageLoader();
+  }
+  window.setTimeout(hidePageLoader, 1500);
 
   /* ══ RESUME LAST TRACK ══ */
   (function() {
@@ -3651,6 +3598,7 @@
     rbClose.addEventListener('click', () => rb.classList.remove('visible'));
   })();
 </script>
+  <script src="./audio-player-fix.js?v=r2-v10"></script>
   <script>
   (function enhanceNavigation() {
     const translations = {
@@ -3658,6 +3606,7 @@
       ru: { marquee:'Добро пожаловать в Imastun Studio ✦ Здесь мы соединяем музыку и слово ✦ Песни становятся образами, а образы — историями ✦ Добро пожаловать в Imastun Studio ✦ Здесь мы соединяем музыку и слово ✦ Песни становятся образами, а образы — историями ✦ ', skip:'Перейти к основному содержанию', searchLabel:'Найти песню или исполнителя', searchPlaceholder:'Найти песню или исполнителя…', searchButton:'Начать поиск', languageLabel:'Выбрать язык', menuOpen:'Открыть меню', menuClose:'Закрыть меню', quickNav:'Быстрые переходы', searchTitle:'Поиск по сайту', artists:'Исполнители', new:'Новинки', videos:'Видео', support:'Поддержать', comments:'Комментарии', installTitle:'Установить Imastun Studio', installText:'Открывайте сайт как приложение с главного экрана.', installButton:'Установить', installLater:'Позже', iosInstallText:'На iPhone нажмите «Поделиться», затем «На экран Домой».' },
       en: { marquee:'Welcome to Imastun Studio ✦ Here we bring music and words together ✦ Songs become images, and images become stories ✦ Welcome to Imastun Studio ✦ Here we bring music and words together ✦ Songs become images, and images become stories ✦ ', skip:'Skip to main content', searchLabel:'Find a song or artist', searchPlaceholder:'Find a song or artist…', searchButton:'Start search', languageLabel:'Choose language', menuOpen:'Open menu', menuClose:'Close menu', quickNav:'Quick links', searchTitle:'Site search', artists:'Artists', new:'New', videos:'Videos', support:'Support', comments:'Comments', installTitle:'Install Imastun Studio', installText:'Open the site like an app from your home screen.', installButton:'Install', installLater:'Later', iosInstallText:'On iPhone, tap Share, then Add to Home Screen.' }
     };
+    window.IMASTUN_TRANSLATIONS = translations;
     const languageButtons = Array.from(document.querySelectorAll('.language-button'));
     const menuButton = document.getElementById('mobile-menu-toggle');
     const menu = document.getElementById('primary-nav-links');
@@ -3738,6 +3687,9 @@
       const dismissButton = document.getElementById('dismiss-install-button');
       const closeButton = document.getElementById('close-install-prompt');
       const promptText = document.getElementById('install-app-text');
+      const installTranslations = window.IMASTUN_TRANSLATIONS || {
+        hy: { iosInstallText: 'iPhone-ում սեղմեք Share, ապա՝ Add to Home Screen։' }
+      };
       let installEvent = null;
       const standalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
       const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
@@ -3763,7 +3715,7 @@
 
       if (isIOS && mayShow) {
         const currentLanguage = document.documentElement.lang || 'hy';
-        promptText.textContent = translations[currentLanguage]?.iosInstallText || translations.hy.iosInstallText;
+        promptText.textContent = installTranslations[currentLanguage]?.iosInstallText || installTranslations.hy.iosInstallText;
         installButton.hidden = true;
         window.setTimeout(() => prompt.classList.add('show'), 1400);
       }
