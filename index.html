@@ -1764,23 +1764,20 @@
         'Սոնետ  153','Սոնետ  154'
       ]
     },
-    {
-      id: 'mer-jraharsere',
-      name: 'Մեր ջրահարսերը',
-      role: 'Friendship Group · Multilingual Songs',
-      cover: 'authors/imastun/cover.jpg',
-      songs: [
-        'Our Lovely Mermaids',
-        'Эй наши русалки',
-        'Ջրահարսեր Ремикс Ремикс_2',
-        'Ջրահարսեր Ремикс Ремикс_3',
-        'ჩვენი ქალთევზებო'
-      ]
-    },
     { id: 'nune-muradyan',  name: 'Nune Muradyan',  role: 'Vocalist & Lyricist',  songs: [] },
     { id: 'lilit-aghasyan', name: 'Lilit Aghasyan', role: 'Vocalist & Arranger',   songs: [] },
     { id: 'mareta-sargsyan',name: 'Mareta Sargsyan',role: 'Vocalist & Performer',  songs: [] },
   ];
+
+  const MERMAID_SONGS = Object.freeze([
+    'Our Lovely Mermaids',
+    'Эй наши русалки',
+    'Ջրահարսեր Ремикс Ремикс_2',
+    'Ջրահարսեր Ремикс Ремикс_3',
+    'ჩვენი ქალთევზებო'
+  ]);
+  const imastunArtist = ARTISTS.find(artist => artist.id === 'imastun');
+  if (imastunArtist) imastunArtist.songs.push(...MERMAID_SONGS);
 
   const silvaArtist = ARTISTS.find(artist => artist.id === 'silva-gulanyan');
   if (silvaArtist) silvaArtist.songs.push('ari-khmenq');
@@ -2541,11 +2538,11 @@
   const MERMAID_AUDIO_BASE_URL = 'https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/mer-jraharsere/featured';
   const AUDIO_OVERRIDES = Object.freeze({
     [PILOT_TRACK_KEY]: PILOT_AUDIO_URL,
-    'mer-jraharsere|Our Lovely Mermaids': `${MERMAID_AUDIO_BASE_URL}/${encodeURIComponent('Our Lovely Mermaids')}.mp3`,
-    'mer-jraharsere|Эй наши русалки': `${MERMAID_AUDIO_BASE_URL}/${encodeURIComponent('Эй наши русалки')}.mp3`,
-    'mer-jraharsere|Ջրահարսեր Ремикс Ремикс_2': `${MERMAID_AUDIO_BASE_URL}/${encodeURIComponent('Ջրահարսեր Ремикс Ремикс_2')}.mp3`,
-    'mer-jraharsere|Ջրահարսեր Ремикс Ремикс_3': `${MERMAID_AUDIO_BASE_URL}/${encodeURIComponent('Ջրահարսեր Ремикс Ремикс_3')}.mp3`,
-    'mer-jraharsere|ჩვენი ქალთევზებო': `${MERMAID_AUDIO_BASE_URL}/${encodeURIComponent('ჩვენი ქალთევზებო')}.mp3`
+    'imastun|Our Lovely Mermaids': `${MERMAID_AUDIO_BASE_URL}/${encodeURIComponent('Our Lovely Mermaids')}.mp3`,
+    'imastun|Эй наши русалки': `${MERMAID_AUDIO_BASE_URL}/${encodeURIComponent('Эй наши русалки')}.mp3`,
+    'imastun|Ջրահարսեր Ремикс Ремикс_2': `${MERMAID_AUDIO_BASE_URL}/${encodeURIComponent('Ջրահարսեր Ремикс Ремикс_2')}.mp3`,
+    'imastun|Ջրահարսեր Ремикс Ремикс_3': `${MERMAID_AUDIO_BASE_URL}/${encodeURIComponent('Ջրահարսեր Ремикс Ремикс_3')}.mp3`,
+    'imastun|ჩვენი ქალთევზებო': `${MERMAID_AUDIO_BASE_URL}/${encodeURIComponent('ჩვენი ქალთევზებო')}.mp3`
   });
 
   const playlist = [];
@@ -2985,7 +2982,7 @@
   ARTISTS.forEach((artist, i) => {
     const coverSrc = artist.cover || `authors/${artist.id}/cover.jpg`;
     const initials = artist.name.split(' ').map(w => w[0]).join('');
-    const hasCover = ["imastun","silva-gulanyan","go-hara","haj-poetner","shakespeare-reimagined","mer-jraharsere"].includes(artist.id);
+    const hasCover = ["imastun","silva-gulanyan","go-hara","haj-poetner","shakespeare-reimagined"].includes(artist.id);
     const hasSongs = artist.songs && artist.songs.length > 0;
 
     /* small card — no cover */

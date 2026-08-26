@@ -71,6 +71,10 @@
       text-decoration: none; transition: color 0.2s;
     }
     .nav-back:hover { color: var(--gold); }
+    .language-buttons { display:flex; align-items:center; gap:5px; padding:3px; border:1px solid var(--border); border-radius:24px; background:var(--surface); }
+    .language-button { min-width:44px; min-height:36px; padding:0 9px; border:0; border-radius:18px; background:transparent; color:var(--gold-light); font:700 12px 'Syne',sans-serif; cursor:pointer; transition:background .2s,color .2s,box-shadow .2s; }
+    .language-button:hover { background:var(--gold-dim); }
+    .language-button.active { background:var(--gold); color:#080808; box-shadow:0 0 14px rgba(201,168,76,.28); }
 
     /* HERO */
     #hero {
@@ -136,6 +140,17 @@
       color: #0c0c0c; background: var(--gold); border-radius: 4px; padding: 2px 6px;
       flex-shrink: 0; white-space: nowrap;
     }
+    #donate-section { padding: 56px clamp(20px,6vw,100px); text-align:center; }
+    #donate-section h3 { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; color:var(--gold); margin-bottom:10px; }
+    #donate-section p { color:var(--text-dim); font-size:13px; margin-bottom:24px; }
+    .donate-card-wrap { display:flex; justify-content:center; }
+    .donate-card-inner { display:inline-block; min-width:min(100%,360px); padding:22px 28px; border:1px solid var(--border); background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(201,168,76,.02)); border-radius:12px; cursor:pointer; transition:border-color .2s,transform .2s; }
+    .donate-card-inner:hover { border-color:var(--gold); transform:translateY(-2px); }
+    .donate-card-label { margin:0 0 8px !important; color:var(--gold) !important; font-size:11px !important; letter-spacing:.15em; text-transform:uppercase; }
+    .donate-card-number { margin:0 !important; color:var(--white); font-family:'Syne',sans-serif; font-size:22px; letter-spacing:3px; font-weight:700; user-select:all; }
+    .donate-copy-msg { color:#4caf50 !important; font-size:12px !important; margin-top:8px !important; display:none; }
+    #donate-float-btn { position:fixed; bottom:calc(var(--player-h) + 116px); right:16px; width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg,var(--gold),var(--gold-light)); color:#1a1409; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 18px rgba(201,168,76,.5); text-decoration:none; z-index:190; font-size:20px; transition:transform .2s,box-shadow .2s; }
+    #donate-float-btn:hover { transform:scale(1.1); box-shadow:0 6px 26px rgba(201,168,76,.7); }
     .track-play-btn {
       width: 32px; height: 32px; border-radius: 50%;
       border: 1px solid var(--border); background: none; color: var(--text-dim);
@@ -198,10 +213,10 @@
 
     .messenger-btn {
       position: fixed;
-      bottom: calc(var(--player-h) + 80px);
-      right: 24px;
+      bottom: calc(var(--player-h) + 64px);
+      right: 16px;
       z-index: 190;
-      width: 52px; height: 52px;
+      width: 44px; height: 44px;
       border-radius: 50%;
       background: linear-gradient(135deg, #0084ff, #00c6ff);
       border: none;
@@ -212,11 +227,11 @@
       text-decoration: none;
     }
     .messenger-btn:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(0,132,255,0.6); }
-    .messenger-btn svg { width: 28px; height: 28px; }
+    .messenger-btn svg { width: 22px; height: 22px; }
 
     #wa-btn {
-      position: fixed; bottom: calc(var(--player-h) + 16px); right: 24px;
-      width: 52px; height: 52px; border-radius: 50%;
+      position: fixed; bottom: calc(var(--player-h) + 12px); right: 16px;
+      width: 44px; height: 44px; border-radius: 50%;
       background: #25D366; color: #fff;
       display: flex; align-items: center; justify-content: center;
       box-shadow: 0 4px 16px rgba(37,211,102,0.4);
@@ -226,7 +241,13 @@
     #wa-btn:hover { transform: scale(1.1); box-shadow: 0 6px 24px rgba(37,211,102,0.55); }
 
     @media (max-width: 700px) {
+      #nav { height:auto; min-height:64px; padding:10px 14px; gap:10px; flex-wrap:wrap; }
+      .language-buttons { order:3; width:100%; justify-content:center; }
+      .language-button { flex:1; max-width:none; padding:0 7px; font-size:14px; }
       .hero-name { font-size: clamp(36px, 10vw, 64px); }
+      #donate-section { padding:32px 20px; }
+      .donate-card-number { font-size:17px; letter-spacing:2px; }
+      #donate-float-btn, .messenger-btn, #wa-btn { right:12px; }
       .gp-info { flex: 0 0 120px; }
       .gp-progress-wrap { flex: 0 0 100%; order: 10; }
       #global-player { flex-wrap: wrap; align-content: center; row-gap: 6px; height: auto; min-height: var(--player-h); padding: 10px clamp(14px, 4vw, 24px); }
@@ -241,19 +262,24 @@
     Imastun Studio
   </a>
   <a href="/" class="nav-brand">Imastun Studio</a>
+  <div id="language-buttons" class="language-buttons" role="group" aria-label="Ընտրել լեզուն" data-i18n-aria="languageLabel">
+    <button type="button" class="language-button active" data-lang="hy" lang="hy" aria-pressed="true">Հայ</button>
+    <button type="button" class="language-button" data-lang="ru" lang="ru" aria-pressed="false">Рус</button>
+    <button type="button" class="language-button" data-lang="en" lang="en" aria-pressed="false">Eng</button>
+  </div>
 </nav>
 
 <section id="hero">
   <img class="hero-cover" src="authors/silva-gulanyan/cover.jpg" alt="Silva Gulanyan" />
   <div class="hero-veil"></div>
   <div class="hero-content">
-    <div class="hero-label">Imastun Studio · Artist</div>
+    <div class="hero-label" data-i18n="artistLabel">Imastun Studio · Արտիստ</div>
     <h1 class="hero-name">Silva Gulanyan</h1>
-    <div class="hero-role">Poet · Vocalist · Songwriter</div>
+    <div class="hero-role" data-i18n="artistRole">Բանաստեղծ · Վոկալիստ · Երգերի հեղինակ</div>
     <div class="hero-stats">
       <div>
         <div class="stat-num" id="song-count-stat">154</div>
-        <div class="stat-label">Երգ</div>
+        <div class="stat-label" data-i18n="songsLabel">Երգ</div>
       </div>
     </div>
   </div>
@@ -263,19 +289,31 @@
 
 <section id="tracks-section">
   <div class="section-header">
-    <h2 class="section-heading">Բոլոր <em>Երգերը</em></h2>
+    <h2 class="section-heading"><span data-i18n="allSongsPrefix">Բոլոր</span> <em data-i18n="songsHeading">Երգերը</em></h2>
     <div class="track-tabs">
-      <button class="track-tab active" id="tab-all">Բոլորը</button>
-      <button class="track-tab" id="tab-new">✨ Նոր</button>
-      <button class="track-tab" id="tab-favs">❤️ Սիրածները</button>
+      <button class="track-tab active" id="tab-all" data-i18n="allTab">Բոլորը</button>
+      <button class="track-tab" id="tab-new">✨ <span data-i18n="newTab">Նոր</span></button>
+      <button class="track-tab" id="tab-favs">❤️ <span data-i18n="favoritesTab">Սիրածները</span></button>
     </div>
   </div>
-  <input type="text" id="track-search" placeholder="🔍  Փնտրել երգ..." autocomplete="off" style="width:100%; box-sizing:border-box; margin:14px 0 8px; padding:12px 16px; background:rgba(255,255,255,0.04); border:1px solid var(--border); border-radius:10px; color:var(--text); font-family:'Inter',sans-serif; font-size:15px; outline:none; transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--border)'" />
+  <input type="text" id="track-search" placeholder="🔍  Փնտրել երգ..." data-i18n-placeholder="searchPlaceholder" autocomplete="off" style="width:100%; box-sizing:border-box; margin:14px 0 8px; padding:12px 16px; background:rgba(255,255,255,0.04); border:1px solid var(--border); border-radius:10px; color:var(--text); font-family:'Syne',sans-serif; font-size:15px; outline:none; transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--border)'" />
   <div class="track-list" id="track-list"></div>
   <div id="fav-empty" style="display:none; padding:32px; color:var(--text-dim); font-family:'Cormorant Garamond',serif; font-style:italic; font-size:20px;">Դեռ սիրած երգ չկա — սեղմիր ❤️</div>
 </section>
 
 <div class="gold-rule"></div>
+
+<section id="donate-section">
+  <h3 data-i18n="donateTitle">☕ Աջակցիր Imastun Studio-ին</h3>
+  <p data-i18n="donateText">Եթե սիրում ես մեր երաժշտությունը, կարող ես աջակցել՝ ուղարկելով նվեր ցանկացած գումարով</p>
+  <div class="donate-card-wrap">
+    <div class="donate-card-inner" role="button" tabindex="0" aria-label="Պատճենել donation քարտի համարը" data-i18n-aria="copyCardAria" onclick="copyDonateCard()" onkeydown="if(event.key==='Enter'||event.key===' ') copyDonateCard()">
+      <p class="donate-card-label" data-i18n="donateCardLabel">Քարտի համար (Mastercard)</p>
+      <p class="donate-card-number" id="donateCardNum">4578 8900 8055 1169</p>
+      <p class="donate-copy-msg" id="donateCopyMsg" data-i18n="copiedMessage">Պատճենվեց ✓</p>
+    </div>
+  </div>
+</section>
 
 <footer>
   <a href="/" class="footer-brand">Imastun Studio</a>
@@ -291,6 +329,8 @@
 <a id="wa-btn" href="https://wa.me/37499248363" target="_blank" rel="noopener" title="WhatsApp">
   <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
+
+<a id="donate-float-btn" href="#donate-section" title="Աջակցիր Imastun Studio-ին" aria-label="Աջակցիր Imastun Studio-ին" data-i18n-title="donateFloat" data-i18n-aria="donateFloat">☕</a>
 
 <div id="global-player">
   <img class="gp-cover" id="gp-cover" src="" alt="" />
@@ -319,7 +359,78 @@
 <audio id="audio-engine" preload="none"></audio>
 
 <script>
+  function copyDonateCard() {
+    const num = '4578890080551169';
+    const message = document.getElementById('donateCopyMsg');
+    const showCopied = () => {
+      if (!message) return;
+      message.textContent = translations[locale].copiedMessage;
+      message.style.display = 'block';
+      setTimeout(() => { message.style.display = 'none'; }, 2000);
+    };
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(num).then(showCopied).catch(() => {});
+      return;
+    }
+    const field = document.createElement('textarea');
+    field.value = num;
+    field.setAttribute('readonly', '');
+    field.style.position = 'fixed';
+    field.style.opacity = '0';
+    document.body.appendChild(field);
+    field.select();
+    try { if (document.execCommand('copy')) showCopied(); } catch (e) {}
+    field.remove();
+  }
+
   document.getElementById('yr').textContent = new Date().getFullYear();
+
+  const translations = {
+    hy: {
+      languageLabel:'Ընտրել լեզուն', artistLabel:'Imastun Studio · Արտիստ', artistRole:'Բանաստեղծ · Վոկալիստ · Երգերի հեղինակ', songsLabel:'Երգ', allSongsPrefix:'Բոլոր', songsHeading:'Երգերը', allTab:'Բոլորը', newTab:'Նոր', favoritesTab:'Սիրածները', searchPlaceholder:'🔍  Փնտրել երգ...', donateTitle:'☕ Աջակցիր Imastun Studio-ին', donateText:'Եթե սիրում ես մեր երաժշտությունը, կարող ես աջակցել՝ ուղարկելով նվեր ցանկացած գումարով', donateCardLabel:'Քարտի համար (Mastercard)', copiedMessage:'Պատճենվեց ✓', copyCardAria:'Պատճենել donation քարտի համարը', donateFloat:'Աջակցիր Imastun Studio-ին', noResults:'Ոչինչ չգտնվեց', emptyFavorites:'Դեռ սիրած երգ չկա — սեղմիր ❤️', emptyNew:'Նոր երգ չկա'
+    },
+    ru: {
+      languageLabel:'Выбрать язык', artistLabel:'Imastun Studio · Исполнитель', artistRole:'Поэт · Вокалист · Автор песен', songsLabel:'Песни', allSongsPrefix:'Все', songsHeading:'песни', allTab:'Все', newTab:'Новинки', favoritesTab:'Избранное', searchPlaceholder:'🔍  Найти песню...', donateTitle:'☕ Поддержать Imastun Studio', donateText:'Если вам нравится наша музыка, вы можете поддержать нас любой суммой', donateCardLabel:'Номер карты (Mastercard)', copiedMessage:'Скопировано ✓', copyCardAria:'Скопировать номер карты для поддержки', donateFloat:'Поддержать Imastun Studio', noResults:'Ничего не найдено', emptyFavorites:'В избранном пока нет песен — нажмите ❤️', emptyNew:'Новых песен нет'
+    },
+    en: {
+      languageLabel:'Choose language', artistLabel:'Imastun Studio · Artist', artistRole:'Poet · Vocalist · Songwriter', songsLabel:'Songs', allSongsPrefix:'All', songsHeading:'Songs', allTab:'All', newTab:'New', favoritesTab:'Favorites', searchPlaceholder:'🔍  Search songs...', donateTitle:'☕ Support Imastun Studio', donateText:'If you enjoy our music, you can support us with a gift of any amount', donateCardLabel:'Card number (Mastercard)', copiedMessage:'Copied ✓', copyCardAria:'Copy the support card number', donateFloat:'Support Imastun Studio', noResults:'Nothing found', emptyFavorites:'No favorite songs yet — tap ❤️', emptyNew:'No new songs'
+    }
+  };
+  const languageButtons = Array.from(document.querySelectorAll('.language-button'));
+  let locale = 'hy';
+  try { locale = localStorage.getItem('imastun_language') || 'hy'; } catch (e) {}
+  if (!translations[locale]) locale = 'hy';
+  function applyLanguage(next) {
+    locale = translations[next] ? next : 'hy';
+    const strings = translations[locale];
+    document.documentElement.lang = locale;
+    languageButtons.forEach(button => {
+      const active = button.dataset.lang === locale;
+      button.classList.toggle('active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const value = strings[el.dataset.i18n];
+      if (value) el.textContent = value;
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const value = strings[el.dataset.i18nPlaceholder];
+      if (value) el.placeholder = value;
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+      const value = strings[el.dataset.i18nAria];
+      if (value) el.setAttribute('aria-label', value);
+    });
+    document.querySelectorAll('[data-i18n-title]').forEach(el => {
+      const value = strings[el.dataset.i18nTitle];
+      if (value) el.title = value;
+    });
+    try { localStorage.setItem('imastun_language', locale); } catch (e) {}
+  }
+  languageButtons.forEach(button => button.addEventListener('click', () => {
+    applyLanguage(button.dataset.lang);
+    renderTracks();
+  }));
 
   const ARTIST = {
     id: 'silva-gulanyan',
@@ -399,7 +510,8 @@
       t.label.toLowerCase().includes(searchQuery) || t.song.toLowerCase().includes(searchQuery));
     trackList.innerHTML = '';
     if (items.length === 0) {
-      favEmpty.textContent = searchQuery ? 'Ոչինչ չգտնվեց' : (mode === 'favs' ? 'Դեռ սիրած երգ չկա — սեղմիր ❤️' : 'Նոր երգ չկա');
+      const strings = translations[locale];
+      favEmpty.textContent = searchQuery ? strings.noResults : (mode === 'favs' ? strings.emptyFavorites : strings.emptyNew);
       favEmpty.style.display = 'block';
       return;
     }
@@ -481,6 +593,7 @@
     });
   }
 
+  applyLanguage(locale);
   renderTracks();
 
   // Keep the "Երգ" stat in sync with the actual number of songs
