@@ -2037,12 +2037,13 @@
         'Սոնետ  153','Սոնետ  154'
       ]
     },
-    { id: 'mer-jraharsere', name: 'Մեր ջրահարսերը', role: 'Friendship Group · Multilingual Songs', cover: 'authors/imastun/cover.jpg', songs: ['Our Lovely Mermaids','Эй наши русалки','Ջրահարսեր Ремикс Ремикс_2','Ջրահարսեր Ремикс Ремикс_3','ჩვენი ქალთევზებო'] },
     { id: 'nune-muradyan',  name: 'Nune Muradyan',  role: 'Vocalist & Lyricist',  songs: [] },
     { id: 'lilit-aghasyan', name: 'Lilit Aghasyan', role: 'Vocalist & Arranger',   songs: [] },
     { id: 'mareta-sargsyan',name: 'Mareta Sargsyan',role: 'Vocalist & Performer',  songs: [] },
   ];
 
+  const imastunArtist = ARTISTS.find(artist => artist.id === 'imastun');
+  if (imastunArtist) imastunArtist.songs.push('Our Lovely Mermaids','Эй наши русалки','Ջրահարսեր Ремикс Ремикс_2','Ջրահարսեր Ремикс Ремикс_3','ჩვენი ქალთევზებო');
   const silvaArtist = ARTISTS.find(artist => artist.id === 'silva-gulanyan');
   if (silvaArtist) silvaArtist.songs.push('ari-khmenq');
 
@@ -3330,7 +3331,7 @@
   ARTISTS.forEach((artist, i) => {
     const coverSrc = artist.cover || `authors/${artist.id}/cover.jpg`;
     const initials = artist.name.split(' ').map(w => w[0]).join('');
-    const hasCover = ["imastun","silva-gulanyan","go-hara","haj-poetner","shakespeare-reimagined","mer-jraharsere"].includes(artist.id);
+    const hasCover = ["imastun","silva-gulanyan","go-hara","haj-poetner","shakespeare-reimagined"].includes(artist.id);
     const hasSongs = artist.songs && artist.songs.length > 0;
 
     /* small card — no cover */
