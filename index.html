@@ -1764,6 +1764,19 @@
         'Սոնետ  153','Սոնետ  154'
       ]
     },
+    {
+      id: 'mer-jraharsere',
+      name: 'Մեր ջրահարսերը',
+      role: 'Friendship Group · Multilingual Songs',
+      cover: 'authors/imastun/cover.jpg',
+      songs: [
+        'Our Lovely Mermaids',
+        'Эй наши русалки',
+        'Ջրահարսեր Ремикс Ремикс_2',
+        'Ջրահարսեր Ремикс Ремикс_3',
+        'ჩვენი ქალთევზებო'
+      ]
+    },
     { id: 'nune-muradyan',  name: 'Nune Muradyan',  role: 'Vocalist & Lyricist',  songs: [] },
     { id: 'lilit-aghasyan', name: 'Lilit Aghasyan', role: 'Vocalist & Arranger',   songs: [] },
     { id: 'mareta-sargsyan',name: 'Mareta Sargsyan',role: 'Vocalist & Performer',  songs: [] },
@@ -1826,6 +1839,11 @@
   ];
 
   const NEW_SONGS = {
+    'Our Lovely Mermaids': '2026-08-25',
+    'Эй наши русалки': '2026-08-25',
+    'Ջրահարսեր Ремикс Ремикс_2': '2026-08-25',
+    'Ջրահարսեր Ремикс Ремикс_3': '2026-08-25',
+    'ჩვენი ქალთევზებო': '2026-08-25',
     "ari-khmenq": "2026-08-15",
     "Սոնետ  70": "2026-08-08","Սոնետ  71": "2026-08-08","Սոնետ  72": "2026-08-08","Սոնետ  73": "2026-08-08","Սոնետ  75": "2026-08-08","Սոնետ  76": "2026-08-08",
     "Սոնետ  77": "2026-08-08","Սոնետ  78": "2026-08-08","Սոնետ  79": "2026-08-08","Սոնետ  81": "2026-08-08","Սոնետ  82": "2026-08-08","Սոնետ  83": "2026-08-08",
@@ -1938,6 +1956,11 @@
     'vahagn-davtyan/': 'Վահագն Դավթյան', 'hovhannes-tumanyan/': 'Հովհաննես Թումանյան'
   };
   const SONG_NAMES = {
+    'Our Lovely Mermaids': 'Our Lovely Mermaids',
+    'Эй наши русалки': 'Эй наши русалки',
+    'Ջրահարսեր Ремикс Ремикс_2': 'Ջրահարսեր Ռեմիքս 2',
+    'Ջրահարսեր Ремикс Ремикс_3': 'Ջրահարսեր Ռեմիքս 3',
+    'ჩვენი ქალთევზებო': 'ჩვენი ქალთევზებო',
     'ari-khmenq': 'ԱՐԻ ԽՄԵՆՔ · ДАВАЙ ВЫПЬЕМ · BUVONS',
     'Սիրելով գնամ': 'Սիրելով գնամ',
     'Я уйду любя': 'Я уйду любя',
@@ -2515,7 +2538,15 @@
 
   const PILOT_TRACK_KEY = 'imastun|Կատակ յարի երգ պար 4 լեզվով';
   const PILOT_AUDIO_URL = 'https://media.imastun.org/%D4%BF%D5%A1%D5%BF%D5%A1%D5%AF%20%D5%B5%D5%A1%D6%80%D5%AB%20%D5%A5%D6%80%D5%A3%20%D5%BA%D5%A1%D6%80%204%20%D5%AC%D5%A5%D5%A6%D5%BE%D5%B8%D5%BE.mp3';
-  const AUDIO_OVERRIDES = Object.freeze({ [PILOT_TRACK_KEY]: PILOT_AUDIO_URL });
+  const MERMAID_AUDIO_BASE_URL = 'https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/mer-jraharsere/featured';
+  const AUDIO_OVERRIDES = Object.freeze({
+    [PILOT_TRACK_KEY]: PILOT_AUDIO_URL,
+    'mer-jraharsere|Our Lovely Mermaids': `${MERMAID_AUDIO_BASE_URL}/${encodeURIComponent('Our Lovely Mermaids')}.mp3`,
+    'mer-jraharsere|Эй наши русалки': `${MERMAID_AUDIO_BASE_URL}/${encodeURIComponent('Эй наши русалки')}.mp3`,
+    'mer-jraharsere|Ջրահարսեր Ремикс Ремикс_2': `${MERMAID_AUDIO_BASE_URL}/${encodeURIComponent('Ջրահարսեր Ремикс Ремикс_2')}.mp3`,
+    'mer-jraharsere|Ջրահարսեր Ремикс Ремикс_3': `${MERMAID_AUDIO_BASE_URL}/${encodeURIComponent('Ջրահարսեր Ремикс Ремикс_3')}.mp3`,
+    'mer-jraharsere|ჩვენი ქალთევზებო': `${MERMAID_AUDIO_BASE_URL}/${encodeURIComponent('ჩვენი ქალთევზებო')}.mp3`
+  });
 
   const playlist = [];
   ARTISTS.forEach(a => a.songs.forEach(s => {
@@ -2525,7 +2556,7 @@
     playlist.push({
       artistId: a.id, artistName: a.name, song: s,
       src:   AUDIO_OVERRIDES[songKey] || `audio/${a.id}/featured/${s}${ext}${version ? `?v=${version}` : ''}`,
-      cover: `authors/${a.id}/cover.jpg`,
+      cover: a.cover || `authors/${a.id}/cover.jpg`,
       label: SONG_NAMES[s] || formatName(s)
     });
   }));
@@ -2954,7 +2985,7 @@
   ARTISTS.forEach((artist, i) => {
     const coverSrc = artist.cover || `authors/${artist.id}/cover.jpg`;
     const initials = artist.name.split(' ').map(w => w[0]).join('');
-    const hasCover = ["imastun","silva-gulanyan","go-hara","haj-poetner","shakespeare-reimagined"].includes(artist.id);
+    const hasCover = ["imastun","silva-gulanyan","go-hara","haj-poetner","shakespeare-reimagined","mer-jraharsere"].includes(artist.id);
     const hasSongs = artist.songs && artist.songs.length > 0;
 
     /* small card — no cover */
