@@ -2051,13 +2051,13 @@
   const YOUTUBE_VIDEOS = [
     { id: "fMnSIQxk-rE", title: "🇬🇧 THE MOON AND THE SUN — Silva Kaputikyan", added: "2026-08-23" },
     { id: "4pIun9fXCAc", title: "🇷🇺 ЛУНА И СОЛНЦЕ — Сильва Капутикян", added: "2026-08-23" },
-    { id: "jXB_zvZEczg", title: "ԼՈՒՍԻՆՆ ՈՒ ԱՐևԸ, Սիլվա Կապուտիկյան", added: "2026-08-23" },
+    { id: "jXB_zvZEczg", title: "ԼՈՒՍԻՆՆ ՈՒ ԱՐԵՎԸ — Սիլվա Կապուտիկյան", added: "2026-08-23" },
     { id: "CypKoxj-_tc", title: "🇬🇧 You Came — lyrics by Gohar Aselesyan", added: "2026-08-21" },
     { id: "CLEEZz24MmY", title: "🇷🇺 Ты пришла — слова Гоар Аселесян", added: "2026-08-21" },
     { id: "GX_mmgkfl78", title: "Դու եկար, խոսքը Գոհար Ասելեսյանի", added: "2026-08-21" },
-    { id: "nxwEVnSYeEM", title: "Я уйду лубя, Го Хара", added: "2026-08-15" },
+    { id: "nxwEVnSYeEM", title: "Я уйду любя — Го Хара", added: "2026-08-15" },
     { id: "hpkcti95mQY", title: "I'll Leave Still Loving You, Go Hara", added: "2026-08-15" },
-    { id: "bziLW9nooWI", title: "ԱՐԻ ԽՄԵՆՔ։ДАВАЙ ВЫПЬЕ։МLET’S DRINK ,խսքը Սիլվա Գուլանյան", added: "2026-08-15" },
+    { id: "bziLW9nooWI", title: "ԱՐԻ ԽՄԵՆՔ · ДАВАЙ ВЫПЬЕМ · LET’S DRINK — խոսք՝ Սիլվա Գուլանյան", added: "2026-08-15" },
     { id: "xNLAufJeHBY", title: "I'll Leave Still Loving You, Go Hara", added: "2026-08-14" },
     { id: "fZ7PZgXzBFY", title: "YouTube video fZ7PZgXzBFY", added: "2026-08-13" },
     { id: "_01ty-0xVSo", title: "YouTube video _01ty-0xVSo", added: "2026-08-13" },
@@ -2752,6 +2752,58 @@
     "parujr-sevak/What Color Is Love": {hy:"Սերն ինչ գույն ունի — անգլերեն տարբերակը"},
     "parujr-sevak/Какого цвета любовь": {hy:"Սերն ինչ գույն ունի — ռուսերեն տարբերակը"}
   };
+
+  /* Keep catalog keys aligned with the exact, case-sensitive R2 object names. */
+  const CATALOG_KEY_FIXES = Object.freeze({
+    'ipta hogis': 'jpta hogis',
+    'Տիեզերական կինը րոց': 'Տիեզերական կինը roc',
+    'Իմ Քնքուշ Սառան': 'Իմ Քնքուշ Սևան',
+    'hamo-sahyan/torvochvoqi chkanchen 02roc': 'hamo-sahyan/tor vochvoqi chkanchen02roc',
+    'parujr-sevak/Սերն ինչ գույն ունի': 'parujr-sevak/ՍԵՐՆ ԻՆՉ ԳՈՒՅՆ ՈՒՆԻ',
+    'sirena-hima': 'sirenq-hima',
+    'Սոնետ 121': 'Սոնետ  121'
+  });
+
+  const GO_HARA_RECENT_SONGS = ['Դու եկար', 'Ты пришёл', 'You Came'];
+  const goHaraArtist = ARTISTS.find(artist => artist.id === 'go-hara');
+  if (goHaraArtist) {
+    GO_HARA_RECENT_SONGS.forEach(song => {
+      if (!goHaraArtist.songs.includes(song)) goHaraArtist.songs.push(song);
+    });
+  }
+
+  ARTISTS.forEach(artist => {
+    const seen = new Set();
+    artist.songs = artist.songs
+      .map(song => CATALOG_KEY_FIXES[song] || song)
+      .filter(song => {
+        if (seen.has(song)) return false;
+        seen.add(song);
+        return true;
+      });
+  });
+
+  Object.entries(CATALOG_KEY_FIXES).forEach(([oldKey, exactKey]) => {
+    if (Object.prototype.hasOwnProperty.call(NEW_SONGS, oldKey)) NEW_SONGS[exactKey] = NEW_SONGS[oldKey];
+    if (Object.prototype.hasOwnProperty.call(SONG_NAMES, oldKey)) SONG_NAMES[exactKey] = SONG_NAMES[oldKey];
+    if (Object.prototype.hasOwnProperty.call(SONG_SUBTITLES, oldKey)) SONG_SUBTITLES[exactKey] = SONG_SUBTITLES[oldKey];
+  });
+  Object.assign(NEW_SONGS, { 'Դու եկար':'2026-08-21', 'Ты пришёл':'2026-08-21', 'You Came':'2026-08-21' });
+  Object.assign(SONG_NAMES, {
+    'Դու եկար':'Դու եկար', 'Ты пришёл':'Ты пришёл', 'You Came':'You Came',
+    'jpta hogis':'Ժպտա հոգիս',
+    'Տիեզերական կինը roc':'Տիեզերական կինը (ռոք)',
+    'Իմ Քնքուշ Սևան':'Իմ Քնքուշ Սևան',
+    'hamo-sahyan/tor vochvoqi chkanchen02roc':'Թող ոչ ոքի չկանչեն (02 ռոք)',
+    'parujr-sevak/ՍԵՐՆ ԻՆՉ ԳՈՒՅՆ ՈՒՆԻ':'Սերն ինչ գույն ունի',
+    'sirenq-hima':'Սիրել հիմա',
+    'Սոնետ  121':'Սոնետ 121'
+  });
+  Object.assign(SONG_SUBTITLES, {
+    'Դու եկար':{hy:'Խոսք՝ Գոհար Ասելեսյան'},
+    'Ты пришёл':{ru:'Слова — Гоар Аселесян'},
+    'You Came':{en:'Lyrics — Gohar Aselesyan'}
+  });
 
   /* ══ PLAYLIST (flat) ══ */
   /* ══ PLAY COUNTER (Supabase) ══ */

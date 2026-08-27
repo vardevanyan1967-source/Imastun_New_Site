@@ -672,6 +672,29 @@
 
   SONG_NAMES['ari-khmenq'] = 'ԱՐԻ ԽՄԵՆՔ · ДАВАЙ ВЫПЬЕМ · BUVONS';
 
+  const SILVA_R2_KEY_FIXES = Object.freeze({
+    'ipta hogis': 'jpta hogis',
+    'Տիեզերական կինը րոց': 'Տիեզերական կինը roc',
+    'Իմ Քնքուշ Սառան': 'Իմ Քնքուշ Սևան'
+  });
+  const seenSilvaSongs = new Set();
+  ARTIST.songs = ARTIST.songs
+    .map(song => SILVA_R2_KEY_FIXES[song] || song)
+    .filter(song => {
+      if (seenSilvaSongs.has(song)) return false;
+      seenSilvaSongs.add(song);
+      return true;
+    });
+  Object.entries(SILVA_R2_KEY_FIXES).forEach(([oldKey, exactKey]) => {
+    if (Object.prototype.hasOwnProperty.call(NEW_SONGS, oldKey)) NEW_SONGS[exactKey] = NEW_SONGS[oldKey];
+    if (Object.prototype.hasOwnProperty.call(SONG_NAMES, oldKey)) SONG_NAMES[exactKey] = SONG_NAMES[oldKey];
+  });
+  Object.assign(SONG_NAMES, {
+    'jpta hogis':'Ժպտա հոգիս',
+    'Տիեզերական կինը roc':'Տիեզերական կինը (ռոք)',
+    'Իմ Քնքուշ Սևան':'Իմ Քնքուշ Սևան'
+  });
+
   const AUDIO_BASE_URL = 'https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio';
 
   const playlist = ARTIST.songs.map((song, i) => ({
