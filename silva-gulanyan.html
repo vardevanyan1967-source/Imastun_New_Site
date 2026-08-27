@@ -117,15 +117,18 @@
     .gold-rule { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.35; }
 
     /* TRACK LIST */
-    #tracks-section { padding: clamp(40px,8vw,80px) clamp(20px,6vw,100px); }
-    .section-header { margin-bottom: 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    #tracks-section {
+      width: min(100%, 820px); margin: 0 auto;
+      padding: clamp(40px,8vw,80px) clamp(16px,3vw,32px);
+    }
+    .section-header { margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
     .section-heading { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(28px, 4vw, 48px); color: var(--white); }
     .section-heading em { font-style: italic; color: var(--gold); }
 
     .track-list { display: flex; flex-direction: column; gap: 4px; }
     .track-item {
-      display: grid; grid-template-columns: 40px 1fr auto auto;
-      align-items: center; gap: 16px; padding: 14px 20px;
+      display: grid; grid-template-columns: 28px minmax(0,1fr) auto auto auto auto;
+      align-items: center; gap: 14px; padding: 12px 16px;
       background: rgba(255,255,255,0.02); border: 1px solid transparent;
       border-radius: 2px; cursor: pointer;
       transition: background 0.2s, border-color 0.2s;
@@ -134,13 +137,16 @@
     .track-item.playing { background: rgba(201,168,76,0.08); border-color: rgba(201,168,76,0.3); }
     .track-num { font-size: 12px; color: var(--text-dim); text-align: right; font-variant-numeric: tabular-nums; }
     .track-item.playing .track-num { color: var(--gold); }
-    .track-name { font-family: 'Cormorant Garamond', serif; font-size: 19px; color: var(--white); white-space: normal; overflow: visible; word-break: break-word; }
+    .track-name-wrap { min-width: 0; }
+    .track-name { font-family: 'Cormorant Garamond', serif; font-size: 17px; color: var(--white); white-space: normal; overflow: visible; word-break: break-word; }
+    .track-subtitle { margin-top: 3px; font: 11px/1.35 'Inter', sans-serif; color: var(--text-dim); opacity: 0.82; }
     .track-item.playing .track-name { color: var(--gold-light); }
     .new-badge {
       font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
       color: #0c0c0c; background: var(--gold); border-radius: 4px; padding: 2px 6px;
       flex-shrink: 0; white-space: nowrap;
     }
+    .new-badge-slot { visibility: hidden; width: 0; padding-inline: 0; }
     #donate-section { padding: 56px clamp(20px,6vw,100px); text-align:center; }
     #donate-section h3 { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; color:var(--gold); margin-bottom:10px; }
     #donate-section p { color:var(--text-dim); font-size:13px; margin-bottom:24px; }
@@ -170,15 +176,23 @@
     .track-play-btn:hover { border-color: var(--gold); color: var(--gold); }
     .track-item.playing .track-play-btn { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
 
-    .track-fav {
+    .track-fav-btn,
+    .track-share-btn {
       width: 28px; height: 28px; background: none; border: none;
       cursor: pointer; color: var(--text-dim); flex-shrink: 0;
       display: flex; align-items: center; justify-content: center;
       transition: color 0.2s, transform 0.2s; padding: 0;
     }
-    .track-fav:hover { color: #e05; transform: scale(1.2); }
-    .track-fav.active { color: #e05; }
-    .track-fav svg { width: 16px; height: 16px; }
+    .track-fav-btn:hover { color: #e05; transform: scale(1.2); }
+    .track-fav-btn.fav-active { color: #e05; }
+    .track-fav-btn svg { width: 16px; height: 16px; }
+    .track-share-btn:hover { color: var(--gold); transform: scale(1.08); }
+    .fav-count-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 19px; height: 19px; padding: 0 5px; margin-left: 4px;
+      border-radius: 999px; background: rgba(238,0,85,.14); color: #ff6b9d;
+      font: 700 9px 'Inter',sans-serif; letter-spacing: 0;
+    }
 
     /* GLOBAL PLAYER */
     #global-player {
@@ -252,6 +266,14 @@
 
     @media (max-width: 700px) {
       .hero-name { font-size: clamp(36px, 10vw, 64px); }
+      #tracks-section { padding: 32px 8px 48px; }
+      .section-header { padding: 0 6px; gap: 12px; }
+      .track-tabs { width: 100%; gap: 5px; }
+      .track-tab { flex: 1; min-width: 0; padding: 8px 5px; letter-spacing: .08em; }
+      .track-list { padding: 0 2px; }
+      .track-item { padding: 10px 8px; gap: 8px; }
+      .track-name { font-size: 15px; }
+      .track-subtitle { font-size: 10px; }
       .gp-info { flex: 0 0 120px; }
       .gp-progress-wrap { flex: 0 0 100%; order: 10; }
       #global-player { flex-wrap: wrap; align-content: center; row-gap: 6px; height: auto; min-height: var(--player-h); padding: 10px clamp(14px, 4vw, 24px); }
@@ -534,7 +556,7 @@
     <div class="track-tabs">
       <button class="track-tab active" id="tab-all" data-i18n="allTab">Բոլորը</button>
       <button class="track-tab" id="tab-new">✨ <span data-i18n="newTab">Նոր</span> <span id="new-count" class="new-count-badge">NEW</span></button>
-      <button class="track-tab" id="tab-favs">❤️ <span data-i18n="favoritesTab">Սիրածները</span></button>
+      <button class="track-tab" id="tab-favs">❤️ <span data-i18n="favoritesTab">Սիրվածները</span><span id="fav-count" class="fav-count-badge">0</span></button>
     </div>
   </div>
   <input type="text" id="track-search" placeholder="🔍  Փնտրել երգ..." data-i18n-placeholder="searchPlaceholder" autocomplete="off" style="width:100%; box-sizing:border-box; margin:14px 0 8px; padding:12px 16px; background:rgba(255,255,255,0.04); border:1px solid var(--border); border-radius:10px; color:var(--text); font-family:'Inter',sans-serif; font-size:15px; outline:none; transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--border)'" />
@@ -621,7 +643,7 @@
   document.getElementById('yr').textContent = new Date().getFullYear();
 
   const translations = {
-    hy: { artistLabel:'Imastun Studio · Artist', artistRole:'Poet · Vocalist · Songwriter', songsLabel:'Երգ', hoursLabel:'Ժամ', allTab:'Բոլորը', newTab:'Նոր', favoritesTab:'Սիրածները', searchPlaceholder:'🔍  Փնտրել երգ...' },
+    hy: { artistLabel:'Imastun Studio · Artist', artistRole:'Poet · Vocalist · Songwriter', songsLabel:'Երգ', hoursLabel:'Ժամ', allTab:'Բոլորը', newTab:'Նոր', favoritesTab:'Սիրվածները', searchPlaceholder:'🔍  Փնտրել երգ...' },
     ru: { artistLabel:'Imastun Studio · Исполнитель', artistRole:'Поэт · Вокалист · Автор песен', songsLabel:'Песни', hoursLabel:'Часы', allTab:'Все', newTab:'Новинки', favoritesTab:'Избранное', searchPlaceholder:'🔍  Найти песню...' },
     en: { artistLabel:'Imastun Studio · Artist', artistRole:'Poet · Vocalist · Songwriter', songsLabel:'Songs', hoursLabel:'Hours', allTab:'All', newTab:'New', favoritesTab:'Favorites', searchPlaceholder:'🔍  Search songs...' }
   };
@@ -671,6 +693,48 @@
   const SONG_NAMES = {"ergichy-dari":"Երգիչի դարի","gij":"Գիժ","gij-qamin":"Գիժ քամի","gortrik-ankun":"Գողտրիկ անկյուն","im-tsovagur":"Իմ ծովագյուղ","inch-em-anelu":"Ինչ եմ անելու","tsov-arev-achqer":"Ծով արև աչքեր","Es_kez_sirum_em":"Ես քեզ սիրում եմ","Kez_khenti_nman_siraharvetsi_Duet_Tango":"Քեզ խենթի նման սիրահարվեցի (Duet Tango)","Ari_klini":"Արի կլինի","Andzrevum_e":"Անձրևում է","der-inz-voch-mek-chi-sirel-qo-pes":"Դեռ ինձ ոչ մեկ չի սիրել քո պես","Akh_inch_anem_sirud_het":"Ախ ինչ անեմ սիրուդ հետ","AKhor_vo_tsavits_tsnvats":"Ցավից ծնված","Aryev_darnam":"Արև դառնամ","Che_chem_toghni_B":"Չե չեմ թողնի","Ches_moranalu_003":"Չես մոռանալու","Chisht_zhamanakin_At_The_Right_Time":"Ճիշտ ժամանակին","Dran_Takotsu_003":"Դռան թակոց","Dzig_tarineri_luys_003":"Ձիգ տարիների լույս","Erazankneri_aytsu_Part_Gisherva_002":"Երազանքների այց գիշերվա","Erb_verkers_hanger_dardzri_Lyrics_by_Silva_Gulanyan_003":"Երբ երգերս հանգեր դարձան","Erku_khent_hogi_Duet_Silva_Gulanyan_004":"Երկու խենթ հոգի","Es_sirum_em_ko_zhpitu_B":"Ես սիրում եմ քո ժպիտը","Garun_er_003":"Գարուն է","Gisher_e_004":"Գիշեր է","Gisherits_depi_luys_Silva_Gulanyan_005":"Գիշերից լույս","Gitem_ches_galu_B":"Գիտեմ չես գալու","Gitem_hogis_A":"Գիտեմ հոգիս","Hetd_inch_e_katarvum":"Հետդ ինչ է կատարվում","Im_erazats_ashkharu_003":"Իմ երազած աշխարհում","inchu_es_ayskan_indz_otar_dardzel_004":"Ինչու ես այսքան ինձ օտար դարձել","Jaheli_nman_003":"Ջահելի նման","Karotum_em_Dream_of_You_002":"Կարոտում եմ","Kenatsd_khmem_B_Brinderò_per_Te":"Կենացդ խմեմ","xentern u lusiny":"Խենթերն ու լուսինը","Ko_hmayki_gerin":"Քո հմայքի գերին","Ko_koghkin_vorish_em_003":"Քո կողքին ուրիշ եմ","Es_irakan_em_004":"Ես իրական եմ","frants_Harbel_em_vozum":"Ֆրանսերեն հարբել եմ ուզում","Galis_e_mi_pah_003":"Գալիս է մի պահ","Havat_em_vozum_003":"Հավատ եմ ուզում","Hayots_ashkarh_A":"Հայոց աշխարհ","HERO_MOTIK_UNKERNERIS_003":"Հեռու մոտիկ ընկերներիս","hogu giny":"Հողի գինը","Ka_mi_ashkharh_vor_srtov_e_karutsvats":"Սրտով կառուցված աշխարհ","kgam_sirelis":"Կգամ սիրելիս","Khortakvogh_nav_003":"Խորտակվող նավ","Kuratsats_achkin_luysu_003":"Կուրացած աչքի լույս","Kuyr_eghbayr_003":"Քույր եղբայր","Kyanku_Hrashk_e_005":"Հրաշք կյանք","Mer_Srterum_kanchu_004":"Կանչ մեր սրտերում","Mtnets_arants_kez_Duet":"Առանց քեզ մթնեց","Nrboren_Garnunk_003":"Նրբորեն գարունք","Resta_nei_nostri_cuori":"Մնա մեր սրտերում","RokHetd_Inch_E_Katarvum_003":"Հետդ ինչ է կատարվում","S_irum_em_kez_I_love_you":"Սիրում եմ քեզ","Sirir_indz_hogis_FRAM_Duet":"Սիրիր ինձ հոգիս","Srteri_kanchu_003":"Սրտերի կանչ","Tesilk_Silva_Gulanyan_Remix_Remix":"Տեսիլք","Tiezerk_Jinj_Lazur":"Ջինջ տիեզերք","Title_Mi_tanjir_hogis_Multilingual_Emotional_Duet_Lyrics_by_Silva_Gulanyan_002":"Մի տանջիր հոգիս բազմալեզու","melodia lubvi":"Սիրո երաժշտություն","Безумный Ветер Любви":"Безумный Ветер Любви","agh & dagy":"Աղն ու դաղը","xerdvac karot":"Խեղդված կարոտ","xerdvac karot patasxan":"Խեղդված կարոտ պատասխան","hiastapvac":"Հիասթափված","nerqnapanak":"Ներքնապանակ","qo cov achqeri kajcern em sirum":"Քո աչքերի կայծն եմ սիրում","sirty xentacav":"Սիրտս խենթացավ","luse hrashq":"Լուսե հրաշք","Hay_aragil":"Հայ արագիլ","lrutian tchich":"Լռության ճիչ","qez karotelis":"Քեզ կարոտելիս","siro cnundy":"Սիրո ծնունդ","qo_drakhtum_002":"Քո դրախտում","ser da ardioq":"Սեր է դա արդիոք","xortakvor nav":"Խորտակվող նավ","chem moracel":"Չեմ մոռացել","ipta hogis":"Ժպտա հոգիս","ov e kimy":"Օվ է կինը","Nerir sirelis":"Ներիր սիրելիս","The Sun Cries Too":"The Sun Cries Too","Crazy Breeze of Love":"Crazy Breeze of Love","xent siro qamin":"Խենթ սիրո քամին","karotiali shurterin":"Կարոտիալի շուրթերին","mek tari el ancav":"Մեկ տարի էլ անցավ","Garun e bajc zun e arel":"Գարուն է բայց ձյուն է արել","Curt xavaric":"Ցուրտ խավարից","xind manuk":"Խինդ մանուկ","hima":"Հիմա","gjuk lusiny":"Գժուկ լուսին","gitem el inz ches spasum":"Գիտեմ էլ ինձ չես սպասում","byur harvacneric":"Բյուր հարվածներից","mern zepur":"Մեղմ զեփյուռը","ser eir xarum":"Սեր էիր խաղում","erazi kyamq roc":"Երազի կայանք (ռոք)","erazi kyanq":"Երազի կայանք","ti pridyosh komne":"Ты придёшь ко мне","The Night's Embrace":"The Night's Embrace","xararutun ber":"Խաղաղություն բեր","ti moy kislarod":"Ты мой кислород","My Endless Dream":"My Endless Dream","Կարոտի խենթի":"Կարոտի խենթի","Тоска по мне":"Тоска по мне","The Song of the Spring Breeze":"The Song of the Spring Breeze","խենթի նման սիրահարվեցի":"խենթի նման սիրահարվեցի","Светлый полёт":"Светлый полёт","Քեզ դուրս եմ արել":"Քեզ դուրս եմ արել","Перед памятью злой":"Перед памятью злой","Powerless Against Memories":"Powerless Against Memories","Դու իմ աշխարհն ես":"Դու իմ աշխարհն ես","Ты мой мир":"Ты мой мир","You Are My World":"You Are My World","Тоскуя по тебе":"Тоскуя по тебе","Longing for You":"Longing for You","Քեզ կարոտելիս":"Քեզ կարոտելիս","Սիրել հենց հոգուն (1)":"Սիրել հենց հոգուն (1)","Любить лишь душу (1)":"Любить лишь душу (1)","Love Unseen (1)":"Love Unseen (1)","Սիրել հենց հոգուն":"Սիրել հենց հոգուն","Любить лишь душу":"Любить лишь душу","Love Unseen":"Love Unseen","Թանկ հուշը":"Թանկ հուշը","Сокровенный причал":"Сокровенный причал","Never a Stranger":"Never a Stranger","Образы тоски":"Образы тоски","Ծովի մեջ աչքերդ":"Ծովի մեջ աչքերդ","The Illusion of Longing":"The Illusion of Longing","My Precious Love":"My Precious Love","My Precious Love драгоценная любовь":"My Precious Love драгоценная любовь","My Bright Dream (1)":"My Bright Dream (1)","My Bright Dream":"My Bright Dream","խենթ խաղեր":"խենթ խաղեր","Եղբայր իմ անգին":"Եղբայր իմ անգին","Мой светлый луч":"Мой светлый луч","My Only Light":"My Only Light","Տիեզերական կինը րոց":"Տիեզերական կինը րոց","Տիեզերական կինը":"Տիեզերական կինը","The Woman as the Universe":"The Woman as the Universe","Տիեզերական կինը (Remastered)":"Տիեզերական կինը (Remastered)","Երանի գայիր(Just Like Before)":"Երանի գայիր (Just Like Before)","Դավաճան հայ":"Դավաճան հայ","Իմ Քնքուշ Սառան":"Իմ Քնքուշ Սառան","Քո ժպիտները հավաքեմ":"Քո ժպիտները հավաքեմ","ughernery-lac-chen-linum":"Ուժեղներն էլ լաց են լինում","te karotum es":"Թե կարոտում ես","Tchaxr e pargevum ":"Ճախր է պարգևում","lok cav u dard":"Լոկ ցավ ու դարդ","cav anbujeli":"Ցավ անբուժելի","ov em qez hamar":"Ո՞վ եմ քեզ համար","bjur u bjur angam":"Բյուր ու բյուր անգամ","ete asem":"Եթե ասեմ","gereckuhi":"Գեղեցկուհի"};
 
   SONG_NAMES['ari-khmenq'] = 'ԱՐԻ ԽՄԵՆՔ · ДАВАЙ ВЫПЬЕМ · BUVONS';
+
+  const SONG_SUBTITLES = {
+    'Crazy Breeze of Love': {hy:'Խենթ սիրո քամին — անգլերեն տարբերակը'},
+    'The Sun Cries Too': {hy:'Արևն էլ է լացում — անգլերեն տարբերակը'},
+    'Безумный Ветер Любви': {hy:'Խենթ սիրո քամին — ռուսերեն տարբերակը'},
+    'ti pridyosh komne': {hy:'Դու կգաս ինձ մոտ — ռուսերեն տարբերակը'},
+    "The Night's Embrace": {hy:'Գիշերվա գրկում — անգլերեն տարբերակը'},
+    'ti moy kislarod': {hy:'Դու իմ թթվածինն ես — ռուսերեն տարբերակը'},
+    'My Endless Dream': {hy:'Իմ անվերջ երազը — անգլերեն տարբերակը'},
+    'Тоска по мне': {hy:'Իմ հանդեպ կարոտ — ռուսերեն տարբերակը'},
+    'The Song of the Spring Breeze': {hy:'Գարնան զեփյուռի երգը — անգլերեն տարբերակը'},
+    'Светлый полёт': {hy:'Լուսավոր թռիչք — ռուսերեն տարբերակը'},
+    'Перед памятью злой': {hy:'Չար հիշողության առաջ — ռուսերեն տարբերակը'},
+    'Powerless Against Memories': {hy:'Անզոր հիշողությունների դեմ — անգլերեն տարբերակը'},
+    'Ты мой мир': {hy:'Դու իմ աշխարհն ես — ռուսերեն տարբերակը'},
+    'You Are My World': {hy:'Դու իմ աշխարհն ես — անգլերեն տարբերակը'},
+    'Тоскуя по тебе': {hy:'Քեզ կարոտելիս — ռուսերեն տարբերակը'},
+    'Longing for You': {hy:'Քեզ կարոտելիս — անգլերեն տարբերակը'},
+    'Любить лишь душу (1)': {hy:'Սիրել հենց հոգուն — ռուսերեն տարբերակ 1'},
+    'Love Unseen (1)': {hy:'Սիրել հենց հոգուն — անգլերեն տարբերակ 1'},
+    'Любить лишь душу': {hy:'Սիրել հենց հոգուն — ռուսերեն տարբերակը'},
+    'Love Unseen': {hy:'Սիրել հենց հոգուն — անգլերեն տարբերակը'},
+    'Сокровенный причал': {hy:'Նվիրական նավահանգիստ — ռուսերեն տարբերակը'},
+    'Never a Stranger': {hy:'Երբեք օտար չէ — անգլերեն տարբերակը'},
+    'Образы тоски': {hy:'Կարոտի պատկերներ — ռուսերեն տարբերակը'},
+    'The Illusion of Longing': {hy:'Կարոտի պատրանքը — անգլերեն տարբերակը'},
+    'My Precious Love': {hy:'Իմ թանկագին սեր — անգլերեն տարբերակը'},
+    'My Precious Love драгоценная любовь': {hy:'Իմ թանկագին սեր — անգլերեն և ռուսերեն տարբերակը'},
+    'My Bright Dream (1)': {hy:'Իմ լուսավոր երազը — անգլերեն տարբերակ 1'},
+    'My Bright Dream': {hy:'Իմ լուսավոր երազը — անգլերեն տարբերակը'},
+    'Мой светлый луч': {hy:'Իմ լուսավոր շողը — ռուսերեն տարբերակը'},
+    'My Only Light': {hy:'Իմ միակ լույսը — անգլերեն տարբերակը'},
+    'The Woman as the Universe': {hy:'Կինը՝ որպես տիեզերք — անգլերեն տարբերակը'},
+    'frants_Harbel_em_vozum': {hy:'Ֆրանսերեն տարբերակը'},
+    'Resta_nei_nostri_cuori': {hy:'Իտալերեն տարբերակը'},
+    'Kenatsd_khmem_B_Brinderò_per_Te': {hy:'Հայերեն և իտալերեն տարբերակը'},
+    'Sirir_indz_hogis_FRAM_Duet': {hy:'Հայերեն և ֆրանսերեն զուգերգ'},
+    'Chisht_zhamanakin_At_The_Right_Time': {hy:'Հայերեն և անգլերեն տարբերակը'},
+    'S_irum_em_kez_I_love_you': {hy:'Հայերեն և անգլերեն տարբերակը'},
+    'melodia lubvi': {hy:'Սիրո մեղեդի — ռուսերեն տարբերակը'},
+    'ari-khmenq': {hy:'Հայերեն · ռուսերեն · ֆրանսերեն'}
+  };
 
   const SILVA_R2_KEY_FIXES = Object.freeze({
     'ipta hogis': 'jpta hogis',
@@ -733,15 +797,33 @@
   })();
 
   /* FAVORITES */
-  const FAV_KEY = 'silva_favorites';
-  function getFavs() { try { return JSON.parse(localStorage.getItem(FAV_KEY) || '[]'); } catch(e) { return []; } }
-  function saveFavs(f) { localStorage.setItem(FAV_KEY, JSON.stringify(f)); }
+  const FAV_KEY = 'silva-gulanyan_favorites';
+  const LEGACY_FAV_KEY = 'silva_favorites';
+  function readFavs(key) {
+    try {
+      const value = JSON.parse(localStorage.getItem(key) || '[]');
+      return Array.isArray(value) ? value : [];
+    } catch(e) { return []; }
+  }
+  function getFavs() { return [...new Set([...readFavs(FAV_KEY), ...readFavs(LEGACY_FAV_KEY)])]; }
+  function saveFavs(f) {
+    try {
+      const value = JSON.stringify(f);
+      localStorage.setItem(FAV_KEY, value);
+      localStorage.setItem(LEGACY_FAV_KEY, value);
+    } catch(e) {}
+  }
+  function updateFavCount() {
+    const el = document.getElementById('fav-count');
+    if (el) el.textContent = getFavs().length;
+  }
   function isFav(song) { return getFavs().includes(song); }
   function toggleFav(song) {
     let f = getFavs();
     if (f.includes(song)) f = f.filter(s => s !== song);
     else f.push(song);
     saveFavs(f);
+    updateFavCount();
     return f.includes(song);
   }
 
@@ -817,26 +899,42 @@
       if (count === 2) return '#38bdf8';
       return '';
     };
+    const subtitleFor = track => {
+      const exact = SONG_SUBTITLES[track.song];
+      if (exact && exact.hy) return exact.hy;
+      if (/[԰-֏]/.test(track.label)) return '';
+      const hasRu = /[Ѐ-ӿ]/.test(track.label);
+      const hasEn = /[a-zA-Z]/.test(track.label);
+      if (hasRu && hasEn) return 'Անգլերեն և ռուսերեն տարբերակը';
+      if (hasRu) return 'Ռուսերեն տարբերակը';
+      if (hasEn) return 'Անգլերեն տարբերակը';
+      return '';
+    };
     items.forEach((t, i) => {
       const realIdx = playlist.indexOf(t);
       const div = document.createElement('div');
       div.className = 'track-item';
-      div.dataset.idx = realIdx;
+      div.dataset.pidx = realIdx;
       const trackColor = detectColor(t.label, t.song);
+      const subtitle = subtitleFor(t);
       div.innerHTML = `
         <span class="track-num">${String(i+1).padStart(2,'0')}</span>
-        <div class="track-name"${trackColor ? ` style="color:${trackColor};"` : ''}>${t.label}</div>
-        ${isNewSong(t.song) ? '<span class="new-badge">NEW</span>' : ''}
-        <button class="track-fav${isFav(t.song) ? ' active' : ''}" data-song="${t.song}">${iconHeart(isFav(t.song))}</button>
-        <button class="track-share-btn" data-song="${t.song}" style="background:none;border:none;cursor:pointer;color:var(--text-dim);display:flex;align-items:center;padding:4px;transition:color 0.2s;" title="Կիսվել"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button>
-        <button class="track-play-btn">${iconPlay()}</button>`;
+        <div class="track-name-wrap">
+          <div class="track-name"${trackColor ? ` style="color:${trackColor};"` : ''}>${t.label}</div>
+          ${subtitle ? `<div class="track-subtitle">${subtitle}</div>` : ''}
+        </div>
+        ${isNewSong(t.song) ? '<span class="new-badge">NEW</span>' : '<span class="new-badge new-badge-slot" aria-hidden="true"></span>'}
+        <button class="track-fav-btn${isFav(t.song) ? ' fav-active' : ''}" data-song="${t.song}" title="Սիրված երգ" aria-label="${isFav(t.song) ? 'Հանել սիրվածներից' : 'Ավելացնել սիրվածներին'}">${iconHeart(isFav(t.song))}</button>
+        <button class="track-share-btn" data-song="${t.song}" title="Կիսվել" aria-label="Կիսվել այս երգով"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button>
+        <button class="track-play-btn" aria-label="Նվագարկել այս երգը">${iconPlay()}</button>`;
       div.addEventListener('click', () => playTrack(realIdx));
-      div.querySelector('.track-fav').addEventListener('click', e => {
+      div.querySelector('.track-fav-btn').addEventListener('click', e => {
         e.stopPropagation();
         const btn = e.currentTarget;
         const active = toggleFav(t.song);
-        btn.classList.toggle('active', active);
+        btn.classList.toggle('fav-active', active);
         btn.innerHTML = iconHeart(active);
+        btn.setAttribute('aria-label', active ? 'Հանել սիրվածներից' : 'Ավելացնել սիրվածներին');
         if (mode === 'favs' && !active) renderTracks();
       });
       div.querySelector('.track-share-btn').addEventListener('click', e => {
@@ -864,6 +962,7 @@
 
   applyLanguage(locale);
   updateNewCount();
+  updateFavCount();
   renderTracks();
 
   /* TOTAL DURATION */
@@ -975,7 +1074,8 @@
 
   function highlightTrack(idx) {
     document.querySelectorAll('.track-item').forEach(el => {
-      const playing = parseInt(el.dataset.idx) === idx;
+      const raw = el.dataset.pidx != null ? el.dataset.pidx : el.dataset.idx;
+      const playing = Number.parseInt(raw, 10) === idx;
       el.classList.toggle('playing', playing);
       const btn = el.querySelector('.track-play-btn');
       if (btn) btn.innerHTML = (playing && isPlaying) ? iconPause() : iconPlay();
