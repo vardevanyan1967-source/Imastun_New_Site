@@ -1,5 +1,5 @@
-const CACHE_VERSION = 'imastun-shell-v9';
-const PLAYER_FIX_VERSION = 'bc3725a-v9';
+const CACHE_VERSION = 'imastun-shell-v10';
+const PLAYER_FIX_VERSION = 'unified-crossfade-v10';
 const APP_SHELL = ['./', './index.html', './manifest.json', './logo.png', './audio-player-fix.js'];
 
 function injectPlayerFix(response) {
