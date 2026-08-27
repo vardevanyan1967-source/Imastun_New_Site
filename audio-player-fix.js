@@ -12,40 +12,6 @@
       return Number.isInteger(n) ? n : -1;
     };
 
-    function visibleSequenceFor(idx) {
-      const rows = Array.from(document.querySelectorAll(trackSelector));
-      const row = rows.find(el => rowIndex(el) === idx);
-      if (!row) return [];
-      const list = row.closest('.track-list');
-      if (!list) return [];
-      return Array.from(list.querySelectorAll(trackSelector))
-        .map(rowIndex)
-        .filter(i => i >= 0);
-    }
-
-    function adjacentVisibleIndex(direction) {
-      if (typeof currentIdx === 'undefined' || currentIdx < 0) return -1;
-      const seq = visibleSequenceFor(currentIdx);
-      if (!seq.length) return -1;
-      const pos = seq.indexOf(currentIdx);
-      if (pos < 0) return -1;
-      const target = pos + direction;
-      return target >= 0 && target < seq.length ? seq[target] : -1;
-    }
-
-    try { startCrossfade = function() {}; } catch (e) {}
-
-    const stopAndPlayAdjacent = direction => event => {
-      const nextIdx = adjacentVisibleIndex(direction);
-      if (nextIdx < 0 || typeof playTrack !== 'function') return;
-      event.preventDefault();
-      event.stopImmediatePropagation();
-      playTrack(nextIdx);
-    };
-
-    if (typeof gpNext !== 'undefined' && gpNext) gpNext.addEventListener('click', stopAndPlayAdjacent(1), true);
-    if (typeof gpPrev !== 'undefined' && gpPrev) gpPrev.addEventListener('click', stopAndPlayAdjacent(-1), true);
-
     if (typeof engines !== 'undefined' && Array.isArray(engines)) {
       engines.forEach(eng => {
         const updateDuration = () => {
@@ -56,14 +22,6 @@
         };
         eng.addEventListener('loadedmetadata', updateDuration);
         eng.addEventListener('durationchange', updateDuration);
-
-        eng.addEventListener('ended', event => {
-          if (typeof active !== 'function' || eng !== active()) return;
-          const nextIdx = adjacentVisibleIndex(1);
-          if (nextIdx < 0 || typeof playTrack !== 'function') return;
-          event.stopImmediatePropagation();
-          playTrack(nextIdx);
-        }, true);
       });
     }
 
