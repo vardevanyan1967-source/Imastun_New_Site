@@ -2922,7 +2922,8 @@
   let activeIdx   = 0;
   const active    = () => engines[activeIdx];
   const inactive  = () => engines[1 - activeIdx];
-  const CROSSFADE_SEC = 10;
+  const CROSSFADE_SEC = 4;
+  const MANUAL_CROSSFADE_SEC = 2;
   let crossfadeTimer = null;
   let crossfadeNextIdx = -1;
   let crossfadeScheduleTimer = null;
@@ -3108,7 +3109,7 @@
     else if (remaining > CROSSFADE_SEC) scheduleCrossfade();
   }
 
-  function startCrossfade(targetIdx) {
+  function startCrossfade(targetIdx, durationSec = CROSSFADE_SEC) {
     const nextIdx = Number.isInteger(targetIdx) ? targetIdx : adjacentTrackIndex(1);
     if (nextIdx < 0 || nextIdx >= playlist.length || crossfadeNextIdx >= 0) return;
     if (crossfadeScheduleTimer) { clearTimeout(crossfadeScheduleTimer); crossfadeScheduleTimer = null; }
@@ -3126,7 +3127,7 @@
     const beginFade = () => {
       if (crossfadeNextIdx !== nextIdx || crossfadeTimer) return;
       const steps = 60;
-      const stepMs = (CROSSFADE_SEC * 1000) / steps;
+      const stepMs = (durationSec * 1000) / steps;
       let i = 0;
       crossfadeTimer = setInterval(() => {
         if (crossfadeNextIdx !== nextIdx) return;
@@ -3199,7 +3200,7 @@
   gpNext.addEventListener('click', () => {
     const nextIdx = adjacentTrackIndex(1);
     if (nextIdx < 0 || crossfadeNextIdx >= 0) return;
-    if (isPlaying) startCrossfade(nextIdx);
+    if (isPlaying) startCrossfade(nextIdx, MANUAL_CROSSFADE_SEC);
     else playTrack(nextIdx);
   });
 
