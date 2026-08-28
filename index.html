@@ -475,10 +475,26 @@
       background: linear-gradient(to top, rgba(8,8,8,.96), rgba(8,8,8,.72) 68%, transparent);
     }
 
+    .poetry-catalogs {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: start;
+      gap: clamp(14px, 2.5vw, 32px);
+    }
+
+    .poetry-catalog { min-width: 0; }
+    .poetry-catalog .section-header { margin-bottom: 24px; }
+    .poetry-catalog .section-label { writing-mode: horizontal-tb; transform: none; }
+    .poetry-catalog .section-heading { font-size: clamp(28px, 4vw, 52px); }
+    .poetry-catalog .catalog-grid { grid-template-columns: minmax(0, 1fr); }
+    .poetry-catalog.expanded { grid-column: 1 / -1; }
+
     .catalog-section { padding-block: clamp(52px, 8vw, 96px); }
     .catalog-section .section-header { margin-bottom: 40px; }
     #armenian-poets-grid > .artist-card,
-    #world-poetry-grid > .artist-card { max-width: 420px; }
+    #world-poetry-grid > .artist-card { max-width: none; }
+    .poetry-catalog.expanded #armenian-poets-grid > .artist-card,
+    .poetry-catalog.expanded #world-poetry-grid > .artist-card { max-width: 420px; }
 
     .card-note {
       margin: 10px 0 2px; max-width: 44ch;
@@ -1173,7 +1189,10 @@
     @media (max-width: 700px) {
       :root { --player-h: 122px; }
       .nav-links { display: none; }
+      #artists.catalog-section { padding-bottom: 32px; }
       #artists-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .poetry-catalogs { gap: 8px; padding-block: 32px; }
+      .poetry-catalog .section-header { display: none; }
       #armenian-poets-grid,
       #world-poetry-grid { grid-template-columns: 1fr; }
       #armenian-poets-grid > .artist-card,
@@ -1193,6 +1212,40 @@
       #artists-grid > .artist-card .card-name {
         margin: 0;
         font-size: clamp(11px, 3.6vw, 15px);
+        line-height: 1.08;
+      }
+      #armenian-poets-grid > .artist-card,
+      #world-poetry-grid > .artist-card {
+        aspect-ratio: 1 / 1;
+        display: block;
+      }
+      #armenian-poets-grid > .artist-card .card-cover-wrap,
+      #world-poetry-grid > .artist-card .card-cover-wrap {
+        position: absolute;
+        inset: 0;
+        aspect-ratio: auto;
+      }
+      #armenian-poets-grid > .artist-card .card-body,
+      #world-poetry-grid > .artist-card .card-body {
+        position: absolute;
+        inset: auto 0 0;
+        z-index: 2;
+        padding: 8px 6px 9px;
+        text-align: center;
+        background: linear-gradient(to top, rgba(8,8,8,.96), rgba(8,8,8,.68) 70%, transparent);
+      }
+      #armenian-poets-grid > .artist-card .card-index,
+      #armenian-poets-grid > .artist-card .card-role,
+      #armenian-poets-grid > .artist-card .card-note,
+      #armenian-poets-grid > .artist-card .card-arrow,
+      #world-poetry-grid > .artist-card .card-index,
+      #world-poetry-grid > .artist-card .card-role,
+      #world-poetry-grid > .artist-card .card-note,
+      #world-poetry-grid > .artist-card .card-arrow { display: none; }
+      #armenian-poets-grid > .artist-card .card-name,
+      #world-poetry-grid > .artist-card .card-name {
+        margin: 0;
+        font-size: clamp(12px, 3.6vw, 16px);
         line-height: 1.08;
       }
       .section-header { flex-direction: column; align-items: flex-start; gap: 8px; }
@@ -1739,22 +1792,22 @@
 
 <div class="gold-rule"></div>
 
-<section id="armenian-poets" class="section catalog-section">
-  <div class="section-header reveal">
-    <span class="section-label">Armenian Poetry</span>
-    <h2 class="section-heading">Հայ <em>Բանաստեղծներ</em></h2>
-  </div>
-  <div id="armenian-poets-grid" class="catalog-grid reveal-stagger"></div>
-</section>
+<section class="section poetry-catalogs" aria-label="Պոեզիայի բաժիններ">
+  <article id="armenian-poets" class="poetry-catalog">
+    <div class="section-header reveal">
+      <span class="section-label">Armenian Poetry</span>
+      <h2 class="section-heading">Հայ <em>Բանաստեղծներ</em></h2>
+    </div>
+    <div id="armenian-poets-grid" class="catalog-grid reveal-stagger"></div>
+  </article>
 
-<div class="gold-rule"></div>
-
-<section id="world-poetry" class="section catalog-section">
-  <div class="section-header reveal">
-    <span class="section-label">World Poetry</span>
-    <h2 class="section-heading">Համաշխարհային <em>Պոեզիա</em></h2>
-  </div>
-  <div id="world-poetry-grid" class="catalog-grid reveal-stagger"></div>
+  <article id="world-poetry" class="poetry-catalog">
+    <div class="section-header reveal">
+      <span class="section-label">World Poetry</span>
+      <h2 class="section-heading">Համաշխարհային <em>Պոեզիա</em></h2>
+    </div>
+    <div id="world-poetry-grid" class="catalog-grid reveal-stagger"></div>
+  </article>
 </section>
 
 <div class="gold-rule"></div>
@@ -3567,9 +3620,11 @@
       const isOpen = panel.classList.contains('open');
       document.querySelectorAll('.catalog-grid .artist-card').forEach(c => c.classList.remove('active'));
       document.querySelectorAll('.catalog-grid .artist-panel').forEach(p => p.classList.remove('open'));
+      document.querySelectorAll('.poetry-catalog').forEach(section => section.classList.remove('expanded'));
       if (!isOpen) {
         card.classList.add('active');
         panel.classList.add('open');
+        card.closest('.poetry-catalog')?.classList.add('expanded');
         if (artist.songs && artist.songs.length) calcArtistDuration(artist);
         setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
       }
@@ -3579,6 +3634,7 @@
       e.stopPropagation();
       card.classList.remove('active');
       panel.classList.remove('open');
+      card.closest('.poetry-catalog')?.classList.remove('expanded');
     });
 
     panel.querySelectorAll('.track-item').forEach(item => {
