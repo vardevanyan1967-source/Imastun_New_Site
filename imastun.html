@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="hy">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Imastun — Imastun Studio</title>
+  <meta name="description" content="Imastun-ի հեղինակային երգերն ու բազմալեզու երաժշտական նախագծերը։">
+  <meta name="theme-color" content="#0c0b09">
+  <link rel="canonical" href="https://imastun.org/imastun.html">
+  <link rel="icon" href="logo.png">
+  <style>
+    :root{
+      color-scheme:dark;
+      --bg:#0b0a08;--surface:#14120e;--surface-2:#1b1812;--surface-3:#211d15;
+      --text:#f4efe5;--muted:#aaa18f;--gold:#c9a84c;--gold-2:#ead27e;
+      --border:rgba(201,168,76,.25);--shadow:0 20px 55px rgba(0,0,0,.38);
+      --safe-bottom:env(safe-area-inset-bottom,0px)
+    }
+    body.light-mode{
+      color-scheme:light;--bg:#f4efe3;--surface:#fffaf0;--surface-2:#f0e7d6;
+      --surface-3:#e7dcc8;--text:#201b14;--muted:#6d6252;--border:rgba(116,86,24,.25);
+      --shadow:0 18px 45px rgba(78,58,22,.13)
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;min-height:100vh;background:
+      radial-gradient(circle at 12% -5%,rgba(201,168,76,.13),transparent 34rem),
+      radial-gradient(circle at 88% 18%,rgba(201,168,76,.07),transparent 28rem),var(--bg);
+      color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+      transition:background .25s,color .25s
+    }
+    body.player-open{padding-bottom:calc(112px + var(--safe-bottom))}
+    button,input,a{font:inherit}
+    button{color:inherit}
+    a{color:inherit;text-decoration:none}
+    button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--gold-2);outline-offset:3px}
+    .topbar{
+      position:sticky;top:0;z-index:50;border-bottom:1px solid var(--border);
+      background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(18px)
+    }
+    .topbar-inner{
+      width:min(1100px,calc(100% - 28px));min-height:70px;margin:auto;
+      display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px
+    }
+    .back{
+      justify-self:start;display:inline-flex;align-items:center;gap:8px;color:var(--muted);
+      min-height:42px;padding:0 13px;border:1px solid var(--border);border-radius:999px
+    }
+    .back:hover{color:var(--text);background:var(--surface)}
+    .brand{text-align:center;font-family:Georgia,"Times New Roman",serif;letter-spacing:.08em}
+    .brand strong{display:block;color:var(--gold-2);font-size:18px}
+    .brand small{display:block;color:var(--muted);font:600 9px Inter,system-ui,sans-serif;letter-spacing:.22em;text-transform:uppercase}
+    .controls{justify-self:end;display:flex;align-items:center;gap:8px}
+    .lang{display:flex;padding:3px;border:1px solid var(--border);border-radius:999px;background:var(--surface)}
+    .lang button{
+      border:0;background:transparent;min-width:38px;height:34px;border-radius:999px;
+      color:var(--muted);font-size:11px;font-weight:800;cursor:pointer
+    }
+    .lang button.active{background:var(--gold);color:#111}
+    .theme{
+      width:42px;height:42px;border:1px solid var(--border);border-radius:50%;
+      background:var(--surface);color:var(--gold-2);cursor:pointer;font-size:18px
+    }
+    main{width:min(1040px,calc(100% - 28px));margin:auto;padding:46px 0 90px}
+    .hero{
+      display:grid;grid-template-columns:210px minmax(0,1fr);gap:42px;align-items:center;
+      padding:30px;border:1px solid var(--border);border-radius:28px;background:
+      linear-gradient(135deg,rgba(201,168,76,.10),transparent 45%),var(--surface);
+      box-shadow:var(--shadow)
+    }
+    .cover-wrap{position:relative}
+    .cover{
+      display:block;width:100%;aspect-ratio:1;object-fit:cover;border-radius:22px;
+      border:1px solid var(--border);box-shadow:0 16px 40px rgba(0,0,0,.35)
+    }
+    .cover-mark{
+      position:absolute;right:-11px;bottom:18px;display:grid;place-items:center;
+      width:52px;height:52px;border-radius:50%;background:var(--gold);color:#111;
+      border:5px solid var(--surface);font-weight:900
+    }
+    .eyebrow{margin:0 0 8px;color:var(--gold-2);font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase}
+    h1{margin:0;font:700 clamp(44px,8vw,78px)/.95 Georgia,"Times New Roman",serif;letter-spacing:-.035em}
+    .role{margin:14px 0 0;color:var(--gold-2);font-weight:700}
+    .intro{max-width:650px;margin:14px 0 0;color:var(--muted);font:400 17px/1.65 Georgia,"Times New Roman",serif}
+    .hero-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:24px}
+    .primary{
+      border:0;border-radius:999px;background:var(--gold);color:#111;padding:13px 19px;
+      font-weight:850;cursor:pointer;box-shadow:0 10px 24px rgba(201,168,76,.18)
+    }
+    .primary:hover{background:var(--gold-2)}
+    .stat{color:var(--muted);font-size:13px}
+    .catalog{margin-top:54px}
+    .catalog-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:18px}
+    h2{margin:0;font:700 clamp(30px,5vw,44px)/1 Georgia,"Times New Roman",serif}
+    .count{color:var(--muted);font-size:13px}
+    .toolbar{
+      display:grid;grid-template-columns:minmax(240px,1fr) auto;gap:12px;margin-bottom:16px
+    }
+    .search{position:relative}
+    .search:before{content:"⌕";position:absolute;left:16px;top:50%;transform:translateY(-52%);color:var(--gold);font-size:20px}
+    .search input{
+      width:100%;height:50px;padding:0 16px 0 45px;border:1px solid var(--border);border-radius:15px;
+      background:var(--surface);color:var(--text)
+    }
+    .search input::placeholder{color:var(--muted)}
+    .filters{display:flex;padding:4px;border:1px solid var(--border);border-radius:15px;background:var(--surface)}
+    .filter{
+      border:0;border-radius:11px;padding:0 15px;background:transparent;color:var(--muted);
+      cursor:pointer;font-size:13px;font-weight:750
+    }
+    .filter.active{background:var(--surface-3);color:var(--gold-2)}
+    .track-list{display:grid;gap:8px}
+    .track-row{
+      display:grid;grid-template-columns:50px minmax(0,1fr) auto;align-items:center;gap:10px;
+      min-height:70px;padding:8px 10px;border:1px solid transparent;border-radius:16px;
+      background:var(--surface);transition:transform .15s,border-color .15s,background .15s
+    }
+    .track-row:hover{transform:translateY(-1px);border-color:var(--border);background:var(--surface-2)}
+    .track-row.playing{border-color:var(--gold);background:linear-gradient(90deg,rgba(201,168,76,.12),var(--surface))}
+    .track-play{
+      width:44px;height:44px;border:1px solid var(--border);border-radius:50%;background:var(--surface-2);
+      color:var(--gold-2);cursor:pointer;font-size:14px
+    }
+    .track-main{
+      min-width:0;text-align:left;border:0;background:transparent;padding:8px 4px;cursor:pointer
+    }
+    .track-title{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:750}
+    .track-sub{display:block;margin-top:5px;color:var(--muted);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+    .track-actions{display:flex;align-items:center;gap:4px}
+    .icon-btn{
+      width:40px;height:40px;border:0;border-radius:50%;background:transparent;color:var(--muted);cursor:pointer
+    }
+    .icon-btn:hover{background:var(--surface-3);color:var(--gold-2)}
+    .icon-btn.favorite{color:var(--gold)}
+    .empty{padding:54px 20px;text-align:center;border:1px dashed var(--border);border-radius:18px;color:var(--muted)}
+    .player{
+      position:fixed;left:0;right:0;bottom:0;z-index:1000;visibility:hidden;
+      transform:translateY(110%);transition:transform .25s ease,visibility .25s;
+      padding:10px 14px calc(10px + var(--safe-bottom));border-top:1px solid var(--border);
+      background:color-mix(in srgb,var(--surface) 94%,transparent);backdrop-filter:blur(22px);
+      box-shadow:0 -18px 50px rgba(0,0,0,.35)
+    }
+    .player.visible{visibility:visible;transform:none}
+    .player-inner{
+      position:relative;width:min(1060px,100%);margin:auto;display:grid;
+      grid-template-columns:54px minmax(160px,1fr) auto minmax(180px,.8fr) 36px;
+      align-items:center;gap:14px
+    }
+    .player-cover{width:54px;height:54px;object-fit:cover;border-radius:11px;border:1px solid var(--border)}
+    .player-meta{min-width:0}
+    .player-title{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:800}
+    .player-status{margin-top:4px;color:var(--muted);font-size:11px}
+    .player-controls{display:flex;align-items:center;gap:8px}
+    .player-controls button{
+      width:40px;height:40px;border:1px solid var(--border);border-radius:50%;background:var(--surface-2);cursor:pointer
+    }
+    .player-controls .main-play{width:48px;height:48px;background:var(--gold);color:#111;border-color:var(--gold);font-size:16px}
+    .player-progress{display:grid;grid-template-columns:38px 1fr 38px;align-items:center;gap:8px}
+    .player-progress span{color:var(--muted);font-size:10px;text-align:center}
+    .player-progress input{width:100%;accent-color:var(--gold);cursor:pointer}
+    .player-close{border:0;background:transparent;color:var(--muted);cursor:pointer;font-size:22px}
+    .toast{
+      position:fixed;left:50%;bottom:calc(112px + var(--safe-bottom));z-index:1200;
+      transform:translate(-50%,16px);opacity:0;pointer-events:none;
+      padding:11px 17px;border:1px solid var(--border);border-radius:999px;background:var(--surface);
+      color:var(--text);box-shadow:var(--shadow);transition:.2s
+    }
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+    footer{margin-top:54px;padding-top:22px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;text-align:center}
+    @media(max-width:760px){
+      .topbar-inner{grid-template-columns:auto 1fr auto;gap:8px;min-height:64px}
+      .back{width:42px;padding:0;justify-content:center}
+      .back span{display:none}
+      .brand{justify-self:start;text-align:left}
+      .brand strong{font-size:15px}
+      .brand small{display:none}
+      .lang button{min-width:32px;padding:0 6px}
+      .theme{width:38px;height:38px}
+      main{padding-top:22px}
+      .hero{grid-template-columns:110px minmax(0,1fr);gap:18px;padding:18px;border-radius:22px}
+      .cover{border-radius:16px}
+      .cover-mark{width:38px;height:38px;right:-7px;bottom:10px;border-width:4px;font-size:12px}
+      h1{font-size:42px}
+      .intro{grid-column:1/-1;font-size:15px;margin-top:0}
+      .hero-actions{grid-column:1/-1;margin-top:2px}
+      .catalog{margin-top:38px}
+      .catalog-head{align-items:center}
+      .toolbar{grid-template-columns:1fr}
+      .filters{height:46px}
+      .filter{flex:1}
+      .track-row{grid-template-columns:46px minmax(0,1fr) auto;padding:7px 6px;min-height:66px}
+      .track-actions{gap:0}
+      .icon-btn{width:36px;height:36px}
+      .player{padding:9px 10px calc(9px + var(--safe-bottom))}
+      .player-inner{grid-template-columns:46px minmax(0,1fr) auto 30px;gap:9px}
+      .player-cover{width:46px;height:46px}
+      .player-controls{gap:5px}
+      .player-controls button{width:36px;height:36px}
+      .player-controls .main-play{width:42px;height:42px}
+      .player-controls button:first-child,.player-controls button:last-child{display:none}
+      .player-progress{grid-column:1/-1;grid-template-columns:32px 1fr 32px;gap:6px}
+      body.player-open{padding-bottom:calc(128px + var(--safe-bottom))}
+      .toast{bottom:calc(132px + var(--safe-bottom));max-width:calc(100% - 24px);white-space:nowrap}
+    }
+    @media(max-width:410px){
+      .lang button{min-width:29px;font-size:10px}
+      .hero{grid-template-columns:92px minmax(0,1fr)}
+      h1{font-size:36px}
+      .role{font-size:12px}
+      .primary{width:100%}
+      .track-sub{font-size:9px}
+    }
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="back" href="index.html#artists" aria-label="Գլխավոր էջ"><b aria-hidden="true">←</b><span data-i18n="back">Գլխավոր էջ</span></a>
+      <a class="brand" href="index.html"><strong>IMASTUN</strong><small>Studio</small></a>
+      <div class="controls">
+        <div class="lang" role="group" aria-label="Փոխել լեզուն">
+          <button type="button" data-lang="hy" aria-pressed="true">AM</button>
+          <button type="button" data-lang="ru" aria-pressed="false">RU</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <button class="theme" id="theme-toggle" type="button" aria-label="Փոխել գունային ռեժիմը">☾</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="artist-name">
+      <div class="cover-wrap">
+        <img class="cover" src="authors/imastun/cover.jpg" alt="Imastun" width="500" height="500" fetchpriority="high">
+        <span class="cover-mark" aria-hidden="true">IS</span>
+      </div>
+      <div>
+        <p class="eyebrow">Imastun Studio</p>
+        <h1 id="artist-name">Imastun</h1>
+        <p class="role" data-i18n="role">Բանաստեղծ • արտիստ • պրոդյուսեր</p>
+      </div>
+      <p class="intro" data-i18n="intro">Imastun-ի հեղինակային երգերն ու բազմալեզու երաժշտական նախագծերը՝ մեկ առանձին, թեթև էջում։</p>
+      <div class="hero-actions">
+        <button class="primary" id="play-first" type="button"><span aria-hidden="true">▶</span> <span data-i18n="playFirst">Նվագարկել առաջին երգը</span></button>
+        <span class="stat">46 <span data-i18n="songWord">երգ</span></span>
+      </div>
+    </section>
+
+    <section class="catalog" aria-labelledby="catalog-title">
+      <div class="catalog-head">
+        <h2 id="catalog-title" data-i18n="catalog">Երգացանկ</h2>
+        <span class="count" id="result-count">46 երգ</span>
+      </div>
+      <div class="toolbar">
+        <label class="search">
+          <span style="position:absolute;clip:rect(0,0,0,0);width:1px;height:1px;overflow:hidden" data-i18n="search">Որոնել երգերում…</span>
+          <input id="search" type="search" autocomplete="off" data-i18n-placeholder="search" placeholder="Որոնել երգերում…">
+        </label>
+        <div class="filters" role="group" aria-label="Երգերի զտիչ">
+          <button class="filter active" type="button" data-filter="all" data-i18n="all">Բոլորը</button>
+          <button class="filter" type="button" data-filter="favorites" data-i18n="favorites">Սիրվածները</button>
+        </div>
+      </div>
+      <div class="track-list" id="track-list"></div>
+      <div class="empty" id="empty" hidden data-i18n="noResults">Այս որոնմամբ երգ չի գտնվել։</div>
+    </section>
+
+    <footer>© Imastun Studio</footer>
+  </main>
+
+  <audio id="audio" preload="metadata"></audio>
+  <section class="player" id="player" aria-label="Ձայնային նվագարկիչ">
+    <div class="player-inner">
+      <img class="player-cover" id="player-cover" src="authors/imastun/cover.jpg" alt="">
+      <div class="player-meta">
+        <div class="player-title" id="player-title">Imastun</div>
+        <div class="player-status" id="player-status">Պատրաստ է</div>
+      </div>
+      <div class="player-controls">
+        <button id="prev" type="button" aria-label="Նախորդ երգը">‹</button>
+        <button class="main-play" id="main-play" type="button" aria-label="Նվագարկել">▶</button>
+        <button id="next" type="button" aria-label="Հաջորդ երգը">›</button>
+      </div>
+      <div class="player-progress">
+        <span id="current-time">0:00</span>
+        <input id="progress" type="range" min="0" max="1000" value="0" aria-label="Երգի ընթացքը">
+        <span id="duration">0:00</span>
+      </div>
+      <button class="player-close" id="player-close" type="button" aria-label="Փակել նվագարկիչը">×</button>
+    </div>
+  </section>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+  (function () {
+    "use strict";
+
+    var TRACKS = [{"id":"Astghayin_Shghta_A","label":"Աստղային շղթա","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/Astghayin_Shghta_A.mp3"},{"id":"The Sun Cries Too(Արևն էլ է լաց լինում)","label":"Արևն էլ է լացում (անգլ)","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/The%20Sun%20Cries%20Too(%D4%B1%D6%80%D6%87%D5%B6%20%D5%A7%D5%AC%20%D5%A7%20%D5%AC%D5%A1%D6%81%20%D5%AC%D5%AB%D5%B6%D5%B8%D6%82%D5%B4).mp3"},{"id":"Vahan_Teryan_Gisher","label":"Գիշեր (Վ.Տ)","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/Vahan_Teryan_Gisher.mp3"},{"id":"B_Es_im_anush_Hayastani","label":"Ես իմ անուշ Հայաստանի","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/B_Es_im_anush_Hayastani.mp3"},{"id":"El_ban_chunem_Remix","label":"Էլ բան չունեմ","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/El_ban_chunem_Remix.mp3"},{"id":"inchi-hamar","label":"Ինչի համար","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/inchi-hamar.mp3"},{"id":"inch_e_koracy_qarcr","label":"Ինչո՞ւ է կորածն այսքան քաղցրանում","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/inch_e_koracy_qarcr.mp3"},{"id":"lur-heraxos","label":"Լուռ հեռախոս","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/lur-heraxos.mp3"},{"id":"lur uji simfonia","label":"Լուռ ուժի սիմֆոնիան","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/lur%20uji%20simfonia.mp3"},{"id":"luse arzaganq","label":"Լուսե արձագանք","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/luse%20arzaganq.mp3"},{"id":"Luse_Hekiat_A","label":"Լուսե հեքիաթ","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/Luse_Hekiat_A.mp3"},{"id":"Lrutyan_unker","label":"Լռության ընկեր","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/Lrutyan_unker.mp3"},{"id":"Lsir_vordis","label":"Լսիր որդիս","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/Lsir_vordis.mp3"},{"id":"Katak_Yari_Ergu","label":"Կատակ յարի երգը","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/Katak_Yari_Ergu.mp3"},{"id":"Katak_Yari_Ergu rem","label":"Կատակ յարի երգը 2","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/Katak_Yari_Ergu%20rem.mp3"},{"id":"haverji-erty","label":"Հավերժի երգը","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/haverji-erty.mp3"},{"id":"hogu-arzaganq","label":"Հոգու արձագանք","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/hogu-arzaganq.mp3"},{"id":"Meghki_ezrin_Remix","label":"Մեղքի եզրին (ռուսերեն)","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/Meghki_ezrin_Remix.mp3"},{"id":"shshnjatc","label":"Շշնջաց","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/shshnjatc.mp3"},{"id":"shshnjatc-noric","label":"Շշնջաց նորից","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/shshnjatc-noric.mp3"},{"id":"shepot","label":"Շշունջ","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/shepot.mp3"},{"id":"ser-anurji","label":"Սեր անուրջի","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/ser-anurji.mp3"},{"id":"siro-kenacy","label":"Սիրո կենաց","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/siro-kenacy.mp3"},{"id":"Поцелуй_ветра","label":"Քամու համբույրից (Հ.Ս)","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%D0%9F%D0%BE%D1%86%D0%B5%D0%BB%D1%83%D0%B9_%D0%B2%D0%B5%D1%82%D1%80%D0%B0.mp3"},{"id":"Vahan_Teryan_MEGhAVOR_AChKERU","label":"Քո մեղավոր աչքերը (Վ.Տ)","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/Vahan_Teryan_MEGhAVOR_AChKERU.mp3"},{"id":"qo-jinj-hogin","label":"Քո ջինջ հոգին","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/qo-jinj-hogin.mp3"},{"id":"pastayannaya jajda","label":"Постоянная жажда","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/pastayannaya%20jajda.mp3"},{"id":"andadar carav","label":"Անդադար ծարավ","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/andadar%20carav.mp3"},{"id":"The Eternal Thirst","label":"The Eternal Thirst","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/The%20Eternal%20Thirst.mp3"},{"id":"im ser","label":"Իմ սեր","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/im%20ser.mp3"},{"id":"sirelis","label":"Սիրելիս","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/sirelis.mp3"},{"id":"taxicy vat margare e","label":"Թախիծը վատ մարգարե է","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/taxicy%20vat%20margare%20e.mp3"},{"id":"ergi chapov","label":"Երգի Չափով","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/ergi%20chapov.mp3"},{"id":"На расстоянии песни","label":"На расстоянии песни","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%D0%9D%D0%B0%20%D1%80%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B8%20%D0%BF%D0%B5%D1%81%D0%BD%D0%B8.mp3"},{"id":"A Song Away","label":"A Song Away","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/A%20Song%20Away.mp3"},{"id":"Կատակ Յարի Երգը","label":"Կատակ Յարի Երգը","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%D4%BF%D5%A1%D5%BF%D5%A1%D5%AF%20%D5%85%D5%A1%D6%80%D5%AB%20%D4%B5%D6%80%D5%A3%D5%A8.mp3"},{"id":"Roses in a Sieve","label":"Roses In A Sieve","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/Roses%20in%20a%20Sieve.mp3"},{"id":"Ρόδα στο Κόσκινο","label":"Ρόδα στο Κόσκινο","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%CE%A1%CF%8C%CE%B4%CE%B1%20%CF%83%CF%84%CE%BF%20%CE%9A%CF%8C%CF%83%CE%BA%CE%B9%CE%BD%CE%BF.mp3"},{"id":"Песня шутка","label":"Песня шутка","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%D0%9F%D0%B5%D1%81%D0%BD%D1%8F%20%D1%88%D1%83%D1%82%D0%BA%D0%B0.mp3"},{"id":"ვარდები საცერში","label":"ვარდები საცერში","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%E1%83%95%E1%83%90%E1%83%A0%E1%83%93%E1%83%94%E1%83%91%E1%83%98%20%E1%83%A1%E1%83%90%E1%83%AA%E1%83%94%E1%83%A0%E1%83%A8%E1%83%98.mp3"},{"id":"Կատակ յարի երգ պար 4 լեզվով","label":"Կատակ յարի երգ պար 4 լեզվով","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%D4%BF%D5%A1%D5%BF%D5%A1%D5%AF%20%D5%B5%D5%A1%D6%80%D5%AB%20%D5%A5%D6%80%D5%A3%20%D5%BA%D5%A1%D6%80%204%20%D5%AC%D5%A5%D5%A6%D5%BE%D5%B8%D5%BE.mp3"},{"id":"Our Lovely Mermaids","label":"Our Lovely Mermaids","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/Our%20Lovely%20Mermaids.mp3"},{"id":"Эй наши русалки","label":"Эй наши русалки","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%D0%AD%D0%B9%20%D0%BD%D0%B0%D1%88%D0%B8%20%D1%80%D1%83%D1%81%D0%B0%D0%BB%D0%BA%D0%B8.mp3"},{"id":"Ջրահարսեր Ремикс Рեմикс_2","label":"Ջրահարսեր Ремикс Рեմикс 2","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%D5%8B%D6%80%D5%A1%D5%B0%D5%A1%D6%80%D5%BD%D5%A5%D6%80%20%D0%A0%D0%B5%D0%BC%D0%B8%D0%BA%D1%81%20%D0%A0%D5%A5%D5%B4%D0%B8%D0%BA%D1%81_2.mp3"},{"id":"Ջրահարսեր Ремикс Рեմикс_3","label":"Ջրահարսեր Ремикс Рեմикс 3","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%D5%8B%D6%80%D5%A1%D5%B0%D5%A1%D6%80%D5%BD%D5%A5%D6%80%20%D0%A0%D0%B5%D0%BC%D0%B8%D0%BA%D1%81%20%D0%A0%D5%A5%D5%B4%D0%B8%D0%BA%D1%81_3.mp3"},{"id":"ჩვენი ქალთევზებო","label":"ჩვენი ქალთევზებო","src":"https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%E1%83%A9%E1%83%95%E1%83%94%E1%83%9C%E1%83%98%20%E1%83%A5%E1%83%90%E1%83%9A%E1%83%97%E1%83%94%E1%83%95%E1%83%96%E1%83%94%E1%83%91%E1%83%9D.mp3"}];
+    var I18N = {"hy":{"back":"Գլխավոր էջ","role":"Բանաստեղծ • արտիստ • պրոդյուսեր","intro":"Imastun-ի հեղինակային երգերն ու բազմալեզու երաժշտական նախագծերը՝ մեկ առանձին, թեթև էջում։","catalog":"Երգացանկ","search":"Որոնել երգերում…","all":"Բոլորը","favorites":"Սիրվածները","playFirst":"Նվագարկել առաջին երգը","songWord":"երգ","noResults":"Այս որոնմամբ երգ չի գտնվել։","play":"Նվագարկել","pause":"Դադար","previous":"Նախորդ երգը","next":"Հաջորդ երգը","close":"Փակել նվագարկիչը","favorite":"Ավելացնել սիրվածներին","unfavorite":"Հեռացնել սիրվածներից","share":"Կիսվել","copied":"Հղումը պատճենվեց","copyFailed":"Չհաջողվեց պատճենել հղումը","audioError":"Ձայնային ֆայլը չբացվեց։ Փորձեք նորից։","tapAgain":"Սեղմեք նվագարկել ևս մեկ անգամ։","ready":"Պատրաստ է","loading":"Բեռնվում է…","playing":"Նվագարկվում է","paused":"Դադարեցված է","theme":"Փոխել գունային ռեժիմը","language":"Փոխել լեզուն","artist":"Imastun-ի երգ"},"ru":{"back":"Главная","role":"Поэт • артист • продюсер","intro":"Авторские песни Imastun и многоязычные музыкальные проекты на одной отдельной лёгкой странице.","catalog":"Песни","search":"Поиск по песням…","all":"Все","favorites":"Избранное","playFirst":"Включить первую песню","songWord":"песен","noResults":"По вашему запросу песен не найдено.","play":"Воспроизвести","pause":"Пауза","previous":"Предыдущая песня","next":"Следующая песня","close":"Закрыть плеер","favorite":"Добавить в избранное","unfavorite":"Убрать из избранного","share":"Поделиться","copied":"Ссылка скопирована","copyFailed":"Не удалось скопировать ссылку","audioError":"Аудиофайл не открылся. Попробуйте ещё раз.","tapAgain":"Нажмите воспроизведение ещё раз.","ready":"Готово","loading":"Загрузка…","playing":"Воспроизводится","paused":"На паузе","theme":"Сменить тему","language":"Сменить язык","artist":"Песня Imastun"},"en":{"back":"Home","role":"Poet • artist • producer","intro":"Imastun’s original songs and multilingual music projects on one dedicated, lightweight page.","catalog":"Track list","search":"Search tracks…","all":"All","favorites":"Favorites","playFirst":"Play the first track","songWord":"tracks","noResults":"No tracks match this search.","play":"Play","pause":"Pause","previous":"Previous track","next":"Next track","close":"Close player","favorite":"Add to favorites","unfavorite":"Remove from favorites","share":"Share","copied":"Link copied","copyFailed":"Could not copy the link","audioError":"The audio file could not be opened. Please try again.","tapAgain":"Tap play once more.","ready":"Ready","loading":"Loading…","playing":"Playing","paused":"Paused","theme":"Change theme","language":"Change language","artist":"Imastun track"}};
+    var state = { lang: "hy", filter: "all", query: "", current: -1 };
+    var audio = document.getElementById("audio");
+    var player = document.getElementById("player");
+    var list = document.getElementById("track-list");
+    var empty = document.getElementById("empty");
+    var resultCount = document.getElementById("result-count");
+    var search = document.getElementById("search");
+    var playButton = document.getElementById("main-play");
+    var playerTitle = document.getElementById("player-title");
+    var playerStatus = document.getElementById("player-status");
+    var progress = document.getElementById("progress");
+    var currentTime = document.getElementById("current-time");
+    var duration = document.getElementById("duration");
+    var toast = document.getElementById("toast");
+    var toastTimer = 0;
+
+    function read(key, fallback) {
+      try {
+        var value = localStorage.getItem(key);
+        return value === null ? fallback : value;
+      } catch (error) {
+        return fallback;
+      }
+    }
+
+    function write(key, value) {
+      try { localStorage.setItem(key, value); } catch (error) {}
+    }
+
+    function tr(key) {
+      return (I18N[state.lang] && I18N[state.lang][key]) || I18N.hy[key] || key;
+    }
+
+    function favorites() {
+      try {
+        var value = JSON.parse(read("imastun_favorites", "[]"));
+        return Array.isArray(value) ? value : [];
+      } catch (error) {
+        return [];
+      }
+    }
+
+    function isFavorite(id) {
+      return favorites().indexOf(id) >= 0;
+    }
+
+    function toggleFavorite(id) {
+      var value = favorites();
+      var found = value.indexOf(id);
+      if (found >= 0) value.splice(found, 1);
+      else value.push(id);
+      write("imastun_favorites", JSON.stringify(value));
+      renderTracks();
+    }
+
+    function visibleTracks() {
+      var term = state.query.trim().toLocaleLowerCase(state.lang === "hy" ? "hy-AM" : state.lang);
+      return TRACKS.map(function (track, index) {
+        return { track: track, index: index };
+      }).filter(function (item) {
+        if (state.filter === "favorites" && !isFavorite(item.track.id)) return false;
+        if (!term) return true;
+        return (item.track.label + " " + item.track.id).toLocaleLowerCase().indexOf(term) >= 0;
+      });
+    }
+
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>"']/g, function (character) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character];
+      });
+    }
+
+    function renderTracks() {
+      var items = visibleTracks();
+      resultCount.textContent = items.length + " " + tr("songWord");
+      empty.hidden = items.length !== 0;
+      list.innerHTML = items.map(function (item) {
+        var favorite = isFavorite(item.track.id);
+        var playing = state.current === item.index && !audio.paused;
+        return '<article class="track-row' + (state.current === item.index ? ' playing' : '') + '" data-index="' + item.index + '">' +
+          '<button class="track-play" type="button" data-action="play" aria-label="' + escapeHtml(playing ? tr("pause") : tr("play")) + '">' +
+          (playing ? "❚❚" : "▶") + '</button>' +
+          '<button class="track-main" type="button" data-action="play">' +
+          '<span class="track-title">' + escapeHtml(item.track.label) + '</span>' +
+          '<span class="track-sub">Imastun · ' + String(item.index + 1).padStart(2, "0") + '</span></button>' +
+          '<div class="track-actions">' +
+          '<button class="icon-btn' + (favorite ? ' favorite' : '') + '" type="button" data-action="favorite" aria-label="' +
+          escapeHtml(favorite ? tr("unfavorite") : tr("favorite")) + '">' + (favorite ? "♥" : "♡") + '</button>' +
+          '<button class="icon-btn" type="button" data-action="share" aria-label="' + escapeHtml(tr("share")) + '">↗</button>' +
+          '</div></article>';
+      }).join("");
+    }
+
+    function formatTime(seconds) {
+      if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
+      var minutes = Math.floor(seconds / 60);
+      var rest = Math.floor(seconds % 60);
+      return minutes + ":" + String(rest).padStart(2, "0");
+    }
+
+    function setStatus(key) {
+      playerStatus.textContent = tr(key);
+    }
+
+    function syncPlayer() {
+      var active = state.current >= 0 ? TRACKS[state.current] : null;
+      var playing = active && !audio.paused;
+      playButton.textContent = playing ? "❚❚" : "▶";
+      playButton.setAttribute("aria-label", tr(playing ? "pause" : "play"));
+      document.getElementById("prev").setAttribute("aria-label", tr("previous"));
+      document.getElementById("next").setAttribute("aria-label", tr("next"));
+      document.getElementById("player-close").setAttribute("aria-label", tr("close"));
+      renderTracks();
+    }
+
+    function showPlayer() {
+      player.classList.add("visible");
+      document.body.classList.add("player-open");
+    }
+
+    function loadTrack(index, autoplay) {
+      if (index < 0 || index >= TRACKS.length) return;
+      state.current = index;
+      var track = TRACKS[index];
+
+      showPlayer();
+      playerTitle.textContent = track.label;
+      document.getElementById("player-cover").src = "authors/imastun/cover.jpg";
+      progress.value = "0";
+      currentTime.textContent = "0:00";
+      duration.textContent = "0:00";
+      setStatus("loading");
+
+      if (audio.src !== track.src) {
+        audio.src = track.src;
+        audio.load();
+      }
+
+      write("imastun_last_track", JSON.stringify({
+        artistId: "imastun", song: track.id, label: track.label, artistName: "Imastun"
+      }));
+
+      if ("mediaSession" in navigator && "MediaMetadata" in window) {
+        try {
+          navigator.mediaSession.metadata = new MediaMetadata({
+            title: track.label,
+            artist: "Imastun",
+            album: "Imastun Studio",
+            artwork: [{ src: new URL("authors/imastun/cover.jpg", location.href).href, sizes: "500x500", type: "image/jpeg" }]
+          });
+        } catch (error) {}
+      }
+
+      syncPlayer();
+      if (autoplay) {
+        var promise = audio.play();
+        if (promise && promise.catch) {
+          promise.catch(function () {
+            setStatus("ready");
+            showToast(tr("tapAgain"));
+            syncPlayer();
+          });
+        }
+      }
+    }
+
+    function togglePlay(index) {
+      if (state.current !== index) {
+        loadTrack(index, true);
+        return;
+      }
+      if (audio.paused) {
+        var promise = audio.play();
+        if (promise && promise.catch) promise.catch(function () { showToast(tr("tapAgain")); });
+      } else {
+        audio.pause();
+      }
+    }
+
+    function move(direction) {
+      if (state.current < 0) {
+        loadTrack(direction > 0 ? 0 : TRACKS.length - 1, true);
+        return;
+      }
+      var next = (state.current + direction + TRACKS.length) % TRACKS.length;
+      loadTrack(next, true);
+    }
+
+    function shareTrack(index) {
+      var track = TRACKS[index];
+      var url = new URL("imastun.html", location.href);
+      url.searchParams.set("play", "imastun|" + track.id);
+      var data = { title: track.label, text: track.label + " — Imastun", url: url.href };
+
+      if (navigator.share) {
+        navigator.share(data).catch(function () {});
+        return;
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url.href).then(function () {
+          showToast(tr("copied"));
+        }).catch(function () {
+          showToast(tr("copyFailed"));
+        });
+        return;
+      }
+      showToast(url.href);
+    }
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function () { toast.classList.remove("show"); }, 2200);
+    }
+
+    function applyLanguage(lang) {
+      state.lang = I18N[lang] ? lang : "hy";
+      document.documentElement.lang = state.lang;
+      write("imastun_language", state.lang);
+      document.querySelectorAll("[data-lang]").forEach(function (button) {
+        var active = button.dataset.lang === state.lang;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+      document.querySelectorAll("[data-i18n]").forEach(function (element) {
+        element.textContent = tr(element.dataset.i18n);
+      });
+      document.querySelectorAll("[data-i18n-placeholder]").forEach(function (element) {
+        element.placeholder = tr(element.dataset.i18nPlaceholder);
+      });
+      document.querySelector(".lang").setAttribute("aria-label", tr("language"));
+      document.getElementById("theme-toggle").setAttribute("aria-label", tr("theme"));
+      setStatus(audio.paused ? (state.current >= 0 ? "paused" : "ready") : "playing");
+      syncPlayer();
+    }
+
+    list.addEventListener("click", function (event) {
+      var button = event.target.closest("[data-action]");
+      var row = event.target.closest(".track-row");
+      if (!button || !row) return;
+      var index = Number(row.dataset.index);
+      if (button.dataset.action === "play") togglePlay(index);
+      else if (button.dataset.action === "favorite") toggleFavorite(TRACKS[index].id);
+      else if (button.dataset.action === "share") shareTrack(index);
+    });
+
+    search.addEventListener("input", function () {
+      state.query = search.value;
+      renderTracks();
+    });
+
+    document.querySelectorAll("[data-filter]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        state.filter = button.dataset.filter;
+        document.querySelectorAll("[data-filter]").forEach(function (candidate) {
+          candidate.classList.toggle("active", candidate === button);
+        });
+        renderTracks();
+      });
+    });
+
+    document.querySelectorAll("[data-lang]").forEach(function (button) {
+      button.addEventListener("click", function () { applyLanguage(button.dataset.lang); });
+    });
+
+    document.getElementById("play-first").addEventListener("click", function () { loadTrack(0, true); });
+    playButton.addEventListener("click", function () {
+      if (state.current < 0) loadTrack(0, true);
+      else togglePlay(state.current);
+    });
+    document.getElementById("prev").addEventListener("click", function () { move(-1); });
+    document.getElementById("next").addEventListener("click", function () { move(1); });
+    document.getElementById("player-close").addEventListener("click", function () {
+      audio.pause();
+      player.classList.remove("visible");
+      document.body.classList.remove("player-open");
+    });
+
+    progress.addEventListener("input", function () {
+      if (Number.isFinite(audio.duration) && audio.duration > 0) {
+        audio.currentTime = (Number(progress.value) / 1000) * audio.duration;
+      }
+    });
+
+    audio.addEventListener("play", function () { setStatus("playing"); syncPlayer(); });
+    audio.addEventListener("pause", function () {
+      if (!audio.ended && state.current >= 0) setStatus("paused");
+      syncPlayer();
+    });
+    audio.addEventListener("waiting", function () { setStatus("loading"); });
+    audio.addEventListener("canplay", function () {
+      if (audio.paused) setStatus("ready");
+    });
+    audio.addEventListener("loadedmetadata", function () {
+      duration.textContent = formatTime(audio.duration);
+    });
+    audio.addEventListener("timeupdate", function () {
+      currentTime.textContent = formatTime(audio.currentTime);
+      duration.textContent = formatTime(audio.duration);
+      progress.value = Number.isFinite(audio.duration) && audio.duration > 0
+        ? String(Math.round((audio.currentTime / audio.duration) * 1000)) : "0";
+    });
+    audio.addEventListener("ended", function () { move(1); });
+    audio.addEventListener("error", function () {
+      setStatus("ready");
+      showToast(tr("audioError"));
+      syncPlayer();
+    });
+
+    if ("mediaSession" in navigator) {
+      try {
+        navigator.mediaSession.setActionHandler("play", function () { if (state.current >= 0) audio.play(); });
+        navigator.mediaSession.setActionHandler("pause", function () { audio.pause(); });
+        navigator.mediaSession.setActionHandler("previoustrack", function () { move(-1); });
+        navigator.mediaSession.setActionHandler("nexttrack", function () { move(1); });
+      } catch (error) {}
+    }
+
+    document.getElementById("theme-toggle").addEventListener("click", function () {
+      var next = document.body.classList.contains("light-mode") ? "dark" : "light";
+      document.body.classList.toggle("light-mode", next === "light");
+      document.getElementById("theme-toggle").textContent = next === "light" ? "☀" : "☾";
+      write("imastun_theme", next);
+    });
+
+    var savedTheme = read("imastun_theme", "dark");
+    document.body.classList.toggle("light-mode", savedTheme === "light");
+    document.getElementById("theme-toggle").textContent = savedTheme === "light" ? "☀" : "☾";
+
+    var savedLanguage = read("imastun_language", "hy");
+    applyLanguage(savedLanguage);
+
+    var requested = new URLSearchParams(location.search).get("play");
+    if (requested) {
+      var requestedId = requested.indexOf("imastun|") === 0 ? requested.slice(8) : requested;
+      var requestedIndex = TRACKS.findIndex(function (track) { return track.id === requestedId; });
+      if (requestedIndex >= 0) {
+        loadTrack(requestedIndex, false);
+        requestAnimationFrame(function () {
+          var row = document.querySelector('.track-row[data-index="' + requestedIndex + '"]');
+          if (row) row.scrollIntoView({ block: "center" });
+        });
+      }
+    } else {
+      renderTracks();
+    }
+
+    document.querySelectorAll("img").forEach(function (image) {
+      image.addEventListener("error", function () { image.src = "logo.png"; }, { once: true });
+    });
+  })();
+  </script>
+</body>
+</html>
