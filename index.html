@@ -744,7 +744,63 @@
     .tab-pane.active { display: block; }
 
     /* ── TRACK LIST ── */
-    .track-list { display: flex; flex-direction: column; gap: 4px; }
+    .track-list-wrap { position: relative; }
+
+    .track-list {
+      display: flex; flex-direction: column; gap: 4px;
+    }
+
+    .track-list.is-collapsed {
+      max-height: 520px;
+      overflow: hidden;
+    }
+
+    .track-list-wrap.has-collapsed::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: 56px;
+      height: 96px;
+      pointer-events: none;
+      background: linear-gradient(to bottom, rgba(18,18,18,0), var(--surface2) 82%);
+    }
+
+    .track-list-toggle {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      min-height: 44px;
+      margin-top: 12px;
+      padding: 10px 16px;
+      border: 1px solid var(--gold-dim);
+      border-radius: 2px;
+      background: rgba(201,168,76,0.06);
+      color: var(--gold-light);
+      font: 600 10px/1.3 'Syne', sans-serif;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background .2s, border-color .2s, color .2s;
+    }
+
+    .track-list-toggle:hover,
+    .track-list-toggle:focus-visible {
+      background: rgba(201,168,76,0.12);
+      border-color: var(--gold);
+      color: var(--white);
+      outline: none;
+    }
+
+    .track-list-toggle span {
+      display: inline-block;
+      margin-left: 8px;
+      font-size: 15px;
+      line-height: .7;
+    }
+
+    @media (max-width: 700px) {
+      .track-list.is-collapsed { max-height: 420px; }
+      .track-list-wrap.has-collapsed::after { height: 82px; }
+    }
 
     .track-item {
       display: grid; grid-template-columns: 28px 1fr auto auto;
@@ -3697,6 +3753,21 @@
       item.addEventListener('click', () => playTrack(parseInt(item.dataset.pidx)));
     });
 
+    panel.querySelectorAll('.track-list-toggle').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        const list = document.getElementById(btn.getAttribute('aria-controls'));
+        if (!list) return;
+        const expanding = btn.getAttribute('aria-expanded') !== 'true';
+        btn.setAttribute('aria-expanded', String(expanding));
+        list.classList.toggle('is-collapsed', !expanding);
+        list.closest('.track-list-wrap')?.classList.toggle('has-collapsed', !expanding);
+        const label = expanding ? btn.dataset.collapseLabel : btn.dataset.expandLabel;
+        btn.innerHTML = `${label} <span aria-hidden="true">${expanding ? '⌃' : '⌄'}</span>`;
+        if (!expanding) panel.querySelector('.panel-header')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
     panel.querySelectorAll('.track-fav-btn').forEach(btn => {
       btn.addEventListener('click', e => {
         e.stopPropagation();
@@ -3942,6 +4013,8 @@
       return '';                              // single language: default (white)
     };
     let lastPoet = null;
+    const trackListId = `track-list-${artist.id}`;
+    const shouldCollapse = songs.length > 8;
     const langLegend = `<div class="lang-legend" style="font-family:'Inter',sans-serif;margin:0 0 14px;padding-bottom:10px;border-bottom:1px solid rgba(201,168,76,0.15);">
       <div style="font-size:9.5px;color:var(--text-dim);opacity:0.65;letter-spacing:0.03em;margin-bottom:6px;">Երգի տեքստի լեզուների քանակը · Число языков в тексте песни · Song text language count</div>
       <div style="display:flex;gap:16px;align-items:center;font-size:11px;color:var(--text-dim);flex-wrap:wrap;">
@@ -3950,7 +4023,7 @@
         <span style="display:flex;align-items:center;gap:5px;"><span style="width:8px;height:8px;border-radius:50%;background:#f5f0e8;display:inline-block;border:1px solid rgba(255,255,255,0.3);"></span>1</span>
       </div>
     </div>`;
-    return `<div class="track-list">${langLegend}${songs.map((song, i) => {
+    return `<div class="track-list-wrap${shouldCollapse ? ' has-collapsed' : ''}">\n      <div class="track-list${shouldCollapse ? ' is-collapsed' : ''}" id="${trackListId}">${langLegend}${songs.map((song, i) => {
       const pIdx = playlist.findIndex(p => p.artistId === artist.id && p.song === song);
       const fav = isFav(artist.id, song);
       let header = '';
@@ -3998,7 +4071,7 @@
         <button class="track-share-btn" data-artist="${artist.id}" data-song="${song}" title="Կիսվել" aria-label="Կիսվել այս երգով" style="background:none;border:none;cursor:pointer;color:var(--text-dim);display:flex;align-items:center;padding:4px;transition:color 0.2s;">${iconShare()}</button>
         <button class="track-play-btn" aria-label="Նվագարկել այս երգը">${iconPlay()}</button>
       </div>`;
-    }).join('')}</div>`;
+    }).join('')}</div>${shouldCollapse ? `<button type="button" class="track-list-toggle" aria-expanded="false" aria-controls="${trackListId}" data-expand-label="Ցուցադրել բոլոր ${songs.length} երգերը" data-collapse-label="Փակել երգացանկը">Ցուցադրել բոլոր ${songs.length} երգերը <span aria-hidden="true">⌄</span></button>` : ''}</div>`;
   }
 
   function buildVideoPanel(artist) {
