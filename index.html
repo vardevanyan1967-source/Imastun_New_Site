@@ -1710,7 +1710,7 @@
         box-shadow: 0 5px 20px rgba(201,168,76,.48);
         font: 300 30px/1 'Syne', sans-serif;
         cursor: pointer;
-        transition: transform .22s ease, box-shadow .22s ease;
+        transition: bottom .22s ease, transform .22s ease, box-shadow .22s ease;
       }
       #float-actions-toggle:hover { box-shadow: 0 7px 26px rgba(201,168,76,.65); }
       #donate-float-btn,
@@ -1737,6 +1737,10 @@
       body.float-actions-open .messenger-btn { bottom: calc(var(--player-h) + 136px) !important; }
       body.float-actions-open #donate-float-btn { bottom: calc(var(--player-h) + 188px) !important; }
       body.float-actions-open #float-actions-toggle { transform: rotate(45deg); }
+      body.resume-banner-open #float-actions-toggle { bottom: calc(var(--player-h) + 112px); }
+      body.resume-banner-open.float-actions-open #wa-btn { bottom: calc(var(--player-h) + 168px) !important; }
+      body.resume-banner-open.float-actions-open .messenger-btn { bottom: calc(var(--player-h) + 220px) !important; }
+      body.resume-banner-open.float-actions-open #donate-float-btn { bottom: calc(var(--player-h) + 272px) !important; }
     }
 </style>
   <!-- Google Analytics -->
@@ -4422,6 +4426,18 @@
       mobileQuery.addEventListener('change', event => {
         if (!event.matches) setOpen(false);
       });
+    }
+
+    const resumeBanner = document.getElementById('resume-banner');
+    if (resumeBanner) {
+      const syncResumeBanner = () => {
+        document.body.classList.toggle('resume-banner-open', resumeBanner.classList.contains('visible'));
+      };
+      new MutationObserver(syncResumeBanner).observe(resumeBanner, {
+        attributes: true,
+        attributeFilter: ['class']
+      });
+      syncResumeBanner();
     }
   })();
   </script>
