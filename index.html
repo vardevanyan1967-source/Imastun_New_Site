@@ -7,7 +7,7 @@
   <link rel="canonical" href="https://imastun.org/" />
   <meta name="description" content="Իմաստուն Ստուդիո՝ հայկական երաժշտության ստուդիո։ Լսիր Սիլվա Գուլանյանի, Գո Հարայի, հայ բանաստեղծների և Shakespeare Reimagined նախագծի երգերը։" />
   <meta name="keywords" content="հայկական երաժշտություն, Իմաստուն Ստուդիո, Silva Gulanyan, Go Hara, Vahan Teryan, Hamo Sahyan, Paruyr Sevak, Armenian music, Armenian poetry songs" />
-  <meta name="keywords" content="Imastun Studio, Իմաստուն Ստուդիո, Silva Gulanyan, Go Hara, Narine Balasbekyan, հայկական երաժշտություն, Armenian music" />
+  <meta name="keywords" content="Imastun Studio, Իմաստուն Ստուդիո, Silva Gulanyan, Go Hara, հայկական երաժշտություն, Armenian music" />
   <meta name="author" content="Imastun Studio" />
   <meta property="og:title" content="Իմաստուն Ստուդիո — Imastun Studio" />
   <meta property="og:description" content="Հայկական երաժշտության ստուդիո՝ 300+ երգ, հայ բանաստեղծների ստեղծագործություններ երաժշտության մեջ, Shakespeare Reimagined նախագիծը և ավելին։" />
@@ -2007,10 +2007,6 @@
       ]
     },
     {
-      id: 'narine-balasbekyan', name: 'Narine Balasbekyan', role: 'Vocalist & Composer',
-      songs: ['kiny','sirena-hima']
-    },
-    {
       id: 'shakespeare-reimagined', name: 'Shakespeare Reimagined', role: 'Sonnets in Song', page: 'shakespeare.html',
       songs: [
         'Սոնետ 1','Սոնետ 2','Սոնետ 3','Սոնետ 4','Սոնետ 5','Սոնետ 6',
@@ -2041,9 +2037,6 @@
         'Սոնետ  153','Սոնետ  154'
       ]
     },
-    { id: 'nune-muradyan',  name: 'Nune Muradyan',  role: 'Vocalist & Lyricist',  songs: [] },
-    { id: 'lilit-aghasyan', name: 'Lilit Aghasyan', role: 'Vocalist & Arranger',   songs: [] },
-    { id: 'mareta-sargsyan',name: 'Mareta Sargsyan',role: 'Vocalist & Performer',  songs: [] },
   ];
 
   const imastunArtist = ARTISTS.find(artist => artist.id === 'imastun');
@@ -3586,7 +3579,7 @@
   const searchResults = document.getElementById('search-results');
   const searchHint    = document.getElementById('search-hint');
   // Artists shown in stats: exclude the poets section and any artist flagged as not-counted
-  const NON_ARTIST_IDS = new Set(['haj-poetner', 'shakespeare-reimagined', 'narine-balasbekyan']);
+  const NON_ARTIST_IDS = new Set(['haj-poetner', 'shakespeare-reimagined']);
   const artistCount = new Set(playlist.filter(t => !NON_ARTIST_IDS.has(t.artistId)).map(t => t.artistId)).size;
   const poetCount = new Set(
     playlist.filter(t => t.artistId === 'haj-poetner' && t.song.includes('/'))
