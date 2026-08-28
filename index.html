@@ -452,6 +452,29 @@
       gap: 2px;
     }
 
+    #artists-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    #artists-grid > .artist-card {
+      aspect-ratio: 1 / 1;
+      display: block;
+    }
+
+    #artists-grid > .artist-card .card-cover-wrap {
+      position: absolute;
+      inset: 0;
+      aspect-ratio: auto;
+    }
+
+    #artists-grid > .artist-card .card-body {
+      position: absolute;
+      inset: auto 0 0;
+      z-index: 2;
+      padding: clamp(14px, 2vw, 24px);
+      background: linear-gradient(to top, rgba(8,8,8,.96), rgba(8,8,8,.72) 68%, transparent);
+    }
+
     .catalog-section { padding-block: clamp(52px, 8vw, 96px); }
     .catalog-section .section-header { margin-bottom: 40px; }
     #armenian-poets-grid > .artist-card,
@@ -1150,7 +1173,7 @@
     @media (max-width: 700px) {
       :root { --player-h: 122px; }
       .nav-links { display: none; }
-      #artists-grid { grid-template-columns: repeat(2, 1fr); }
+      #artists-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       #armenian-poets-grid,
       #world-poetry-grid { grid-template-columns: 1fr; }
       #armenian-poets-grid > .artist-card,
@@ -1162,6 +1185,16 @@
       .card-name { font-size: 17px; margin-bottom: 3px; }
       .card-role { font-size: 8.5px; margin-bottom: 0; letter-spacing: 0.15em; }
       .card-arrow { display: none; }
+      #artists-grid > .artist-card .card-body { padding: 8px 6px 9px; text-align: center; }
+      #artists-grid > .artist-card .card-index,
+      #artists-grid > .artist-card .card-role,
+      #artists-grid > .artist-card .card-arrow,
+      #artists-grid > .artist-card .card-page-link { display: none; }
+      #artists-grid > .artist-card .card-name {
+        margin: 0;
+        font-size: clamp(11px, 3.6vw, 15px);
+        line-height: 1.08;
+      }
       .section-header { flex-direction: column; align-items: flex-start; gap: 8px; }
       .section-label { writing-mode: horizontal-tb; transform: none; }
       .panel-inner { grid-template-columns: 1fr; }
@@ -3469,7 +3502,7 @@
         <div class="card-index">${String(i+1).padStart(2,'0')}</div>
         <div class="card-name">${artist.name}</div>
         <div class="card-role">${artist.role}</div>
-        ${artist.id === 'haj-poetner' ? '<div class="card-note">Վահան Տերյան · Համո Սահյան · Պարույր Սևակ · Ավետիք Իսահակյան · Հովհաննես Շիրազ · Սիլվա Կապուտիկյան · Վահագն Դավթյան · Հովհաննես Թումանյան</div>' : ''}
+        ${artist.id === 'haj-poetner' ? '<div class="card-note">Վահան Տերյան · Համո Սահյան · Պարույր Սևակ · Ավետիք Իսահակյան · Արամայիս Սահակյան · Հովհաննես Շիրազ · Սիլվա Կապուտիկյան · Վահագն Դավթյան · Հովհաննես Թումանյան</div>' : ''}
         ${artist.id === 'shakespeare-reimagined' ? '<div class="card-note">Սոնետներ՝ հայերեն, ռուսերեն և անգլերեն երգային տարբերակներով</div>' : ''}
         <div class="card-arrow">Listen
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
