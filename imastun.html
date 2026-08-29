@@ -371,6 +371,16 @@
       font-size:18px
     }
     .icon-btn:hover,.icon-btn.favorite{color:var(--gold-2)}
+    .share-svg{
+      display:block;
+      width:18px;
+      height:18px;
+      fill:none;
+      stroke:currentColor;
+      stroke-width:1.7;
+      stroke-linecap:round;
+      stroke-linejoin:round
+    }
     .track-play{
       border:1px solid var(--border);
       border-radius:50%;
@@ -535,28 +545,30 @@
         border-left:0;
         border-right:0
       }
-      .cover-wrap{height:120px;min-height:120px}
-      .cover{height:120px;min-height:120px;object-fit:cover;object-position:top center}
+      .cover-wrap{height:190px;min-height:190px}
+      .cover{height:190px;min-height:190px;object-fit:cover;object-position:center 28%}
       .cover-wrap::after{background:linear-gradient(180deg,transparent 55%,rgba(15,15,15,.28))}
-      .hero>div:nth-child(2){padding:16px 14px 5px}
-      .eyebrow{margin-bottom:6px;font-size:8px}
-      h1{font-size:38px}
-      .role{margin-top:8px;font-size:8.5px;letter-spacing:.15em}
+      .hero>div:nth-child(2){padding:11px 12px 3px}
+      .eyebrow{display:none}
+      h1{font-size:32px}
+      .role{margin-top:5px;font-size:8px;letter-spacing:.13em;line-height:1.45}
       .intro{display:none}
-      .hero-actions{padding:10px 14px 16px;gap:14px}
-      .primary{min-height:36px;padding:0 12px;font-size:9px;letter-spacing:.08em}
-      .catalog{margin-top:20px;padding:0 8px}
-      .catalog-head{margin-bottom:12px}
-      .catalog h2{font-size:25px}
-      .toolbar{grid-template-columns:1fr;gap:10px;margin-bottom:12px}
-      .filters{height:38px}
+      .hero-actions{padding:7px 12px 10px;gap:12px}
+      .primary{min-height:32px;padding:0 10px;font-size:8.5px;letter-spacing:.07em}
+      .catalog{margin-top:12px;padding:0 8px}
+      .catalog-head{margin-bottom:8px;padding-bottom:8px}
+      .catalog h2{font-size:22px}
+      .toolbar{grid-template-columns:1fr;gap:6px;margin-bottom:8px}
+      .search input{height:36px;padding-left:36px}
+      .search::before{left:11px;font-size:18px}
+      .filters{height:34px}
       .filter{flex:1;padding:0 8px;font-size:9px}
       .track-list{padding:0 2px}
       .track-row{
         grid-template-columns:24px minmax(0,1fr) 30px 30px 30px;
-        gap:8px;
-        min-height:50px;
-        padding:9px 8px
+        gap:7px;
+        min-height:46px;
+        padding:7px 6px
       }
       .track-title{font-size:15px}
       .track-sub{font-size:8px}
@@ -766,7 +778,10 @@
           '<span class="track-sub">Imastun</span></button>' +
           '<button class="icon-btn' + (favorite ? ' favorite' : '') + '" type="button" data-action="favorite" aria-label="' +
           escapeHtml(favorite ? tr("unfavorite") : tr("favorite")) + '">' + (favorite ? "♥" : "♡") + '</button>' +
-          '<button class="icon-btn" type="button" data-action="share" aria-label="' + escapeHtml(tr("share")) + '">↗</button>' +
+          '<button class="icon-btn share-btn" type="button" data-action="share" aria-label="' + escapeHtml(tr("share")) + '">' +
+          '<svg class="share-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
+          '<circle cx="18" cy="5" r="2.2"></circle><circle cx="6" cy="12" r="2.2"></circle><circle cx="18" cy="19" r="2.2"></circle>' +
+          '<path d="M8 11l7.8-4.7M8 13l7.8 4.7"></path></svg></button>' +
           '<button class="track-play" type="button" data-action="play" aria-label="' + escapeHtml(playing ? tr("pause") : tr("play")) + '">' +
           (playing ? "❚❚" : "▶") + '</button></article>';
       }).join("");
