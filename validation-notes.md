@@ -33,3 +33,15 @@ The latest public preview now renders the full catalog with accurate labels, the
 ## Stable branch preview verification
 
 The public repository branch preview at raw.githack loaded successfully in the browser. It rendered the `Հայ Բանաստեղծներ — Իմաստուն Ստուդիո` page, showed the 104-song catalog and the poetry-collection label, and selecting `Համո Սահյան` displayed the filtered songs instead of an empty list.
+
+## GPT branch audit
+
+The latest GPT deployment branch is `public/imastun-active` at commit `3d79d7a3d3da1d2a06070da23d765338489a5e88`. Its slash-containing branch name returns a raw.githack 404, but the immutable commit-SHA URL renders successfully. The rendered main page contains separate artist cards for Imastun, Silva Gulanyan, Go Hara, Armenian Poets, and Shakespeare Reimagined, plus current mermaid and poetry song blocks. It does not contain `haj-poetner.html` or the requested top-level `artist-filter`; those are present only in the newer Draft PR branch.
+
+## GPT navigation behavior
+
+On the GPT deployment commit, clicking `Հայ բանաստեղծներ` navigates to the in-page `#armenian-poets` article. The card is rendered on the main page, while the only standalone page links present are for Go Hara and Silva-related playlists; there is no `haj-poetner.html` link in that deployment branch.
+
+## GPT standalone-page verification
+
+At GPT deployment commit `3d79d7a`, `go-hara.html` loads as a separate page with a fixed Imastun Studio back link, language buttons, tabs, search, favorites, share/play controls, and 47 songs. A subsequent console check was unavailable, so runtime-console status was not assessed beyond the successful rendered-page result.

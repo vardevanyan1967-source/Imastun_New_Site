@@ -12,3 +12,5 @@
 - [x] Re-test poet filtering and mobile background rendering, then update the branch preview
 
 - [x] Provide a stable user-openable preview for the latest non-main branch after the temporary URL failed
+
+- [x] Audit the latest GPT-authored changes in GitHub and report their behavior and remaining issues
