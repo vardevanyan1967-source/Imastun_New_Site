@@ -14,3 +14,5 @@
 - [x] Provide a stable user-openable preview for the latest non-main branch after the temporary URL failed
 
 - [x] Audit the latest GPT-authored changes in GitHub and report their behavior and remaining issues
+
+- [x] Make the standalone Հայ Բանաստեղծներ page available from the GPT-style catalog while keeping main unchanged
