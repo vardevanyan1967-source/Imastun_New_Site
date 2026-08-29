@@ -29,3 +29,7 @@ After the missing maps and helper functions were restored, the public preview re
 ## Final runtime verification
 
 The latest public preview now renders the full catalog with accurate labels, the footer year, and the poetry-collection label. Selecting `Համո Սահյան` produces 62 rows with the expected Hamo titles. The hero requests `background2.mp4`, and the page retains the 104-song catalog statistic.
+
+## Stable branch preview verification
+
+The public repository branch preview at raw.githack loaded successfully in the browser. It rendered the `Հայ Բանաստեղծներ — Իմաստուն Ստուդիո` page, showed the 104-song catalog and the poetry-collection label, and selecting `Համո Սահյան` displayed the filtered songs instead of an empty list.

@@ -10,3 +10,5 @@
 - [x] Fix Hamo Sahyan and other poet filter selections so matching songs render on the standalone page
 - [x] Restore the second background video on mobile with a safe responsive fallback
 - [x] Re-test poet filtering and mobile background rendering, then update the branch preview
+
+- [x] Provide a stable user-openable preview for the latest non-main branch after the temporary URL failed
