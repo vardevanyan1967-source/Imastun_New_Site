@@ -426,6 +426,15 @@
 
     .section-header { margin-bottom: 64px; display: flex; align-items: flex-end; gap: 24px; }
 
+    .catalog-section .section-header { flex-wrap: wrap; }
+    .artist-filter-wrap { margin-left: auto; display: flex; flex-direction: column; gap: 7px; min-width: min(100%, 260px); }
+    .artist-filter-label { color: var(--text-dim); font-size: 10px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
+    #artist-filter { width: 100%; min-height: 44px; padding: 10px 38px 10px 14px; border: 1px solid var(--gold-dim); border-radius: 2px; background: var(--surface); color: var(--gold-light); font: 600 12px/1.2 'Syne', sans-serif; cursor: pointer; outline: none; }
+    #artist-filter:hover, #artist-filter:focus-visible { border-color: var(--gold); box-shadow: 0 0 0 2px rgba(201,168,76,.12); }
+    #artist-filter option { background: var(--surface); color: var(--text); }
+    .artist-filter-count { color: var(--text-dim); font-size: 10px; letter-spacing: .06em; }
+    #artists-grid > [data-artist-id][hidden] { display: none; }
+
     .section-label {
       font-size: 11px; font-weight: 600; letter-spacing: 0.35em;
       text-transform: uppercase; color: var(--gold);
@@ -798,6 +807,7 @@
     }
 
     @media (max-width: 700px) {
+      .artist-filter-wrap { width: 100%; margin-left: 0; }
       .track-list.is-collapsed { max-height: 420px; }
       .track-list-wrap.has-collapsed::after { height: 82px; }
     }
@@ -1896,6 +1906,13 @@
   <div class="section-header reveal">
     <span class="section-label">Artists</span>
     <h2 class="section-heading">Մեր <em>Արտիստները</em></h2>
+    <div class="artist-filter-wrap">
+      <label class="artist-filter-label" for="artist-filter">Ընտրել արտիստին</label>
+      <select id="artist-filter" aria-controls="artists-grid">
+        <option value="all">Բոլոր արտիստները</option>
+      </select>
+      <span class="artist-filter-count" id="artist-filter-count" aria-live="polite"></span>
+    </div>
   </div>
   <div id="artists-grid" class="catalog-grid reveal-stagger"></div>
 </section>
@@ -2154,7 +2171,7 @@
       songs: ['ajs xarum mian ujern e haxtum','Anund_Kin_e_004','Arajin_hambuyru','Arevamutits_araj','Bari_gisher','duet_Спокойной_ночи_Remix_Remix','spakojnoj nochi (kin)','Ginin_prprel_e','gisherajin','daravor karnin','darnaham-ginin','Title_Es_arajva_pes_kez_karotum_em_Swiss_Pop_Ballad_Lyrics_by_Go_Hara_Remix_008','Im_poezian','la-fracise','pered rasvetom','kanchir-kgam','HANDIPOMNERI_AYS_KhAChMEROKOM','Hervits_Grkum em','Hravirir_indz_parelu_tangon','menq linelu enq','MI_TOGh_INDz_MENAK','Mi_siro_patmutyun','urenineri lacor purakum','POETIS','Sirogisher_Go_Hara','cncir-users','fracuzhenka','My Mirror True','Зеркало моё','Իմ հայելի','Fragile Cry Has Risen Like','Во мне поднялся хрупкий плач','Փխրուն Լաց','Եվ ինչ է սերը','Չնոտագրված լռություն',"I'm tired of being strong",'устала быть сильной','hognel em ujer kin lineluc','Հայաստան, մեր սուրբ տուն','Армения, наш святой дом','Armenia, Our Sacred Home','Սիրելով գնամ','Я уйду любя','Ill Leave Still Loving You','Դու եկար','Ты пришёл','You Came']
     },
     {
-      id: 'haj-poetner', name: 'Հայ Բանաստեղծներ', role: 'Armenian Poets · Songs',
+      id: 'haj-poetner', name: 'Հայ Բանաստեղծներ', role: 'Armenian Poets · Songs', page: 'haj-poetner.html',
       cover: 'authors/haj-poetner/cover.jpg',
       songs: [
         'vahan-teryan/ananun ser','vahan-teryan/ashnan erg',
@@ -3641,6 +3658,7 @@
     if (!hasCover) {
       const card = document.createElement("div");
       card.className = "artist-card card-empty";
+      card.dataset.artistId = artist.id;
       card.innerHTML = `
         <div class="empty-avatar">${initials}</div>
         <div class="empty-info">
@@ -3656,6 +3674,7 @@
     const card = document.createElement('div');
     card.className = 'artist-card';
     card.dataset.id = artist.id;
+    card.dataset.artistId = artist.id;
     card.style.setProperty('--d', (i * 0.9) + 's');
     card.innerHTML = `
       <div class="card-cover-wrap">
@@ -3679,6 +3698,7 @@
     const panel = document.createElement('div');
     panel.className = 'artist-panel';
     panel.id = `panel-${artist.id}`;
+    panel.dataset.artistId = artist.id;
 
     const hasTabs = artist.videos && artist.videos.length > 0;
     const tabsHtml = hasTabs ? `
@@ -3788,6 +3808,30 @@
   });
   initVideoControls();
   }); // end requestAnimationFrame
+
+  /* ══ ARTIST FILTER ══ */
+  const artistFilter = document.getElementById('artist-filter');
+  const artistFilterCount = document.getElementById('artist-filter-count');
+  const mainArtists = ARTISTS.filter(artist => !['haj-poetner', 'shakespeare-reimagined'].includes(artist.id));
+  if (artistFilter) {
+    mainArtists.forEach(artist => {
+      const option = document.createElement('option');
+      option.value = artist.id;
+      option.textContent = artist.name;
+      artistFilter.appendChild(option);
+    });
+    const updateArtistFilter = () => {
+      const selected = artistFilter.value;
+      const visibleArtists = selected === 'all' ? mainArtists.length : 1;
+      document.querySelectorAll('#artists-grid > [data-artist-id]').forEach(row => {
+        row.hidden = selected !== 'all' && row.dataset.artistId !== selected;
+      });
+      if (artistFilterCount) artistFilterCount.textContent = `${visibleArtists} ${visibleArtists === 1 ? 'արտիստ' : 'արտիստ'}`;
+      document.querySelectorAll('#artists-grid .artist-card.active, #artists-grid .artist-panel.open').forEach(el => el.classList.remove('active', 'open'));
+    };
+    artistFilter.addEventListener('change', updateArtistFilter);
+    updateArtistFilter();
+  }
 
   /* ══ SEARCH ══ */
   const searchOverlay = document.getElementById('search-overlay');
