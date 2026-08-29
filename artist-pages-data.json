@@ -1,256 +1,2010 @@
 {
+  "imastun": {
+    "id": "imastun",
+    "slug": "imastun.html",
+    "name": "Imastun",
+    "mark": "IS",
+    "cover": "authors/imastun/cover.jpg",
+    "coverPosition": "center 28%",
+    "title": "Imastun — Imastun Studio",
+    "description": "Imastun-ի հեղինակային երգերն ու բազմալեզու երաժշտական նախագծերը։",
+    "role": {
+      "hy": "Բանաստեղծ • արտիստ • պրոդյուսեր",
+      "ru": "Поэт • артист • продюсер",
+      "en": "Poet • artist • producer"
+    },
+    "intro": {
+      "hy": "Imastun-ի հեղինակային երգերն ու բազմալեզու երաժշտական նախագծերը՝ մեկ առանձին, թեթև էջում։",
+      "ru": "Авторские песни Imastun и многоязычные музыкальные проекты на одной отдельной лёгкой странице.",
+      "en": "Imastun’s original songs and multilingual music projects on one dedicated, lightweight page."
+    },
+    "tracks": [
+      {
+        "id": "Astghayin_Shghta_A",
+        "label": "Աստղային շղթա",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/Astghayin_Shghta_A.mp3"
+      },
+      {
+        "id": "The Sun Cries Too(Արևն էլ է լաց լինում)",
+        "label": "Արևն էլ է լացում (անգլ)",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/The%20Sun%20Cries%20Too(%D4%B1%D6%80%D6%87%D5%B6%20%D5%A7%D5%AC%20%D5%A7%20%D5%AC%D5%A1%D6%81%20%D5%AC%D5%AB%D5%B6%D5%B8%D6%82%D5%B4).mp3"
+      },
+      {
+        "id": "Vahan_Teryan_Gisher",
+        "label": "Գիշեր (Վ.Տ)",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/Vahan_Teryan_Gisher.mp3"
+      },
+      {
+        "id": "B_Es_im_anush_Hayastani",
+        "label": "Ես իմ անուշ Հայաստանի",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/B_Es_im_anush_Hayastani.mp3"
+      },
+      {
+        "id": "El_ban_chunem_Remix",
+        "label": "Էլ բան չունեմ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/El_ban_chunem_Remix.mp3"
+      },
+      {
+        "id": "inchi-hamar",
+        "label": "Ինչի համար",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/inchi-hamar.mp3"
+      },
+      {
+        "id": "inch_e_koracy_qarcr",
+        "label": "Ինչո՞ւ է կորածն այսքան քաղցրանում",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/inch_e_koracy_qarcr.mp3"
+      },
+      {
+        "id": "lur-heraxos",
+        "label": "Լուռ հեռախոս",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/lur-heraxos.mp3"
+      },
+      {
+        "id": "lur uji simfonia",
+        "label": "Լուռ ուժի սիմֆոնիան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/lur%20uji%20simfonia.mp3"
+      },
+      {
+        "id": "luse arzaganq",
+        "label": "Լուսե արձագանք",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/luse%20arzaganq.mp3"
+      },
+      {
+        "id": "Luse_Hekiat_A",
+        "label": "Լուսե հեքիաթ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/Luse_Hekiat_A.mp3"
+      },
+      {
+        "id": "Lrutyan_unker",
+        "label": "Լռության ընկեր",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/Lrutyan_unker.mp3"
+      },
+      {
+        "id": "Lsir_vordis",
+        "label": "Լսիր որդիս",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/Lsir_vordis.mp3"
+      },
+      {
+        "id": "Katak_Yari_Ergu",
+        "label": "Կատակ յարի երգը",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/Katak_Yari_Ergu.mp3"
+      },
+      {
+        "id": "Katak_Yari_Ergu rem",
+        "label": "Կատակ յարի երգը 2",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/Katak_Yari_Ergu%20rem.mp3"
+      },
+      {
+        "id": "haverji-erty",
+        "label": "Հավերժի երգը",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/haverji-erty.mp3"
+      },
+      {
+        "id": "hogu-arzaganq",
+        "label": "Հոգու արձագանք",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/hogu-arzaganq.mp3"
+      },
+      {
+        "id": "Meghki_ezrin_Remix",
+        "label": "Մեղքի եզրին (ռուսերեն)",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/Meghki_ezrin_Remix.mp3"
+      },
+      {
+        "id": "shshnjatc",
+        "label": "Շշնջաց",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/shshnjatc.mp3"
+      },
+      {
+        "id": "shshnjatc-noric",
+        "label": "Շշնջաց նորից",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/shshnjatc-noric.mp3"
+      },
+      {
+        "id": "shepot",
+        "label": "Շշունջ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/shepot.mp3"
+      },
+      {
+        "id": "ser-anurji",
+        "label": "Սեր անուրջի",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/ser-anurji.mp3"
+      },
+      {
+        "id": "siro-kenacy",
+        "label": "Սիրո կենաց",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/siro-kenacy.mp3"
+      },
+      {
+        "id": "Поцелуй_ветра",
+        "label": "Քամու համբույրից (Հ.Ս)",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%D0%9F%D0%BE%D1%86%D0%B5%D0%BB%D1%83%D0%B9_%D0%B2%D0%B5%D1%82%D1%80%D0%B0.mp3"
+      },
+      {
+        "id": "Vahan_Teryan_MEGhAVOR_AChKERU",
+        "label": "Քո մեղավոր աչքերը (Վ.Տ)",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/Vahan_Teryan_MEGhAVOR_AChKERU.mp3"
+      },
+      {
+        "id": "qo-jinj-hogin",
+        "label": "Քո ջինջ հոգին",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/qo-jinj-hogin.mp3"
+      },
+      {
+        "id": "pastayannaya jajda",
+        "label": "Постоянная жажда",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/pastayannaya%20jajda.mp3"
+      },
+      {
+        "id": "andadar carav",
+        "label": "Անդադար ծարավ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/andadar%20carav.mp3"
+      },
+      {
+        "id": "The Eternal Thirst",
+        "label": "The Eternal Thirst",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/The%20Eternal%20Thirst.mp3"
+      },
+      {
+        "id": "im ser",
+        "label": "Իմ սեր",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/im%20ser.mp3"
+      },
+      {
+        "id": "sirelis",
+        "label": "Սիրելիս",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/sirelis.mp3"
+      },
+      {
+        "id": "taxicy vat margare e",
+        "label": "Թախիծը վատ մարգարե է",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/taxicy%20vat%20margare%20e.mp3"
+      },
+      {
+        "id": "ergi chapov",
+        "label": "Երգի Չափով",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/ergi%20chapov.mp3"
+      },
+      {
+        "id": "На расстоянии песни",
+        "label": "На расстоянии песни",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%D0%9D%D0%B0%20%D1%80%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B8%20%D0%BF%D0%B5%D1%81%D0%BD%D0%B8.mp3"
+      },
+      {
+        "id": "A Song Away",
+        "label": "A Song Away",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/A%20Song%20Away.mp3"
+      },
+      {
+        "id": "Կատակ Յարի Երգը",
+        "label": "Կատակ Յարի Երգը",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%D4%BF%D5%A1%D5%BF%D5%A1%D5%AF%20%D5%85%D5%A1%D6%80%D5%AB%20%D4%B5%D6%80%D5%A3%D5%A8.mp3"
+      },
+      {
+        "id": "Roses in a Sieve",
+        "label": "Roses In A Sieve",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/Roses%20in%20a%20Sieve.mp3"
+      },
+      {
+        "id": "Ρόδα στο Κόσκινο",
+        "label": "Ρόδα στο Κόσκινο",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%CE%A1%CF%8C%CE%B4%CE%B1%20%CF%83%CF%84%CE%BF%20%CE%9A%CF%8C%CF%83%CE%BA%CE%B9%CE%BD%CE%BF.mp3"
+      },
+      {
+        "id": "Песня шутка",
+        "label": "Песня шутка",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%D0%9F%D0%B5%D1%81%D0%BD%D1%8F%20%D1%88%D1%83%D1%82%D0%BA%D0%B0.mp3"
+      },
+      {
+        "id": "ვარდები საცერში",
+        "label": "ვარდები საცერში",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%E1%83%95%E1%83%90%E1%83%A0%E1%83%93%E1%83%94%E1%83%91%E1%83%98%20%E1%83%A1%E1%83%90%E1%83%AA%E1%83%94%E1%83%A0%E1%83%A8%E1%83%98.mp3"
+      },
+      {
+        "id": "Կատակ յարի երգ պար 4 լեզվով",
+        "label": "Կատակ յարի երգ պար 4 լեզվով",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%D4%BF%D5%A1%D5%BF%D5%A1%D5%AF%20%D5%B5%D5%A1%D6%80%D5%AB%20%D5%A5%D6%80%D5%A3%20%D5%BA%D5%A1%D6%80%204%20%D5%AC%D5%A5%D5%A6%D5%BE%D5%B8%D5%BE.mp3"
+      },
+      {
+        "id": "Our Lovely Mermaids",
+        "label": "Our Lovely Mermaids",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/mer-jraharsere/featured/Our%20Lovely%20Mermaids.mp3"
+      },
+      {
+        "id": "Эй наши русалки",
+        "label": "Эй наши русалки",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/mer-jraharsere/featured/%D0%AD%D0%B9%20%D0%BD%D0%B0%D1%88%D0%B8%20%D1%80%D1%83%D1%81%D0%B0%D0%BB%D0%BA%D0%B8.mp3"
+      },
+      {
+        "id": "Ջրահարսեր Ремикс Рեմикс_2",
+        "label": "Ջրահարսեր Ռեմիքս 2",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/mer-jraharsere/featured/%D5%8B%D6%80%D5%A1%D5%B0%D5%A1%D6%80%D5%BD%D5%A5%D6%80%20%D0%A0%D0%B5%D0%BC%D0%B8%D0%BA%D1%81%20%D0%A0%D0%B5%D0%BC%D0%B8%D0%BA%D1%81_2.mp3"
+      },
+      {
+        "id": "Ջրահարսեր Ремикс Рեմикс_3",
+        "label": "Ջրահարսեր Ռեմիքս 3",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/mer-jraharsere/featured/%D5%8B%D6%80%D5%A1%D5%B0%D5%A1%D6%80%D5%BD%D5%A5%D6%80%20%D0%A0%D0%B5%D0%BC%D0%B8%D0%BA%D1%81%20%D0%A0%D0%B5%D0%BC%D0%B8%D0%BA%D1%81_3.mp3"
+      },
+      {
+        "id": "ჩვენი ქალთევზებო",
+        "label": "ჩვენი ქალთევზებო",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/mer-jraharsere/featured/%E1%83%A9%E1%83%95%E1%83%94%E1%83%9C%E1%83%98%20%E1%83%A5%E1%83%90%E1%83%9A%E1%83%97%E1%83%94%E1%83%95%E1%83%96%E1%83%94%E1%83%91%E1%83%9D.mp3"
+      }
+    ]
+  },
+  "silva-gulanyan": {
+    "id": "silva-gulanyan",
+    "slug": "silva-gulanyan.html",
+    "name": "Silva Gulanyan",
+    "mark": "SG",
+    "cover": "authors/silva-gulanyan/cover.jpg",
+    "coverPosition": "center 24%",
+    "title": "Silva Gulanyan — Imastun Studio",
+    "description": "Սիլվա Գուլանյանի երգերը՝ Imastun Studio-ում։",
+    "role": {
+      "hy": "Բանաստեղծ • երգչուհի • երգահան",
+      "ru": "Поэт • певица • автор песен",
+      "en": "Poet • vocalist • songwriter"
+    },
+    "intro": {
+      "hy": "Սիլվա Գուլանյանի երգերը՝ մեկ առանձին, թեթև և հարմար երգացանկում։",
+      "ru": "Песни Сильвы Гуланян в отдельном, лёгком и удобном каталоге.",
+      "en": "Silva Gulanyan’s songs in a dedicated, lightweight and easy-to-use catalogue."
+    },
+    "tracks": [
+      {
+        "id": "Akh_inch_anem_sirud_het",
+        "label": "Ախ ինչ անեմ սիրուդ հետ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Akh_inch_anem_sirud_het.mp3"
+      },
+      {
+        "id": "agh & dagy",
+        "label": "Աղն ու դաղը",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/agh%20%26%20dagy.mp3"
+      },
+      {
+        "id": "Andzrevum_e",
+        "label": "Անձրևում է",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Andzrevum_e.mp3"
+      },
+      {
+        "id": "Mtnets_arants_kez_Duet",
+        "label": "Առանց քեզ մթնեց",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Mtnets_arants_kez_Duet.mp3"
+      },
+      {
+        "id": "Aryev_darnam",
+        "label": "Արև դառնամ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Aryev_darnam.mp3"
+      },
+      {
+        "id": "Ari_klini",
+        "label": "Արի կլինի",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Ari_klini.mp3"
+      },
+      {
+        "id": "Galis_e_mi_pah_003",
+        "label": "Գալիս է մի պահ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Galis_e_mi_pah_003.mp3"
+      },
+      {
+        "id": "Garun_er_003",
+        "label": "Գարուն է",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Garun_er_003.mp3"
+      },
+      {
+        "id": "Garun e bajc zun e arel",
+        "label": "Գարուն է բայց ձյուն է արել",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Garun%20e%20bajc%20zun%20e%20arel.mp3"
+      },
+      {
+        "id": "gij",
+        "label": "Գիժ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/gij.mp3"
+      },
+      {
+        "id": "gij-qamin",
+        "label": "Գիժ քամի",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/gij-qamin.mp3"
+      },
+      {
+        "id": "Gisher_e_004",
+        "label": "Գիշեր է",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Gisher_e_004.mp3"
+      },
+      {
+        "id": "Gisherits_depi_luys_Silva_Gulanyan_005",
+        "label": "Գիշերից լույս",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Gisherits_depi_luys_Silva_Gulanyan_005.mp3"
+      },
+      {
+        "id": "Gitem_hogis_A",
+        "label": "Գիտեմ հոգիս",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Gitem_hogis_A.mp3"
+      },
+      {
+        "id": "Gitem_ches_galu_B",
+        "label": "Գիտեմ չես գալու",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Gitem_ches_galu_B.mp3"
+      },
+      {
+        "id": "gortrik-ankun",
+        "label": "Գողտրիկ անկյուն",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/gortrik-ankun.mp3"
+      },
+      {
+        "id": "der-inz-voch-mek-chi-sirel-qo-pes",
+        "label": "Դեռ ինձ ոչ մեկ չի սիրել քո պես",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/der-inz-voch-mek-chi-sirel-qo-pes.mp3"
+      },
+      {
+        "id": "Dran_Takotsu_003",
+        "label": "Դռան թակոց",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Dran_Takotsu_003.mp3"
+      },
+      {
+        "id": "Es_irakan_em_004",
+        "label": "Ես իրական եմ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Es_irakan_em_004.mp3"
+      },
+      {
+        "id": "Es_sirum_em_ko_zhpitu_B",
+        "label": "Ես սիրում եմ քո ժպիտը",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Es_sirum_em_ko_zhpitu_B.mp3"
+      },
+      {
+        "id": "Es_kez_sirum_em",
+        "label": "Ես քեզ սիրում եմ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Es_kez_sirum_em.mp3"
+      },
+      {
+        "id": "Erazankneri_aytsu_Part_Gisherva_002",
+        "label": "Երազանքների այց գիշերվա",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Erazankneri_aytsu_Part_Gisherva_002.mp3"
+      },
+      {
+        "id": "Erb_verkers_hanger_dardzri_Lyrics_by_Silva_Gulanyan_003",
+        "label": "Երբ երգերս հանգեր դարձան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Erb_verkers_hanger_dardzri_Lyrics_by_Silva_Gulanyan_003.mp3"
+      },
+      {
+        "id": "ergichy-dari",
+        "label": "Երգիչի դարի",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/ergichy-dari.mp3"
+      },
+      {
+        "id": "Erku_khent_hogi_Duet_Silva_Gulanyan_004",
+        "label": "Երկու խենթ հոգի",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Erku_khent_hogi_Duet_Silva_Gulanyan_004.mp3"
+      },
+      {
+        "id": "jpta hogis",
+        "label": "Ժպտա հոգիս",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/jpta%20hogis.mp3"
+      },
+      {
+        "id": "Im_erazats_ashkharu_003",
+        "label": "Իմ երազած աշխարհում",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Im_erazats_ashkharu_003.mp3"
+      },
+      {
+        "id": "im-tsovagur",
+        "label": "Իմ ծովագյուղ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/im-tsovagur.mp3"
+      },
+      {
+        "id": "inch-em-anelu",
+        "label": "Ինչ եմ անելու",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/inch-em-anelu.mp3"
+      },
+      {
+        "id": "inchu_es_ayskan_indz_otar_dardzel_004",
+        "label": "Ինչու ես այսքան ինձ օտար դարձել",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/inchu_es_ayskan_indz_otar_dardzel_004.mp3"
+      },
+      {
+        "id": "luse hrashq",
+        "label": "Լուսե հրաշք",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/luse%20hrashq.mp3"
+      },
+      {
+        "id": "lrutian tchich",
+        "label": "Լռության ճիչ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/lrutian%20tchich.mp3"
+      },
+      {
+        "id": "xerdvac karot",
+        "label": "Խեղդված կարոտ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/xerdvac%20karot.mp3"
+      },
+      {
+        "id": "xerdvac karot patasxan",
+        "label": "Խեղդված կարոտ պատասխան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/xerdvac%20karot%20patasxan.mp3"
+      },
+      {
+        "id": "xent siro qamin",
+        "label": "Խենթ սիրո քամին",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/xent%20siro%20qamin.mp3"
+      },
+      {
+        "id": "xentern u lusiny",
+        "label": "Խենթերն ու լուսինը",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/xentern%20u%20lusiny.mp3"
+      },
+      {
+        "id": "xind manuk",
+        "label": "Խինդ մանուկ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/xind%20manuk.mp3"
+      },
+      {
+        "id": "xortakvor nav",
+        "label": "Խորտակվող նավ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/xortakvor%20nav.mp3"
+      },
+      {
+        "id": "tsov-arev-achqer",
+        "label": "Ծով արև աչքեր",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/tsov-arev-achqer.mp3"
+      },
+      {
+        "id": "Mer_Srterum_kanchu_004",
+        "label": "Կանչ մեր սրտերում",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Mer_Srterum_kanchu_004.mp3"
+      },
+      {
+        "id": "karotiali shurterin",
+        "label": "Կարոտիալի շուրթերին",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/karotiali%20shurterin.mp3"
+      },
+      {
+        "id": "Կարոտի խենթի",
+        "label": "Կարոտի խենթի",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D4%BF%D5%A1%D6%80%D5%B8%D5%BF%D5%AB%20%D5%AD%D5%A5%D5%B6%D5%A9%D5%AB.mp3"
+      },
+      {
+        "id": "kgam_sirelis",
+        "label": "Կգամ սիրելիս",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/kgam_sirelis.mp3"
+      },
+      {
+        "id": "Kenatsd_khmem_B_Brinderò_per_Te",
+        "label": "Կենացդ խմեմ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Kenatsd_khmem_B_Brinder%C3%B2_per_Te.mp3"
+      },
+      {
+        "id": "Kuratsats_achkin_luysu_003",
+        "label": "Կուրացած աչքի լույս",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Kuratsats_achkin_luysu_003.mp3"
+      },
+      {
+        "id": "Hay_aragil",
+        "label": "Հայ արագիլ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Hay_aragil.mp3"
+      },
+      {
+        "id": "Hayots_ashkarh_A",
+        "label": "Հայոց աշխարհ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Hayots_ashkarh_A.mp3"
+      },
+      {
+        "id": "Havat_em_vozum_003",
+        "label": "Հավատ եմ ուզում",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Havat_em_vozum_003.mp3"
+      },
+      {
+        "id": "HERO_MOTIK_UNKERNERIS_003",
+        "label": "Հեռու մոտիկ ընկերներիս",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/HERO_MOTIK_UNKERNERIS_003.mp3"
+      },
+      {
+        "id": "Hetd_inch_e_katarvum",
+        "label": "Հետդ ինչ է կատարվում",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Hetd_inch_e_katarvum.mp3"
+      },
+      {
+        "id": "RokHetd_Inch_E_Katarvum_003",
+        "label": "Հետդ ինչ է կատարվում",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/RokHetd_Inch_E_Katarvum_003.mp3"
+      },
+      {
+        "id": "hiastapvac",
+        "label": "Հիասթափված",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/hiastapvac.mp3"
+      },
+      {
+        "id": "hogu giny",
+        "label": "Հողի գինը",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/hogu%20giny.mp3"
+      },
+      {
+        "id": "Kyanku_Hrashk_e_005",
+        "label": "Հրաշք կյանք",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Kyanku_Hrashk_e_005.mp3"
+      },
+      {
+        "id": "Dzig_tarineri_luys_003",
+        "label": "Ձիգ տարիների լույս",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Dzig_tarineri_luys_003.mp3"
+      },
+      {
+        "id": "Chisht_zhamanakin_At_The_Right_Time",
+        "label": "Ճիշտ ժամանակին",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Chisht_zhamanakin_At_The_Right_Time.mp3"
+      },
+      {
+        "id": "mek tari el ancav",
+        "label": "Մեկ տարի էլ անցավ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/mek%20tari%20el%20ancav.mp3"
+      },
+      {
+        "id": "Title_Mi_tanjir_hogis_Multilingual_Emotional_Duet_Lyrics_by_Silva_Gulanyan_002",
+        "label": "Մի տանջիր հոգիս բազմալեզու",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Title_Mi_tanjir_hogis_Multilingual_Emotional_Duet_Lyrics_by_Silva_Gulanyan_002.mp3"
+      },
+      {
+        "id": "Resta_nei_nostri_cuori",
+        "label": "Մնա մեր սրտերում",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Resta_nei_nostri_cuori.mp3"
+      },
+      {
+        "id": "Nerir sirelis",
+        "label": "Ներիր սիրելիս",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Nerir%20sirelis.mp3"
+      },
+      {
+        "id": "nerqnapanak",
+        "label": "Ներքնապանակ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/nerqnapanak.wav"
+      },
+      {
+        "id": "Nrboren_Garnunk_003",
+        "label": "Նրբորեն գարունք",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Nrboren_Garnunk_003.mp3"
+      },
+      {
+        "id": "Che_chem_toghni_B",
+        "label": "Չե չեմ թողնի",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Che_chem_toghni_B.mp3"
+      },
+      {
+        "id": "chem moracel",
+        "label": "Չեմ մոռացել",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/chem%20moracel.mp3"
+      },
+      {
+        "id": "Ches_moranalu_003",
+        "label": "Չես մոռանալու",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Ches_moranalu_003.mp3"
+      },
+      {
+        "id": "Jaheli_nman_003",
+        "label": "Ջահելի նման",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Jaheli_nman_003.mp3"
+      },
+      {
+        "id": "Tiezerk_Jinj_Lazur",
+        "label": "Ջինջ տիեզերք",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Tiezerk_Jinj_Lazur.mp3"
+      },
+      {
+        "id": "ser da ardioq",
+        "label": "Սեր է դա արդիոք",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/ser%20da%20ardioq.mp3"
+      },
+      {
+        "id": "Sirir_indz_hogis_FRAM_Duet",
+        "label": "Սիրիր ինձ հոգիս",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Sirir_indz_hogis_FRAM_Duet.mp3"
+      },
+      {
+        "id": "melodia lubvi",
+        "label": "Սիրո երաժշտություն",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/melodia%20lubvi.mp3"
+      },
+      {
+        "id": "siro cnundy",
+        "label": "Սիրո ծնունդ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/siro%20cnundy.mp3"
+      },
+      {
+        "id": "S_irum_em_kez_I_love_you",
+        "label": "Սիրում եմ քեզ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/S_irum_em_kez_I_love_you.mp3"
+      },
+      {
+        "id": "sirty xentacav",
+        "label": "Սիրտս խենթացավ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/sirty%20xentacav.mp3"
+      },
+      {
+        "id": "Srteri_kanchu_003",
+        "label": "Սրտերի կանչ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Srteri_kanchu_003.mp3"
+      },
+      {
+        "id": "Ka_mi_ashkharh_vor_srtov_e_karutsvats",
+        "label": "Սրտով կառուցված աշխարհ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Ka_mi_ashkharh_vor_srtov_e_karutsvats.mp3"
+      },
+      {
+        "id": "Tesilk_Silva_Gulanyan_Remix_Remix",
+        "label": "Տեսիլք",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Tesilk_Silva_Gulanyan_Remix_Remix.mp3"
+      },
+      {
+        "id": "AKhor_vo_tsavits_tsnvats",
+        "label": "Ցավից ծնված",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/AKhor_vo_tsavits_tsnvats.mp3"
+      },
+      {
+        "id": "Curt xavaric",
+        "label": "Ցուրտ խավարից",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Curt%20xavaric.mp3"
+      },
+      {
+        "id": "Kez_khenti_nman_siraharvetsi_Duet_Tango",
+        "label": "Քեզ խենթի նման սիրահարվեցի (Duet Tango)",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Kez_khenti_nman_siraharvetsi_Duet_Tango.mp3"
+      },
+      {
+        "id": "qez karotelis",
+        "label": "Քեզ կարոտելիս",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/qez%20karotelis.mp3"
+      },
+      {
+        "id": "qo cov achqeri kajcern em sirum",
+        "label": "Քո աչքերի կայծն եմ սիրում",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/qo%20cov%20achqeri%20kajcern%20em%20sirum.mp3"
+      },
+      {
+        "id": "qo_drakhtum_002",
+        "label": "Քո դրախտում",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/qo_drakhtum_002.mp3"
+      },
+      {
+        "id": "Ko_koghkin_vorish_em_003",
+        "label": "Քո կողքին ուրիշ եմ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Ko_koghkin_vorish_em_003.mp3"
+      },
+      {
+        "id": "Ko_hmayki_gerin",
+        "label": "Քո հմայքի գերին",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Ko_hmayki_gerin.mp3"
+      },
+      {
+        "id": "Kuyr_eghbayr_003",
+        "label": "Քույր եղբայր",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Kuyr_eghbayr_003.mp3"
+      },
+      {
+        "id": "ov e kimy",
+        "label": "Օվ է կինը",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/ov%20e%20kimy.mp3"
+      },
+      {
+        "id": "frants_Harbel_em_vozum",
+        "label": "Ֆրանսերեն հարբել եմ ուզում",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/frants_Harbel_em_vozum.mp3"
+      },
+      {
+        "id": "Crazy Breeze of Love",
+        "label": "Crazy Breeze of Love",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Crazy%20Breeze%20of%20Love.mp3"
+      },
+      {
+        "id": "The Sun Cries Too",
+        "label": "The Sun Cries Too",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/The%20Sun%20Cries%20Too.mp3"
+      },
+      {
+        "id": "Безумный Ветер Любви",
+        "label": "Безумный Ветер Любви",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%91%D0%B5%D0%B7%D1%83%D0%BC%D0%BD%D1%8B%D0%B9%20%D0%92%D0%B5%D1%82%D0%B5%D1%80%20%D0%9B%D1%8E%D0%B1%D0%B2%D0%B8.mp3"
+      },
+      {
+        "id": "hima",
+        "label": "Հիմա",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/hima.mp3"
+      },
+      {
+        "id": "gjuk lusiny",
+        "label": "Գժուկ լուսին",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/gjuk%20lusiny.mp3"
+      },
+      {
+        "id": "gitem el inz ches spasum",
+        "label": "Գիտեմ էլ ինձ չես սպասում",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/gitem%20el%20inz%20ches%20spasum.mp3"
+      },
+      {
+        "id": "byur harvacneric",
+        "label": "Բյուր հարվածներից",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/byur%20harvacneric.mp3"
+      },
+      {
+        "id": "mern zepur",
+        "label": "Մեղմ զեփյուռը",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/mern%20zepur.mp3"
+      },
+      {
+        "id": "ser eir xarum",
+        "label": "Սեր էիր խաղում",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/ser%20eir%20xarum.mp3"
+      },
+      {
+        "id": "erazi kyamq roc",
+        "label": "Երազի կայանք (ռոք)",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/erazi%20kyamq%20roc.mp3"
+      },
+      {
+        "id": "erazi kyanq",
+        "label": "Երազի կայանք",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/erazi%20kyanq.mp3"
+      },
+      {
+        "id": "ti pridyosh komne",
+        "label": "Ты придёшь ко мне",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/ti%20pridyosh%20komne.mp3"
+      },
+      {
+        "id": "The Night's Embrace",
+        "label": "The Night's Embrace",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/The%20Night's%20Embrace.mp3"
+      },
+      {
+        "id": "xararutun ber",
+        "label": "Խաղաղություն բեր",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/xararutun%20ber.mp3"
+      },
+      {
+        "id": "ti moy kislarod",
+        "label": "Ты мой кислород",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/ti%20moy%20kislarod.mp3"
+      },
+      {
+        "id": "My Endless Dream",
+        "label": "My Endless Dream",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/My%20Endless%20Dream.mp3"
+      },
+      {
+        "id": "Тоска по мне",
+        "label": "Тоска по мне",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%A2%D0%BE%D1%81%D0%BA%D0%B0%20%D0%BF%D0%BE%20%D0%BC%D0%BD%D0%B5.mp3"
+      },
+      {
+        "id": "The Song of the Spring Breeze",
+        "label": "The Song of the Spring Breeze",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/The%20Song%20of%20the%20Spring%20Breeze.mp3"
+      },
+      {
+        "id": "խենթի նման սիրահարվեցի",
+        "label": "խենթի նման սիրահարվեցի",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D5%AD%D5%A5%D5%B6%D5%A9%D5%AB%20%D5%B6%D5%B4%D5%A1%D5%B6%20%D5%BD%D5%AB%D6%80%D5%A1%D5%B0%D5%A1%D6%80%D5%BE%D5%A5%D6%81%D5%AB.mp3"
+      },
+      {
+        "id": "Светлый полёт",
+        "label": "Светлый полёт",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%A1%D0%B2%D0%B5%D1%82%D0%BB%D1%8B%D0%B9%20%D0%BF%D0%BE%D0%BB%D1%91%D1%82.mp3"
+      },
+      {
+        "id": "Քեզ դուրս եմ արել",
+        "label": "Քեզ դուրս եմ արել",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D5%94%D5%A5%D5%A6%20%D5%A4%D5%B8%D6%82%D6%80%D5%BD%20%D5%A5%D5%B4%20%D5%A1%D6%80%D5%A5%D5%AC.mp3"
+      },
+      {
+        "id": "Перед памятью злой",
+        "label": "Перед памятью злой",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%9F%D0%B5%D1%80%D0%B5%D0%B4%20%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D1%8C%D1%8E%20%D0%B7%D0%BB%D0%BE%D0%B9.mp3"
+      },
+      {
+        "id": "Powerless Against Memories",
+        "label": "Powerless Against Memories",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Powerless%20Against%20Memories.mp3"
+      },
+      {
+        "id": "Դու իմ աշխարհն ես",
+        "label": "Դու իմ աշխարհն ես",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D4%B4%D5%B8%D6%82%20%D5%AB%D5%B4%20%D5%A1%D5%B7%D5%AD%D5%A1%D6%80%D5%B0%D5%B6%20%D5%A5%D5%BD.mp3"
+      },
+      {
+        "id": "Ты мой мир",
+        "label": "Ты мой мир",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%A2%D1%8B%20%D0%BC%D0%BE%D0%B9%20%D0%BC%D0%B8%D1%80.mp3"
+      },
+      {
+        "id": "You Are My World",
+        "label": "You Are My World",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/You%20Are%20My%20World.mp3"
+      },
+      {
+        "id": "Тоскуя по тебе",
+        "label": "Тоскуя по тебе",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%A2%D0%BE%D1%81%D0%BA%D1%83%D1%8F%20%D0%BF%D0%BE%20%D1%82%D0%B5%D0%B1%D0%B5.mp3"
+      },
+      {
+        "id": "Longing for You",
+        "label": "Longing for You",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Longing%20for%20You.mp3"
+      },
+      {
+        "id": "Քեզ կարոտելիս",
+        "label": "Քեզ կարոտելիս",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D5%94%D5%A5%D5%A6%20%D5%AF%D5%A1%D6%80%D5%B8%D5%BF%D5%A5%D5%AC%D5%AB%D5%BD.mp3"
+      },
+      {
+        "id": "Սիրել հենց հոգուն (1)",
+        "label": "Սիրել հենց հոգուն (1)",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D5%8D%D5%AB%D6%80%D5%A5%D5%AC%20%D5%B0%D5%A5%D5%B6%D6%81%20%D5%B0%D5%B8%D5%A3%D5%B8%D6%82%D5%B6%20(1).mp3"
+      },
+      {
+        "id": "Любить лишь душу (1)",
+        "label": "Любить лишь душу (1)",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%9B%D1%8E%D0%B1%D0%B8%D1%82%D1%8C%20%D0%BB%D0%B8%D1%88%D1%8C%20%D0%B4%D1%83%D1%88%D1%83%20(1).mp3"
+      },
+      {
+        "id": "Love Unseen (1)",
+        "label": "Love Unseen (1)",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Love%20Unseen%20(1).mp3"
+      },
+      {
+        "id": "Սիրել հենց հոգուն",
+        "label": "Սիրել հենց հոգուն",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D5%8D%D5%AB%D6%80%D5%A5%D5%AC%20%D5%B0%D5%A5%D5%B6%D6%81%20%D5%B0%D5%B8%D5%A3%D5%B8%D6%82%D5%B6.mp3"
+      },
+      {
+        "id": "Любить лишь душу",
+        "label": "Любить лишь душу",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%9B%D1%8E%D0%B1%D0%B8%D1%82%D1%8C%20%D0%BB%D0%B8%D1%88%D1%8C%20%D0%B4%D1%83%D1%88%D1%83.mp3"
+      },
+      {
+        "id": "Love Unseen",
+        "label": "Love Unseen",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Love%20Unseen.mp3"
+      },
+      {
+        "id": "Թանկ հուշը",
+        "label": "Թանկ հուշը",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D4%B9%D5%A1%D5%B6%D5%AF%20%D5%B0%D5%B8%D6%82%D5%B7%D5%A8.mp3"
+      },
+      {
+        "id": "Сокровенный причал",
+        "label": "Сокровенный причал",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%A1%D0%BE%D0%BA%D1%80%D0%BE%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9%20%D0%BF%D1%80%D0%B8%D1%87%D0%B0%D0%BB.mp3"
+      },
+      {
+        "id": "Never a Stranger",
+        "label": "Never a Stranger",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Never%20a%20Stranger.mp3"
+      },
+      {
+        "id": "Образы тоски",
+        "label": "Образы тоски",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%9E%D0%B1%D1%80%D0%B0%D0%B7%D1%8B%20%D1%82%D0%BE%D1%81%D0%BA%D0%B8.mp3"
+      },
+      {
+        "id": "Ծովի մեջ աչքերդ",
+        "label": "Ծովի մեջ աչքերդ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D4%BE%D5%B8%D5%BE%D5%AB%20%D5%B4%D5%A5%D5%BB%20%D5%A1%D5%B9%D6%84%D5%A5%D6%80%D5%A4.mp3"
+      },
+      {
+        "id": "The Illusion of Longing",
+        "label": "The Illusion of Longing",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/The%20Illusion%20of%20Longing.mp3"
+      },
+      {
+        "id": "My Precious Love",
+        "label": "My Precious Love",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/My%20Precious%20Love.mp3"
+      },
+      {
+        "id": "My Precious Love драгоценная любовь",
+        "label": "My Precious Love драгоценная любовь",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/My%20Precious%20Love%20%D0%B4%D1%80%D0%B0%D0%B3%D0%BE%D1%86%D0%B5%D0%BD%D0%BD%D0%B0%D1%8F%20%D0%BB%D1%8E%D0%B1%D0%BE%D0%B2%D1%8C.mp3"
+      },
+      {
+        "id": "My Bright Dream (1)",
+        "label": "My Bright Dream (1)",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/My%20Bright%20Dream%20(1).mp3"
+      },
+      {
+        "id": "My Bright Dream",
+        "label": "My Bright Dream",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/My%20Bright%20Dream.mp3"
+      },
+      {
+        "id": "խենթ խաղեր",
+        "label": "խենթ խաղեր",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D5%AD%D5%A5%D5%B6%D5%A9%20%D5%AD%D5%A1%D5%B2%D5%A5%D6%80.mp3"
+      },
+      {
+        "id": "Եղբայր իմ անգին",
+        "label": "Եղբայր իմ անգին",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D4%B5%D5%B2%D5%A2%D5%A1%D5%B5%D6%80%20%D5%AB%D5%B4%20%D5%A1%D5%B6%D5%A3%D5%AB%D5%B6.mp3"
+      },
+      {
+        "id": "Мой светлый луч",
+        "label": "Мой светлый луч",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%9C%D0%BE%D0%B9%20%D1%81%D0%B2%D0%B5%D1%82%D0%BB%D1%8B%D0%B9%20%D0%BB%D1%83%D1%87.mp3"
+      },
+      {
+        "id": "My Only Light",
+        "label": "My Only Light",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/My%20Only%20Light.mp3"
+      },
+      {
+        "id": "Տիեզերական կինը roc",
+        "label": "Տիեզերական կինը րոց",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D5%8F%D5%AB%D5%A5%D5%A6%D5%A5%D6%80%D5%A1%D5%AF%D5%A1%D5%B6%20%D5%AF%D5%AB%D5%B6%D5%A8%20roc.mp3"
+      },
+      {
+        "id": "Տիեզերական կինը",
+        "label": "Տիեզերական կինը",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D5%8F%D5%AB%D5%A5%D5%A6%D5%A5%D6%80%D5%A1%D5%AF%D5%A1%D5%B6%20%D5%AF%D5%AB%D5%B6%D5%A8.mp3"
+      },
+      {
+        "id": "The Woman as the Universe",
+        "label": "The Woman as the Universe",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/The%20Woman%20as%20the%20Universe.mp3"
+      },
+      {
+        "id": "Տիեզերական կինը (Remastered)",
+        "label": "Տիեզերական կինը (Remastered)",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D5%8F%D5%AB%D5%A5%D5%A6%D5%A5%D6%80%D5%A1%D5%AF%D5%A1%D5%B6%20%D5%AF%D5%AB%D5%B6%D5%A8%20(Remastered).mp3"
+      },
+      {
+        "id": "Երանի գայիր(Just Like Before)",
+        "label": "Երանի գայիր (Just Like Before)",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D4%B5%D6%80%D5%A1%D5%B6%D5%AB%20%D5%A3%D5%A1%D5%B5%D5%AB%D6%80(Just%20Like%20Before).mp3"
+      },
+      {
+        "id": "Դավաճան հայ",
+        "label": "Դավաճան հայ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D4%B4%D5%A1%D5%BE%D5%A1%D5%B3%D5%A1%D5%B6%20%D5%B0%D5%A1%D5%B5.mp3"
+      },
+      {
+        "id": "Իմ Քնքուշ Սևան",
+        "label": "Իմ Քնքուշ Սառան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D4%BB%D5%B4%20%D5%94%D5%B6%D6%84%D5%B8%D6%82%D5%B7%20%D5%8D%D6%87%D5%A1%D5%B6.mp3"
+      },
+      {
+        "id": "Քո ժպիտները հավաքեմ",
+        "label": "Քո ժպիտները հավաքեմ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D5%94%D5%B8%20%D5%AA%D5%BA%D5%AB%D5%BF%D5%B6%D5%A5%D6%80%D5%A8%20%D5%B0%D5%A1%D5%BE%D5%A1%D6%84%D5%A5%D5%B4.mp3"
+      },
+      {
+        "id": "ughernery-lac-chen-linum",
+        "label": "Ուժեղներն էլ լաց են լինում",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/ughernery-lac-chen-linum.mp3"
+      },
+      {
+        "id": "te karotum es",
+        "label": "Թե կարոտում ես",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/te%20karotum%20es.mp3"
+      },
+      {
+        "id": "Tchaxr e pargevum ",
+        "label": "Ճախր է պարգևում",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Tchaxr%20e%20pargevum%20.mp3"
+      },
+      {
+        "id": "lok cav u dard",
+        "label": "Լոկ ցավ ու դարդ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/lok%20cav%20u%20dard.mp3"
+      },
+      {
+        "id": "cav anbujeli",
+        "label": "Ցավ անբուժելի",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/cav%20anbujeli.mp3"
+      },
+      {
+        "id": "ov em qez hamar",
+        "label": "Ո՞վ եմ քեզ համար",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/ov%20em%20qez%20hamar.mp3"
+      },
+      {
+        "id": "bjur u bjur angam",
+        "label": "Բյուր ու բյուր անգամ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/bjur%20u%20bjur%20angam.mp3"
+      },
+      {
+        "id": "ete asem",
+        "label": "Եթե ասեմ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/ete%20asem.mp3"
+      },
+      {
+        "id": "gereckuhi",
+        "label": "Գեղեցկուհի",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/gereckuhi.mp3"
+      },
+      {
+        "id": "ari-khmenq",
+        "label": "ԱՐԻ ԽՄԵՆՔ · ДАВАЙ ВЫПЬЕМ · BUVONS",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/ari-khmenq.mp3"
+      }
+    ]
+  },
   "go-hara": {
     "id": "go-hara",
-    "page": "go-hara.html",
+    "slug": "go-hara.html",
     "name": "Go Hara",
-    "role": "Vocalist & Performer",
-    "description": "Vocalist and performer with a multilingual repertoire from the Imastun Studio archive.",
+    "mark": "GH",
     "cover": "authors/go-hara/cover.jpg",
-    "logo": "authors/go-hara/logo.png",
-    "songs": [
-      "ajs xarum mian ujern e haxtum",
-      "Anund_Kin_e_004",
-      "Arajin_hambuyru",
-      "Arevamutits_araj",
-      "Bari_gisher",
-      "duet_Спокойной_ночи_Remix_Remix",
-      "spakojnoj nochi (kin)",
-      "Ginin_prprel_e",
-      "gisherajin",
-      "daravor karnin",
-      "darnaham-ginin",
-      "Title_Es_arajva_pes_kez_karotum_em_Swiss_Pop_Ballad_Lyrics_by_Go_Hara_Remix_008",
-      "Im_poezian",
-      "la-fracise",
-      "pered rasvetom",
-      "kanchir-kgam",
-      "HANDIPOMNERI_AYS_KhAChMEROKOM",
-      "Hervits_Grkum em",
-      "Hravirir_indz_parelu_tangon",
-      "menq linelu enq",
-      "MI_TOGh_INDz_MENAK",
-      "Mi_siro_patmutyun",
-      "urenineri lacor purakum",
-      "POETIS",
-      "Sirogisher_Go_Hara",
-      "cncir-users",
-      "fracuzhenka",
-      "My Mirror True",
-      "Зеркало моё",
-      "Իմ հայելի",
-      "Fragile Cry Has Risen Like",
-      "Во мне поднялся хрупкий плач",
-      "Փխրուն Լաց",
-      "Եվ ինչ է սերը",
-      "Չնոտագրված լռություն",
-      "I'm tired of being strong",
-      "устала быть сильной",
-      "hognel em ujer kin lineluc",
-      "Հայաստան, մեր սուրբ տուն",
-      "Армения, наш святой дом",
-      "Armenia, Our Sacred Home",
-      "Սիրելով գնամ",
-      "Я уйду любя",
-      "Ill Leave Still Loving You",
-      "Դու եկար",
-      "Ты пришёл",
-      "You Came"
-    ],
-    "labels": {
-      "ajs xarum mian ujern e haxtum": "Այս խաղում ուժեղն է հաղթում",
-      "Anund_Kin_e_004": "Անուննդ կին է",
-      "Arajin_hambuyru": "Առաջին համբույր",
-      "Arevamutits_araj": "Արևամուտից առաջ",
-      "Bari_gisher": "Բարի գիշեր",
-      "duet_Спокойной_ночи_Remix_Remix": "Բարի գիշեր (դուետ ռուս)",
-      "spakojnoj nochi (kin)": "Բարի գիշեր (ռուս)",
-      "Ginin_prprel_e": "Գինին փրփրել է",
-      "gisherajin": "Գիշերային",
-      "daravor karnin": "Դարավոր կաղնի",
-      "darnaham-ginin": "Դառնահամ գինի",
-      "Title_Es_arajva_pes_kez_karotum_em_Swiss_Pop_Ballad_Lyrics_by_Go_Hara_Remix_008": "Ես առաջվա պես քեզ կարոտում եմ",
-      "Im_poezian": "Իմ պոեզիան",
-      "la-fracise": "Լա Ֆրանս",
-      "pered rasvetom": "Լուսաբացից առաջ",
-      "kanchir-kgam": "Կանչիր կգամ",
-      "HANDIPOMNERI_AYS_KhAChMEROKOM": "Հանդիպումների այս խաչմերուկում",
-      "Hervits_Grkum em": "Հերվից գրկում եմ (Remix)",
-      "Hravirir_indz_parelu_tangon": "Հրավիրիր ինձ պարելու տանգո",
-      "menq linelu enq": "Մենք լինելու ենք",
-      "MI_TOGh_INDz_MENAK": "Մի թող ինձ մենակ",
-      "Mi_siro_patmutyun": "Մի սիրո պատմություն",
-      "urenineri lacor purakum": "Ուռենիների լացող պուրակում",
-      "POETIS": "Պոետիս",
-      "Sirogisher_Go_Hara": "Սիրո գիշեր",
-      "cncir-users": "Ցնցիր ուսերս",
-      "fracuzhenka": "Ֆրանսուհին",
-      "My Mirror True": "My Mirror True",
-      "Зеркало моё": "Зеркало моё",
-      "Իմ հայելի": "Իմ հայելի",
-      "Fragile Cry Has Risen Like": "Fragile Cry Has Risen Like",
-      "Во мне поднялся хрупкий плач": "Во мне поднялся хрупкий плач",
-      "Փխրուն Լաց": "Փխրուն Լաց",
-      "Եվ ինչ է սերը": "Եվ ինչ է սերը",
-      "Չնոտագրված լռություն": "Չնոտագրված լռություն",
-      "hognel em ujer kin lineluc": "Հոգնել եմ ուժեղ կին լինելուց",
-      "Սիրելով գնամ": "Սիրելով գնամ",
-      "Я уйду любя": "Я уйду любя",
-      "Ill Leave Still Loving You": "I'll Leave Still Loving You",
-      "Դու եկար": "Դու եկար",
-      "Ты пришёл": "Ты пришёл",
-      "You Came": "You Came"
-    }
+    "coverPosition": "center 25%",
+    "title": "Go Hara — Imastun Studio",
+    "description": "Go Hara-ի երգերը՝ Imastun Studio-ում։",
+    "role": {
+      "hy": "Երգչուհի • կատարող",
+      "ru": "Певица • исполнительница",
+      "en": "Vocalist • performer"
+    },
+    "intro": {
+      "hy": "Go Hara-ի երգերը՝ մեկ առանձին, թեթև և հարմար երգացանկում։",
+      "ru": "Песни Go Hara в отдельном, лёгком и удобном каталоге.",
+      "en": "Go Hara’s songs in a dedicated, lightweight and easy-to-use catalogue."
+    },
+    "tracks": [
+      {
+        "id": "ajs xarum mian ujern e haxtum",
+        "label": "Այս խաղում ուժեղն է հաղթում",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/ajs%20xarum%20mian%20ujern%20e%20haxtum.mp3"
+      },
+      {
+        "id": "Anund_Kin_e_004",
+        "label": "Անուննդ կին է",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/Anund_Kin_e_004.mp3"
+      },
+      {
+        "id": "Arajin_hambuyru",
+        "label": "Առաջին համբույր",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/Arajin_hambuyru.mp3"
+      },
+      {
+        "id": "Arevamutits_araj",
+        "label": "Արևամուտից առաջ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/Arevamutits_araj.mp3"
+      },
+      {
+        "id": "Bari_gisher",
+        "label": "Բարի գիշեր",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/Bari_gisher.mp3"
+      },
+      {
+        "id": "duet_Спокойной_ночи_Remix_Remix",
+        "label": "Բարի գիշեր (դուետ ռուս)",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/duet_%D0%A1%D0%BF%D0%BE%D0%BA%D0%BE%D0%B9%D0%BD%D0%BE%D0%B9_%D0%BD%D0%BE%D1%87%D0%B8_Remix_Remix.mp3"
+      },
+      {
+        "id": "spakojnoj nochi (kin)",
+        "label": "Բարի գիշեր (ռուս)",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/spakojnoj%20nochi%20(kin).mp3"
+      },
+      {
+        "id": "Ginin_prprel_e",
+        "label": "Գինին փրփրել է",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/Ginin_prprel_e.mp3"
+      },
+      {
+        "id": "gisherajin",
+        "label": "Գիշերային",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/gisherajin.mp3"
+      },
+      {
+        "id": "daravor karnin",
+        "label": "Դարավոր կաղնի",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/daravor%20karnin.mp3"
+      },
+      {
+        "id": "darnaham-ginin",
+        "label": "Դառնահամ գինի",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/darnaham-ginin.mp3"
+      },
+      {
+        "id": "Title_Es_arajva_pes_kez_karotum_em_Swiss_Pop_Ballad_Lyrics_by_Go_Hara_Remix_008",
+        "label": "Ես առաջվա պես քեզ կարոտում եմ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/Title_Es_arajva_pes_kez_karotum_em_Swiss_Pop_Ballad_Lyrics_by_Go_Hara_Remix_008.mp3"
+      },
+      {
+        "id": "Im_poezian",
+        "label": "Իմ պոեզիան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/Im_poezian.mp3"
+      },
+      {
+        "id": "la-fracise",
+        "label": "Լա Ֆրանս",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/la-fracise.mp3"
+      },
+      {
+        "id": "pered rasvetom",
+        "label": "Լուսաբացից առաջ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/pered%20rasvetom.mp3"
+      },
+      {
+        "id": "kanchir-kgam",
+        "label": "Կանչիր կգամ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/kanchir-kgam.mp3"
+      },
+      {
+        "id": "HANDIPOMNERI_AYS_KhAChMEROKOM",
+        "label": "Հանդիպումների այս խաչմերուկում",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/HANDIPOMNERI_AYS_KhAChMEROKOM.mp3"
+      },
+      {
+        "id": "Hervits_Grkum em",
+        "label": "Հերվից գրկում եմ (Remix)",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/Hervits_Grkum%20em.mp3"
+      },
+      {
+        "id": "Hravirir_indz_parelu_tangon",
+        "label": "Հրավիրիր ինձ պարելու տանգո",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/Hravirir_indz_parelu_tangon.mp3"
+      },
+      {
+        "id": "menq linelu enq",
+        "label": "Մենք լինելու ենք",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/menq%20linelu%20enq.mp3"
+      },
+      {
+        "id": "MI_TOGh_INDz_MENAK",
+        "label": "Մի թող ինձ մենակ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/MI_TOGh_INDz_MENAK.mp3"
+      },
+      {
+        "id": "Mi_siro_patmutyun",
+        "label": "Մի սիրո պատմություն",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/Mi_siro_patmutyun.mp3"
+      },
+      {
+        "id": "urenineri lacor purakum",
+        "label": "Ուռենիների լացող պուրակում",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/urenineri%20lacor%20purakum.mp3"
+      },
+      {
+        "id": "POETIS",
+        "label": "Պոետիս",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/POETIS.mp3"
+      },
+      {
+        "id": "Sirogisher_Go_Hara",
+        "label": "Սիրո գիշեր",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/Sirogisher_Go_Hara.mp3"
+      },
+      {
+        "id": "cncir-users",
+        "label": "Ցնցիր ուսերս",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/cncir-users.mp3"
+      },
+      {
+        "id": "fracuzhenka",
+        "label": "Ֆրանսուհին",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/fracuzhenka.mp3"
+      },
+      {
+        "id": "My Mirror True",
+        "label": "My Mirror True",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/My%20Mirror%20True.mp3"
+      },
+      {
+        "id": "Зеркало моё",
+        "label": "Зеркало моё",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D0%97%D0%B5%D1%80%D0%BA%D0%B0%D0%BB%D0%BE%20%D0%BC%D0%BE%D1%91.mp3"
+      },
+      {
+        "id": "Իմ հայելի",
+        "label": "Իմ հայելի",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D4%BB%D5%B4%20%D5%B0%D5%A1%D5%B5%D5%A5%D5%AC%D5%AB.mp3"
+      },
+      {
+        "id": "Fragile Cry Has Risen Like",
+        "label": "Fragile Cry Has Risen Like",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/Fragile%20Cry%20Has%20Risen%20Like.mp3"
+      },
+      {
+        "id": "Во мне поднялся хрупкий плач",
+        "label": "Во мне поднялся хрупкий плач",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D0%92%D0%BE%20%D0%BC%D0%BD%D0%B5%20%D0%BF%D0%BE%D0%B4%D0%BD%D1%8F%D0%BB%D1%81%D1%8F%20%D1%85%D1%80%D1%83%D0%BF%D0%BA%D0%B8%D0%B9%20%D0%BF%D0%BB%D0%B0%D1%87.mp3"
+      },
+      {
+        "id": "Փխրուն Լաց",
+        "label": "Փխրուն Լաց",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D5%93%D5%AD%D6%80%D5%B8%D6%82%D5%B6%20%D4%BC%D5%A1%D6%81.mp3"
+      },
+      {
+        "id": "Եվ ինչ է սերը",
+        "label": "Եվ ինչ է սերը",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D4%B5%D5%BE%20%D5%AB%D5%B6%D5%B9%20%D5%A7%20%D5%BD%D5%A5%D6%80%D5%A8.mp3"
+      },
+      {
+        "id": "Չնոտագրված լռություն",
+        "label": "Չնոտագրված լռություն",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D5%89%D5%B6%D5%B8%D5%BF%D5%A1%D5%A3%D6%80%D5%BE%D5%A1%D5%AE%20%D5%AC%D5%BC%D5%B8%D6%82%D5%A9%D5%B5%D5%B8%D6%82%D5%B6.mp3"
+      },
+      {
+        "id": "I'm tired of being strong",
+        "label": "I'M Tired Of Being Strong",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/I'm%20tired%20of%20being%20strong.mp3"
+      },
+      {
+        "id": "устала быть сильной",
+        "label": "устала быть сильной",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D1%83%D1%81%D1%82%D0%B0%D0%BB%D0%B0%20%D0%B1%D1%8B%D1%82%D1%8C%20%D1%81%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B9.mp3"
+      },
+      {
+        "id": "hognel em ujer kin lineluc",
+        "label": "Հոգնել եմ ուժեղ կին լինելուց",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/hognel%20em%20ujer%20kin%20lineluc.mp3"
+      },
+      {
+        "id": "Հայաստան, մեր սուրբ տուն",
+        "label": "Հայաստան, մեր սուրբ տուն",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D5%80%D5%A1%D5%B5%D5%A1%D5%BD%D5%BF%D5%A1%D5%B6%2C%20%D5%B4%D5%A5%D6%80%20%D5%BD%D5%B8%D6%82%D6%80%D5%A2%20%D5%BF%D5%B8%D6%82%D5%B6.mp3"
+      },
+      {
+        "id": "Армения, наш святой дом",
+        "label": "Армения, наш святой дом",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D0%90%D1%80%D0%BC%D0%B5%D0%BD%D0%B8%D1%8F%2C%20%D0%BD%D0%B0%D1%88%20%D1%81%D0%B2%D1%8F%D1%82%D0%BE%D0%B9%20%D0%B4%D0%BE%D0%BC.mp3"
+      },
+      {
+        "id": "Armenia, Our Sacred Home",
+        "label": "Armenia, Our Sacred Home",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/Armenia%2C%20Our%20Sacred%20Home.mp3"
+      },
+      {
+        "id": "Սիրելով գնամ",
+        "label": "Սիրելով գնամ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D5%8D%D5%AB%D6%80%D5%A5%D5%AC%D5%B8%D5%BE%20%D5%A3%D5%B6%D5%A1%D5%B4.mp3?v=b5e360f88c88"
+      },
+      {
+        "id": "Я уйду любя",
+        "label": "Я уйду любя",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D0%AF%20%D1%83%D0%B9%D0%B4%D1%83%20%D0%BB%D1%8E%D0%B1%D1%8F.mp3?v=a4c22ad27185"
+      },
+      {
+        "id": "Ill Leave Still Loving You",
+        "label": "I'll Leave Still Loving You",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/Ill%20Leave%20Still%20Loving%20You.mp3"
+      }
+    ]
   },
   "shakespeare-reimagined": {
     "id": "shakespeare-reimagined",
-    "page": "shakespeare.html",
+    "slug": "shakespeare.html",
     "name": "Shakespeare Reimagined",
-    "role": "Sonnets in Song",
-    "description": "A musical interpretation of Shakespeare’s sonnets, presented through the Shakespeare Reimagined project.",
+    "mark": "SR",
     "cover": "authors/shakespeare-reimagined/cover.jpg",
-    "logo": "authors/shakespeare-reimagined/logo.png",
-    "songs": [
-      "Սոնետ 1",
-      "Սոնետ 2",
-      "Սոնետ 3",
-      "Սոնետ 4",
-      "Սոնետ 5",
-      "Սոնետ 6",
-      "Սոնետ 7",
-      "Սոնետ 8",
-      "Սոնետ 9",
-      "Սոնետ 10",
-      "Սոնետ 11",
-      "Սոնետ 12",
-      "Սոնետ  13",
-      "Սոնետ  14",
-      "Սոնետ  15",
-      "Սոնետ  16",
-      "Սոնետ  17",
-      "Սոնետ  18",
-      "Սոնետ  19",
-      "Սոնետ  20",
-      "Սոնետ  21",
-      "Սոնետ  22",
-      "Սոնետ  23",
-      "Սոնետ  24",
-      "Սոնետ  25",
-      "Սոնետ  26",
-      "Սոնետ  27",
-      "Սոնետ  28",
-      "Սոնետ  29",
-      "Սոնետ  30",
-      "Սոնետ  31",
-      "Սոնետ  32",
-      "Սոնետ  33",
-      "Սոնետ  34",
-      "Սոնետ  35",
-      "Սոնետ  36",
-      "Սոնետ  37",
-      "Սոնետ  38",
-      "Սոնետ  39",
-      "Սոնետ  40",
-      "Սոնետ  41",
-      "Սոնետ  42",
-      "Սոնետ  43",
-      "Սոնետ  44",
-      "Սոնետ  45",
-      "Սոնետ  46",
-      "Սոնետ  47",
-      "Սոնետ  48",
-      "Սոնետ  49",
-      "Սոնետ  50",
-      "Սոնետ  51",
-      "Սոնետ  52",
-      "Սոնետ  53",
-      "Սոնետ  54",
-      "Սոնետ  55",
-      "Սոնետ  56",
-      "Սոնետ  57",
-      "Սոնետ  58",
-      "Սոնետ  59",
-      "Սոնետ  60",
-      "Սոնետ 94",
-      "Սոնետ  121",
-      "Սոնետ  70",
-      "Սոնետ  71",
-      "Սոնետ  72",
-      "Սոնետ  73",
-      "Սոնետ  75",
-      "Սոնետ  76",
-      "Սոնետ  77",
-      "Սոնետ  78",
-      "Սոնետ  79",
-      "Սոնետ  81",
-      "Սոնետ  82",
-      "Սոնետ  83",
-      "Սոնետ  84",
-      "Սոնետ  85",
-      "Սոնետ  86",
-      "Սոնետ  87",
-      "Սոնետ  88",
-      "Սոնետ  89",
-      "Սոնետ  91",
-      "Սոնետ  92",
-      "Սոնետ  93",
-      "Սոնետ  95",
-      "Սոնետ  96",
-      "Սոնետ  97",
-      "Սոնետ  98",
-      "Սոնետ  99",
-      "Սոնետ  100",
-      "Սոնետ  101",
-      "Սոնետ  102",
-      "Սոնետ  103",
-      "Սոնետ  104",
-      "Սոնետ  105",
-      "Սոնետ  106",
-      "Սոնետ  107",
-      "Սոնետ  108",
-      "Սոնետ  109",
-      "Սոնետ  110",
-      "Սոնետ  111",
-      "Սոնետ  112",
-      "Սոնետ  113",
-      "Սոնետ  114",
-      "Սոնետ  116",
-      "Սոնետ  117",
-      "Սոնետ  118",
-      "Սոնետ  119",
-      "Սոնետ  120",
-      "Սոնետ  122",
-      "Սոնետ  123",
-      "Սոնետ  124",
-      "Սոնետ  125",
-      "Սոնետ  126",
-      "Սոնետ  127",
-      "Սոնետ  128",
-      "Սոնետ  129",
-      "Սոնետ  130",
-      "Սոնետ  132",
-      "Սոնետ  133",
-      "Սոնետ  134",
-      "Սոնետ  135",
-      "Սոնետ  136",
-      "Սոնետ  137",
-      "Սոնետ  138",
-      "Սոնետ  139",
-      "Սոնետ  140",
-      "Սոնետ  141",
-      "Սոնետ  142",
-      "Սոնետ  143",
-      "Սոնետ  144",
-      "Սոնետ  145",
-      "Սոնետ  146",
-      "Սոնետ  147",
-      "Սոնետ  148",
-      "Սոնետ  149",
-      "Սոնետ  150",
-      "Սոնետ  151",
-      "Սոնետ  152",
-      "Սոնետ  153",
-      "Սոնետ  154"
-    ],
-    "labels": {}
+    "coverPosition": "center center",
+    "title": "Shakespeare Reimagined — Imastun Studio",
+    "description": "Շեքսպիրի սոնետները երաժշտության մեջ՝ Imastun Studio-ում։",
+    "role": {
+      "hy": "Շեքսպիրի սոնետները • երաժշտությամբ",
+      "ru": "Сонеты Шекспира • в музыке",
+      "en": "Shakespeare’s sonnets • in song"
+    },
+    "intro": {
+      "hy": "Շեքսպիրի սոնետների երաժշտական վերաիմաստավորումները՝ մեկ միասնական երգացանկում։",
+      "ru": "Музыкальное переосмысление сонетов Шекспира в едином каталоге.",
+      "en": "Musical reimaginings of Shakespeare’s sonnets in one unified catalogue."
+    },
+    "tracks": [
+      {
+        "id": "Սոնետ 1",
+        "label": "Սոնետ 1",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%201.mp3"
+      },
+      {
+        "id": "Սոնետ 2",
+        "label": "Սոնետ 2",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%202.mp3"
+      },
+      {
+        "id": "Սոնետ 3",
+        "label": "Սոնետ 3",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%203.mp3"
+      },
+      {
+        "id": "Սոնետ 4",
+        "label": "Սոնետ 4",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%204.mp3"
+      },
+      {
+        "id": "Սոնետ 5",
+        "label": "Սոնետ 5",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%205.mp3"
+      },
+      {
+        "id": "Սոնետ 6",
+        "label": "Սոնետ 6",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%206.mp3"
+      },
+      {
+        "id": "Սոնետ 7",
+        "label": "Սոնետ 7",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%207.mp3"
+      },
+      {
+        "id": "Սոնետ 8",
+        "label": "Սոնետ 8",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%208.mp3"
+      },
+      {
+        "id": "Սոնետ 9",
+        "label": "Սոնետ 9",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%209.mp3"
+      },
+      {
+        "id": "Սոնետ 10",
+        "label": "Սոնետ 10",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%2010.mp3"
+      },
+      {
+        "id": "Սոնետ 11",
+        "label": "Սոնետ 11",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%2011.mp3"
+      },
+      {
+        "id": "Սոնետ 12",
+        "label": "Սոնետ 12",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%2012.mp3"
+      },
+      {
+        "id": "Սոնետ  13",
+        "label": "Սոնետ 13",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2013.mp3"
+      },
+      {
+        "id": "Սոնետ  14",
+        "label": "Սոնետ 14",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2014.mp3"
+      },
+      {
+        "id": "Սոնետ  15",
+        "label": "Սոնետ 15",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2015.mp3"
+      },
+      {
+        "id": "Սոնետ  16",
+        "label": "Սոնետ 16",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2016.mp3"
+      },
+      {
+        "id": "Սոնետ  17",
+        "label": "Սոնետ 17",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2017.mp3"
+      },
+      {
+        "id": "Սոնետ  18",
+        "label": "Սոնետ 18",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2018.mp3"
+      },
+      {
+        "id": "Սոնետ  19",
+        "label": "Սոնետ 19",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2019.mp3"
+      },
+      {
+        "id": "Սոնետ  20",
+        "label": "Սոնետ 20",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2020.mp3"
+      },
+      {
+        "id": "Սոնետ  21",
+        "label": "Սոնետ 21",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2021.mp3"
+      },
+      {
+        "id": "Սոնետ  22",
+        "label": "Սոնետ 22",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2022.mp3"
+      },
+      {
+        "id": "Սոնետ  23",
+        "label": "Սոնետ 23",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2023.mp3"
+      },
+      {
+        "id": "Սոնետ  24",
+        "label": "Սոնետ 24",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2024.mp3"
+      },
+      {
+        "id": "Սոնետ  25",
+        "label": "Սոնետ 25",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2025.mp3"
+      },
+      {
+        "id": "Սոնետ  26",
+        "label": "Սոնետ 26",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2026.mp3"
+      },
+      {
+        "id": "Սոնետ  27",
+        "label": "Սոնետ 27",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2027.mp3"
+      },
+      {
+        "id": "Սոնետ  28",
+        "label": "Սոնետ 28",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2028.mp3"
+      },
+      {
+        "id": "Սոնետ  29",
+        "label": "Սոնետ 29",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2029.mp3"
+      },
+      {
+        "id": "Սոնետ  30",
+        "label": "Սոնետ 30",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2030.mp3"
+      },
+      {
+        "id": "Սոնետ  31",
+        "label": "Սոնետ 31",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2031.mp3"
+      },
+      {
+        "id": "Սոնետ  32",
+        "label": "Սոնետ 32",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2032.mp3"
+      },
+      {
+        "id": "Սոնետ  33",
+        "label": "Սոնետ 33",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2033.mp3"
+      },
+      {
+        "id": "Սոնետ  34",
+        "label": "Սոնետ 34",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2034.mp3"
+      },
+      {
+        "id": "Սոնետ  35",
+        "label": "Սոնետ 35",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2035.mp3"
+      },
+      {
+        "id": "Սոնետ  36",
+        "label": "Սոնետ 36",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2036.mp3"
+      },
+      {
+        "id": "Սոնետ  37",
+        "label": "Սոնետ 37",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2037.mp3"
+      },
+      {
+        "id": "Սոնետ  38",
+        "label": "Սոնետ 38",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2038.mp3"
+      },
+      {
+        "id": "Սոնետ  39",
+        "label": "Սոնետ 39",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2039.mp3"
+      },
+      {
+        "id": "Սոնետ  40",
+        "label": "Սոնետ 40",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2040.mp3"
+      },
+      {
+        "id": "Սոնետ  41",
+        "label": "Սոնետ 41",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2041.mp3"
+      },
+      {
+        "id": "Սոնետ  42",
+        "label": "Սոնետ 42",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2042.mp3"
+      },
+      {
+        "id": "Սոնետ  43",
+        "label": "Սոնետ 43",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2043.mp3"
+      },
+      {
+        "id": "Սոնետ  44",
+        "label": "Սոնետ 44",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2044.mp3"
+      },
+      {
+        "id": "Սոնետ  45",
+        "label": "Սոնետ 45",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2045.mp3"
+      },
+      {
+        "id": "Սոնետ  46",
+        "label": "Սոնետ 46",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2046.mp3"
+      },
+      {
+        "id": "Սոնետ  47",
+        "label": "Սոնետ 47",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2047.mp3"
+      },
+      {
+        "id": "Սոնետ  48",
+        "label": "Սոնետ 48",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2048.mp3"
+      },
+      {
+        "id": "Սոնետ  49",
+        "label": "Սոնետ 49",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2049.mp3"
+      },
+      {
+        "id": "Սոնետ  50",
+        "label": "Սոնետ 50",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2050.mp3"
+      },
+      {
+        "id": "Սոնետ  51",
+        "label": "Սոնետ 51",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2051.mp3"
+      },
+      {
+        "id": "Սոնետ  52",
+        "label": "Սոնետ 52",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2052.mp3"
+      },
+      {
+        "id": "Սոնետ  53",
+        "label": "Սոնետ 53",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2053.mp3"
+      },
+      {
+        "id": "Սոնետ  54",
+        "label": "Սոնետ 54",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2054.mp3"
+      },
+      {
+        "id": "Սոնետ  55",
+        "label": "Սոնետ 55",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2055.mp3"
+      },
+      {
+        "id": "Սոնետ  56",
+        "label": "Սոնետ 56",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2056.mp3"
+      },
+      {
+        "id": "Սոնետ  57",
+        "label": "Սոնետ 57",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2057.mp3"
+      },
+      {
+        "id": "Սոնետ  58",
+        "label": "Սոնետ 58",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2058.mp3"
+      },
+      {
+        "id": "Սոնետ  59",
+        "label": "Սոնետ 59",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2059.mp3"
+      },
+      {
+        "id": "Սոնետ  60",
+        "label": "Սոնետ 60",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2060.mp3"
+      },
+      {
+        "id": "Սոնետ 94",
+        "label": "Սոնետ 94",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%2094.mp3"
+      },
+      {
+        "id": "Սոնետ  121",
+        "label": "Սոնետ 121",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20121.mp3"
+      },
+      {
+        "id": "Սոնետ  70",
+        "label": "Սոնետ 70",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2070.mp3"
+      },
+      {
+        "id": "Սոնետ  71",
+        "label": "Սոնետ 71",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2071.mp3"
+      },
+      {
+        "id": "Սոնետ  72",
+        "label": "Սոնետ 72",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2072.mp3"
+      },
+      {
+        "id": "Սոնետ  73",
+        "label": "Սոնետ 73",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2073.mp3"
+      },
+      {
+        "id": "Սոնետ  75",
+        "label": "Սոնետ 75",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2075.mp3"
+      },
+      {
+        "id": "Սոնետ  76",
+        "label": "Սոնետ 76",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2076.mp3"
+      },
+      {
+        "id": "Սոնետ  77",
+        "label": "Սոնետ 77",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2077.mp3"
+      },
+      {
+        "id": "Սոնետ  78",
+        "label": "Սոնետ 78",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2078.mp3"
+      },
+      {
+        "id": "Սոնետ  79",
+        "label": "Սոնետ 79",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2079.mp3"
+      },
+      {
+        "id": "Սոնետ  81",
+        "label": "Սոնետ 81",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2081.mp3"
+      },
+      {
+        "id": "Սոնետ  82",
+        "label": "Սոնետ 82",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2082.mp3"
+      },
+      {
+        "id": "Սոնետ  83",
+        "label": "Սոնետ 83",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2083.mp3"
+      },
+      {
+        "id": "Սոնետ  84",
+        "label": "Սոնետ 84",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2084.mp3"
+      },
+      {
+        "id": "Սոնետ  85",
+        "label": "Սոնետ 85",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2085.mp3"
+      },
+      {
+        "id": "Սոնետ  86",
+        "label": "Սոնետ 86",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2086.mp3"
+      },
+      {
+        "id": "Սոնետ  87",
+        "label": "Սոնետ 87",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2087.mp3"
+      },
+      {
+        "id": "Սոնետ  88",
+        "label": "Սոնետ 88",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2088.mp3"
+      },
+      {
+        "id": "Սոնետ  89",
+        "label": "Սոնետ 89",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2089.mp3"
+      },
+      {
+        "id": "Սոնետ  91",
+        "label": "Սոնետ 91",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2091.mp3"
+      },
+      {
+        "id": "Սոնետ  92",
+        "label": "Սոնետ 92",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2092.mp3"
+      },
+      {
+        "id": "Սոնետ  93",
+        "label": "Սոնետ 93",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2093.mp3"
+      },
+      {
+        "id": "Սոնետ  95",
+        "label": "Սոնետ 95",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2095.mp3"
+      },
+      {
+        "id": "Սոնետ  96",
+        "label": "Սոնետ 96",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2096.mp3"
+      },
+      {
+        "id": "Սոնետ  97",
+        "label": "Սոնետ 97",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2097.mp3"
+      },
+      {
+        "id": "Սոնետ  98",
+        "label": "Սոնետ 98",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2098.mp3"
+      },
+      {
+        "id": "Սոնետ  99",
+        "label": "Սոնետ 99",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%2099.mp3"
+      },
+      {
+        "id": "Սոնետ  100",
+        "label": "Սոնետ 100",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20100.mp3"
+      },
+      {
+        "id": "Սոնետ  101",
+        "label": "Սոնետ 101",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20101.mp3"
+      },
+      {
+        "id": "Սոնետ  102",
+        "label": "Սոնետ 102",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20102.mp3"
+      },
+      {
+        "id": "Սոնետ  103",
+        "label": "Սոնետ 103",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20103.mp3"
+      },
+      {
+        "id": "Սոնետ  104",
+        "label": "Սոնետ 104",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20104.mp3"
+      },
+      {
+        "id": "Սոնետ  105",
+        "label": "Սոնետ 105",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20105.mp3"
+      },
+      {
+        "id": "Սոնետ  106",
+        "label": "Սոնետ 106",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20106.mp3"
+      },
+      {
+        "id": "Սոնետ  107",
+        "label": "Սոնետ 107",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20107.mp3"
+      },
+      {
+        "id": "Սոնետ  108",
+        "label": "Սոնետ 108",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20108.mp3"
+      },
+      {
+        "id": "Սոնետ  109",
+        "label": "Սոնետ 109",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20109.mp3"
+      },
+      {
+        "id": "Սոնետ  110",
+        "label": "Սոնետ 110",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20110.mp3"
+      },
+      {
+        "id": "Սոնետ  111",
+        "label": "Սոնետ 111",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20111.mp3"
+      },
+      {
+        "id": "Սոնետ  112",
+        "label": "Սոնետ 112",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20112.mp3"
+      },
+      {
+        "id": "Սոնետ  113",
+        "label": "Սոնետ 113",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20113.mp3"
+      },
+      {
+        "id": "Սոնետ  114",
+        "label": "Սոնետ 114",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20114.mp3"
+      },
+      {
+        "id": "Սոնետ  116",
+        "label": "Սոնետ 116",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20116.mp3"
+      },
+      {
+        "id": "Սոնետ  117",
+        "label": "Սոնետ 117",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20117.mp3"
+      },
+      {
+        "id": "Սոնետ  118",
+        "label": "Սոնետ 118",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20118.mp3"
+      },
+      {
+        "id": "Սոնետ  119",
+        "label": "Սոնետ 119",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20119.mp3"
+      },
+      {
+        "id": "Սոնետ  120",
+        "label": "Սոնետ 120",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20120.mp3"
+      },
+      {
+        "id": "Սոնետ  122",
+        "label": "Սոնետ 122",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20122.mp3"
+      },
+      {
+        "id": "Սոնետ  123",
+        "label": "Սոնետ 123",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20123.mp3"
+      },
+      {
+        "id": "Սոնետ  124",
+        "label": "Սոնետ 124",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20124.mp3"
+      },
+      {
+        "id": "Սոնետ  125",
+        "label": "Սոնետ 125",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20125.mp3"
+      },
+      {
+        "id": "Սոնետ  126",
+        "label": "Սոնետ 126",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20126.mp3"
+      },
+      {
+        "id": "Սոնետ  127",
+        "label": "Սոնետ 127",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20127.mp3"
+      },
+      {
+        "id": "Սոնետ  128",
+        "label": "Սոնետ 128",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20128.mp3"
+      },
+      {
+        "id": "Սոնետ  129",
+        "label": "Սոնետ 129",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20129.mp3"
+      },
+      {
+        "id": "Սոնետ  130",
+        "label": "Սոնետ 130",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20130.mp3"
+      },
+      {
+        "id": "Սոնետ  132",
+        "label": "Սոնետ 132",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20132.mp3"
+      },
+      {
+        "id": "Սոնետ  133",
+        "label": "Սոնետ 133",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20133.mp3"
+      },
+      {
+        "id": "Սոնետ  134",
+        "label": "Սոնետ 134",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20134.mp3"
+      },
+      {
+        "id": "Սոնետ  135",
+        "label": "Սոնետ 135",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20135.mp3"
+      },
+      {
+        "id": "Սոնետ  136",
+        "label": "Սոնետ 136",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20136.mp3"
+      },
+      {
+        "id": "Սոնետ  137",
+        "label": "Սոնետ 137",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20137.mp3"
+      },
+      {
+        "id": "Սոնետ  138",
+        "label": "Սոնետ 138",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20138.mp3"
+      },
+      {
+        "id": "Սոնետ  139",
+        "label": "Սոնետ 139",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20139.mp3"
+      },
+      {
+        "id": "Սոնետ  140",
+        "label": "Սոնետ 140",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20140.mp3"
+      },
+      {
+        "id": "Սոնետ  141",
+        "label": "Սոնետ 141",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20141.mp3"
+      },
+      {
+        "id": "Սոնետ  142",
+        "label": "Սոնետ 142",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20142.mp3"
+      },
+      {
+        "id": "Սոնետ  143",
+        "label": "Սոնետ 143",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20143.mp3"
+      },
+      {
+        "id": "Սոնետ  144",
+        "label": "Սոնետ 144",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20144.mp3"
+      },
+      {
+        "id": "Սոնետ  145",
+        "label": "Սոնետ 145",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20145.mp3"
+      },
+      {
+        "id": "Սոնետ  146",
+        "label": "Սոնետ 146",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20146.mp3"
+      },
+      {
+        "id": "Սոնետ  147",
+        "label": "Սոնետ 147",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20147.mp3"
+      },
+      {
+        "id": "Սոնետ  148",
+        "label": "Սոնետ 148",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20148.mp3"
+      },
+      {
+        "id": "Սոնետ  149",
+        "label": "Սոնետ 149",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20149.mp3"
+      },
+      {
+        "id": "Սոնետ  150",
+        "label": "Սոնետ 150",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20150.mp3"
+      },
+      {
+        "id": "Սոնետ  151",
+        "label": "Սոնետ 151",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20151.mp3"
+      },
+      {
+        "id": "Սոնետ  152",
+        "label": "Սոնետ 152",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20152.mp3"
+      },
+      {
+        "id": "Սոնետ  153",
+        "label": "Սոնետ 153",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20153.mp3"
+      },
+      {
+        "id": "Սոնետ  154",
+        "label": "Սոնետ 154",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20154.mp3"
+      }
+    ]
   }
 }
