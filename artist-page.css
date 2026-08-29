@@ -597,3 +597,86 @@
 .hero h1{overflow-wrap:anywhere}
 body[data-artist-id="shakespeare-reimagined"] .hero h1{font-size:clamp(42px,6vw,86px)}
 .loading-panel{padding:40px 20px;text-align:center;color:var(--muted);border:1px solid var(--border);background:var(--surface)}
+
+/* Language spectrum: Հայ՝ կապույտ, Рус՝ դեղին, Eng՝ սպիտակ */
+body{
+  --language-accent:var(--gold);
+  --language-soft:var(--gold-dim);
+  --language-ink:#0c0c0c;
+  --language-glow:rgba(201,168,76,.28)
+}
+body[data-language="hy"]{
+  --language-accent:#4b9cff;
+  --language-soft:rgba(75,156,255,.12);
+  --language-ink:#07111f;
+  --language-glow:rgba(75,156,255,.34)
+}
+body[data-language="ru"]{
+  --language-accent:#f2cf52;
+  --language-soft:rgba(242,207,82,.12);
+  --language-ink:#151006;
+  --language-glow:rgba(242,207,82,.34)
+}
+body[data-language="en"]{
+  --language-accent:#f6f4ee;
+  --language-soft:rgba(246,244,238,.10);
+  --language-ink:#11100e;
+  --language-glow:rgba(246,244,238,.28)
+}
+.lang button{
+  transition:background .2s,color .2s,box-shadow .2s,opacity .2s
+}
+.lang button[data-lang="hy"]{color:#69adff}
+.lang button[data-lang="ru"]{color:#f2cf52}
+.lang button[data-lang="en"]{color:#f6f4ee}
+body.light-mode .lang button[data-lang="en"]:not([aria-pressed="true"]){color:#5e5a52}
+.lang button[aria-pressed="true"]{
+  background:var(--language-accent);
+  color:var(--language-ink);
+  box-shadow:0 0 18px var(--language-glow);
+  opacity:1
+}
+body[data-language] .eyebrow,
+body[data-language] .catalog h2,
+body[data-language] .filter.active,
+body[data-language] .track-row.playing .track-num{
+  color:var(--language-accent)
+}
+body[data-language] .primary{
+  border-color:var(--language-accent);
+  color:var(--language-accent)
+}
+body[data-language] .primary:hover{
+  background:var(--language-accent);
+  color:var(--language-ink)
+}
+body[data-language] .filter.active{
+  border-bottom-color:var(--language-accent)
+}
+body[data-language] .track-row.playing{
+  background:var(--language-soft);
+  border-color:color-mix(in srgb,var(--language-accent) 34%,transparent)
+}
+body[data-language] .track-play:hover,
+body[data-language] .track-row.playing .track-play{
+  border-color:var(--language-accent);
+  background:var(--language-soft);
+  color:var(--language-accent)
+}
+body[data-language] .icon-btn:hover,
+body[data-language] .icon-btn.favorite{
+  color:var(--language-accent)
+}
+body[data-language] .player::before{
+  background:linear-gradient(90deg,transparent,var(--language-accent),transparent)
+}
+body[data-language] .player-controls .main-play{
+  border-color:var(--language-accent);
+  background:var(--language-accent);
+  color:var(--language-ink);
+  box-shadow:0 0 18px var(--language-glow)
+}
+body[data-language] .player-progress input{
+  accent-color:var(--language-accent)
+}
+

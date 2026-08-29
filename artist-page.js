@@ -275,6 +275,7 @@
   function applyLanguage(lang) {
     state.lang = I18N[lang] ? lang : "hy";
     document.documentElement.lang = state.lang;
+    document.body.setAttribute("data-language", state.lang);
     write("imastun_language", state.lang);
     document.querySelectorAll("[data-lang]").forEach(function (button) {
       var active = button.dataset.lang === state.lang;
