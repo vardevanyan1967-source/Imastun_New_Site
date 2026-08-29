@@ -23,7 +23,7 @@
   var I18N = {
     hy: {
       back:"Գլխավոր էջ", catalog:"Երգացանկ", search:"Որոնել երգերում…",
-      all:"Բոլորը", favorites:"Սիրված երգերը", poets:"Բանաստեղծներ", playFirst:"Նվագարկել առաջին երգը",
+      all:"Բոլորը", favorites:"Սիրված երգերը", poets:"Բանաստեղծներ", languageCount:"Երգի տեքստի լեզուների քանակը", playFirst:"Նվագարկել առաջին երգը",
       songWord:"երգ", noResults:"Այս որոնմամբ երգ չի գտնվել։",
       noFavorites:"Սիրված երգ դեռ չկա։ Սեղմեք ♡՝ երգն այստեղ պահելու համար։",
       play:"Նվագարկել", pause:"Դադար", previous:"Նախորդ երգը", next:"Հաջորդ երգը",
@@ -36,7 +36,7 @@
     },
     ru: {
       back:"Главная", catalog:"Песни", search:"Поиск по песням…",
-      all:"Все", favorites:"Любимые песни", poets:"Поэты", playFirst:"Включить первую песню",
+      all:"Все", favorites:"Любимые песни", poets:"Поэты", languageCount:"Число языков в тексте песни", playFirst:"Включить первую песню",
       songWord:"песен", noResults:"По вашему запросу песен не найдено.",
       noFavorites:"Любимых песен пока нет. Нажмите ♡, чтобы сохранить песню здесь.",
       play:"Воспроизвести", pause:"Пауза", previous:"Предыдущая песня", next:"Следующая песня",
@@ -48,7 +48,7 @@
     },
     en: {
       back:"Home", catalog:"Track list", search:"Search tracks…",
-      all:"All", favorites:"Favorite songs", poets:"Poets", playFirst:"Play the first track",
+      all:"All", favorites:"Favorite songs", poets:"Poets", languageCount:"Song text language count", playFirst:"Play the first track",
       songWord:"tracks", noResults:"No tracks match this search.",
       noFavorites:"No favorite songs yet. Tap ♡ to save a song here.",
       play:"Play", pause:"Pause", previous:"Previous track", next:"Next track",
@@ -59,6 +59,10 @@
       theme:"Change theme", language:"Change language", loadError:"The track list could not load. Refresh the page."
     }
   };
+
+
+  var TRILINGUAL_OVERRIDE = new Set(["vahan-teryan/Golden Stars in Blue(Տխուր զրույց)","vahan-teryan/Կարոտ","vahan-teryan/Մոռանալ","hamo-sahyan/The One in Vain","hamo-sahyan/guce henc ajster","hamo-sahyan/duq lavn eq mardiq","hamo-sahyan/es kuzei ","hamo-sahyan/ev chimacanq te inchu","hamo-sahyan/inchu hishecri","hamo-sahyan/ka mi tulutun","hamo-sahyan/Փնտրում ես դու","Երանի գայիր(Just Like Before)","te karotum es","lok cav u dard","lrutian tchich","Կարոտի խենթի","Hayots_ashkarh_A","Title_Mi_tanjir_hogis_Multilingual_Emotional_Duet_Lyrics_by_Silva_Gulanyan_002","chem moracel","Jaheli_nman_003","Tiezerk_Jinj_Lazur","ser da ardioq","Քո ժպիտները հավաքեմ","ughernery-lac-chen-linum","Ches_moranalu_003","cav anbujeli","ov em qez hamar","bjur u bjur angam","ete asem","gereckuhi","im ser","sirelis","taxicy vat margare e","hamo-sahyan/papy"]);
+  var BILINGUAL_OVERRIDE = new Set(["vahan-teryan/Աշուն Է անձրև","Astghayin_Shghta_A","Vahan_Teryan_Gisher","Поцелуй_ветра","Vahan_Teryan_MEGhAVOR_AChKERU","Es_kez_sirum_em","Hay_aragil","Tchaxr e pargevum ","Chisht_zhamanakin_At_The_Right_Time","Sirir_indz_hogis_FRAM_Duet","S_irum_em_kez_I_love_you","sirty xentacav","Ka_mi_ashkharh_vor_srtov_e_karutsvats","Ko_koghkin_vorish_em_003","melodia lubvi"]);
 
   function read(key, fallback) {
     try {
@@ -125,6 +129,22 @@
     });
   }
 
+
+  function languageCountClass(track) {
+    if (artist && artist.id === "shakespeare-reimagined") return "lang-count-three";
+    if (TRILINGUAL_OVERRIDE.has(track.id)) return "lang-count-three";
+    if (BILINGUAL_OVERRIDE.has(track.id)) return "lang-count-two";
+    var stripped = String(track.label || "").replace(/\([^)]*\)/g, "");
+    var count = [
+      /[\u0530-\u058F]/.test(stripped),
+      /[\u0400-\u04FF]/.test(stripped),
+      /[a-zA-Z]/.test(stripped)
+    ].filter(Boolean).length;
+    if (count >= 3) return "lang-count-three";
+    if (count === 2) return "lang-count-two";
+    return "lang-count-one";
+  }
+
   function renderTracks() {
     if (!artist) return;
     var items = visibleTracks();
@@ -147,7 +167,7 @@
       return divider + '<article class="track-row' + (state.current === item.index ? ' playing' : '') + '" data-index="' + item.index + '">' +
         '<span class="track-num">' + String(item.index + 1).padStart(2, "0") + '</span>' +
         '<button class="track-main" type="button" data-action="play">' +
-        '<span class="track-title">' + escapeHtml(item.track.label) + '</span>' +
+        '<span class="track-title ' + languageCountClass(item.track) + '">' + escapeHtml(item.track.label) + '</span>' +
         '<span class="track-sub">' + escapeHtml(item.track.subtitle || artist.name) + '</span></button>' +
         '<button class="icon-btn' + (favorite ? ' favorite' : '') + '" type="button" data-action="favorite" aria-label="' +
         escapeHtml(favorite ? tr("unfavorite") : tr("favorite")) + '">' + (favorite ? "♥" : "♡") + '</button>' +
@@ -194,6 +214,7 @@
 
     showPlayer();
     playerTitle.textContent = track.label;
+    playerTitle.className = "player-title " + languageCountClass(track);
     document.getElementById("player-cover").src = artist.cover;
     progress.value = "0";
     currentTime.textContent = "0:00";
@@ -306,6 +327,24 @@
   }
 
 
+
+  function setupLanguageLegend() {
+    if (document.getElementById("language-count-legend")) return;
+    var legend = document.createElement("div");
+    legend.className = "language-count-legend";
+    legend.id = "language-count-legend";
+    legend.setAttribute("role", "note");
+    legend.innerHTML =
+      '<span class="language-count-label" data-i18n="languageCount">' + escapeHtml(tr("languageCount")) + '</span>' +
+      '<span class="language-count-items">' +
+      '<span><i class="language-dot three"></i><b>3</b></span>' +
+      '<span><i class="language-dot two"></i><b>2</b></span>' +
+      '<span><i class="language-dot one"></i><b>1</b></span>' +
+      '</span>';
+    var anchor = document.getElementById("poet-filter-wrap") || document.querySelector(".toolbar");
+    anchor.insertAdjacentElement("afterend", legend);
+  }
+
   function setupPoetFilters() {
     if (!artist || artist.id !== "haj-poetner" || document.getElementById("poet-filter-wrap")) return;
     var poetNames = [];
@@ -352,6 +391,7 @@
     playerTitle.textContent = artist.name;
     resultCount.textContent = TRACKS.length + " " + tr("songWord");
     setupPoetFilters();
+    setupLanguageLegend();
   }
 
   function bindEvents() {

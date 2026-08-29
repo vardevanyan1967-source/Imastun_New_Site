@@ -757,3 +757,56 @@ body[data-language] .player-progress input{
   .poet-divider{margin:10px 2px 3px;padding:8px 7px 6px;font-size:15px}
 }
 
+/* Song-text language count: 3 green, 2 blue, 1 white */
+.language-count-legend{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  margin:0 0 12px;
+  padding:9px 12px;
+  border-bottom:1px solid var(--border);
+  color:var(--muted)
+}
+.language-count-label{
+  font-size:8px;
+  line-height:1.45;
+  letter-spacing:.05em
+}
+.language-count-items{
+  display:flex;
+  align-items:center;
+  gap:13px;
+  flex:0 0 auto
+}
+.language-count-items>span{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  font-size:10px;
+  font-weight:700
+}
+.language-dot{
+  display:inline-block;
+  width:8px;
+  height:8px;
+  border-radius:50%
+}
+.language-dot.three{background:#4ade80;box-shadow:0 0 8px rgba(74,222,128,.38)}
+.language-dot.two{background:#38bdf8;box-shadow:0 0 8px rgba(56,189,248,.34)}
+.language-dot.one{background:var(--white);border:1px solid rgba(255,255,255,.28)}
+.track-title.lang-count-three,
+.track-row.playing .track-title.lang-count-three,
+.player-title.lang-count-three{color:#4ade80}
+.track-title.lang-count-two,
+.track-row.playing .track-title.lang-count-two,
+.player-title.lang-count-two{color:#38bdf8}
+.track-title.lang-count-one,
+.track-row.playing .track-title.lang-count-one,
+.player-title.lang-count-one{color:var(--white)}
+@media(max-width:700px){
+  .language-count-legend{margin:0 8px 9px;padding:8px 6px;gap:9px}
+  .language-count-label{max-width:190px;font-size:7px}
+  .language-count-items{gap:9px}
+}
+
