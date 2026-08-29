@@ -6,3 +6,7 @@
 - [x] Commit and push the completed changes on the active non-main branch and update Draft PR #10
 
 - [x] Provide and verify a working temporary preview URL for the current non-main branch page
+
+- [x] Fix Hamo Sahyan and other poet filter selections so matching songs render on the standalone page
+- [x] Restore the second background video on mobile with a safe responsive fallback
+- [x] Re-test poet filtering and mobile background rendering, then update the branch preview
