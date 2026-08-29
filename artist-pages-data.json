@@ -2006,5 +2006,651 @@
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/shakespeare-reimagined/featured/%D5%8D%D5%B8%D5%B6%D5%A5%D5%BF%20%20154.mp3"
       }
     ]
+  },
+  "haj-poetner": {
+    "id": "haj-poetner",
+    "slug": "haj-poetner.html",
+    "name": "Հայ բանաստեղծներ",
+    "mark": "ՀԲ",
+    "cover": "authors/haj-poetner/cover.jpg",
+    "coverPosition": "center center",
+    "title": "Հայ բանաստեղծներ — Imastun Studio",
+    "description": "Հայ բանաստեղծների ստեղծագործությունների հիման վրա ստեղծված 104 երգ։",
+    "role": {
+      "hy": "Հայ պոեզիան • երգերի մեջ",
+      "ru": "Армянская поэзия • в песнях",
+      "en": "Armenian poetry • in song"
+    },
+    "intro": {
+      "hy": "Հայ մեծ բանաստեղծների խոսքը երաժշտության մեջ՝ մեկ միասնական և հարմար երգացանկում։",
+      "ru": "Стихи великих армянских поэтов в музыке — в едином удобном каталоге.",
+      "en": "The words of great Armenian poets set to music in one unified, easy-to-use catalogue."
+    },
+    "tracks": [
+      {
+        "id": "vahan-teryan/Autumn and Rain  Աշուն Է անձրև",
+        "label": "Autumn and Rain (Աշուն է, անձրև)",
+        "subtitle": "Վահան Տերյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vahan-teryan%2FAutumn%20and%20Rain%20%20%D4%B1%D5%B7%D5%B8%D6%82%D5%B6%20%D4%B7%20%D5%A1%D5%B6%D5%B1%D6%80%D6%87.mp3"
+      },
+      {
+        "id": "vahan-teryan/Golden Stars in Blue(Տխուր զրույց)",
+        "label": "Golden Stars in Blue (Տխուր զրույց)",
+        "subtitle": "Վահան Տերյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vahan-teryan%2FGolden%20Stars%20in%20Blue(%D5%8F%D5%AD%D5%B8%D6%82%D6%80%20%D5%A6%D6%80%D5%B8%D6%82%D5%B5%D6%81).mp3"
+      },
+      {
+        "id": "vahan-teryan/ananun ser",
+        "label": "Անանուն սեր",
+        "subtitle": "Վահան Տերյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vahan-teryan%2Fananun%20ser.mp3"
+      },
+      {
+        "id": "vahan-teryan/ashnan erg",
+        "label": "Աշնաներգ",
+        "subtitle": "Վահան Տերյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vahan-teryan%2Fashnan%20erg.mp3"
+      },
+      {
+        "id": "vahan-teryan/Աշուն Է անձրև",
+        "label": "Աշուն է, անձրև",
+        "subtitle": "Վահան Տերյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vahan-teryan%2F%D4%B1%D5%B7%D5%B8%D6%82%D5%B6%20%D4%B7%20%D5%A1%D5%B6%D5%B1%D6%80%D6%87.mp3"
+      },
+      {
+        "id": "vahan-teryan/es chgitem ur en tanum heravor",
+        "label": "Ես չգիտեմ ուր են տանում հեռավոր",
+        "subtitle": "Վահան Տերյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vahan-teryan%2Fes%20chgitem%20ur%20en%20tanum%20heravor.mp3"
+      },
+      {
+        "id": "vahan-teryan/es sirum em qo meravor achqery xor",
+        "label": "Ես սիրում եմ քո մեղավոր աչքերը խոր",
+        "subtitle": "Վահան Տերյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vahan-teryan%2Fes%20sirum%20em%20qo%20meravor%20achqery%20xor.mp3"
+      },
+      {
+        "id": "vahan-teryan/elegia",
+        "label": "Էլեգիա",
+        "subtitle": "Վահան Տերյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vahan-teryan%2Felegia.mp3"
+      },
+      {
+        "id": "vahan-teryan/estonakan",
+        "label": "Էստոնական",
+        "subtitle": "Վահան Տերյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vahan-teryan%2Festonakan.mp3"
+      },
+      {
+        "id": "vahan-teryan/im xarar erekon e hima",
+        "label": "Իմ խաղաղ երեկոն է հիմա",
+        "subtitle": "Վահան Տերյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vahan-teryan%2Fim%20xarar%20erekon%20e%20hima.mp3"
+      },
+      {
+        "id": "vahan-teryan/iriknajam",
+        "label": "Իրիկնաժամ",
+        "subtitle": "Վահան Տերյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vahan-teryan%2Firiknajam.mp3"
+      },
+      {
+        "id": "vahan-teryan/xarar gisherov du kgas inz mot",
+        "label": "Խաղաղ գիշերով դու կգաս ինձ մոտ",
+        "subtitle": "Վահան Տերյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vahan-teryan%2Fxarar%20gisherov%20du%20kgas%20inz%20mot.mp3"
+      },
+      {
+        "id": "vahan-teryan/xosqery vchit en u xorunk",
+        "label": "Խոսքերը վճիտ են ու խորունկ",
+        "subtitle": "Վահան Տերյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vahan-teryan%2Fxosqery%20vchit%20en%20u%20xorunk.mp3"
+      },
+      {
+        "id": "vahan-teryan/Կարոտ",
+        "label": "Կարոտ",
+        "subtitle": "Վահան Տերյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vahan-teryan%2F%D4%BF%D5%A1%D6%80%D5%B8%D5%BF.mp3"
+      },
+      {
+        "id": "vahan-teryan/hrajeshti gazel",
+        "label": "Հրաժեշտի գազել",
+        "subtitle": "Վահան Տերյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vahan-teryan%2Fhrajeshti%20gazel.mp3"
+      },
+      {
+        "id": "vahan-teryan/hrashk argik",
+        "label": "Հրաշք աղջիկ",
+        "subtitle": "Վահան Տերյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vahan-teryan%2Fhrashk%20argik.mp3"
+      },
+      {
+        "id": "vahan-teryan/mtnshar",
+        "label": "Մթնշաղ",
+        "subtitle": "Վահան Տերյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vahan-teryan%2Fmtnshar.mp3"
+      },
+      {
+        "id": "vahan-teryan/Մոռանալ",
+        "label": "Մոռանալ",
+        "subtitle": "Վահան Տերյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vahan-teryan%2F%D5%84%D5%B8%D5%BC%D5%A1%D5%B6%D5%A1%D5%AC.mp3"
+      },
+      {
+        "id": "vahan-teryan/sentimental erg",
+        "label": "Սենտիմենտալ երգ",
+        "subtitle": "Վահան Տերյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vahan-teryan%2Fsentimental%20erg.mp3"
+      },
+      {
+        "id": "vahan-teryan/sev gisher e noric u husher anhamar",
+        "label": "Սև գիշեր է նորից ու հուշեր անհամար",
+        "subtitle": "Վահան Տերյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vahan-teryan%2Fsev%20gisher%20e%20noric%20u%20husher%20anhamar.mp3"
+      },
+      {
+        "id": "vahan-teryan/qo achqeri dem im achqery kujr",
+        "label": "Քո աչքերի դեմ իմ աչքերը կույր",
+        "subtitle": "Վահան Տերյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vahan-teryan%2Fqo%20achqeri%20dem%20im%20achqery%20kujr.mp3"
+      },
+      {
+        "id": "hamo-sahyan/How Can I Just Leave",
+        "label": "How Can I Just Leave",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2FHow%20Can%20I%20Just%20Leave.mp3"
+      },
+      {
+        "id": "hamo-sahyan/I Will Come Anyway",
+        "label": "I Will Come Anyway",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2FI%20Will%20Come%20Anyway.mp3"
+      },
+      {
+        "id": "hamo-sahyan/My First Love",
+        "label": "My First Love",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2FMy%20First%20Love.mp3"
+      },
+      {
+        "id": "hamo-sahyan/Our Language",
+        "label": "Our Language",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2FOur%20Language.mp3"
+      },
+      {
+        "id": "hamo-sahyan/The Forest's Whisper",
+        "label": "The Forest's Whisper",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2FThe%20Forest's%20Whisper.mp3"
+      },
+      {
+        "id": "hamo-sahyan/The One in Vain",
+        "label": "The One in Vain",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2FThe%20One%20in%20Vain.mp3"
+      },
+      {
+        "id": "hamo-sahyan/The Thunderstorm",
+        "label": "The Thunderstorm",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2FThe%20Thunderstorm.mp3"
+      },
+      {
+        "id": "hamo-sahyan/vsio ravno pridu",
+        "label": "Всё равно я приду",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fvsio%20ravno%20pridu.mp3"
+      },
+      {
+        "id": "hamo-sahyan/vsem kem ya bil",
+        "label": "Всё, кем я был",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fvsem%20kem%20ya%20bil.mp3"
+      },
+      {
+        "id": "hamo-sahyan/dojd",
+        "label": "Дождь",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fdojd.mp3"
+      },
+      {
+        "id": "hamo-sahyan/dojd roc",
+        "label": "Дождь (рок)",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fdojd%20roc.mp3"
+      },
+      {
+        "id": "hamo-sahyan/kak je mne uyti",
+        "label": "Как же мне уйти",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fkak%20je%20mne%20uyti.mp3"
+      },
+      {
+        "id": "hamo-sahyan/mama",
+        "label": "Мама",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fmama.mp3"
+      },
+      {
+        "id": "hamo-sahyan/moi sredstva moi zaboti",
+        "label": "Мои средства... Мои заботы...",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fmoi%20sredstva%20moi%20zaboti.mp3"
+      },
+      {
+        "id": "hamo-sahyan/moya neprojitaya jizn",
+        "label": "Моя непрожитая жизнь",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fmoya%20neprojitaya%20jizn.mp3"
+      },
+      {
+        "id": "hamo-sahyan/nash yazik",
+        "label": "Наш язык",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fnash%20yazik.mp3"
+      },
+      {
+        "id": "hamo-sahyan/pervaya lubov",
+        "label": "Первая любовь моя",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fpervaya%20lubov.mp3"
+      },
+      {
+        "id": "hamo-sahyan/paceluy vetra",
+        "label": "Поцелуй ветра",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fpaceluy%20vetra.mp3"
+      },
+      {
+        "id": "hamo-sahyan/proshay",
+        "label": "Прощай",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fproshay.mp3"
+      },
+      {
+        "id": "hamo-sahyan/uznat menya ne tak prosto",
+        "label": "Узнать меня совсем непросто",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fuznat%20menya%20ne%20tak%20prosto.mp3"
+      },
+      {
+        "id": "hamo-sahyan/chto bilo to bilo",
+        "label": "Что было, то было",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fchto%20bilo%20to%20bilo.mp3"
+      },
+      {
+        "id": "hamo-sahyan/ya xotel razdeliat",
+        "label": "Я хотел бы разделять с тобой",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fya%20xotel%20razdeliat.mp3"
+      },
+      {
+        "id": "hamo-sahyan/axr es inchpes ver kenam gnam",
+        "label": "Ախր ես ինչպես վեր կենամ գնամ",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Faxr%20es%20inchpes%20ver%20kenam%20gnam.mp3"
+      },
+      {
+        "id": "hamo-sahyan/amen aravot",
+        "label": "Ամեն առավոտ",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Famen%20aravot.mp3"
+      },
+      {
+        "id": "hamo-sahyan/anzrev",
+        "label": "Անձրև",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fanzrev.mp3"
+      },
+      {
+        "id": "hamo-sahyan/anund talis",
+        "label": "Անունդ տալիս",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fanund%20talis.mp3"
+      },
+      {
+        "id": "hamo-sahyan/arajin ser",
+        "label": "Առաջին սերս",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Farajin%20ser.mp3"
+      },
+      {
+        "id": "hamo-sahyan/guce henc ajster",
+        "label": "Գուցե հենց այստեղ",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fguce%20henc%20ajster.mp3"
+      },
+      {
+        "id": "hamo-sahyan/du inz torel eir menak",
+        "label": "Դու ինձ թողել էիր մենակ",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fdu%20inz%20torel%20eir%20menak.mp3"
+      },
+      {
+        "id": "hamo-sahyan/duq lavn eq mardiq",
+        "label": "Դուք լավն եք, մարդիկ",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fduq%20lavn%20eq%20mardiq.mp3"
+      },
+      {
+        "id": "hamo-sahyan/es u du",
+        "label": "Ես և դու",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fes%20u%20du.mp3"
+      },
+      {
+        "id": "hamo-sahyan/es kuzei ",
+        "label": "Ես կուզեի",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fes%20kuzei%20.mp3"
+      },
+      {
+        "id": "hamo-sahyan/es chem karogh chnershnchvel",
+        "label": "Ես չեմ կարող չներշնչվել",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fes%20chem%20karogh%20chnershnchvel.mp3"
+      },
+      {
+        "id": "hamo-sahyan/es chem karogh chnershnchvel roc",
+        "label": "Ես չեմ կարող չներշնչվել (ռոք)",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fes%20chem%20karogh%20chnershnchvel%20roc.mp3"
+      },
+      {
+        "id": "hamo-sahyan/ev chimacanq te inchu",
+        "label": "Եվ չիմացանք թե ինչու",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fev%20chimacanq%20te%20inchu.mp3"
+      },
+      {
+        "id": "hamo-sahyan/torvochvoqi chkanchen",
+        "label": "Թող ոչ ոքի չկանչեն",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Ftorvochvoqi%20chkanchen.mp3"
+      },
+      {
+        "id": "hamo-sahyan/tor vochvoqi chkanchen02roc",
+        "label": "Թող ոչ ոքի չկանչեն (02 ռոք)",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Ftor%20vochvoqi%20chkanchen02roc.mp3"
+      },
+      {
+        "id": "hamo-sahyan/torvochvoqi chkanchen roc",
+        "label": "Թող ոչ ոքի չկանչեն (ռոք)",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Ftorvochvoqi%20chkanchen%20roc.mp3"
+      },
+      {
+        "id": "hamo-sahyan/inch anem mairik",
+        "label": "Ի՞նչ անեմ, մայրիկ",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Finch%20anem%20mairik.mp3"
+      },
+      {
+        "id": "hamo-sahyan/inch taqcnem",
+        "label": "Ի՞նչ թաքցնեմ",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Finch%20taqcnem.mp3"
+      },
+      {
+        "id": "hamo-sahyan/inch arac mard em",
+        "label": "Ինչ արած, մարդ եմ",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Finch%20arac%20mard%20em.mp3"
+      },
+      {
+        "id": "hamo-sahyan/inchu hishecri",
+        "label": "Ինչու հիշեցրի",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Finchu%20hishecri.mp3"
+      },
+      {
+        "id": "hamo-sahyan/covn er gisher er es ei u du",
+        "label": "Ծովն էր, գիշերն էր, ես էի և դու",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fcovn%20er%20gisher%20er%20es%20ei%20u%20du.mp3"
+      },
+      {
+        "id": "hamo-sahyan/ka mi tulutun",
+        "label": "Կա մի թուլություն",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fka%20mi%20tulutun.mp3"
+      },
+      {
+        "id": "hamo-sahyan/kanch",
+        "label": "Կանչ",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fkanch.mp3"
+      },
+      {
+        "id": "hamo-sahyan/kgam",
+        "label": "Կգամ",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fkgam.mp3"
+      },
+      {
+        "id": "hamo-sahyan/hajastan aselis",
+        "label": "Հայաստան ասելիս",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fhajastan%20aselis.mp3"
+      },
+      {
+        "id": "hamo-sahyan/hajastan aselis roc",
+        "label": "Հայաստան ասելիս (ռոք)",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fhajastan%20aselis%20roc.mp3"
+      },
+      {
+        "id": "hamo-sahyan/hognel em",
+        "label": "Հոգնել եմ",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fhognel%20em.mp3"
+      },
+      {
+        "id": "hamo-sahyan/horovely",
+        "label": "Հորովելը",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fhorovely.mp3"
+      },
+      {
+        "id": "hamo-sahyan/mer lezun",
+        "label": "Մեր լեզուն",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fmer%20lezun.mp3"
+      },
+      {
+        "id": "hamo-sahyan/mitegh ishxan u ter",
+        "label": "Մի տեղ իշխան ու տեր",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fmitegh%20ishxan%20u%20ter.mp3"
+      },
+      {
+        "id": "hamo-sahyan/mijocners",
+        "label": "Միջոցներս",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fmijocners.mp3"
+      },
+      {
+        "id": "hamo-sahyan/vochinch chi poxvi",
+        "label": "Ոչինչ չի փոխվի",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fvochinch%20chi%20poxvi.mp3"
+      },
+      {
+        "id": "hamo-sahyan/um hamar im ushqy gnac",
+        "label": "Ում համար իմ ուշքը գնաց",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fum%20hamar%20im%20ushqy%20gnac.mp3"
+      },
+      {
+        "id": "hamo-sahyan/ches asi voch mi barov",
+        "label": "Չես ասի ոչ մի բարով",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fches%20asi%20voch%20mi%20barov.mp3"
+      },
+      {
+        "id": "hamo-sahyan/papy",
+        "label": "Պապը",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fpapy.mp3"
+      },
+      {
+        "id": "hamo-sahyan/vshtacel em amen inchic",
+        "label": "Վշտացել եմ ամեն ինչ",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fvshtacel%20em%20amen%20inchic.mp3"
+      },
+      {
+        "id": "hamo-sahyan/tar inz jamanak",
+        "label": "Տար ինձ ժամանակ",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Ftar%20inz%20jamanak.mp3"
+      },
+      {
+        "id": "hamo-sahyan/tar inz jamanak roc",
+        "label": "Տար ինձ ժամանակ (ռոք)",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Ftar%20inz%20jamanak%20roc.mp3"
+      },
+      {
+        "id": "hamo-sahyan/Փնտրում ես դու",
+        "label": "Փնտրում ես դու",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2F%D5%93%D5%B6%D5%BF%D6%80%D5%B8%D6%82%D5%B4%20%D5%A5%D5%BD%20%D5%A4%D5%B8%D6%82.mp3"
+      },
+      {
+        "id": "hamo-sahyan/qamu hamburic",
+        "label": "Քամու համբյուրից",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fqamu%20hamburic.mp3"
+      },
+      {
+        "id": "parujr-sevak/What Color Is Love",
+        "label": "What Color Is Love",
+        "subtitle": "Պարույր Սևակ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/parujr-sevak%2FWhat%20Color%20Is%20Love.mp3"
+      },
+      {
+        "id": "parujr-sevak/Какого цвета любовь",
+        "label": "Какого цвета любовь",
+        "subtitle": "Պարույր Սևակ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/parujr-sevak%2F%D0%9A%D0%B0%D0%BA%D0%BE%D0%B3%D0%BE%20%D1%86%D0%B2%D0%B5%D1%82%D0%B0%20%D0%BB%D1%8E%D0%B1%D0%BE%D0%B2%D1%8C.mp3"
+      },
+      {
+        "id": "parujr-sevak/erku siro aranqum",
+        "label": "Երկու սիրո արանքում",
+        "subtitle": "Պարույր Սևակ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/parujr-sevak%2Ferku%20siro%20aranqum.mp3"
+      },
+      {
+        "id": "parujr-sevak/erku siro aranqum roc",
+        "label": "Երկու սիրո արանքում (ռոք)",
+        "subtitle": "Պարույր Սևակ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/parujr-sevak%2Ferku%20siro%20aranqum%20roc.mp3"
+      },
+      {
+        "id": "parujr-sevak/menq qich enq sakajn mez haj en asum",
+        "label": "Մենք քիչ ենք, սակայն մեզ հայ են ասում",
+        "subtitle": "Պարույր Սևակ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/parujr-sevak%2Fmenq%20qich%20enq%20sakajn%20mez%20haj%20en%20asum.mp3"
+      },
+      {
+        "id": "parujr-sevak/miangamic roc",
+        "label": "Միանգամից (ռոք)",
+        "subtitle": "Պարույր Սևակ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/parujr-sevak%2Fmiangamic%20roc.mp3"
+      },
+      {
+        "id": "parujr-sevak/miangamic tango",
+        "label": "Միանգամից (տանգո)",
+        "subtitle": "Պարույր Սևակ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/parujr-sevak%2Fmiangamic%20tango.mp3"
+      },
+      {
+        "id": "parujr-sevak/Նախանձում եմ",
+        "label": "Նախանձում եմ",
+        "subtitle": "Պարույր Սևակ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/parujr-sevak%2F%D5%86%D5%A1%D5%AD%D5%A1%D5%B6%D5%B1%D5%B8%D6%82%D5%B4%20%D5%A5%D5%B4.mp3"
+      },
+      {
+        "id": "parujr-sevak/ՍԵՐՆ ԻՆՉ ԳՈՒՅՆ ՈՒՆԻ",
+        "label": "Սերն ինչ գույն ունի",
+        "subtitle": "Պարույր Սևակ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/parujr-sevak%2F%D5%8D%D4%B5%D5%90%D5%86%20%D4%BB%D5%86%D5%89%20%D4%B3%D5%88%D5%92%D5%85%D5%86%20%D5%88%D5%92%D5%86%D4%BB.mp3"
+      },
+      {
+        "id": "avetik-isahakyan/Ախ կուզես լինիմ",
+        "label": "Ախ կուզես լինիմ",
+        "subtitle": "Ավետիք Իսահակյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/avetik-isahakyan%2F%D4%B1%D5%AD%20%D5%AF%D5%B8%D6%82%D5%A6%D5%A5%D5%BD%20%D5%AC%D5%AB%D5%B6%D5%AB%D5%B4.mp3"
+      },
+      {
+        "id": "aramayis-sahakyan/Ես կուզեի քո ճանապարհին",
+        "label": "Ես կուզեի քո ճանապարհին",
+        "subtitle": "Արամայիս Սահակյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/aramayis-sahakyan%2F%D4%B5%D5%BD%20%D5%AF%D5%B8%D6%82%D5%A6%D5%A5%D5%AB%20%D6%84%D5%B8%20%D5%B3%D5%A1%D5%B6%D5%A1%D5%BA%D5%A1%D6%80%D5%B0%D5%AB%D5%B6.mp3"
+      },
+      {
+        "id": "shiraz/Իմ պատանի սիրտս",
+        "label": "Իմ պատանի սիրտս",
+        "subtitle": "Հովհաննես Շիրազ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/shiraz%2F%D4%BB%D5%B4%20%D5%BA%D5%A1%D5%BF%D5%A1%D5%B6%D5%AB%20%D5%BD%D5%AB%D6%80%D5%BF%D5%BD.mp3"
+      },
+      {
+        "id": "silva-kaputikyan/The Moons Jealousy",
+        "label": "The Moon's Jealousy",
+        "subtitle": "Սիլվա Կապուտիկյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/silva-kaputikyan%2FThe%20Moons%20Jealousy.mp3"
+      },
+      {
+        "id": "silva-kaputikyan/Белая Луна",
+        "label": "Белая Луна",
+        "subtitle": "Սիլվա Կապուտիկյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/silva-kaputikyan%2F%D0%91%D0%B5%D0%BB%D0%B0%D1%8F%20%D0%9B%D1%83%D0%BD%D0%B0.mp3"
+      },
+      {
+        "id": "silva-kaputikyan/Լուսինն ու Արևը",
+        "label": "Լուսինն ու Արևը",
+        "subtitle": "Սիլվա Կապուտիկյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/silva-kaputikyan%2F%D4%BC%D5%B8%D6%82%D5%BD%D5%AB%D5%B6%D5%B6%20%D5%B8%D6%82%20%D4%B1%D6%80%D6%87%D5%A8.mp3"
+      },
+      {
+        "id": "silva-kaputikyan/Ծուխը չերևա",
+        "label": "Ծուխը չերևա",
+        "subtitle": "Սիլվա Կապուտիկյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/silva-kaputikyan%2F%D4%BE%D5%B8%D6%82%D5%AD%D5%A8%20%D5%B9%D5%A5%D6%80%D6%87%D5%A1.mp3"
+      },
+      {
+        "id": "silva-kaputikyan/Ոչ մեր սիրելն էր նման սիրելու",
+        "label": "Ոչ մեր սիրելն էր նման սիրելու",
+        "subtitle": "Սիլվա Կապուտիկյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/silva-kaputikyan%2F%D5%88%D5%B9%20%D5%B4%D5%A5%D6%80%20%D5%BD%D5%AB%D6%80%D5%A5%D5%AC%D5%B6%20%D5%A7%D6%80%20%D5%B6%D5%B4%D5%A1%D5%B6%20%D5%BD%D5%AB%D6%80%D5%A5%D5%AC%D5%B8%D6%82.mp3"
+      },
+      {
+        "id": "silva-kaputikyan/Սեր",
+        "label": "Սեր",
+        "subtitle": "Սիլվա Կապուտիկյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/silva-kaputikyan%2F%D5%8D%D5%A5%D6%80.mp3"
+      },
+      {
+        "id": "silva-kaputikyan/Քեզ փնտրում եմ",
+        "label": "Քեզ փնտրում եմ",
+        "subtitle": "Սիլվա Կապուտիկյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/silva-kaputikyan%2F%D5%94%D5%A5%D5%A6%20%D6%83%D5%B6%D5%BF%D6%80%D5%B8%D6%82%D5%B4%20%D5%A5%D5%B4.mp3"
+      },
+      {
+        "id": "vahagn-davtyan/Սեր",
+        "label": "Սեր",
+        "subtitle": "Վահագն Դավթյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vahagn-davtyan%2F%D5%8D%D5%A5%D6%80.mp3"
+      },
+      {
+        "id": "hovhannes-tumanyan/Սիրում էի երբեմն քեզ",
+        "label": "Սիրում էի երբեմն քեզ",
+        "subtitle": "Հովհաննես Թումանյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hovhannes-tumanyan%2F%D5%8D%D5%AB%D6%80%D5%B8%D6%82%D5%B4%20%D5%A7%D5%AB%20%D5%A5%D6%80%D5%A2%D5%A5%D5%B4%D5%B6%20%D6%84%D5%A5%D5%A6.mp3"
+      }
+    ]
   }
 }
