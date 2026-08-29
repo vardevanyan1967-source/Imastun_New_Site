@@ -114,7 +114,7 @@
     }).filter(function (item) {
       if (state.filter === "favorites" && !isFavorite(item.track.id)) return false;
       if (!term) return true;
-      return (item.track.label + " " + item.track.id).toLocaleLowerCase(locale).indexOf(term) >= 0;
+      return (item.track.label + " " + item.track.id + " " + (item.track.subtitle || "")).toLocaleLowerCase(locale).indexOf(term) >= 0;
     });
   }
 
@@ -137,7 +137,7 @@
         '<span class="track-num">' + String(item.index + 1).padStart(2, "0") + '</span>' +
         '<button class="track-main" type="button" data-action="play">' +
         '<span class="track-title">' + escapeHtml(item.track.label) + '</span>' +
-        '<span class="track-sub">' + escapeHtml(artist.name) + '</span></button>' +
+        '<span class="track-sub">' + escapeHtml(item.track.subtitle || artist.name) + '</span></button>' +
         '<button class="icon-btn' + (favorite ? ' favorite' : '') + '" type="button" data-action="favorite" aria-label="' +
         escapeHtml(favorite ? tr("unfavorite") : tr("favorite")) + '">' + (favorite ? "♥" : "♡") + '</button>' +
         '<button class="icon-btn share-btn" type="button" data-action="share" aria-label="' + escapeHtml(tr("share")) + '">' +

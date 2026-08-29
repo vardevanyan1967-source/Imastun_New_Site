@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="hy">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Հայ բանաստեղծներ — Imastun Studio</title>
+  <meta name="description" content="Հայ բանաստեղծների ստեղծագործությունների հիման վրա ստեղծված 104 երգ։">
+  <meta name="theme-color" content="#0c0b09">
+  <link rel="canonical" href="https://imastun.org/haj-poetner.html">
+  <link rel="icon" href="logo.png">
+  <link rel="preload" as="image" href="authors/haj-poetner/cover.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,500;1,600&family=Noto+Serif+Armenian:wght@400;600;700&family=Syne:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="artist-page.css">
+</head>
+<body data-artist-id="haj-poetner">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="back" href="index.html#artists" aria-label="Գլխավոր էջ"><b aria-hidden="true">←</b><span data-i18n="back">Գլխավոր էջ</span></a>
+      <a class="brand" href="index.html"><strong>IMASTUN</strong><small>Studio</small></a>
+      <div class="controls">
+        <div class="lang" role="group" aria-label="Փոխել լեզուն">
+          <button type="button" data-lang="hy" aria-pressed="true">Հայ</button>
+          <button type="button" data-lang="ru" aria-pressed="false">Рус</button>
+          <button type="button" data-lang="en" aria-pressed="false">Eng</button>
+        </div>
+        <button class="theme" id="theme-toggle" type="button" aria-label="Փոխել գունային ռեժիմը">☾</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="artist-name">
+      <div class="cover-wrap">
+        <img class="cover" id="cover" src="authors/haj-poetner/cover.jpg" alt="Հայ բանաստեղծներ" width="500" height="500" fetchpriority="high">
+        <span class="cover-mark" id="cover-mark" aria-hidden="true">ՀԲ</span>
+      </div>
+      <div>
+        <p class="eyebrow">Imastun Studio</p>
+        <h1 id="artist-name">Հայ բանաստեղծներ</h1>
+        <p class="role" data-i18n="role">Հայ պոեզիան • երգերի մեջ</p>
+      </div>
+      <p class="intro" data-i18n="intro">Հայ մեծ բանաստեղծների խոսքը երաժշտության մեջ՝ մեկ միասնական և հարմար երգացանկում։</p>
+      <div class="hero-actions">
+        <button class="primary" id="play-first" type="button"><span aria-hidden="true">▶</span> <span data-i18n="playFirst">Նվագարկել առաջին երգը</span></button>
+        <span class="stat" id="hero-stat">104 <span data-i18n="songWord">երգ</span></span>
+      </div>
+    </section>
+
+    <section class="catalog" aria-labelledby="catalog-title">
+      <div class="catalog-head">
+        <h2 id="catalog-title" data-i18n="catalog">Երգացանկ</h2>
+        <span class="count" id="result-count">104 երգ</span>
+      </div>
+      <div class="toolbar">
+        <label class="search">
+          <span style="position:absolute;clip:rect(0,0,0,0);width:1px;height:1px;overflow:hidden" data-i18n="search">Որոնել երգերում…</span>
+          <input id="search" type="search" autocomplete="off" data-i18n-placeholder="search" placeholder="Որոնել երգերում…">
+        </label>
+        <div class="filters" role="group" aria-label="Երգերի զտիչ">
+          <button class="filter active" type="button" data-filter="all" data-i18n="all">Բոլորը</button>
+          <button class="filter" type="button" data-filter="favorites" data-i18n="favorites">Սիրված երգերը</button>
+        </div>
+      </div>
+      <div class="track-list" id="track-list"><div class="loading-panel" data-i18n="loading">Բեռնվում է…</div></div>
+      <div class="empty" id="empty" hidden data-i18n="noResults">Այս որոնմամբ երգ չի գտնվել։</div>
+    </section>
+
+    <footer>© Imastun Studio</footer>
+  </main>
+
+  <audio id="audio" preload="metadata"></audio>
+  <section class="player" id="player" aria-label="Ձայնային նվագարկիչ">
+    <div class="player-inner">
+      <img class="player-cover" id="player-cover" src="authors/haj-poetner/cover.jpg" alt="">
+      <div class="player-meta">
+        <div class="player-title" id="player-title">Հայ բանաստեղծներ</div>
+        <div class="player-status" id="player-status">Պատրաստ է</div>
+      </div>
+      <div class="player-controls">
+        <button id="prev" type="button" aria-label="Նախորդ երգը">‹</button>
+        <button class="main-play" id="main-play" type="button" aria-label="Նվագարկել">▶</button>
+        <button id="next" type="button" aria-label="Հաջորդ երգը">›</button>
+      </div>
+      <div class="player-progress">
+        <span id="current-time">0:00</span>
+        <input id="progress" type="range" min="0" max="1000" value="0" aria-label="Երգի ընթացքը">
+        <span id="duration">0:00</span>
+      </div>
+      <button class="player-close" id="player-close" type="button" aria-label="Փակել նվագարկիչը">×</button>
+    </div>
+  </section>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="artist-page.js"></script>
+</body>
+</html>
