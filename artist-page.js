@@ -4,7 +4,7 @@
   var artistId = document.body.getAttribute("data-artist-id");
   var artist = null;
   var TRACKS = [];
-  var state = { lang: "hy", filter: "all", query: "", current: -1 };
+  var state = { lang: "hy", filter: "all", poet: "all", query: "", current: -1 };
   var audio = document.getElementById("audio");
   var player = document.getElementById("player");
   var list = document.getElementById("track-list");
@@ -23,7 +23,7 @@
   var I18N = {
     hy: {
       back:"Գլխավոր էջ", catalog:"Երգացանկ", search:"Որոնել երգերում…",
-      all:"Բոլորը", favorites:"Սիրված երգերը", playFirst:"Նվագարկել առաջին երգը",
+      all:"Բոլորը", favorites:"Սիրված երգերը", poets:"Բանաստեղծներ", playFirst:"Նվագարկել առաջին երգը",
       songWord:"երգ", noResults:"Այս որոնմամբ երգ չի գտնվել։",
       noFavorites:"Սիրված երգ դեռ չկա։ Սեղմեք ♡՝ երգն այստեղ պահելու համար։",
       play:"Նվագարկել", pause:"Դադար", previous:"Նախորդ երգը", next:"Հաջորդ երգը",
@@ -36,7 +36,7 @@
     },
     ru: {
       back:"Главная", catalog:"Песни", search:"Поиск по песням…",
-      all:"Все", favorites:"Любимые песни", playFirst:"Включить первую песню",
+      all:"Все", favorites:"Любимые песни", poets:"Поэты", playFirst:"Включить первую песню",
       songWord:"песен", noResults:"По вашему запросу песен не найдено.",
       noFavorites:"Любимых песен пока нет. Нажмите ♡, чтобы сохранить песню здесь.",
       play:"Воспроизвести", pause:"Пауза", previous:"Предыдущая песня", next:"Следующая песня",
@@ -48,7 +48,7 @@
     },
     en: {
       back:"Home", catalog:"Track list", search:"Search tracks…",
-      all:"All", favorites:"Favorite songs", playFirst:"Play the first track",
+      all:"All", favorites:"Favorite songs", poets:"Poets", playFirst:"Play the first track",
       songWord:"tracks", noResults:"No tracks match this search.",
       noFavorites:"No favorite songs yet. Tap ♡ to save a song here.",
       play:"Play", pause:"Pause", previous:"Previous track", next:"Next track",
@@ -113,6 +113,7 @@
       return { track: track, index: index };
     }).filter(function (item) {
       if (state.filter === "favorites" && !isFavorite(item.track.id)) return false;
+      if (artist && artist.id === "haj-poetner" && state.poet !== "all" && item.track.subtitle !== state.poet) return false;
       if (!term) return true;
       return (item.track.label + " " + item.track.id + " " + (item.track.subtitle || "")).toLocaleLowerCase(locale).indexOf(term) >= 0;
     });
@@ -130,10 +131,20 @@
     resultCount.textContent = items.length + " " + tr("songWord");
     empty.hidden = items.length !== 0;
     empty.textContent = state.filter === "favorites" && !state.query ? tr("noFavorites") : tr("noResults");
-    list.innerHTML = items.map(function (item) {
+    list.innerHTML = items.map(function (item, position) {
       var favorite = isFavorite(item.track.id);
       var playing = state.current === item.index && !audio.paused;
-      return '<article class="track-row' + (state.current === item.index ? ' playing' : '') + '" data-index="' + item.index + '">' +
+      var groupName = item.track.subtitle || artist.name;
+      var previousGroup = position > 0 ? (items[position - 1].track.subtitle || artist.name) : "";
+      var showDivider = artist.id === "haj-poetner" && groupName !== previousGroup;
+      var groupCount = showDivider ? items.filter(function (candidate) {
+        return (candidate.track.subtitle || artist.name) === groupName;
+      }).length : 0;
+      var divider = showDivider
+        ? '<div class="poet-divider"><span>' + escapeHtml(groupName) + '</span><small>' +
+          groupCount + ' ' + escapeHtml(tr("songWord")) + '</small></div>'
+        : "";
+      return divider + '<article class="track-row' + (state.current === item.index ? ' playing' : '') + '" data-index="' + item.index + '">' +
         '<span class="track-num">' + String(item.index + 1).padStart(2, "0") + '</span>' +
         '<button class="track-main" type="button" data-action="play">' +
         '<span class="track-title">' + escapeHtml(item.track.label) + '</span>' +
@@ -294,6 +305,41 @@
     syncPlayer();
   }
 
+
+  function setupPoetFilters() {
+    if (!artist || artist.id !== "haj-poetner" || document.getElementById("poet-filter-wrap")) return;
+    var poetNames = [];
+    TRACKS.forEach(function (track) {
+      if (track.subtitle && poetNames.indexOf(track.subtitle) < 0) poetNames.push(track.subtitle);
+    });
+
+    var wrap = document.createElement("div");
+    wrap.className = "poet-filter-wrap";
+    wrap.id = "poet-filter-wrap";
+    wrap.innerHTML =
+      '<span class="poet-filter-title" data-i18n="poets">' + escapeHtml(tr("poets")) + '</span>' +
+      '<div class="poet-filters" role="group" aria-label="' + escapeHtml(tr("poets")) + '">' +
+      '<button class="poet-chip active" type="button" data-poet-filter="all" data-i18n="all" aria-pressed="true">' +
+      escapeHtml(tr("all")) + '</button>' +
+      poetNames.map(function (name) {
+        return '<button class="poet-chip" type="button" data-poet-filter="' + escapeHtml(name) +
+          '" aria-pressed="false">' + escapeHtml(name) + '</button>';
+      }).join("") + '</div>';
+
+    document.querySelector(".toolbar").insertAdjacentElement("afterend", wrap);
+    wrap.addEventListener("click", function (event) {
+      var button = event.target.closest("[data-poet-filter]");
+      if (!button) return;
+      state.poet = button.dataset.poetFilter;
+      wrap.querySelectorAll("[data-poet-filter]").forEach(function (candidate) {
+        var active = candidate === button;
+        candidate.classList.toggle("active", active);
+        candidate.setAttribute("aria-pressed", String(active));
+      });
+      renderTracks();
+    });
+  }
+
   function applyArtist() {
     TRACKS = Array.isArray(artist.tracks) ? artist.tracks : [];
     document.documentElement.style.setProperty("--cover-position", artist.coverPosition || "center");
@@ -305,6 +351,7 @@
     document.getElementById("player-cover").src = artist.cover;
     playerTitle.textContent = artist.name;
     resultCount.textContent = TRACKS.length + " " + tr("songWord");
+    setupPoetFilters();
   }
 
   function bindEvents() {

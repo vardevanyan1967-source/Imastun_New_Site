@@ -680,3 +680,80 @@ body[data-language] .player-progress input{
   accent-color:var(--language-accent)
 }
 
+/* Armenian poets grouping and filters */
+.poet-filter-wrap{
+  display:grid;
+  gap:8px;
+  margin:-3px 0 16px;
+  padding:11px 12px;
+  border:1px solid var(--border);
+  background:color-mix(in srgb,var(--surface) 92%,transparent)
+}
+.poet-filter-title{
+  color:var(--muted);
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase
+}
+.poet-filters{
+  display:flex;
+  gap:7px;
+  overflow-x:auto;
+  padding:1px 1px 5px;
+  scrollbar-width:thin;
+  scrollbar-color:var(--language-accent) transparent;
+  scroll-snap-type:x proximity
+}
+.poet-chip{
+  flex:0 0 auto;
+  min-height:32px;
+  padding:0 12px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  background:transparent;
+  color:var(--muted);
+  cursor:pointer;
+  font-size:10px;
+  white-space:nowrap;
+  scroll-snap-align:start;
+  transition:border-color .2s,background .2s,color .2s
+}
+.poet-chip:hover{
+  border-color:var(--language-accent);
+  color:var(--language-accent)
+}
+.poet-chip.active{
+  border-color:var(--language-accent);
+  background:var(--language-soft);
+  color:var(--language-accent);
+  box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--language-accent) 18%,transparent)
+}
+.poet-divider{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  margin:13px 0 3px;
+  padding:10px 10px 8px;
+  border-bottom:1px solid color-mix(in srgb,var(--language-accent) 52%,transparent);
+  color:var(--language-accent);
+  font-family:'Noto Serif Armenian','Cormorant Garamond',Georgia,serif;
+  font-size:17px;
+  font-weight:600
+}
+.poet-divider:first-child{margin-top:0}
+.poet-divider small{
+  flex:0 0 auto;
+  color:var(--muted);
+  font:600 8px 'Syne',sans-serif;
+  letter-spacing:.12em;
+  text-transform:uppercase
+}
+@media(max-width:700px){
+  .poet-filter-wrap{margin:0 8px 10px;padding:9px 8px}
+  .poet-filter-title{padding-left:3px}
+  .poet-chip{min-height:30px;padding:0 10px;font-size:9px}
+  .poet-divider{margin:10px 2px 3px;padding:8px 7px 6px;font-size:15px}
+}
+
