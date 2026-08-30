@@ -1733,6 +1733,30 @@
           "ru": "Английская версия",
           "en": "English version"
         }
+      },
+      {
+        "id": "Դու եկար",
+        "label": "Դու եկար",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D4%B4%D5%B8%D6%82%20%D5%A5%D5%AF%D5%A1%D6%80.mp3",
+        "explanation": {
+          "hy": "Խոսք՝ Գոհար Ասելեսյան"
+        }
+      },
+      {
+        "id": "Ты пришёл",
+        "label": "Ты пришёл",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D0%A2%D1%8B%20%D0%BF%D1%80%D0%B8%D1%88%D1%91%D0%BB.mp3",
+        "explanation": {
+          "ru": "Слова — Гоар Аселесян"
+        }
+      },
+      {
+        "id": "You Came",
+        "label": "You Came",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/You%20Came.mp3",
+        "explanation": {
+          "en": "Lyrics — Gohar Aselesyan"
+        }
       }
     ]
   },

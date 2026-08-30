@@ -501,6 +501,23 @@
     }
     .toast.show{opacity:1;transform:translate(-50%,0)}
 
+    .contact-btn{
+      position:fixed;
+      right:16px;
+      z-index:150;
+      width:48px;height:48px;
+      border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      text-decoration:none;
+      box-shadow:0 4px 16px rgba(0,0,0,.35);
+      transition:transform .2s,box-shadow .2s,bottom .2s
+    }
+    .contact-btn:hover{transform:scale(1.08)}
+    #messenger-btn{bottom:80px;background:linear-gradient(135deg,#0084ff,#00c6ff)}
+    #wa-btn{bottom:16px;background:#25D366}
+    body.player-open #messenger-btn{bottom:calc(108px + 80px + var(--safe-bottom))}
+    body.player-open #wa-btn{bottom:calc(108px + 16px + var(--safe-bottom))}
+
     @media(max-width:700px){
       body.player-open{padding-bottom:calc(118px + var(--safe-bottom))}
       .topbar-inner{

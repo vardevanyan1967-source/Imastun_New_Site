@@ -58,9 +58,9 @@ self.addEventListener('fetch', event => {
   if (request.mode === 'navigate') {
     event.respondWith(fetch(request, { cache: 'no-store' }).then(response => {
       const copy = response.clone();
-      caches.open(CACHE_VERSION).then(cache => cache.put('./index.html', copy));
+      caches.open(CACHE_VERSION).then(cache => cache.put(request, copy));
       return injectPlayerFix(response);
-    }).catch(() => caches.match('./index.html').then(injectPlayerFix)));
+    }).catch(() => caches.match(request).then(cached => cached || caches.match('./index.html')).then(injectPlayerFix)));
     return;
   }
 
