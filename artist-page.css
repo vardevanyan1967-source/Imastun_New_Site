@@ -334,7 +334,8 @@
       overflow-wrap:anywhere
     }
     .track-row.playing .track-title{color:var(--gold-2)}
-    .track-sub{
+    .track-group{display:block;margin-top:2px;color:var(--muted);font-size:10px;opacity:.82}
+.track-sub{
       display:block;
       margin-top:3px;
       color:var(--muted);
