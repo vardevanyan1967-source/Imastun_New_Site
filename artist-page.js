@@ -94,6 +94,17 @@
     return artist.id + "_favorites";
   }
 
+  var LEGACY_FAVORITE_KEYS = { "silva-gulanyan": "silva_favorites" };
+
+  function migrateLegacyFavorites() {
+    var legacyKey = LEGACY_FAVORITE_KEYS[artist.id];
+    if (!legacyKey) return;
+    var legacyValue = read(legacyKey, null);
+    if (legacyValue === null) return;
+    if (read(favoriteKey(), null) !== null) return;
+    write(favoriteKey(), legacyValue);
+  }
+
   function favorites() {
     if (!artist) return [];
     try {
@@ -387,6 +398,7 @@
   }
 
   function applyArtist() {
+    migrateLegacyFavorites();
     TRACKS = Array.isArray(artist.tracks) ? artist.tracks : [];
     document.documentElement.style.setProperty("--cover-position", artist.coverPosition || "center");
     document.getElementById("artist-name").textContent = artist.name;
