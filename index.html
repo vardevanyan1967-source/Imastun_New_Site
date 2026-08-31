@@ -483,8 +483,8 @@
     }
 
     .poetry-catalog { min-width: 0; }
-    .poetry-catalog .section-header { margin-bottom: 24px; }
-    .poetry-catalog .section-label { writing-mode: horizontal-tb; transform: none; white-space: nowrap; }
+    .poetry-catalog .section-header { margin-bottom: 24px; align-items: flex-start; }
+    .poetry-catalog .section-label { display: none; }
     .poetry-catalog .section-heading { font-size: clamp(28px, 4vw, 52px); }
     .poetry-catalog .catalog-grid { grid-template-columns: minmax(0, 1fr); }
     .poetry-catalog.expanded { grid-column: 1 / -1; }
@@ -497,7 +497,7 @@
     .poetry-catalog.expanded #world-poetry-grid > .artist-card { max-width: 420px; }
 
     .card-note {
-      margin: 10px 0 2px; max-width: 44ch;
+      margin: 10px 0 2px;
       color: var(--text-dim); font-size: 10px; line-height: 1.55;
       letter-spacing: .06em;
     }
@@ -534,6 +534,14 @@
     }
 
     .artist-card:hover .card-cover { transform: scale(1.06); opacity: 1; }
+
+    .artist-card[data-id="shakespeare-reimagined"] .card-cover {
+      object-position: center 22%;
+      transform: scale(1.22);
+    }
+    .artist-card[data-id="shakespeare-reimagined"]:hover .card-cover {
+      transform: scale(1.29);
+    }
 
     .card-cover-fallback {
       position: absolute; inset: 0;
@@ -1895,7 +1903,7 @@
 <section id="artists" class="section catalog-section">
   <div class="section-header reveal">
     <span class="section-label">Artists</span>
-    <h2 class="section-heading">Մեր <em>Արտիստները</em></h2>
+    <h2 class="section-heading" data-i18n-html="artistsHeading">Մեր <em>Արտիստները</em></h2>
   </div>
   <div id="artists-grid" class="catalog-grid reveal-stagger"></div>
 </section>
@@ -1906,7 +1914,7 @@
   <article id="armenian-poets" class="poetry-catalog">
     <div class="section-header reveal">
       <span class="section-label">Armenian Poetry</span>
-      <h2 class="section-heading">Հայ <em>Բանաստեղծներ</em></h2>
+      <h2 class="section-heading" data-i18n-html="poetsHeading">Հայ <em>Բանաստեղծներ</em></h2>
     </div>
     <div id="armenian-poets-grid" class="catalog-grid reveal-stagger"></div>
   </article>
@@ -1914,7 +1922,7 @@
   <article id="world-poetry" class="poetry-catalog">
     <div class="section-header reveal">
       <span class="section-label">World Poetry</span>
-      <h2 class="section-heading">Համաշխարհային <em>Պոեզիա</em></h2>
+      <h2 class="section-heading" data-i18n-html="worldPoetryHeading">Համաշխարհային <em>Պոեզիա</em></h2>
     </div>
     <div id="world-poetry-grid" class="catalog-grid reveal-stagger"></div>
   </article>
@@ -2399,6 +2407,7 @@
     'Ջրահարսեր Ремикс Ремикс_2': "2026-08-25",
     'Ջրահարսեր Ремикс Ремикс_3': "2026-08-25",
     'ჩვენი ქალთევზებო': "2026-08-25",
+    'Իմ Գեղեցկուհի ընկերուհիները': "2026-08-31",
   };
   function isNewSong(song) {
     const added = NEW_SONGS[song];
@@ -3673,7 +3682,7 @@
         <div class="card-arrow">Listen
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        ${artist.page && artist.id !== 'shakespeare-reimagined' ? `<a class="card-page-link" href="${artist.page}" onclick="event.stopPropagation()">Open artist page ↗</a>` : ''}
+        ${artist.page ? `<a class="card-page-link" href="${artist.page}" onclick="event.stopPropagation()">Open artist page ↗</a>` : ''}
       </div>`;
 
     /* panel */
@@ -4335,9 +4344,9 @@
   <script>
   (function enhanceNavigation() {
     const translations = {
-      hy: { marquee:'Բարի գալուստ Իմաստուն Ստուդիո ✦ Այստեղ մենք երաժշտությունն ու խոսքը միավորում ենք ✦ Երգերը դառնում են պատկերներ, իսկ պատկերները՝ պատմություններ ✦ Բարի գալուստ Իմաստուն Ստուդիո ✦ Այստեղ մենք երաժշտությունն ու խոսքը միավորում ենք ✦ Երգերը դառնում են պատկերներ, իսկ պատկերները՝ պատմություններ ✦ ', skip:'Անցնել հիմնական բովանդակությանը', searchLabel:'Փնտրել երգ կամ արտիստ', searchPlaceholder:'Փնտրել երգ կամ արտիստ…', searchButton:'Սկսել որոնումը', languageLabel:'Ընտրել լեզուն', menuOpen:'Բացել մենյուն', menuClose:'Փակել մենյուն', quickNav:'Արագ անցումներ', searchTitle:'Կայքի որոնում', artists:'Արտիստներ', poets:'Հայ բանաստեղծներ', worldPoetry:'Համաշխարհային պոեզիա', new:'Նորություններ', videos:'Տեսանյութեր', support:'Աջակցել', comments:'Մեկնաբանություններ', installTitle:'Տեղադրել Imastun Studio-ն', installText:'Բացեք կայքը հավելվածի պես՝ գլխավոր էկրանից։', installButton:'Տեղադրել', installLater:'Հետո', iosInstallText:'iPhone-ում սեղմեք Share, ապա՝ Add to Home Screen։' },
-      ru: { marquee:'Добро пожаловать в Imastun Studio ✦ Здесь мы соединяем музыку и слово ✦ Песни становятся образами, а образы — историями ✦ Добро пожаловать в Imastun Studio ✦ Здесь мы соединяем музыку и слово ✦ Песни становятся образами, а образы — историями ✦ ', skip:'Перейти к основному содержанию', searchLabel:'Найти песню или исполнителя', searchPlaceholder:'Найти песню или исполнителя…', searchButton:'Начать поиск', languageLabel:'Выбрать язык', menuOpen:'Открыть меню', menuClose:'Закрыть меню', quickNav:'Быстрые переходы', searchTitle:'Поиск по сайту', artists:'Исполнители', poets:'Армянские поэты', worldPoetry:'Мировая поэзия', new:'Новинки', videos:'Видео', support:'Поддержать', comments:'Комментарии', installTitle:'Установить Imastun Studio', installText:'Открывайте сайт как приложение с главного экрана.', installButton:'Установить', installLater:'Позже', iosInstallText:'На iPhone нажмите «Поделиться», затем «На экран Домой».' },
-      en: { marquee:'Welcome to Imastun Studio ✦ Here we bring music and words together ✦ Songs become images, and images become stories ✦ Welcome to Imastun Studio ✦ Here we bring music and words together ✦ Songs become images, and images become stories ✦ ', skip:'Skip to main content', searchLabel:'Find a song or artist', searchPlaceholder:'Find a song or artist…', searchButton:'Start search', languageLabel:'Choose language', menuOpen:'Open menu', menuClose:'Close menu', quickNav:'Quick links', searchTitle:'Site search', artists:'Artists', poets:'Armenian Poets', worldPoetry:'World Poetry', new:'New', videos:'Videos', support:'Support', comments:'Comments', installTitle:'Install Imastun Studio', installText:'Open the site like an app from your home screen.', installButton:'Install', installLater:'Later', iosInstallText:'On iPhone, tap Share, then Add to Home Screen.' }
+      hy: { marquee:'Բարի գալուստ Իմաստուն Ստուդիո ✦ Այստեղ մենք երաժշտությունն ու խոսքը միավորում ենք ✦ Երգերը դառնում են պատկերներ, իսկ պատկերները՝ պատմություններ ✦ Բարի գալուստ Իմաստուն Ստուդիո ✦ Այստեղ մենք երաժշտությունն ու խոսքը միավորում ենք ✦ Երգերը դառնում են պատկերներ, իսկ պատկերները՝ պատմություններ ✦ ', skip:'Անցնել հիմնական բովանդակությանը', searchLabel:'Փնտրել երգ կամ արտիստ', searchPlaceholder:'Փնտրել երգ կամ արտիստ…', searchButton:'Սկսել որոնումը', languageLabel:'Ընտրել լեզուն', menuOpen:'Բացել մենյուն', menuClose:'Փակել մենյուն', quickNav:'Արագ անցումներ', searchTitle:'Կայքի որոնում', artists:'Արտիստներ', poets:'Հայ բանաստեղծներ', worldPoetry:'Համաշխարհային պոեզիա', new:'Նորություններ', videos:'Տեսանյութեր', support:'Աջակցել', comments:'Մեկնաբանություններ', installTitle:'Տեղադրել Imastun Studio-ն', installText:'Բացեք կայքը հավելվածի պես՝ գլխավոր էկրանից։', installButton:'Տեղադրել', installLater:'Հետո', iosInstallText:'iPhone-ում սեղմեք Share, ապա՝ Add to Home Screen։', poetsHeading:'Հայ <em>Բանաստեղծներ</em>', worldPoetryHeading:'Համաշխարհային <em>Պոեզիա</em>', artistsHeading:'Մեր <em>Արտիստները</em>' },
+      ru: { marquee:'Добро пожаловать в Imastun Studio ✦ Здесь мы соединяем музыку и слово ✦ Песни становятся образами, а образы — историями ✦ Добро пожаловать в Imastun Studio ✦ Здесь мы соединяем музыку и слово ✦ Песни становятся образами, а образы — историями ✦ ', skip:'Перейти к основному содержанию', searchLabel:'Найти песню или исполнителя', searchPlaceholder:'Найти песню или исполнителя…', searchButton:'Начать поиск', languageLabel:'Выбрать язык', menuOpen:'Открыть меню', menuClose:'Закрыть меню', quickNav:'Быстрые переходы', searchTitle:'Поиск по сайту', artists:'Исполнители', poets:'Армянские поэты', worldPoetry:'Мировая поэзия', new:'Новинки', videos:'Видео', support:'Поддержать', comments:'Комментарии', installTitle:'Установить Imastun Studio', installText:'Открывайте сайт как приложение с главного экрана.', installButton:'Установить', installLater:'Позже', iosInstallText:'На iPhone нажмите «Поделиться», затем «На экран Домой».', poetsHeading:'Армянские <em>поэты</em>', worldPoetryHeading:'Мировая <em>поэзия</em>', artistsHeading:'Наши <em>артисты</em>' },
+      en: { marquee:'Welcome to Imastun Studio ✦ Here we bring music and words together ✦ Songs become images, and images become stories ✦ Welcome to Imastun Studio ✦ Here we bring music and words together ✦ Songs become images, and images become stories ✦ ', skip:'Skip to main content', searchLabel:'Find a song or artist', searchPlaceholder:'Find a song or artist…', searchButton:'Start search', languageLabel:'Choose language', menuOpen:'Open menu', menuClose:'Close menu', quickNav:'Quick links', searchTitle:'Site search', artists:'Artists', poets:'Armenian Poets', worldPoetry:'World Poetry', new:'New', videos:'Videos', support:'Support', comments:'Comments', installTitle:'Install Imastun Studio', installText:'Open the site like an app from your home screen.', installButton:'Install', installLater:'Later', iosInstallText:'On iPhone, tap Share, then Add to Home Screen.', poetsHeading:'Armenian <em>Poets</em>', worldPoetryHeading:'World <em>Poetry</em>', artistsHeading:'Our <em>Artists</em>' }
     };
     const languageButtons = Array.from(document.querySelectorAll('.language-button'));
     const menuButton = document.getElementById('mobile-menu-toggle');
@@ -4356,6 +4365,7 @@
         button.setAttribute('aria-pressed', String(active));
       });
       document.querySelectorAll('[data-i18n]').forEach(el => { const key=el.dataset.i18n; if(translations[locale][key]) el.textContent=translations[locale][key]; });
+      document.querySelectorAll('[data-i18n-html]').forEach(el => { const key=el.dataset.i18nHtml; if(translations[locale][key]) el.innerHTML=translations[locale][key]; });
       document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { const key=el.dataset.i18nPlaceholder; if(translations[locale][key]) el.placeholder=translations[locale][key]; });
       document.querySelectorAll('[data-i18n-aria]').forEach(el => { const key=el.dataset.i18nAria; if(translations[locale][key]) el.setAttribute('aria-label',translations[locale][key]); });
       try { localStorage.setItem('imastun_language', locale); } catch (e) {}
