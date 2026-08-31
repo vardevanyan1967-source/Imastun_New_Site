@@ -6,6 +6,18 @@
   var TRACKS = [];
   var state = { lang: "hy", filter: "all", poet: "all", query: "", current: -1 };
   var audio = document.getElementById("audio");
+  var audio2 = new Audio();
+  audio2.preload = "auto";
+  var engines = [audio, audio2];
+  var activeEngineIdx = 0;
+  function curAudio() { return engines[activeEngineIdx]; }
+  function idleAudio() { return engines[1 - activeEngineIdx]; }
+  var CROSSFADE_SEC = 4;
+  var MANUAL_CROSSFADE_SEC = 2;
+  var crossfadeTimer = null;
+  var crossfadeScheduleTimer = null;
+  var crossfadeWatchdog = null;
+  var crossfadeNextIndex = -1;
   var player = document.getElementById("player");
   var list = document.getElementById("track-list");
   var empty = document.getElementById("empty");
@@ -32,7 +44,8 @@
       copyFailed:"Չհաջողվեց պատճենել հղումը", audioError:"Ձայնային ֆայլը չբացվեց։ Փորձեք նորից։",
       tapAgain:"Սեղմեք նվագարկել ևս մեկ անգամ։", ready:"Պատրաստ է", loading:"Բեռնվում է…",
       playing:"Նվագարկվում է", paused:"Դադարեցված է", theme:"Փոխել գունային ռեժիմը",
-      language:"Փոխել լեզուն", loadError:"Երգացանկը չբեռնվեց։ Թարմացրեք էջը։"
+      language:"Փոխել լեզուն", loadError:"Երգացանկը չբեռնվեց։ Թարմացրեք էջը։",
+      donate:"Աջակցել", donateCardCopied:"Քարտի համարը պատճենվեց ✓", otherArtists:"Այլ արտիստներ"
     },
     ru: {
       back:"Главная", catalog:"Песни", search:"Поиск по песням…",
@@ -44,7 +57,8 @@
       share:"Поделиться", copied:"Ссылка скопирована", copyFailed:"Не удалось скопировать ссылку",
       audioError:"Аудиофайл не открылся. Попробуйте ещё раз.", tapAgain:"Нажмите воспроизведение ещё раз.",
       ready:"Готово", loading:"Загрузка…", playing:"Воспроизводится", paused:"На паузе",
-      theme:"Сменить тему", language:"Сменить язык", loadError:"Список песен не загрузился. Обновите страницу."
+      theme:"Сменить тему", language:"Сменить язык", loadError:"Список песен не загрузился. Обновите страницу.",
+      donate:"Поддержать", donateCardCopied:"Номер карты скопирован ✓", otherArtists:"Другие артисты"
     },
     en: {
       back:"Home", catalog:"Track list", search:"Search tracks…",
@@ -56,12 +70,13 @@
       share:"Share", copied:"Link copied", copyFailed:"Could not copy the link",
       audioError:"The audio file could not be opened. Please try again.", tapAgain:"Tap play once more.",
       ready:"Ready", loading:"Loading…", playing:"Playing", paused:"Paused",
-      theme:"Change theme", language:"Change language", loadError:"The track list could not load. Refresh the page."
+      theme:"Change theme", language:"Change language", loadError:"The track list could not load. Refresh the page.",
+      donate:"Support", donateCardCopied:"Card number copied ✓", otherArtists:"Other artists"
     }
   };
 
 
-  var TRILINGUAL_OVERRIDE = new Set(["vahan-teryan/Golden Stars in Blue(Տխուր զրույց)","vahan-teryan/Կարոտ","vahan-teryan/Մոռանալ","hamo-sahyan/The One in Vain","hamo-sahyan/guce henc ajster","hamo-sahyan/duq lavn eq mardiq","hamo-sahyan/es kuzei ","hamo-sahyan/ev chimacanq te inchu","hamo-sahyan/inchu hishecri","hamo-sahyan/ka mi tulutun","hamo-sahyan/Փնտրում ես դու","Երանի գայիր(Just Like Before)","te karotum es","lok cav u dard","lrutian tchich","Կարոտի խենթի","Hayots_ashkarh_A","Title_Mi_tanjir_hogis_Multilingual_Emotional_Duet_Lyrics_by_Silva_Gulanyan_002","chem moracel","Jaheli_nman_003","Tiezerk_Jinj_Lazur","ser da ardioq","Քո ժպիտները հավաքեմ","ughernery-lac-chen-linum","Ches_moranalu_003","cav anbujeli","ov em qez hamar","bjur u bjur angam","ete asem","gereckuhi","im ser","sirelis","taxicy vat margare e","hamo-sahyan/papy"]);
+  var TRILINGUAL_OVERRIDE = new Set(["vahan-teryan/Golden Stars in Blue(Տխուր զրույց)","vahan-teryan/Կարոտ","vahan-teryan/Մոռանալ","hamo-sahyan/The One in Vain","hamo-sahyan/guce henc ajster","hamo-sahyan/duq lavn eq mardiq","hamo-sahyan/es kuzei ","hamo-sahyan/ev chimacanq te inchu","hamo-sahyan/inchu hishecri","hamo-sahyan/ka mi tulutun","hamo-sahyan/Փնտրում ես դու","Երանի գայիր(Just Like Before)","te karotum es","lok cav u dard","lrutian tchich","Կարոտի խենթի","Hayots_ashkarh_A","Title_Mi_tanjir_hogis_Multilingual_Emotional_Duet_Lyrics_by_Silva_Gulanyan_002","chem moracel","Jaheli_nman_003","Tiezerk_Jinj_Lazur","ser da ardioq","Քո ժպիտները հավաքեմ","ughernery-lac-chen-linum","Ches_moranalu_003","cav anbujeli","ov em qez hamar","bjur u bjur angam","ete asem","gereckuhi","im ser","sirelis","taxicy vat margare e","hamo-sahyan/papy","Իմ Գեղեցկուհի ընկերուհիները"]);
   var BILINGUAL_OVERRIDE = new Set(["vahan-teryan/Աշուն Է անձրև","Astghayin_Shghta_A","Vahan_Teryan_Gisher","Поцелуй_ветра","Vahan_Teryan_MEGhAVOR_AChKERU","Es_kez_sirum_em","Hay_aragil","Tchaxr e pargevum ","Chisht_zhamanakin_At_The_Right_Time","Sirir_indz_hogis_FRAM_Duet","S_irum_em_kez_I_love_you","sirty xentacav","Ka_mi_ashkharh_vor_srtov_e_karutsvats","Ko_koghkin_vorish_em_003","melodia lubvi"]);
 
   function explanationText(value) {
@@ -171,7 +186,7 @@
     empty.textContent = state.filter === "favorites" && !state.query ? tr("noFavorites") : tr("noResults");
     list.innerHTML = items.map(function (item, position) {
       var favorite = isFavorite(item.track.id);
-      var playing = state.current === item.index && !audio.paused;
+      var playing = state.current === item.index && !curAudio().paused;
       var groupName = item.track.subtitle || artist.name;
       var previousGroup = position > 0 ? (items[position - 1].track.subtitle || artist.name) : "";
       var showDivider = artist.id === "haj-poetner" && groupName !== previousGroup;
@@ -211,7 +226,7 @@
 
   function syncPlayer() {
     var active = state.current >= 0 ? TRACKS[state.current] : null;
-    var playing = active && !audio.paused;
+    var playing = active && !curAudio().paused;
     playButton.textContent = playing ? "❚❚" : "▶";
     playButton.setAttribute("aria-label", tr(playing ? "pause" : "play"));
     document.getElementById("prev").setAttribute("aria-label", tr("previous"));
@@ -227,8 +242,12 @@
 
   function loadTrack(index, autoplay) {
     if (!artist || index < 0 || index >= TRACKS.length) return;
+    cancelCrossfade();
+    curAudio().pause();
+    activeEngineIdx = 0;
     state.current = index;
     var track = TRACKS[index];
+    var eng = curAudio();
 
     showPlayer();
     playerTitle.textContent = track.label;
@@ -239,10 +258,11 @@
     duration.textContent = "0:00";
     setStatus("loading");
 
-    if (audio.src !== track.src) {
-      audio.src = track.src;
-      audio.load();
+    if (eng.src !== track.src) {
+      eng.src = track.src;
+      eng.load();
     }
+    eng.volume = 1;
 
     write(artist.id + "_last_track", JSON.stringify({
       artistId: artist.id, song: track.id, label: track.label, artistName: artist.name
@@ -261,7 +281,7 @@
 
     syncPlayer();
     if (autoplay) {
-      var promise = audio.play();
+      var promise = eng.play();
       if (promise && promise.catch) {
         promise.catch(function () {
           setStatus("ready");
@@ -277,11 +297,17 @@
       loadTrack(index, true);
       return;
     }
-    if (audio.paused) {
-      var promise = audio.play();
+    var eng = curAudio();
+    if (eng.paused) {
+      var promise = eng.play();
       if (promise && promise.catch) promise.catch(function () { showToast(tr("tapAgain")); });
+      if (crossfadeNextIndex >= 0) {
+        var p2 = idleAudio().play();
+        if (p2 && p2.catch) p2.catch(function () {});
+      }
     } else {
-      audio.pause();
+      eng.pause();
+      if (crossfadeNextIndex >= 0) cancelCrossfade();
     }
   }
 
@@ -291,7 +317,134 @@
       loadTrack(direction > 0 ? 0 : TRACKS.length - 1, true);
       return;
     }
-    loadTrack((state.current + direction + TRACKS.length) % TRACKS.length, true);
+    var nextIndex = (state.current + direction + TRACKS.length) % TRACKS.length;
+    if (direction > 0 && !curAudio().paused && crossfadeNextIndex < 0) {
+      startCrossfade(nextIndex, MANUAL_CROSSFADE_SEC);
+      return;
+    }
+    loadTrack(nextIndex, true);
+  }
+
+  function cancelCrossfade() {
+    if (crossfadeTimer) { clearInterval(crossfadeTimer); crossfadeTimer = null; }
+    if (crossfadeScheduleTimer) { clearTimeout(crossfadeScheduleTimer); crossfadeScheduleTimer = null; }
+    if (crossfadeWatchdog) { clearInterval(crossfadeWatchdog); crossfadeWatchdog = null; }
+    crossfadeNextIndex = -1;
+    idleAudio().pause();
+    idleAudio().removeAttribute("src");
+    idleAudio().volume = 1;
+    curAudio().volume = 1;
+  }
+
+  function armCrossfadeWatchdog() {
+    if (crossfadeWatchdog) clearInterval(crossfadeWatchdog);
+    crossfadeWatchdog = setInterval(function () {
+      var eng = curAudio();
+      if (eng.paused || state.current < 0 || TRACKS.length < 2) return;
+      if (!Number.isFinite(eng.duration) || eng.duration <= 0) return;
+      var remaining = eng.duration - eng.currentTime;
+      if (remaining > 0 && remaining <= CROSSFADE_SEC && crossfadeNextIndex < 0) startCrossfade();
+    }, 250);
+  }
+
+  function scheduleCrossfade() {
+    if (state.current < 0 || TRACKS.length < 2 || crossfadeNextIndex >= 0 || crossfadeScheduleTimer) return;
+    var eng = curAudio();
+    var dur = Number(eng.duration);
+    var remaining = dur - Number(eng.currentTime || 0);
+    if (!Number.isFinite(dur) || dur <= 0) return;
+    if (remaining <= CROSSFADE_SEC) { startCrossfade(); return; }
+    var trackAtSchedule = state.current;
+    var delay = Math.max(0, (remaining - CROSSFADE_SEC) * 1000);
+    crossfadeScheduleTimer = setTimeout(function () {
+      crossfadeScheduleTimer = null;
+      if (state.current === trackAtSchedule && crossfadeNextIndex < 0) startCrossfade();
+    }, delay);
+  }
+
+  function handleSeekCrossfade() {
+    var eng = curAudio();
+    if (eng.paused || state.current < 0 || TRACKS.length < 2 || crossfadeNextIndex >= 0) return;
+    var dur = Number(eng.duration);
+    var cur = Number(eng.currentTime || 0);
+    if (!Number.isFinite(dur) || dur <= 0 || !Number.isFinite(cur)) return;
+    var remaining = dur - cur;
+    if (remaining > 0 && remaining <= CROSSFADE_SEC) startCrossfade();
+    else if (remaining > CROSSFADE_SEC) scheduleCrossfade();
+  }
+
+  function finishCrossfadeSwap(nextIndex) {
+    activeEngineIdx = 1 - activeEngineIdx;
+    state.current = nextIndex;
+    var track = TRACKS[nextIndex];
+    playerTitle.textContent = track.label;
+    playerTitle.className = "player-title " + languageCountClass(track);
+    progress.value = "0";
+    write(artist.id + "_last_track", JSON.stringify({
+      artistId: artist.id, song: track.id, label: track.label, artistName: artist.name
+    }));
+    if ("mediaSession" in navigator && "MediaMetadata" in window) {
+      try {
+        navigator.mediaSession.metadata = new MediaMetadata({
+          title: track.label,
+          artist: artist.name,
+          album: "Imastun Studio",
+          artwork: [{ src:new URL(artist.cover, location.href).href, sizes:"500x500", type:"image/jpeg" }]
+        });
+      } catch (error) {}
+    }
+    setStatus("playing");
+    syncPlayer();
+  }
+
+  function startCrossfade(targetIndex, durationSec) {
+    durationSec = durationSec || CROSSFADE_SEC;
+    var nextIndex = Number.isInteger(targetIndex) ? targetIndex : (state.current + 1) % TRACKS.length;
+    if (nextIndex < 0 || nextIndex >= TRACKS.length || crossfadeNextIndex >= 0) return;
+    if (crossfadeScheduleTimer) { clearTimeout(crossfadeScheduleTimer); crossfadeScheduleTimer = null; }
+    var cur = curAudio();
+    var nxt = idleAudio();
+    var track = TRACKS[nextIndex];
+    crossfadeNextIndex = nextIndex;
+    nxt.src = track.src;
+    nxt.currentTime = 0;
+    nxt.volume = 0;
+
+    var beginFade = function () {
+      if (crossfadeNextIndex !== nextIndex || crossfadeTimer) return;
+      var steps = 60;
+      var stepMs = (durationSec * 1000) / steps;
+      var i = 0;
+      crossfadeTimer = setInterval(function () {
+        if (crossfadeNextIndex !== nextIndex) return;
+        i++;
+        var ratio = Math.min(1, i / steps);
+        var fadeOut = Math.cos(ratio * Math.PI / 2);
+        var fadeIn = Math.sin(ratio * Math.PI / 2);
+        cur.volume = Math.max(0, Math.min(1, fadeOut));
+        nxt.volume = Math.max(0, Math.min(1, fadeIn));
+        if (i >= steps) {
+          clearInterval(crossfadeTimer);
+          crossfadeTimer = null;
+          crossfadeNextIndex = -1;
+          cur.pause();
+          cur.currentTime = 0;
+          cur.volume = 1;
+          finishCrossfadeSwap(nextIndex);
+        }
+      }, stepMs);
+    };
+
+    beginFade();
+    var playPromise = nxt.play();
+    if (playPromise && playPromise.catch) {
+      playPromise.catch(function () {
+        if (crossfadeNextIndex !== nextIndex) return;
+        if (crossfadeTimer) { clearInterval(crossfadeTimer); crossfadeTimer = null; }
+        crossfadeNextIndex = -1;
+        loadTrack(nextIndex, true);
+      });
+    }
   }
 
   function shareTrack(index) {
@@ -304,15 +457,34 @@
       navigator.share(data).catch(function () {});
       return;
     }
-    if (navigator.clipboard && navigator.clipboard.writeText) {
+    if (window.isSecureContext && navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(url.href).then(function () {
         showToast(tr("copied"));
       }).catch(function () {
-        showToast(tr("copyFailed"));
+        showToast(legacyCopy(url.href) ? tr("copied") : url.href);
       });
       return;
     }
-    showToast(url.href);
+    showToast(legacyCopy(url.href) ? tr("copied") : url.href);
+  }
+
+  function legacyCopy(text) {
+    try {
+      var textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.setAttribute("readonly", "");
+      textarea.style.position = "fixed";
+      textarea.style.top = "-1000px";
+      textarea.style.opacity = "0";
+      document.body.appendChild(textarea);
+      textarea.select();
+      textarea.setSelectionRange(0, text.length);
+      var ok = document.execCommand("copy");
+      document.body.removeChild(textarea);
+      return ok;
+    } catch (error) {
+      return false;
+    }
   }
 
   function showToast(message) {
@@ -340,7 +512,14 @@
     });
     document.querySelector(".lang").setAttribute("aria-label", tr("language"));
     document.getElementById("theme-toggle").setAttribute("aria-label", tr("theme"));
-    setStatus(audio.paused ? (state.current >= 0 ? "paused" : "ready") : "playing");
+    var switcherToggle = document.getElementById("artist-switcher-toggle");
+    if (switcherToggle) {
+      switcherToggle.setAttribute("aria-label", tr("otherArtists"));
+      switcherToggle.setAttribute("title", tr("otherArtists"));
+    }
+    var donateButton = document.getElementById("donate-btn");
+    if (donateButton) donateButton.setAttribute("aria-label", tr("donate"));
+    setStatus(curAudio().paused ? (state.current >= 0 ? "paused" : "ready") : "playing");
     syncPlayer();
   }
 
@@ -397,6 +576,54 @@
     });
   }
 
+  var DONATE_CARD_NUMBER = "4578 8900 8055 1169";
+
+  function setupContactButtons() {
+    var donateButton = document.getElementById("donate-btn");
+    if (donateButton && !donateButton.dataset.bound) {
+      donateButton.dataset.bound = "1";
+      donateButton.addEventListener("click", function () {
+        if (window.isSecureContext && navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(DONATE_CARD_NUMBER).then(function () {
+            showToast(tr("donateCardCopied"));
+          }).catch(function () {
+            showToast(legacyCopy(DONATE_CARD_NUMBER) ? tr("donateCardCopied") : DONATE_CARD_NUMBER);
+          });
+        } else {
+          showToast(legacyCopy(DONATE_CARD_NUMBER) ? tr("donateCardCopied") : DONATE_CARD_NUMBER);
+        }
+      });
+    }
+  }
+
+  function setupArtistSwitcher(allArtists) {
+    var toggle = document.getElementById("artist-switcher-toggle");
+    var menu = document.getElementById("artist-switcher-menu");
+    if (!toggle || !menu || !allArtists) return;
+    menu.innerHTML = Object.keys(allArtists).map(function (id) {
+      var entry = allArtists[id];
+      if (!entry || !entry.slug || !entry.name) return "";
+      var isActive = id === artistId;
+      return '<a href="' + escapeHtml(entry.slug) + '"' +
+        (isActive ? ' class="active" aria-current="page"' : "") + '>' +
+        escapeHtml(entry.name) + "</a>";
+    }).join("");
+    if (toggle.dataset.bound) return;
+    toggle.dataset.bound = "1";
+    toggle.addEventListener("click", function (event) {
+      event.stopPropagation();
+      var willOpen = menu.hidden;
+      menu.hidden = !willOpen;
+      toggle.setAttribute("aria-expanded", String(willOpen));
+    });
+    document.addEventListener("click", function () {
+      if (!menu.hidden) {
+        menu.hidden = true;
+        toggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+
   function applyArtist() {
     migrateLegacyFavorites();
     TRACKS = Array.isArray(artist.tracks) ? artist.tracks : [];
@@ -411,6 +638,7 @@
     resultCount.textContent = TRACKS.length + " " + tr("songWord");
     setupPoetFilters();
     setupLanguageLegend();
+    setupContactButtons();
   }
 
   function bindEvents() {
@@ -451,42 +679,78 @@
     document.getElementById("prev").addEventListener("click", function () { move(-1); });
     document.getElementById("next").addEventListener("click", function () { move(1); });
     document.getElementById("player-close").addEventListener("click", function () {
-      audio.pause();
+      curAudio().pause();
+      cancelCrossfade();
       player.classList.remove("visible");
       document.body.classList.remove("player-open");
     });
 
     progress.addEventListener("input", function () {
-      if (Number.isFinite(audio.duration) && audio.duration > 0) {
-        audio.currentTime = (Number(progress.value) / 1000) * audio.duration;
+      var eng = curAudio();
+      if (Number.isFinite(eng.duration) && eng.duration > 0) {
+        eng.currentTime = (Number(progress.value) / 1000) * eng.duration;
       }
     });
+    progress.addEventListener("change", function () { handleSeekCrossfade(); });
 
-    audio.addEventListener("play", function () { setStatus("playing"); syncPlayer(); });
-    audio.addEventListener("pause", function () {
-      if (!audio.ended && state.current >= 0) setStatus("paused");
-      syncPlayer();
-    });
-    audio.addEventListener("waiting", function () { setStatus("loading"); });
-    audio.addEventListener("canplay", function () { if (audio.paused) setStatus("ready"); });
-    audio.addEventListener("loadedmetadata", function () { duration.textContent = formatTime(audio.duration); });
-    audio.addEventListener("timeupdate", function () {
-      currentTime.textContent = formatTime(audio.currentTime);
-      duration.textContent = formatTime(audio.duration);
-      progress.value = Number.isFinite(audio.duration) && audio.duration > 0
-        ? String(Math.round((audio.currentTime / audio.duration) * 1000)) : "0";
-    });
-    audio.addEventListener("ended", function () { move(1); });
-    audio.addEventListener("error", function () {
-      setStatus("ready");
-      showToast(tr("audioError"));
-      syncPlayer();
-    });
+    function setupEngine(eng) {
+      eng.addEventListener("play", function () {
+        if (eng !== curAudio()) return;
+        setStatus("playing");
+        syncPlayer();
+        armCrossfadeWatchdog();
+      });
+      eng.addEventListener("pause", function () {
+        if (eng !== curAudio()) return;
+        if (!eng.ended && state.current >= 0) setStatus("paused");
+        syncPlayer();
+      });
+      eng.addEventListener("waiting", function () { if (eng === curAudio()) setStatus("loading"); });
+      eng.addEventListener("canplay", function () { if (eng === curAudio() && eng.paused) setStatus("ready"); });
+      eng.addEventListener("loadedmetadata", function () {
+        if (eng !== curAudio()) return;
+        duration.textContent = formatTime(eng.duration);
+        scheduleCrossfade();
+      });
+      eng.addEventListener("durationchange", function () { if (eng === curAudio()) scheduleCrossfade(); });
+      eng.addEventListener("timeupdate", function () {
+        if (eng !== curAudio()) return;
+        currentTime.textContent = formatTime(eng.currentTime);
+        duration.textContent = formatTime(eng.duration);
+        progress.value = Number.isFinite(eng.duration) && eng.duration > 0
+          ? String(Math.round((eng.currentTime / eng.duration) * 1000)) : "0";
+        if (crossfadeNextIndex < 0 && eng.duration && TRACKS.length > 1) {
+          var remaining = eng.duration - eng.currentTime;
+          if (remaining > 0 && remaining <= CROSSFADE_SEC) startCrossfade();
+          else scheduleCrossfade();
+        }
+      });
+      eng.addEventListener("ended", function () {
+        if (eng !== curAudio()) return;
+        if (crossfadeNextIndex >= 0) {
+          var nextIndex = crossfadeNextIndex;
+          if (crossfadeTimer) { clearInterval(crossfadeTimer); crossfadeTimer = null; }
+          crossfadeNextIndex = -1;
+          idleAudio().volume = 1;
+          finishCrossfadeSwap(nextIndex);
+          return;
+        }
+        move(1);
+      });
+      eng.addEventListener("error", function () {
+        if (eng !== curAudio()) return;
+        setStatus("ready");
+        showToast(tr("audioError"));
+        syncPlayer();
+      });
+    }
+    setupEngine(audio);
+    setupEngine(audio2);
 
     if ("mediaSession" in navigator) {
       try {
-        navigator.mediaSession.setActionHandler("play", function () { if (state.current >= 0) audio.play(); });
-        navigator.mediaSession.setActionHandler("pause", function () { audio.pause(); });
+        navigator.mediaSession.setActionHandler("play", function () { if (state.current >= 0) curAudio().play(); });
+        navigator.mediaSession.setActionHandler("pause", function () { curAudio().pause(); });
         navigator.mediaSession.setActionHandler("previoustrack", function () { move(-1); });
         navigator.mediaSession.setActionHandler("nexttrack", function () { move(1); });
       } catch (error) {}
@@ -524,6 +788,7 @@
     artist = data && data[artistId];
     if (!artist) throw new Error("Unknown artist: " + artistId);
     applyArtist();
+    setupArtistSwitcher(data);
     bindEvents();
 
     var savedTheme = read("imastun_theme", "dark");
