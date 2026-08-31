@@ -624,6 +624,23 @@
     });
   }
 
+  function setupSideArtists(allArtists) {
+    var aside = document.getElementById("side-artists");
+    if (!aside || !allArtists) return;
+    var cards = Object.keys(allArtists).map(function (id) {
+      var entry = allArtists[id];
+      if (!entry || !entry.slug || !entry.name) return "";
+      var isActive = id === artistId;
+      var cover = entry.cover ? escapeHtml(entry.cover) : "";
+      var name = escapeHtml(entry.name);
+      return '<a class="side-artist-card' + (isActive ? " active" : "") + '" href="' + escapeHtml(entry.slug) +
+        '" title="' + name + '"' + (isActive ? ' aria-current="page"' : "") + '>' +
+        '<img class="side-artist-cover" src="' + cover + '" alt="" loading="lazy" />' +
+        '<span class="side-artist-name">' + name + "</span></a>";
+    }).join("");
+    aside.innerHTML = cards;
+  }
+
   function applyArtist() {
     migrateLegacyFavorites();
     TRACKS = Array.isArray(artist.tracks) ? artist.tracks : [];
@@ -789,6 +806,7 @@
     if (!artist) throw new Error("Unknown artist: " + artistId);
     applyArtist();
     setupArtistSwitcher(data);
+    setupSideArtists(data);
     bindEvents();
 
     var savedTheme = read("imastun_theme", "dark");
