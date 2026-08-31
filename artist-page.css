@@ -21,9 +21,22 @@
       --surface-3:#e4d7c1;
       --text:#2a241a;
       --white:#1d1811;
-      --muted:#756957;
-      --border:rgba(122,91,29,.22);
-      --gold-dim:rgba(160,112,25,.09)
+      --muted:#4e4638;
+      --border:rgba(122,91,29,.4);
+      --gold-dim:rgba(160,112,25,.14)
+    }
+    body.light-mode[data-language="hy"]{ --language-accent:#0a4a9c }
+    body.light-mode .track-title.lang-count-two,
+    body.light-mode .track-row.playing .track-title.lang-count-two,
+    body.light-mode .player-title.lang-count-two{ color:#0a55b0 }
+    body.light-mode .track-title.lang-count-three,
+    body.light-mode .track-row.playing .track-title.lang-count-three,
+    body.light-mode .player-title.lang-count-three{ color:#189050 }
+    body.light-mode .hero{
+      background:
+        linear-gradient(var(--surface-2),var(--surface-2)) padding-box,
+        conic-gradient(from var(--hero-angle),#3d2f0c,rgba(61,47,12,.18) 30%,#3d2f0c 60%,rgba(61,47,12,.18) 90%,#3d2f0c) border-box;
+      box-shadow:0 0 22px rgba(61,47,12,.6)
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
@@ -153,6 +166,9 @@
     }
     .side-artist-card:hover{border-color:var(--gold);transform:translateX(3px);box-shadow:0 0 16px rgba(201,168,76,.45)}
     .side-artist-card.active{border-color:var(--gold);box-shadow:0 0 20px rgba(201,168,76,.6)}
+    body.light-mode .side-artist-card{box-shadow:0 0 10px rgba(61,47,12,.3)}
+    body.light-mode .side-artist-card:hover{box-shadow:0 0 16px rgba(61,47,12,.55)}
+    body.light-mode .side-artist-card.active{box-shadow:0 0 20px rgba(61,47,12,.7)}
     .side-artist-cover{
       display:block;
       width:100%;height:100%;
