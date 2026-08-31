@@ -513,10 +513,35 @@
       transition:transform .2s,box-shadow .2s,bottom .2s
     }
     .contact-btn:hover{transform:scale(1.08)}
+    button.contact-btn{border:0;cursor:pointer;font-size:20px}
+    #donate-btn{bottom:144px;background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#1a1409}
     #messenger-btn{bottom:80px;background:linear-gradient(135deg,#0084ff,#00c6ff)}
     #wa-btn{bottom:16px;background:#25D366}
+    body.player-open #donate-btn{bottom:calc(108px + 144px + var(--safe-bottom))}
     body.player-open #messenger-btn{bottom:calc(108px + 80px + var(--safe-bottom))}
     body.player-open #wa-btn{bottom:calc(108px + 16px + var(--safe-bottom))}
+
+    .artist-switcher{position:relative}
+    .artist-switcher-menu{
+      position:absolute;
+      top:calc(100% + 8px);
+      right:0;
+      min-width:200px;
+      background:var(--surface-2);
+      border:1px solid var(--border);
+      box-shadow:0 8px 28px rgba(0,0,0,.45);
+      z-index:160;
+      padding:6px
+    }
+    .artist-switcher-menu a{
+      display:block;
+      padding:10px 12px;
+      color:var(--text);
+      font-size:12px;
+      letter-spacing:.04em
+    }
+    .artist-switcher-menu a:hover{background:var(--gold-dim);color:var(--gold-2)}
+    .artist-switcher-menu a.active{color:var(--gold);font-weight:700}
 
     @media(max-width:700px){
       body.player-open{padding-bottom:calc(118px + var(--safe-bottom))}
