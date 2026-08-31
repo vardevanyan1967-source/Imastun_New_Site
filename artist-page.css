@@ -350,6 +350,44 @@
       font-style:italic
     }
     .count{color:var(--muted);font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+
+    .recent-added{margin-top:30px}
+    .recent-added[hidden]{display:none}
+    .recent-added-head{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+    .recent-added-head .section-label{
+      font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);
+      font-family:'Inter',sans-serif;font-weight:700
+    }
+    .recent-added h2{
+      margin:0;color:var(--gold);font-family:'Cormorant Garamond',Georgia,serif;
+      font-size:24px;font-weight:500;font-style:italic
+    }
+    .recent-grid{
+      display:flex;gap:12px;overflow-x:auto;padding:4px 0 14px;
+      scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch
+    }
+    .recent-grid::-webkit-scrollbar{height:6px}
+    .recent-card{
+      flex:0 0 auto;min-width:180px;max-width:220px;
+      background:var(--surface);border:1px solid var(--border);
+      padding:14px 16px;cursor:pointer;scroll-snap-align:start;
+      display:flex;flex-direction:column;gap:6px;
+      transition:border-color .25s,transform .25s
+    }
+    .recent-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+    .recent-card .rc-top{display:flex;align-items:center}
+    .recent-card .rc-badge{margin-left:auto}
+    .recent-card .rc-title{
+      font-family:'Noto Serif Armenian','Cormorant Garamond',Georgia,serif;
+      font-size:16px;font-weight:600;color:var(--white);line-height:1.3
+    }
+    .recent-card .rc-sub{font-size:10px;color:var(--muted);letter-spacing:.04em}
+
+    .new-badge{
+      font-family:'Inter',sans-serif;font-size:9px;font-weight:700;letter-spacing:.1em;
+      color:#0c0c0c;background:var(--gold);border-radius:4px;padding:2px 6px;
+      flex-shrink:0;white-space:nowrap;display:inline-block;vertical-align:2px;margin-left:6px
+    }
     .toolbar{
       display:grid;
       grid-template-columns:minmax(0,1fr) auto;
@@ -695,6 +733,9 @@
       .catalog{margin-top:12px;padding:0 8px}
       .catalog-head{margin-bottom:8px;padding-bottom:8px}
       .catalog h2{font-size:22px}
+      .recent-added{margin-top:12px;padding:0 8px}
+      .recent-added h2{font-size:20px}
+      .recent-card{min-width:160px}
       .toolbar{grid-template-columns:1fr;gap:6px;margin-bottom:8px}
       .search input{height:36px;padding-left:36px}
       .search::before{left:11px;font-size:18px}

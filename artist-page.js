@@ -45,7 +45,8 @@
       tapAgain:"Սեղմեք նվագարկել ևս մեկ անգամ։", ready:"Պատրաստ է", loading:"Բեռնվում է…",
       playing:"Նվագարկվում է", paused:"Դադարեցված է", theme:"Փոխել գունային ռեժիմը",
       language:"Փոխել լեզուն", loadError:"Երգացանկը չբեռնվեց։ Թարմացրեք էջը։",
-      donate:"Աջակցել", donateCardCopied:"Քարտի համարը պատճենվեց ✓", otherArtists:"Այլ արտիստներ"
+      donate:"Աջակցել", donateCardCopied:"Քարտի համարը պատճենվեց ✓", otherArtists:"Այլ արտիստներ",
+      recentHeading:"Վերջերս ավելացված"
     },
     ru: {
       back:"Главная", catalog:"Песни", search:"Поиск по песням…",
@@ -58,7 +59,8 @@
       audioError:"Аудиофайл не открылся. Попробуйте ещё раз.", tapAgain:"Нажмите воспроизведение ещё раз.",
       ready:"Готово", loading:"Загрузка…", playing:"Воспроизводится", paused:"На паузе",
       theme:"Сменить тему", language:"Сменить язык", loadError:"Список песен не загрузился. Обновите страницу.",
-      donate:"Поддержать", donateCardCopied:"Номер карты скопирован ✓", otherArtists:"Другие артисты"
+      donate:"Поддержать", donateCardCopied:"Номер карты скопирован ✓", otherArtists:"Другие артисты",
+      recentHeading:"Недавно добавленные"
     },
     en: {
       back:"Home", catalog:"Track list", search:"Search tracks…",
@@ -71,13 +73,22 @@
       audioError:"The audio file could not be opened. Please try again.", tapAgain:"Tap play once more.",
       ready:"Ready", loading:"Loading…", playing:"Playing", paused:"Paused",
       theme:"Change theme", language:"Change language", loadError:"The track list could not load. Refresh the page.",
-      donate:"Support", donateCardCopied:"Card number copied ✓", otherArtists:"Other artists"
+      donate:"Support", donateCardCopied:"Card number copied ✓", otherArtists:"Other artists",
+      recentHeading:"Recently Added"
     }
   };
 
 
   var TRILINGUAL_OVERRIDE = new Set(["vahan-teryan/Golden Stars in Blue(Տխուր զրույց)","vahan-teryan/Կարոտ","vahan-teryan/Մոռանալ","hamo-sahyan/The One in Vain","hamo-sahyan/guce henc ajster","hamo-sahyan/duq lavn eq mardiq","hamo-sahyan/es kuzei ","hamo-sahyan/ev chimacanq te inchu","hamo-sahyan/inchu hishecri","hamo-sahyan/ka mi tulutun","hamo-sahyan/Փնտրում ես դու","Երանի գայիր(Just Like Before)","te karotum es","lok cav u dard","lrutian tchich","Կարոտի խենթի","Hayots_ashkarh_A","Title_Mi_tanjir_hogis_Multilingual_Emotional_Duet_Lyrics_by_Silva_Gulanyan_002","chem moracel","Jaheli_nman_003","Tiezerk_Jinj_Lazur","ser da ardioq","Քո ժպիտները հավաքեմ","ughernery-lac-chen-linum","Ches_moranalu_003","cav anbujeli","ov em qez hamar","bjur u bjur angam","ete asem","gereckuhi","im ser","sirelis","taxicy vat margare e","hamo-sahyan/papy","Իմ Գեղեցկուհի ընկերուհիները"]);
   var BILINGUAL_OVERRIDE = new Set(["vahan-teryan/Աշուն Է անձրև","Astghayin_Shghta_A","Vahan_Teryan_Gisher","Поцелуй_ветра","Vahan_Teryan_MEGhAVOR_AChKERU","Es_kez_sirum_em","Hay_aragil","Tchaxr e pargevum ","Chisht_zhamanakin_At_The_Right_Time","Sirir_indz_hogis_FRAM_Duet","S_irum_em_kez_I_love_you","sirty xentacav","Ka_mi_ashkharh_vor_srtov_e_karutsvats","Ko_koghkin_vorish_em_003","melodia lubvi"]);
+
+  var NEW_SONGS = {"Սոնետ  45":"2026-08-01","Սոնետ  46":"2026-08-01","Սոնետ  47":"2026-08-01","Սոնետ  48":"2026-08-01","Սոնետ  49":"2026-08-01","Սոնետ  50":"2026-08-01","Սոնետ  51":"2026-08-01","Սոնետ  52":"2026-08-01","Սոնետ  53":"2026-08-01","Սոնետ  54":"2026-08-01","Սոնետ  55":"2026-08-01","Սոնետ  56":"2026-08-01","Սոնետ  57":"2026-08-01","Սոնետ  58":"2026-08-01","Սոնետ  59":"2026-08-01","Սոնետ  60":"2026-08-01","cav anbujeli":"2026-08-01","ov em qez hamar":"2026-08-01","bjur u bjur angam":"2026-08-01","ete asem":"2026-08-01","gereckuhi":"2026-08-01","Հայաստան, մեր սուրբ տուն":"2026-08-02","Армения, наш святой дом":"2026-08-02","Armenia, Our Sacred Home":"2026-08-02","im ser":"2026-08-06","sirelis":"2026-08-06","taxicy vat margare e":"2026-08-06","ergi chapov":"2026-08-06","На расстоянии песни":"2026-08-06","A Song Away":"2026-08-06","Սոնետ  70":"2026-08-08","Սոնետ  71":"2026-08-08","Սոնետ  72":"2026-08-08","Սոնետ  73":"2026-08-08","Սոնետ  75":"2026-08-08","Սոնետ  76":"2026-08-08","Սոնետ  77":"2026-08-08","Սոնետ  78":"2026-08-08","Սոնետ  79":"2026-08-08","Սոնետ  81":"2026-08-08","Սոնետ  82":"2026-08-08","Սոնետ  83":"2026-08-08","Սոնետ  84":"2026-08-08","Սոնետ  85":"2026-08-08","Սոնետ  86":"2026-08-08","Սոնետ  87":"2026-08-08","Սոնետ  88":"2026-08-08","Սոնետ  89":"2026-08-08","Սոնետ  91":"2026-08-08","Սոնետ  92":"2026-08-08","Սոնետ  93":"2026-08-08","Սոնետ  95":"2026-08-08","Սոնետ  96":"2026-08-08","Սոնետ  97":"2026-08-08","Սոնետ  98":"2026-08-08","Սոնետ  99":"2026-08-08","Սոնետ  100":"2026-08-08","Սոնետ  101":"2026-08-08","Սոնետ  102":"2026-08-08","Սոնետ  103":"2026-08-08","Սոնետ  104":"2026-08-08","Սոնետ  105":"2026-08-08","Սոնետ  106":"2026-08-08","Սոնետ  107":"2026-08-08","Սոնետ  108":"2026-08-08","Սոնետ  109":"2026-08-08","Սոնետ  110":"2026-08-08","Սոնետ  111":"2026-08-08","Սոնետ  112":"2026-08-08","Սոնետ  113":"2026-08-08","Սոնետ  114":"2026-08-08","Սոնետ  116":"2026-08-08","Սոնետ  117":"2026-08-08","Սոնետ  118":"2026-08-08","Սոնետ  119":"2026-08-08","Սոնետ  120":"2026-08-08","Սոնետ  122":"2026-08-08","Սոնետ  123":"2026-08-08","Սոնետ  124":"2026-08-08","Սոնետ  125":"2026-08-08","Սոնետ  126":"2026-08-08","Սոնետ  127":"2026-08-08","Սոնետ  128":"2026-08-08","Սոնետ  129":"2026-08-08","Սոնետ  130":"2026-08-08","Սոնետ  132":"2026-08-08","Սոնետ  133":"2026-08-08","Սոնետ  134":"2026-08-08","Սոնետ  135":"2026-08-08","Սոնետ  136":"2026-08-08","Սոնետ  137":"2026-08-08","Սոնետ  138":"2026-08-08","Սոնետ  139":"2026-08-08","Սոնետ  140":"2026-08-08","Սոնետ  141":"2026-08-08","Սոնետ  142":"2026-08-08","Սոնետ  143":"2026-08-08","Սոնետ  144":"2026-08-08","Սոնետ  145":"2026-08-08","Սոնետ  146":"2026-08-08","Սոնետ  147":"2026-08-08","Սոնետ  148":"2026-08-08","Սոնետ  149":"2026-08-08","Սոնետ  150":"2026-08-08","Սոնետ  151":"2026-08-08","Սոնետ  152":"2026-08-08","Սոնետ  153":"2026-08-08","Սոնետ  154":"2026-08-08","Կատակ Յարի Երգը":"2026-08-09","Roses in a Sieve":"2026-08-09","Ρόδα στο Κόσκινο":"2026-08-09","Песня шутка":"2026-08-09","ვარდები საცერში":"2026-08-09","parujr-sevak/What Color Is Love":"2026-08-13","parujr-sevak/Какого цвета любовь":"2026-08-13","Կատակ յարի երգ պար 4 լեզվով":"2026-08-13","ari-khmenq":"2026-08-15","Դու եկար":"2026-08-21","Ты пришёл":"2026-08-21","You Came":"2026-08-21","silva-kaputikyan/Լուսինն ու Արևը":"2026-08-24","silva-kaputikyan/Ծուխը չերևա":"2026-08-24","silva-kaputikyan/Քեզ փնտրում եմ":"2026-08-24","silva-kaputikyan/Ոչ մեր սիրելն էր նման սիրելու":"2026-08-24","silva-kaputikyan/The Moons Jealousy":"2026-08-24","silva-kaputikyan/Белая Луна":"2026-08-24","Our Lovely Mermaids":"2026-08-25","Эй наши русалки":"2026-08-25","ჩვენი ქალთევზებო":"2026-08-25","Իմ Գեղեցկուհի ընկերուհիները":"2026-08-31"};
+  function isNewSong(id) {
+    var added = NEW_SONGS[id];
+    if (!added) return false;
+    var days = (Date.now() - new Date(added).getTime()) / (1000 * 60 * 60 * 24);
+    return days >= 0 && days <= 30;
+  }
 
   function explanationText(value) {
     if (!value) return '';
@@ -200,7 +211,7 @@
       return divider + '<article class="track-row' + (state.current === item.index ? ' playing' : '') + '" data-index="' + item.index + '">' +
         '<span class="track-num">' + String(item.index + 1).padStart(2, "0") + '</span>' +
         '<button class="track-main" type="button" data-action="play">' +
-        '<span class="track-title ' + languageCountClass(item.track) + '">' + escapeHtml(item.track.label) + '</span>' +
+        '<span class="track-title ' + languageCountClass(item.track) + '">' + escapeHtml(item.track.label) + (isNewSong(item.track.id) ? ' <span class="new-badge">NEW</span>' : '') + '</span>' +
         '<span class="track-sub">' + escapeHtml(item.track.explanation ? explanationText(item.track.explanation) : (item.track.subtitle || artist.name)) + '</span>' + (item.track.subtitle && item.track.explanation ? '<span class="track-group">' + escapeHtml(item.track.subtitle) + '</span>' : '') + '</button>' +
         '<button class="icon-btn' + (favorite ? ' favorite' : '') + '" type="button" data-action="favorite" aria-label="' +
         escapeHtml(favorite ? tr("unfavorite") : tr("favorite")) + '">' + (favorite ? "♥" : "♡") + '</button>' +
@@ -542,6 +553,51 @@
     anchor.insertAdjacentElement("afterend", legend);
   }
 
+  function setupRecentPanel() {
+    var newItems = TRACKS.map(function (track, index) { return { track: track, index: index }; })
+      .filter(function (item) { return isNewSong(item.track.id); })
+      .sort(function (a, b) { return new Date(NEW_SONGS[b.track.id]) - new Date(NEW_SONGS[a.track.id]); });
+
+    var panel = document.getElementById("recent-added");
+    if (!newItems.length) {
+      if (panel) panel.hidden = true;
+      return;
+    }
+    if (!panel) {
+      panel = document.createElement("section");
+      panel.id = "recent-added";
+      panel.className = "recent-added";
+      panel.innerHTML =
+        '<div class="recent-added-head">' +
+        '<span class="section-label">New</span>' +
+        '<h2 data-i18n="recentHeading">' + escapeHtml(tr("recentHeading")) + '</h2>' +
+        '</div>' +
+        '<div class="recent-grid" id="recent-added-grid"></div>';
+      var catalogSection = document.querySelector(".catalog");
+      if (catalogSection && catalogSection.parentNode) {
+        catalogSection.parentNode.insertBefore(panel, catalogSection);
+      }
+    }
+    panel.hidden = false;
+    var grid = panel.querySelector("#recent-added-grid");
+    grid.innerHTML = newItems.slice(0, 12).map(function (item) {
+      var sub = item.track.explanation ? explanationText(item.track.explanation) : (item.track.subtitle || artist.name);
+      return '<div class="recent-card" data-index="' + item.index + '">' +
+        '<div class="rc-top"><span class="rc-badge new-badge">NEW</span></div>' +
+        '<div class="rc-title">' + escapeHtml(item.track.label) + '</div>' +
+        '<div class="rc-sub">' + escapeHtml(sub) + '</div>' +
+        '</div>';
+    }).join("");
+    grid.querySelectorAll(".recent-card").forEach(function (card) {
+      card.addEventListener("click", function () {
+        var index = Number(card.dataset.index);
+        togglePlay(index);
+        var row = document.querySelector('.track-row[data-index="' + index + '"]');
+        if (row) row.scrollIntoView({ block:"center", behavior:"smooth" });
+      });
+    });
+  }
+
   function setupPoetFilters() {
     if (!artist || artist.id !== "haj-poetner" || document.getElementById("poet-filter-wrap")) return;
     var poetNames = [];
@@ -656,6 +712,7 @@
     setupPoetFilters();
     setupLanguageLegend();
     setupContactButtons();
+    setupRecentPanel();
   }
 
   function bindEvents() {
