@@ -1,5 +1,5 @@
-const CACHE_VERSION = 'imastun-shell-v7';
-const PLAYER_FIX_VERSION = 'bc3725a-v7';
+const CACHE_VERSION = 'imastun-shell-v10';
+const PLAYER_FIX_VERSION = 'unified-crossfade-v10';
 const APP_SHELL = ['./', './index.html', './manifest.json', './logo.png', './audio-player-fix.js'];
 
 function injectPlayerFix(response) {
@@ -58,9 +58,9 @@ self.addEventListener('fetch', event => {
   if (request.mode === 'navigate') {
     event.respondWith(fetch(request, { cache: 'no-store' }).then(response => {
       const copy = response.clone();
-      caches.open(CACHE_VERSION).then(cache => cache.put('./index.html', copy));
+      caches.open(CACHE_VERSION).then(cache => cache.put(request, copy));
       return injectPlayerFix(response);
-    }).catch(() => caches.match('./index.html').then(injectPlayerFix)));
+    }).catch(() => caches.match(request).then(cached => cached || caches.match('./index.html')).then(injectPlayerFix)));
     return;
   }
 

@@ -4,13 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Իմաստուն Ստուդիո — Imastun Studio</title>
-  <meta name="description" content="Իմաստուն Ստուդիո — հայկական երաժշտության ստուդիո՝ Սիլվա Ղուլանյան, Գո Հարա, Հայ բանաստեղծների երգեր (Տերյան, Սահյան, Սևակ) և Shakespeare Reimagined նախագիծը։ 300+ երգ, տեսահոլովակներ, բանաստեղծություն երաժշտության մեջ։" />
+  <link rel="canonical" href="https://imastun.org/" />
+  <meta name="description" content="Իմաստուն Ստուդիո՝ հայկական երաժշտության ստուդիո։ Լսիր Սիլվա Գուլանյանի, Գո Հարայի, հայ բանաստեղծների և Shakespeare Reimagined նախագծի երգերը։" />
   <meta name="keywords" content="հայկական երաժշտություն, Իմաստուն Ստուդիո, Silva Gulanyan, Go Hara, Vahan Teryan, Hamo Sahyan, Paruyr Sevak, Armenian music, Armenian poetry songs" />
-  <meta name="keywords" content="Imastun Studio, Իմաստուն Ստուդիո, Silva Gulanyan, Go Hara, Narine Balasbekyan, հայկական երաժշտություն, Armenian music" />
+  <meta name="keywords" content="Imastun Studio, Իմաստուն Ստուդիո, Silva Gulanyan, Go Hara, հայկական երաժշտություն, Armenian music" />
   <meta name="author" content="Imastun Studio" />
   <meta property="og:title" content="Իմաստուն Ստուդիո — Imastun Studio" />
   <meta property="og:description" content="Հայկական երաժշտության ստուդիո՝ 300+ երգ, հայ բանաստեղծների ստեղծագործություններ երաժշտության մեջ, Shakespeare Reimagined նախագիծը և ավելին։" />
-  <meta property="og:image" content="logo.png" />
+  <meta property="og:image" content="https://imastun.org/logo.png" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -29,7 +30,7 @@
   }
   </script>
   <meta property="og:type" content="music.playlist" />
-  <meta property="og:url" content="" />
+  <meta property="og:url" content="https://imastun.org/" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Իմաստուն Ստուդիո" />
   <meta name="twitter:description" content="Բարի գալուստ Իմաստուն Ստուդիո" />
@@ -39,8 +40,8 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <link rel="manifest" href="manifest.json" />
-  <link rel="icon" href="logo.png" type="image/png" />
-  <link rel="apple-touch-icon" href="logo.png" />
+  <link rel="icon" href="icons/icon-192.png" type="image/png" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -421,7 +422,7 @@
     .nav-suno:hover { background: var(--gold-dim) !important; border-color: var(--gold) !important; }
 
     /* ── SECTION ── */
-    .section { padding: clamp(60px, 10vw, 120px) clamp(20px, 6vw, 100px); }
+    .section { padding: clamp(28px, 3.2vw, 48px) clamp(20px, 6vw, 100px); }
 
     .section-header { margin-bottom: 64px; display: flex; align-items: flex-end; gap: 24px; }
 
@@ -445,10 +446,60 @@
     }
 
     /* ── ARTIST GRID ── */
-    #artists-grid {
+    .catalog-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 2px;
+    }
+
+    #artists-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    #artists-grid > .artist-card {
+      aspect-ratio: 1 / 1;
+      display: block;
+    }
+
+    #artists-grid > .artist-card .card-cover-wrap {
+      position: absolute;
+      inset: 0;
+      aspect-ratio: auto;
+    }
+
+    #artists-grid > .artist-card .card-body {
+      position: absolute;
+      inset: auto 0 0;
+      z-index: 2;
+      padding: clamp(14px, 2vw, 24px);
+      background: linear-gradient(to top, rgba(8,8,8,.96), rgba(8,8,8,.72) 68%, transparent);
+    }
+
+    .poetry-catalogs {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: start;
+      gap: clamp(14px, 2.5vw, 32px);
+    }
+
+    .poetry-catalog { min-width: 0; }
+    .poetry-catalog .section-header { margin-bottom: 24px; align-items: flex-start; }
+    .poetry-catalog .section-label { display: none; }
+    .poetry-catalog .section-heading { font-size: clamp(28px, 4vw, 52px); }
+    .poetry-catalog .catalog-grid { grid-template-columns: minmax(0, 1fr); }
+    .poetry-catalog.expanded { grid-column: 1 / -1; }
+
+    .catalog-section { padding-block: clamp(24px, 3vw, 40px); }
+    .catalog-section .section-header { margin-bottom: 40px; }
+    #armenian-poets-grid > .artist-card,
+    #world-poetry-grid > .artist-card { max-width: none; }
+    .poetry-catalog.expanded #armenian-poets-grid > .artist-card,
+    .poetry-catalog.expanded #world-poetry-grid > .artist-card { max-width: 420px; }
+
+    .card-note {
+      margin: 10px 0 2px;
+      color: var(--text-dim); font-size: 10px; line-height: 1.55;
+      letter-spacing: .06em;
     }
 
     /* ── SMALL CARDS ROW ── */
@@ -483,6 +534,14 @@
     }
 
     .artist-card:hover .card-cover { transform: scale(1.06); opacity: 1; }
+
+    .artist-card[data-id="shakespeare-reimagined"] .card-cover {
+      object-position: center 22%;
+      transform: scale(1.22);
+    }
+    .artist-card[data-id="shakespeare-reimagined"]:hover .card-cover {
+      transform: scale(1.29);
+    }
 
     .card-cover-fallback {
       position: absolute; inset: 0;
@@ -550,6 +609,13 @@
 
     .artist-card:hover .card-arrow,
     .artist-card.active .card-arrow { opacity: 1; transform: translateX(0); }
+
+    .card-page-link {
+      display: inline-block; margin-top: 12px; color: var(--gold); text-decoration: none;
+      font-size: 9px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+      transition: color .2s;
+    }
+    .card-page-link:hover { color: var(--gold-light); }
 
     .artist-card::after {
       content: ''; position: absolute; bottom: 0; left: 0;
@@ -686,7 +752,63 @@
     .tab-pane.active { display: block; }
 
     /* ── TRACK LIST ── */
-    .track-list { display: flex; flex-direction: column; gap: 4px; }
+    .track-list-wrap { position: relative; }
+
+    .track-list {
+      display: flex; flex-direction: column; gap: 4px;
+    }
+
+    .track-list.is-collapsed {
+      max-height: 520px;
+      overflow: hidden;
+    }
+
+    .track-list-wrap.has-collapsed::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: 56px;
+      height: 96px;
+      pointer-events: none;
+      background: linear-gradient(to bottom, rgba(18,18,18,0), var(--surface2) 82%);
+    }
+
+    .track-list-toggle {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      min-height: 44px;
+      margin-top: 12px;
+      padding: 10px 16px;
+      border: 1px solid var(--gold-dim);
+      border-radius: 2px;
+      background: rgba(201,168,76,0.06);
+      color: var(--gold-light);
+      font: 600 10px/1.3 'Syne', sans-serif;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background .2s, border-color .2s, color .2s;
+    }
+
+    .track-list-toggle:hover,
+    .track-list-toggle:focus-visible {
+      background: rgba(201,168,76,0.12);
+      border-color: var(--gold);
+      color: var(--white);
+      outline: none;
+    }
+
+    .track-list-toggle span {
+      display: inline-block;
+      margin-left: 8px;
+      font-size: 15px;
+      line-height: .7;
+    }
+
+    @media (max-width: 700px) {
+      .track-list.is-collapsed { max-height: 420px; }
+      .track-list-wrap.has-collapsed::after { height: 82px; }
+    }
 
     .track-item {
       display: grid; grid-template-columns: 28px 1fr auto auto;
@@ -1131,7 +1253,15 @@
     @media (max-width: 700px) {
       :root { --player-h: 122px; }
       .nav-links { display: none; }
-      #artists-grid { grid-template-columns: repeat(2, 1fr); }
+      #artists.catalog-section { padding-bottom: 12px; }
+      #artists-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .poetry-catalogs { gap: 8px; padding-top: 12px; padding-bottom: 12px; }
+      #recent.section { padding-top: 12px; }
+      .poetry-catalog .section-header { display: none; }
+      #armenian-poets-grid,
+      #world-poetry-grid { grid-template-columns: 1fr; }
+      #armenian-poets-grid > .artist-card,
+      #world-poetry-grid > .artist-card { max-width: none; }
       #small-cards-row { grid-template-columns: repeat(2, 1fr); }
       .card-cover-wrap { aspect-ratio: 3 / 2; }
       .card-body { padding: 12px 14px 14px; }
@@ -1139,6 +1269,51 @@
       .card-name { font-size: 17px; margin-bottom: 3px; }
       .card-role { font-size: 8.5px; margin-bottom: 0; letter-spacing: 0.15em; }
       .card-arrow { display: none; }
+      #artists-grid > .artist-card .card-body { padding: 8px 6px 9px; text-align: center; }
+      #artists-grid > .artist-card .card-index,
+      #artists-grid > .artist-card .card-role,
+      #artists-grid > .artist-card .card-arrow,
+      #artists-grid > .artist-card .card-page-link { display: none; }
+      #artists-grid > .artist-card .card-name {
+        margin: 0;
+        font-size: clamp(11px, 3.6vw, 15px);
+        line-height: 1.08;
+      }
+      #armenian-poets-grid > .artist-card,
+      #world-poetry-grid > .artist-card {
+        aspect-ratio: 1 / 1;
+        display: block;
+      }
+      #armenian-poets-grid > .artist-card .card-cover-wrap,
+      #world-poetry-grid > .artist-card .card-cover-wrap {
+        position: absolute;
+        inset: 0;
+        aspect-ratio: auto;
+      }
+      #armenian-poets-grid > .artist-card .card-body,
+      #world-poetry-grid > .artist-card .card-body {
+        position: absolute;
+        inset: auto 0 0;
+        z-index: 2;
+        padding: 8px 6px 9px;
+        text-align: center;
+        background: linear-gradient(to top, rgba(8,8,8,.96), rgba(8,8,8,.68) 70%, transparent);
+      }
+      #armenian-poets-grid > .artist-card .card-index,
+      #armenian-poets-grid > .artist-card .card-role,
+      #armenian-poets-grid > .artist-card .card-note,
+      #armenian-poets-grid > .artist-card .card-arrow,
+      #world-poetry-grid > .artist-card .card-index,
+      #world-poetry-grid > .artist-card .card-role,
+      #world-poetry-grid > .artist-card .card-note,
+      #world-poetry-grid > .artist-card .card-arrow,
+      #world-poetry-grid > .artist-card .card-page-link { display: none; }
+      #armenian-poets-grid > .artist-card .card-name,
+      #world-poetry-grid > .artist-card .card-name {
+        margin: 0;
+        font-size: clamp(12px, 3.6vw, 16px);
+        line-height: 1.08;
+      }
       .section-header { flex-direction: column; align-items: flex-start; gap: 8px; }
       .section-label { writing-mode: horizontal-tb; transform: none; }
       .panel-inner { grid-template-columns: 1fr; }
@@ -1212,9 +1387,9 @@
     #mobile-menu-toggle[aria-expanded="true"] .bars { background:transparent; }
     #mobile-menu-toggle[aria-expanded="true"] .bars::before { top:0; transform:rotate(45deg); }
     #mobile-menu-toggle[aria-expanded="true"] .bars::after { top:0; transform:rotate(-45deg); }
-    .quick-nav { position:sticky; top:64px; z-index:90; display:flex; justify-content:center; gap:10px; width:100%; padding:10px clamp(16px,5vw,80px); background:rgba(8,8,8,.94); border-bottom:1px solid var(--border); scrollbar-width:none; }
+    .quick-nav { position:sticky; top:64px; z-index:90; display:flex; justify-content:center; gap:10px; width:100%; padding:10px clamp(16px,5vw,80px); overflow-x:auto; background:rgba(8,8,8,.94); border-bottom:1px solid var(--border); scrollbar-width:none; }
     .quick-nav::-webkit-scrollbar { display:none; }
-    .quick-nav a { flex:0 1 190px; min-width:140px; min-height:50px; display:inline-flex; align-items:center; justify-content:center; padding:10px 18px; border:1px solid rgba(201,168,76,.58); border-radius:25px; color:var(--gold-light); text-decoration:none; text-align:center; font-size:14px; font-weight:700; letter-spacing:.02em; background:rgba(201,168,76,.06); }
+    .quick-nav a { flex:0 1 190px; min-width:140px; min-height:50px; display:inline-flex; align-items:center; justify-content:center; padding:10px 18px; border:1px solid rgba(201,168,76,.58); border-radius:25px; color:var(--gold-light); text-decoration:none; text-align:center; font-size:12px; font-weight:700; letter-spacing:0; white-space:nowrap; background:rgba(201,168,76,.06); }
     .quick-nav a:hover, .quick-nav a:focus-visible { color:#fff2bd; border-color:var(--gold); background:rgba(201,168,76,.14); }
     [id] { scroll-margin-top:126px; }
     #search-overlay[aria-hidden="true"] { visibility:hidden; }
@@ -1349,7 +1524,289 @@
       #resume-banner #rb-play { flex:0 0 auto; }
       #resume-banner .rb-close { position:absolute; top:8px; right:8px; }
     }
-  </style>
+
+    /* IMastun Player Redesign v1 */
+    #global-player {
+      min-height: 86px;
+      height: auto;
+      padding: 13px clamp(14px, 4vw, 52px);
+      gap: 15px;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(213, 171, 91, 0.12), transparent 34%),
+        linear-gradient(135deg, rgba(18, 18, 18, 0.98), rgba(8, 8, 8, 0.98));
+      border-top: 1px solid rgba(213, 171, 91, 0.42);
+      box-shadow: 0 -14px 40px rgba(0, 0, 0, 0.34), 0 -1px 0 rgba(255, 255, 255, 0.04) inset;
+      backdrop-filter: blur(24px);
+    }
+
+    #global-player::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -1px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(241, 207, 137, 0.88), transparent);
+      pointer-events: none;
+    }
+
+    .gp-cover {
+      width: 58px;
+      height: 58px;
+      border-radius: 13px;
+      border: 1px solid rgba(213, 171, 91, 0.58);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.38), 0 0 0 3px rgba(213, 171, 91, 0.06);
+    }
+
+    .gp-info {
+      flex: 1 1 220px;
+      gap: 4px;
+    }
+
+    .gp-artist {
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      color: #d8b66d;
+    }
+
+    .gp-song {
+      font-size: 22px;
+      line-height: 1.08;
+      letter-spacing: 0.01em;
+      text-shadow: 0 1px 14px rgba(0, 0, 0, 0.42);
+    }
+
+    .gp-controls {
+      gap: 6px;
+      padding: 4px 6px;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.045);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    .gp-btn {
+      width: 34px;
+      height: 34px;
+      padding: 0;
+      border-radius: 50%;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.66);
+      transition: color 160ms ease-out, background 160ms ease-out, transform 160ms ease-out;
+    }
+
+    .gp-btn:hover {
+      color: var(--gold);
+      background: rgba(213, 171, 91, 0.12);
+    }
+
+    .gp-btn:active,
+    .gp-play:active { transform: scale(0.96); }
+
+    .gp-play {
+      width: 48px;
+      height: 48px;
+      border: 1px solid #e3bd6f;
+      background: linear-gradient(145deg, rgba(229, 190, 111, 0.18), rgba(229, 190, 111, 0.04));
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28), 0 0 0 4px rgba(213, 171, 91, 0.06);
+      transition: background 160ms ease-out, color 160ms ease-out, transform 160ms ease-out, box-shadow 160ms ease-out;
+    }
+
+    .gp-play:hover {
+      background: linear-gradient(145deg, #e6c277, #bd8b3f);
+      color: #111;
+      box-shadow: 0 7px 20px rgba(213, 171, 91, 0.22), 0 0 0 4px rgba(213, 171, 91, 0.09);
+    }
+
+    .gp-progress-wrap {
+      flex: 1 1 300px;
+      gap: 11px;
+    }
+
+    .gp-time {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.62);
+      width: 38px;
+    }
+
+    .gp-bar {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.09);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 999px;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.36);
+      overflow: hidden;
+    }
+
+    .gp-bar-fill {
+      background: linear-gradient(90deg, #b9873f, #f0cf86);
+      box-shadow: 0 0 12px rgba(232, 192, 112, 0.38);
+      transition: width 120ms linear;
+    }
+
+    @media (max-width: 700px) {
+      #global-player {
+        min-height: 104px;
+        padding: 10px 12px 11px;
+        gap: 9px;
+      }
+
+      .gp-cover {
+        width: 46px;
+        height: 46px;
+        border-radius: 10px;
+      }
+
+      .gp-info {
+        flex: 1 1 0;
+        min-width: 0;
+      }
+
+      .gp-artist { font-size: 8px; letter-spacing: 0.14em; }
+      .gp-song { font-size: 17px; }
+
+      .gp-controls {
+        gap: 3px;
+        padding: 3px 4px;
+      }
+
+      .gp-btn {
+        width: 30px;
+        height: 30px;
+      }
+
+      .gp-play {
+        width: 40px;
+        height: 40px;
+      }
+
+      .gp-progress-wrap {
+        flex: 0 0 100%;
+        order: 10;
+        gap: 7px;
+      }
+
+      .gp-time {
+        font-size: 10px;
+        width: 34px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .gp-btn, .gp-play, .gp-bar-fill { transition: none; }
+    }
+
+    /* IMastun Progress Slider v1 */
+    .gp-bar {
+      height: 8px;
+      cursor: grab;
+      touch-action: none;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.38);
+    }
+
+    .gp-bar:active,
+    .gp-bar.is-dragging { cursor: grabbing; }
+
+    .gp-bar:focus-visible {
+      outline: 2px solid rgba(239, 204, 128, 0.9);
+      outline-offset: 5px;
+    }
+
+    .gp-bar-fill {
+      position: relative;
+      min-width: 0;
+    }
+
+    .gp-bar-fill::after {
+      content: '';
+      position: absolute;
+      right: -6px;
+      top: 50%;
+      width: 12px;
+      height: 12px;
+      border: 2px solid #f4d58d;
+      border-radius: 50%;
+      background: #17130c;
+      box-shadow: 0 0 0 3px rgba(226, 188, 105, 0.12), 0 0 12px rgba(226, 188, 105, 0.55);
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    @media (max-width: 700px) {
+      .gp-bar { height: 9px; }
+      .gp-bar-fill::after { width: 13px; height: 13px; right: -6.5px; }
+    }
+    /* Keep the active player locked to the exact viewport bottom on every page. */
+    body { padding-bottom: 0 !important; }
+    #global-player, #global-player.visible {
+      position: fixed !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      margin: 0 !important;
+      z-index: 200 !important;
+    }
+    @media (max-width: 700px) {
+      #wa-btn { bottom: calc(var(--player-h) + 28px) !important; }
+      .messenger-btn { bottom: calc(var(--player-h) + 84px) !important; }
+      #donate-float-btn { bottom: calc(var(--player-h) + 140px) !important; }
+    }
+
+    #float-actions-toggle { display: none; }
+    @media (max-width: 700px) {
+      #float-actions-toggle {
+        position: fixed;
+        right: 12px;
+        bottom: calc(var(--player-h) + 28px);
+        z-index: 191;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 46px;
+        height: 46px;
+        border: 1px solid rgba(255,255,255,.22);
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--gold), var(--gold-light));
+        color: #171208;
+        box-shadow: 0 5px 20px rgba(201,168,76,.48);
+        font: 300 30px/1 'Syne', sans-serif;
+        cursor: pointer;
+        transition: bottom .22s ease, transform .22s ease, box-shadow .22s ease;
+      }
+      #float-actions-toggle:hover { box-shadow: 0 7px 26px rgba(201,168,76,.65); }
+      #donate-float-btn,
+      .messenger-btn,
+      #wa-btn {
+        right: 13px;
+        width: 44px;
+        height: 44px;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(10px) scale(.82);
+        transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
+      }
+      body.float-actions-open #donate-float-btn,
+      body.float-actions-open .messenger-btn,
+      body.float-actions-open #wa-btn {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: none;
+      }
+      body.float-actions-open #wa-btn { bottom: calc(var(--player-h) + 84px) !important; }
+      body.float-actions-open .messenger-btn { bottom: calc(var(--player-h) + 136px) !important; }
+      body.float-actions-open #donate-float-btn { bottom: calc(var(--player-h) + 188px) !important; }
+      body.float-actions-open #float-actions-toggle { transform: rotate(45deg); }
+      body.resume-banner-open #float-actions-toggle { bottom: calc(var(--player-h) + 112px); }
+      body.resume-banner-open.float-actions-open #wa-btn { bottom: calc(var(--player-h) + 168px) !important; }
+      body.resume-banner-open.float-actions-open .messenger-btn { bottom: calc(var(--player-h) + 220px) !important; }
+      body.resume-banner-open.float-actions-open #donate-float-btn { bottom: calc(var(--player-h) + 272px) !important; }
+    }
+</style>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHJJF7DQ29"></script>
   <script>
@@ -1363,7 +1820,7 @@
 <a class="skip-link" href="#artists" data-i18n="skip">Անցնել հիմնական բովանդակությանը</a>
 
 <section id="hero">
-  <video id="bg-video" src="background.mp4" autoplay muted loop playsinline></video>
+  <video id="bg-video" src="background.mp4" preload="metadata" autoplay muted loop playsinline></video>
   <img src="logo.png" alt="Imastun Studio" class="hero-logo-corner" />
   <div class="hero-stats" id="hero-stats"></div>
   <div class="hero-veil"></div>
@@ -1423,6 +1880,8 @@
   </div>
   <ul class="nav-links" id="primary-nav-links">
     <li><a href="#artists" data-i18n="artists">Արտիստներ</a></li>
+    <li><a href="#armenian-poets" data-i18n="poets">Հայ բանաստեղծներ</a></li>
+    <li><a href="#world-poetry" data-i18n="worldPoetry">Համաշխարհային պոեզիա</a></li>
     <li><a href="#recent" data-i18n="new">Նորություններ</a></li>
     <li><a href="#videos" data-i18n="videos">Տեսանյութեր</a></li>
     <li><a href="#donate-section" data-i18n="support">Աջակցել</a></li>
@@ -1431,6 +1890,8 @@
 </nav>
 <nav class="quick-nav" aria-label="Արագ անցումներ" data-i18n-aria="quickNav">
   <a href="#artists" data-i18n="artists">Արտիստներ</a>
+  <a href="#armenian-poets" data-i18n="poets">Հայ բանաստեղծներ</a>
+  <a href="#world-poetry" data-i18n="worldPoetry">Համաշխարհային պոեզիա</a>
   <a href="#recent" data-i18n="new">Նորություններ</a>
   <a href="#videos" data-i18n="videos">Տեսանյութեր</a>
   <a href="#donate-section" data-i18n="support">Աջակցել</a>
@@ -1439,12 +1900,32 @@
 
 <div class="gold-rule"></div>
 
-<section id="artists" class="section">
+<section id="artists" class="section catalog-section">
   <div class="section-header reveal">
     <span class="section-label">Artists</span>
-    <h2 class="section-heading">Our <em>Roster</em></h2>
+    <h2 class="section-heading" data-i18n-html="artistsHeading">Մեր <em>Արտիստները</em></h2>
   </div>
-  <div id="artists-grid" class="reveal-stagger"></div>
+  <div id="artists-grid" class="catalog-grid reveal-stagger"></div>
+</section>
+
+<div class="gold-rule"></div>
+
+<section class="section poetry-catalogs" aria-label="Պոեզիայի բաժիններ">
+  <article id="armenian-poets" class="poetry-catalog">
+    <div class="section-header reveal">
+      <span class="section-label">Armenian Poetry</span>
+      <h2 class="section-heading" data-i18n-html="poetsHeading">Հայ <em>Բանաստեղծներ</em></h2>
+    </div>
+    <div id="armenian-poets-grid" class="catalog-grid reveal-stagger"></div>
+  </article>
+
+  <article id="world-poetry" class="poetry-catalog">
+    <div class="section-header reveal">
+      <span class="section-label">World Poetry</span>
+      <h2 class="section-heading" data-i18n-html="worldPoetryHeading">Համաշխարհային <em>Պոեզիա</em></h2>
+    </div>
+    <div id="world-poetry-grid" class="catalog-grid reveal-stagger"></div>
+  </article>
 </section>
 
 <div class="gold-rule"></div>
@@ -1536,7 +2017,7 @@
   <span class="footer-copy">&copy; <span id="yr"></span> Imastun Studio. All rights reserved.</span>
 </footer>
 
-<a href="https://m.me/Vahan.Vardevanyan" target="_blank" rel="noopener" class="messenger-btn" title="Գրիր մեզ Messenger-ով">
+<a id="messenger-float-btn" href="https://m.me/Vahan.Vardevanyan" target="_blank" rel="noopener" class="messenger-btn" title="Գրիր մեզ Messenger-ով">
   <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
     <path d="M12 2C6.477 2 2 6.145 2 11.243c0 2.908 1.438 5.504 3.687 7.205V22l3.37-1.85c.9.249 1.853.383 2.843.383 5.523 0 10-4.145 10-9.243S17.523 2 12 2zm1.043 12.44l-2.55-2.72-4.977 2.72 5.473-5.81 2.612 2.72 4.914-2.72-5.472 5.81z"/>
   </svg>
@@ -1547,6 +2028,8 @@
 </a>
 
 <a id="donate-float-btn" href="#donate-section" title="Աջակցիր Imastun Studio-ին">☕</a>
+
+<button id="float-actions-toggle" type="button" aria-expanded="false" aria-controls="donate-float-btn messenger-float-btn wa-btn" aria-label="Բացել կապի կոճակները" title="Կապ և աջակցություն">＋</button>
 
 
 <aside id="app-install-prompt" role="dialog" aria-live="polite" aria-labelledby="install-app-title" aria-describedby="install-app-text">
@@ -1666,21 +2149,21 @@
   /* ══ DATA ══ */
   const ARTISTS = [
     {
-      id: 'imastun', name: 'Imastun', role: 'Poet & Lead Artist & Producer',
-      songs: ['Astghayin_Shghta_A','The Sun Cries Too(Արևն էլ է լաց լինում)','Vahan_Teryan_Gisher','B_Es_im_anush_Hayastani','El_ban_chunem_Remix','inchi-hamar','inch_e_koracy_qarcr','lur-heraxos','lur uji simfonia','luse arzaganq','Luse_Hekiat_A','Lrutyan_unker','Lsir_vordis','Katak_Yari_Ergu','Katak_Yari_Ergu rem','haverji-erty','hogu-arzaganq','Meghki_ezrin_Remix','shshnjatc','shshnjatc-noric','shepot','ser-anurji','siro-kenacy','Поцелуй_ветра','Vahan_Teryan_MEGhAVOR_AChKERU','qo-jinj-hogin','pastayannaya jajda','andadar carav','The Eternal Thirst','im ser','sirelis','taxicy vat margare e','ergi chapov','На расстоянии песни','A Song Away','Կատակ Յարի Երգը','Roses in a Sieve','Ρόδα στο Κόσκινο','Песня шутка','ვარდები საცერში','Կատակ յարի երգ պար 4 լեզվով'],
+      id: 'imastun', name: 'Imastun', role: 'Poet & Lead Artist & Producer', page: 'imastun.html',
+      songs: ['Astghayin_Shghta_A','The Sun Cries Too(Արևն էլ է լաց լինում)','Vahan_Teryan_Gisher','B_Es_im_anush_Hayastani','El_ban_chunem_Remix','inchi-hamar','inch_e_koracy_qarcr','lur-heraxos','lur uji simfonia','luse arzaganq','Luse_Hekiat_A','Lrutyan_unker','Lsir_vordis','Katak_Yari_Ergu','Katak_Yari_Ergu rem','haverji-erty','hogu-arzaganq','Meghki_ezrin_Remix','shshnjatc','shshnjatc-noric','shepot','ser-anurji','siro-kenacy','Поцелуй_ветра','Vahan_Teryan_MEGhAVOR_AChKERU','qo-jinj-hogin','pastayannaya jajda','andadar carav','The Eternal Thirst','im ser','sirelis','taxicy vat margare e','ergi chapov','На расстоянии песни','A Song Away','Կատակ Յարի Երգը','Roses in a Sieve','Ρόδα στο Κόσκινο','Песня шутка','ვარდები საცერში','Կատակ յարի երգ պար 4 լեզվով','Իմ Գեղեցկուհի ընկերուհիները'],
       videos: []
     },
     {
-      id: 'silva-gulanyan', name: 'Silva Gulanyan', role: 'Vocalist & Songwriter',
+      id: 'silva-gulanyan', name: 'Silva Gulanyan', role: 'Vocalist & Songwriter', page: 'silva-gulanyan.html',
       songs: ['ergichy-dari','gij','gij-qamin','gortrik-ankun','im-tsovagur','inch-em-anelu','tsov-arev-achqer','Es_kez_sirum_em','Kez_khenti_nman_siraharvetsi_Duet_Tango','Ari_klini','Andzrevum_e','der-inz-voch-mek-chi-sirel-qo-pes','Akh_inch_anem_sirud_het','AKhor_vo_tsavits_tsnvats','Aryev_darnam','Che_chem_toghni_B','Ches_moranalu_003','Chisht_zhamanakin_At_The_Right_Time','Dran_Takotsu_003','Dzig_tarineri_luys_003','Erazankneri_aytsu_Part_Gisherva_002','Erb_verkers_hanger_dardzri_Lyrics_by_Silva_Gulanyan_003','Erku_khent_hogi_Duet_Silva_Gulanyan_004','Es_sirum_em_ko_zhpitu_B','Garun_er_003','Gisher_e_004','Gisherits_depi_luys_Silva_Gulanyan_005','Gitem_ches_galu_B','Gitem_hogis_A','Hetd_inch_e_katarvum','Im_erazats_ashkharu_003','inchu_es_ayskan_indz_otar_dardzel_004','Jaheli_nman_003','Կարոտի խենթի','Kenatsd_khmem_B_Brinderò_per_Te','xentern u lusiny','Ko_hmayki_gerin','Ko_koghkin_vorish_em_003','Es_irakan_em_004','frants_Harbel_em_vozum','Galis_e_mi_pah_003','Havat_em_vozum_003','Hayots_ashkarh_A','HERO_MOTIK_UNKERNERIS_003','hogu giny','Ka_mi_ashkharh_vor_srtov_e_karutsvats','kgam_sirelis','Kuratsats_achkin_luysu_003','Kuyr_eghbayr_003','Kyanku_Hrashk_e_005','Mer_Srterum_kanchu_004','Mtnets_arants_kez_Duet','Nrboren_Garnunk_003','Resta_nei_nostri_cuori','RokHetd_Inch_E_Katarvum_003','S_irum_em_kez_I_love_you','Sirir_indz_hogis_FRAM_Duet','Srteri_kanchu_003','Tesilk_Silva_Gulanyan_Remix_Remix','Tiezerk_Jinj_Lazur','Title_Mi_tanjir_hogis_Multilingual_Emotional_Duet_Lyrics_by_Silva_Gulanyan_002','melodia lubvi','Безумный Ветер Любви','agh & dagy','xerdvac karot','xerdvac karot patasxan','hiastapvac','nerqnapanak','qo cov achqeri kajcern em sirum','sirty xentacav','luse hrashq','Hay_aragil','lrutian tchich','qez karotelis','siro cnundy','qo_drakhtum_002','ser da ardioq','xortakvor nav','chem moracel','ipta hogis','ov e kimy','Nerir sirelis','The Sun Cries Too','Crazy Breeze of Love','xent siro qamin','karotiali shurterin','mek tari el ancav','Garun e bajc zun e arel','Curt xavaric','xind manuk','hima','byur harvacneric','mern zepur','ser eir xarum','erazi kyamq roc','erazi kyanq','ti pridyosh komne',"The Night's Embrace",'xararutun ber','ti moy kislarod','My Endless Dream',"Կարոտի խենթի","Тоска по мне","The Song of the Spring Breeze","խենթի նման սիրահարվեցի","Светлый полёт","Քեզ դուրս եմ արել","Перед памятью злой","Powerless Against Memories","Դու իմ աշխարհն ես","Ты мой мир","You Are My World","Тоскуя по тебе","Longing for You","Քեզ կարոտելիս","Սիրել հենց հոգուն (1)","Любить лишь душу (1)","Love Unseen (1)","Սիրել հենց հոգուն","Любить лишь душу","Love Unseen","Թանկ հուշը","Сокровенный причал","Never a Stranger","Образы тоски","Ծովի մեջ աչքերդ","The Illusion of Longing","My Precious Love","My Precious Love драгоценная любовь","My Bright Dream (1)","My Bright Dream","խենթ խաղեր","Եղբայր իմ անգին","Мой светлый луч","My Only Light","Տիեզերական կինը րոց","Տիեզերական կինը","The Woman as the Universe","Տիեզերական կինը (Remastered)","Երանի գայիր(Just Like Before)","Դավաճան հայ","Իմ Քնքուշ Սառան","Քո ժպիտները հավաքեմ","ughernery-lac-chen-linum","te karotum es","Tchaxr e pargevum ","lok cav u dard","gjuk lusiny","gitem el inz ches spasum","cav anbujeli","ov em qez hamar","bjur u bjur angam","ete asem","gereckuhi"]
     },
     {
-      id: 'go-hara', name: 'Go Hara', role: 'Vocalist & Performer',
-      songs: ['ajs xarum mian ujern e haxtum','Anund_Kin_e_004','Arajin_hambuyru','Arevamutits_araj','Bari_gisher','duet_Спокойной_ночи_Remix_Remix','spakojnoj nochi (kin)','Ginin_prprel_e','gisherajin','daravor karnin','darnaham-ginin','Title_Es_arajva_pes_kez_karotum_em_Swiss_Pop_Ballad_Lyrics_by_Go_Hara_Remix_008','Im_poezian','la-fracise','pered rasvetom','kanchir-kgam','HANDIPOMNERI_AYS_KhAChMEROKOM','Hervits_Grkum em','Hravirir_indz_parelu_tangon','menq linelu enq','MI_TOGh_INDz_MENAK','Mi_siro_patmutyun','urenineri lacor purakum','POETIS','Sirogisher_Go_Hara','cncir-users','fracuzhenka','My Mirror True','Зеркало моё','Իմ հայելի','Fragile Cry Has Risen Like','Во мне поднялся хрупкий плач','Փխրուն Լաց','Եվ ինչ է սերը','Չնոտագրված լռություն',"I'm tired of being strong",'устала быть сильной','hognel em ujer kin lineluc','Հայաստան, մեր սուրբ տուն','Армения, наш святой дом','Armenia, Our Sacred Home','Սիրելով գնամ','Я уйду любя','Ill Leave Still Loving You']
+      id: 'go-hara', name: 'Go Hara', role: 'Vocalist & Performer', page: 'go-hara.html',
+      songs: ['ajs xarum mian ujern e haxtum','Anund_Kin_e_004','Arajin_hambuyru','Arevamutits_araj','Bari_gisher','duet_Спокойной_ночи_Remix_Remix','spakojnoj nochi (kin)','Ginin_prprel_e','gisherajin','daravor karnin','darnaham-ginin','Title_Es_arajva_pes_kez_karotum_em_Swiss_Pop_Ballad_Lyrics_by_Go_Hara_Remix_008','Im_poezian','la-fracise','pered rasvetom','kanchir-kgam','HANDIPOMNERI_AYS_KhAChMEROKOM','Hervits_Grkum em','Hravirir_indz_parelu_tangon','menq linelu enq','MI_TOGh_INDz_MENAK','Mi_siro_patmutyun','urenineri lacor purakum','POETIS','Sirogisher_Go_Hara','cncir-users','fracuzhenka','My Mirror True','Зеркало моё','Իմ հայելի','Fragile Cry Has Risen Like','Во мне поднялся хрупкий плач','Փխրուն Լաց','Եվ ինչ է սերը','Չնոտագրված լռություն',"I'm tired of being strong",'устала быть сильной','hognel em ujer kin lineluc','Հայաստան, մեր սուրբ տուն','Армения, наш святой дом','Armenia, Our Sacred Home','Սիրելով գնամ','Я уйду любя','Ill Leave Still Loving You','Դու եկար','Ты пришёл','You Came']
     },
     {
       id: 'haj-poetner', name: 'Հայ Բանաստեղծներ', role: 'Armenian Poets · Songs',
-      cover: 'authors/haj-poetner/cover.jpg',
+      cover: 'authors/haj-poetner/cover.jpg', page: 'haj-poetner.html',
       songs: [
         'vahan-teryan/ananun ser','vahan-teryan/ashnan erg',
         'vahan-teryan/elegia','vahan-teryan/estonakan',
@@ -1726,15 +2209,11 @@
         'parujr-sevak/Սերն ինչ գույն ունի','parujr-sevak/What Color Is Love','parujr-sevak/Какого цвета любовь',
         'avetik-isahakyan/Ախ կուզես լինիմ','aramayis-sahakyan/Ես կուզեի քո ճանապարհին',
         'shiraz/Իմ պատանի սիրտս','parujr-sevak/Նախանձում եմ',
-        'silva-kaputikyan/Սեր','vahagn-davtyan/Սեր','hovhannes-tumanyan/Սիրում էի երբեմն քեզ'
+        'silva-kaputikyan/Սեր','silva-kaputikyan/Լուսինն ու Արևը','silva-kaputikyan/Ծուխը չերևա','silva-kaputikyan/Քեզ փնտրում եմ','silva-kaputikyan/Ոչ մեր սիրելն էր նման սիրելու','silva-kaputikyan/The Moons Jealousy','silva-kaputikyan/Белая Луна','vahagn-davtyan/Սեր','hovhannes-tumanyan/Սիրում էի երբեմն քեզ'
       ]
     },
     {
-      id: 'narine-balasbekyan', name: 'Narine Balasbekyan', role: 'Vocalist & Composer',
-      songs: ['kiny','sirena-hima']
-    },
-    {
-      id: 'shakespeare-reimagined', name: 'Shakespeare Reimagined', role: 'Sonnets in Song',
+      id: 'shakespeare-reimagined', name: 'Shakespeare Reimagined', role: 'Sonnets in Song', page: 'shakespeare.html',
       songs: [
         'Սոնետ 1','Սոնետ 2','Սոնետ 3','Սոնետ 4','Սոնետ 5','Սոնետ 6',
         'Սոնետ 7','Սոնետ 8','Սոնետ 9','Սոնետ 10','Սոնետ 11','Սոնետ 12',
@@ -1764,24 +2243,23 @@
         'Սոնետ  153','Սոնետ  154'
       ]
     },
-    { id: 'nune-muradyan',  name: 'Nune Muradyan',  role: 'Vocalist & Lyricist',  songs: [] },
-    { id: 'lilit-aghasyan', name: 'Lilit Aghasyan', role: 'Vocalist & Arranger',   songs: [] },
-    { id: 'mareta-sargsyan',name: 'Mareta Sargsyan',role: 'Vocalist & Performer',  songs: [] },
   ];
 
+  const imastunArtist = ARTISTS.find(artist => artist.id === 'imastun');
+  if (imastunArtist) imastunArtist.songs.push('Our Lovely Mermaids','Эй наши русалки','Ջրահարսեր Ремикс Ремикс_2','Ջրահարսեր Ремикс Ремикс_3','ჩვენი ქალთევზებო');
   const silvaArtist = ARTISTS.find(artist => artist.id === 'silva-gulanyan');
   if (silvaArtist) silvaArtist.songs.push('ari-khmenq');
 
   const YOUTUBE_VIDEOS = [
     { id: "fMnSIQxk-rE", title: "🇬🇧 THE MOON AND THE SUN — Silva Kaputikyan", added: "2026-08-23" },
     { id: "4pIun9fXCAc", title: "🇷🇺 ЛУНА И СОЛНЦЕ — Сильва Капутикян", added: "2026-08-23" },
-    { id: "jXB_zvZEczg", title: "ԼՈՒՍԻՆՆ ՈՒ ԱՐևԸ, Սիլվա Կապուտիկյան", added: "2026-08-23" },
+    { id: "jXB_zvZEczg", title: "ԼՈՒՍԻՆՆ ՈՒ ԱՐԵՎԸ — Սիլվա Կապուտիկյան", added: "2026-08-23" },
     { id: "CypKoxj-_tc", title: "🇬🇧 You Came — lyrics by Gohar Aselesyan", added: "2026-08-21" },
     { id: "CLEEZz24MmY", title: "🇷🇺 Ты пришла — слова Гоар Аселесян", added: "2026-08-21" },
     { id: "GX_mmgkfl78", title: "Դու եկար, խոսքը Գոհար Ասելեսյանի", added: "2026-08-21" },
-    { id: "nxwEVnSYeEM", title: "Я уйду лубя, Го Хара", added: "2026-08-15" },
+    { id: "nxwEVnSYeEM", title: "Я уйду любя — Го Хара", added: "2026-08-15" },
     { id: "hpkcti95mQY", title: "I'll Leave Still Loving You, Go Hara", added: "2026-08-15" },
-    { id: "bziLW9nooWI", title: "ԱՐԻ ԽՄԵՆՔ։ДАВАЙ ВЫПЬЕ։МLET’S DRINK ,խսքը Սիլվա Գուլանյան", added: "2026-08-15" },
+    { id: "bziLW9nooWI", title: "ԱՐԻ ԽՄԵՆՔ · ДАВАЙ ВЫПЬЕМ · LET’S DRINK — խոսք՝ Սիլվա Գուլանյան", added: "2026-08-15" },
     { id: "xNLAufJeHBY", title: "I'll Leave Still Loving You, Go Hara", added: "2026-08-14" },
     { id: "fZ7PZgXzBFY", title: "YouTube video fZ7PZgXzBFY", added: "2026-08-13" },
     { id: "_01ty-0xVSo", title: "YouTube video _01ty-0xVSo", added: "2026-08-13" },
@@ -1826,6 +2304,7 @@
   ];
 
   const NEW_SONGS = {
+    "Դու եկար": "2026-08-21", "Ты пришёл": "2026-08-21", "You Came": "2026-08-21",
     "ari-khmenq": "2026-08-15",
     "Սոնետ  70": "2026-08-08","Սոնետ  71": "2026-08-08","Սոնետ  72": "2026-08-08","Սոնետ  73": "2026-08-08","Սոնետ  75": "2026-08-08","Սոնետ  76": "2026-08-08",
     "Սոնետ  77": "2026-08-08","Սոնետ  78": "2026-08-08","Սոնետ  79": "2026-08-08","Սոնետ  81": "2026-08-08","Սոնետ  82": "2026-08-08","Սոնետ  83": "2026-08-08",
@@ -1922,7 +2401,13 @@
     "parujr-sevak/menq qich enq sakajn mez haj en asum": "2026-06-27",
     "parujr-sevak/miangamic tango": "2026-06-27",
     "parujr-sevak/miangamic roc": "2026-06-27",
-    "Կարոտի խենթի":"2026-07-10","Тоска по мне":"2026-07-10","The Song of the Spring Breeze":"2026-07-10","խենթի նման սիրահարվեցի":"2026-07-10","Светлый полёт":"2026-07-10","Քեզ դուրս եմ արել":"2026-07-10","Перед памятью злой":"2026-07-10","Powerless Against Memories":"2026-07-10","Դու իմ աշխարհն ես":"2026-07-10","Ты мой мир":"2026-07-10","You Are My World":"2026-07-10","Тоскуя по тебе":"2026-07-10","Longing for You":"2026-07-10","Քեզ կարոտելիս":"2026-07-10","Սիրել հենց հոգուն (1)":"2026-07-10","Любить лишь душу (1)":"2026-07-10","Love Unseen (1)":"2026-07-10","Սիրել հենց հոգուն":"2026-07-10","Любить лишь душу":"2026-07-10","Love Unseen":"2026-07-10","Թանկ հուշը":"2026-07-10","Сокровенный причал":"2026-07-10","Never a Stranger":"2026-07-10","Образы тоски":"2026-07-10","Ծովի մեջ աչքերդ":"2026-07-10","The Illusion of Longing":"2026-07-10","My Precious Love":"2026-07-10","My Precious Love драгоценная любовь":"2026-07-10","My Bright Dream (1)":"2026-07-10","My Bright Dream":"2026-07-10","խենթ խաղեր":"2026-07-10","Եղբայր իմ անգին":"2026-07-10","Мой светлый луч":"2026-07-10","My Only Light":"2026-07-10","Տիեզերական կինը րոց":"2026-07-10","Տիեզերական կինը":"2026-07-10","The Woman as the Universe":"2026-07-10","Տիեզերական կինը (Remastered)":"2026-07-10","avetik-isahakyan/Ախ կուզես լինիմ":"2026-07-19","aramayis-sahakyan/Ես կուզեի քո ճանապարհին":"2026-07-19","shiraz/Իմ պատանի սիրտս":"2026-07-19","parujr-sevak/Նախանձում եմ":"2026-07-19","silva-kaputikyan/Սեր":"2026-07-19","vahagn-davtyan/Սեր":"2026-07-19","hovhannes-tumanyan/Սիրում էի երբեմն քեզ":"2026-07-19","My Mirror True":"2026-07-18","Зеркало моё":"2026-07-18","Իմ հայելի":"2026-07-18","Fragile Cry Has Risen Like":"2026-07-18","Во мне поднялся хрупкий плач":"2026-07-18","Փխրուն Լաց":"2026-07-18","Եվ ինչ է սերը":"2026-07-18","Չնոտագրված լռություն":"2026-07-19"
+    "Կարոտի խենթի":"2026-07-10","Тоска по мне":"2026-07-10","The Song of the Spring Breeze":"2026-07-10","խենթի նման սիրահարվեցի":"2026-07-10","Светлый полёт":"2026-07-10","Քեզ դուրս եմ արել":"2026-07-10","Перед памятью злой":"2026-07-10","Powerless Against Memories":"2026-07-10","Դու իմ աշխարհն ես":"2026-07-10","Ты мой мир":"2026-07-10","You Are My World":"2026-07-10","Тоскуя по тебе":"2026-07-10","Longing for You":"2026-07-10","Քեզ կարոտելիս":"2026-07-10","Սիրել հենց հոգուն (1)":"2026-07-10","Любить лишь душу (1)":"2026-07-10","Love Unseen (1)":"2026-07-10","Սիրել հենց հոգուն":"2026-07-10","Любить лишь душу":"2026-07-10","Love Unseen":"2026-07-10","Թանկ հուշը":"2026-07-10","Сокровенный причал":"2026-07-10","Never a Stranger":"2026-07-10","Образы тоски":"2026-07-10","Ծովի մեջ աչքերդ":"2026-07-10","The Illusion of Longing":"2026-07-10","My Precious Love":"2026-07-10","My Precious Love драгоценная любовь":"2026-07-10","My Bright Dream (1)":"2026-07-10","My Bright Dream":"2026-07-10","խենթ խաղեր":"2026-07-10","Եղբայր իմ անգին":"2026-07-10","Мой светлый луч":"2026-07-10","My Only Light":"2026-07-10","Տիեզերական կինը րոց":"2026-07-10","Տիեզերական կինը":"2026-07-10","The Woman as the Universe":"2026-07-10","Տիեզերական կինը (Remastered)":"2026-07-10","avetik-isahakyan/Ախ կուզես լինիմ":"2026-07-19","aramayis-sahakyan/Ես կուզեի քո ճանապարհին":"2026-07-19","shiraz/Իմ պատանի սիրտս":"2026-07-19","parujr-sevak/Նախանձում եմ":"2026-07-19","silva-kaputikyan/Սեր":"2026-07-19","silva-kaputikyan/Լուսինն ու Արևը":"2026-08-24","silva-kaputikyan/Ծուխը չերևա":"2026-08-24","silva-kaputikyan/Քեզ փնտրում եմ":"2026-08-24","silva-kaputikyan/Ոչ մեր սիրելն էր նման սիրելու":"2026-08-24","silva-kaputikyan/The Moons Jealousy":"2026-08-24","silva-kaputikyan/Белая Луна":"2026-08-24","vahagn-davtyan/Սեր":"2026-07-19","hovhannes-tumanyan/Սիրում էի երբեմն քեզ":"2026-07-19","My Mirror True":"2026-07-18","Зеркало моё":"2026-07-18","Իմ հայելի":"2026-07-18","Fragile Cry Has Risen Like":"2026-07-18","Во мне поднялся хрупкий плач":"2026-07-18","Փխրուն Լաց":"2026-07-18","Եվ ինչ է սերը":"2026-07-18","Չնոտագրված լռություն":"2026-07-19",
+    'Our Lovely Mermaids': "2026-08-25",
+    'Эй наши русалки': "2026-08-25",
+    'Ջրահարսեր Ремикс Ремикс_2': "2026-08-25",
+    'Ջրահարսեր Ремикс Ремикс_3': "2026-08-25",
+    'ჩვენი ქალთევზებო': "2026-08-25",
+    'Իմ Գեղեցկուհի ընկերուհիները': "2026-08-31",
   };
   function isNewSong(song) {
     const added = NEW_SONGS[song];
@@ -1938,6 +2423,9 @@
     'vahagn-davtyan/': 'Վահագն Դավթյան', 'hovhannes-tumanyan/': 'Հովհաննես Թումանյան'
   };
   const SONG_NAMES = {
+    'Դու եկար': 'Դու եկար',
+    'Ты пришёл': 'Ты пришёл',
+    'You Came': 'You Came',
     'ari-khmenq': 'ԱՐԻ ԽՄԵՆՔ · ДАВАЙ ВЫПЬЕМ · BUVONS',
     'Սիրելով գնամ': 'Սիրելով գնամ',
     'Я уйду любя': 'Я уйду любя',
@@ -2112,6 +2600,12 @@
     "shiraz/Իմ պատանի սիրտս": "Իմ պատանի սիրտս",
     "parujr-sevak/Նախանձում եմ": "Նախանձում եմ",
     "silva-kaputikyan/Սեր": "Սեր",
+    "silva-kaputikyan/Լուսինն ու Արևը": "Լուսինն ու Արևը",
+    "silva-kaputikyan/Ծուխը չերևա": "Ծուխը չերևա",
+    "silva-kaputikyan/Քեզ փնտրում եմ": "Քեզ փնտրում եմ",
+    "silva-kaputikyan/Ոչ մեր սիրելն էր նման սիրելու": "Ոչ մեր սիրելն էր նման սիրելու",
+    "silva-kaputikyan/The Moons Jealousy": "The Moon's Jealousy",
+    "silva-kaputikyan/Белая Луна": "Белая Луна",
     "vahagn-davtyan/Սեր": "Սեր",
     "hovhannes-tumanyan/Սիրում էի երբեմն քեզ": "Սիրում էի երբեմն քեզ",
     "Astghayin_Shghta_A": "Աստղային շղթա",
@@ -2169,9 +2663,17 @@
     "menq linelu enq": "Մենք լինելու ենք",
     "daravor karnin": "Դարավոր կաղնի",
     "ajs xarum mian ujern e haxtum": "Այս խաղում ուժեղն է հաղթում",
-    "The Sun Cries Too(Արևն էլ է լաց լինում)": "Արևն էլ է լացում (անգլ)","Կարոտի խենթի":"Կարոտի խենթի","Тоска по мне":"Тоска по мне","The Song of the Spring Breeze":"The Song of the Spring Breeze","խենթի նման սիրահարվեցի":"խենթի նման սիրահարվեցի","Светлый полёт":"Светлый полёт","Քեզ դուրս եմ արել":"Քեզ դուրս եմ արել","Перед памятью злой":"Перед памятью злой","Powerless Against Memories":"Powerless Against Memories","Դու իմ աշխարհն ես":"Դու իմ աշխարհն ես","Ты мой мир":"Ты мой мир","You Are My World":"You Are My World","Тоскуя по тебе":"Тоскуя по тебе","Longing for You":"Longing for You","Քեզ կարոտելիս":"Քեզ կարոտելիս","Սիրել հենց հոգուն (1)":"Սիրել հենց հոգուն (1)","Любить лишь душу (1)":"Любить лишь душу (1)","Love Unseen (1)":"Love Unseen (1)","Սիրել հենց հոգուն":"Սիրել հենց հոգուն","Любить лишь душу":"Любить лишь душу","Love Unseen":"Love Unseen","Թանկ հուշը":"Թանկ հուշը","Сокровенный причал":"Сокровенный причал","Never a Stranger":"Never a Stranger","Образы тоски":"Образы тоски","Ծովի մեջ աչքերդ":"Ծովի մեջ աչքերդ","The Illusion of Longing":"The Illusion of Longing","My Precious Love":"My Precious Love","My Precious Love драгоценная любовь":"My Precious Love драгоценная любовь","My Bright Dream (1)":"My Bright Dream (1)","My Bright Dream":"My Bright Dream","խենթ խաղեր":"խենթ խաղեր","Եղբայր իմ անգին":"Եղբայր իմ անգին","Мой светлый луч":"Мой светлый луч","My Only Light":"My Only Light","Տիեզերական կինը րոց":"Տիեզերական կինը րոց","Տիեզերական կինը":"Տիեզերական կինը","The Woman as the Universe":"The Woman as the Universe","Տիեզերական կինը (Remastered)":"Տիեզերական կինը (Remastered)","Երանի գայիր(Just Like Before)":"Երանի գայիր (Just Like Before)","Դավաճան հայ":"Դավաճան հայ","Իմ Քնքուշ Սառան":"Իմ Քնքուշ Սառան","Քո ժպիտները հավաքեմ":"Քո ժպիտները հավաքեմ","ughernery-lac-chen-linum":"Ուժեղներն էլ լաց են լինում","te karotum es":"Թե կարոտում ես","Tchaxr e pargevum ":"Ճախր է պարգևում","lok cav u dard":"Լոկ ցավ ու դարդ","gjuk lusiny":"Գժուկ լուսին","gitem el inz ches spasum":"Գիտեմ էլ ինձ չես սպասում","My Mirror True":"My Mirror True","Зеркало моё":"Зеркало моё","Իմ հայելի":"Իմ հայելի","Fragile Cry Has Risen Like":"Fragile Cry Has Risen Like","Во мне поднялся хрупкий плач":"Во мне поднялся хрупкий плач","Փխրուն Լաց":"Փխրուն Լաց","Եվ ինչ է սերը":"Եվ ինչ է սերը","Չնոտագրված լռություն":"Չնոտագրված լռություն","hognel em ujer kin lineluc":"Հոգնել եմ ուժեղ կին լինելուց","cav anbujeli":"Ցավ անբուժելի","ov em qez hamar":"Ո՞վ եմ քեզ համար","bjur u bjur angam":"Բյուր ու բյուր անգամ","ete asem":"Եթե ասեմ","gereckuhi":"Գեղեցկուհի"};
+    "The Sun Cries Too(Արևն էլ է լաց լինում)": "Արևն էլ է լացում (անգլ)","Կարոտի խենթի":"Կարոտի խենթի","Тоска по мне":"Тоска по мне","The Song of the Spring Breeze":"The Song of the Spring Breeze","խենթի նման սիրահարվեցի":"խենթի նման սիրահարվեցի","Светлый полёт":"Светлый полёт","Քեզ դուրս եմ արել":"Քեզ դուրս եմ արել","Перед памятью злой":"Перед памятью злой","Powerless Against Memories":"Powerless Against Memories","Դու իմ աշխարհն ես":"Դու իմ աշխարհն ես","Ты мой мир":"Ты мой мир","You Are My World":"You Are My World","Тоскуя по тебе":"Тоскуя по тебе","Longing for You":"Longing for You","Քեզ կարոտելիս":"Քեզ կարոտելիս","Սիրել հենց հոգուն (1)":"Սիրել հենց հոգուն (1)","Любить лишь душу (1)":"Любить лишь душу (1)","Love Unseen (1)":"Love Unseen (1)","Սիրել հենց հոգուն":"Սիրել հենց հոգուն","Любить лишь душу":"Любить лишь душу","Love Unseen":"Love Unseen","Թանկ հուշը":"Թանկ հուշը","Сокровенный причал":"Сокровенный причал","Never a Stranger":"Never a Stranger","Образы тоски":"Образы тоски","Ծովի մեջ աչքերդ":"Ծովի մեջ աչքերդ","The Illusion of Longing":"The Illusion of Longing","My Precious Love":"My Precious Love","My Precious Love драгоценная любовь":"My Precious Love драгоценная любовь","My Bright Dream (1)":"My Bright Dream (1)","My Bright Dream":"My Bright Dream","խենթ խաղեր":"խենթ խաղեր","Եղբայր իմ անգին":"Եղբայր իմ անգին","Мой светлый луч":"Мой светлый луч","My Only Light":"My Only Light","Տիեզերական կինը րոց":"Տիեզերական կինը րոց","Տիեզերական կինը":"Տիեզերական կինը","The Woman as the Universe":"The Woman as the Universe","Տիեզերական կինը (Remastered)":"Տիեզերական կինը (Remastered)","Երանի գայիր(Just Like Before)":"Երանի գայիր (Just Like Before)","Դավաճան հայ":"Դավաճան հայ","Իմ Քնքուշ Սառան":"Իմ Քնքուշ Սառան","Քո ժպիտները հավաքեմ":"Քո ժպիտները հավաքեմ","ughernery-lac-chen-linum":"Ուժեղներն էլ լաց են լինում","te karotum es":"Թե կարոտում ես","Tchaxr e pargevum ":"Ճախր է պարգևում","lok cav u dard":"Լոկ ցավ ու դարդ","gjuk lusiny":"Գժուկ լուսին","gitem el inz ches spasum":"Գիտեմ էլ ինձ չես սպասում","My Mirror True":"My Mirror True","Зеркало моё":"Зеркало моё","Իմ հայելի":"Իմ հայելի","Fragile Cry Has Risen Like":"Fragile Cry Has Risen Like","Во мне поднялся хрупкий плач":"Во мне поднялся хрупкий плач","Փխրուն Լաց":"Փխրուն Լաց","Եվ ինչ է սերը":"Եվ ինչ է սերը","Չնոտագրված լռություն":"Չնոտագրված լռություն","hognel em ujer kin lineluc":"Հոգնել եմ ուժեղ կին լինելուց","cav anbujeli":"Ցավ անբուժելի","ov em qez hamar":"Ո՞վ եմ քեզ համար","bjur u bjur angam":"Բյուր ու բյուր անգամ","ete asem":"Եթե ասեմ",    'Our Lovely Mermaids': 'Our Lovely Mermaids',
+    'Эй наши русалки': 'Эй наши русалки',
+    'Ջրահարսեր Ремикс Ремикс_2': 'Ջրահարսեր Ռեմիքս 2',
+    'Ջրահարսեր Ремикс Ремикс_3': 'Ջրահարսեր Ռեմիքս 3',
+    'ჩვენი ქალთევზებო': 'ჩვენი ქალთევზებო',
+"gereckuhi":"Գեղեցկուհի"};
 
   const SONG_SUBTITLES = {
+    "Դու եկար": {hy:"Խոսք՝ Գոհար Ասելեսյան"},
+    "Ты пришёл": {ru:"Слова — Гоар Аселесян"},
+    "You Came": {en:"Lyrics — Gohar Aselesyan"},
     "vahan-teryan/ananun ser": {en:"Nameless Love", ru:"Безымянная любовь"},
     "vahan-teryan/ashnan erg": {en:"Autumn Song", ru:"Осенняя песня"},
     "vahan-teryan/elegia": {en:"Elegy", ru:"Элегия"},
@@ -2461,6 +2963,58 @@
     "parujr-sevak/Какого цвета любовь": {hy:"Սերն ինչ գույն ունի — ռուսերեն տարբերակը"}
   };
 
+  /* Keep catalog keys aligned with the exact, case-sensitive R2 object names. */
+  const CATALOG_KEY_FIXES = Object.freeze({
+    'ipta hogis': 'jpta hogis',
+    'Տիեզերական կինը րոց': 'Տիեզերական կինը roc',
+    'Իմ Քնքուշ Սառան': 'Իմ Քնքուշ Սևան',
+    'hamo-sahyan/torvochvoqi chkanchen 02roc': 'hamo-sahyan/tor vochvoqi chkanchen02roc',
+    'parujr-sevak/Սերն ինչ գույն ունի': 'parujr-sevak/ՍԵՐՆ ԻՆՉ ԳՈՒՅՆ ՈՒՆԻ',
+    'sirena-hima': 'sirenq-hima',
+    'Սոնետ 121': 'Սոնետ  121'
+  });
+
+  const GO_HARA_RECENT_SONGS = ['Դու եկար', 'Ты пришёл', 'You Came'];
+  const goHaraArtist = ARTISTS.find(artist => artist.id === 'go-hara');
+  if (goHaraArtist) {
+    GO_HARA_RECENT_SONGS.forEach(song => {
+      if (!goHaraArtist.songs.includes(song)) goHaraArtist.songs.push(song);
+    });
+  }
+
+  ARTISTS.forEach(artist => {
+    const seen = new Set();
+    artist.songs = artist.songs
+      .map(song => CATALOG_KEY_FIXES[song] || song)
+      .filter(song => {
+        if (seen.has(song)) return false;
+        seen.add(song);
+        return true;
+      });
+  });
+
+  Object.entries(CATALOG_KEY_FIXES).forEach(([oldKey, exactKey]) => {
+    if (Object.prototype.hasOwnProperty.call(NEW_SONGS, oldKey)) NEW_SONGS[exactKey] = NEW_SONGS[oldKey];
+    if (Object.prototype.hasOwnProperty.call(SONG_NAMES, oldKey)) SONG_NAMES[exactKey] = SONG_NAMES[oldKey];
+    if (Object.prototype.hasOwnProperty.call(SONG_SUBTITLES, oldKey)) SONG_SUBTITLES[exactKey] = SONG_SUBTITLES[oldKey];
+  });
+  Object.assign(NEW_SONGS, { 'Դու եկար':'2026-08-21', 'Ты пришёл':'2026-08-21', 'You Came':'2026-08-21' });
+  Object.assign(SONG_NAMES, {
+    'Դու եկար':'Դու եկար', 'Ты пришёл':'Ты пришёл', 'You Came':'You Came',
+    'jpta hogis':'Ժպտա հոգիս',
+    'Տիեզերական կինը roc':'Տիեզերական կինը (ռոք)',
+    'Իմ Քնքուշ Սևան':'Իմ Քնքուշ Սևան',
+    'hamo-sahyan/tor vochvoqi chkanchen02roc':'Թող ոչ ոքի չկանչեն (02 ռոք)',
+    'parujr-sevak/ՍԵՐՆ ԻՆՉ ԳՈՒՅՆ ՈՒՆԻ':'Սերն ինչ գույն ունի',
+    'sirenq-hima':'Սիրել հիմա',
+    'Սոնետ  121':'Սոնետ 121'
+  });
+  Object.assign(SONG_SUBTITLES, {
+    'Դու եկար':{hy:'Խոսք՝ Գոհար Ասելեսյան'},
+    'Ты пришёл':{ru:'Слова — Гоар Аселесян'},
+    'You Came':{en:'Lyrics — Gohar Aselesyan'}
+  });
+
   /* ══ PLAYLIST (flat) ══ */
   /* ══ PLAY COUNTER (Supabase) ══ */
   const SUPABASE_URL = 'https://jcqkpqhaxkgfjcasklnq.supabase.co';
@@ -2508,26 +3062,34 @@
     return `<span class="play-count-badge" data-song="${songId}" style="font-size:10px;color:var(--text-dim);opacity:0.75;white-space:nowrap;">${count != null ? '▶ ' + count.toLocaleString('hy-AM') : ''}</span>`;
   }
 
+  const AUDIO_BASE_URL = 'https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio';
+
   const AUDIO_VERSIONS = Object.freeze({
     'go-hara|Սիրելով գնամ': 'b5e360f88c88',
     'go-hara|Я уйду любя': 'a4c22ad27185'
+  });
+
+  const AUDIO_SOURCE_OVERRIDES = Object.freeze({
+    'imastun|Կատակ յարի երգ պար 4 լեզվով': `${AUDIO_BASE_URL}/imastun/featured/${encodeURIComponent('Կատակ յարի երգ պար 4 լեզվով')}.mp3`,
+    'imastun|Իմ Գեղեցկուհի ընկերուհիները': `${AUDIO_BASE_URL}/imastun/featured/${encodeURIComponent('Իմ Գեղեցկուհի ընկերուհիները ')}.mp3`
   });
 
   const playlist = [];
   ARTISTS.forEach(a => a.songs.forEach(s => {
     const ext = s === 'nerqnapanak' ? '.wav' : '.mp3';
     const version = AUDIO_VERSIONS[`${a.id}|${s}`];
+    const sourceOverride = AUDIO_SOURCE_OVERRIDES[`${a.id}|${s}`];
     playlist.push({
       artistId: a.id, artistName: a.name, song: s,
-      src:   `audio/${a.id}/featured/${s}${ext}${version ? `?v=${version}` : ''}`,
-      cover: `authors/${a.id}/cover.jpg`,
+      src:   sourceOverride || `${AUDIO_BASE_URL}/${encodeURIComponent(a.id)}/featured/${encodeURIComponent(s)}${ext}${version ? `?v=${version}` : ''}`,
+      cover: a.cover || `authors/${a.id}/cover.jpg`,
       label: SONG_NAMES[s] || formatName(s)
     });
   }));
 
   /* ══ SEO: structured data for all songs (MusicRecording) ══ */
   (function injectMusicRecordingSchema() {
-    const items = playlist.slice(0, 300).map((t, idx) => ({
+    const items = playlist.map((t, idx) => ({
       "@type": "MusicRecording",
       "position": idx + 1,
       "name": t.label,
@@ -2571,13 +3133,18 @@
   }
   document.addEventListener('touchstart', unlockAudioEngines, { once: true, passive: true });
   document.addEventListener('click', unlockAudioEngines, { once: true });
+  engine.preload = 'auto';
   engine2.preload = 'auto';
   const engines   = [engine, engine2];
   let activeIdx   = 0;
   const active    = () => engines[activeIdx];
   const inactive  = () => engines[1 - activeIdx];
-  const CROSSFADE_SEC = 2.5;
+  const CROSSFADE_SEC = 4;
+  const MANUAL_CROSSFADE_SEC = 2;
   let crossfadeTimer = null;
+  let crossfadeNextIdx = -1;
+  let crossfadeScheduleTimer = null;
+  let crossfadeWatchdog = null;
 
   const gpEl      = document.getElementById('global-player');
   const gpCover   = document.getElementById('gp-cover');
@@ -2595,6 +3162,28 @@
   const similarPanel = document.getElementById('similar-panel');
 
   let currentIdx = -1, isPlaying = false;
+
+  function adjacentTrackIndex(direction) {
+    if (currentIdx < 0 || (direction !== 1 && direction !== -1)) return -1;
+    const selector = '.track-item[data-pidx], .track-item[data-idx]';
+    const currentRow = document.querySelector(
+      `.track-item[data-pidx="${currentIdx}"], .track-item[data-idx="${currentIdx}"]`
+    );
+    const fallback = currentIdx + direction;
+    if (!currentRow) return fallback >= 0 && fallback < playlist.length ? fallback : -1;
+    const list = currentRow.closest('.track-list');
+    if (!list) return fallback >= 0 && fallback < playlist.length ? fallback : -1;
+    const sequence = Array.from(list.querySelectorAll(selector))
+      .map(row => {
+        const raw = row.dataset.pidx != null ? row.dataset.pidx : row.dataset.idx;
+        return Number.parseInt(raw, 10);
+      })
+      .filter(Number.isInteger);
+    const position = sequence.indexOf(currentIdx);
+    if (position < 0) return fallback >= 0 && fallback < playlist.length ? fallback : -1;
+    const targetPosition = position + direction;
+    return targetPosition >= 0 && targetPosition < sequence.length ? sequence[targetPosition] : -1;
+  }
 
   function buildSimilarPanel() {
     if (currentIdx < 0) { similarPanel.innerHTML = ''; return; }
@@ -2642,6 +3231,9 @@
 
   function cancelCrossfade() {
     if (crossfadeTimer) { clearInterval(crossfadeTimer); crossfadeTimer = null; }
+    if (crossfadeScheduleTimer) { clearTimeout(crossfadeScheduleTimer); crossfadeScheduleTimer = null; }
+    if (crossfadeWatchdog) { clearInterval(crossfadeWatchdog); crossfadeWatchdog = null; }
+    crossfadeNextIdx = -1;
     inactive().pause();
     inactive().removeAttribute('src');
     inactive().volume = 1;
@@ -2665,13 +3257,12 @@
     gpCur.textContent = gpDur.textContent = '0:00';
     highlightTrack(idx);
     updateMediaSession(t);
-    if (autoplay) eng.play().then(() => { isPlaying = true; setPlayIcon(true); }).catch(() => {});
+    if (autoplay) eng.play().then(() => { isPlaying = true; setPlayIcon(true); armCrossfadeWatchdog(); }).catch(() => {});
     try {
       localStorage.setItem('imastun_last_track', JSON.stringify({ artistId: t.artistId, song: t.song, label: t.label, artistName: t.artistName }));
     } catch (e) {}
     const rb = document.getElementById('resume-banner');
     if (rb) rb.classList.remove('visible');
-    if (similarPanel.classList.contains('open')) buildSimilarPanel();
   }
 
   function highlightTrack(idx) {
@@ -2695,65 +3286,140 @@
     loadTrack(idx, true);
   }
 
-  function startCrossfade() {
-    const nextIdx = currentIdx + 1;
-    if (nextIdx >= playlist.length || crossfadeTimer) return;
+  function armCrossfadeWatchdog() {
+    if (crossfadeWatchdog) clearInterval(crossfadeWatchdog);
+    crossfadeWatchdog = setInterval(() => {
+      if (!isPlaying || currentIdx < 0 || adjacentTrackIndex(1) < 0) return;
+      const eng = active();
+      if (!eng || !Number.isFinite(Number(eng.duration)) || eng.duration <= 0) return;
+      const remaining = eng.duration - eng.currentTime;
+      if (remaining > 0 && remaining <= CROSSFADE_SEC && crossfadeNextIdx < 0) startCrossfade();
+    }, 250);
+  }
+
+  function scheduleCrossfade() {
+    if (currentIdx < 0 || adjacentTrackIndex(1) < 0 || crossfadeNextIdx >= 0 || crossfadeScheduleTimer) return;
+    const eng = active();
+    const duration = Number(eng.duration);
+    const remaining = duration - Number(eng.currentTime || 0);
+    if (!Number.isFinite(duration) || duration <= 0) return;
+    if (remaining <= CROSSFADE_SEC) {
+      startCrossfade();
+      return;
+    }
+    const trackAtSchedule = currentIdx;
+    const delay = Math.max(0, (remaining - CROSSFADE_SEC) * 1000);
+    crossfadeScheduleTimer = setTimeout(() => {
+      crossfadeScheduleTimer = null;
+      if (active() === eng && currentIdx === trackAtSchedule && crossfadeNextIdx < 0) startCrossfade();
+    }, delay);
+  }
+
+  function handleSeekCrossfade() {
+    if (!isPlaying || currentIdx < 0 || adjacentTrackIndex(1) < 0 || crossfadeNextIdx >= 0) return;
+    const eng = active();
+    const duration = Number(eng.duration);
+    const current = Number(eng.currentTime || 0);
+    if (!Number.isFinite(duration) || duration <= 0 || !Number.isFinite(current)) return;
+    const remaining = duration - current;
+    if (remaining > 0 && remaining <= CROSSFADE_SEC) startCrossfade();
+    else if (remaining > CROSSFADE_SEC) scheduleCrossfade();
+  }
+
+  function startCrossfade(targetIdx, durationSec = CROSSFADE_SEC) {
+    const nextIdx = Number.isInteger(targetIdx) ? targetIdx : adjacentTrackIndex(1);
+    if (nextIdx < 0 || nextIdx >= playlist.length || crossfadeNextIdx >= 0) return;
+    if (crossfadeScheduleTimer) { clearTimeout(crossfadeScheduleTimer); crossfadeScheduleTimer = null; }
     const cur = active();
     const nxt = inactive();
     const t = playlist[nextIdx];
+    crossfadeNextIdx = nextIdx;
+    nxt.preload = 'auto';
     nxt.src = t.src;
     nxt.currentTime = 0;
     nxt.volume = 0;
-    nxt.play().catch(() => {
-      // Autoplay was blocked (e.g. Android WebView) — fall back to a
-      // normal hard-cut track change instead of stalling silently.
-      crossfadeTimer && clearInterval(crossfadeTimer);
-      crossfadeTimer = null;
-      playTrack(nextIdx);
-    });
 
-    const steps = 30;
-    const stepMs = (CROSSFADE_SEC * 1000) / steps;
-    let i = 0;
-    crossfadeTimer = setInterval(() => {
-      i++;
-      const ratio = i / steps;
-      cur.volume = Math.max(0, 1 - ratio);
-      nxt.volume = Math.min(1, ratio);
-      if (i >= steps) {
+    // Start loading the next song early, but begin the audible fade only
+    // after the browser confirms that the second engine is playing.
+    const beginFade = () => {
+      if (crossfadeNextIdx !== nextIdx || crossfadeTimer) return;
+      const steps = 60;
+      const stepMs = (durationSec * 1000) / steps;
+      let i = 0;
+      crossfadeTimer = setInterval(() => {
+        if (crossfadeNextIdx !== nextIdx) return;
+        i++;
+        const ratio = Math.min(1, i / steps);
+        // Separate eased curves make the outgoing track fade out and the
+        // incoming track fade in smoothly instead of merely swapping levels.
+        const fadeOut = Math.cos(ratio * Math.PI / 2);
+        const fadeIn = Math.sin(ratio * Math.PI / 2);
+        cur.volume = Math.max(0, Math.min(1, fadeOut));
+        nxt.volume = Math.max(0, Math.min(1, fadeIn));
+        if (i >= steps) {
+          clearInterval(crossfadeTimer);
+          crossfadeTimer = null;
+          crossfadeNextIdx = -1;
+          activeIdx = 1 - activeIdx;
+          currentIdx = nextIdx;
+          const nextArtist = t.artistName || (typeof ARTIST !== 'undefined' ? ARTIST.name : 'Imastun Studio');
+          gpCover.src = t.cover;
+          gpCover.alt = nextArtist + ' — ' + t.label;
+          gpArtist.textContent = nextArtist;
+          gpSong.textContent = t.label;
+          gpFill.style.width = '0%';
+          highlightTrack(currentIdx);
+          if (typeof updateMediaSession === 'function') updateMediaSession(t);
+          cur.pause();
+          cur.currentTime = 0;
+          cur.volume = 1;
+          isPlaying = true;
+          setPlayIcon(true);
+        }
+      }, stepMs);
+    };
+
+    // Arm the volume ramp immediately. The next engine is started in the
+    // same transition call, so the two sources overlap instead of waiting
+    // for a promise resolution and then falling into a late hard cut.
+    beginFade();
+    const playPromise = nxt.play();
+    if (playPromise && typeof playPromise.catch === 'function') {
+      playPromise.catch(() => {
+        // Autoplay can still be rejected by a browser. Keep the current
+        // source intact until the emergency fallback is actually needed.
+        if (crossfadeNextIdx !== nextIdx) return;
         clearInterval(crossfadeTimer);
         crossfadeTimer = null;
-        activeIdx = 1 - activeIdx;
-        currentIdx = nextIdx;
-        gpCover.src = t.cover;
-        gpCover.alt = t.artistName + ' — ' + t.label;
-        gpArtist.textContent = t.artistName;
-        gpSong.textContent = t.label;
-        gpFill.style.width = '0%';
-        highlightTrack(currentIdx);
-        updateMediaSession(t);
-        cur.pause();
-        cur.currentTime = 0;
-        cur.volume = 1;
-      }
-    }, stepMs);
+        crossfadeNextIdx = -1;
+        playTrack(nextIdx);
+      });
+    }
   }
 
   gpPlayBtn.addEventListener('click', () => {
     if (currentIdx < 0) return;
     if (isPlaying) {
       active().pause();
-      if (crossfadeTimer) inactive().pause();
+      if (crossfadeNextIdx >= 0) cancelCrossfade();
       isPlaying = false; setPlayIcon(false); highlightTrack(currentIdx);
     } else {
       active().play().catch(() => {});
-      if (crossfadeTimer) inactive().play().catch(() => {});
-      isPlaying = true; setPlayIcon(true); highlightTrack(currentIdx);
+      if (crossfadeNextIdx >= 0) inactive().play().catch(() => {});
+      isPlaying = true; setPlayIcon(true); highlightTrack(currentIdx); armCrossfadeWatchdog();
     }
   });
 
-  gpPrev.addEventListener('click', () => { if (currentIdx > 0) playTrack(currentIdx - 1); });
-  gpNext.addEventListener('click', () => { if (currentIdx < playlist.length - 1) playTrack(currentIdx + 1); });
+  gpPrev.addEventListener('click', () => {
+    const prevIdx = adjacentTrackIndex(-1);
+    if (prevIdx >= 0) playTrack(prevIdx);
+  });
+  gpNext.addEventListener('click', () => {
+    const nextIdx = adjacentTrackIndex(1);
+    if (nextIdx < 0 || crossfadeNextIdx >= 0) return;
+    if (isPlaying) startCrossfade(nextIdx, MANUAL_CROSSFADE_SEC);
+    else playTrack(nextIdx);
+  });
 
   function setupEngine(eng) {
     eng.addEventListener('timeupdate', () => {
@@ -2762,15 +3428,57 @@
       gpCur.textContent = fmtTime(eng.currentTime);
       gpDur.textContent = fmtTime(eng.duration);
       const remaining = eng.duration - eng.currentTime;
-      if (!crossfadeTimer && remaining > 0 && remaining <= CROSSFADE_SEC && currentIdx < playlist.length - 1) {
-        startCrossfade();
+      if (crossfadeNextIdx < 0 && adjacentTrackIndex(1) >= 0) {
+        if (remaining > 0 && remaining <= CROSSFADE_SEC) startCrossfade();
+        else scheduleCrossfade();
       }
     });
-    eng.addEventListener('play',  () => { if (eng === active()) { isPlaying = true;  setPlayIcon(true);  highlightTrack(currentIdx); } });
+    eng.addEventListener('loadedmetadata', () => { if (eng === active()) scheduleCrossfade(); });
+    eng.addEventListener('durationchange', () => { if (eng === active()) scheduleCrossfade(); });
+    eng.addEventListener('seeking', () => { if (eng === active()) handleSeekCrossfade(); });
+    eng.addEventListener('seeked', () => { if (eng === active()) handleSeekCrossfade(); });
+    eng.addEventListener('play',  () => { if (eng === active()) { isPlaying = true;  setPlayIcon(true);  highlightTrack(currentIdx); scheduleCrossfade(); } });
     eng.addEventListener('pause', () => { if (eng === active() && !crossfadeTimer) { isPlaying = false; setPlayIcon(false); highlightTrack(currentIdx); } });
     eng.addEventListener('ended', () => {
-      if (eng !== active() || crossfadeTimer) return;
-      if (currentIdx < playlist.length - 1) playTrack(currentIdx + 1);
+      if (eng !== active()) return;
+      const pendingNext = crossfadeNextIdx >= 0;
+      if (pendingNext && crossfadeTimer) {
+        const nextIdx = crossfadeNextIdx;
+        const nxt = inactive();
+        clearInterval(crossfadeTimer);
+        crossfadeTimer = null;
+        crossfadeNextIdx = -1;
+        activeIdx = 1 - activeIdx;
+        currentIdx = nextIdx;
+        const t = playlist[nextIdx];
+        const nextArtist = t.artistName || (typeof ARTIST !== 'undefined' ? ARTIST.name : 'Imastun Studio');
+        nxt.volume = 1;
+        gpCover.src = t.cover;
+        gpCover.alt = nextArtist + ' — ' + t.label;
+        gpArtist.textContent = nextArtist;
+        gpSong.textContent = t.label;
+        gpFill.style.width = '0%';
+        highlightTrack(currentIdx);
+        if (typeof updateMediaSession === 'function') updateMediaSession(t);
+        eng.pause();
+        eng.currentTime = 0;
+        eng.volume = 1;
+        isPlaying = true;
+        setPlayIcon(true);
+        return;
+      }
+      if (pendingNext) {
+        // The next file was still buffering when the current one ended.
+        // Use the normal transition rather than leaving the player silent.
+        const nextIdx = crossfadeNextIdx;
+        crossfadeNextIdx = -1;
+        playTrack(nextIdx);
+        return;
+      }
+      if (crossfadeTimer) { clearInterval(crossfadeTimer); crossfadeTimer = null; }
+      crossfadeNextIdx = -1;
+      const nextIdx = adjacentTrackIndex(1);
+      if (nextIdx >= 0) playTrack(nextIdx);
       else { isPlaying = false; setPlayIcon(false); }
     });
   }
@@ -2822,8 +3530,8 @@
       const dx = touch.clientX - startX;
       const dy = touch.clientY - startY;
       if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
-        if (dx < 0) { if (currentIdx < playlist.length - 1) playTrack(currentIdx + 1); }
-        else { if (currentIdx > 0) playTrack(currentIdx - 1); }
+        if (dx < 0) gpNext.click();
+        else gpPrev.click();
       }
     }, { passive: true });
   })();
@@ -2836,6 +3544,7 @@
     eng.currentTime = ratio * eng.duration;
     gpFill.style.width = (ratio * 100) + '%';
     gpCur.textContent = fmtTime(eng.currentTime);
+    if (typeof handleSeekCrossfade === 'function') handleSeekCrossfade();
   }
   let barDragging = false;
   gpBar.addEventListener('pointerdown', e => {
@@ -2906,17 +3615,33 @@
   }
 
   /* ══ BUILD ARTIST GRID ══ */
-  const grid = document.getElementById('artists-grid');
+  const catalogGroups = [
+    {
+      grid: document.getElementById('artists-grid'),
+      artists: ARTISTS.filter(artist => !['haj-poetner', 'shakespeare-reimagined'].includes(artist.id))
+    },
+    {
+      grid: document.getElementById('armenian-poets-grid'),
+      artists: ARTISTS.filter(artist => artist.id === 'haj-poetner')
+    },
+    {
+      grid: document.getElementById('world-poetry-grid'),
+      artists: ARTISTS.filter(artist => artist.id === 'shakespeare-reimagined')
+    }
+  ];
 
-  grid.innerHTML = Array.from({ length: ARTISTS.length || 4 }).map(() =>
-    `<div class="skeleton-block"><div class="skeleton-card" style="width:60%;height:22px;margin-bottom:14px;"></div>
-      ${Array.from({ length: 4 }).map(() => '<div class="skeleton-card skeleton-track"></div>').join('')}
-    </div>`
-  ).join('');
+  catalogGroups.forEach(({ grid, artists }) => {
+    grid.innerHTML = Array.from({ length: artists.length || 1 }).map(() =>
+      `<div class="skeleton-block"><div class="skeleton-card" style="width:60%;height:22px;margin-bottom:14px;"></div>
+        ${Array.from({ length: 4 }).map(() => '<div class="skeleton-card skeleton-track"></div>').join('')}
+      </div>`
+    ).join('');
+  });
 
   requestAnimationFrame(() => {
+  catalogGroups.forEach(({ grid, artists }) => {
   grid.innerHTML = '';
-  ARTISTS.forEach((artist, i) => {
+  artists.forEach((artist, i) => {
     const coverSrc = artist.cover || `authors/${artist.id}/cover.jpg`;
     const initials = artist.name.split(' ').map(w => w[0]).join('');
     const hasCover = ["imastun","silva-gulanyan","go-hara","haj-poetner","shakespeare-reimagined"].includes(artist.id);
@@ -2952,9 +3677,12 @@
         <div class="card-index">${String(i+1).padStart(2,'0')}</div>
         <div class="card-name">${artist.name}</div>
         <div class="card-role">${artist.role}</div>
+        ${artist.id === 'haj-poetner' ? '<div class="card-note">Վահան Տերյան · Համո Սահյան · Պարույր Սևակ · Ավետիք Իսահակյան · Արամայիս Սահակյան · Հովհաննես Շիրազ · Սիլվա Կապուտիկյան · Վահագն Դավթյան · Հովհաննես Թումանյան</div>' : ''}
+        ${artist.id === 'shakespeare-reimagined' ? '<div class="card-note">Սոնետներ՝ հայերեն, ռուսերեն և անգլերեն երգային տարբերակներով</div>' : ''}
         <div class="card-arrow">Listen
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
+        ${artist.page ? `<a class="card-page-link" href="${artist.page}" onclick="event.stopPropagation()">Open artist page ↗</a>` : ''}
       </div>`;
 
     /* panel */
@@ -3009,13 +3737,16 @@
     }
 
     card.addEventListener('click', () => {
+      if (artist.page) { window.location.href = artist.page; return; }
       if (artist.id === 'silva-gulanyan') { window.location.href = 'silva-gulanyan.html'; return; }
       const isOpen = panel.classList.contains('open');
-      grid.querySelectorAll('.artist-card').forEach(c => c.classList.remove('active'));
-      grid.querySelectorAll('.artist-panel').forEach(p => p.classList.remove('open'));
+      document.querySelectorAll('.catalog-grid .artist-card').forEach(c => c.classList.remove('active'));
+      document.querySelectorAll('.catalog-grid .artist-panel').forEach(p => p.classList.remove('open'));
+      document.querySelectorAll('.poetry-catalog').forEach(section => section.classList.remove('expanded'));
       if (!isOpen) {
         card.classList.add('active');
         panel.classList.add('open');
+        card.closest('.poetry-catalog')?.classList.add('expanded');
         if (artist.songs && artist.songs.length) calcArtistDuration(artist);
         setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
       }
@@ -3025,10 +3756,26 @@
       e.stopPropagation();
       card.classList.remove('active');
       panel.classList.remove('open');
+      card.closest('.poetry-catalog')?.classList.remove('expanded');
     });
 
     panel.querySelectorAll('.track-item').forEach(item => {
       item.addEventListener('click', () => playTrack(parseInt(item.dataset.pidx)));
+    });
+
+    panel.querySelectorAll('.track-list-toggle').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        const list = document.getElementById(btn.getAttribute('aria-controls'));
+        if (!list) return;
+        const expanding = btn.getAttribute('aria-expanded') !== 'true';
+        btn.setAttribute('aria-expanded', String(expanding));
+        list.classList.toggle('is-collapsed', !expanding);
+        list.closest('.track-list-wrap')?.classList.toggle('has-collapsed', !expanding);
+        const label = expanding ? btn.dataset.collapseLabel : btn.dataset.expandLabel;
+        btn.innerHTML = `${label} <span aria-hidden="true">${expanding ? '⌃' : '⌄'}</span>`;
+        if (!expanding) panel.querySelector('.panel-header')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
     });
 
     panel.querySelectorAll('.track-fav-btn').forEach(btn => {
@@ -3048,6 +3795,7 @@
       });
     });
   });
+  });
   initVideoControls();
   }); // end requestAnimationFrame
 
@@ -3057,7 +3805,7 @@
   const searchResults = document.getElementById('search-results');
   const searchHint    = document.getElementById('search-hint');
   // Artists shown in stats: exclude the poets section and any artist flagged as not-counted
-  const NON_ARTIST_IDS = new Set(['haj-poetner', 'narine-balasbekyan']);
+  const NON_ARTIST_IDS = new Set(['haj-poetner', 'shakespeare-reimagined']);
   const artistCount = new Set(playlist.filter(t => !NON_ARTIST_IDS.has(t.artistId)).map(t => t.artistId)).size;
   const poetCount = new Set(
     playlist.filter(t => t.artistId === 'haj-poetner' && t.song.includes('/'))
@@ -3275,6 +4023,8 @@
       return '';                              // single language: default (white)
     };
     let lastPoet = null;
+    const trackListId = `track-list-${artist.id}`;
+    const shouldCollapse = songs.length > 8;
     const langLegend = `<div class="lang-legend" style="font-family:'Inter',sans-serif;margin:0 0 14px;padding-bottom:10px;border-bottom:1px solid rgba(201,168,76,0.15);">
       <div style="font-size:9.5px;color:var(--text-dim);opacity:0.65;letter-spacing:0.03em;margin-bottom:6px;">Երգի տեքստի լեզուների քանակը · Число языков в тексте песни · Song text language count</div>
       <div style="display:flex;gap:16px;align-items:center;font-size:11px;color:var(--text-dim);flex-wrap:wrap;">
@@ -3283,7 +4033,7 @@
         <span style="display:flex;align-items:center;gap:5px;"><span style="width:8px;height:8px;border-radius:50%;background:#f5f0e8;display:inline-block;border:1px solid rgba(255,255,255,0.3);"></span>1</span>
       </div>
     </div>`;
-    return `<div class="track-list">${langLegend}${songs.map((song, i) => {
+    return `<div class="track-list-wrap${shouldCollapse ? ' has-collapsed' : ''}">\n      <div class="track-list${shouldCollapse ? ' is-collapsed' : ''}" id="${trackListId}">${langLegend}${songs.map((song, i) => {
       const pIdx = playlist.findIndex(p => p.artistId === artist.id && p.song === song);
       const fav = isFav(artist.id, song);
       let header = '';
@@ -3304,7 +4054,7 @@
         'Կարոտի խենթի','Hayots_ashkarh_A','Title_Mi_tanjir_hogis_Multilingual_Emotional_Duet_Lyrics_by_Silva_Gulanyan_002','chem moracel',
         'Jaheli_nman_003','Tiezerk_Jinj_Lazur','ser da ardioq','Քո ժպիտները հավաքեմ','ughernery-lac-chen-linum','Ches_moranalu_003',
         'cav anbujeli','ov em qez hamar','bjur u bjur angam','ete asem','gereckuhi',
-        'im ser','sirelis','taxicy vat margare e'
+        'im ser','sirelis','taxicy vat margare e','Իմ Գեղեցկուհի ընկերուհիները'
       ]);
       const BILINGUAL_OVERRIDE = new Set([
         'vahan-teryan/Աշուն Է անձրև',
@@ -3331,7 +4081,7 @@
         <button class="track-share-btn" data-artist="${artist.id}" data-song="${song}" title="Կիսվել" aria-label="Կիսվել այս երգով" style="background:none;border:none;cursor:pointer;color:var(--text-dim);display:flex;align-items:center;padding:4px;transition:color 0.2s;">${iconShare()}</button>
         <button class="track-play-btn" aria-label="Նվագարկել այս երգը">${iconPlay()}</button>
       </div>`;
-    }).join('')}</div>`;
+    }).join('')}</div>${shouldCollapse ? `<button type="button" class="track-list-toggle" aria-expanded="false" aria-controls="${trackListId}" data-expand-label="Ցուցադրել բոլոր ${songs.length} երգերը" data-collapse-label="Փակել երգացանկը">Ցուցադրել բոլոր ${songs.length} երգերը <span aria-hidden="true">⌄</span></button>` : ''}</div>`;
   }
 
   function buildVideoPanel(artist) {
@@ -3559,10 +4309,20 @@
   })();
 
   /* ══ PAGE LOADER ══ */
-  window.addEventListener('load', () => {
-    const loader = document.getElementById('page-loader');
-    if (loader) setTimeout(() => loader.classList.add('hidden'), 150);
-  });
+  (() => {
+    const hidePageLoader = () => {
+      const loader = document.getElementById('page-loader');
+      if (loader) loader.classList.add('hidden');
+    };
+    // Decorative media must never keep the catalogue or fixed player hidden.
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => setTimeout(hidePageLoader, 150), { once: true });
+    } else {
+      setTimeout(hidePageLoader, 150);
+    }
+    window.addEventListener('load', hidePageLoader, { once: true });
+    setTimeout(hidePageLoader, 1200);
+  })();
 
   /* ══ RESUME LAST TRACK ══ */
   (function() {
@@ -3584,9 +4344,9 @@
   <script>
   (function enhanceNavigation() {
     const translations = {
-      hy: { marquee:'Բարի գալուստ Իմաստուն Ստուդիո ✦ Այստեղ մենք երաժշտությունն ու խոսքը միավորում ենք ✦ Երգերը դառնում են պատկերներ, իսկ պատկերները՝ պատմություններ ✦ Բարի գալուստ Իմաստուն Ստուդիո ✦ Այստեղ մենք երաժշտությունն ու խոսքը միավորում ենք ✦ Երգերը դառնում են պատկերներ, իսկ պատկերները՝ պատմություններ ✦ ', skip:'Անցնել հիմնական բովանդակությանը', searchLabel:'Փնտրել երգ կամ արտիստ', searchPlaceholder:'Փնտրել երգ կամ արտիստ…', searchButton:'Սկսել որոնումը', languageLabel:'Ընտրել լեզուն', menuOpen:'Բացել մենյուն', menuClose:'Փակել մենյուն', quickNav:'Արագ անցումներ', searchTitle:'Կայքի որոնում', artists:'Արտիստներ', new:'Նորություններ', videos:'Տեսանյութեր', support:'Աջակցել', comments:'Մեկնաբանություններ', installTitle:'Տեղադրել Imastun Studio-ն', installText:'Բացեք կայքը հավելվածի պես՝ գլխավոր էկրանից։', installButton:'Տեղադրել', installLater:'Հետո', iosInstallText:'iPhone-ում սեղմեք Share, ապա՝ Add to Home Screen։' },
-      ru: { marquee:'Добро пожаловать в Imastun Studio ✦ Здесь мы соединяем музыку и слово ✦ Песни становятся образами, а образы — историями ✦ Добро пожаловать в Imastun Studio ✦ Здесь мы соединяем музыку и слово ✦ Песни становятся образами, а образы — историями ✦ ', skip:'Перейти к основному содержанию', searchLabel:'Найти песню или исполнителя', searchPlaceholder:'Найти песню или исполнителя…', searchButton:'Начать поиск', languageLabel:'Выбрать язык', menuOpen:'Открыть меню', menuClose:'Закрыть меню', quickNav:'Быстрые переходы', searchTitle:'Поиск по сайту', artists:'Исполнители', new:'Новинки', videos:'Видео', support:'Поддержать', comments:'Комментарии', installTitle:'Установить Imastun Studio', installText:'Открывайте сайт как приложение с главного экрана.', installButton:'Установить', installLater:'Позже', iosInstallText:'На iPhone нажмите «Поделиться», затем «На экран Домой».' },
-      en: { marquee:'Welcome to Imastun Studio ✦ Here we bring music and words together ✦ Songs become images, and images become stories ✦ Welcome to Imastun Studio ✦ Here we bring music and words together ✦ Songs become images, and images become stories ✦ ', skip:'Skip to main content', searchLabel:'Find a song or artist', searchPlaceholder:'Find a song or artist…', searchButton:'Start search', languageLabel:'Choose language', menuOpen:'Open menu', menuClose:'Close menu', quickNav:'Quick links', searchTitle:'Site search', artists:'Artists', new:'New', videos:'Videos', support:'Support', comments:'Comments', installTitle:'Install Imastun Studio', installText:'Open the site like an app from your home screen.', installButton:'Install', installLater:'Later', iosInstallText:'On iPhone, tap Share, then Add to Home Screen.' }
+      hy: { marquee:'Բարի գալուստ Իմաստուն Ստուդիո ✦ Այստեղ մենք երաժշտությունն ու խոսքը միավորում ենք ✦ Երգերը դառնում են պատկերներ, իսկ պատկերները՝ պատմություններ ✦ Բարի գալուստ Իմաստուն Ստուդիո ✦ Այստեղ մենք երաժշտությունն ու խոսքը միավորում ենք ✦ Երգերը դառնում են պատկերներ, իսկ պատկերները՝ պատմություններ ✦ ', skip:'Անցնել հիմնական բովանդակությանը', searchLabel:'Փնտրել երգ կամ արտիստ', searchPlaceholder:'Փնտրել երգ կամ արտիստ…', searchButton:'Սկսել որոնումը', languageLabel:'Ընտրել լեզուն', menuOpen:'Բացել մենյուն', menuClose:'Փակել մենյուն', quickNav:'Արագ անցումներ', searchTitle:'Կայքի որոնում', artists:'Արտիստներ', poets:'Հայ բանաստեղծներ', worldPoetry:'Համաշխարհային պոեզիա', new:'Նորություններ', videos:'Տեսանյութեր', support:'Աջակցել', comments:'Մեկնաբանություններ', installTitle:'Տեղադրել Imastun Studio-ն', installText:'Բացեք կայքը հավելվածի պես՝ գլխավոր էկրանից։', installButton:'Տեղադրել', installLater:'Հետո', iosInstallText:'iPhone-ում սեղմեք Share, ապա՝ Add to Home Screen։', poetsHeading:'Հայ <em>Բանաստեղծներ</em>', worldPoetryHeading:'Համաշխարհային <em>Պոեզիա</em>', artistsHeading:'Մեր <em>Արտիստները</em>' },
+      ru: { marquee:'Добро пожаловать в Imastun Studio ✦ Здесь мы соединяем музыку и слово ✦ Песни становятся образами, а образы — историями ✦ Добро пожаловать в Imastun Studio ✦ Здесь мы соединяем музыку и слово ✦ Песни становятся образами, а образы — историями ✦ ', skip:'Перейти к основному содержанию', searchLabel:'Найти песню или исполнителя', searchPlaceholder:'Найти песню или исполнителя…', searchButton:'Начать поиск', languageLabel:'Выбрать язык', menuOpen:'Открыть меню', menuClose:'Закрыть меню', quickNav:'Быстрые переходы', searchTitle:'Поиск по сайту', artists:'Исполнители', poets:'Армянские поэты', worldPoetry:'Мировая поэзия', new:'Новинки', videos:'Видео', support:'Поддержать', comments:'Комментарии', installTitle:'Установить Imastun Studio', installText:'Открывайте сайт как приложение с главного экрана.', installButton:'Установить', installLater:'Позже', iosInstallText:'На iPhone нажмите «Поделиться», затем «На экран Домой».', poetsHeading:'Армянские <em>поэты</em>', worldPoetryHeading:'Мировая <em>поэзия</em>', artistsHeading:'Наши <em>артисты</em>' },
+      en: { marquee:'Welcome to Imastun Studio ✦ Here we bring music and words together ✦ Songs become images, and images become stories ✦ Welcome to Imastun Studio ✦ Here we bring music and words together ✦ Songs become images, and images become stories ✦ ', skip:'Skip to main content', searchLabel:'Find a song or artist', searchPlaceholder:'Find a song or artist…', searchButton:'Start search', languageLabel:'Choose language', menuOpen:'Open menu', menuClose:'Close menu', quickNav:'Quick links', searchTitle:'Site search', artists:'Artists', poets:'Armenian Poets', worldPoetry:'World Poetry', new:'New', videos:'Videos', support:'Support', comments:'Comments', installTitle:'Install Imastun Studio', installText:'Open the site like an app from your home screen.', installButton:'Install', installLater:'Later', iosInstallText:'On iPhone, tap Share, then Add to Home Screen.', poetsHeading:'Armenian <em>Poets</em>', worldPoetryHeading:'World <em>Poetry</em>', artistsHeading:'Our <em>Artists</em>' }
     };
     const languageButtons = Array.from(document.querySelectorAll('.language-button'));
     const menuButton = document.getElementById('mobile-menu-toggle');
@@ -3605,6 +4365,7 @@
         button.setAttribute('aria-pressed', String(active));
       });
       document.querySelectorAll('[data-i18n]').forEach(el => { const key=el.dataset.i18n; if(translations[locale][key]) el.textContent=translations[locale][key]; });
+      document.querySelectorAll('[data-i18n-html]').forEach(el => { const key=el.dataset.i18nHtml; if(translations[locale][key]) el.innerHTML=translations[locale][key]; });
       document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { const key=el.dataset.i18nPlaceholder; if(translations[locale][key]) el.placeholder=translations[locale][key]; });
       document.querySelectorAll('[data-i18n-aria]').forEach(el => { const key=el.dataset.i18nAria; if(translations[locale][key]) el.setAttribute('aria-label',translations[locale][key]); });
       try { localStorage.setItem('imastun_language', locale); } catch (e) {}
@@ -3713,9 +4474,126 @@
       });
     })();
   </script>
+
+  <script>
+  (() => {
+    const toggle = document.getElementById('float-actions-toggle');
+    if (!toggle) return;
+    const actionSelector = '#donate-float-btn, #messenger-float-btn, #wa-btn';
+    const setOpen = open => {
+      document.body.classList.toggle('float-actions-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Փակել կապի կոճակները' : 'Բացել կապի կոճակները');
+    };
+
+    toggle.addEventListener('click', event => {
+      event.stopPropagation();
+      setOpen(!document.body.classList.contains('float-actions-open'));
+    });
+
+    document.querySelectorAll(actionSelector).forEach(action => {
+      action.addEventListener('click', () => setOpen(false));
+    });
+
+    document.addEventListener('click', event => {
+      if (!document.body.classList.contains('float-actions-open')) return;
+      if (event.target instanceof Element && event.target.closest('#float-actions-toggle, ' + actionSelector)) return;
+      setOpen(false);
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') setOpen(false);
+    });
+
+    const mobileQuery = window.matchMedia('(max-width: 700px)');
+    if (mobileQuery.addEventListener) {
+      mobileQuery.addEventListener('change', event => {
+        if (!event.matches) setOpen(false);
+      });
+    }
+
+    const resumeBanner = document.getElementById('resume-banner');
+    if (resumeBanner) {
+      const syncResumeBanner = () => {
+        document.body.classList.toggle('resume-banner-open', resumeBanner.classList.contains('visible'));
+      };
+      new MutationObserver(syncResumeBanner).observe(resumeBanner, {
+        attributes: true,
+        attributeFilter: ['class']
+      });
+      syncResumeBanner();
+    }
+  })();
+  </script>
+  <script src="./audio-player-fix.js?v=unified-crossfade-v10"></script>
   <script async defer crossorigin="anonymous"
     src="https://connect.facebook.net/hy_AM/sdk.js#xfbml=1&version=v19.0"
     nonce="imastun"></script>
   <!-- deploy: instant mobile search -->
+
+<script>
+  /* IMastun Progress Slider behavior v1 */
+  (() => {
+    const bar = document.getElementById('gp-bar');
+    if (!bar) return;
+    const fill = document.getElementById('gp-fill');
+    const cur = document.getElementById('gp-cur');
+    const dur = document.getElementById('gp-dur');
+    const getEngine = () => typeof active === 'function' ? active() : document.getElementById('audio-engine');
+    const format = (seconds) => typeof fmtTime === 'function' ? fmtTime(seconds) : '0:00';
+
+    bar.setAttribute('role', 'slider');
+    bar.setAttribute('aria-label', 'Երգի ընթացք');
+    bar.setAttribute('aria-valuemin', '0');
+    bar.setAttribute('aria-valuemax', '0');
+    bar.setAttribute('aria-valuenow', '0');
+    bar.setAttribute('aria-valuetext', '0:00 / 0:00');
+    if (!bar.hasAttribute('tabindex')) bar.setAttribute('tabindex', '0');
+
+    const updateA11y = () => {
+      const engine = getEngine();
+      const duration = Number.isFinite(engine?.duration) ? engine.duration : 0;
+      const current = Number.isFinite(engine?.currentTime) ? engine.currentTime : 0;
+      bar.setAttribute('aria-valuemax', String(Math.round(duration)));
+      bar.setAttribute('aria-valuenow', String(Math.round(current)));
+      bar.setAttribute('aria-valuetext', `${format(current)} / ${format(duration)}`);
+    };
+
+    const seekBy = (seconds) => {
+      const engine = getEngine();
+      if (!engine || !Number.isFinite(engine.duration) || engine.duration <= 0) return;
+      engine.currentTime = Math.max(0, Math.min(engine.duration, engine.currentTime + seconds));
+      if (fill) fill.style.width = `${engine.currentTime / engine.duration * 100}%`;
+      if (cur) cur.textContent = format(engine.currentTime);
+      if (typeof handleSeekCrossfade === 'function') handleSeekCrossfade();
+      updateA11y();
+    };
+
+    bar.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') { event.preventDefault(); seekBy(-5); }
+      else if (event.key === 'ArrowRight') { event.preventDefault(); seekBy(5); }
+      else if (event.key === 'PageDown') { event.preventDefault(); seekBy(-10); }
+      else if (event.key === 'PageUp') { event.preventDefault(); seekBy(10); }
+      else if (event.key === 'Home') {
+        event.preventDefault();
+        const engine = getEngine();
+        if (engine && Number.isFinite(engine.duration)) { engine.currentTime = 0; updateA11y(); }
+      } else if (event.key === 'End') {
+        event.preventDefault();
+        const engine = getEngine();
+        if (engine && Number.isFinite(engine.duration)) { engine.currentTime = engine.duration; updateA11y(); }
+      }
+    });
+
+    bar.addEventListener('pointerdown', () => bar.classList.add('is-dragging'));
+    ['pointerup', 'pointercancel', 'lostpointercapture'].forEach((name) => {
+      bar.addEventListener(name, () => bar.classList.remove('is-dragging'));
+    });
+
+    const enginesForA11y = typeof engines !== 'undefined' && Array.isArray(engines) ? engines : [getEngine()];
+    enginesForA11y.filter(Boolean).forEach((engine) => engine.addEventListener('timeupdate', updateA11y));
+    updateA11y();
+  })();
+</script>
 </body>
 </html>
