@@ -275,7 +275,7 @@
     }
     eng.volume = 1;
 
-    write(artist.id + "_last_track", JSON.stringify({
+    write("artistpage_" + artist.id + "_last_track", JSON.stringify({
       artistId: artist.id, song: track.id, label: track.label, artistName: artist.name
     }));
 
@@ -391,7 +391,7 @@
     playerTitle.textContent = track.label;
     playerTitle.className = "player-title " + languageCountClass(track);
     progress.value = "0";
-    write(artist.id + "_last_track", JSON.stringify({
+    write("artistpage_" + artist.id + "_last_track", JSON.stringify({
       artistId: artist.id, song: track.id, label: track.label, artistName: artist.name
     }));
     if ("mediaSession" in navigator && "MediaMetadata" in window) {
