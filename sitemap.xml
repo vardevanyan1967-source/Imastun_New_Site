@@ -6,6 +6,11 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://imastun.org/imastun.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://imastun.org/go-hara.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -17,6 +22,11 @@
   </url>
   <url>
     <loc>https://imastun.org/silva-gulanyan.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://imastun.org/haj-poetner.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
