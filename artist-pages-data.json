@@ -383,6 +383,21 @@
         "id": "Իմ Գեղեցկուհի ընկերուհիները",
         "label": "Իմ Գեղեցկուհի ընկերուհիները",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%D4%BB%D5%B4%20%D4%B3%D5%A5%D5%B2%D5%A5%D6%81%D5%AF%D5%B8%D6%82%D5%B0%D5%AB%20%D5%A8%D5%B6%D5%AF%D5%A5%D6%80%D5%B8%D6%82%D5%B0%D5%AB%D5%B6%D5%A5%D6%80%D5%A8%20.mp3"
+      },
+      {
+        "id": "IM JEALOUS OF THE MOSQUITO",
+        "label": "IM JEALOUS OF THE MOSQUITO",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/mascito/IM%20JEALOUS%20OF%20THE%20MOSQUITO.mp3"
+      },
+      {
+        "id": "Նախանձում եմ",
+        "label": "Նախանձում եմ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/mascito/%D5%86%D5%A1%D5%AD%D5%A1%D5%B6%D5%B1%D5%B8%D6%82%D5%B4%20%D5%A5%D5%B4.mp3"
+      },
+      {
+        "id": "Ревую к комару",
+        "label": "Ревую к комару",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/mascito/%D0%A0%D0%B5%D0%B2%D1%83%D1%8E%20%D0%BA%20%D0%BA%D0%BE%D0%BC%D0%B0%D1%80%D1%83.mp3"
       }
     ]
   },
@@ -1330,6 +1345,26 @@
         "id": "ari-khmenq",
         "label": "ԱՐԻ ԽՄԵՆՔ · ДАВАЙ ВЫПЬЕМ · BUVONS",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/ari-khmenq.mp3"
+      },
+      {
+        "id": "I Gave My Sorrow The Name",
+        "label": "I Gave My Sorrow The Name",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/I%20Gave%20My%20Sorrow%20The%20Name.mp3"
+      },
+      {
+        "id": "Я назвал свою печаль тоской",
+        "label": "Я назвал свою печаль тоской",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%AF%20%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BB%20%D1%81%D0%B2%D0%BE%D1%8E%20%D0%BF%D0%B5%D1%87%D0%B0%D0%BB%D1%8C%20%D1%82%D0%BE%D1%81%D0%BA%D0%BE%D0%B9.mp3"
+      },
+      {
+        "id": "Թախծիս անունը",
+        "label": "Թախծիս անունը",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D4%B9%D5%A1%D5%AD%D5%AE%D5%AB%D5%BD%20%D5%A1%D5%B6%D5%B8%D6%82%D5%B6%D5%A8.mp3"
+      },
+      {
+        "id": "Թախծիս անունը_1",
+        "label": "Թախծիս անունը (Տանգո)",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D4%B9%D5%A1%D5%AD%D5%AE%D5%AB%D5%BD%20%D5%A1%D5%B6%D5%B8%D6%82%D5%B6%D5%A8_1.mp3"
       }
     ]
   },
