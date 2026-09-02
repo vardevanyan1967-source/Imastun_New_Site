@@ -2155,7 +2155,7 @@
   const ARTISTS = [
     {
       id: 'imastun', name: 'Imastun', role: 'Poet & Lead Artist & Producer', page: 'imastun.html',
-      songs: ['Astghayin_Shghta_A','The Sun Cries Too(Արևն էլ է լաց լինում)','Vahan_Teryan_Gisher','B_Es_im_anush_Hayastani','El_ban_chunem_Remix','inchi-hamar','inch_e_koracy_qarcr','lur-heraxos','lur uji simfonia','luse arzaganq','Luse_Hekiat_A','Lrutyan_unker','Lsir_vordis','Katak_Yari_Ergu','Katak_Yari_Ergu rem','haverji-erty','hogu-arzaganq','Meghki_ezrin_Remix','shshnjatc','shshnjatc-noric','shepot','ser-anurji','siro-kenacy','Поцелуй_ветра','Vahan_Teryan_MEGhAVOR_AChKERU','qo-jinj-hogin','pastayannaya jajda','andadar carav','The Eternal Thirst','im ser','sirelis','taxicy vat margare e','ergi chapov','На расстоянии песни','A Song Away','Կատակ Յարի Երգը','Roses in a Sieve','Ρόδα στο Κόσκινο','Песня шутка','ვარდები საცერში','Կատակ յարի երգ պար 4 լեզվով','Իմ Գեղեցկուհի ընկերուհիները'],
+      songs: ['Astghayin_Shghta_A','The Sun Cries Too(Արևն էլ է լաց լինում)','Vahan_Teryan_Gisher','B_Es_im_anush_Hayastani','El_ban_chunem_Remix','inchi-hamar','inch_e_koracy_qarcr','lur-heraxos','lur uji simfonia','luse arzaganq','Luse_Hekiat_A','Lrutyan_unker','Lsir_vordis','Katak_Yari_Ergu','Katak_Yari_Ergu rem','haverji-erty','hogu-arzaganq','Meghki_ezrin_Remix','shshnjatc','shshnjatc-noric','shepot','ser-anurji','siro-kenacy','Поцелуй_ветра','Vahan_Teryan_MEGhAVOR_AChKERU','qo-jinj-hogin','pastayannaya jajda','andadar carav','The Eternal Thirst','im ser','sirelis','taxicy vat margare e','ergi chapov','На расстоянии песни','A Song Away','Կատակ Յարի Երգը','Roses in a Sieve','Ρόδα στο Κόσκινο','Песня шутка','ვარდები საცერში','Կատակ յարի երգ պար 4 լեզվով','Իմ Գեղեցկուհի ընկերուհիները','IM JEALOUS OF THE MOSQUITO','Նախանձում եմ','Ревую к комару'],
       videos: []
     },
     {
@@ -2413,6 +2413,7 @@
     'Ջրահարսեր Ремикс Ремикс_3': "2026-08-25",
     'ჩვენი ქალთევზებო': "2026-08-25",
     'Իմ Գեղեցկուհի ընկերուհիները': "2026-08-31",
+    'IM JEALOUS OF THE MOSQUITO': "2026-09-02", 'Նախանձում եմ': "2026-09-02", 'Ревую к комару': "2026-09-02",
   };
   function isNewSong(song) {
     const added = NEW_SONGS[song];
@@ -3076,7 +3077,10 @@
 
   const AUDIO_SOURCE_OVERRIDES = Object.freeze({
     'imastun|Կատակ յարի երգ պար 4 լեզվով': `${AUDIO_BASE_URL}/imastun/featured/${encodeURIComponent('Կատակ յարի երգ պար 4 լեզվով')}.mp3`,
-    'imastun|Իմ Գեղեցկուհի ընկերուհիները': `${AUDIO_BASE_URL}/imastun/featured/${encodeURIComponent('Իմ Գեղեցկուհի ընկերուհիները ')}.mp3`
+    'imastun|Իմ Գեղեցկուհի ընկերուհիները': `${AUDIO_BASE_URL}/imastun/featured/${encodeURIComponent('Իմ Գեղեցկուհի ընկերուհիները ')}.mp3`,
+    'imastun|IM JEALOUS OF THE MOSQUITO': `${AUDIO_BASE_URL}/imastun/featured/mascito/${encodeURIComponent('IM JEALOUS OF THE MOSQUITO')}.mp3`,
+    'imastun|Նախանձում եմ': `${AUDIO_BASE_URL}/imastun/featured/mascito/${encodeURIComponent('Նախանձում եմ')}.mp3`,
+    'imastun|Ревую к комару': `${AUDIO_BASE_URL}/imastun/featured/mascito/${encodeURIComponent('Ревую к комару')}.mp3`
   });
 
   const playlist = [];
