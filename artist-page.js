@@ -336,6 +336,27 @@
     loadTrack(nextIndex, true);
   }
 
+  function setupPlayerSwipe() {
+    var zone = document.querySelector(".player-meta") || player;
+    var startX = 0, startY = 0, tracking = false;
+    zone.addEventListener("touchstart", function (event) {
+      if (!event.touches.length) return;
+      startX = event.touches[0].clientX;
+      startY = event.touches[0].clientY;
+      tracking = true;
+    }, { passive: true });
+    zone.addEventListener("touchend", function (event) {
+      if (!tracking) return;
+      tracking = false;
+      var touch = event.changedTouches[0];
+      var dx = touch.clientX - startX;
+      var dy = touch.clientY - startY;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+        if (dx < 0) move(1); else move(-1);
+      }
+    }, { passive: true });
+  }
+
   function cancelCrossfade() {
     if (crossfadeTimer) { clearInterval(crossfadeTimer); crossfadeTimer = null; }
     if (crossfadeScheduleTimer) { clearTimeout(crossfadeScheduleTimer); crossfadeScheduleTimer = null; }
@@ -758,6 +779,7 @@
       player.classList.remove("visible");
       document.body.classList.remove("player-open");
     });
+    setupPlayerSwipe();
 
     progress.addEventListener("input", function () {
       var eng = curAudio();
