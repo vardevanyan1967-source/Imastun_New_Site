@@ -20,6 +20,11 @@
     },
     "tracks": [
       {
+        "id": "andadar carav",
+        "label": "Անդադար ծարավ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/andadar%20carav.mp3"
+      },
+      {
         "id": "Astghayin_Shghta_A",
         "label": "Աստղային շղթա",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/Astghayin_Shghta_A.mp3",
@@ -48,6 +53,11 @@
         }
       },
       {
+        "id": "ergi chapov",
+        "label": "Երգի Չափով",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/ergi%20chapov.mp3"
+      },
+      {
         "id": "El_ban_chunem_Remix",
         "label": "Էլ բան չունեմ",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/El_ban_chunem_Remix.mp3",
@@ -55,6 +65,21 @@
           "en": "I Have Nothing Else",
           "ru": "У меня больше ничего нет"
         }
+      },
+      {
+        "id": "taxicy vat margare e",
+        "label": "Թախիծը վատ մարգարե է",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/taxicy%20vat%20margare%20e.mp3"
+      },
+      {
+        "id": "Իմ Գեղեցկուհի ընկերուհիները",
+        "label": "Իմ Գեղեցկուհի ընկերուհիները",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%D4%BB%D5%B4%20%D4%B3%D5%A5%D5%B2%D5%A5%D6%81%D5%AF%D5%B8%D6%82%D5%B0%D5%AB%20%D5%A8%D5%B6%D5%AF%D5%A5%D6%80%D5%B8%D6%82%D5%B0%D5%AB%D5%B6%D5%A5%D6%80%D5%A8%20.mp3"
+      },
+      {
+        "id": "im ser",
+        "label": "Իմ սեր",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/im%20ser.mp3"
       },
       {
         "id": "inchi-hamar",
@@ -129,12 +154,26 @@
         }
       },
       {
+        "id": "Կատակ յարի երգ պար 4 լեզվով",
+        "label": "Կատակ յարի երգ պար 4 լեզվով",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%D4%BF%D5%A1%D5%BF%D5%A1%D5%AF%20%D5%B5%D5%A1%D6%80%D5%AB%20%D5%A5%D6%80%D5%A3%20%D5%BA%D5%A1%D6%80%204%20%D5%AC%D5%A5%D5%A6%D5%BE%D5%B8%D5%BE.mp3"
+      },
+      {
         "id": "Katak_Yari_Ergu",
         "label": "Կատակ յարի երգը",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/Katak_Yari_Ergu.mp3",
         "explanation": {
           "en": "The Playful Sweetheart's Song",
           "ru": "Песня шутливой любимой"
+        }
+      },
+      {
+        "id": "Կատակ Յարի Երգը",
+        "label": "Կատակ Յարի Երգը",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%D4%BF%D5%A1%D5%BF%D5%A1%D5%AF%20%D5%85%D5%A1%D6%80%D5%AB%20%D4%B5%D6%80%D5%A3%D5%A8.mp3",
+        "explanation": {
+          "en": "Roses in a Sieve",
+          "ru": "Песня-шутка"
         }
       },
       {
@@ -170,6 +209,11 @@
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/Meghki_ezrin_Remix.mp3"
       },
       {
+        "id": "Նախանձում եմ",
+        "label": "Նախանձում եմ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/mascito/%D5%86%D5%A1%D5%AD%D5%A1%D5%B6%D5%B1%D5%B8%D6%82%D5%B4%20%D5%A5%D5%B4.mp3"
+      },
+      {
         "id": "shshnjatc",
         "label": "Շշնջաց",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/shshnjatc.mp3",
@@ -197,6 +241,16 @@
         }
       },
       {
+        "id": "Ջրահարսեր Ремикс Рեմикс_2",
+        "label": "Ջրահարսեր Ռեմիքս 2",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/mer-jraharsere/featured/%D5%8B%D6%80%D5%A1%D5%B0%D5%A1%D6%80%D5%BD%D5%A5%D6%80%20%D0%A0%D0%B5%D0%BC%D0%B8%D0%BA%D1%81%20%D0%A0%D0%B5%D0%BC%D0%B8%D0%BA%D1%81_2.mp3"
+      },
+      {
+        "id": "Ջրահարսեր Ремикс Рեմикс_3",
+        "label": "Ջրահարսեր Ռեմիքս 3",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/mer-jraharsere/featured/%D5%8B%D6%80%D5%A1%D5%B0%D5%A1%D6%80%D5%BD%D5%A5%D6%80%20%D0%A0%D0%B5%D0%BC%D0%B8%D0%BA%D1%81%20%D0%A0%D0%B5%D0%BC%D0%B8%D0%BA%D1%81_3.mp3"
+      },
+      {
         "id": "ser-anurji",
         "label": "Սեր անուրջի",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/ser-anurji.mp3",
@@ -204,6 +258,11 @@
           "en": "Love of a Dream",
           "ru": "Любовь мечты"
         }
+      },
+      {
+        "id": "sirelis",
+        "label": "Սիրելիս",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/sirelis.mp3"
       },
       {
         "id": "siro-kenacy",
@@ -234,61 +293,6 @@
         }
       },
       {
-        "id": "pastayannaya jajda",
-        "label": "Постоянная жажда",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/pastayannaya%20jajda.mp3",
-        "explanation": {
-          "hy": "Ռուսերեն տարբերակը",
-          "ru": "Русская версия",
-          "en": "Russian version"
-        }
-      },
-      {
-        "id": "andadar carav",
-        "label": "Անդադար ծարավ",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/andadar%20carav.mp3"
-      },
-      {
-        "id": "The Eternal Thirst",
-        "label": "The Eternal Thirst",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/The%20Eternal%20Thirst.mp3",
-        "explanation": {
-          "hy": "Անգլերեն տարբերակը",
-          "ru": "Английская версия",
-          "en": "English version"
-        }
-      },
-      {
-        "id": "im ser",
-        "label": "Իմ սեր",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/im%20ser.mp3"
-      },
-      {
-        "id": "sirelis",
-        "label": "Սիրելիս",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/sirelis.mp3"
-      },
-      {
-        "id": "taxicy vat margare e",
-        "label": "Թախիծը վատ մարգարե է",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/taxicy%20vat%20margare%20e.mp3"
-      },
-      {
-        "id": "ergi chapov",
-        "label": "Երգի Չափով",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/ergi%20chapov.mp3"
-      },
-      {
-        "id": "На расстоянии песни",
-        "label": "На расстоянии песни",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%D0%9D%D0%B0%20%D1%80%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B8%20%D0%BF%D0%B5%D1%81%D0%BD%D0%B8.mp3",
-        "explanation": {
-          "hy": "Ռուսերեն տարբերակը",
-          "ru": "Русская версия",
-          "en": "Russian version"
-        }
-      },
-      {
         "id": "A Song Away",
         "label": "A Song Away",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/A%20Song%20Away.mp3",
@@ -299,50 +303,9 @@
         }
       },
       {
-        "id": "Կատակ Յարի Երգը",
-        "label": "Կատակ Յարի Երգը",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%D4%BF%D5%A1%D5%BF%D5%A1%D5%AF%20%D5%85%D5%A1%D6%80%D5%AB%20%D4%B5%D6%80%D5%A3%D5%A8.mp3",
-        "explanation": {
-          "en": "Roses in a Sieve",
-          "ru": "Песня-шутка"
-        }
-      },
-      {
-        "id": "Roses in a Sieve",
-        "label": "Roses In A Sieve",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/Roses%20in%20a%20Sieve.mp3",
-        "explanation": {
-          "hy": "Կատակ յարի երգի անգլերեն տարբերակը"
-        }
-      },
-      {
-        "id": "Ρόδα στο Κόσκινο",
-        "label": "Ρόδα στο Κόσκινο",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%CE%A1%CF%8C%CE%B4%CE%B1%20%CF%83%CF%84%CE%BF%20%CE%9A%CF%8C%CF%83%CE%BA%CE%B9%CE%BD%CE%BF.mp3",
-        "explanation": {
-          "hy": "Կատակ յարի երգի հունարեն տարբերակը"
-        }
-      },
-      {
-        "id": "Песня шутка",
-        "label": "Песня шутка",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%D0%9F%D0%B5%D1%81%D0%BD%D1%8F%20%D1%88%D1%83%D1%82%D0%BA%D0%B0.mp3",
-        "explanation": {
-          "hy": "Կատակ յարի երգի ռուսերեն տարբերակը"
-        }
-      },
-      {
-        "id": "ვარდები საცერში",
-        "label": "ვარდები საცერში",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%E1%83%95%E1%83%90%E1%83%A0%E1%83%93%E1%83%94%E1%83%91%E1%83%98%20%E1%83%A1%E1%83%90%E1%83%AA%E1%83%94%E1%83%A0%E1%83%A8%E1%83%98.mp3",
-        "explanation": {
-          "hy": "Կատակ յարի երգի վրացերեն տարբերակը"
-        }
-      },
-      {
-        "id": "Կատակ յարի երգ պար 4 լեզվով",
-        "label": "Կատակ յարի երգ պար 4 լեզվով",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%D4%BF%D5%A1%D5%BF%D5%A1%D5%AF%20%D5%B5%D5%A1%D6%80%D5%AB%20%D5%A5%D6%80%D5%A3%20%D5%BA%D5%A1%D6%80%204%20%D5%AC%D5%A5%D5%A6%D5%BE%D5%B8%D5%BE.mp3"
+        "id": "IM JEALOUS OF THE MOSQUITO",
+        "label": "IM JEALOUS OF THE MOSQUITO",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/mascito/IM%20JEALOUS%20OF%20THE%20MOSQUITO.mp3"
       },
       {
         "id": "Our Lovely Mermaids",
@@ -355,6 +318,57 @@
         }
       },
       {
+        "id": "Roses in a Sieve",
+        "label": "Roses In A Sieve",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/Roses%20in%20a%20Sieve.mp3",
+        "explanation": {
+          "hy": "Կատակ յարի երգի անգլերեն տարբերակը"
+        }
+      },
+      {
+        "id": "The Eternal Thirst",
+        "label": "The Eternal Thirst",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/The%20Eternal%20Thirst.mp3",
+        "explanation": {
+          "hy": "Անգլերեն տարբերակը",
+          "ru": "Английская версия",
+          "en": "English version"
+        }
+      },
+      {
+        "id": "На расстоянии песни",
+        "label": "На расстоянии песни",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%D0%9D%D0%B0%20%D1%80%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B8%20%D0%BF%D0%B5%D1%81%D0%BD%D0%B8.mp3",
+        "explanation": {
+          "hy": "Ռուսերեն տարբերակը",
+          "ru": "Русская версия",
+          "en": "Russian version"
+        }
+      },
+      {
+        "id": "Песня шутка",
+        "label": "Песня шутка",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%D0%9F%D0%B5%D1%81%D0%BD%D1%8F%20%D1%88%D1%83%D1%82%D0%BA%D0%B0.mp3",
+        "explanation": {
+          "hy": "Կատակ յարի երգի ռուսերեն տարբերակը"
+        }
+      },
+      {
+        "id": "pastayannaya jajda",
+        "label": "Постоянная жажда",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/pastayannaya%20jajda.mp3",
+        "explanation": {
+          "hy": "Ռուսերեն տարբերակը",
+          "ru": "Русская версия",
+          "en": "Russian version"
+        }
+      },
+      {
+        "id": "Ревую к комару",
+        "label": "Ревую к комару",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/mascito/%D0%A0%D0%B5%D0%B2%D1%83%D1%8E%20%D0%BA%20%D0%BA%D0%BE%D0%BC%D0%B0%D1%80%D1%83.mp3"
+      },
+      {
         "id": "Эй наши русалки",
         "label": "Эй наши русалки",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/mer-jraharsere/featured/%D0%AD%D0%B9%20%D0%BD%D0%B0%D1%88%D0%B8%20%D1%80%D1%83%D1%81%D0%B0%D0%BB%D0%BA%D0%B8.mp3",
@@ -365,39 +379,25 @@
         }
       },
       {
-        "id": "Ջրահարսեր Ремикс Рեմикс_2",
-        "label": "Ջրահարսեր Ռեմիքս 2",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/mer-jraharsere/featured/%D5%8B%D6%80%D5%A1%D5%B0%D5%A1%D6%80%D5%BD%D5%A5%D6%80%20%D0%A0%D0%B5%D0%BC%D0%B8%D0%BA%D1%81%20%D0%A0%D0%B5%D0%BC%D0%B8%D0%BA%D1%81_2.mp3"
+        "id": "Ρόδα στο Κόσκινο",
+        "label": "Ρόδα στο Κόσκινο",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%CE%A1%CF%8C%CE%B4%CE%B1%20%CF%83%CF%84%CE%BF%20%CE%9A%CF%8C%CF%83%CE%BA%CE%B9%CE%BD%CE%BF.mp3",
+        "explanation": {
+          "hy": "Կատակ յարի երգի հունարեն տարբերակը"
+        }
       },
       {
-        "id": "Ջրահարսեր Ремикс Рեմикс_3",
-        "label": "Ջրահարսեր Ռեմիքս 3",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/mer-jraharsere/featured/%D5%8B%D6%80%D5%A1%D5%B0%D5%A1%D6%80%D5%BD%D5%A5%D6%80%20%D0%A0%D0%B5%D0%BC%D0%B8%D0%BA%D1%81%20%D0%A0%D0%B5%D0%BC%D0%B8%D0%BA%D1%81_3.mp3"
+        "id": "ვარდები საცერში",
+        "label": "ვარდები საცერში",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%E1%83%95%E1%83%90%E1%83%A0%E1%83%93%E1%83%94%E1%83%91%E1%83%98%20%E1%83%A1%E1%83%90%E1%83%AA%E1%83%94%E1%83%A0%E1%83%A8%E1%83%98.mp3",
+        "explanation": {
+          "hy": "Կատակ յարի երգի վրացերեն տարբերակը"
+        }
       },
       {
         "id": "ჩვენი ქალთევზებო",
         "label": "ჩვენი ქალთევზებო",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/mer-jraharsere/featured/%E1%83%A9%E1%83%95%E1%83%94%E1%83%9C%E1%83%98%20%E1%83%A5%E1%83%90%E1%83%9A%E1%83%97%E1%83%94%E1%83%95%E1%83%96%E1%83%94%E1%83%91%E1%83%9D.mp3"
-      },
-      {
-        "id": "Իմ Գեղեցկուհի ընկերուհիները",
-        "label": "Իմ Գեղեցկուհի ընկերուհիները",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%D4%BB%D5%B4%20%D4%B3%D5%A5%D5%B2%D5%A5%D6%81%D5%AF%D5%B8%D6%82%D5%B0%D5%AB%20%D5%A8%D5%B6%D5%AF%D5%A5%D6%80%D5%B8%D6%82%D5%B0%D5%AB%D5%B6%D5%A5%D6%80%D5%A8%20.mp3"
-      },
-      {
-        "id": "IM JEALOUS OF THE MOSQUITO",
-        "label": "IM JEALOUS OF THE MOSQUITO",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/mascito/IM%20JEALOUS%20OF%20THE%20MOSQUITO.mp3"
-      },
-      {
-        "id": "Նախանձում եմ",
-        "label": "Նախանձում եմ",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/mascito/%D5%86%D5%A1%D5%AD%D5%A1%D5%B6%D5%B1%D5%B8%D6%82%D5%B4%20%D5%A5%D5%B4.mp3"
-      },
-      {
-        "id": "Ревую к комару",
-        "label": "Ревую к комару",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/mascito/%D0%A0%D0%B5%D0%B2%D1%83%D1%8E%20%D0%BA%20%D0%BA%D0%BE%D0%BC%D0%B0%D1%80%D1%83.mp3"
       }
     ]
   },
@@ -442,14 +442,29 @@
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Mtnets_arants_kez_Duet.mp3"
       },
       {
-        "id": "Aryev_darnam",
-        "label": "Արև դառնամ",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Aryev_darnam.mp3"
+        "id": "ari-khmenq",
+        "label": "ԱՐԻ ԽՄԵՆՔ · ДАВАЙ ВЫПЬЕМ · BUVONS",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/ari-khmenq.mp3"
       },
       {
         "id": "Ari_klini",
         "label": "Արի կլինի",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Ari_klini.mp3"
+      },
+      {
+        "id": "Aryev_darnam",
+        "label": "Արև դառնամ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Aryev_darnam.mp3"
+      },
+      {
+        "id": "byur harvacneric",
+        "label": "Բյուր հարվածներից",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/byur%20harvacneric.mp3"
+      },
+      {
+        "id": "bjur u bjur angam",
+        "label": "Բյուր ու բյուր անգամ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/bjur%20u%20bjur%20angam.mp3"
       },
       {
         "id": "Galis_e_mi_pah_003",
@@ -465,6 +480,16 @@
         "id": "Garun e bajc zun e arel",
         "label": "Գարուն է բայց ձյուն է արել",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Garun%20e%20bajc%20zun%20e%20arel.mp3"
+      },
+      {
+        "id": "gereckuhi",
+        "label": "Գեղեցկուհի",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/gereckuhi.mp3"
+      },
+      {
+        "id": "gjuk lusiny",
+        "label": "Գժուկ լուսին",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/gjuk%20lusiny.mp3"
       },
       {
         "id": "gij",
@@ -487,6 +512,11 @@
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Gisherits_depi_luys_Silva_Gulanyan_005.mp3"
       },
       {
+        "id": "gitem el inz ches spasum",
+        "label": "Գիտեմ էլ ինձ չես սպասում",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/gitem%20el%20inz%20ches%20spasum.mp3"
+      },
+      {
         "id": "Gitem_hogis_A",
         "label": "Գիտեմ հոգիս",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Gitem_hogis_A.mp3"
@@ -502,14 +532,34 @@
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/gortrik-ankun.mp3"
       },
       {
+        "id": "Դավաճան հայ",
+        "label": "Դավաճան հայ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D4%B4%D5%A1%D5%BE%D5%A1%D5%B3%D5%A1%D5%B6%20%D5%B0%D5%A1%D5%B5.mp3"
+      },
+      {
         "id": "der-inz-voch-mek-chi-sirel-qo-pes",
         "label": "Դեռ ինձ ոչ մեկ չի սիրել քո պես",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/der-inz-voch-mek-chi-sirel-qo-pes.mp3"
       },
       {
+        "id": "Դու իմ աշխարհն ես",
+        "label": "Դու իմ աշխարհն ես",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D4%B4%D5%B8%D6%82%20%D5%AB%D5%B4%20%D5%A1%D5%B7%D5%AD%D5%A1%D6%80%D5%B0%D5%B6%20%D5%A5%D5%BD.mp3"
+      },
+      {
         "id": "Dran_Takotsu_003",
         "label": "Դռան թակոց",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Dran_Takotsu_003.mp3"
+      },
+      {
+        "id": "ete asem",
+        "label": "Եթե ասեմ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/ete%20asem.mp3"
+      },
+      {
+        "id": "Եղբայր իմ անգին",
+        "label": "Եղբայր իմ անգին",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D4%B5%D5%B2%D5%A2%D5%A1%D5%B5%D6%80%20%D5%AB%D5%B4%20%D5%A1%D5%B6%D5%A3%D5%AB%D5%B6.mp3"
       },
       {
         "id": "Es_irakan_em_004",
@@ -532,6 +582,21 @@
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Erazankneri_aytsu_Part_Gisherva_002.mp3"
       },
       {
+        "id": "erazi kyanq",
+        "label": "Երազի կայանք",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/erazi%20kyanq.mp3"
+      },
+      {
+        "id": "erazi kyamq roc",
+        "label": "Երազի կայանք (ռոք)",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/erazi%20kyamq%20roc.mp3"
+      },
+      {
+        "id": "Երանի գայիր(Just Like Before)",
+        "label": "Երանի գայիր (Just Like Before)",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D4%B5%D6%80%D5%A1%D5%B6%D5%AB%20%D5%A3%D5%A1%D5%B5%D5%AB%D6%80(Just%20Like%20Before).mp3"
+      },
+      {
         "id": "Erb_verkers_hanger_dardzri_Lyrics_by_Silva_Gulanyan_003",
         "label": "Երբ երգերս հանգեր դարձան",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Erb_verkers_hanger_dardzri_Lyrics_by_Silva_Gulanyan_003.mp3"
@@ -545,6 +610,26 @@
         "id": "Erku_khent_hogi_Duet_Silva_Gulanyan_004",
         "label": "Երկու խենթ հոգի",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Erku_khent_hogi_Duet_Silva_Gulanyan_004.mp3"
+      },
+      {
+        "id": "Թախծիս անունը",
+        "label": "Թախծիս անունը",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D4%B9%D5%A1%D5%AD%D5%AE%D5%AB%D5%BD%20%D5%A1%D5%B6%D5%B8%D6%82%D5%B6%D5%A8.mp3"
+      },
+      {
+        "id": "Թախծիս անունը_1",
+        "label": "Թախծիս անունը (Տանգո)",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D4%B9%D5%A1%D5%AD%D5%AE%D5%AB%D5%BD%20%D5%A1%D5%B6%D5%B8%D6%82%D5%B6%D5%A8_1.mp3"
+      },
+      {
+        "id": "Թանկ հուշը",
+        "label": "Թանկ հուշը",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D4%B9%D5%A1%D5%B6%D5%AF%20%D5%B0%D5%B8%D6%82%D5%B7%D5%A8.mp3"
+      },
+      {
+        "id": "te karotum es",
+        "label": "Թե կարոտում ես",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/te%20karotum%20es.mp3"
       },
       {
         "id": "jpta hogis",
@@ -562,6 +647,11 @@
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/im-tsovagur.mp3"
       },
       {
+        "id": "Իմ Քնքուշ Սևան",
+        "label": "Իմ Քնքուշ Սառան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D4%BB%D5%B4%20%D5%94%D5%B6%D6%84%D5%B8%D6%82%D5%B7%20%D5%8D%D6%87%D5%A1%D5%B6.mp3"
+      },
+      {
         "id": "inch-em-anelu",
         "label": "Ինչ եմ անելու",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/inch-em-anelu.mp3"
@@ -570,6 +660,11 @@
         "id": "inchu_es_ayskan_indz_otar_dardzel_004",
         "label": "Ինչու ես այսքան ինձ օտար դարձել",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/inchu_es_ayskan_indz_otar_dardzel_004.mp3"
+      },
+      {
+        "id": "lok cav u dard",
+        "label": "Լոկ ցավ ու դարդ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/lok%20cav%20u%20dard.mp3"
       },
       {
         "id": "luse hrashq",
@@ -582,6 +677,11 @@
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/lrutian%20tchich.mp3"
       },
       {
+        "id": "xararutun ber",
+        "label": "Խաղաղություն բեր",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/xararutun%20ber.mp3"
+      },
+      {
         "id": "xerdvac karot",
         "label": "Խեղդված կարոտ",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/xerdvac%20karot.mp3"
@@ -592,6 +692,11 @@
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/xerdvac%20karot%20patasxan.mp3"
       },
       {
+        "id": "խենթ խաղեր",
+        "label": "խենթ խաղեր",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D5%AD%D5%A5%D5%B6%D5%A9%20%D5%AD%D5%A1%D5%B2%D5%A5%D6%80.mp3"
+      },
+      {
         "id": "xent siro qamin",
         "label": "Խենթ սիրո քամին",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/xent%20siro%20qamin.mp3"
@@ -600,6 +705,11 @@
         "id": "xentern u lusiny",
         "label": "Խենթերն ու լուսինը",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/xentern%20u%20lusiny.mp3"
+      },
+      {
+        "id": "խենթի նման սիրահարվեցի",
+        "label": "խենթի նման սիրահարվեցի",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D5%AD%D5%A5%D5%B6%D5%A9%D5%AB%20%D5%B6%D5%B4%D5%A1%D5%B6%20%D5%BD%D5%AB%D6%80%D5%A1%D5%B0%D5%A1%D6%80%D5%BE%D5%A5%D6%81%D5%AB.mp3"
       },
       {
         "id": "xind manuk",
@@ -617,19 +727,24 @@
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/tsov-arev-achqer.mp3"
       },
       {
+        "id": "Ծովի մեջ աչքերդ",
+        "label": "Ծովի մեջ աչքերդ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D4%BE%D5%B8%D5%BE%D5%AB%20%D5%B4%D5%A5%D5%BB%20%D5%A1%D5%B9%D6%84%D5%A5%D6%80%D5%A4.mp3"
+      },
+      {
         "id": "Mer_Srterum_kanchu_004",
         "label": "Կանչ մեր սրտերում",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Mer_Srterum_kanchu_004.mp3"
       },
       {
-        "id": "karotiali shurterin",
-        "label": "Կարոտիալի շուրթերին",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/karotiali%20shurterin.mp3"
-      },
-      {
         "id": "Կարոտի խենթի",
         "label": "Կարոտի խենթի",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D4%BF%D5%A1%D6%80%D5%B8%D5%BF%D5%AB%20%D5%AD%D5%A5%D5%B6%D5%A9%D5%AB.mp3"
+      },
+      {
+        "id": "karotiali shurterin",
+        "label": "Կարոտիալի շուրթերին",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/karotiali%20shurterin.mp3"
       },
       {
         "id": "kgam_sirelis",
@@ -682,6 +797,11 @@
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/hiastapvac.mp3"
       },
       {
+        "id": "hima",
+        "label": "Հիմա",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/hima.mp3"
+      },
+      {
         "id": "hogu giny",
         "label": "Հողի գինը",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/hogu%20giny.mp3"
@@ -697,6 +817,11 @@
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Dzig_tarineri_luys_003.mp3"
       },
       {
+        "id": "Tchaxr e pargevum ",
+        "label": "Ճախր է պարգևում",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Tchaxr%20e%20pargevum%20.mp3"
+      },
+      {
         "id": "Chisht_zhamanakin_At_The_Right_Time",
         "label": "Ճիշտ ժամանակին",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Chisht_zhamanakin_At_The_Right_Time.mp3"
@@ -705,6 +830,11 @@
         "id": "mek tari el ancav",
         "label": "Մեկ տարի էլ անցավ",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/mek%20tari%20el%20ancav.mp3"
+      },
+      {
+        "id": "mern zepur",
+        "label": "Մեղմ զեփյուռը",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/mern%20zepur.mp3"
       },
       {
         "id": "Title_Mi_tanjir_hogis_Multilingual_Emotional_Duet_Lyrics_by_Silva_Gulanyan_002",
@@ -730,6 +860,16 @@
         "id": "Nrboren_Garnunk_003",
         "label": "Նրբորեն գարունք",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Nrboren_Garnunk_003.mp3"
+      },
+      {
+        "id": "ov em qez hamar",
+        "label": "Ո՞վ եմ քեզ համար",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/ov%20em%20qez%20hamar.mp3"
+      },
+      {
+        "id": "ughernery-lac-chen-linum",
+        "label": "Ուժեղներն էլ լաց են լինում",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/ughernery-lac-chen-linum.mp3"
       },
       {
         "id": "Che_chem_toghni_B",
@@ -760,6 +900,21 @@
         "id": "ser da ardioq",
         "label": "Սեր է դա արդիոք",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/ser%20da%20ardioq.mp3"
+      },
+      {
+        "id": "ser eir xarum",
+        "label": "Սեր էիր խաղում",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/ser%20eir%20xarum.mp3"
+      },
+      {
+        "id": "Սիրել հենց հոգուն",
+        "label": "Սիրել հենց հոգուն",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D5%8D%D5%AB%D6%80%D5%A5%D5%AC%20%D5%B0%D5%A5%D5%B6%D6%81%20%D5%B0%D5%B8%D5%A3%D5%B8%D6%82%D5%B6.mp3"
+      },
+      {
+        "id": "Սիրել հենց հոգուն (1)",
+        "label": "Սիրել հենց հոգուն (1)",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D5%8D%D5%AB%D6%80%D5%A5%D5%AC%20%D5%B0%D5%A5%D5%B6%D6%81%20%D5%B0%D5%B8%D5%A3%D5%B8%D6%82%D5%B6%20(1).mp3"
       },
       {
         "id": "Sirir_indz_hogis_FRAM_Duet",
@@ -802,6 +957,26 @@
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Tesilk_Silva_Gulanyan_Remix_Remix.mp3"
       },
       {
+        "id": "Տիեզերական կինը",
+        "label": "Տիեզերական կինը",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D5%8F%D5%AB%D5%A5%D5%A6%D5%A5%D6%80%D5%A1%D5%AF%D5%A1%D5%B6%20%D5%AF%D5%AB%D5%B6%D5%A8.mp3"
+      },
+      {
+        "id": "Տիեզերական կինը (Remastered)",
+        "label": "Տիեզերական կինը (Remastered)",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D5%8F%D5%AB%D5%A5%D5%A6%D5%A5%D6%80%D5%A1%D5%AF%D5%A1%D5%B6%20%D5%AF%D5%AB%D5%B6%D5%A8%20(Remastered).mp3"
+      },
+      {
+        "id": "Տիեզերական կինը roc",
+        "label": "Տիեզերական կինը րոց",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D5%8F%D5%AB%D5%A5%D5%A6%D5%A5%D6%80%D5%A1%D5%AF%D5%A1%D5%B6%20%D5%AF%D5%AB%D5%B6%D5%A8%20roc.mp3"
+      },
+      {
+        "id": "cav anbujeli",
+        "label": "Ցավ անբուժելի",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/cav%20anbujeli.mp3"
+      },
+      {
         "id": "AKhor_vo_tsavits_tsnvats",
         "label": "Ցավից ծնված",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/AKhor_vo_tsavits_tsnvats.mp3"
@@ -810,6 +985,11 @@
         "id": "Curt xavaric",
         "label": "Ցուրտ խավարից",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Curt%20xavaric.mp3"
+      },
+      {
+        "id": "Քեզ դուրս եմ արել",
+        "label": "Քեզ դուրս եմ արել",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D5%94%D5%A5%D5%A6%20%D5%A4%D5%B8%D6%82%D6%80%D5%BD%20%D5%A5%D5%B4%20%D5%A1%D6%80%D5%A5%D5%AC.mp3"
       },
       {
         "id": "Kez_khenti_nman_siraharvetsi_Duet_Tango",
@@ -822,6 +1002,11 @@
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/qez%20karotelis.mp3"
       },
       {
+        "id": "Քեզ կարոտելիս",
+        "label": "Քեզ կարոտելիս",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D5%94%D5%A5%D5%A6%20%D5%AF%D5%A1%D6%80%D5%B8%D5%BF%D5%A5%D5%AC%D5%AB%D5%BD.mp3"
+      },
+      {
         "id": "qo cov achqeri kajcern em sirum",
         "label": "Քո աչքերի կայծն եմ սիրում",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/qo%20cov%20achqeri%20kajcern%20em%20sirum.mp3"
@@ -830,6 +1015,11 @@
         "id": "qo_drakhtum_002",
         "label": "Քո դրախտում",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/qo_drakhtum_002.mp3"
+      },
+      {
+        "id": "Քո ժպիտները հավաքեմ",
+        "label": "Քո ժպիտները հավաքեմ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D5%94%D5%B8%20%D5%AA%D5%BA%D5%AB%D5%BF%D5%B6%D5%A5%D6%80%D5%A8%20%D5%B0%D5%A1%D5%BE%D5%A1%D6%84%D5%A5%D5%B4.mp3"
       },
       {
         "id": "Ko_koghkin_vorish_em_003",
@@ -867,204 +1057,9 @@
         }
       },
       {
-        "id": "The Sun Cries Too",
-        "label": "The Sun Cries Too",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/The%20Sun%20Cries%20Too.mp3",
-        "explanation": {
-          "hy": "Անգլերեն տարբերակը",
-          "ru": "Английская версия",
-          "en": "English version"
-        }
-      },
-      {
-        "id": "Безумный Ветер Любви",
-        "label": "Безумный Ветер Любви",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%91%D0%B5%D0%B7%D1%83%D0%BC%D0%BD%D1%8B%D0%B9%20%D0%92%D0%B5%D1%82%D0%B5%D1%80%20%D0%9B%D1%8E%D0%B1%D0%B2%D0%B8.mp3",
-        "explanation": {
-          "hy": "Ռուսերեն տարբերակը",
-          "ru": "Русская версия",
-          "en": "Russian version"
-        }
-      },
-      {
-        "id": "hima",
-        "label": "Հիմա",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/hima.mp3"
-      },
-      {
-        "id": "gjuk lusiny",
-        "label": "Գժուկ լուսին",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/gjuk%20lusiny.mp3"
-      },
-      {
-        "id": "gitem el inz ches spasum",
-        "label": "Գիտեմ էլ ինձ չես սպասում",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/gitem%20el%20inz%20ches%20spasum.mp3"
-      },
-      {
-        "id": "byur harvacneric",
-        "label": "Բյուր հարվածներից",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/byur%20harvacneric.mp3"
-      },
-      {
-        "id": "mern zepur",
-        "label": "Մեղմ զեփյուռը",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/mern%20zepur.mp3"
-      },
-      {
-        "id": "ser eir xarum",
-        "label": "Սեր էիր խաղում",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/ser%20eir%20xarum.mp3"
-      },
-      {
-        "id": "erazi kyamq roc",
-        "label": "Երազի կայանք (ռոք)",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/erazi%20kyamq%20roc.mp3"
-      },
-      {
-        "id": "erazi kyanq",
-        "label": "Երազի կայանք",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/erazi%20kyanq.mp3"
-      },
-      {
-        "id": "ti pridyosh komne",
-        "label": "Ты придёшь ко мне",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/ti%20pridyosh%20komne.mp3",
-        "explanation": {
-          "hy": "Ռուսերեն տարբերակը",
-          "ru": "Русская версия",
-          "en": "Russian version"
-        }
-      },
-      {
-        "id": "The Night's Embrace",
-        "label": "The Night's Embrace",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/The%20Night's%20Embrace.mp3",
-        "explanation": {
-          "hy": "Անգլերեն տարբերակը",
-          "ru": "Английская версия",
-          "en": "English version"
-        }
-      },
-      {
-        "id": "xararutun ber",
-        "label": "Խաղաղություն բեր",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/xararutun%20ber.mp3"
-      },
-      {
-        "id": "ti moy kislarod",
-        "label": "Ты мой кислород",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/ti%20moy%20kislarod.mp3",
-        "explanation": {
-          "hy": "Ռուսերեն տարբերակը",
-          "ru": "Русская версия",
-          "en": "Russian version"
-        }
-      },
-      {
-        "id": "My Endless Dream",
-        "label": "My Endless Dream",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/My%20Endless%20Dream.mp3",
-        "explanation": {
-          "hy": "Անգլերեն տարբերակը",
-          "ru": "Английская версия",
-          "en": "English version"
-        }
-      },
-      {
-        "id": "Тоска по мне",
-        "label": "Тоска по мне",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%A2%D0%BE%D1%81%D0%BA%D0%B0%20%D0%BF%D0%BE%20%D0%BC%D0%BD%D0%B5.mp3",
-        "explanation": {
-          "hy": "Ռուսերեն տարբերակը",
-          "ru": "Русская версия",
-          "en": "Russian version"
-        }
-      },
-      {
-        "id": "The Song of the Spring Breeze",
-        "label": "The Song of the Spring Breeze",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/The%20Song%20of%20the%20Spring%20Breeze.mp3",
-        "explanation": {
-          "hy": "Անգլերեն տարբերակը",
-          "ru": "Английская версия",
-          "en": "English version"
-        }
-      },
-      {
-        "id": "խենթի նման սիրահարվեցի",
-        "label": "խենթի նման սիրահարվեցի",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D5%AD%D5%A5%D5%B6%D5%A9%D5%AB%20%D5%B6%D5%B4%D5%A1%D5%B6%20%D5%BD%D5%AB%D6%80%D5%A1%D5%B0%D5%A1%D6%80%D5%BE%D5%A5%D6%81%D5%AB.mp3"
-      },
-      {
-        "id": "Светлый полёт",
-        "label": "Светлый полёт",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%A1%D0%B2%D0%B5%D1%82%D0%BB%D1%8B%D0%B9%20%D0%BF%D0%BE%D0%BB%D1%91%D1%82.mp3",
-        "explanation": {
-          "hy": "Ռուսերեն տարբերակը",
-          "ru": "Русская версия",
-          "en": "Russian version"
-        }
-      },
-      {
-        "id": "Քեզ դուրս եմ արել",
-        "label": "Քեզ դուրս եմ արել",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D5%94%D5%A5%D5%A6%20%D5%A4%D5%B8%D6%82%D6%80%D5%BD%20%D5%A5%D5%B4%20%D5%A1%D6%80%D5%A5%D5%AC.mp3"
-      },
-      {
-        "id": "Перед памятью злой",
-        "label": "Перед памятью злой",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%9F%D0%B5%D1%80%D0%B5%D0%B4%20%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D1%8C%D1%8E%20%D0%B7%D0%BB%D0%BE%D0%B9.mp3",
-        "explanation": {
-          "hy": "Ռուսերեն տարբերակը",
-          "ru": "Русская версия",
-          "en": "Russian version"
-        }
-      },
-      {
-        "id": "Powerless Against Memories",
-        "label": "Powerless Against Memories",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Powerless%20Against%20Memories.mp3",
-        "explanation": {
-          "hy": "Անգլերեն տարբերակը",
-          "ru": "Английская версия",
-          "en": "English version"
-        }
-      },
-      {
-        "id": "Դու իմ աշխարհն ես",
-        "label": "Դու իմ աշխարհն ես",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D4%B4%D5%B8%D6%82%20%D5%AB%D5%B4%20%D5%A1%D5%B7%D5%AD%D5%A1%D6%80%D5%B0%D5%B6%20%D5%A5%D5%BD.mp3"
-      },
-      {
-        "id": "Ты мой мир",
-        "label": "Ты мой мир",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%A2%D1%8B%20%D0%BC%D0%BE%D0%B9%20%D0%BC%D0%B8%D1%80.mp3",
-        "explanation": {
-          "hy": "Ռուսերեն տարբերակը",
-          "ru": "Русская версия",
-          "en": "Russian version"
-        }
-      },
-      {
-        "id": "You Are My World",
-        "label": "You Are My World",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/You%20Are%20My%20World.mp3",
-        "explanation": {
-          "hy": "Անգլերեն տարբերակը",
-          "ru": "Английская версия",
-          "en": "English version"
-        }
-      },
-      {
-        "id": "Тоскуя по тебе",
-        "label": "Тоскуя по тебе",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%A2%D0%BE%D1%81%D0%BA%D1%83%D1%8F%20%D0%BF%D0%BE%20%D1%82%D0%B5%D0%B1%D0%B5.mp3",
-        "explanation": {
-          "hy": "Ռուսերեն տարբերակը",
-          "ru": "Русская версия",
-          "en": "Russian version"
-        }
+        "id": "I Gave My Sorrow The Name",
+        "label": "I Gave My Sorrow The Name",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/I%20Gave%20My%20Sorrow%20The%20Name.mp3"
       },
       {
         "id": "Longing for You",
@@ -1074,51 +1069,6 @@
           "hy": "Անգլերեն տարբերակը",
           "ru": "Английская версия",
           "en": "English version"
-        }
-      },
-      {
-        "id": "Քեզ կարոտելիս",
-        "label": "Քեզ կարոտելիս",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D5%94%D5%A5%D5%A6%20%D5%AF%D5%A1%D6%80%D5%B8%D5%BF%D5%A5%D5%AC%D5%AB%D5%BD.mp3"
-      },
-      {
-        "id": "Սիրել հենց հոգուն (1)",
-        "label": "Սիրել հենց հոգուն (1)",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D5%8D%D5%AB%D6%80%D5%A5%D5%AC%20%D5%B0%D5%A5%D5%B6%D6%81%20%D5%B0%D5%B8%D5%A3%D5%B8%D6%82%D5%B6%20(1).mp3"
-      },
-      {
-        "id": "Любить лишь душу (1)",
-        "label": "Любить лишь душу (1)",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%9B%D1%8E%D0%B1%D0%B8%D1%82%D1%8C%20%D0%BB%D0%B8%D1%88%D1%8C%20%D0%B4%D1%83%D1%88%D1%83%20(1).mp3",
-        "explanation": {
-          "hy": "Ռուսերեն տարբերակը",
-          "ru": "Русская версия",
-          "en": "Russian version"
-        }
-      },
-      {
-        "id": "Love Unseen (1)",
-        "label": "Love Unseen (1)",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Love%20Unseen%20(1).mp3",
-        "explanation": {
-          "hy": "Անգլերեն տարբերակը",
-          "ru": "Английская версия",
-          "en": "English version"
-        }
-      },
-      {
-        "id": "Սիրել հենց հոգուն",
-        "label": "Սիրել հենց հոգուն",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D5%8D%D5%AB%D6%80%D5%A5%D5%AC%20%D5%B0%D5%A5%D5%B6%D6%81%20%D5%B0%D5%B8%D5%A3%D5%B8%D6%82%D5%B6.mp3"
-      },
-      {
-        "id": "Любить лишь душу",
-        "label": "Любить лишь душу",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%9B%D1%8E%D0%B1%D0%B8%D1%82%D1%8C%20%D0%BB%D0%B8%D1%88%D1%8C%20%D0%B4%D1%83%D1%88%D1%83.mp3",
-        "explanation": {
-          "hy": "Ռուսերեն տարբերակը",
-          "ru": "Русская версия",
-          "en": "Russian version"
         }
       },
       {
@@ -1132,24 +1082,9 @@
         }
       },
       {
-        "id": "Թանկ հուշը",
-        "label": "Թանկ հուշը",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D4%B9%D5%A1%D5%B6%D5%AF%20%D5%B0%D5%B8%D6%82%D5%B7%D5%A8.mp3"
-      },
-      {
-        "id": "Сокровенный причал",
-        "label": "Сокровенный причал",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%A1%D0%BE%D0%BA%D1%80%D0%BE%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9%20%D0%BF%D1%80%D0%B8%D1%87%D0%B0%D0%BB.mp3",
-        "explanation": {
-          "hy": "Ռուսերեն տարբերակը",
-          "ru": "Русская версия",
-          "en": "Russian version"
-        }
-      },
-      {
-        "id": "Never a Stranger",
-        "label": "Never a Stranger",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Never%20a%20Stranger.mp3",
+        "id": "Love Unseen (1)",
+        "label": "Love Unseen (1)",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Love%20Unseen%20(1).mp3",
         "explanation": {
           "hy": "Անգլերեն տարբերակը",
           "ru": "Английская версия",
@@ -1157,24 +1092,39 @@
         }
       },
       {
-        "id": "Образы тоски",
-        "label": "Образы тоски",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%9E%D0%B1%D1%80%D0%B0%D0%B7%D1%8B%20%D1%82%D0%BE%D1%81%D0%BA%D0%B8.mp3",
+        "id": "My Bright Dream",
+        "label": "My Bright Dream",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/My%20Bright%20Dream.mp3",
         "explanation": {
-          "hy": "Ռուսերեն տարբերակը",
-          "ru": "Русская версия",
-          "en": "Russian version"
+          "hy": "Անգլերեն տարբերակը",
+          "ru": "Английская версия",
+          "en": "English version"
         }
       },
       {
-        "id": "Ծովի մեջ աչքերդ",
-        "label": "Ծովի մեջ աչքերդ",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D4%BE%D5%B8%D5%BE%D5%AB%20%D5%B4%D5%A5%D5%BB%20%D5%A1%D5%B9%D6%84%D5%A5%D6%80%D5%A4.mp3"
+        "id": "My Bright Dream (1)",
+        "label": "My Bright Dream (1)",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/My%20Bright%20Dream%20(1).mp3",
+        "explanation": {
+          "hy": "Անգլերեն տարբերակը",
+          "ru": "Английская версия",
+          "en": "English version"
+        }
       },
       {
-        "id": "The Illusion of Longing",
-        "label": "The Illusion of Longing",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/The%20Illusion%20of%20Longing.mp3",
+        "id": "My Endless Dream",
+        "label": "My Endless Dream",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/My%20Endless%20Dream.mp3",
+        "explanation": {
+          "hy": "Անգլերեն տարբերակը",
+          "ru": "Английская версия",
+          "en": "English version"
+        }
+      },
+      {
+        "id": "My Only Light",
+        "label": "My Only Light",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/My%20Only%20Light.mp3",
         "explanation": {
           "hy": "Անգլերեն տարբերակը",
           "ru": "Английская версия",
@@ -1202,9 +1152,9 @@
         }
       },
       {
-        "id": "My Bright Dream (1)",
-        "label": "My Bright Dream (1)",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/My%20Bright%20Dream%20(1).mp3",
+        "id": "Never a Stranger",
+        "label": "Never a Stranger",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Never%20a%20Stranger.mp3",
         "explanation": {
           "hy": "Անգլերեն տարբերակը",
           "ru": "Английская версия",
@@ -1212,9 +1162,9 @@
         }
       },
       {
-        "id": "My Bright Dream",
-        "label": "My Bright Dream",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/My%20Bright%20Dream.mp3",
+        "id": "Powerless Against Memories",
+        "label": "Powerless Against Memories",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Powerless%20Against%20Memories.mp3",
         "explanation": {
           "hy": "Անգլերեն տարբերակը",
           "ru": "Английская версия",
@@ -1222,29 +1172,9 @@
         }
       },
       {
-        "id": "խենթ խաղեր",
-        "label": "խենթ խաղեր",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D5%AD%D5%A5%D5%B6%D5%A9%20%D5%AD%D5%A1%D5%B2%D5%A5%D6%80.mp3"
-      },
-      {
-        "id": "Եղբայր իմ անգին",
-        "label": "Եղբայր իմ անգին",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D4%B5%D5%B2%D5%A2%D5%A1%D5%B5%D6%80%20%D5%AB%D5%B4%20%D5%A1%D5%B6%D5%A3%D5%AB%D5%B6.mp3"
-      },
-      {
-        "id": "Мой светлый луч",
-        "label": "Мой светлый луч",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%9C%D0%BE%D0%B9%20%D1%81%D0%B2%D0%B5%D1%82%D0%BB%D1%8B%D0%B9%20%D0%BB%D1%83%D1%87.mp3",
-        "explanation": {
-          "hy": "Ռուսերեն տարբերակը",
-          "ru": "Русская версия",
-          "en": "Russian version"
-        }
-      },
-      {
-        "id": "My Only Light",
-        "label": "My Only Light",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/My%20Only%20Light.mp3",
+        "id": "The Illusion of Longing",
+        "label": "The Illusion of Longing",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/The%20Illusion%20of%20Longing.mp3",
         "explanation": {
           "hy": "Անգլերեն տարբերակը",
           "ru": "Английская версия",
@@ -1252,14 +1182,34 @@
         }
       },
       {
-        "id": "Տիեզերական կինը roc",
-        "label": "Տիեզերական կինը րոց",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D5%8F%D5%AB%D5%A5%D5%A6%D5%A5%D6%80%D5%A1%D5%AF%D5%A1%D5%B6%20%D5%AF%D5%AB%D5%B6%D5%A8%20roc.mp3"
+        "id": "The Night's Embrace",
+        "label": "The Night's Embrace",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/The%20Night's%20Embrace.mp3",
+        "explanation": {
+          "hy": "Անգլերեն տարբերակը",
+          "ru": "Английская версия",
+          "en": "English version"
+        }
       },
       {
-        "id": "Տիեզերական կինը",
-        "label": "Տիեզերական կինը",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D5%8F%D5%AB%D5%A5%D5%A6%D5%A5%D6%80%D5%A1%D5%AF%D5%A1%D5%B6%20%D5%AF%D5%AB%D5%B6%D5%A8.mp3"
+        "id": "The Song of the Spring Breeze",
+        "label": "The Song of the Spring Breeze",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/The%20Song%20of%20the%20Spring%20Breeze.mp3",
+        "explanation": {
+          "hy": "Անգլերեն տարբերակը",
+          "ru": "Английская версия",
+          "en": "English version"
+        }
+      },
+      {
+        "id": "The Sun Cries Too",
+        "label": "The Sun Cries Too",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/The%20Sun%20Cries%20Too.mp3",
+        "explanation": {
+          "hy": "Անգլերեն տարբերակը",
+          "ru": "Английская версия",
+          "en": "English version"
+        }
       },
       {
         "id": "The Woman as the Universe",
@@ -1272,99 +1222,149 @@
         }
       },
       {
-        "id": "Տիեզերական կինը (Remastered)",
-        "label": "Տիեզերական կինը (Remastered)",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D5%8F%D5%AB%D5%A5%D5%A6%D5%A5%D6%80%D5%A1%D5%AF%D5%A1%D5%B6%20%D5%AF%D5%AB%D5%B6%D5%A8%20(Remastered).mp3"
+        "id": "You Are My World",
+        "label": "You Are My World",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/You%20Are%20My%20World.mp3",
+        "explanation": {
+          "hy": "Անգլերեն տարբերակը",
+          "ru": "Английская версия",
+          "en": "English version"
+        }
       },
       {
-        "id": "Երանի գայիր(Just Like Before)",
-        "label": "Երանի գայիր (Just Like Before)",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D4%B5%D6%80%D5%A1%D5%B6%D5%AB%20%D5%A3%D5%A1%D5%B5%D5%AB%D6%80(Just%20Like%20Before).mp3"
+        "id": "Безумный Ветер Любви",
+        "label": "Безумный Ветер Любви",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%91%D0%B5%D0%B7%D1%83%D0%BC%D0%BD%D1%8B%D0%B9%20%D0%92%D0%B5%D1%82%D0%B5%D1%80%20%D0%9B%D1%8E%D0%B1%D0%B2%D0%B8.mp3",
+        "explanation": {
+          "hy": "Ռուսերեն տարբերակը",
+          "ru": "Русская версия",
+          "en": "Russian version"
+        }
       },
       {
-        "id": "Դավաճան հայ",
-        "label": "Դավաճան հայ",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D4%B4%D5%A1%D5%BE%D5%A1%D5%B3%D5%A1%D5%B6%20%D5%B0%D5%A1%D5%B5.mp3"
+        "id": "Любить лишь душу",
+        "label": "Любить лишь душу",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%9B%D1%8E%D0%B1%D0%B8%D1%82%D1%8C%20%D0%BB%D0%B8%D1%88%D1%8C%20%D0%B4%D1%83%D1%88%D1%83.mp3",
+        "explanation": {
+          "hy": "Ռուսերեն տարբերակը",
+          "ru": "Русская версия",
+          "en": "Russian version"
+        }
       },
       {
-        "id": "Իմ Քնքուշ Սևան",
-        "label": "Իմ Քնքուշ Սառան",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D4%BB%D5%B4%20%D5%94%D5%B6%D6%84%D5%B8%D6%82%D5%B7%20%D5%8D%D6%87%D5%A1%D5%B6.mp3"
+        "id": "Любить лишь душу (1)",
+        "label": "Любить лишь душу (1)",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%9B%D1%8E%D0%B1%D0%B8%D1%82%D1%8C%20%D0%BB%D0%B8%D1%88%D1%8C%20%D0%B4%D1%83%D1%88%D1%83%20(1).mp3",
+        "explanation": {
+          "hy": "Ռուսերեն տարբերակը",
+          "ru": "Русская версия",
+          "en": "Russian version"
+        }
       },
       {
-        "id": "Քո ժպիտները հավաքեմ",
-        "label": "Քո ժպիտները հավաքեմ",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D5%94%D5%B8%20%D5%AA%D5%BA%D5%AB%D5%BF%D5%B6%D5%A5%D6%80%D5%A8%20%D5%B0%D5%A1%D5%BE%D5%A1%D6%84%D5%A5%D5%B4.mp3"
+        "id": "Мой светлый луч",
+        "label": "Мой светлый луч",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%9C%D0%BE%D0%B9%20%D1%81%D0%B2%D0%B5%D1%82%D0%BB%D1%8B%D0%B9%20%D0%BB%D1%83%D1%87.mp3",
+        "explanation": {
+          "hy": "Ռուսերեն տարբերակը",
+          "ru": "Русская версия",
+          "en": "Russian version"
+        }
       },
       {
-        "id": "ughernery-lac-chen-linum",
-        "label": "Ուժեղներն էլ լաց են լինում",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/ughernery-lac-chen-linum.mp3"
+        "id": "Образы тоски",
+        "label": "Образы тоски",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%9E%D0%B1%D1%80%D0%B0%D0%B7%D1%8B%20%D1%82%D0%BE%D1%81%D0%BA%D0%B8.mp3",
+        "explanation": {
+          "hy": "Ռուսերեն տարբերակը",
+          "ru": "Русская версия",
+          "en": "Russian version"
+        }
       },
       {
-        "id": "te karotum es",
-        "label": "Թե կարոտում ես",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/te%20karotum%20es.mp3"
+        "id": "Перед памятью злой",
+        "label": "Перед памятью злой",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%9F%D0%B5%D1%80%D0%B5%D0%B4%20%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D1%8C%D1%8E%20%D0%B7%D0%BB%D0%BE%D0%B9.mp3",
+        "explanation": {
+          "hy": "Ռուսերեն տարբերակը",
+          "ru": "Русская версия",
+          "en": "Russian version"
+        }
       },
       {
-        "id": "Tchaxr e pargevum ",
-        "label": "Ճախր է պարգևում",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/Tchaxr%20e%20pargevum%20.mp3"
+        "id": "Светлый полёт",
+        "label": "Светлый полёт",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%A1%D0%B2%D0%B5%D1%82%D0%BB%D1%8B%D0%B9%20%D0%BF%D0%BE%D0%BB%D1%91%D1%82.mp3",
+        "explanation": {
+          "hy": "Ռուսերեն տարբերակը",
+          "ru": "Русская версия",
+          "en": "Russian version"
+        }
       },
       {
-        "id": "lok cav u dard",
-        "label": "Լոկ ցավ ու դարդ",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/lok%20cav%20u%20dard.mp3"
+        "id": "Сокровенный причал",
+        "label": "Сокровенный причал",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%A1%D0%BE%D0%BA%D1%80%D0%BE%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9%20%D0%BF%D1%80%D0%B8%D1%87%D0%B0%D0%BB.mp3",
+        "explanation": {
+          "hy": "Ռուսերեն տարբերակը",
+          "ru": "Русская версия",
+          "en": "Russian version"
+        }
       },
       {
-        "id": "cav anbujeli",
-        "label": "Ցավ անբուժելի",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/cav%20anbujeli.mp3"
+        "id": "Тоска по мне",
+        "label": "Тоска по мне",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%A2%D0%BE%D1%81%D0%BA%D0%B0%20%D0%BF%D0%BE%20%D0%BC%D0%BD%D0%B5.mp3",
+        "explanation": {
+          "hy": "Ռուսերեն տարբերակը",
+          "ru": "Русская версия",
+          "en": "Russian version"
+        }
       },
       {
-        "id": "ov em qez hamar",
-        "label": "Ո՞վ եմ քեզ համար",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/ov%20em%20qez%20hamar.mp3"
+        "id": "Тоскуя по тебе",
+        "label": "Тоскуя по тебе",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%A2%D0%BE%D1%81%D0%BA%D1%83%D1%8F%20%D0%BF%D0%BE%20%D1%82%D0%B5%D0%B1%D0%B5.mp3",
+        "explanation": {
+          "hy": "Ռուսերեն տարբերակը",
+          "ru": "Русская версия",
+          "en": "Russian version"
+        }
       },
       {
-        "id": "bjur u bjur angam",
-        "label": "Բյուր ու բյուր անգամ",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/bjur%20u%20bjur%20angam.mp3"
+        "id": "ti moy kislarod",
+        "label": "Ты мой кислород",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/ti%20moy%20kislarod.mp3",
+        "explanation": {
+          "hy": "Ռուսերեն տարբերակը",
+          "ru": "Русская версия",
+          "en": "Russian version"
+        }
       },
       {
-        "id": "ete asem",
-        "label": "Եթե ասեմ",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/ete%20asem.mp3"
+        "id": "Ты мой мир",
+        "label": "Ты мой мир",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%A2%D1%8B%20%D0%BC%D0%BE%D0%B9%20%D0%BC%D0%B8%D1%80.mp3",
+        "explanation": {
+          "hy": "Ռուսերեն տարբերակը",
+          "ru": "Русская версия",
+          "en": "Russian version"
+        }
       },
       {
-        "id": "gereckuhi",
-        "label": "Գեղեցկուհի",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/gereckuhi.mp3"
-      },
-      {
-        "id": "ari-khmenq",
-        "label": "ԱՐԻ ԽՄԵՆՔ · ДАВАЙ ВЫПЬЕМ · BUVONS",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/ari-khmenq.mp3"
-      },
-      {
-        "id": "I Gave My Sorrow The Name",
-        "label": "I Gave My Sorrow The Name",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/I%20Gave%20My%20Sorrow%20The%20Name.mp3"
+        "id": "ti pridyosh komne",
+        "label": "Ты придёшь ко мне",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/ti%20pridyosh%20komne.mp3",
+        "explanation": {
+          "hy": "Ռուսերեն տարբերակը",
+          "ru": "Русская версия",
+          "en": "Russian version"
+        }
       },
       {
         "id": "Я назвал свою печаль тоской",
         "label": "Я назвал свою печаль тоской",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D0%AF%20%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BB%20%D1%81%D0%B2%D0%BE%D1%8E%20%D0%BF%D0%B5%D1%87%D0%B0%D0%BB%D1%8C%20%D1%82%D0%BE%D1%81%D0%BA%D0%BE%D0%B9.mp3"
-      },
-      {
-        "id": "Թախծիս անունը",
-        "label": "Թախծիս անունը",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D4%B9%D5%A1%D5%AD%D5%AE%D5%AB%D5%BD%20%D5%A1%D5%B6%D5%B8%D6%82%D5%B6%D5%A8.mp3"
-      },
-      {
-        "id": "Թախծիս անունը_1",
-        "label": "Թախծիս անունը (Տանգո)",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D4%B9%D5%A1%D5%AD%D5%AE%D5%AB%D5%BD%20%D5%A1%D5%B6%D5%B8%D6%82%D5%B6%D5%A8_1.mp3"
       }
     ]
   },
@@ -1470,6 +1470,15 @@
         }
       },
       {
+        "id": "darnaham-ginin",
+        "label": "Դառնահամ գինի",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/darnaham-ginin.mp3",
+        "explanation": {
+          "en": "Bitter Wine",
+          "ru": "Горькое вино"
+        }
+      },
+      {
         "id": "daravor karnin",
         "label": "Դարավոր կաղնի",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/daravor%20karnin.mp3",
@@ -1479,12 +1488,11 @@
         }
       },
       {
-        "id": "darnaham-ginin",
-        "label": "Դառնահամ գինի",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/darnaham-ginin.mp3",
+        "id": "Դու եկար",
+        "label": "Դու եկար",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D4%B4%D5%B8%D6%82%20%D5%A5%D5%AF%D5%A1%D6%80.mp3",
         "explanation": {
-          "en": "Bitter Wine",
-          "ru": "Горькое вино"
+          "hy": "Խոսք՝ Գոհար Ասելեսյան"
         }
       },
       {
@@ -1495,6 +1503,20 @@
           "en": "I Miss You Like Before",
           "ru": "Я скучаю по тебе, как прежде"
         }
+      },
+      {
+        "id": "Եվ ինչ է սերը",
+        "label": "Եվ ինչ է սերը",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D4%B5%D5%BE%20%D5%AB%D5%B6%D5%B9%20%D5%A7%20%D5%BD%D5%A5%D6%80%D5%A8.mp3",
+        "explanation": {
+          "en": "And What Is Love",
+          "ru": "И что такое любовь"
+        }
+      },
+      {
+        "id": "Իմ հայելի",
+        "label": "Իմ հայելի",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D4%BB%D5%B4%20%D5%B0%D5%A1%D5%B5%D5%A5%D5%AC%D5%AB.mp3"
       },
       {
         "id": "Im_poezian",
@@ -1533,6 +1555,11 @@
         }
       },
       {
+        "id": "Հայաստան, մեր սուրբ տուն",
+        "label": "Հայաստան, մեր սուրբ տուն",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D5%80%D5%A1%D5%B5%D5%A1%D5%BD%D5%BF%D5%A1%D5%B6%2C%20%D5%B4%D5%A5%D6%80%20%D5%BD%D5%B8%D6%82%D6%80%D5%A2%20%D5%BF%D5%B8%D6%82%D5%B6.mp3"
+      },
+      {
         "id": "HANDIPOMNERI_AYS_KhAChMEROKOM",
         "label": "Հանդիպումների այս խաչմերուկում",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/HANDIPOMNERI_AYS_KhAChMEROKOM.mp3",
@@ -1548,6 +1575,15 @@
         "explanation": {
           "en": "I Embrace You From Afar (Remix)",
           "ru": "Обнимаю издалека (Ремикс)"
+        }
+      },
+      {
+        "id": "hognel em ujer kin lineluc",
+        "label": "Հոգնել եմ ուժեղ կին լինելուց",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/hognel%20em%20ujer%20kin%20lineluc.mp3",
+        "explanation": {
+          "en": "I'm Tired of Being a Strong Woman",
+          "ru": "Устала быть сильной женщиной"
         }
       },
       {
@@ -1596,6 +1632,15 @@
         }
       },
       {
+        "id": "Չնոտագրված լռություն",
+        "label": "Չնոտագրված լռություն",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D5%89%D5%B6%D5%B8%D5%BF%D5%A1%D5%A3%D6%80%D5%BE%D5%A1%D5%AE%20%D5%AC%D5%BC%D5%B8%D6%82%D5%A9%D5%B5%D5%B8%D6%82%D5%B6.mp3",
+        "explanation": {
+          "en": "Unwritten Silence",
+          "ru": "Ненотированное молчание"
+        }
+      },
+      {
         "id": "POETIS",
         "label": "Պոետիս",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/POETIS.mp3",
@@ -1603,6 +1648,11 @@
           "en": "My Poet",
           "ru": "Мой поэт"
         }
+      },
+      {
+        "id": "Սիրելով գնամ",
+        "label": "Սիրելով գնամ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D5%8D%D5%AB%D6%80%D5%A5%D5%AC%D5%B8%D5%BE%20%D5%A3%D5%B6%D5%A1%D5%B4.mp3?v=b5e360f88c88"
       },
       {
         "id": "Sirogisher_Go_Hara",
@@ -1623,120 +1673,17 @@
         }
       },
       {
+        "id": "Փխրուն Լաց",
+        "label": "Փխրուն Լաց",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D5%93%D5%AD%D6%80%D5%B8%D6%82%D5%B6%20%D4%BC%D5%A1%D6%81.mp3"
+      },
+      {
         "id": "fracuzhenka",
         "label": "Ֆրանսուհին",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/fracuzhenka.mp3",
         "explanation": {
           "en": "The French Woman",
           "ru": "Француженка"
-        }
-      },
-      {
-        "id": "My Mirror True",
-        "label": "My Mirror True",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/My%20Mirror%20True.mp3",
-        "explanation": {
-          "hy": "Անգլերեն տարբերակը",
-          "ru": "Английская версия",
-          "en": "English version"
-        }
-      },
-      {
-        "id": "Зеркало моё",
-        "label": "Зеркало моё",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D0%97%D0%B5%D1%80%D0%BA%D0%B0%D0%BB%D0%BE%20%D0%BC%D0%BE%D1%91.mp3",
-        "explanation": {
-          "hy": "Ռուսերեն տարբերակը",
-          "ru": "Русская версия",
-          "en": "Russian version"
-        }
-      },
-      {
-        "id": "Իմ հայելի",
-        "label": "Իմ հայելի",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D4%BB%D5%B4%20%D5%B0%D5%A1%D5%B5%D5%A5%D5%AC%D5%AB.mp3"
-      },
-      {
-        "id": "Fragile Cry Has Risen Like",
-        "label": "Fragile Cry Has Risen Like",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/Fragile%20Cry%20Has%20Risen%20Like.mp3",
-        "explanation": {
-          "hy": "Անգլերեն տարբերակը",
-          "ru": "Английская версия",
-          "en": "English version"
-        }
-      },
-      {
-        "id": "Во мне поднялся хрупкий плач",
-        "label": "Во мне поднялся хрупкий плач",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D0%92%D0%BE%20%D0%BC%D0%BD%D0%B5%20%D0%BF%D0%BE%D0%B4%D0%BD%D1%8F%D0%BB%D1%81%D1%8F%20%D1%85%D1%80%D1%83%D0%BF%D0%BA%D0%B8%D0%B9%20%D0%BF%D0%BB%D0%B0%D1%87.mp3",
-        "explanation": {
-          "hy": "Ռուսերեն տարբերակը",
-          "ru": "Русская версия",
-          "en": "Russian version"
-        }
-      },
-      {
-        "id": "Փխրուն Լաց",
-        "label": "Փխրուն Լաց",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D5%93%D5%AD%D6%80%D5%B8%D6%82%D5%B6%20%D4%BC%D5%A1%D6%81.mp3"
-      },
-      {
-        "id": "Եվ ինչ է սերը",
-        "label": "Եվ ինչ է սերը",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D4%B5%D5%BE%20%D5%AB%D5%B6%D5%B9%20%D5%A7%20%D5%BD%D5%A5%D6%80%D5%A8.mp3",
-        "explanation": {
-          "en": "And What Is Love",
-          "ru": "И что такое любовь"
-        }
-      },
-      {
-        "id": "Չնոտագրված լռություն",
-        "label": "Չնոտագրված լռություն",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D5%89%D5%B6%D5%B8%D5%BF%D5%A1%D5%A3%D6%80%D5%BE%D5%A1%D5%AE%20%D5%AC%D5%BC%D5%B8%D6%82%D5%A9%D5%B5%D5%B8%D6%82%D5%B6.mp3",
-        "explanation": {
-          "en": "Unwritten Silence",
-          "ru": "Ненотированное молчание"
-        }
-      },
-      {
-        "id": "I'm tired of being strong",
-        "label": "I'M Tired Of Being Strong",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/I'm%20tired%20of%20being%20strong.mp3",
-        "explanation": {
-          "hy": "Հոգնել եմ ուժեղ կին լինելուց"
-        }
-      },
-      {
-        "id": "устала быть сильной",
-        "label": "устала быть сильной",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D1%83%D1%81%D1%82%D0%B0%D0%BB%D0%B0%20%D0%B1%D1%8B%D1%82%D1%8C%20%D1%81%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B9.mp3",
-        "explanation": {
-          "hy": "Հոգնել եմ ուժեղ կին լինելուց"
-        }
-      },
-      {
-        "id": "hognel em ujer kin lineluc",
-        "label": "Հոգնել եմ ուժեղ կին լինելուց",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/hognel%20em%20ujer%20kin%20lineluc.mp3",
-        "explanation": {
-          "en": "I'm Tired of Being a Strong Woman",
-          "ru": "Устала быть сильной женщиной"
-        }
-      },
-      {
-        "id": "Հայաստան, մեր սուրբ տուն",
-        "label": "Հայաստան, մեր սուրբ տուն",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D5%80%D5%A1%D5%B5%D5%A1%D5%BD%D5%BF%D5%A1%D5%B6%2C%20%D5%B4%D5%A5%D6%80%20%D5%BD%D5%B8%D6%82%D6%80%D5%A2%20%D5%BF%D5%B8%D6%82%D5%B6.mp3"
-      },
-      {
-        "id": "Армения, наш святой дом",
-        "label": "Армения, наш святой дом",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D0%90%D1%80%D0%BC%D0%B5%D0%BD%D0%B8%D1%8F%2C%20%D0%BD%D0%B0%D1%88%20%D1%81%D0%B2%D1%8F%D1%82%D0%BE%D0%B9%20%D0%B4%D0%BE%D0%BC.mp3",
-        "explanation": {
-          "hy": "Ռուսերեն տարբերակը",
-          "ru": "Русская версия",
-          "en": "Russian version"
         }
       },
       {
@@ -1750,18 +1697,13 @@
         }
       },
       {
-        "id": "Սիրելով գնամ",
-        "label": "Սիրելով գնամ",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D5%8D%D5%AB%D6%80%D5%A5%D5%AC%D5%B8%D5%BE%20%D5%A3%D5%B6%D5%A1%D5%B4.mp3?v=b5e360f88c88"
-      },
-      {
-        "id": "Я уйду любя",
-        "label": "Я уйду любя",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D0%AF%20%D1%83%D0%B9%D0%B4%D1%83%20%D0%BB%D1%8E%D0%B1%D1%8F.mp3?v=a4c22ad27185",
+        "id": "Fragile Cry Has Risen Like",
+        "label": "Fragile Cry Has Risen Like",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/Fragile%20Cry%20Has%20Risen%20Like.mp3",
         "explanation": {
-          "hy": "Ռուսերեն տարբերակը",
-          "ru": "Русская версия",
-          "en": "Russian version"
+          "hy": "Անգլերեն տարբերակը",
+          "ru": "Английская версия",
+          "en": "English version"
         }
       },
       {
@@ -1775,11 +1717,59 @@
         }
       },
       {
-        "id": "Դու եկար",
-        "label": "Դու եկար",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D4%B4%D5%B8%D6%82%20%D5%A5%D5%AF%D5%A1%D6%80.mp3",
+        "id": "I'm tired of being strong",
+        "label": "I'M Tired Of Being Strong",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/I'm%20tired%20of%20being%20strong.mp3",
         "explanation": {
-          "hy": "Խոսք՝ Գոհար Ասելեսյան"
+          "hy": "Հոգնել եմ ուժեղ կին լինելուց"
+        }
+      },
+      {
+        "id": "My Mirror True",
+        "label": "My Mirror True",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/My%20Mirror%20True.mp3",
+        "explanation": {
+          "hy": "Անգլերեն տարբերակը",
+          "ru": "Английская версия",
+          "en": "English version"
+        }
+      },
+      {
+        "id": "You Came",
+        "label": "You Came",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/You%20Came.mp3",
+        "explanation": {
+          "en": "Lyrics — Gohar Aselesyan"
+        }
+      },
+      {
+        "id": "Армения, наш святой дом",
+        "label": "Армения, наш святой дом",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D0%90%D1%80%D0%BC%D0%B5%D0%BD%D0%B8%D1%8F%2C%20%D0%BD%D0%B0%D1%88%20%D1%81%D0%B2%D1%8F%D1%82%D0%BE%D0%B9%20%D0%B4%D0%BE%D0%BC.mp3",
+        "explanation": {
+          "hy": "Ռուսերեն տարբերակը",
+          "ru": "Русская версия",
+          "en": "Russian version"
+        }
+      },
+      {
+        "id": "Во мне поднялся хрупкий плач",
+        "label": "Во мне поднялся хрупкий плач",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D0%92%D0%BE%20%D0%BC%D0%BD%D0%B5%20%D0%BF%D0%BE%D0%B4%D0%BD%D1%8F%D0%BB%D1%81%D1%8F%20%D1%85%D1%80%D1%83%D0%BF%D0%BA%D0%B8%D0%B9%20%D0%BF%D0%BB%D0%B0%D1%87.mp3",
+        "explanation": {
+          "hy": "Ռուսերեն տարբերակը",
+          "ru": "Русская версия",
+          "en": "Russian version"
+        }
+      },
+      {
+        "id": "Зеркало моё",
+        "label": "Зеркало моё",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D0%97%D0%B5%D1%80%D0%BA%D0%B0%D0%BB%D0%BE%20%D0%BC%D0%BE%D1%91.mp3",
+        "explanation": {
+          "hy": "Ռուսերեն տարբերակը",
+          "ru": "Русская версия",
+          "en": "Russian version"
         }
       },
       {
@@ -1791,11 +1781,21 @@
         }
       },
       {
-        "id": "You Came",
-        "label": "You Came",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/You%20Came.mp3",
+        "id": "устала быть сильной",
+        "label": "устала быть сильной",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D1%83%D1%81%D1%82%D0%B0%D0%BB%D0%B0%20%D0%B1%D1%8B%D1%82%D1%8C%20%D1%81%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B9.mp3",
         "explanation": {
-          "en": "Lyrics — Gohar Aselesyan"
+          "hy": "Հոգնել եմ ուժեղ կին լինելուց"
+        }
+      },
+      {
+        "id": "Я уйду любя",
+        "label": "Я уйду любя",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D0%AF%20%D1%83%D0%B9%D0%B4%D1%83%20%D0%BB%D1%8E%D0%B1%D1%8F.mp3?v=a4c22ad27185",
+        "explanation": {
+          "hy": "Ռուսերեն տարբերակը",
+          "ru": "Русская версия",
+          "en": "Russian version"
         }
       }
     ]
@@ -3033,24 +3033,6 @@
     },
     "tracks": [
       {
-        "id": "vahan-teryan/Autumn and Rain  Աշուն Է անձրև",
-        "label": "Autumn and Rain (Աշուն է, անձրև)",
-        "subtitle": "Վահան Տերյան",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vahan-teryan%2FAutumn%20and%20Rain%20%20%D4%B1%D5%B7%D5%B8%D6%82%D5%B6%20%D4%B7%20%D5%A1%D5%B6%D5%B1%D6%80%D6%87.mp3",
-        "explanation": {
-          "ru": "Осень и дождь"
-        }
-      },
-      {
-        "id": "vahan-teryan/Golden Stars in Blue(Տխուր զրույց)",
-        "label": "Golden Stars in Blue (Տխուր զրույց)",
-        "subtitle": "Վահան Տերյան",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vahan-teryan%2FGolden%20Stars%20in%20Blue(%D5%8F%D5%AD%D5%B8%D6%82%D6%80%20%D5%A6%D6%80%D5%B8%D6%82%D5%B5%D6%81).mp3",
-        "explanation": {
-          "ru": "Золотые звёзды в синеве"
-        }
-      },
-      {
         "id": "vahan-teryan/ananun ser",
         "label": "Անանուն սեր",
         "subtitle": "Վահան Տերյան",
@@ -3241,207 +3223,21 @@
         }
       },
       {
-        "id": "hamo-sahyan/How Can I Just Leave",
-        "label": "How Can I Just Leave",
-        "subtitle": "Համո Սահյան",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2FHow%20Can%20I%20Just%20Leave.mp3",
+        "id": "vahan-teryan/Autumn and Rain  Աշուն Է անձրև",
+        "label": "Autumn and Rain (Աշուն է, անձրև)",
+        "subtitle": "Վահան Տերյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vahan-teryan%2FAutumn%20and%20Rain%20%20%D4%B1%D5%B7%D5%B8%D6%82%D5%B6%20%D4%B7%20%D5%A1%D5%B6%D5%B1%D6%80%D6%87.mp3",
         "explanation": {
-          "hy": "Ինչպե՞ս գնամ"
+          "ru": "Осень и дождь"
         }
       },
       {
-        "id": "hamo-sahyan/I Will Come Anyway",
-        "label": "I Will Come Anyway",
-        "subtitle": "Համո Սահյան",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2FI%20Will%20Come%20Anyway.mp3",
+        "id": "vahan-teryan/Golden Stars in Blue(Տխուր զրույց)",
+        "label": "Golden Stars in Blue (Տխուր զրույց)",
+        "subtitle": "Վահան Տերյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vahan-teryan%2FGolden%20Stars%20in%20Blue(%D5%8F%D5%AD%D5%B8%D6%82%D6%80%20%D5%A6%D6%80%D5%B8%D6%82%D5%B5%D6%81).mp3",
         "explanation": {
-          "hy": "Միևնույն է՝ կգամ"
-        }
-      },
-      {
-        "id": "hamo-sahyan/My First Love",
-        "label": "My First Love",
-        "subtitle": "Համո Սահյան",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2FMy%20First%20Love.mp3",
-        "explanation": {
-          "hy": "Իմ առաջին սերը"
-        }
-      },
-      {
-        "id": "hamo-sahyan/Our Language",
-        "label": "Our Language",
-        "subtitle": "Համո Սահյան",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2FOur%20Language.mp3",
-        "explanation": {
-          "hy": "Մեր լեզուն"
-        }
-      },
-      {
-        "id": "hamo-sahyan/The Forest's Whisper",
-        "label": "The Forest's Whisper",
-        "subtitle": "Համո Սահյան",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2FThe%20Forest's%20Whisper.mp3",
-        "explanation": {
-          "hy": "Անտառի շշունջը"
-        }
-      },
-      {
-        "id": "hamo-sahyan/The One in Vain",
-        "label": "The One in Vain",
-        "subtitle": "Համո Սահյան",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2FThe%20One%20in%20Vain.mp3",
-        "explanation": {
-          "hy": "Զուրն է"
-        }
-      },
-      {
-        "id": "hamo-sahyan/The Thunderstorm",
-        "label": "The Thunderstorm",
-        "subtitle": "Համո Սահյան",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2FThe%20Thunderstorm.mp3",
-        "explanation": {
-          "hy": "Ամպրոպը"
-        }
-      },
-      {
-        "id": "hamo-sahyan/vsio ravno pridu",
-        "label": "Всё равно я приду",
-        "subtitle": "Համո Սահյան",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fvsio%20ravno%20pridu.mp3",
-        "explanation": {
-          "hy": "Միևնույն է՝ կգամ"
-        }
-      },
-      {
-        "id": "hamo-sahyan/vsem kem ya bil",
-        "label": "Всё, кем я был",
-        "subtitle": "Համո Սահյան",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fvsem%20kem%20ya%20bil.mp3",
-        "explanation": {
-          "hy": "Այն ամենը, ինչ ես եղել եմ"
-        }
-      },
-      {
-        "id": "hamo-sahyan/dojd",
-        "label": "Дождь",
-        "subtitle": "Համո Սահյան",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fdojd.mp3",
-        "explanation": {
-          "hy": "Ռուսերեն տարբերակը",
-          "ru": "Русская версия",
-          "en": "Russian version"
-        }
-      },
-      {
-        "id": "hamo-sahyan/dojd roc",
-        "label": "Дождь (рок)",
-        "subtitle": "Համո Սահյան",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fdojd%20roc.mp3",
-        "explanation": {
-          "hy": "Ռուսերեն տարբերակը",
-          "ru": "Русская версия",
-          "en": "Russian version"
-        }
-      },
-      {
-        "id": "hamo-sahyan/kak je mne uyti",
-        "label": "Как же мне уйти",
-        "subtitle": "Համո Սահյան",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fkak%20je%20mne%20uyti.mp3",
-        "explanation": {
-          "hy": "Ինչպե՞ս գնամ"
-        }
-      },
-      {
-        "id": "hamo-sahyan/mama",
-        "label": "Мама",
-        "subtitle": "Համո Սահյան",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fmama.mp3",
-        "explanation": {
-          "hy": "Մայրիկ"
-        }
-      },
-      {
-        "id": "hamo-sahyan/moi sredstva moi zaboti",
-        "label": "Мои средства... Мои заботы...",
-        "subtitle": "Համո Սահյան",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fmoi%20sredstva%20moi%20zaboti.mp3",
-        "explanation": {
-          "hy": "Ռուսերեն տարբերակը",
-          "ru": "Русская версия",
-          "en": "Russian version"
-        }
-      },
-      {
-        "id": "hamo-sahyan/moya neprojitaya jizn",
-        "label": "Моя непрожитая жизнь",
-        "subtitle": "Համո Սահյան",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fmoya%20neprojitaya%20jizn.mp3",
-        "explanation": {
-          "hy": "Իմ չապրված կյանքը"
-        }
-      },
-      {
-        "id": "hamo-sahyan/nash yazik",
-        "label": "Наш язык",
-        "subtitle": "Համո Սահյան",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fnash%20yazik.mp3",
-        "explanation": {
-          "hy": "Մեր լեզուն"
-        }
-      },
-      {
-        "id": "hamo-sahyan/pervaya lubov",
-        "label": "Первая любовь моя",
-        "subtitle": "Համո Սահյան",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fpervaya%20lubov.mp3",
-        "explanation": {
-          "hy": "Իմ առաջին սերը"
-        }
-      },
-      {
-        "id": "hamo-sahyan/paceluy vetra",
-        "label": "Поцелуй ветра",
-        "subtitle": "Համո Սահյան",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fpaceluy%20vetra.mp3",
-        "explanation": {
-          "hy": "Քամու համբույրը"
-        }
-      },
-      {
-        "id": "hamo-sahyan/proshay",
-        "label": "Прощай",
-        "subtitle": "Համո Սահյան",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fproshay.mp3",
-        "explanation": {
-          "hy": "Հրաժեշտ"
-        }
-      },
-      {
-        "id": "hamo-sahyan/uznat menya ne tak prosto",
-        "label": "Узнать меня совсем непросто",
-        "subtitle": "Համո Սահյան",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fuznat%20menya%20ne%20tak%20prosto.mp3",
-        "explanation": {
-          "hy": "Ինձ ճանաչելը հեշտ չէ"
-        }
-      },
-      {
-        "id": "hamo-sahyan/chto bilo to bilo",
-        "label": "Что было, то было",
-        "subtitle": "Համո Սահյան",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fchto%20bilo%20to%20bilo.mp3",
-        "explanation": {
-          "hy": "Ինչ եղել է, եղել է"
-        }
-      },
-      {
-        "id": "hamo-sahyan/ya xotel razdeliat",
-        "label": "Я хотел бы разделять с тобой",
-        "subtitle": "Համո Սահյան",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fya%20xotel%20razdeliat.mp3",
-        "explanation": {
-          "hy": "Ես կցանկանայի կիսել քեզ հետ"
+          "ru": "Золотые звёзды в синеве"
         }
       },
       {
@@ -3459,6 +3255,12 @@
           "en": "Every Morning",
           "ru": "Каждое утро"
         }
+      },
+      {
+        "id": "hamo-sahyan/Ամպ է Նորից",
+        "label": "Ամպ է Նորից",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2F%D4%B1%D5%B4%D5%BA%20%D5%A7%20%D5%86%D5%B8%D6%80%D5%AB%D6%81.mp3"
       },
       {
         "id": "hamo-sahyan/anzrev",
@@ -3517,16 +3319,6 @@
         }
       },
       {
-        "id": "hamo-sahyan/es u du",
-        "label": "Ես և դու",
-        "subtitle": "Համո Սահյան",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fes%20u%20du.mp3",
-        "explanation": {
-          "en": "You and I",
-          "ru": "Я и ты"
-        }
-      },
-      {
         "id": "hamo-sahyan/es kuzei ",
         "label": "Ես կուզեի",
         "subtitle": "Համո Սահյան",
@@ -3554,6 +3346,16 @@
         "explanation": {
           "en": "I Cannot Help Being Inspired (Rock)",
           "ru": "Я не могу не вдохновляться (рок)"
+        }
+      },
+      {
+        "id": "hamo-sahyan/es u du",
+        "label": "Ես և դու",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fes%20u%20du.mp3",
+        "explanation": {
+          "en": "You and I",
+          "ru": "Я и ты"
         }
       },
       {
@@ -3771,12 +3573,6 @@
         }
       },
       {
-        "id": "hamo-sahyan/Ամպ է Նորից",
-        "label": "Ամպ է Նորից",
-        "subtitle": "Համո Սահյան",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2F%D4%B1%D5%B4%D5%BA%20%D5%A7%20%D5%86%D5%B8%D6%80%D5%AB%D6%81.mp3"
-      },
-      {
         "id": "hamo-sahyan/vshtacel em amen inchic",
         "label": "Վշտացել եմ ամեն ինչ",
         "subtitle": "Համո Սահյան",
@@ -3823,21 +3619,207 @@
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fqamu%20hamburic.mp3"
       },
       {
-        "id": "parujr-sevak/What Color Is Love",
-        "label": "What Color Is Love",
-        "subtitle": "Պարույր Սևակ",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/parujr-sevak%2FWhat%20Color%20Is%20Love.mp3",
+        "id": "hamo-sahyan/How Can I Just Leave",
+        "label": "How Can I Just Leave",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2FHow%20Can%20I%20Just%20Leave.mp3",
         "explanation": {
-          "hy": "Սերն ինչ գույն ունի — անգլերեն տարբերակը"
+          "hy": "Ինչպե՞ս գնամ"
         }
       },
       {
-        "id": "parujr-sevak/Какого цвета любовь",
-        "label": "Какого цвета любовь",
-        "subtitle": "Պարույր Սևակ",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/parujr-sevak%2F%D0%9A%D0%B0%D0%BA%D0%BE%D0%B3%D0%BE%20%D1%86%D0%B2%D0%B5%D1%82%D0%B0%20%D0%BB%D1%8E%D0%B1%D0%BE%D0%B2%D1%8C.mp3",
+        "id": "hamo-sahyan/I Will Come Anyway",
+        "label": "I Will Come Anyway",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2FI%20Will%20Come%20Anyway.mp3",
         "explanation": {
-          "hy": "Սերն ինչ գույն ունի — ռուսերեն տարբերակը"
+          "hy": "Միևնույն է՝ կգամ"
+        }
+      },
+      {
+        "id": "hamo-sahyan/My First Love",
+        "label": "My First Love",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2FMy%20First%20Love.mp3",
+        "explanation": {
+          "hy": "Իմ առաջին սերը"
+        }
+      },
+      {
+        "id": "hamo-sahyan/Our Language",
+        "label": "Our Language",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2FOur%20Language.mp3",
+        "explanation": {
+          "hy": "Մեր լեզուն"
+        }
+      },
+      {
+        "id": "hamo-sahyan/The Forest's Whisper",
+        "label": "The Forest's Whisper",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2FThe%20Forest's%20Whisper.mp3",
+        "explanation": {
+          "hy": "Անտառի շշունջը"
+        }
+      },
+      {
+        "id": "hamo-sahyan/The One in Vain",
+        "label": "The One in Vain",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2FThe%20One%20in%20Vain.mp3",
+        "explanation": {
+          "hy": "Զուրն է"
+        }
+      },
+      {
+        "id": "hamo-sahyan/The Thunderstorm",
+        "label": "The Thunderstorm",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2FThe%20Thunderstorm.mp3",
+        "explanation": {
+          "hy": "Ամպրոպը"
+        }
+      },
+      {
+        "id": "hamo-sahyan/vsio ravno pridu",
+        "label": "Всё равно я приду",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fvsio%20ravno%20pridu.mp3",
+        "explanation": {
+          "hy": "Միևնույն է՝ կգամ"
+        }
+      },
+      {
+        "id": "hamo-sahyan/vsem kem ya bil",
+        "label": "Всё, кем я был",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fvsem%20kem%20ya%20bil.mp3",
+        "explanation": {
+          "hy": "Այն ամենը, ինչ ես եղել եմ"
+        }
+      },
+      {
+        "id": "hamo-sahyan/dojd",
+        "label": "Дождь",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fdojd.mp3",
+        "explanation": {
+          "hy": "Ռուսերեն տարբերակը",
+          "ru": "Русская версия",
+          "en": "Russian version"
+        }
+      },
+      {
+        "id": "hamo-sahyan/dojd roc",
+        "label": "Дождь (рок)",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fdojd%20roc.mp3",
+        "explanation": {
+          "hy": "Ռուսերեն տարբերակը",
+          "ru": "Русская версия",
+          "en": "Russian version"
+        }
+      },
+      {
+        "id": "hamo-sahyan/kak je mne uyti",
+        "label": "Как же мне уйти",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fkak%20je%20mne%20uyti.mp3",
+        "explanation": {
+          "hy": "Ինչպե՞ս գնամ"
+        }
+      },
+      {
+        "id": "hamo-sahyan/mama",
+        "label": "Мама",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fmama.mp3",
+        "explanation": {
+          "hy": "Մայրիկ"
+        }
+      },
+      {
+        "id": "hamo-sahyan/moi sredstva moi zaboti",
+        "label": "Мои средства... Мои заботы...",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fmoi%20sredstva%20moi%20zaboti.mp3",
+        "explanation": {
+          "hy": "Ռուսերեն տարբերակը",
+          "ru": "Русская версия",
+          "en": "Russian version"
+        }
+      },
+      {
+        "id": "hamo-sahyan/moya neprojitaya jizn",
+        "label": "Моя непрожитая жизнь",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fmoya%20neprojitaya%20jizn.mp3",
+        "explanation": {
+          "hy": "Իմ չապրված կյանքը"
+        }
+      },
+      {
+        "id": "hamo-sahyan/nash yazik",
+        "label": "Наш язык",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fnash%20yazik.mp3",
+        "explanation": {
+          "hy": "Մեր լեզուն"
+        }
+      },
+      {
+        "id": "hamo-sahyan/pervaya lubov",
+        "label": "Первая любовь моя",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fpervaya%20lubov.mp3",
+        "explanation": {
+          "hy": "Իմ առաջին սերը"
+        }
+      },
+      {
+        "id": "hamo-sahyan/paceluy vetra",
+        "label": "Поцелуй ветра",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fpaceluy%20vetra.mp3",
+        "explanation": {
+          "hy": "Քամու համբույրը"
+        }
+      },
+      {
+        "id": "hamo-sahyan/proshay",
+        "label": "Прощай",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fproshay.mp3",
+        "explanation": {
+          "hy": "Հրաժեշտ"
+        }
+      },
+      {
+        "id": "hamo-sahyan/uznat menya ne tak prosto",
+        "label": "Узнать меня совсем непросто",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fuznat%20menya%20ne%20tak%20prosto.mp3",
+        "explanation": {
+          "hy": "Ինձ ճանաչելը հեշտ չէ"
+        }
+      },
+      {
+        "id": "hamo-sahyan/chto bilo to bilo",
+        "label": "Что было, то было",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fchto%20bilo%20to%20bilo.mp3",
+        "explanation": {
+          "hy": "Ինչ եղել է, եղել է"
+        }
+      },
+      {
+        "id": "hamo-sahyan/ya xotel razdeliat",
+        "label": "Я хотел бы разделять с тобой",
+        "subtitle": "Համո Սահյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2Fya%20xotel%20razdeliat.mp3",
+        "explanation": {
+          "hy": "Ես կցանկանայի կիսել քեզ հետ"
         }
       },
       {
@@ -3907,6 +3889,24 @@
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/parujr-sevak%2F%D5%8D%D4%B5%D5%90%D5%86%20%D4%BB%D5%86%D5%89%20%D4%B3%D5%88%D5%92%D5%85%D5%86%20%D5%88%D5%92%D5%86%D4%BB.mp3"
       },
       {
+        "id": "parujr-sevak/What Color Is Love",
+        "label": "What Color Is Love",
+        "subtitle": "Պարույր Սևակ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/parujr-sevak%2FWhat%20Color%20Is%20Love.mp3",
+        "explanation": {
+          "hy": "Սերն ինչ գույն ունի — անգլերեն տարբերակը"
+        }
+      },
+      {
+        "id": "parujr-sevak/Какого цвета любовь",
+        "label": "Какого цвета любовь",
+        "subtitle": "Պարույր Սևակ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/parujr-sevak%2F%D0%9A%D0%B0%D0%BA%D0%BE%D0%B3%D0%BE%20%D1%86%D0%B2%D0%B5%D1%82%D0%B0%20%D0%BB%D1%8E%D0%B1%D0%BE%D0%B2%D1%8C.mp3",
+        "explanation": {
+          "hy": "Սերն ինչ գույն ունի — ռուսերեն տարբերակը"
+        }
+      },
+      {
         "id": "avetik-isahakyan/Ախ կուզես լինիմ",
         "label": "Ախ կուզես լինիմ",
         "subtitle": "Ավետիք Իսահակյան",
@@ -3934,28 +3934,6 @@
         "explanation": {
           "en": "My Youthful Heart",
           "ru": "Моё юное сердце"
-        }
-      },
-      {
-        "id": "silva-kaputikyan/The Moons Jealousy",
-        "label": "The Moon's Jealousy",
-        "subtitle": "Սիլվա Կապուտիկյան",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/silva-kaputikyan%2FThe%20Moons%20Jealousy.mp3",
-        "explanation": {
-          "hy": "Անգլերեն տարբերակը",
-          "ru": "Английская версия",
-          "en": "English version"
-        }
-      },
-      {
-        "id": "silva-kaputikyan/Белая Луна",
-        "label": "Белая Луна",
-        "subtitle": "Սիլվա Կապուտիկյան",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/silva-kaputikyan%2F%D0%91%D0%B5%D0%BB%D0%B0%D1%8F%20%D0%9B%D1%83%D0%BD%D0%B0.mp3",
-        "explanation": {
-          "hy": "Ռուսերեն տարբերակը",
-          "ru": "Русская версия",
-          "en": "Russian version"
         }
       },
       {
@@ -3991,6 +3969,28 @@
         "label": "Քեզ փնտրում եմ",
         "subtitle": "Սիլվա Կապուտիկյան",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/silva-kaputikyan%2F%D5%94%D5%A5%D5%A6%20%D6%83%D5%B6%D5%BF%D6%80%D5%B8%D6%82%D5%B4%20%D5%A5%D5%B4.mp3"
+      },
+      {
+        "id": "silva-kaputikyan/The Moons Jealousy",
+        "label": "The Moon's Jealousy",
+        "subtitle": "Սիլվա Կապուտիկյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/silva-kaputikyan%2FThe%20Moons%20Jealousy.mp3",
+        "explanation": {
+          "hy": "Անգլերեն տարբերակը",
+          "ru": "Английская версия",
+          "en": "English version"
+        }
+      },
+      {
+        "id": "silva-kaputikyan/Белая Луна",
+        "label": "Белая Луна",
+        "subtitle": "Սիլվա Կապուտիկյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/silva-kaputikyan%2F%D0%91%D0%B5%D0%BB%D0%B0%D1%8F%20%D0%9B%D1%83%D0%BD%D0%B0.mp3",
+        "explanation": {
+          "hy": "Ռուսերեն տարբերակը",
+          "ru": "Русская версия",
+          "en": "Russian version"
+        }
       },
       {
         "id": "vahagn-davtyan/Սեր",
