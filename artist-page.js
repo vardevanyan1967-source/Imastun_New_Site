@@ -19,6 +19,15 @@
   var crossfadeWatchdog = null;
   var crossfadeNextIndex = -1;
   var player = document.getElementById("player");
+  var playerCoverEl = document.getElementById("player-cover");
+  var playerBg = document.getElementById("player-bg");
+  function setPlayerCover(coverSrc) {
+    playerCoverEl.src = coverSrc;
+    if (playerBg) {
+      playerBg.style.backgroundImage = 'url("' + coverSrc + '")';
+      playerBg.classList.add("active");
+    }
+  }
   var list = document.getElementById("track-list");
   var empty = document.getElementById("empty");
   var resultCount = document.getElementById("result-count");
@@ -238,6 +247,7 @@
   function syncPlayer() {
     var active = state.current >= 0 ? TRACKS[state.current] : null;
     var playing = active && !curAudio().paused;
+    playerCoverEl.classList.toggle("is-playing", !!playing);
     playButton.textContent = playing ? "❚❚" : "▶";
     playButton.setAttribute("aria-label", tr(playing ? "pause" : "play"));
     document.getElementById("prev").setAttribute("aria-label", tr("previous"));
@@ -263,7 +273,7 @@
     showPlayer();
     playerTitle.textContent = track.label;
     playerTitle.className = "player-title " + languageCountClass(track);
-    document.getElementById("player-cover").src = artist.cover;
+    setPlayerCover(artist.cover);
     progress.value = "0";
     currentTime.textContent = "0:00";
     duration.textContent = "0:00";
@@ -727,7 +737,7 @@
     document.getElementById("cover").alt = artist.name;
     document.getElementById("cover-mark").textContent = artist.mark || "";
     document.getElementById("hero-stat").firstChild.nodeValue = TRACKS.length + " ";
-    document.getElementById("player-cover").src = artist.cover;
+    setPlayerCover(artist.cover);
     playerTitle.textContent = artist.name;
     resultCount.textContent = TRACKS.length + " " + tr("songWord");
     setupPoetFilters();
