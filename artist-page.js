@@ -163,7 +163,8 @@
       if (state.filter === "favorites" && !isFavorite(item.track.id)) return false;
       if (artist && artist.id === "haj-poetner" && state.poet !== "all" && item.track.subtitle !== state.poet) return false;
       if (!term) return true;
-      return (item.track.label + " " + item.track.id + " " + (item.track.subtitle || "")).toLocaleLowerCase(locale).indexOf(term) >= 0;
+      var explText = item.track.explanation ? Object.values(item.track.explanation).join(" ") : "";
+      return (item.track.label + " " + item.track.id + " " + (item.track.subtitle || "") + " " + explText).toLocaleLowerCase(locale).indexOf(term) >= 0;
     });
   }
 
