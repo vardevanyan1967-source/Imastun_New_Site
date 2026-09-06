@@ -4,6 +4,12 @@
   var artistId = document.body.getAttribute("data-artist-id");
   var artist = null;
   var TRACKS = [];
+  var SUPABASE_URL = "https://jcqkpqhaxkgfjcasklnq.supabase.co";
+  var SUPABASE_KEY = "sb_publishable_7iNYB-HogL42o_luHkI-gg_KzPylN3c";
+  var supabaseClient = null;
+  var currentUser = null;
+  var currentSession = null;
+  var ALL_ARTIST_IDS = [];
   var state = { lang: "hy", filter: "all", poet: "all", query: "", current: -1 };
   var audio = document.getElementById("audio");
   var audio2 = new Audio();
@@ -148,10 +154,112 @@
   function toggleFavorite(id) {
     var value = favorites();
     var found = value.indexOf(id);
+    var nowFav = found < 0;
     if (found >= 0) value.splice(found, 1);
     else value.push(id);
     write(favoriteKey(), JSON.stringify(value));
+    if (currentUser && currentSession && artist) {
+      if (nowFav) {
+        fetch(SUPABASE_URL + "/rest/v1/favorites", {
+          method: "POST",
+          headers: {
+            "apikey": SUPABASE_KEY,
+            "Authorization": "Bearer " + currentSession.access_token,
+            "Content-Type": "application/json",
+            "Prefer": "resolution=merge-duplicates"
+          },
+          body: JSON.stringify({ user_id: currentUser.id, song_id: id, artist_id: artist.id })
+        }).catch(function () {});
+      } else {
+        fetch(SUPABASE_URL + "/rest/v1/favorites?song_id=eq." + encodeURIComponent(id) + "&artist_id=eq." + encodeURIComponent(artist.id), {
+          method: "DELETE",
+          headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + currentSession.access_token }
+        }).catch(function () {});
+      }
+    }
     renderTracks();
+  }
+
+  function favKey(artistId2, song) { return artistId2 + "|" + song; }
+
+  function syncFavoritesOnLogin() {
+    if (!currentUser || !currentSession) return Promise.resolve();
+    return fetch(SUPABASE_URL + "/rest/v1/favorites?select=song_id,artist_id", {
+      headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + currentSession.access_token }
+    }).then(function (res) {
+      if (!res.ok) return null;
+      return res.json();
+    }).then(function (remote) {
+      if (!remote) return;
+      var remoteSet = {};
+      remote.forEach(function (r) { remoteSet[favKey(r.artist_id, r.song_id)] = true; });
+      var toUpload = [];
+      ALL_ARTIST_IDS.forEach(function (aid) {
+        var key = aid + "_favorites";
+        var local = [];
+        try {
+          local = JSON.parse(read(key, "[]"));
+          if (!Array.isArray(local)) local = [];
+        } catch (e) { local = []; }
+        var changed = false;
+        remote.filter(function (r) { return r.artist_id === aid; }).forEach(function (r) {
+          if (local.indexOf(r.song_id) < 0) { local.push(r.song_id); changed = true; }
+        });
+        if (changed) write(key, JSON.stringify(local));
+        local.forEach(function (song) {
+          if (!remoteSet[favKey(aid, song)]) toUpload.push({ user_id: currentUser.id, song_id: song, artist_id: aid });
+        });
+      });
+      if (!toUpload.length) return;
+      return fetch(SUPABASE_URL + "/rest/v1/favorites", {
+        method: "POST",
+        headers: {
+          "apikey": SUPABASE_KEY,
+          "Authorization": "Bearer " + currentSession.access_token,
+          "Content-Type": "application/json",
+          "Prefer": "resolution=merge-duplicates"
+        },
+        body: JSON.stringify(toUpload)
+      });
+    }).catch(function () {});
+  }
+
+  function updateAuthUI() {
+    var btn = document.getElementById("auth-toggle");
+    if (!btn) return;
+    btn.classList.toggle("logged-in", !!currentUser);
+    btn.title = currentUser
+      ? (currentUser.email || "Հաշիվ") + " — սեղմեք դուրս գալու համար"
+      : "Մուտք գործել Google-ով՝ սիրվածները սարքերի միջև սինխրոնացնելու համար";
+  }
+
+  function initAuth() {
+    if (!window.supabase) return;
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    supabaseClient.auth.getSession().then(function (result) {
+      var session = result.data.session;
+      currentSession = session || null;
+      currentUser = session ? session.user : null;
+      updateAuthUI();
+      if (currentUser) syncFavoritesOnLogin().then(renderTracks);
+    });
+    supabaseClient.auth.onAuthStateChange(function (event, session) {
+      var wasLoggedIn = !!currentUser;
+      currentSession = session || null;
+      currentUser = session ? session.user : null;
+      updateAuthUI();
+      if (currentUser && !wasLoggedIn) syncFavoritesOnLogin().then(renderTracks);
+    });
+    var btn = document.getElementById("auth-toggle");
+    if (btn) {
+      btn.addEventListener("click", function () {
+        if (currentUser) {
+          if (confirm("Դուրս գա՞լ հաշվից")) supabaseClient.auth.signOut();
+        } else {
+          supabaseClient.auth.signInWithOAuth({ provider: "google", options: { redirectTo: location.href.split("#")[0] } });
+        }
+      });
+    }
   }
 
   function visibleTracks() {
@@ -883,6 +991,7 @@
   function init(data) {
     artist = data && data[artistId];
     if (!artist) throw new Error("Unknown artist: " + artistId);
+    ALL_ARTIST_IDS = Object.keys(data);
     applyArtist();
     setupArtistSwitcher(data);
     setupSideArtists(data);
@@ -894,6 +1003,7 @@
 
     applyLanguage(read("imastun_language", "hy"));
     openRequestedTrack();
+    initAuth();
 
     document.querySelectorAll("img").forEach(function (image) {
       image.addEventListener("error", function () {
