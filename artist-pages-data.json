@@ -101,6 +101,24 @@
         }
       },
       {
+        "id": "Իմ Գեղեցկուհի ընկերուհիները twist rock & roil",
+        "label": "Իմ Գեղեցկուհի ընկերուհիները (Twist Rock & Roll)",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%D4%BB%D5%B4%20%D4%B3%D5%A5%D5%B2%D5%A5%D6%81%D5%AF%D5%B8%D6%82%D5%B0%D5%AB%20%D5%A8%D5%B6%D5%AF%D5%A5%D6%80%D5%B8%D6%82%D5%B0%D5%AB%D5%B6%D5%A5%D6%80%D5%A8%20twist%20rock%20%26%20roil.mp3",
+        "explanation": {
+          "en": "My Beautiful Girlfriends (Twist Rock & Roll)",
+          "ru": "Мои красивые подруги (Твист Рок-н-ролл)"
+        }
+      },
+      {
+        "id": "Իմ Գեղեցկուհի ընկերուհիներըroc&roil",
+        "label": "Իմ Գեղեցկուհի ընկերուհիները (Rock & Roll)",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/%D4%BB%D5%B4%20%D4%B3%D5%A5%D5%B2%D5%A5%D6%81%D5%AF%D5%B8%D6%82%D5%B0%D5%AB%20%D5%A8%D5%B6%D5%AF%D5%A5%D6%80%D5%B8%D6%82%D5%B0%D5%AB%D5%B6%D5%A5%D6%80%D5%A8roc%26roil.mp3",
+        "explanation": {
+          "en": "My Beautiful Girlfriends (Rock & Roll)",
+          "ru": "Мои красивые подруги (Рок-н-ролл)"
+        }
+      },
+      {
         "id": "im ser",
         "label": "Իմ սեր",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/im%20ser.mp3",
