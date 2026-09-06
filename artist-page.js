@@ -97,6 +97,19 @@
     return value[lang] || value.hy || value.en || value.ru || '';
   }
 
+  function hasTranslatedTitle(track) {
+    return state.lang !== "hy" && !!(track.explanation && track.explanation[state.lang]);
+  }
+
+  function displayTitle(track) {
+    return hasTranslatedTitle(track) ? track.explanation[state.lang] : track.label;
+  }
+
+  function displaySubtitle(track, fallback) {
+    if (hasTranslatedTitle(track)) return track.label;
+    return track.explanation ? explanationText(track.explanation) : fallback;
+  }
+
   function read(key, fallback) {
     try {
       var value = localStorage.getItem(key);
@@ -211,8 +224,8 @@
       return divider + '<article class="track-row' + (state.current === item.index ? ' playing' : '') + '" data-index="' + item.index + '">' +
         '<span class="track-num">' + String(item.index + 1).padStart(2, "0") + '</span>' +
         '<button class="track-main" type="button" data-action="play">' +
-        '<span class="track-title ' + languageCountClass(item.track) + '">' + escapeHtml(item.track.label) + (isNewSong(item.track.id) ? ' <span class="new-badge">NEW</span>' : '') + '</span>' +
-        '<span class="track-sub">' + escapeHtml(item.track.explanation ? explanationText(item.track.explanation) : (item.track.subtitle || artist.name)) + '</span>' + (item.track.subtitle && item.track.explanation ? '<span class="track-group">' + escapeHtml(item.track.subtitle) + '</span>' : '') + '</button>' +
+        '<span class="track-title ' + languageCountClass(item.track) + '">' + escapeHtml(displayTitle(item.track)) + (isNewSong(item.track.id) ? ' <span class="new-badge">NEW</span>' : '') + '</span>' +
+        '<span class="track-sub">' + escapeHtml(displaySubtitle(item.track, item.track.subtitle || artist.name)) + '</span>' + (item.track.subtitle && item.track.explanation ? '<span class="track-group">' + escapeHtml(item.track.subtitle) + '</span>' : '') + '</button>' +
         '<button class="icon-btn' + (favorite ? ' favorite' : '') + '" type="button" data-action="favorite" aria-label="' +
         escapeHtml(favorite ? tr("unfavorite") : tr("favorite")) + '">' + (favorite ? "♥" : "♡") + '</button>' +
         '<button class="icon-btn share-btn" type="button" data-action="share" aria-label="' + escapeHtml(tr("share")) + '">' +
@@ -261,7 +274,7 @@
     var eng = curAudio();
 
     showPlayer();
-    playerTitle.textContent = track.label;
+    playerTitle.textContent = displayTitle(track);
     playerTitle.className = "player-title " + languageCountClass(track);
     document.getElementById("player-cover").src = artist.cover;
     progress.value = "0";
@@ -409,7 +422,7 @@
     activeEngineIdx = 1 - activeEngineIdx;
     state.current = nextIndex;
     var track = TRACKS[nextIndex];
-    playerTitle.textContent = track.label;
+    playerTitle.textContent = displayTitle(track);
     playerTitle.className = "player-title " + languageCountClass(track);
     progress.value = "0";
     write("artistpage_" + artist.id + "_last_track", JSON.stringify({
@@ -552,6 +565,12 @@
     var donateButton = document.getElementById("donate-btn");
     if (donateButton) donateButton.setAttribute("aria-label", tr("donate"));
     setStatus(curAudio().paused ? (state.current >= 0 ? "paused" : "ready") : "playing");
+    if (state.current >= 0 && TRACKS[state.current]) {
+      var currentTrack = TRACKS[state.current];
+      playerTitle.textContent = displayTitle(currentTrack);
+      playerTitle.className = "player-title " + languageCountClass(currentTrack);
+    }
+    if (artist) renderTracks();
     syncPlayer();
   }
 
