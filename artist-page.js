@@ -26,13 +26,9 @@
   var crossfadeNextIndex = -1;
   var player = document.getElementById("player");
   var playerCoverEl = document.getElementById("player-cover");
-  var playerBg = document.getElementById("player-bg");
+  var playerCoverRing = document.getElementById("player-cover-ring");
   function setPlayerCover(coverSrc) {
     playerCoverEl.src = coverSrc;
-    if (playerBg) {
-      playerBg.style.backgroundImage = 'url("' + coverSrc + '")';
-      playerBg.classList.add("active");
-    }
   }
   var list = document.getElementById("track-list");
   var empty = document.getElementById("empty");
@@ -369,7 +365,7 @@
   function syncPlayer() {
     var active = state.current >= 0 ? TRACKS[state.current] : null;
     var playing = active && !curAudio().paused;
-    playerCoverEl.classList.toggle("is-playing", !!playing);
+    playerCoverRing.classList.toggle("is-playing", !!playing);
     playButton.textContent = playing ? "❚❚" : "▶";
     playButton.setAttribute("aria-label", tr(playing ? "pause" : "play"));
     document.getElementById("prev").setAttribute("aria-label", tr("previous"));
