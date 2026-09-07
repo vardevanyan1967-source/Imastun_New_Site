@@ -534,28 +534,24 @@
     }
     footer{padding:30px 0 0;color:var(--muted);font-size:10px;letter-spacing:.12em;text-align:center}
 
-    .player-bg{
-      position:absolute;
-      inset:0;
-      z-index:0;
-      background-size:cover;
-      background-position:center;
-      filter:blur(30px) brightness(.35) saturate(1.3);
-      opacity:0;
-      transition:opacity .5s ease;
-      pointer-events:none
-    }
-    .player-bg.active{opacity:1}
     .player-inner{position:relative;z-index:1}
-    .player-cover.is-playing{
-      animation:player-cover-pulse 2.8s ease-in-out infinite
+    .player-cover-ring{position:relative;width:54px;height:54px;flex-shrink:0}
+    .player-cover-ring::before{
+      content:'';
+      position:absolute;
+      inset:-3px;
+      z-index:0;
+      border-radius:14px;
+      background:conic-gradient(from 0deg,transparent 0%,var(--gold-2) 12%,transparent 30%,transparent 70%,var(--gold) 88%,transparent 100%);
+      opacity:0;
+      transition:opacity .3s ease;
+      animation:player-ring-spin 2.4s linear infinite
     }
-    @keyframes player-cover-pulse{
-      0%,100%{box-shadow:0 0 0 rgba(201,168,76,0)}
-      50%{box-shadow:0 0 18px rgba(201,168,76,.6)}
-    }
+    .player-cover-ring.is-playing::before{opacity:1}
+    .player-cover-ring .player-cover{position:relative;z-index:1}
+    @keyframes player-ring-spin{to{transform:rotate(360deg)}}
     @media(prefers-reduced-motion:reduce){
-      .player-cover.is-playing{animation:none}
+      .player-cover-ring::before{animation:none}
     }
     .player{
       position:fixed;
@@ -784,6 +780,8 @@
         gap:7px 8px
       }
       .player-cover{grid-area:cover;width:42px;height:42px;border-radius:9px}
+      .player-cover-ring{grid-area:cover;width:42px;height:42px}
+      .player-cover-ring::before{border-radius:12px}
       .player-meta{grid-area:meta}
       .player-title{font-size:15px}
       .player-controls{grid-area:controls;gap:4px}
