@@ -3320,9 +3320,10 @@
     active().volume = 1;
   }
 
+  const NO_TITLE_SWAP = new Set(["Կատակ Յարի Երգը","Roses in a Sieve","Песня шутка","Ρόδα στο Κόσκινο","ვარდები საცერში","Դու եկար","You Came","Ты пришёл","Մեղքի եզրին","On the Edge of Sin","Meghki_ezrin_Remix","Իմ Գեղեցկուհի ընկերուհիները","Իմ Գեղեցկուհի ընկերուհիները twist rock & roil","Իմ Գեղեցկուհի ընկերուհիներըroc&roil","parujr-sevak/ՍԵՐՆ ԻՆՉ ԳՈՒՅՆ ՈՒՆԻ","parujr-sevak/What Color Is Love","parujr-sevak/Какого цвета любовь","ergi chapov","На расстоянии песни","A Song Away"]);
   function songDisplayTitle(t) {
     const lang = document.documentElement.lang || 'hy';
-    if (lang === 'hy') return t.label;
+    if (lang === 'hy' || NO_TITLE_SWAP.has(t.song)) return t.label;
     const expl = SONG_EXPLANATIONS_BY_LANG[t.song];
     return (expl && expl[lang]) ? expl[lang] : t.label;
   }
@@ -3577,7 +3578,7 @@
     if (!('mediaSession' in navigator)) return;
     try {
       navigator.mediaSession.metadata = new MediaMetadata({
-        title: t.label,
+        title: songDisplayTitle(t),
         artist: t.artistName,
         album: 'Imastun Studio',
         artwork: t.cover ? [
@@ -4171,6 +4172,14 @@
     }).join('')}</div>${shouldCollapse ? `<button type="button" class="track-list-toggle" aria-expanded="false" aria-controls="${trackListId}" data-expand-label="Ցուցադրել բոլոր ${songs.length} երգերը" data-collapse-label="Փակել երգացանկը">Ցուցադրել բոլոր ${songs.length} երգերը <span aria-hidden="true">⌄</span></button>` : ''}</div>`;
   }
 
+  function refreshTrackTitles() {
+    document.querySelectorAll('.track-item[data-pidx]').forEach(item => {
+      const t = playlist[Number(item.dataset.pidx)];
+      const nameEl = item.querySelector('.track-name');
+      if (t && nameEl) nameEl.textContent = songDisplayTitle(t);
+    });
+  }
+
   function buildVideoPanel(artist) {
     if (!artist.videos || !artist.videos.length)
       return '<div class="empty-state">No videos available yet.</div>';
@@ -4212,7 +4221,7 @@
   }
 
   function shareSong(artistId, song) {
-    const label = SONG_NAMES[song] || formatName(song);
+    const label = songDisplayTitle({ song, label: SONG_NAMES[song] || formatName(song) });
     const url = location.origin + '/?play=' + encodeURIComponent(artistId + '|' + song);
     if (navigator.share) {
       navigator.share({ title: label, text: label + ' — Imastun Studio', url }).catch(() => {});
@@ -4459,6 +4468,7 @@
       if (typeof currentIdx !== 'undefined' && currentIdx >= 0 && typeof playlist !== 'undefined' && playlist[currentIdx] && typeof songDisplayTitle === 'function' && typeof gpSong !== 'undefined') {
         gpSong.textContent = songDisplayTitle(playlist[currentIdx]);
       }
+      if (typeof refreshTrackTitles === 'function') refreshTrackTitles();
     }
     applyLanguage(locale);
     languageButtons.forEach(button => button.addEventListener('click', () => applyLanguage(button.dataset.lang)));
