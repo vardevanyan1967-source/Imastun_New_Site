@@ -2132,7 +2132,7 @@
 
 <audio id="audio-engine" preload="none"></audio>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
   function copyDonateCard() {
     const num = '4578890080551169';
@@ -3167,11 +3167,17 @@
   }
 
   /* ══ AUTH & FAVORITES SYNC (Supabase) ══ */
-  const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
+  let supabaseClient = null;
   let currentUser = null;
   let currentSession = null;
 
   function favKey(artistId, song) { return artistId + '|' + song; }
+
+  function clearLocalFavorites() {
+    ARTISTS.forEach(artist => {
+      try { localStorage.removeItem(artist.id + '_favorites'); } catch (e) {}
+    });
+  }
 
   async function syncFavoritesOnLogin() {
     if (!currentUser || !currentSession) return;
@@ -3224,13 +3230,16 @@
     const btn = document.getElementById('auth-toggle');
     if (!btn) return;
     btn.classList.toggle('logged-in', !!currentUser);
-    btn.title = currentUser
+    const label = currentUser
       ? (currentUser.email || 'Հաշիվ') + ' — սեղմեք դուրս գալու համար'
       : 'Մուտք գործել Google-ով՝ սիրվածները սարքերի միջև սինխրոնացնելու համար';
+    btn.title = label;
+    btn.setAttribute('aria-label', label);
   }
 
   async function initAuth() {
-    if (!supabaseClient) return;
+    if (!window.supabase) return;
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
     const { data: { session } } = await supabaseClient.auth.getSession();
     currentSession = session || null;
     currentUser = session?.user || null;
@@ -3245,6 +3254,10 @@
       updateAuthUI();
       if (currentUser && !wasLoggedIn) {
         await syncFavoritesOnLogin();
+        refreshAllFavoriteButtons();
+      }
+      if (!currentUser && wasLoggedIn) {
+        clearLocalFavorites();
         refreshAllFavoriteButtons();
       }
     });
@@ -3457,9 +3470,10 @@
     active().volume = 1;
   }
 
+  const NO_TITLE_SWAP = new Set(["Կատակ Յարի Երգը","Roses in a Sieve","Песня шутка","Ρόδα στο Κόσκινο","ვარდები საცერში","Դու եկար","You Came","Ты пришёл","Մեղքի եզրին","On the Edge of Sin","Meghki_ezrin_Remix","Իմ Գեղեցկուհի ընկերուհիները","Իմ Գեղեցկուհի ընկերուհիները twist rock & roil","Իմ Գեղեցկուհի ընկերուհիներըroc&roil","parujr-sevak/ՍԵՐՆ ԻՆՉ ԳՈՒՅՆ ՈՒՆԻ","parujr-sevak/What Color Is Love","parujr-sevak/Какого цвета любовь","ergi chapov","На расстоянии песни","A Song Away"]);
   function songDisplayTitle(t) {
     const lang = document.documentElement.lang || 'hy';
-    if (lang === 'hy') return t.label;
+    if (lang === 'hy' || NO_TITLE_SWAP.has(t.song)) return t.label;
     const expl = SONG_EXPLANATIONS_BY_LANG[t.song];
     return (expl && expl[lang]) ? expl[lang] : t.label;
   }
@@ -3714,7 +3728,7 @@
     if (!('mediaSession' in navigator)) return;
     try {
       navigator.mediaSession.metadata = new MediaMetadata({
-        title: t.label,
+        title: songDisplayTitle(t),
         artist: t.artistName,
         album: 'Imastun Studio',
         artwork: t.cover ? [
@@ -4083,7 +4097,7 @@
   }
   buildRecent();
   fetchAllPlayCounts();
-  initAuth();
+  document.addEventListener('DOMContentLoaded', initAuth);
 
   document.getElementById('search-toggle').addEventListener('click', openSearch);
   document.getElementById('search-close').addEventListener('click', closeSearch);
@@ -4330,6 +4344,14 @@
     }).join('')}</div>${shouldCollapse ? `<button type="button" class="track-list-toggle" aria-expanded="false" aria-controls="${trackListId}" data-expand-label="Ցուցադրել բոլոր ${songs.length} երգերը" data-collapse-label="Փակել երգացանկը">Ցուցադրել բոլոր ${songs.length} երգերը <span aria-hidden="true">⌄</span></button>` : ''}</div>`;
   }
 
+  function refreshTrackTitles() {
+    document.querySelectorAll('.track-item[data-pidx]').forEach(item => {
+      const t = playlist[Number(item.dataset.pidx)];
+      const nameEl = item.querySelector('.track-name');
+      if (t && nameEl) nameEl.textContent = songDisplayTitle(t);
+    });
+  }
+
   function buildVideoPanel(artist) {
     if (!artist.videos || !artist.videos.length)
       return '<div class="empty-state">No videos available yet.</div>';
@@ -4371,7 +4393,7 @@
   }
 
   function shareSong(artistId, song) {
-    const label = SONG_NAMES[song] || formatName(song);
+    const label = songDisplayTitle({ song, label: SONG_NAMES[song] || formatName(song) });
     const url = location.origin + '/?play=' + encodeURIComponent(artistId + '|' + song);
     if (navigator.share) {
       navigator.share({ title: label, text: label + ' — Imastun Studio', url }).catch(() => {});
@@ -4618,6 +4640,7 @@
       if (typeof currentIdx !== 'undefined' && currentIdx >= 0 && typeof playlist !== 'undefined' && playlist[currentIdx] && typeof songDisplayTitle === 'function' && typeof gpSong !== 'undefined') {
         gpSong.textContent = songDisplayTitle(playlist[currentIdx]);
       }
+      if (typeof refreshTrackTitles === 'function') refreshTrackTitles();
     }
     applyLanguage(locale);
     languageButtons.forEach(button => button.addEventListener('click', () => applyLanguage(button.dataset.lang)));
