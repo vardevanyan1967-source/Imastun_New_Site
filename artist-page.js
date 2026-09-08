@@ -182,6 +182,12 @@
 
   function favKey(artistId2, song) { return artistId2 + "|" + song; }
 
+  function clearLocalFavorites() {
+    ALL_ARTIST_IDS.forEach(function (aid) {
+      try { localStorage.removeItem(aid + "_favorites"); } catch (e) {}
+    });
+  }
+
   function syncFavoritesOnLogin() {
     if (!currentUser || !currentSession) return Promise.resolve();
     return fetch(SUPABASE_URL + "/rest/v1/favorites?select=song_id,artist_id", {
@@ -228,9 +234,11 @@
     var btn = document.getElementById("auth-toggle");
     if (!btn) return;
     btn.classList.toggle("logged-in", !!currentUser);
-    btn.title = currentUser
+    var label = currentUser
       ? (currentUser.email || "Հաշիվ") + " — սեղմեք դուրս գալու համար"
       : "Մուտք գործել Google-ով՝ սիրվածները սարքերի միջև սինխրոնացնելու համար";
+    btn.title = label;
+    btn.setAttribute("aria-label", label);
   }
 
   function initAuth() {
@@ -249,6 +257,7 @@
       currentUser = session ? session.user : null;
       updateAuthUI();
       if (currentUser && !wasLoggedIn) syncFavoritesOnLogin().then(renderTracks);
+      if (!currentUser && wasLoggedIn) { clearLocalFavorites(); renderTracks(); }
     });
     var btn = document.getElementById("auth-toggle");
     if (btn) {

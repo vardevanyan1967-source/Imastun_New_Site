@@ -2108,7 +2108,7 @@
 
 <audio id="audio-engine" preload="none"></audio>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
   function copyDonateCard() {
     const num = '4578890080551169';
@@ -3133,11 +3133,17 @@
   }
 
   /* ══ AUTH & FAVORITES SYNC (Supabase) ══ */
-  const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
+  let supabaseClient = null;
   let currentUser = null;
   let currentSession = null;
 
   function favKey(artistId, song) { return artistId + '|' + song; }
+
+  function clearLocalFavorites() {
+    ARTISTS.forEach(artist => {
+      try { localStorage.removeItem(artist.id + '_favorites'); } catch (e) {}
+    });
+  }
 
   async function syncFavoritesOnLogin() {
     if (!currentUser || !currentSession) return;
@@ -3190,13 +3196,16 @@
     const btn = document.getElementById('auth-toggle');
     if (!btn) return;
     btn.classList.toggle('logged-in', !!currentUser);
-    btn.title = currentUser
+    const label = currentUser
       ? (currentUser.email || 'Հաշիվ') + ' — սեղմեք դուրս գալու համար'
       : 'Մուտք գործել Google-ով՝ սիրվածները սարքերի միջև սինխրոնացնելու համար';
+    btn.title = label;
+    btn.setAttribute('aria-label', label);
   }
 
   async function initAuth() {
-    if (!supabaseClient) return;
+    if (!window.supabase) return;
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
     const { data: { session } } = await supabaseClient.auth.getSession();
     currentSession = session || null;
     currentUser = session?.user || null;
@@ -3211,6 +3220,10 @@
       updateAuthUI();
       if (currentUser && !wasLoggedIn) {
         await syncFavoritesOnLogin();
+        refreshAllFavoriteButtons();
+      }
+      if (!currentUser && wasLoggedIn) {
+        clearLocalFavorites();
         refreshAllFavoriteButtons();
       }
     });
@@ -4035,7 +4048,7 @@
   }
   buildRecent();
   fetchAllPlayCounts();
-  initAuth();
+  document.addEventListener('DOMContentLoaded', initAuth);
 
   document.getElementById('search-toggle').addEventListener('click', openSearch);
   document.getElementById('search-close').addEventListener('click', closeSearch);
