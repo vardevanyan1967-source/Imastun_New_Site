@@ -82,6 +82,14 @@
     }
     #theme-toggle:hover { color: var(--gold); }
 
+    #auth-toggle {
+      background: none; border: none; color: var(--text-dim);
+      cursor: pointer; padding: 6px; display: flex; align-items: center;
+      transition: color 0.2s;
+    }
+    #auth-toggle:hover { color: var(--gold); }
+    #auth-toggle.logged-in { color: var(--gold); }
+
     #page-loader {
       position: fixed; inset: 0; z-index: 9999;
       background: var(--bg);
@@ -1486,9 +1494,10 @@
       .nav-brand { max-width:none; font-size:20px; white-space:nowrap; overflow:visible; }
       .nav-actions { order:2; position:relative; width:100%; min-height:50px; margin:0; display:flex; align-items:center; justify-content:center; }
       #mobile-menu-toggle { position:absolute; left:0; top:2px; width:46px; height:46px; }
-      .language-buttons { width:min(220px,calc(100% - 108px)); min-width:0; justify-content:center; margin:0 auto; }
+      .language-buttons { width:min(220px,calc(100% - 154px)); min-width:0; justify-content:center; margin:0 auto; }
       .language-button { flex:1; min-width:0; max-width:none; padding:0 7px; font-size:14px; }
       #theme-toggle { position:absolute; right:0; top:2px; width:46px; min-width:46px; min-height:46px; justify-content:center; border:1px solid var(--border); border-radius:50%; background:var(--surface); }
+      #auth-toggle { position:absolute; right:52px; top:2px; width:46px; min-width:46px; min-height:46px; justify-content:center; border:1px solid var(--border); border-radius:50%; background:var(--surface); }
       .nav-search-visible { order:3; flex:0 0 100%; width:100%; min-width:0; }
       .nav-search-visible input { min-height:50px; font-size:16px; }
       #nav .nav-links { order:4; }
@@ -1878,6 +1887,9 @@
       <button type="button" class="language-button" data-lang="en" lang="en">Eng</button>
     </div>
     <button id="search-toggle" type="button" hidden aria-hidden="true" tabindex="-1"></button>
+    <button id="auth-toggle" type="button" title="Մուտք գործել Google-ով՝ սիրվածները սարքերի միջև սինխրոնացնելու համար" aria-label="Մուտք գործել">
+      <svg width="19" height="19" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="7" r="3.2" stroke="currentColor" stroke-width="1.5"/><path d="M3.5 17c1.2-3.5 4-5 6.5-5s5.3 1.5 6.5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
     <button id="theme-toggle" title="Բաց/Մուգ ռեժիմ" aria-label="Փոխարկել բաց և մուգ ռեժիմների միջև">
       <svg id="theme-icon" width="19" height="19" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2a8 8 0 108 8 6.5 6.5 0 01-8-8z" fill="currentColor"/></svg>
     </button>
@@ -2096,6 +2108,7 @@
 
 <audio id="audio-engine" preload="none"></audio>
 
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
   function copyDonateCard() {
     const num = '4578890080551169';
@@ -2497,7 +2510,7 @@
     'I Gave My Sorrow The Name': 'I Gave My Sorrow The Name',
     'Я назвал свою печаль тоской': 'Я назвал свою печаль тоской',
     'Թախծիս անունը': 'Թախծիս անունը',
-    'Թախծիս անունը_1': 'Թախծիս անունը (Տանգո)',"pastayannaya jajda": "Постоянная жажда", "andadar carav": "Անդադար ծարավ", "The Eternal Thirst": "The Eternal Thirst", "ergichy-dari": "Երգիչի դարի", "gij": "Գիժ", "gij-qamin": "Գիժ քամի", "gortrik-ankun": "Գողտրիկ անկյուն", "im-tsovagur": "Իմ ծովագյուղ", "inch-em-anelu": "Ինչ եմ անելու", "tsov-arev-achqer": "Ծով արև աչքեր", "cncir-users": "Ցնցիր ուսերս", "darnaham-ginin": "Դառնահամ գինի", "fracuzhenka": "Ֆրանսուհին", "gisherajin": "Գիշերային", "kanchir-kgam": "Կանչիր կգամ", "la-fracise": "Լա Ֆրանս", "kiny": "Կինը", "sirena-hima": "Սիրել հիմա", "haverji-erty": "Հավերժի երգը", "hogu-arzaganq": "Հոգու արձագանք", "inchi-hamar": "Ինչի համար", "lur-heraxos": "Լուռ հեռախոս", "qo-jinj-hogin": "Քո ջինջ հոգին", "ser-anurji": "Սեր անուրջի", "shepot": "Շշունջ", "shshnjatc": "Շշնջաց", "siro-kenacy": "Սիրո կենաց",
+    'Թախծիս անունը_1': 'Թախծիս անունը (Տանգո)',"pastayannaya jajda": "Постоянная жажда", "andadar carav": "Անդադար ծարավ", "The Eternal Thirst": "The Eternal Thirst", "ergichy-dari": "Երգիչի դարի", "gij": "Գիժ", "gij-qamin": "Գիժ քամի", "gortrik-ankun": "Գողտրիկ անկյուն", "im-tsovagur": "Իմ ծովագյուղ", "inch-em-anelu": "Ինչ եմ անելու", "tsov-arev-achqer": "Ծով արև աչքեր", "cncir-users": "Ցնցիր ուսերս", "darnaham-ginin": "Դառնահամ գինի", "fracuzhenka": "Ֆրանսուհին", "gisherajin": "Գիշերային", "kanchir-kgam": "Կանչիր կգամ", "la-fracise": "Լա Ֆրանս", "kiny": "Կինը", "sirena-hima": "Սիրել հիմա", "haverji-erty": "Հավերժի երգը", "hogu-arzaganq": "Հոգու արձագանք", "inchi-hamar": "Ինչի համար", "lur-heraxos": "Լուռ հեռախոս", "qo-jinj-hogin": "Քո ջինջ հոգին", "ser-anurji": "Սեր անուրջի", "shepot": "Шёпот", "shshnjatc": "Շշնջաց", "siro-kenacy": "Սիրո կենաց",
     "Es_kez_sirum_em": "Ես քեզ սիրում եմ",
     "Garun_er": "Գարուն էր",
     "Kez_khenti_nman_siraharvetsi_Duet_Tango": "Քեզ խենթի նման սիրահարվեցի (Duet Tango)",
@@ -2775,7 +2788,7 @@
     "hogu-arzaganq": {en:"Echo of the Soul", ru:"Эхо души"},
     "shshnjatc": {en:"Whispered", ru:"Прошептала"},
     "shshnjatc-noric": {en:"Whispered Again", ru:"Прошептала снова"},
-    "shepot": {en:"Whisper", ru:"Шёпот"},
+    "shepot": {hy:"Շշունջ", en:"Whisper"},
     "ser-anurji": {en:"Love of a Dream", ru:"Любовь мечты"},
     "siro-kenacy": {en:"Toast to Love", ru:"Тост за любовь"},
     "qo-jinj-hogin": {en:"Your Pure Soul", ru:"Твоя чистая душа"},
@@ -3117,6 +3130,111 @@
       rows.forEach(r => { playCountCache[r.song_id] = r.play_count; });
       Object.keys(playCountCache).forEach(id => updatePlayCountBadges(id, playCountCache[id]));
     } catch (e) {}
+  }
+
+  /* ══ AUTH & FAVORITES SYNC (Supabase) ══ */
+  let supabaseClient = null;
+  let currentUser = null;
+  let currentSession = null;
+
+  function favKey(artistId, song) { return artistId + '|' + song; }
+
+  function clearLocalFavorites() {
+    ARTISTS.forEach(artist => {
+      try { localStorage.removeItem(artist.id + '_favorites'); } catch (e) {}
+    });
+  }
+
+  async function syncFavoritesOnLogin() {
+    if (!currentUser || !currentSession) return;
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/favorites?select=song_id,artist_id`, {
+        headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${currentSession.access_token}` }
+      });
+      if (!res.ok) return;
+      const remote = await res.json();
+      const remoteSet = new Set(remote.map(r => favKey(r.artist_id, r.song_id)));
+      const toUpload = [];
+      ARTISTS.forEach(artist => {
+        const local = getFavs(artist.id);
+        let changed = false;
+        remote.filter(r => r.artist_id === artist.id).forEach(r => {
+          if (!local.includes(r.song_id)) { local.push(r.song_id); changed = true; }
+        });
+        if (changed) saveFavs(artist.id, local);
+        local.forEach(song => {
+          if (!remoteSet.has(favKey(artist.id, song))) {
+            toUpload.push({ user_id: currentUser.id, song_id: song, artist_id: artist.id });
+          }
+        });
+      });
+      if (toUpload.length) {
+        await fetch(`${SUPABASE_URL}/rest/v1/favorites`, {
+          method: 'POST',
+          headers: {
+            'apikey': SUPABASE_KEY,
+            'Authorization': `Bearer ${currentSession.access_token}`,
+            'Content-Type': 'application/json',
+            'Prefer': 'resolution=merge-duplicates'
+          },
+          body: JSON.stringify(toUpload)
+        });
+      }
+    } catch (e) {}
+  }
+
+  function refreshAllFavoriteButtons() {
+    document.querySelectorAll('.track-fav-btn').forEach(btn => {
+      const fav = isFav(btn.dataset.artist, btn.dataset.song);
+      btn.classList.toggle('fav-active', fav);
+      btn.style.color = fav ? '#ee0055' : 'var(--text-dim)';
+      btn.innerHTML = iconHeart(fav);
+    });
+  }
+
+  function updateAuthUI() {
+    const btn = document.getElementById('auth-toggle');
+    if (!btn) return;
+    btn.classList.toggle('logged-in', !!currentUser);
+    const label = currentUser
+      ? (currentUser.email || 'Հաշիվ') + ' — սեղմեք դուրս գալու համար'
+      : 'Մուտք գործել Google-ով՝ սիրվածները սարքերի միջև սինխրոնացնելու համար';
+    btn.title = label;
+    btn.setAttribute('aria-label', label);
+  }
+
+  async function initAuth() {
+    if (!window.supabase) return;
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    const { data: { session } } = await supabaseClient.auth.getSession();
+    currentSession = session || null;
+    currentUser = session?.user || null;
+    updateAuthUI();
+    if (currentUser) await syncFavoritesOnLogin();
+    refreshAllFavoriteButtons();
+
+    supabaseClient.auth.onAuthStateChange(async (event, session) => {
+      const wasLoggedIn = !!currentUser;
+      currentSession = session || null;
+      currentUser = session?.user || null;
+      updateAuthUI();
+      if (currentUser && !wasLoggedIn) {
+        await syncFavoritesOnLogin();
+        refreshAllFavoriteButtons();
+      }
+      if (!currentUser && wasLoggedIn) {
+        clearLocalFavorites();
+        refreshAllFavoriteButtons();
+      }
+    });
+
+    document.getElementById('auth-toggle')?.addEventListener('click', async () => {
+      if (currentUser) {
+        if (confirm('Դուրս գա՞լ հաշվից')) await supabaseClient.auth.signOut();
+      } else {
+        await supabaseClient.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: location.href.split('#')[0] } });
+      }
+    });
   }
 
   function updatePlayCountBadges(songId, count) {
@@ -3930,6 +4048,7 @@
   }
   buildRecent();
   fetchAllPlayCounts();
+  document.addEventListener('DOMContentLoaded', initAuth);
 
   document.getElementById('search-toggle').addEventListener('click', openSearch);
   document.getElementById('search-close').addEventListener('click', closeSearch);
@@ -4024,10 +4143,30 @@
   function isFav(artistId, song) { return getFavs(artistId).includes(song); }
   function toggleFav(artistId, song) {
     let f = getFavs(artistId);
-    if (f.includes(song)) f = f.filter(s => s !== song);
-    else f.push(song);
+    const nowFav = !f.includes(song);
+    if (nowFav) f.push(song);
+    else f = f.filter(s => s !== song);
     saveFavs(artistId, f);
-    return f.includes(song);
+    if (currentUser && currentSession) {
+      if (nowFav) {
+        fetch(`${SUPABASE_URL}/rest/v1/favorites`, {
+          method: 'POST',
+          headers: {
+            'apikey': SUPABASE_KEY,
+            'Authorization': `Bearer ${currentSession.access_token}`,
+            'Content-Type': 'application/json',
+            'Prefer': 'resolution=merge-duplicates'
+          },
+          body: JSON.stringify({ user_id: currentUser.id, song_id: song, artist_id: artistId })
+        }).catch(() => {});
+      } else {
+        fetch(`${SUPABASE_URL}/rest/v1/favorites?song_id=eq.${encodeURIComponent(song)}&artist_id=eq.${encodeURIComponent(artistId)}`, {
+          method: 'DELETE',
+          headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${currentSession.access_token}` }
+        }).catch(() => {});
+      }
+    }
+    return nowFav;
   }
   function iconHeart(filled) {
     return filled
