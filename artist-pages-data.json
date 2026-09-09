@@ -309,11 +309,11 @@
       },
       {
         "id": "shepot",
-        "label": "Շշունջ",
+        "label": "Шёпот",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/shepot.mp3",
         "explanation": {
-          "en": "Whisper",
-          "ru": "Шёпот"
+          "hy": "Շշունջ",
+          "en": "Whisper"
         }
       },
       {
