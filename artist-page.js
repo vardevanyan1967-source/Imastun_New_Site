@@ -4,6 +4,12 @@
   var artistId = document.body.getAttribute("data-artist-id");
   var artist = null;
   var TRACKS = [];
+  var SUPABASE_URL = "https://jcqkpqhaxkgfjcasklnq.supabase.co";
+  var SUPABASE_KEY = "sb_publishable_7iNYB-HogL42o_luHkI-gg_KzPylN3c";
+  var supabaseClient = null;
+  var currentUser = null;
+  var currentSession = null;
+  var ALL_ARTIST_IDS = [];
   var state = { lang: "hy", filter: "all", poet: "all", query: "", current: -1 };
   var audio = document.getElementById("audio");
   var audio2 = new Audio();
@@ -19,6 +25,11 @@
   var crossfadeWatchdog = null;
   var crossfadeNextIndex = -1;
   var player = document.getElementById("player");
+  var playerCoverEl = document.getElementById("player-cover");
+  var playerCoverRing = document.getElementById("player-cover-ring");
+  function setPlayerCover(coverSrc) {
+    playerCoverEl.src = coverSrc;
+  }
   var list = document.getElementById("track-list");
   var empty = document.getElementById("empty");
   var resultCount = document.getElementById("result-count");
@@ -79,10 +90,16 @@
   };
 
 
-  var TRILINGUAL_OVERRIDE = new Set(["vahan-teryan/Golden Stars in Blue(Տխուր զրույց)","vahan-teryan/Կարոտ","vahan-teryan/Մոռանալ","hamo-sahyan/The One in Vain","hamo-sahyan/guce henc ajster","hamo-sahyan/duq lavn eq mardiq","hamo-sahyan/es kuzei ","hamo-sahyan/ev chimacanq te inchu","hamo-sahyan/inchu hishecri","hamo-sahyan/ka mi tulutun","hamo-sahyan/Փնտրում ես դու","Երանի գայիր(Just Like Before)","te karotum es","lok cav u dard","lrutian tchich","Կարոտի խենթի","Hayots_ashkarh_A","Title_Mi_tanjir_hogis_Multilingual_Emotional_Duet_Lyrics_by_Silva_Gulanyan_002","chem moracel","Jaheli_nman_003","Tiezerk_Jinj_Lazur","ser da ardioq","Քո ժպիտները հավաքեմ","ughernery-lac-chen-linum","Ches_moranalu_003","cav anbujeli","ov em qez hamar","bjur u bjur angam","ete asem","gereckuhi","im ser","sirelis","taxicy vat margare e","hamo-sahyan/papy","Իմ Գեղեցկուհի ընկերուհիները"]);
+  var TRILINGUAL_OVERRIDE = new Set(["vahan-teryan/Golden Stars in Blue(Տխուր զրույց)","vahan-teryan/Կարոտ","vahan-teryan/Մոռանալ","hamo-sahyan/The One in Vain","hamo-sahyan/guce henc ajster","hamo-sahyan/duq lavn eq mardiq","hamo-sahyan/es kuzei ","hamo-sahyan/ev chimacanq te inchu","hamo-sahyan/inchu hishecri","hamo-sahyan/ka mi tulutun","hamo-sahyan/Փնտրում ես դու","Երանի գայիր(Just Like Before)","te karotum es","lok cav u dard","lrutian tchich","Կարոտի խենթի","Hayots_ashkarh_A","Title_Mi_tanjir_hogis_Multilingual_Emotional_Duet_Lyrics_by_Silva_Gulanyan_002","chem moracel","Jaheli_nman_003","Tiezerk_Jinj_Lazur","ser da ardioq","Քո ժպիտները հավաքեմ","ughernery-lac-chen-linum","Ches_moranalu_003","cav anbujeli","ov em qez hamar","bjur u bjur angam","ete asem","gereckuhi","im ser","sirelis","taxicy vat margare e","hamo-sahyan/papy","Իմ Գեղեցկուհի ընկերուհիները","Իմ Գեղեցկուհի ընկերուհիները twist rock & roil","Իմ Գեղեցկուհի ընկերուհիներըroc&roil","Կատակ Յարի Երգը","Roses in a Sieve","Песня шутка","Ρόδα στο Κόσκινο","ვარდები საცერში"]);
   var BILINGUAL_OVERRIDE = new Set(["vahan-teryan/Աշուն Է անձրև","Astghayin_Shghta_A","Vahan_Teryan_Gisher","Поцелуй_ветра","Vahan_Teryan_MEGhAVOR_AChKERU","Es_kez_sirum_em","Hay_aragil","Tchaxr e pargevum ","Chisht_zhamanakin_At_The_Right_Time","Sirir_indz_hogis_FRAM_Duet","S_irum_em_kez_I_love_you","sirty xentacav","Ka_mi_ashkharh_vor_srtov_e_karutsvats","Ko_koghkin_vorish_em_003","melodia lubvi"]);
 
-  var NEW_SONGS = {"Սոնետ  45":"2026-08-01","Սոնետ  46":"2026-08-01","Սոնետ  47":"2026-08-01","Սոնետ  48":"2026-08-01","Սոնետ  49":"2026-08-01","Սոնետ  50":"2026-08-01","Սոնետ  51":"2026-08-01","Սոնետ  52":"2026-08-01","Սոնետ  53":"2026-08-01","Սոնետ  54":"2026-08-01","Սոնետ  55":"2026-08-01","Սոնետ  56":"2026-08-01","Սոնետ  57":"2026-08-01","Սոնետ  58":"2026-08-01","Սոնետ  59":"2026-08-01","Սոնետ  60":"2026-08-01","cav anbujeli":"2026-08-01","ov em qez hamar":"2026-08-01","bjur u bjur angam":"2026-08-01","ete asem":"2026-08-01","gereckuhi":"2026-08-01","Հայաստան, մեր սուրբ տուն":"2026-08-02","Армения, наш святой дом":"2026-08-02","Armenia, Our Sacred Home":"2026-08-02","im ser":"2026-08-06","sirelis":"2026-08-06","taxicy vat margare e":"2026-08-06","ergi chapov":"2026-08-06","На расстоянии песни":"2026-08-06","A Song Away":"2026-08-06","Սոնետ  70":"2026-08-08","Սոնետ  71":"2026-08-08","Սոնետ  72":"2026-08-08","Սոնետ  73":"2026-08-08","Սոնետ  75":"2026-08-08","Սոնետ  76":"2026-08-08","Սոնետ  77":"2026-08-08","Սոնետ  78":"2026-08-08","Սոնետ  79":"2026-08-08","Սոնետ  81":"2026-08-08","Սոնետ  82":"2026-08-08","Սոնետ  83":"2026-08-08","Սոնետ  84":"2026-08-08","Սոնետ  85":"2026-08-08","Սոնետ  86":"2026-08-08","Սոնետ  87":"2026-08-08","Սոնետ  88":"2026-08-08","Սոնետ  89":"2026-08-08","Սոնետ  91":"2026-08-08","Սոնետ  92":"2026-08-08","Սոնետ  93":"2026-08-08","Սոնետ  95":"2026-08-08","Սոնետ  96":"2026-08-08","Սոնետ  97":"2026-08-08","Սոնետ  98":"2026-08-08","Սոնետ  99":"2026-08-08","Սոնետ  100":"2026-08-08","Սոնետ  101":"2026-08-08","Սոնետ  102":"2026-08-08","Սոնետ  103":"2026-08-08","Սոնետ  104":"2026-08-08","Սոնետ  105":"2026-08-08","Սոնետ  106":"2026-08-08","Սոնետ  107":"2026-08-08","Սոնետ  108":"2026-08-08","Սոնետ  109":"2026-08-08","Սոնետ  110":"2026-08-08","Սոնետ  111":"2026-08-08","Սոնետ  112":"2026-08-08","Սոնետ  113":"2026-08-08","Սոնետ  114":"2026-08-08","Սոնետ  116":"2026-08-08","Սոնետ  117":"2026-08-08","Սոնետ  118":"2026-08-08","Սոնետ  119":"2026-08-08","Սոնետ  120":"2026-08-08","Սոնետ  122":"2026-08-08","Սոնետ  123":"2026-08-08","Սոնետ  124":"2026-08-08","Սոնետ  125":"2026-08-08","Սոնետ  126":"2026-08-08","Սոնետ  127":"2026-08-08","Սոնետ  128":"2026-08-08","Սոնետ  129":"2026-08-08","Սոնետ  130":"2026-08-08","Սոնետ  132":"2026-08-08","Սոնետ  133":"2026-08-08","Սոնետ  134":"2026-08-08","Սոնետ  135":"2026-08-08","Սոնետ  136":"2026-08-08","Սոնետ  137":"2026-08-08","Սոնետ  138":"2026-08-08","Սոնետ  139":"2026-08-08","Սոնետ  140":"2026-08-08","Սոնետ  141":"2026-08-08","Սոնետ  142":"2026-08-08","Սոնետ  143":"2026-08-08","Սոնետ  144":"2026-08-08","Սոնետ  145":"2026-08-08","Սոնետ  146":"2026-08-08","Սոնետ  147":"2026-08-08","Սոնետ  148":"2026-08-08","Սոնետ  149":"2026-08-08","Սոնետ  150":"2026-08-08","Սոնետ  151":"2026-08-08","Սոնետ  152":"2026-08-08","Սոնետ  153":"2026-08-08","Սոնետ  154":"2026-08-08","Կատակ Յարի Երգը":"2026-08-09","Roses in a Sieve":"2026-08-09","Ρόδα στο Κόσκινο":"2026-08-09","Песня шутка":"2026-08-09","ვარდები საცერში":"2026-08-09","parujr-sevak/What Color Is Love":"2026-08-13","parujr-sevak/Какого цвета любовь":"2026-08-13","Կատակ յարի երգ պար 4 լեզվով":"2026-08-13","ari-khmenq":"2026-08-15","Դու եկար":"2026-08-21","Ты пришёл":"2026-08-21","You Came":"2026-08-21","silva-kaputikyan/Լուսինն ու Արևը":"2026-08-24","silva-kaputikyan/Ծուխը չերևա":"2026-08-24","silva-kaputikyan/Քեզ փնտրում եմ":"2026-08-24","silva-kaputikyan/Ոչ մեր սիրելն էր նման սիրելու":"2026-08-24","silva-kaputikyan/The Moons Jealousy":"2026-08-24","silva-kaputikyan/Белая Луна":"2026-08-24","Our Lovely Mermaids":"2026-08-25","Эй наши русалки":"2026-08-25","ჩვენი ქალთევზებო":"2026-08-25","Իմ Գեղեցկուհի ընկերուհիները":"2026-08-31","IM JEALOUS OF THE MOSQUITO":"2026-09-02","Նախանձում եմ":"2026-09-02","Ревую к комару":"2026-09-02","I Gave My Sorrow The Name":"2026-09-02","Я назвал свою печаль тоской":"2026-09-02","Թախծիս անունը":"2026-09-02","Թախծիս անունը_1":"2026-09-02","Սոնետ  61":"2026-09-05","Սոնետ  62":"2026-09-05","Սոնետ  63":"2026-09-05","Սոնետ  64":"2026-09-05","Սոնետ  65":"2026-09-05","Սոնետ  66":"2026-09-05","Սոնետ  67":"2026-09-05","Սոնետ  68":"2026-09-05","Սոնետ  69":"2026-09-05","Սոնետ  74":"2026-09-05","Սոնետ  80":"2026-09-05","Սոնետ  90":"2026-09-05","Սոնետ  115":"2026-09-05","Սոնետ  131":"2026-09-05","hamo-sahyan/Ամպ է Նորից":"2026-09-05"};
+  // Songs recorded as several separate, fully independent tracks (one per
+  // language) rather than a single track with a translated subtitle. Their
+  // title must stay their own native title — swapping it to a translation
+  // would make several distinct tracks show the identical title.
+  var NO_TITLE_SWAP = new Set(["Կատակ Յարի Երգը","Roses in a Sieve","Песня шутка","Ρόδα στο Κόσκινο","ვარდები საცერში","Դու եկար","You Came","Ты пришёл","Մեղքի եզրին","On the Edge of Sin","Meghki_ezrin_Remix","Իմ Գեղեցկուհի ընկերուհիները","Իմ Գեղեցկուհի ընկերուհիները twist rock & roil","Իմ Գեղեցկուհի ընկերուհիներըroc&roil","parujr-sevak/ՍԵՐՆ ԻՆՉ ԳՈՒՅՆ ՈՒՆԻ","parujr-sevak/What Color Is Love","parujr-sevak/Какого цвета любовь","ergi chapov","На расстоянии песни","A Song Away"]);
+
+  var NEW_SONGS = {"Մեղքի եզրին":"2026-09-06","On the Edge of Sin":"2026-09-07","Իմ Գեղեցկուհի ընկերուհիները twist rock & roil":"2026-09-06","Իմ Գեղեցկուհի ընկերուհիներըroc&roil":"2026-09-06","Սոնետ  45":"2026-08-01","Սոնետ  46":"2026-08-01","Սոնետ  47":"2026-08-01","Սոնետ  48":"2026-08-01","Սոնետ  49":"2026-08-01","Սոնետ  50":"2026-08-01","Սոնետ  51":"2026-08-01","Սոնետ  52":"2026-08-01","Սոնետ  53":"2026-08-01","Սոնետ  54":"2026-08-01","Սոնետ  55":"2026-08-01","Սոնետ  56":"2026-08-01","Սոնետ  57":"2026-08-01","Սոնետ  58":"2026-08-01","Սոնետ  59":"2026-08-01","Սոնետ  60":"2026-08-01","cav anbujeli":"2026-08-01","ov em qez hamar":"2026-08-01","bjur u bjur angam":"2026-08-01","ete asem":"2026-08-01","gereckuhi":"2026-08-01","Հայաստան, մեր սուրբ տուն":"2026-08-02","Армения, наш святой дом":"2026-08-02","Armenia, Our Sacred Home":"2026-08-02","im ser":"2026-08-06","sirelis":"2026-08-06","taxicy vat margare e":"2026-08-06","ergi chapov":"2026-08-06","На расстоянии песни":"2026-08-06","A Song Away":"2026-08-06","Սոնետ  70":"2026-08-08","Սոնետ  71":"2026-08-08","Սոնետ  72":"2026-08-08","Սոնետ  73":"2026-08-08","Սոնետ  75":"2026-08-08","Սոնետ  76":"2026-08-08","Սոնետ  77":"2026-08-08","Սոնետ  78":"2026-08-08","Սոնետ  79":"2026-08-08","Սոնետ  81":"2026-08-08","Սոնետ  82":"2026-08-08","Սոնետ  83":"2026-08-08","Սոնետ  84":"2026-08-08","Սոնետ  85":"2026-08-08","Սոնետ  86":"2026-08-08","Սոնետ  87":"2026-08-08","Սոնետ  88":"2026-08-08","Սոնետ  89":"2026-08-08","Սոնետ  91":"2026-08-08","Սոնետ  92":"2026-08-08","Սոնետ  93":"2026-08-08","Սոնետ  95":"2026-08-08","Սոնետ  96":"2026-08-08","Սոնետ  97":"2026-08-08","Սոնետ  98":"2026-08-08","Սոնետ  99":"2026-08-08","Սոնետ  100":"2026-08-08","Սոնետ  101":"2026-08-08","Սոնետ  102":"2026-08-08","Սոնետ  103":"2026-08-08","Սոնետ  104":"2026-08-08","Սոնետ  105":"2026-08-08","Սոնետ  106":"2026-08-08","Սոնետ  107":"2026-08-08","Սոնետ  108":"2026-08-08","Սոնետ  109":"2026-08-08","Սոնետ  110":"2026-08-08","Սոնետ  111":"2026-08-08","Սոնետ  112":"2026-08-08","Սոնետ  113":"2026-08-08","Սոնետ  114":"2026-08-08","Սոնետ  116":"2026-08-08","Սոնետ  117":"2026-08-08","Սոնետ  118":"2026-08-08","Սոնետ  119":"2026-08-08","Սոնետ  120":"2026-08-08","Սոնետ  122":"2026-08-08","Սոնետ  123":"2026-08-08","Սոնետ  124":"2026-08-08","Սոնետ  125":"2026-08-08","Սոնետ  126":"2026-08-08","Սոնետ  127":"2026-08-08","Սոնետ  128":"2026-08-08","Սոնետ  129":"2026-08-08","Սոնետ  130":"2026-08-08","Սոնետ  132":"2026-08-08","Սոնետ  133":"2026-08-08","Սոնետ  134":"2026-08-08","Սոնետ  135":"2026-08-08","Սոնետ  136":"2026-08-08","Սոնետ  137":"2026-08-08","Սոնետ  138":"2026-08-08","Սոնետ  139":"2026-08-08","Սոնետ  140":"2026-08-08","Սոնետ  141":"2026-08-08","Սոնետ  142":"2026-08-08","Սոնետ  143":"2026-08-08","Սոնետ  144":"2026-08-08","Սոնետ  145":"2026-08-08","Սոնետ  146":"2026-08-08","Սոնետ  147":"2026-08-08","Սոնետ  148":"2026-08-08","Սոնետ  149":"2026-08-08","Սոնետ  150":"2026-08-08","Սոնետ  151":"2026-08-08","Սոնետ  152":"2026-08-08","Սոնետ  153":"2026-08-08","Սոնետ  154":"2026-08-08","Կատակ Յարի Երգը":"2026-08-09","Roses in a Sieve":"2026-08-09","Ρόδα στο Κόσκινο":"2026-08-09","Песня шутка":"2026-08-09","ვარდები საცერში":"2026-08-09","parujr-sevak/What Color Is Love":"2026-08-13","parujr-sevak/Какого цвета любовь":"2026-08-13","Կատակ յարի երգ պար 4 լեզվով":"2026-08-13","ari-khmenq":"2026-08-15","Դու եկար":"2026-08-21","Ты пришёл":"2026-08-21","You Came":"2026-08-21","silva-kaputikyan/Լուսինն ու Արևը":"2026-08-24","silva-kaputikyan/Ծուխը չերևա":"2026-08-24","silva-kaputikyan/Քեզ փնտրում եմ":"2026-08-24","silva-kaputikyan/Ոչ մեր սիրելն էր նման սիրելու":"2026-08-24","silva-kaputikyan/The Moons Jealousy":"2026-08-24","silva-kaputikyan/Белая Луна":"2026-08-24","Our Lovely Mermaids":"2026-08-25","Эй наши русалки":"2026-08-25","ჩვენი ქალთევზებო":"2026-08-25","Իմ Գեղեցկուհի ընկերուհիները":"2026-08-31","IM JEALOUS OF THE MOSQUITO":"2026-09-02","Նախանձում եմ":"2026-09-02","Ревую к комару":"2026-09-02","I Gave My Sorrow The Name":"2026-09-02","Я назвал свою печаль тоской":"2026-09-02","Թախծիս անունը":"2026-09-02","Թախծիս անունը_1":"2026-09-02","Սոնետ  61":"2026-09-05","Սոնետ  62":"2026-09-05","Սոնետ  63":"2026-09-05","Սոնետ  64":"2026-09-05","Սոնետ  65":"2026-09-05","Սոնետ  66":"2026-09-05","Սոնետ  67":"2026-09-05","Սոնետ  68":"2026-09-05","Սոնետ  69":"2026-09-05","Սոնետ  74":"2026-09-05","Սոնետ  80":"2026-09-05","Սոնետ  90":"2026-09-05","Սոնետ  115":"2026-09-05","Սոնետ  131":"2026-09-05","hamo-sahyan/Ամպ է Նորից":"2026-09-05"};
   function isNewSong(id) {
     var added = NEW_SONGS[id];
     if (!added) return false;
@@ -90,11 +107,30 @@
     return days >= 0 && days <= 30;
   }
 
-  function explanationText(value) {
-    if (!value) return '';
-    if (typeof value === 'string') return value;
-    var lang = document.documentElement.lang || 'hy';
-    return value[lang] || value.hy || value.en || value.ru || '';
+  function hasTranslatedTitle(track) {
+    return state.lang !== "hy" && !NO_TITLE_SWAP.has(track.id) && !!(track.explanation && track.explanation[state.lang]);
+  }
+
+  function displayTitle(track) {
+    return hasTranslatedTitle(track) ? track.explanation[state.lang] : track.label;
+  }
+
+  function displaySubtitle(track, fallback) {
+    if (!track.explanation) return fallback;
+    var nativeIsHy = /[԰-֏]/.test(String(track.label || "").replace(/\([^)]*\)/g, ""));
+    var parts = [];
+    if (hasTranslatedTitle(track)) {
+      parts.push(track.label);
+      Object.keys(track.explanation).forEach(function (lang) {
+        if (lang !== state.lang && !(lang === "hy" && nativeIsHy)) parts.push(track.explanation[lang]);
+      });
+    } else {
+      ["hy", "en", "ru"].forEach(function (lang) {
+        if (lang === "hy" && nativeIsHy) return;
+        if (track.explanation[lang]) parts.push(track.explanation[lang]);
+      });
+    }
+    return parts.length ? parts.join(" · ") : fallback;
   }
 
   function read(key, fallback) {
@@ -148,10 +184,121 @@
   function toggleFavorite(id) {
     var value = favorites();
     var found = value.indexOf(id);
+    var nowFav = found < 0;
     if (found >= 0) value.splice(found, 1);
     else value.push(id);
     write(favoriteKey(), JSON.stringify(value));
+    if (currentUser && currentSession && artist) {
+      if (nowFav) {
+        fetch(SUPABASE_URL + "/rest/v1/favorites", {
+          method: "POST",
+          headers: {
+            "apikey": SUPABASE_KEY,
+            "Authorization": "Bearer " + currentSession.access_token,
+            "Content-Type": "application/json",
+            "Prefer": "resolution=merge-duplicates"
+          },
+          body: JSON.stringify({ user_id: currentUser.id, song_id: id, artist_id: artist.id })
+        }).catch(function () {});
+      } else {
+        fetch(SUPABASE_URL + "/rest/v1/favorites?song_id=eq." + encodeURIComponent(id) + "&artist_id=eq." + encodeURIComponent(artist.id), {
+          method: "DELETE",
+          headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + currentSession.access_token }
+        }).catch(function () {});
+      }
+    }
     renderTracks();
+  }
+
+  function favKey(artistId2, song) { return artistId2 + "|" + song; }
+
+  function clearLocalFavorites() {
+    ALL_ARTIST_IDS.forEach(function (aid) {
+      try { localStorage.removeItem(aid + "_favorites"); } catch (e) {}
+    });
+  }
+
+  function syncFavoritesOnLogin() {
+    if (!currentUser || !currentSession) return Promise.resolve();
+    return fetch(SUPABASE_URL + "/rest/v1/favorites?select=song_id,artist_id", {
+      headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + currentSession.access_token }
+    }).then(function (res) {
+      if (!res.ok) return null;
+      return res.json();
+    }).then(function (remote) {
+      if (!remote) return;
+      var remoteSet = {};
+      remote.forEach(function (r) { remoteSet[favKey(r.artist_id, r.song_id)] = true; });
+      var toUpload = [];
+      ALL_ARTIST_IDS.forEach(function (aid) {
+        var key = aid + "_favorites";
+        var local = [];
+        try {
+          local = JSON.parse(read(key, "[]"));
+          if (!Array.isArray(local)) local = [];
+        } catch (e) { local = []; }
+        var changed = false;
+        remote.filter(function (r) { return r.artist_id === aid; }).forEach(function (r) {
+          if (local.indexOf(r.song_id) < 0) { local.push(r.song_id); changed = true; }
+        });
+        if (changed) write(key, JSON.stringify(local));
+        local.forEach(function (song) {
+          if (!remoteSet[favKey(aid, song)]) toUpload.push({ user_id: currentUser.id, song_id: song, artist_id: aid });
+        });
+      });
+      if (!toUpload.length) return;
+      return fetch(SUPABASE_URL + "/rest/v1/favorites", {
+        method: "POST",
+        headers: {
+          "apikey": SUPABASE_KEY,
+          "Authorization": "Bearer " + currentSession.access_token,
+          "Content-Type": "application/json",
+          "Prefer": "resolution=merge-duplicates"
+        },
+        body: JSON.stringify(toUpload)
+      });
+    }).catch(function () {});
+  }
+
+  function updateAuthUI() {
+    var btn = document.getElementById("auth-toggle");
+    if (!btn) return;
+    btn.classList.toggle("logged-in", !!currentUser);
+    var label = currentUser
+      ? (currentUser.email || "Հաշիվ") + " — սեղմեք դուրս գալու համար"
+      : "Մուտք գործել Google-ով՝ սիրվածները սարքերի միջև սինխրոնացնելու համար";
+    btn.title = label;
+    btn.setAttribute("aria-label", label);
+  }
+
+  function initAuth() {
+    if (!window.supabase) return;
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    supabaseClient.auth.getSession().then(function (result) {
+      var session = result.data.session;
+      currentSession = session || null;
+      currentUser = session ? session.user : null;
+      updateAuthUI();
+      if (currentUser) syncFavoritesOnLogin().then(renderTracks);
+    });
+    supabaseClient.auth.onAuthStateChange(function (event, session) {
+      var wasLoggedIn = !!currentUser;
+      currentSession = session || null;
+      currentUser = session ? session.user : null;
+      updateAuthUI();
+      if (currentUser && !wasLoggedIn) syncFavoritesOnLogin().then(renderTracks);
+      if (!currentUser && wasLoggedIn) { clearLocalFavorites(); renderTracks(); }
+    });
+    var btn = document.getElementById("auth-toggle");
+    if (btn) {
+      btn.addEventListener("click", function () {
+        if (currentUser) {
+          if (confirm("Դուրս գա՞լ հաշվից")) supabaseClient.auth.signOut();
+        } else {
+          supabaseClient.auth.signInWithOAuth({ provider: "google", options: { redirectTo: location.href.split("#")[0] } });
+        }
+      });
+    }
   }
 
   function visibleTracks() {
@@ -163,7 +310,8 @@
       if (state.filter === "favorites" && !isFavorite(item.track.id)) return false;
       if (artist && artist.id === "haj-poetner" && state.poet !== "all" && item.track.subtitle !== state.poet) return false;
       if (!term) return true;
-      return (item.track.label + " " + item.track.id + " " + (item.track.subtitle || "")).toLocaleLowerCase(locale).indexOf(term) >= 0;
+      var explText = item.track.explanation ? Object.values(item.track.explanation).join(" ") : "";
+      return (item.track.label + " " + item.track.id + " " + (item.track.subtitle || "") + " " + explText).toLocaleLowerCase(locale).indexOf(term) >= 0;
     });
   }
 
@@ -211,8 +359,8 @@
       return divider + '<article class="track-row' + (state.current === item.index ? ' playing' : '') + '" data-index="' + item.index + '">' +
         '<span class="track-num">' + String(item.index + 1).padStart(2, "0") + '</span>' +
         '<button class="track-main" type="button" data-action="play">' +
-        '<span class="track-title ' + languageCountClass(item.track) + '">' + escapeHtml(item.track.label) + (isNewSong(item.track.id) ? ' <span class="new-badge">NEW</span>' : '') + '</span>' +
-        '<span class="track-sub">' + escapeHtml(item.track.explanation ? explanationText(item.track.explanation) : (item.track.subtitle || artist.name)) + '</span>' + (item.track.subtitle && item.track.explanation ? '<span class="track-group">' + escapeHtml(item.track.subtitle) + '</span>' : '') + '</button>' +
+        '<span class="track-title ' + languageCountClass(item.track) + '">' + escapeHtml(displayTitle(item.track)) + (isNewSong(item.track.id) ? ' <span class="new-badge">NEW</span>' : '') + '</span>' +
+        '<span class="track-sub">' + escapeHtml(displaySubtitle(item.track, item.track.subtitle || artist.name)) + '</span>' + (item.track.subtitle && item.track.explanation ? '<span class="track-group">' + escapeHtml(item.track.subtitle) + '</span>' : '') + '</button>' +
         '<button class="icon-btn' + (favorite ? ' favorite' : '') + '" type="button" data-action="favorite" aria-label="' +
         escapeHtml(favorite ? tr("unfavorite") : tr("favorite")) + '">' + (favorite ? "♥" : "♡") + '</button>' +
         '<button class="icon-btn share-btn" type="button" data-action="share" aria-label="' + escapeHtml(tr("share")) + '">' +
@@ -238,6 +386,7 @@
   function syncPlayer() {
     var active = state.current >= 0 ? TRACKS[state.current] : null;
     var playing = active && !curAudio().paused;
+    playerCoverRing.classList.toggle("is-playing", !!playing);
     playButton.textContent = playing ? "❚❚" : "▶";
     playButton.setAttribute("aria-label", tr(playing ? "pause" : "play"));
     document.getElementById("prev").setAttribute("aria-label", tr("previous"));
@@ -261,9 +410,9 @@
     var eng = curAudio();
 
     showPlayer();
-    playerTitle.textContent = track.label;
+    playerTitle.textContent = displayTitle(track);
     playerTitle.className = "player-title " + languageCountClass(track);
-    document.getElementById("player-cover").src = artist.cover;
+    setPlayerCover(artist.cover);
     progress.value = "0";
     currentTime.textContent = "0:00";
     duration.textContent = "0:00";
@@ -282,7 +431,7 @@
     if ("mediaSession" in navigator && "MediaMetadata" in window) {
       try {
         navigator.mediaSession.metadata = new MediaMetadata({
-          title: track.label,
+          title: displayTitle(track),
           artist: artist.name,
           album: "Imastun Studio",
           artwork: [{ src:new URL(artist.cover, location.href).href, sizes:"500x500", type:"image/jpeg" }]
@@ -409,7 +558,7 @@
     activeEngineIdx = 1 - activeEngineIdx;
     state.current = nextIndex;
     var track = TRACKS[nextIndex];
-    playerTitle.textContent = track.label;
+    playerTitle.textContent = displayTitle(track);
     playerTitle.className = "player-title " + languageCountClass(track);
     progress.value = "0";
     write("artistpage_" + artist.id + "_last_track", JSON.stringify({
@@ -418,7 +567,7 @@
     if ("mediaSession" in navigator && "MediaMetadata" in window) {
       try {
         navigator.mediaSession.metadata = new MediaMetadata({
-          title: track.label,
+          title: displayTitle(track),
           artist: artist.name,
           album: "Imastun Studio",
           artwork: [{ src:new URL(artist.cover, location.href).href, sizes:"500x500", type:"image/jpeg" }]
@@ -483,7 +632,8 @@
     var track = TRACKS[index];
     var url = new URL(artist.slug, location.href);
     url.searchParams.set("play", artist.id + "|" + track.id);
-    var data = { title:track.label, text:track.label + " — " + artist.name, url:url.href };
+    var shareTitle = displayTitle(track);
+    var data = { title:shareTitle, text:shareTitle + " — " + artist.name, url:url.href };
 
     if (navigator.share) {
       navigator.share(data).catch(function () {});
@@ -552,6 +702,12 @@
     var donateButton = document.getElementById("donate-btn");
     if (donateButton) donateButton.setAttribute("aria-label", tr("donate"));
     setStatus(curAudio().paused ? (state.current >= 0 ? "paused" : "ready") : "playing");
+    if (state.current >= 0 && TRACKS[state.current]) {
+      var currentTrack = TRACKS[state.current];
+      playerTitle.textContent = displayTitle(currentTrack);
+      playerTitle.className = "player-title " + languageCountClass(currentTrack);
+    }
+    if (artist) setupRecentPanel();
     syncPlayer();
   }
 
@@ -602,10 +758,10 @@
     panel.hidden = false;
     var grid = panel.querySelector("#recent-added-grid");
     grid.innerHTML = newItems.slice(0, 12).map(function (item) {
-      var sub = item.track.explanation ? explanationText(item.track.explanation) : (item.track.subtitle || artist.name);
+      var sub = displaySubtitle(item.track, item.track.subtitle || artist.name);
       return '<div class="recent-card" data-index="' + item.index + '">' +
         '<div class="rc-top"><span class="rc-badge new-badge">NEW</span></div>' +
-        '<div class="rc-title">' + escapeHtml(item.track.label) + '</div>' +
+        '<div class="rc-title">' + escapeHtml(displayTitle(item.track)) + '</div>' +
         '<div class="rc-sub">' + escapeHtml(sub) + '</div>' +
         '</div>';
     }).join("");
@@ -727,7 +883,7 @@
     document.getElementById("cover").alt = artist.name;
     document.getElementById("cover-mark").textContent = artist.mark || "";
     document.getElementById("hero-stat").firstChild.nodeValue = TRACKS.length + " ";
-    document.getElementById("player-cover").src = artist.cover;
+    setPlayerCover(artist.cover);
     playerTitle.textContent = artist.name;
     resultCount.textContent = TRACKS.length + " " + tr("songWord");
     setupPoetFilters();
@@ -883,6 +1039,7 @@
   function init(data) {
     artist = data && data[artistId];
     if (!artist) throw new Error("Unknown artist: " + artistId);
+    ALL_ARTIST_IDS = Object.keys(data);
     applyArtist();
     setupArtistSwitcher(data);
     setupSideArtists(data);
@@ -894,6 +1051,7 @@
 
     applyLanguage(read("imastun_language", "hy"));
     openRequestedTrack();
+    initAuth();
 
     document.querySelectorAll("img").forEach(function (image) {
       image.addEventListener("error", function () {
