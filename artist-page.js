@@ -107,13 +107,6 @@
     return days >= 0 && days <= 30;
   }
 
-  function explanationText(value) {
-    if (!value) return '';
-    if (typeof value === 'string') return value;
-    var lang = document.documentElement.lang || 'hy';
-    return value[lang] || value.hy || value.ru || value.en || '';
-  }
-
   function hasTranslatedTitle(track) {
     return state.lang !== "hy" && !NO_TITLE_SWAP.has(track.id) && !!(track.explanation && track.explanation[state.lang]);
   }
@@ -123,8 +116,21 @@
   }
 
   function displaySubtitle(track, fallback) {
-    if (hasTranslatedTitle(track)) return track.label;
-    return track.explanation ? explanationText(track.explanation) : fallback;
+    if (!track.explanation) return fallback;
+    var nativeIsHy = /[԰-֏]/.test(String(track.label || "").replace(/\([^)]*\)/g, ""));
+    var parts = [];
+    if (hasTranslatedTitle(track)) {
+      parts.push(track.label);
+      Object.keys(track.explanation).forEach(function (lang) {
+        if (lang !== state.lang && !(lang === "hy" && nativeIsHy)) parts.push(track.explanation[lang]);
+      });
+    } else {
+      ["hy", "en", "ru"].forEach(function (lang) {
+        if (lang === "hy" && nativeIsHy) return;
+        if (track.explanation[lang]) parts.push(track.explanation[lang]);
+      });
+    }
+    return parts.length ? parts.join(" · ") : fallback;
   }
 
   function read(key, fallback) {
