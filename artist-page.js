@@ -111,7 +111,7 @@
     if (!value) return '';
     if (typeof value === 'string') return value;
     var lang = document.documentElement.lang || 'hy';
-    return value[lang] || value.hy || value.en || value.ru || '';
+    return value[lang] || value.hy || value.ru || value.en || '';
   }
 
   function hasTranslatedTitle(track) {
