@@ -1994,11 +1994,20 @@
       },
       {
         "id": "Anund_Kin_e_004",
-        "label": "Անուննդ կին է",
+        "label": "Անունդ կին է",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/Anund_Kin_e_004.mp3",
         "explanation": {
           "en": "Your Name Is Woman",
           "ru": "Твоё имя — женщина"
+        }
+      },
+      {
+        "id": "Անունդ կին է ֆրի տանգո",
+        "label": "Անունդ կին է (ֆրի տանգո)",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D4%B1%D5%B6%D5%B8%D6%82%D5%B6%D5%A4%20%D5%AF%D5%AB%D5%B6%20%D5%A7.mp3",
+        "explanation": {
+          "en": "Your Name Is Woman (Free Tango)",
+          "ru": "Твоё имя — женщина (фри-танго)"
         }
       },
       {
