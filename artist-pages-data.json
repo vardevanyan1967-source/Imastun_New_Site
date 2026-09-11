@@ -4839,22 +4839,22 @@
       },
       {
         "id": "hamo-sahyan/Հայոց փշատենին",
-        "label": "Հայոց փշատենին (ջազ)",
+        "label": "Հայոց փշատենին (վալս)",
         "subtitle": "Համո Սահյան",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2F%D5%80%D5%A1%D5%B5%D5%B8%D6%81%20%D6%83%D5%B7%D5%A1%D5%BF%D5%A5%D5%B6%D5%AB%D5%B6.mp3",
         "explanation": {
-          "en": "The Armenian Oleaster (Jazz)",
-          "ru": "Армянская джида (джаз)"
+          "en": "The Armenian Oleaster (Waltz)",
+          "ru": "Армянская джида (вальс)"
         }
       },
       {
-        "id": "hamo-sahyan/Հայոց փշատենին վալս",
-        "label": "Հայոց փշատենին (վալս)",
+        "id": "hamo-sahyan/Հայոց փշատենին ջազ",
+        "label": "Հայոց փշատենին (ջազ)",
         "subtitle": "Համո Սահյան",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2F%D5%80%D5%A1%D5%B5%D5%B8%D6%81%20%D6%83%D5%B7%D5%A1%D5%BF%D5%A5%D5%B6%D5%AB%D5%B6vals.mp3",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2F%D5%80%D5%A1%D5%B5%D5%B8%D6%81%20%D6%83%D5%B7%D5%A1%D5%BF%D5%A5%D5%B6%D5%AB%D5%B6%20jazz.mp3",
         "explanation": {
-          "en": "The Armenian Oleaster (Waltz)",
-          "ru": "Армянская джида (вальс)"
+          "en": "The Armenian Oleaster (Jazz)",
+          "ru": "Армянская джида (джаз)"
         }
       },
       {
