@@ -1960,6 +1960,15 @@
           "en": "I Pity Them",
           "ru": "Мне жаль их"
         }
+      },
+      {
+        "id": "Ուզում եմ նորից մանկանալ",
+        "label": "Ուզում եմ նորից մանկանալ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D5%88%D6%82%D5%A6%D5%B8%D6%82%D5%B4%20%D5%A5%D5%B4%20%D5%B6%D5%B8%D6%80%D5%AB%D6%81%20%D5%B4%D5%A1%D5%B6%D5%AF%D5%A1%D5%B6%D5%A1%D5%AC.mp3",
+        "explanation": {
+          "en": "I Want to Be a Child Again",
+          "ru": "Хочу снова стать ребёнком"
+        }
       }
     ]
   },
