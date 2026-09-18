@@ -61,6 +61,27 @@ jobs:
                   print(f"Skipping {video_id}: could not verify long-form status: {exc}")
                   return True
 
+          def is_placeholder_title(title, video_id):
+              title = (title or "").strip()
+              return not title or title == f"YouTube video {video_id}"
+
+          def fetch_oembed_title(video_id):
+              # RSS only covers the ~15 newest uploads, so older videos that had
+              # no title at sync time can never be backfilled from it again.
+              # oEmbed works for any single video regardless of age.
+              url = (
+                  "https://www.youtube.com/oembed?url="
+                  f"https://www.youtube.com/watch?v={video_id}&format=json"
+              )
+              try:
+                  req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+                  with urllib.request.urlopen(req, timeout=15) as response:
+                      data = json.loads(response.read())
+                  return (data.get("title") or "").strip()
+              except Exception as exc:
+                  print(f"oEmbed title fetch failed for {video_id}: {exc}")
+                  return ""
+
           json_path = Path("youtube-videos.json")
           videos = json.loads(json_path.read_text(encoding="utf-8")) if json_path.exists() else []
 
@@ -74,12 +95,14 @@ jobs:
               # Backfill missing titles/dates from the current YouTube RSS feed.
               feed_item = feed_by_id.get(video_id)
               if feed_item:
-                  if not (item.get("title") or "").strip():
-                      item["title"] = feed_item.get("title") or f"YouTube video {video_id}"
+                  if is_placeholder_title(item.get("title"), video_id):
+                      item["title"] = feed_item.get("title") or item.get("title") or f"YouTube video {video_id}"
                   if not item.get("added") and feed_item.get("published"):
                       item["added"] = feed_item["published"][:10]
-              if not (item.get("title") or "").strip():
-                  item["title"] = f"YouTube video {video_id}"
+              if is_placeholder_title(item.get("title"), video_id):
+                  # The video has aged out of the RSS feed; ask YouTube directly.
+                  oembed_title = fetch_oembed_title(video_id)
+                  item["title"] = oembed_title or f"YouTube video {video_id}"
               unique.append(item)
           videos = unique
 
