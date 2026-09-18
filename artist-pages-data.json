@@ -1969,6 +1969,15 @@
           "en": "I Want to Be a Child Again",
           "ru": "Хочу снова стать ребёнком"
         }
+      },
+      {
+        "id": "Ոսկե աշուն",
+        "label": "Ոսկե աշուն",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D5%88%D5%BD%D5%AF%D5%A5%20%D5%A1%D5%B7%D5%B8%D6%82%D5%B6.mp3",
+        "explanation": {
+          "en": "Golden Autumn",
+          "ru": "Золотая осень"
+        }
       }
     ]
   },
