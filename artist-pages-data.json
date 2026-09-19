@@ -2445,16 +2445,71 @@
     "title": "Lilit Aghasyan — Imastun Studio",
     "description": "Լիլիթ Աղասյանի էջը՝ Imastun Studio-ում։",
     "role": {
-      "hy": "Գեղեցկություն • Ինքնավստահություն • Ոճ",
-      "ru": "Красота • Уверенность • Стиль",
-      "en": "Beauty • Confidence • Style"
+      "hy": "Երգչուհի • երաժշտական մշակող",
+      "ru": "Певица • аранжировщица",
+      "en": "Vocalist • arranger"
     },
     "intro": {
       "hy": "Լիլիթ Աղասյանի էջը՝ մեկ առանձին, թեթև և հարմար երգացանկում։",
       "ru": "Страница Лилит Агасян в отдельном, лёгком и удобном каталоге.",
       "en": "Lilit Aghasyan’s page in a dedicated, lightweight and easy-to-use catalogue."
     },
-    "tracks": []
+    "tracks": [
+      {
+        "id": "deratoms",
+        "label": "Դեղատոմս",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/lilit-aghasyan/featured/deratoms.mp3",
+        "explanation": {
+          "en": "Prescription",
+          "ru": "Рецепт"
+        }
+      },
+      {
+        "id": "driak",
+        "label": "Դղյակ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/lilit-aghasyan/featured/driak.mp3",
+        "explanation": {
+          "en": "The Castle",
+          "ru": "Замок"
+        }
+      },
+      {
+        "id": "erani-zgas",
+        "label": "Երանի զգաս",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/lilit-aghasyan/featured/erani-zgas.mp3",
+        "explanation": {
+          "en": "If Only You Could Feel",
+          "ru": "Если бы ты почувствовал"
+        }
+      },
+      {
+        "id": "sae-qosery",
+        "label": "Սա է քո սերը",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/lilit-aghasyan/featured/sae-qosery.mp3",
+        "explanation": {
+          "en": "This Is Your Love",
+          "ru": "Это твоя любовь"
+        }
+      },
+      {
+        "id": "Dzmer_e_andzrev",
+        "label": "Ձմեռ է, անձրև",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/lilit-aghasyan/featured/Dzmer_e_andzrev.mp3",
+        "explanation": {
+          "en": "Winter, Rain",
+          "ru": "Зима, дождь"
+        }
+      },
+      {
+        "id": "Srti_deghy_SER",
+        "label": "Սրտի դեղը՝ Սեր",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/lilit-aghasyan/featured/Srti_deghy_SER.mp3",
+        "explanation": {
+          "en": "The Heart's Remedy — Love",
+          "ru": "Лекарство сердца — Любовь"
+        }
+      }
+    ]
   },
   "shakespeare-reimagined": {
     "id": "shakespeare-reimagined",
