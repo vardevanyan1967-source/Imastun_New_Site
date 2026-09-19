@@ -5094,6 +5094,36 @@
           "en": "For Love, There Is No Death",
           "ru": "Ради любви нет смерти"
         }
+      },
+      {
+        "id": "shiraz/Հայոց լեզուն",
+        "label": "Հայոց լեզուն",
+        "subtitle": "Հովհաննես Շիրազ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/shiraz%2F%D5%80%D5%A1%D5%B5%D5%B8%D6%81%20%D5%AC%D5%A5%D5%A6%D5%B8%D6%82%D5%B6.mp3",
+        "explanation": {
+          "en": "The Armenian Language",
+          "ru": "Армянский язык"
+        }
+      },
+      {
+        "id": "shiraz/Սիրո հիասթափություն",
+        "label": "Սիրո հիասթափություն",
+        "subtitle": "Հովհաննես Շիրազ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/shiraz%2F%D5%8D%D5%AB%D6%80%D5%B8%20%D5%B0%D5%AB%D5%A1%D5%BD%D5%A9%D5%A1%D6%83%D5%B8%D6%82%D5%A9%D5%B5%D5%B8%D6%82%D5%B6.mp3",
+        "explanation": {
+          "en": "Disillusionment in Love",
+          "ru": "Разочарование в любви"
+        }
+      },
+      {
+        "id": "shiraz/Իմ Սուրբ Հայրենիք",
+        "label": "Իմ Սուրբ Հայրենիք",
+        "subtitle": "Հովհաննես Շիրազ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/shiraz%2F%D4%BB%D5%B4%20%D5%8D%D5%B8%D6%82%D6%80%D5%A2%20%D5%80%D5%A1%D5%B5%D6%80%D5%A5%D5%B6%D5%AB%D6%84.mp3",
+        "explanation": {
+          "en": "My Holy Homeland",
+          "ru": "Моя святая Родина"
+        }
       }
     ]
   }
