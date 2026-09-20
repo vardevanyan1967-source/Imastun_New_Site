@@ -57,7 +57,7 @@
       playing:"Նվագարկվում է", paused:"Դադարեցված է", theme:"Փոխել գունային ռեժիմը",
       language:"Փոխել լեզուն", loadError:"Երգացանկը չբեռնվեց։ Թարմացրեք էջը։",
       donate:"Աջակցել", donateCardCopied:"Քարտի համարը պատճենվեց ✓", otherArtists:"Այլ արտիստներ",
-      recentHeading:"Վերջերս ավելացված", comingSoon:"Երգերը շուտով կավելանան։"
+      recentHeading:"Վերջերս ավելացված"
     },
     ru: {
       back:"Главная", catalog:"Песни", search:"Поиск по песням…",
@@ -71,7 +71,7 @@
       ready:"Готово", loading:"Загрузка…", playing:"Воспроизводится", paused:"На паузе",
       theme:"Сменить тему", language:"Сменить язык", loadError:"Список песен не загрузился. Обновите страницу.",
       donate:"Поддержать", donateCardCopied:"Номер карты скопирован ✓", otherArtists:"Другие артисты",
-      recentHeading:"Недавно добавленные", comingSoon:"Песни скоро появятся."
+      recentHeading:"Недавно добавленные"
     },
     en: {
       back:"Home", catalog:"Track list", search:"Search tracks…",
@@ -85,7 +85,7 @@
       ready:"Ready", loading:"Loading…", playing:"Playing", paused:"Paused",
       theme:"Change theme", language:"Change language", loadError:"The track list could not load. Refresh the page.",
       donate:"Support", donateCardCopied:"Card number copied ✓", otherArtists:"Other artists",
-      recentHeading:"Recently Added", comingSoon:"Songs are coming soon."
+      recentHeading:"Recently Added"
     }
   };
 
@@ -342,7 +342,7 @@
     var items = visibleTracks();
     resultCount.textContent = items.length + " " + tr("songWord");
     empty.hidden = items.length !== 0;
-    empty.textContent = TRACKS.length === 0 ? tr("comingSoon") : state.filter === "favorites" && !state.query ? tr("noFavorites") : tr("noResults");
+    empty.textContent = state.filter === "favorites" && !state.query ? tr("noFavorites") : tr("noResults");
     list.innerHTML = items.map(function (item, position) {
       var favorite = isFavorite(item.track.id);
       var playing = state.current === item.index && !curAudio().paused;

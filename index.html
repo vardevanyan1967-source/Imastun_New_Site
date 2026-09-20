@@ -2261,11 +2261,6 @@
       ]
     },
     {
-      id: 'lilit-aghasyan', name: 'Lilit Aghasyan', role: 'Beauty & Confidence & Style',
-      cover: 'authors/lilit-aghasyan/cover.jpg', page: 'lilit-aghasyan.html',
-      songs: []
-    },
-    {
       id: 'haj-poetner', name: 'Հայ Բանաստեղծներ', role: 'Armenian Poets · Songs',
       cover: 'authors/haj-poetner/cover.jpg', page: 'haj-poetner.html',
       songs: [
@@ -4161,7 +4156,7 @@
   artists.forEach((artist, i) => {
     const coverSrc = artist.cover || `authors/${artist.id}/cover.jpg`;
     const initials = artist.name.split(' ').map(w => w[0]).join('');
-    const hasCover = ["imastun","silva-gulanyan","go-hara","lilit-aghasyan","haj-poetner","shakespeare-reimagined"].includes(artist.id);
+    const hasCover = ["imastun","silva-gulanyan","go-hara","haj-poetner","shakespeare-reimagined"].includes(artist.id);
     const hasSongs = artist.songs && artist.songs.length > 0;
 
     /* small card — no cover */

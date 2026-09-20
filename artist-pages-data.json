@@ -2435,27 +2435,6 @@
       }
     ]
   },
-  "lilit-aghasyan": {
-    "id": "lilit-aghasyan",
-    "slug": "lilit-aghasyan.html",
-    "name": "Lilit Aghasyan",
-    "mark": "LA",
-    "cover": "authors/lilit-aghasyan/cover.jpg",
-    "coverPosition": "40% 20%",
-    "title": "Lilit Aghasyan — Imastun Studio",
-    "description": "Լիլիթ Աղասյանի էջը՝ Imastun Studio-ում։",
-    "role": {
-      "hy": "Գեղեցկություն • Ինքնավստահություն • Ոճ",
-      "ru": "Красота • Уверенность • Стиль",
-      "en": "Beauty • Confidence • Style"
-    },
-    "intro": {
-      "hy": "Լիլիթ Աղասյանի էջը՝ մեկ առանձին, թեթև և հարմար երգացանկում։",
-      "ru": "Страница Лилит Агасян в отдельном, лёгком и удобном каталоге.",
-      "en": "Lilit Aghasyan’s page in a dedicated, lightweight and easy-to-use catalogue."
-    },
-    "tracks": []
-  },
   "shakespeare-reimagined": {
     "id": "shakespeare-reimagined",
     "slug": "shakespeare.html",

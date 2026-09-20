@@ -2,7 +2,7 @@ const CACHE_VERSION = 'imastun-shell-v11';
 const PLAYER_FIX_VERSION = 'unified-crossfade-v10';
 const APP_SHELL = [
   './', './index.html', './manifest.json', './logo.png', './audio-player-fix.js',
-  './imastun.html', './go-hara.html', './lilit-aghasyan.html', './shakespeare.html', './haj-poetner.html', './silva-gulanyan.html',
+  './imastun.html', './go-hara.html', './shakespeare.html', './haj-poetner.html', './silva-gulanyan.html',
   './artist-page.js', './artist-page.css', './artist-pages-data.json'
 ];
 
