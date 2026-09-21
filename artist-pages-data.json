@@ -5124,6 +5124,26 @@
           "en": "My Holy Homeland",
           "ru": "Моя святая Родина"
         }
+      },
+      {
+        "id": "shiraz/Դու իմ միակ աստվածուհի",
+        "label": "Դու իմ միակ աստվածուհի",
+        "subtitle": "Հովհաննես Շիրազ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/shiraz%2F%D4%B4%D5%B8%D6%82%20%D5%AB%D5%B4%20%D5%B4%D5%AB%D5%A1%D5%AF%20%D5%A1%D5%BD%D5%BF%D5%BE%D5%A1%D5%AE%D5%B8%D6%82%D5%B0%D5%AB.mp3",
+        "explanation": {
+          "en": "You Are My Only Goddess",
+          "ru": "Ты моя единственная богиня"
+        }
+      },
+      {
+        "id": "shiraz/Դու էլ ի՛մն ես",
+        "label": "Դու էլ ի՛մն ես",
+        "subtitle": "Հովհաննես Շիրազ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/shiraz%2F%D4%B4%D5%B8%D6%82%20%D5%A7%D5%AC%20%D5%AB%D5%9B%D5%B4%D5%B6%20%D5%A5%D5%BD.mp3",
+        "explanation": {
+          "en": "You Are Mine Too",
+          "ru": "Ты тоже моя"
+        }
       }
     ]
   }
