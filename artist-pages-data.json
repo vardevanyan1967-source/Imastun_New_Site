@@ -5144,6 +5144,16 @@
           "en": "You Are Mine Too",
           "ru": "Ты тоже моя"
         }
+      },
+      {
+        "id": "shiraz/Մեր Հայրենիք",
+        "label": "Մեր Հայրենիք",
+        "subtitle": "Հովհաննես Շիրազ",
+        "src": "https://cdn1.suno.ai/972de507-d7a4-4315-adfc-07ae1e818cb7.mp4",
+        "explanation": {
+          "en": "Our Homeland",
+          "ru": "Наша Родина"
+        }
       }
     ]
   }
