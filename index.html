@@ -1049,6 +1049,46 @@
       font-size: 10px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em;
     }
     .similar-empty { padding: 16px 8px; color: var(--text-dim); font-size: 12px; font-style: italic; }
+    #gp-react { font-size: 16px; }
+    #gp-react[hidden] { display: none; }
+    #react-panel {
+      position: fixed; left: 16px; bottom: calc(var(--player-h) + 10px);
+      width: 300px; max-width: 88vw;
+      background: rgba(10,10,10,0.98); backdrop-filter: blur(24px);
+      border: 1px solid var(--gold); border-radius: 4px;
+      padding: 12px; z-index: 210;
+      display: none; flex-direction: column; gap: 8px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+    }
+    #react-panel.open { display: flex; }
+    .react-title { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); opacity: 0.8; }
+    .react-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+    .react-btn {
+      display: flex; flex-direction: column; align-items: center; gap: 2px;
+      padding: 8px 4px; cursor: pointer; font: inherit; color: var(--text);
+      background: transparent; border: 1px solid rgba(201,168,76,0.35); border-radius: 6px;
+    }
+    .react-btn:hover { background: rgba(201,168,76,0.1); }
+    .react-btn.done { border-color: var(--gold); background: rgba(201,168,76,0.18); cursor: default; }
+    .react-btn .re-icon { font-size: 22px; line-height: 1.1; }
+    .react-btn .re-name { font-size: 9px; color: var(--text-dim); text-align: center; }
+    .react-btn .re-count { font-size: 11px; font-variant-numeric: tabular-nums; }
+    .react-thanks { font-size: 11px; color: var(--gold); text-align: center; min-height: 14px; }
+    #feedback-form { display: flex; flex-direction: column; gap: 10px; position: relative; }
+    #feedback-form textarea, #feedback-form input[type="text"] {
+      width: 100%; box-sizing: border-box; padding: 12px 14px; font: inherit; font-size: 15px;
+      color: var(--text, #eee); background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,168,76,0.35); border-radius: 6px;
+    }
+    #feedback-form textarea { resize: vertical; min-height: 110px; }
+    #feedback-form textarea:focus, #feedback-form input[type="text"]:focus { outline: none; border-color: var(--gold, #c9a24b); }
+    #fb-send {
+      align-self: center; padding: 12px 34px; cursor: pointer; font: inherit; font-size: 14px;
+      letter-spacing: 0.08em; color: var(--bg, #0a0a0a); background: var(--gold, #c9a24b);
+      border: 0; border-radius: 999px;
+    }
+    #fb-send:disabled { opacity: 0.55; cursor: default; }
+    #fb-status { min-height: 18px; text-align: center; font-size: 13px; color: var(--gold, #c9a24b); }
 
     .gp-time { font-size: 12px; font-variant-numeric: tabular-nums; color: var(--text); flex-shrink: 0; width: 40px; font-weight: 600; }
     .gp-time.right { text-align: right; }
@@ -2022,9 +2062,15 @@
 <div class="gold-rule"></div>
 
 <section id="comments-section" style="max-width:720px;margin:40px auto;padding:0 20px;">
-  <h3 style="color:var(--gold,#c9a24b);font-size:20px;margin-bottom:16px;text-align:center;">Մեկնաբանություններ</h3>
-  <div id="fb-root"></div>
-  <div class="fb-comments" data-href="https://imastun.org/" data-width="100%" data-numposts="10"></div>
+  <h3 id="fb-title" style="color:var(--gold,#c9a24b);font-size:20px;margin-bottom:10px;text-align:center;">Քո կարծիքը</h3>
+  <p id="fb-lead" style="text-align:center;color:var(--text-dim,#aaa);font-size:14px;line-height:1.6;margin-bottom:18px;"></p>
+  <form id="feedback-form" novalidate>
+    <textarea id="fb-message" maxlength="1500" rows="4" required></textarea>
+    <input id="fb-contact" type="text" maxlength="200" autocomplete="off">
+    <input id="fb-website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+    <button type="submit" id="fb-send"></button>
+    <div id="fb-status" role="status" aria-live="polite"></div>
+  </form>
 </section>
 
 <div class="gold-rule"></div>
@@ -2121,8 +2167,10 @@
     <button class="gp-btn" id="gp-similar" aria-label="Նմանատիպ երգեր" title="Նմանատիպ երգեր">
       <svg width="17" height="17" viewBox="0 0 18 18" fill="none"><rect x="2" y="3" width="14" height="2.4" rx="1" fill="currentColor"/><rect x="2" y="7.8" width="14" height="2.4" rx="1" fill="currentColor"/><rect x="2" y="12.6" width="9" height="2.4" rx="1" fill="currentColor"/></svg>
     </button>
+    <button class="gp-btn" id="gp-react" aria-label="Ռեակցիա" title="Ռեակցիա" hidden>😊</button>
   </div>
   <div id="similar-panel"></div>
+  <div id="react-panel"></div>
   <div class="gp-progress-wrap">
     <span class="gp-time" id="gp-cur">0:00</span>
     <div class="gp-bar" id="gp-bar"><div class="gp-bar-fill" id="gp-fill"></div></div>
@@ -3669,6 +3717,8 @@
   const gpDur     = document.getElementById('gp-dur');
   const gpSimilar = document.getElementById('gp-similar');
   const similarPanel = document.getElementById('similar-panel');
+  const gpReact = document.getElementById('gp-react');
+  const reactPanel = document.getElementById('react-panel');
 
   let currentIdx = -1, isPlaying = false;
 
@@ -3730,7 +3780,132 @@
   gpSimilar.addEventListener('click', () => {
     if (!similarPanel.classList.contains('open')) buildSimilarPanel();
     similarPanel.classList.toggle('open');
+    reactPanel.classList.remove('open');
   });
+
+  /* ══ REACTIONS (Supabase: song_reactions + add_reaction) ══ */
+  const REACTIONS = [
+    { key: 'love', icon: '❤️' },
+    { key: 'moved', icon: '😢' },
+    { key: 'fire', icon: '🔥' },
+    { key: 'joy', icon: '😊' }
+  ];
+  const REACT_LABELS = {
+    hy: { title: 'Ինչ զգացիր այս երգից', love: 'Սիրեցի', moved: 'Հուզվեցի', fire: 'Հրաշք է', joy: 'Ուրախացա', thanks: 'Շնորհակալություն ✓' },
+    ru: { title: 'Что вы почувствовали', love: 'Люблю', moved: 'Тронуло', fire: 'Огонь', joy: 'Радость', thanks: 'Спасибо ✓' },
+    en: { title: 'How did this song feel', love: 'Loved it', moved: 'Moved me', fire: 'Fire', joy: 'Joyful', thanks: 'Thank you ✓' }
+  };
+  const reactionCounts = {};
+  let reactionsReady = false;
+  const reactLabels = () => REACT_LABELS[document.documentElement.lang] || REACT_LABELS.hy;
+  function readReacted() { try { return JSON.parse(localStorage.getItem('imastun_reacted') || '{}'); } catch (e) { return {}; } }
+  function writeReacted(o) { try { localStorage.setItem('imastun_reacted', JSON.stringify(o)); } catch (e) {} }
+
+  fetch(`${SUPABASE_URL}/rest/v1/song_reactions?select=song_id,reaction,count`, {
+    headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` }
+  }).then(r => (r.ok ? r.json() : Promise.reject()))
+    .then(rows => {
+      rows.forEach(r => { (reactionCounts[r.song_id] = reactionCounts[r.song_id] || {})[r.reaction] = r.count; });
+      reactionsReady = true;
+      updateReactUi();
+    }).catch(() => {});
+
+  function updateReactUi(thanks) {
+    const t = currentIdx >= 0 ? playlist[currentIdx] : null;
+    if (!reactionsReady || !t) { gpReact.hidden = true; reactPanel.classList.remove('open'); return; }
+    const L = reactLabels();
+    const counts = reactionCounts[t.song] || {};
+    const done = readReacted()[t.song] || [];
+    gpReact.hidden = false;
+    gpReact.title = gpReact.ariaLabel = L.title;
+    reactPanel.innerHTML = `<div class="react-title">${L.title}</div><div class="react-row">` +
+      REACTIONS.map(r => `<button type="button" class="react-btn${done.includes(r.key) ? ' done' : ''}" data-key="${r.key}">` +
+        `<span class="re-icon">${r.icon}</span><span class="re-name">${L[r.key]}</span><span class="re-count">${counts[r.key] || 0}</span></button>`).join('') +
+      `</div><div class="react-thanks">${thanks ? L.thanks : ''}</div>`;
+  }
+
+  gpReact.addEventListener('click', () => {
+    reactPanel.classList.toggle('open');
+    similarPanel.classList.remove('open');
+  });
+
+  reactPanel.addEventListener('click', e => {
+    const btn = e.target.closest('.react-btn');
+    if (!btn || currentIdx < 0) return;
+    const song = playlist[currentIdx].song;
+    const key = btn.dataset.key;
+    const reacted = readReacted();
+    const list = reacted[song] || [];
+    if (list.includes(key)) return;
+    list.push(key);
+    reacted[song] = list;
+    writeReacted(reacted);
+    const c = reactionCounts[song] = reactionCounts[song] || {};
+    c[key] = (c[key] || 0) + 1;
+    updateReactUi(true);
+    fetch(`${SUPABASE_URL}/rest/v1/rpc/add_reaction`, {
+      method: 'POST',
+      headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ p_song_id: song, p_reaction: key })
+    }).catch(() => {});
+  });
+
+  /* ══ FEEDBACK FORM (Supabase: feedback, insert-only) ══ */
+  (function () {
+    const form = document.getElementById('feedback-form');
+    if (!form) return;
+    const LABELS = {
+      hy: { title: 'Քո կարծիքը', lead: 'Ինչ երգ կուզենայիր լսել, ինչ զգացիր, ինչ խորհուրդ ունես՝ գրիր ինձ։ Ես կարդում եմ ամեն նամակ։', msg: 'Գրիր այստեղ…', contact: 'Ինչպես կապնվեմ քեզ հետ (ըստ ցանկության)', send: 'Ուղարկել', ok: 'Շնորհակալություն, ստացա ✓', short: 'Խնդրում եմ գրիր մի փոքր ավելի շատ։', fail: 'Չհաջողվեց ուղարկել։ Փորձիր մի փոքր ուշ։', wait: 'Մի քանի վայրկյան սպասիր։' },
+      ru: { title: 'Ваше мнение', lead: 'Какую песню вы хотели бы услышать, что почувствовали, какой совет дадите — напишите мне. Я читаю каждое сообщение.', msg: 'Напишите здесь…', contact: 'Как с вами связаться (по желанию)', send: 'Отправить', ok: 'Спасибо, получил ✓', short: 'Пожалуйста, напишите чуть подробнее.', fail: 'Не удалось отправить. Попробуйте позже.', wait: 'Подождите несколько секунд.' },
+      en: { title: 'Your thoughts', lead: 'What song would you like to hear, what did you feel, what advice do you have — write to me. I read every message.', msg: 'Write here…', contact: 'How can I reach you (optional)', send: 'Send', ok: 'Thank you, received ✓', short: 'Please write a little more.', fail: 'Could not send. Please try again later.', wait: 'Please wait a few seconds.' }
+    };
+    const $ = id => document.getElementById(id);
+    const status = $('fb-status');
+    const L = () => LABELS[document.documentElement.lang] || LABELS.hy;
+    function applyLabels() {
+      const l = L();
+      $('fb-title').textContent = l.title;
+      $('fb-lead').textContent = l.lead;
+      $('fb-message').placeholder = l.msg;
+      $('fb-contact').placeholder = l.contact;
+      $('fb-send').textContent = l.send;
+    }
+    applyLabels();
+    new MutationObserver(applyLabels).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const l = L();
+      const message = $('fb-message').value.trim();
+      if ($('fb-website').value) { status.textContent = l.ok; return; }
+      if (message.length < 3) { status.textContent = l.short; return; }
+      let last = 0;
+      try { last = Number(localStorage.getItem('imastun_fb_last') || 0); } catch (err) {}
+      if (Date.now() - last < 30000) { status.textContent = l.wait; return; }
+      $('fb-send').disabled = true;
+      try {
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/feedback`, {
+          method: 'POST',
+          headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+          body: JSON.stringify({
+            message,
+            contact: $('fb-contact').value.trim() || null,
+            page: location.pathname,
+            lang: document.documentElement.lang || 'hy'
+          })
+        });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        try { localStorage.setItem('imastun_fb_last', String(Date.now())); } catch (err) {}
+        $('fb-message').value = '';
+        $('fb-contact').value = '';
+        status.textContent = l.ok;
+      } catch (err) {
+        status.textContent = l.fail;
+      } finally {
+        $('fb-send').disabled = false;
+      }
+    });
+  })();
 
   const PLAY_SVG  = `<path d="M5 3l10 6-10 6V3z" fill="currentColor"/>`;
   const PAUSE_SVG = `<rect x="4" y="3" width="3.5" height="12" rx="1" fill="currentColor"/><rect x="10.5" y="3" width="3.5" height="12" rx="1" fill="currentColor"/>`;
@@ -3777,6 +3952,7 @@
     gpCur.textContent = gpDur.textContent = '0:00';
     highlightTrack(idx);
     updateMediaSession(t);
+    updateReactUi();
     if (autoplay) eng.play().then(() => { isPlaying = true; setPlayIcon(true); armCrossfadeWatchdog(); }).catch(() => {});
     try {
       localStorage.setItem('imastun_last_track', JSON.stringify({ artistId: t.artistId, song: t.song, label: t.label, artistName: t.artistName }));
@@ -5081,9 +5257,6 @@
   })();
   </script>
   <script src="./audio-player-fix.js?v=unified-crossfade-v10"></script>
-  <script async defer crossorigin="anonymous"
-    src="https://connect.facebook.net/hy_AM/sdk.js#xfbml=1&version=v19.0"
-    nonce="imastun"></script>
   <!-- deploy: instant mobile search -->
 
 <script>

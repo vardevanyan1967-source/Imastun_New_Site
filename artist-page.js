@@ -57,7 +57,8 @@
       playing:"Նվագարկվում է", paused:"Դադարեցված է", theme:"Փոխել գունային ռեժիմը",
       language:"Փոխել լեզուն", loadError:"Երգացանկը չբեռնվեց։ Թարմացրեք էջը։",
       donate:"Աջակցել", donateCardCopied:"Քարտի համարը պատճենվեց ✓", otherArtists:"Այլ արտիստներ",
-      recentHeading:"Վերջերս ավելացված"
+      recentHeading:"Վերջերս ավելացված",
+      reactTitle:"Ինչ զգացիր այս երգից", react_love:"Սիրեցի", react_moved:"Հուզվեցի", react_fire:"Հրաշք է", react_joy:"Ուրախացա", reactThanks:"Շնորհակալություն ✓"
     },
     ru: {
       back:"Главная", catalog:"Песни", search:"Поиск по песням…",
@@ -71,7 +72,8 @@
       ready:"Готово", loading:"Загрузка…", playing:"Воспроизводится", paused:"На паузе",
       theme:"Сменить тему", language:"Сменить язык", loadError:"Список песен не загрузился. Обновите страницу.",
       donate:"Поддержать", donateCardCopied:"Номер карты скопирован ✓", otherArtists:"Другие артисты",
-      recentHeading:"Недавно добавленные"
+      recentHeading:"Недавно добавленные",
+      reactTitle:"Что вы почувствовали", react_love:"Люблю", react_moved:"Тронуло", react_fire:"Огонь", react_joy:"Радость", reactThanks:"Спасибо ✓"
     },
     en: {
       back:"Home", catalog:"Track list", search:"Search tracks…",
@@ -85,7 +87,8 @@
       ready:"Ready", loading:"Loading…", playing:"Playing", paused:"Paused",
       theme:"Change theme", language:"Change language", loadError:"The track list could not load. Refresh the page.",
       donate:"Support", donateCardCopied:"Card number copied ✓", otherArtists:"Other artists",
-      recentHeading:"Recently Added"
+      recentHeading:"Recently Added",
+      reactTitle:"How did this song feel", react_love:"Loved it", react_moved:"Moved me", react_fire:"Fire", react_joy:"Joyful", reactThanks:"Thank you ✓"
     }
   };
 
@@ -383,6 +386,75 @@
     playerStatus.textContent = tr(key);
   }
 
+  var REACTIONS = [
+    { key:"love", icon:"❤️" }, { key:"moved", icon:"😢" }, { key:"fire", icon:"🔥" }, { key:"joy", icon:"😊" }
+  ];
+  var reactionCounts = {};
+  var reactionsReady = false;
+  var reactBtn = null, reactPanel = null;
+
+  function readReacted() {
+    try { return JSON.parse(localStorage.getItem("imastun_reacted") || "{}"); } catch (error) { return {}; }
+  }
+  function writeReacted(value) {
+    try { localStorage.setItem("imastun_reacted", JSON.stringify(value)); } catch (error) {}
+  }
+
+  function ensureReactUi() {
+    if (reactBtn) return;
+    reactBtn = document.createElement("button");
+    reactBtn.type = "button";
+    reactBtn.id = "player-react";
+    reactBtn.className = "player-react-btn";
+    reactBtn.textContent = "😊";
+    reactBtn.hidden = true;
+    document.getElementById("next").insertAdjacentElement("afterend", reactBtn);
+    reactPanel = document.createElement("div");
+    reactPanel.className = "react-panel";
+    document.body.appendChild(reactPanel);
+    reactBtn.addEventListener("click", function () { reactPanel.classList.toggle("open"); });
+    reactPanel.addEventListener("click", function (event) {
+      var button = event.target.closest ? event.target.closest(".react-btn") : null;
+      if (!button || state.current < 0) return;
+      var song = TRACKS[state.current].id;
+      var key = button.getAttribute("data-key");
+      var reacted = readReacted();
+      var list = reacted[song] || [];
+      if (list.indexOf(key) >= 0) return;
+      list.push(key);
+      reacted[song] = list;
+      writeReacted(reacted);
+      var counts = reactionCounts[song] = reactionCounts[song] || {};
+      counts[key] = (counts[key] || 0) + 1;
+      updateReactUi(true);
+      fetch(SUPABASE_URL + "/rest/v1/rpc/add_reaction", {
+        method: "POST",
+        headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY, "Content-Type": "application/json" },
+        body: JSON.stringify({ p_song_id: song, p_reaction: key })
+      }).catch(function () {});
+    });
+  }
+
+  function updateReactUi(thanks) {
+    var track = state.current >= 0 ? TRACKS[state.current] : null;
+    if (!reactionsReady || !track) {
+      if (reactBtn) reactBtn.hidden = true;
+      if (reactPanel) reactPanel.classList.remove("open");
+      return;
+    }
+    ensureReactUi();
+    var counts = reactionCounts[track.id] || {};
+    var done = readReacted()[track.id] || [];
+    reactBtn.hidden = false;
+    reactBtn.title = tr("reactTitle");
+    reactBtn.setAttribute("aria-label", tr("reactTitle"));
+    reactPanel.innerHTML = '<div class="react-title">' + escapeHtml(tr("reactTitle")) + '</div><div class="react-row">' +
+      REACTIONS.map(function (r) {
+        return '<button type="button" class="react-btn' + (done.indexOf(r.key) >= 0 ? " done" : "") + '" data-key="' + r.key + '">' +
+          '<span class="re-icon">' + r.icon + '</span><span class="re-name">' + escapeHtml(tr("react_" + r.key)) + '</span><span class="re-count">' + (counts[r.key] || 0) + '</span></button>';
+      }).join("") + '</div><div class="react-thanks">' + (thanks ? escapeHtml(tr("reactThanks")) : "") + '</div>';
+  }
+
   function syncPlayer() {
     var active = state.current >= 0 ? TRACKS[state.current] : null;
     var playing = active && !curAudio().paused;
@@ -392,6 +464,7 @@
     document.getElementById("prev").setAttribute("aria-label", tr("previous"));
     document.getElementById("next").setAttribute("aria-label", tr("next"));
     document.getElementById("player-close").setAttribute("aria-label", tr("close"));
+    updateReactUi();
     renderTracks();
   }
 
@@ -934,6 +1007,7 @@
       cancelCrossfade();
       player.classList.remove("visible");
       document.body.classList.remove("player-open");
+      if (reactPanel) reactPanel.classList.remove("open");
     });
     setupPlayerSwipe();
 
@@ -1059,6 +1133,17 @@
       }, { once:true });
     });
   }
+
+  fetch(SUPABASE_URL + "/rest/v1/song_reactions?select=song_id,reaction,count", {
+    headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY }
+  }).then(function (response) { return response.ok ? response.json() : Promise.reject(); })
+    .then(function (rows) {
+      rows.forEach(function (row) {
+        (reactionCounts[row.song_id] = reactionCounts[row.song_id] || {})[row.reaction] = row.count;
+      });
+      reactionsReady = true;
+      updateReactUi();
+    }).catch(function () {});
 
   fetch(new URL("artist-pages-data.json", document.baseURI), { cache:"no-store" })
     .then(function (response) {
