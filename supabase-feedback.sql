@@ -53,3 +53,14 @@ alter table public.feedback enable row level security;
 drop policy if exists "anyone can send feedback" on public.feedback;
 create policy "anyone can send feedback" on public.feedback
   for insert to anon, authenticated with check (true);
+
+-- 3) Admin page (admin.html): only the owner's Google account may read or delete feedback.
+drop policy if exists "owner reads feedback" on public.feedback;
+create policy "owner reads feedback" on public.feedback
+  for select to authenticated
+  using ((auth.jwt() ->> 'email') = 'vahanvardevanyan3@gmail.com');
+
+drop policy if exists "owner deletes feedback" on public.feedback;
+create policy "owner deletes feedback" on public.feedback
+  for delete to authenticated
+  using ((auth.jwt() ->> 'email') = 'vahanvardevanyan3@gmail.com');
