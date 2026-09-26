@@ -631,6 +631,45 @@
       color:#0c0c0c;
       font-size:14px
     }
+    .player-controls .player-react-btn{font-size:16px}
+    .player-controls .player-react-btn[hidden]{display:none}
+    .react-panel{
+      position:fixed;
+      left:50%;
+      bottom:calc(105px + var(--safe-bottom));
+      z-index:1100;
+      display:none;
+      flex-direction:column;
+      gap:8px;
+      width:min(320px,calc(100% - 32px));
+      padding:12px;
+      transform:translateX(-50%);
+      border:1px solid var(--gold);
+      border-radius:12px;
+      background:rgba(10,10,10,.98);
+      box-shadow:0 12px 40px rgba(0,0,0,.6)
+    }
+    .react-panel.open{display:flex}
+    .react-title{color:var(--gold);font-size:10px;letter-spacing:.2em;text-transform:uppercase}
+    .react-row{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+    .react-btn{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:2px;
+      padding:8px 4px;
+      border:1px solid rgba(201,168,76,.35);
+      border-radius:8px;
+      background:transparent;
+      color:#f1ede4;
+      cursor:pointer;
+      font:inherit
+    }
+    .react-btn.done{border-color:var(--gold);background:rgba(201,168,76,.18);cursor:default}
+    .react-btn .re-icon{font-size:22px;line-height:1.1}
+    .react-btn .re-name{font-size:9px;opacity:.7;text-align:center}
+    .react-btn .re-count{font-size:11px;font-variant-numeric:tabular-nums}
+    .react-thanks{min-height:14px;color:var(--gold);font-size:11px;text-align:center}
     .player-progress{
       display:grid;
       grid-template-columns:36px 1fr 36px;

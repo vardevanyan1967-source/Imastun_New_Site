@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Imastun — Ադմին</title>
+<link rel="icon" href="logo.png">
+<style>
+  :root { --bg:#0a0a0a; --card:#141414; --line:rgba(201,168,76,.28); --gold:#c9a24b; --text:#efeae0; --dim:#9a9486; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+  main { max-width:900px; margin:0 auto; padding:24px 16px 80px; }
+  h1 { font-size:22px; color:var(--gold); margin:0 0 4px; letter-spacing:.04em; }
+  h2 { font-size:13px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin:36px 0 12px; }
+  .sub { color:var(--dim); font-size:13px; margin-bottom:20px; }
+  .bar { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:8px; }
+  button { font:inherit; cursor:pointer; color:var(--bg); background:var(--gold); border:0; border-radius:999px; padding:9px 20px; }
+  button.ghost { background:transparent; color:var(--gold); border:1px solid var(--gold); padding:6px 14px; font-size:13px; }
+  button.danger { background:transparent; color:#e07a6a; border:1px solid #e07a6a; padding:4px 12px; font-size:12px; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px; }
+  .card b { display:block; font-size:26px; color:var(--gold); font-variant-numeric:tabular-nums; }
+  .card span { color:var(--dim); font-size:12px; }
+  .msg { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 16px; margin-bottom:10px; }
+  .msg p { margin:0 0 8px; white-space:pre-wrap; word-break:break-word; }
+  .meta { display:flex; gap:10px 16px; flex-wrap:wrap; align-items:center; color:var(--dim); font-size:12px; }
+  .meta .contact { color:var(--gold); }
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  th, td { text-align:left; padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.07); }
+  th { color:var(--dim); font-weight:500; font-size:12px; }
+  td.n { text-align:right; font-variant-numeric:tabular-nums; }
+  th.n { text-align:right; }
+  .note { color:var(--dim); padding:14px 0; }
+  .err { color:#e07a6a; }
+  [hidden] { display:none !important; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Imastun — Ադմին</h1>
+  <div class="sub">Կարծիքներ, ռեակցիաներ և լսումներ։ Միայն քեզ համար։</div>
+
+  <div id="login" class="bar" hidden>
+    <button id="btn-login" type="button">Մուտք Google-ով</button>
+  </div>
+
+  <div id="status" class="note">Բեռնվում է…</div>
+
+  <div id="app" hidden>
+    <div class="bar">
+      <span id="who" class="sub" style="margin:0"></span>
+      <button id="btn-refresh" class="ghost" type="button">Թարմացնել</button>
+      <button id="btn-logout" class="ghost" type="button">Դուրս գալ</button>
+    </div>
+
+    <div class="cards">
+      <div class="card"><b id="c-msgs">0</b><span>Կարծիքներ</span></div>
+      <div class="card"><b id="c-react">0</b><span>Ռեակցիաներ</span></div>
+      <div class="card"><b id="c-plays">0</b><span>Լսումներ</span></div>
+    </div>
+
+    <h2>Կարծիքներ</h2>
+    <div id="messages"></div>
+
+    <h2>Ռեակցիաներ (ամենաշատ արձագանք ստացած երգեր)</h2>
+    <table id="tbl-react"><thead><tr><th>Երգ</th><th class="n">❤️</th><th class="n">😢</th><th class="n">🔥</th><th class="n">😊</th><th class="n">Ընդհանուր</th></tr></thead><tbody></tbody></table>
+
+    <h2>Ամենաշատ լսվածները</h2>
+    <table id="tbl-plays"><thead><tr><th>Երգ</th><th class="n">Լսումներ</th></tr></thead><tbody></tbody></table>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(function () {
+  var SUPABASE_URL = "https://jcqkpqhaxkgfjcasklnq.supabase.co";
+  var SUPABASE_KEY = "sb_publishable_7iNYB-HogL42o_luHkI-gg_KzPylN3c";
+  var OWNER_EMAIL = "vahanvardevanyan3@gmail.com";
+
+  var $ = function (id) { return document.getElementById(id); };
+  var client = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  var REACTION_KEYS = ["love", "moved", "fire", "joy"];
+
+  function el(tag, text, cls) {
+    var node = document.createElement(tag);
+    if (text != null) node.textContent = text;
+    if (cls) node.className = cls;
+    return node;
+  }
+
+  function show(message, isError) {
+    var status = $("status");
+    status.hidden = !message;
+    status.textContent = message || "";
+    status.className = "note" + (isError ? " err" : "");
+  }
+
+  function formatDate(iso) {
+    try { return new Date(iso).toLocaleString("hy-AM", { dateStyle: "medium", timeStyle: "short" }); }
+    catch (error) { return iso; }
+  }
+
+  function renderMessages(rows) {
+    var box = $("messages");
+    box.textContent = "";
+    $("c-msgs").textContent = rows.length;
+    if (!rows.length) { box.appendChild(el("div", "Դեռ կարծիք չկա։", "note")); return; }
+    rows.forEach(function (row) {
+      var item = el("div", null, "msg");
+      item.appendChild(el("p", row.message));
+      var meta = el("div", null, "meta");
+      meta.appendChild(el("span", formatDate(row.created_at)));
+      if (row.contact) meta.appendChild(el("span", "✉ " + row.contact, "contact"));
+      if (row.lang) meta.appendChild(el("span", row.lang));
+      if (row.page) meta.appendChild(el("span", row.page));
+      var del = el("button", "Ջնջել", "danger");
+      del.type = "button";
+      del.addEventListener("click", function () {
+        if (!confirm("Ջնջե՞լ այս կարծիքը։")) return;
+        client.from("feedback").delete().eq("id", row.id).then(function (result) {
+          if (result.error) { alert("Չհաջողվեց ջնջել։"); return; }
+          load();
+        });
+      });
+      meta.appendChild(del);
+      item.appendChild(meta);
+      box.appendChild(item);
+    });
+  }
+
+  function renderReactions(rows) {
+    var bySong = {};
+    var total = 0;
+    rows.forEach(function (row) {
+      var entry = bySong[row.song_id] || (bySong[row.song_id] = { total: 0 });
+      entry[row.reaction] = row.count;
+      entry.total += row.count;
+      total += row.count;
+    });
+    $("c-react").textContent = total;
+    var body = $("tbl-react").tBodies[0];
+    body.textContent = "";
+    Object.keys(bySong).sort(function (a, b) { return bySong[b].total - bySong[a].total; }).slice(0, 30).forEach(function (id) {
+      var tr = document.createElement("tr");
+      tr.appendChild(el("td", id));
+      REACTION_KEYS.forEach(function (key) { tr.appendChild(el("td", bySong[id][key] || 0, "n")); });
+      tr.appendChild(el("td", bySong[id].total, "n"));
+      body.appendChild(tr);
+    });
+    if (!body.rows.length) {
+      var empty = document.createElement("tr");
+      var cell = el("td", "Դեռ ռեակցիա չկա։", "note");
+      cell.colSpan = 6;
+      empty.appendChild(cell);
+      body.appendChild(empty);
+    }
+  }
+
+  function renderPlays(rows) {
+    var total = 0;
+    rows.forEach(function (row) { total += row.play_count; });
+    $("c-plays").textContent = total;
+    var body = $("tbl-plays").tBodies[0];
+    body.textContent = "";
+    rows.slice().sort(function (a, b) { return b.play_count - a.play_count; }).slice(0, 30).forEach(function (row) {
+      var tr = document.createElement("tr");
+      tr.appendChild(el("td", row.song_id));
+      tr.appendChild(el("td", row.play_count, "n"));
+      body.appendChild(tr);
+    });
+  }
+
+  function load() {
+    Promise.all([
+      client.from("feedback").select("id,message,contact,page,lang,created_at").order("created_at", { ascending: false }).limit(500),
+      client.from("song_reactions").select("song_id,reaction,count"),
+      client.from("song_plays").select("song_id,play_count")
+    ]).then(function (results) {
+      if (results[0].error) { show("Կարծիքները չբացվեցին՝ " + results[0].error.message, true); return; }
+      show("");
+      renderMessages(results[0].data || []);
+      renderReactions(results[1].data || []);
+      renderPlays(results[2].data || []);
+    }).catch(function (error) { show("Սխալ՝ " + error.message, true); });
+  }
+
+  function route(session) {
+    var email = session && session.user && session.user.email;
+    $("login").hidden = !!session;
+    $("app").hidden = true;
+    if (!session) { show("Մուտք գործիր քո Google հաշվով։"); return; }
+    if (String(email).toLowerCase() !== OWNER_EMAIL) {
+      show("Այս հաշվով (" + email + ") մուտք չկա։ Դուրս եկ և մտիր ադմինի հաշվով։", true);
+      $("login").hidden = false;
+      $("btn-login").textContent = "Դուրս գալ";
+      $("btn-login").dataset.mode = "logout";
+      return;
+    }
+    $("who").textContent = email;
+    $("app").hidden = false;
+    show("Բեռնվում է…");
+    load();
+  }
+
+  $("btn-login").addEventListener("click", function () {
+    if (this.dataset.mode === "logout") { client.auth.signOut(); return; }
+    client.auth.signInWithOAuth({ provider: "google", options: { redirectTo: location.origin + location.pathname } });
+  });
+  $("btn-logout").addEventListener("click", function () { client.auth.signOut(); });
+  $("btn-refresh").addEventListener("click", load);
+
+  client.auth.getSession().then(function (result) { route(result.data && result.data.session); });
+  client.auth.onAuthStateChange(function (event, session) { route(session); });
+})();
+</script>
+</body>
+</html>
