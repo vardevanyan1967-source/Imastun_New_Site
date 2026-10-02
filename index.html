@@ -4025,7 +4025,7 @@
     active().volume = 1;
   }
 
-  const NO_TITLE_SWAP = new Set(["Կատակ Յարի Երգը","Roses in a Sieve","Песня шутка","Ρόδα στο Κόσκινο","ვარდები საცერში","Դու եկար","You Came","Ты пришёл","Մեղքի եզրին","On the Edge of Sin","Meghki_ezrin_Remix","Իմ Գեղեցկուհի ընկերուհիները","Իմ Գեղեցկուհի ընկերուհիները twist rock & roil","Իմ Գեղեցկուհի ընկերուհիներըroc&roil","parujr-sevak/ՍԵՐՆ ԻՆՉ ԳՈՒՅՆ ՈՒՆԻ","parujr-sevak/What Color Is Love","parujr-sevak/Какого цвета любовь","На расстоянии песни","A Song Away"]);
+  const NO_TITLE_SWAP = new Set([]); /* every title follows the selected language */
   function songDisplayTitle(t) {
     const lang = document.documentElement.lang || 'hy';
     if (lang === 'hy' || NO_TITLE_SWAP.has(t.song)) return t.label;
