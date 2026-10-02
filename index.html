@@ -1977,7 +1977,7 @@
     <li><a href="#recent" data-i18n="new">Նորություններ</a></li>
     <li><a href="#videos" data-i18n="videos">Տեսանյութեր</a></li>
     <li><a href="#donate-section" data-i18n="support">Աջակցել</a></li>
-    <li><a href="#comments-section" data-i18n="comments">Մեկնաբանություններ</a></li>
+    <li><a href="#comments-section" data-i18n="comments">Կարծիք</a></li>
   </ul>
 </nav>
 <nav class="quick-nav" aria-label="Արագ անցումներ" data-i18n-aria="quickNav">
@@ -1987,7 +1987,7 @@
   <a href="#recent" data-i18n="new">Նորություններ</a>
   <a href="#videos" data-i18n="videos">Տեսանյութեր</a>
   <a href="#donate-section" data-i18n="support">Աջակցել</a>
-  <a href="#comments-section" data-i18n="comments">Մեկնաբանություններ</a>
+  <a href="#comments-section" data-i18n="comments">Կարծիք</a>
 </nav>
 
 <div class="gold-rule"></div>
@@ -3638,10 +3638,14 @@
 
   const AUDIO_SOURCE_OVERRIDES = Object.freeze({
     'imastun|Կատակ յարի երգ պար 4 լեզվով': `${AUDIO_BASE_URL}/imastun/featured/${encodeURIComponent('Կատակ յարի երգ պար 4 լեզվով')}.mp3`,
-    'imastun|Իմ Գեղեցկուհի ընկերուհիները': `${AUDIO_BASE_URL}/imastun/featured/${encodeURIComponent('Իմ Գեղեցկուհի ընկերուհիները ')}.mp3`,
+    'imastun|Իմ Գեղեցկուհի ընկերուհիները': `${AUDIO_BASE_URL}/imastun/featured/${encodeURIComponent('Իմ Գեղեցկուհի ընկերուհիները')}.mp3`,
     'imastun|IM JEALOUS OF THE MOSQUITO': `${AUDIO_BASE_URL}/imastun/featured/mascito/${encodeURIComponent('IM JEALOUS OF THE MOSQUITO')}.mp3`,
     'imastun|Նախանձում եմ': `${AUDIO_BASE_URL}/imastun/featured/mascito/${encodeURIComponent('Նախանձում եմ')}.mp3`,
-    'imastun|Ревую к комару': `${AUDIO_BASE_URL}/imastun/featured/mascito/${encodeURIComponent('Ревую к комару')}.mp3`
+    'imastun|Ревую к комару': `${AUDIO_BASE_URL}/imastun/featured/mascito/${encodeURIComponent('Ревую к комару')}.mp3`,
+    'imastun|Meghki_ezrin_Remix': `${AUDIO_BASE_URL}/imastun/featured/meghki_ezrin_Remix.mp3`,
+    'go-hara|Անունդ կին է ֆրի տանգո': `${AUDIO_BASE_URL}/go-hara/featured/${encodeURIComponent('Անունդ կին է')}.mp3`,
+    'haj-poetner|shiraz/Սիրո համար մահ չկա': `${AUDIO_BASE_URL}/haj-poetner/featured/${encodeURIComponent('shiraz/Սիրո համար մահ չկա,For Love, There Is No Death')}.mp3`,
+    'haj-poetner|hamo-sahyan/Հայոց փշատենին ջազ': `${AUDIO_BASE_URL}/haj-poetner/featured/${encodeURIComponent('hamo-sahyan/Հայոց փշատենին jazz')}.mp3`
   });
 
   const playlist = [];
@@ -5140,9 +5144,9 @@
   <script>
   (function enhanceNavigation() {
     const translations = {
-      hy: { marquee:'Բարի գալուստ Իմաստուն Ստուդիո ✦ Այստեղ մենք երաժշտությունն ու խոսքը միավորում ենք ✦ Երգերը դառնում են պատկերներ, իսկ պատկերները՝ պատմություններ ✦ Բարի գալուստ Իմաստուն Ստուդիո ✦ Այստեղ մենք երաժշտությունն ու խոսքը միավորում ենք ✦ Երգերը դառնում են պատկերներ, իսկ պատկերները՝ պատմություններ ✦ ', skip:'Անցնել հիմնական բովանդակությանը', searchLabel:'Փնտրել երգ կամ արտիստ', searchPlaceholder:'Փնտրել երգ կամ արտիստ…', searchButton:'Սկսել որոնումը', languageLabel:'Ընտրել լեզուն', menuOpen:'Բացել մենյուն', menuClose:'Փակել մենյուն', quickNav:'Արագ անցումներ', searchTitle:'Կայքի որոնում', artists:'Արտիստներ', poets:'Հայ բանաստեղծներ', worldPoetry:'Համաշխարհային պոեզիա', new:'Նորություններ', videos:'Տեսանյութեր', support:'Աջակցել', comments:'Մեկնաբանություններ', installTitle:'Տեղադրել Imastun Studio-ն', installText:'Բացեք կայքը հավելվածի պես՝ գլխավոր էկրանից։', installButton:'Տեղադրել', installLater:'Հետո', iosInstallText:'iPhone-ում սեղմեք Share, ապա՝ Add to Home Screen։', poetsHeading:'Հայ <em>Բանաստեղծներ</em>', worldPoetryHeading:'Համաշխարհային <em>Պոեզիա</em>', artistsHeading:'Մեր <em>Արտիստները</em>' },
-      ru: { marquee:'Добро пожаловать в Imastun Studio ✦ Здесь мы соединяем музыку и слово ✦ Песни становятся образами, а образы — историями ✦ Добро пожаловать в Imastun Studio ✦ Здесь мы соединяем музыку и слово ✦ Песни становятся образами, а образы — историями ✦ ', skip:'Перейти к основному содержанию', searchLabel:'Найти песню или исполнителя', searchPlaceholder:'Найти песню или исполнителя…', searchButton:'Начать поиск', languageLabel:'Выбрать язык', menuOpen:'Открыть меню', menuClose:'Закрыть меню', quickNav:'Быстрые переходы', searchTitle:'Поиск по сайту', artists:'Исполнители', poets:'Армянские поэты', worldPoetry:'Мировая поэзия', new:'Новинки', videos:'Видео', support:'Поддержать', comments:'Комментарии', installTitle:'Установить Imastun Studio', installText:'Открывайте сайт как приложение с главного экрана.', installButton:'Установить', installLater:'Позже', iosInstallText:'На iPhone нажмите «Поделиться», затем «На экран Домой».', poetsHeading:'Армянские <em>поэты</em>', worldPoetryHeading:'Мировая <em>поэзия</em>', artistsHeading:'Наши <em>артисты</em>' },
-      en: { marquee:'Welcome to Imastun Studio ✦ Here we bring music and words together ✦ Songs become images, and images become stories ✦ Welcome to Imastun Studio ✦ Here we bring music and words together ✦ Songs become images, and images become stories ✦ ', skip:'Skip to main content', searchLabel:'Find a song or artist', searchPlaceholder:'Find a song or artist…', searchButton:'Start search', languageLabel:'Choose language', menuOpen:'Open menu', menuClose:'Close menu', quickNav:'Quick links', searchTitle:'Site search', artists:'Artists', poets:'Armenian Poets', worldPoetry:'World Poetry', new:'New', videos:'Videos', support:'Support', comments:'Comments', installTitle:'Install Imastun Studio', installText:'Open the site like an app from your home screen.', installButton:'Install', installLater:'Later', iosInstallText:'On iPhone, tap Share, then Add to Home Screen.', poetsHeading:'Armenian <em>Poets</em>', worldPoetryHeading:'World <em>Poetry</em>', artistsHeading:'Our <em>Artists</em>' }
+      hy: { marquee:'Բարի գալուստ Իմաստուն Ստուդիո ✦ Այստեղ մենք երաժշտությունն ու խոսքը միավորում ենք ✦ Երգերը դառնում են պատկերներ, իսկ պատկերները՝ պատմություններ ✦ Բարի գալուստ Իմաստուն Ստուդիո ✦ Այստեղ մենք երաժշտությունն ու խոսքը միավորում ենք ✦ Երգերը դառնում են պատկերներ, իսկ պատկերները՝ պատմություններ ✦ ', skip:'Անցնել հիմնական բովանդակությանը', searchLabel:'Փնտրել երգ կամ արտիստ', searchPlaceholder:'Փնտրել երգ կամ արտիստ…', searchButton:'Սկսել որոնումը', languageLabel:'Ընտրել լեզուն', menuOpen:'Բացել մենյուն', menuClose:'Փակել մենյուն', quickNav:'Արագ անցումներ', searchTitle:'Կայքի որոնում', artists:'Արտիստներ', poets:'Հայ բանաստեղծներ', worldPoetry:'Համաշխարհային պոեզիա', new:'Նորություններ', videos:'Տեսանյութեր', support:'Աջակցել', comments:'Կարծիք', installTitle:'Տեղադրել Imastun Studio-ն', installText:'Բացեք կայքը հավելվածի պես՝ գլխավոր էկրանից։', installButton:'Տեղադրել', installLater:'Հետո', iosInstallText:'iPhone-ում սեղմեք Share, ապա՝ Add to Home Screen։', poetsHeading:'Հայ <em>Բանաստեղծներ</em>', worldPoetryHeading:'Համաշխարհային <em>Պոեզիա</em>', artistsHeading:'Մեր <em>Արտիստները</em>' },
+      ru: { marquee:'Добро пожаловать в Imastun Studio ✦ Здесь мы соединяем музыку и слово ✦ Песни становятся образами, а образы — историями ✦ Добро пожаловать в Imastun Studio ✦ Здесь мы соединяем музыку и слово ✦ Песни становятся образами, а образы — историями ✦ ', skip:'Перейти к основному содержанию', searchLabel:'Найти песню или исполнителя', searchPlaceholder:'Найти песню или исполнителя…', searchButton:'Начать поиск', languageLabel:'Выбрать язык', menuOpen:'Открыть меню', menuClose:'Закрыть меню', quickNav:'Быстрые переходы', searchTitle:'Поиск по сайту', artists:'Исполнители', poets:'Армянские поэты', worldPoetry:'Мировая поэзия', new:'Новинки', videos:'Видео', support:'Поддержать', comments:'Отзыв', installTitle:'Установить Imastun Studio', installText:'Открывайте сайт как приложение с главного экрана.', installButton:'Установить', installLater:'Позже', iosInstallText:'На iPhone нажмите «Поделиться», затем «На экран Домой».', poetsHeading:'Армянские <em>поэты</em>', worldPoetryHeading:'Мировая <em>поэзия</em>', artistsHeading:'Наши <em>артисты</em>' },
+      en: { marquee:'Welcome to Imastun Studio ✦ Here we bring music and words together ✦ Songs become images, and images become stories ✦ Welcome to Imastun Studio ✦ Here we bring music and words together ✦ Songs become images, and images become stories ✦ ', skip:'Skip to main content', searchLabel:'Find a song or artist', searchPlaceholder:'Find a song or artist…', searchButton:'Start search', languageLabel:'Choose language', menuOpen:'Open menu', menuClose:'Close menu', quickNav:'Quick links', searchTitle:'Site search', artists:'Artists', poets:'Armenian Poets', worldPoetry:'World Poetry', new:'New', videos:'Videos', support:'Support', comments:'Feedback', installTitle:'Install Imastun Studio', installText:'Open the site like an app from your home screen.', installButton:'Install', installLater:'Later', iosInstallText:'On iPhone, tap Share, then Add to Home Screen.', poetsHeading:'Armenian <em>Poets</em>', worldPoetryHeading:'World <em>Poetry</em>', artistsHeading:'Our <em>Artists</em>' }
     };
     const languageButtons = Array.from(document.querySelectorAll('.language-button'));
     const menuButton = document.getElementById('mobile-menu-toggle');
