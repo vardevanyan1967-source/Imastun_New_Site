@@ -670,6 +670,32 @@
     .react-btn .re-name{font-size:9px;opacity:.7;text-align:center}
     .react-btn .re-count{font-size:11px;font-variant-numeric:tabular-nums}
     .react-thanks{min-height:14px;color:var(--gold);font-size:11px;text-align:center}
+    .react-panel{max-height:75vh;overflow-y:auto}
+    .react-msg{
+      width:100%;
+      padding:8px 10px;
+      border:1px solid rgba(201,168,76,.35);
+      border-radius:8px;
+      background:rgba(255,255,255,.04);
+      color:#f1ede4;
+      font:inherit;
+      font-size:13px;
+      resize:vertical
+    }
+    .react-msg:focus{outline:none;border-color:var(--gold)}
+    .react-send{
+      align-self:flex-end;
+      padding:6px 18px;
+      border:1px solid var(--gold);
+      border-radius:999px;
+      background:transparent;
+      color:var(--gold);
+      cursor:pointer;
+      font:inherit;
+      font-size:12px
+    }
+    .react-send:disabled{opacity:.5;cursor:default}
+    .react-status{min-height:14px;color:var(--gold);font-size:11px;text-align:center}
     .player-progress{
       display:grid;
       grid-template-columns:36px 1fr 36px;

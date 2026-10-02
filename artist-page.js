@@ -58,7 +58,8 @@
       language:"Փոխել լեզուն", loadError:"Երգացանկը չբեռնվեց։ Թարմացրեք էջը։",
       donate:"Աջակցել", donateCardCopied:"Քարտի համարը պատճենվեց ✓", otherArtists:"Այլ արտիստներ",
       recentHeading:"Վերջերս ավելացված",
-      reactTitle:"Ինչ զգացիր այս երգից", react_love:"Սիրեցի", react_moved:"Հուզվեցի", react_fire:"Հրաշք է", react_joy:"Ուրախացա", reactThanks:"Շնորհակալություն ✓"
+      reactTitle:"Ինչ զգացիր այս երգից", react_love:"Սիրեցի", react_moved:"Հուզվեցի", react_fire:"Հրաշք է", react_joy:"Ուրախացա", reactThanks:"Շնորհակալություն ✓",
+      reactMsg:"Գրիր կարծիք այս երգի մասին (ըստ ցանկության)…", reactSend:"Ուղարկել", reactSent:"Շնորհակալություն, ստացա ✓", reactShort:"Խնդրում եմ գրիր մի փոքր ավելի շատ։", reactFail:"Չհաջողվեց ուղարկել։ Փորձիր մի փոքր ուշ։", reactWait:"Մի քանի վայրկյան սպասիր։"
     },
     ru: {
       back:"Главная", catalog:"Песни", search:"Поиск по песням…",
@@ -73,7 +74,8 @@
       theme:"Сменить тему", language:"Сменить язык", loadError:"Список песен не загрузился. Обновите страницу.",
       donate:"Поддержать", donateCardCopied:"Номер карты скопирован ✓", otherArtists:"Другие артисты",
       recentHeading:"Недавно добавленные",
-      reactTitle:"Что вы почувствовали", react_love:"Люблю", react_moved:"Тронуло", react_fire:"Огонь", react_joy:"Радость", reactThanks:"Спасибо ✓"
+      reactTitle:"Что вы почувствовали", react_love:"Люблю", react_moved:"Тронуло", react_fire:"Огонь", react_joy:"Радость", reactThanks:"Спасибо ✓",
+      reactMsg:"Напишите отзыв об этой песне (по желанию)…", reactSend:"Отправить", reactSent:"Спасибо, получил ✓", reactShort:"Пожалуйста, напишите чуть подробнее.", reactFail:"Не удалось отправить. Попробуйте позже.", reactWait:"Подождите несколько секунд."
     },
     en: {
       back:"Home", catalog:"Track list", search:"Search tracks…",
@@ -88,7 +90,8 @@
       theme:"Change theme", language:"Change language", loadError:"The track list could not load. Refresh the page.",
       donate:"Support", donateCardCopied:"Card number copied ✓", otherArtists:"Other artists",
       recentHeading:"Recently Added",
-      reactTitle:"How did this song feel", react_love:"Loved it", react_moved:"Moved me", react_fire:"Fire", react_joy:"Joyful", reactThanks:"Thank you ✓"
+      reactTitle:"How did this song feel", react_love:"Loved it", react_moved:"Moved me", react_fire:"Fire", react_joy:"Joyful", reactThanks:"Thank you ✓",
+      reactMsg:"Write a note about this song (optional)…", reactSend:"Send", reactSent:"Thank you, received ✓", reactShort:"Please write a little more.", reactFail:"Could not send. Please try again later.", reactWait:"Please wait a few seconds."
     }
   };
 
@@ -391,7 +394,7 @@
   ];
   var reactionCounts = {};
   var reactionsReady = false;
-  var reactBtn = null, reactPanel = null;
+  var reactBtn = null, reactPanel = null, reactTop = null, reactMsg = null, reactSend = null, reactStatus = null, reactSong = null;
 
   function readReacted() {
     try { return JSON.parse(localStorage.getItem("imastun_reacted") || "{}"); } catch (error) { return {}; }
@@ -411,7 +414,22 @@
     document.getElementById("next").insertAdjacentElement("afterend", reactBtn);
     reactPanel = document.createElement("div");
     reactPanel.className = "react-panel";
+    reactTop = document.createElement("div");
+    reactMsg = document.createElement("textarea");
+    reactMsg.className = "react-msg";
+    reactMsg.rows = 3;
+    reactMsg.maxLength = 1500;
+    reactSend = document.createElement("button");
+    reactSend.type = "button";
+    reactSend.className = "react-send";
+    reactStatus = document.createElement("div");
+    reactStatus.className = "react-status";
+    reactPanel.appendChild(reactTop);
+    reactPanel.appendChild(reactMsg);
+    reactPanel.appendChild(reactSend);
+    reactPanel.appendChild(reactStatus);
     document.body.appendChild(reactPanel);
+    reactSend.addEventListener("click", sendSongComment);
     reactBtn.addEventListener("click", function () { reactPanel.classList.toggle("open"); });
     reactPanel.addEventListener("click", function (event) {
       var button = event.target.closest ? event.target.closest(".react-btn") : null;
@@ -435,6 +453,31 @@
     });
   }
 
+  function sendSongComment() {
+    var track = state.current >= 0 ? TRACKS[state.current] : null;
+    if (!track) return;
+    var message = reactMsg.value.trim();
+    if (message.length < 3) { reactStatus.textContent = tr("reactShort"); return; }
+    var last = 0;
+    try { last = Number(localStorage.getItem("imastun_fb_last") || 0); } catch (error) {}
+    if (Date.now() - last < 30000) { reactStatus.textContent = tr("reactWait"); return; }
+    reactSend.disabled = true;
+    fetch(SUPABASE_URL + "/rest/v1/feedback", {
+      method: "POST",
+      headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY, "Content-Type": "application/json", "Prefer": "return=minimal" },
+      body: JSON.stringify({ message: message, contact: null, page: location.pathname + " | " + track.id, lang: state.lang })
+    }).then(function (response) {
+      if (!response.ok) throw new Error("HTTP " + response.status);
+      try { localStorage.setItem("imastun_fb_last", String(Date.now())); } catch (error) {}
+      reactMsg.value = "";
+      reactStatus.textContent = tr("reactSent");
+    }).catch(function () {
+      reactStatus.textContent = tr("reactFail");
+    }).then(function () {
+      reactSend.disabled = false;
+    });
+  }
+
   function updateReactUi(thanks) {
     var track = state.current >= 0 ? TRACKS[state.current] : null;
     if (!reactionsReady || !track) {
@@ -448,11 +491,14 @@
     reactBtn.hidden = false;
     reactBtn.title = tr("reactTitle");
     reactBtn.setAttribute("aria-label", tr("reactTitle"));
-    reactPanel.innerHTML = '<div class="react-title">' + escapeHtml(tr("reactTitle")) + '</div><div class="react-row">' +
+    reactTop.innerHTML = '<div class="react-title">' + escapeHtml(tr("reactTitle")) + '</div><div class="react-row">' +
       REACTIONS.map(function (r) {
         return '<button type="button" class="react-btn' + (done.indexOf(r.key) >= 0 ? " done" : "") + '" data-key="' + r.key + '">' +
           '<span class="re-icon">' + r.icon + '</span><span class="re-name">' + escapeHtml(tr("react_" + r.key)) + '</span><span class="re-count">' + (counts[r.key] || 0) + '</span></button>';
       }).join("") + '</div><div class="react-thanks">' + (thanks ? escapeHtml(tr("reactThanks")) : "") + '</div>';
+    if (reactSong !== track.id) { reactSong = track.id; reactMsg.value = ""; reactStatus.textContent = ""; }
+    reactMsg.placeholder = tr("reactMsg");
+    reactSend.textContent = tr("reactSend");
   }
 
   function syncPlayer() {
