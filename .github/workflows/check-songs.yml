@@ -1,0 +1,34 @@
+name: Check songs
+
+# Every day: make sure each song file in artist-pages-data.json is reachable in R2
+# and that songs-data.js is up to date. If something is broken the run fails and
+# GitHub sends the repository owner an e-mail.
+on:
+  schedule:
+    - cron: '23 5 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Check that every song file exists in R2
+        run: python3 tools/check_songs.py
+
+      - name: Check that songs-data.js is up to date
+        if: always()
+        run: |
+          python3 tools/build_songs_data.py
+          if ! git diff --quiet -- songs-data.js index.html; then
+            echo "songs-data.js or index.html is out of date with artist-pages-data.json"
+            git --no-pager diff --stat -- songs-data.js index.html
+            exit 1
+          fi
