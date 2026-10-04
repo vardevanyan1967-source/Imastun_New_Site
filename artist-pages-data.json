@@ -1978,6 +1978,26 @@
           "en": "Golden Autumn",
           "ru": "Золотая осень"
         }
+      },
+      {
+        "id": "Աշնան Վալսը Պուրակում",
+        "label": "Աշնան Վալսը Պուրակում",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D4%B1%D5%B7%D5%B6%D5%A1%D5%B6%20%D5%8E%D5%A1%D5%AC%D5%BD%D5%A8%20%D5%8A%D5%B8%D6%82%D6%80%D5%A1%D5%AF%D5%B8%D6%82%D5%B4.mp3",
+        "explanation": {
+          "en": "Autumn Waltz in the Park",
+          "ru": "Осенний вальс в парке"
+        },
+        "added": "2026-10-04"
+      },
+      {
+        "id": "Ես չգիտեմ քե՞զ եմ սիրում",
+        "label": "Ես չգիտեմ քե՞զ եմ սիրում",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/%D4%B5%D5%BD%20%D5%B9%D5%A3%D5%AB%D5%BF%D5%A5%D5%B4%20%D6%84%D5%A5%D5%9E%D5%A6%20%D5%A5%D5%B4%20%D5%BD%D5%AB%D6%80%D5%B8%D6%82%D5%B4.mp3",
+        "explanation": {
+          "en": "I Don't Know, Is It You I Love?",
+          "ru": "Не знаю, тебя ли я люблю?"
+        },
+        "added": "2026-10-04"
       }
     ]
   },
