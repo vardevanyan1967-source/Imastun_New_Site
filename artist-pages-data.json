@@ -509,11 +509,11 @@
         }
       },
       {
-        "id": "Gazel Shamiramin 03",
-        "label": "Gazel Shamiramin 03",
+        "id": "Գազել Շամիրամին",
+        "label": "Գազել Շամիրամին",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/Gazel_Shamiramin_03.mp3",
         "explanation": {
-          "hy": "Ղազել Շամիրամին",
+          "en": "Gazel to Shamiram",
           "ru": "Газель Шамирам"
         },
         "added": "2026-10-04"
