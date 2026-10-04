@@ -1506,6 +1506,7 @@
     .quick-nav { position:sticky; top:64px; z-index:90; display:flex; justify-content:center; gap:10px; width:100%; padding:10px clamp(16px,5vw,80px); overflow-x:auto; background:rgba(8,8,8,.94); border-bottom:1px solid var(--border); scrollbar-width:none; }
     .quick-nav::-webkit-scrollbar { display:none; }
     .quick-nav a { flex:0 1 190px; min-width:140px; min-height:50px; display:inline-flex; align-items:center; justify-content:center; padding:10px 18px; border:1px solid rgba(201,168,76,.58); border-radius:25px; color:var(--gold-light); text-decoration:none; text-align:center; font-size:12px; font-weight:700; letter-spacing:0; white-space:nowrap; background:rgba(201,168,76,.06); }
+    .quick-nav a[hidden] { display:none; }
     .quick-nav a:hover, .quick-nav a:focus-visible { color:#fff2bd; border-color:var(--gold); background:rgba(201,168,76,.14); }
     [id] { scroll-margin-top:126px; }
     #search-overlay[aria-hidden="true"] { visibility:hidden; }
@@ -1606,7 +1607,7 @@
       #nav .nav-links { order:4; }
       .quick-nav { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); justify-content:stretch; gap:9px; width:100%; overflow:visible; padding:10px 14px; }
       .quick-nav a { width:100%; min-width:0; min-height:52px; padding:10px 8px; font-size:14px; white-space:normal; }
-      .quick-nav a:last-child { grid-column:1 / -1; }
+      .quick-nav a:nth-child(7) { grid-column:1 / -1; }
       #app-install-prompt {
         left:12px;
         right:68px;
@@ -2022,6 +2023,8 @@
   <a href="#videos" data-i18n="videos">Տեսանյութեր</a>
   <a href="#donate-section" data-i18n="support">Աջակցել</a>
   <a href="#comments-section" data-i18n="comments">Կարծիք</a>
+  <a class="nav-owner" href="admin.html" hidden>Ադմին</a>
+  <a class="nav-owner" href="cms.html" hidden>Երգերի խմբագիր</a>
 </nav>
 
 <div class="gold-rule"></div>
