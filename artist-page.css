@@ -389,6 +389,14 @@
       color:#0c0c0c;background:var(--gold);border-radius:4px;padding:2px 6px;
       flex-shrink:0;white-space:nowrap;display:inline-block;vertical-align:2px;margin-left:6px
     }
+    .recent-badge{
+      font-family:'Inter',sans-serif;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+      color:var(--gold);background:transparent;border:1px solid var(--gold);border-radius:4px;padding:1px 6px;opacity:.75;
+      flex-shrink:0;white-space:nowrap;display:inline-block;vertical-align:2px;margin-left:6px
+    }
+    .recent-badge::after{content:'Վերջերս'}
+    html[lang="ru"] .recent-badge::after{content:'Недавно'}
+    html[lang="en"] .recent-badge::after{content:'Recent'}
     .toolbar{
       display:grid;
       grid-template-columns:minmax(0,1fr) auto;

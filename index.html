@@ -845,6 +845,15 @@
       flex-shrink: 0; white-space: nowrap;
     }
 
+    .recent-badge {
+      font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--gold); border: 1px solid var(--gold); border-radius: 4px; padding: 1px 6px; opacity: .75;
+      flex-shrink: 0; white-space: nowrap;
+    }
+    .recent-badge::after { content: 'Վերջերս'; }
+    html[lang="ru"] .recent-badge::after { content: 'Недавно'; }
+    html[lang="en"] .recent-badge::after { content: 'Recent'; }
+
     .track-play-btn {
       width: 30px; height: 30px; border-radius: 50%;
       border: 1px solid var(--border); background: none; color: var(--text-dim);
@@ -2222,7 +2231,7 @@
 <audio id="audio-engine" preload="none"></audio>
 
 <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="songs-data.js?v=09a828807b"></script>
+<script src="songs-data.js?v=5e662ad635"></script>
 <script>
   function copyDonateCard() {
     const num = '4578890080551169';
@@ -2625,6 +2634,17 @@
     'hamo-sahyan/Հայոց փշատենին': "2026-09-11",
     'hamo-sahyan/Հայոց փշատենին ջազ': "2026-09-11",
   };
+  // badge on a song row: NEW for the first 7 days, then "Recent" for 7 more
+  function songBadge(song) {
+    const added = NEW_SONGS[song];
+    if (!added) return '';
+    const days = (Date.now() - new Date(added).getTime()) / (1000*60*60*24);
+    if (days < 0) return '';
+    if (days <= 7) return '<span class="new-badge">NEW</span>';
+    if (days <= 14) return '<span class="recent-badge"></span>';
+    return '';
+  }
+
   function isNewSong(song) {
     const added = NEW_SONGS[song];
     if (!added) return false;
@@ -4008,7 +4028,8 @@
       return '<div class="empty-state">No tracks available yet.</div>';
     let songs = artist.songs;
     const nameOf = s => SONG_NAMES[s] || formatName(s);
-    const alpha = (a, b) => nameOf(a).localeCompare(nameOf(b), 'hy'); // Armenian alphabetical
+    const rank = s => /[԰-֏]/.test(nameOf(s)) ? 0 : 1; // Armenian titles first
+    const alpha = (a, b) => rank(a) - rank(b) || nameOf(a).localeCompare(nameOf(b), 'hy'); // Armenian alphabetical
     if (artist.id === 'haj-poetner') {
       const POET_ORDER = ['vahan-teryan/','hamo-sahyan/','parujr-sevak/','avetik-isahakyan/','aramayis-sahakyan/','shiraz/','silva-kaputikyan/','vahagn-davtyan/','hovhannes-tumanyan/'];
       const poet = s => { const i = POET_ORDER.findIndex(p => s.startsWith(p)); return i === -1 ? POET_ORDER.length : i; };
@@ -4020,7 +4041,13 @@
       const numOf = s => { const m = s.match(/(\d+)/); return m ? parseInt(m[1], 10) : 999; };
       songs = artist.songs.slice().sort((a, b) => numOf(a) - numOf(b));
     } else {
-      const newest = s => NEW_SONGS[s] ? new Date(NEW_SONGS[s]).getTime() : 0;
+      // songs added in the last 7 days go first (newest first); the rest stay alphabetical
+      const newest = s => {
+        const added = NEW_SONGS[s];
+        if (!added) return 0;
+        const days = (Date.now() - new Date(added).getTime()) / (1000*60*60*24);
+        return days >= 0 && days <= 7 ? new Date(added).getTime() : 0;
+      };
       songs = artist.songs.slice().sort((a, b) => {
         const d = newest(b) - newest(a);
         if (d !== 0) return d;
@@ -4093,7 +4120,7 @@
           ${subtitleHtml}
         </div>
         ${iconPlayCount(song)}
-        ${isNewSong(song) ? '<span class="new-badge">NEW</span>' : ''}
+        ${songBadge(song)}
         <button class="track-fav-btn${fav ? ' fav-active' : ''}" data-artist="${artist.id}" data-song="${song}" style="background:none;border:none;cursor:pointer;color:${fav ? '#ee0055' : 'var(--text-dim)'};display:flex;align-items:center;padding:9px;transition:color 0.2s,transform 0.2s;">${iconHeart(fav)}</button>
         <button class="track-share-btn" data-artist="${artist.id}" data-song="${song}" title="Կիսվել" aria-label="Կիսվել այս երգով" style="background:none;border:none;cursor:pointer;color:var(--text-dim);display:flex;align-items:center;padding:9px;transition:color 0.2s;">${iconShare()}</button>
         <button class="track-play-btn" aria-label="Նվագարկել այս երգը">${iconPlay()}</button>
