@@ -4028,7 +4028,8 @@
       return '<div class="empty-state">No tracks available yet.</div>';
     let songs = artist.songs;
     const nameOf = s => SONG_NAMES[s] || formatName(s);
-    const alpha = (a, b) => nameOf(a).localeCompare(nameOf(b), 'hy'); // Armenian alphabetical
+    const rank = s => /[԰-֏]/.test(nameOf(s)) ? 0 : 1; // Armenian titles first
+    const alpha = (a, b) => rank(a) - rank(b) || nameOf(a).localeCompare(nameOf(b), 'hy'); // Armenian alphabetical
     if (artist.id === 'haj-poetner') {
       const POET_ORDER = ['vahan-teryan/','hamo-sahyan/','parujr-sevak/','avetik-isahakyan/','aramayis-sahakyan/','shiraz/','silva-kaputikyan/','vahagn-davtyan/','hovhannes-tumanyan/'];
       const poet = s => { const i = POET_ORDER.findIndex(p => s.startsWith(p)); return i === -1 ? POET_ORDER.length : i; };
