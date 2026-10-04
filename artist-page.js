@@ -129,6 +129,17 @@
     });
   }
 
+  // badge on a song row: NEW for the first NEW_FIRST_DAYS days, then "Recent" for the same number of days again
+  function songBadge(id) {
+    var added = NEW_SONGS[id];
+    if (!added) return "";
+    var days = (Date.now() - new Date(added).getTime()) / (1000 * 60 * 60 * 24);
+    if (days < 0) return "";
+    if (days <= NEW_FIRST_DAYS) return ' <span class="new-badge">NEW</span>';
+    if (days <= NEW_FIRST_DAYS * 2) return ' <span class="recent-badge"></span>';
+    return "";
+  }
+
   function isNewSong(id) {
     var added = NEW_SONGS[id];
     if (!added) return false;
@@ -388,7 +399,7 @@
       return divider + '<article class="track-row' + (state.current === item.index ? ' playing' : '') + '" data-index="' + item.index + '">' +
         '<span class="track-num">' + String(item.index + 1).padStart(2, "0") + '</span>' +
         '<button class="track-main" type="button" data-action="play">' +
-        '<span class="track-title ' + languageCountClass(item.track) + '">' + escapeHtml(displayTitle(item.track)) + (isNewSong(item.track.id) ? ' <span class="new-badge">NEW</span>' : '') + '</span>' +
+        '<span class="track-title ' + languageCountClass(item.track) + '">' + escapeHtml(displayTitle(item.track)) + songBadge(item.track.id) + '</span>' +
         '<span class="track-sub">' + escapeHtml(displaySubtitle(item.track, item.track.subtitle || artist.name)) + '</span>' + (item.track.subtitle && item.track.explanation ? '<span class="track-group">' + escapeHtml(item.track.subtitle) + '</span>' : '') + '</button>' +
         '<button class="icon-btn' + (favorite ? ' favorite' : '') + '" type="button" data-action="favorite" aria-label="' +
         escapeHtml(favorite ? tr("unfavorite") : tr("favorite")) + '">' + (favorite ? "♥" : "♡") + '</button>' +

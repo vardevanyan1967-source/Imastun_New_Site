@@ -845,6 +845,15 @@
       flex-shrink: 0; white-space: nowrap;
     }
 
+    .recent-badge {
+      font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--gold); border: 1px solid var(--gold); border-radius: 4px; padding: 1px 6px; opacity: .75;
+      flex-shrink: 0; white-space: nowrap;
+    }
+    .recent-badge::after { content: 'Վերջերս'; }
+    html[lang="ru"] .recent-badge::after { content: 'Недавно'; }
+    html[lang="en"] .recent-badge::after { content: 'Recent'; }
+
     .track-play-btn {
       width: 30px; height: 30px; border-radius: 50%;
       border: 1px solid var(--border); background: none; color: var(--text-dim);
@@ -2625,6 +2634,17 @@
     'hamo-sahyan/Հայոց փշատենին': "2026-09-11",
     'hamo-sahyan/Հայոց փշատենին ջազ': "2026-09-11",
   };
+  // badge on a song row: NEW for the first 7 days, then "Recent" for 7 more
+  function songBadge(song) {
+    const added = NEW_SONGS[song];
+    if (!added) return '';
+    const days = (Date.now() - new Date(added).getTime()) / (1000*60*60*24);
+    if (days < 0) return '';
+    if (days <= 7) return '<span class="new-badge">NEW</span>';
+    if (days <= 14) return '<span class="recent-badge"></span>';
+    return '';
+  }
+
   function isNewSong(song) {
     const added = NEW_SONGS[song];
     if (!added) return false;
@@ -4099,7 +4119,7 @@
           ${subtitleHtml}
         </div>
         ${iconPlayCount(song)}
-        ${isNewSong(song) ? '<span class="new-badge">NEW</span>' : ''}
+        ${songBadge(song)}
         <button class="track-fav-btn${fav ? ' fav-active' : ''}" data-artist="${artist.id}" data-song="${song}" style="background:none;border:none;cursor:pointer;color:${fav ? '#ee0055' : 'var(--text-dim)'};display:flex;align-items:center;padding:9px;transition:color 0.2s,transform 0.2s;">${iconHeart(fav)}</button>
         <button class="track-share-btn" data-artist="${artist.id}" data-song="${song}" title="Կիսվել" aria-label="Կիսվել այս երգով" style="background:none;border:none;cursor:pointer;color:var(--text-dim);display:flex;align-items:center;padding:9px;transition:color 0.2s;">${iconShare()}</button>
         <button class="track-play-btn" aria-label="Նվագարկել այս երգը">${iconPlay()}</button>
