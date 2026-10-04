@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Imastun — Երգերի խմբագիր</title>
+<link rel="icon" href="logo.png">
+<style>
+  :root { --bg:#0a0a0a; --card:#141414; --line:rgba(201,168,76,.28); --gold:#c9a24b; --text:#efeae0; --dim:#9a9486; --ok:#7bd88f; --err:#e07a6a; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+  main { max-width:760px; margin:0 auto; padding:24px 16px 90px; }
+  h1 { font-size:22px; color:var(--gold); margin:0 0 4px; letter-spacing:.04em; }
+  h2 { font-size:13px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin:0 0 14px; }
+  .sub { color:var(--dim); font-size:13px; margin-bottom:22px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px; margin-bottom:18px; }
+  label { display:block; font-size:12px; color:var(--dim); margin:12px 0 4px; }
+  input, select { width:100%; font:inherit; padding:10px 12px; color:var(--text); background:rgba(255,255,255,.05); border:1px solid var(--line); border-radius:8px; }
+  input:focus, select:focus { outline:none; border-color:var(--gold); }
+  select option { background:#1b1b1b; }
+  .row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  @media (max-width:560px) { .row { grid-template-columns:1fr; } }
+  button { font:inherit; cursor:pointer; color:#0a0a0a; background:var(--gold); border:0; border-radius:999px; padding:10px 22px; }
+  button.ghost { background:transparent; color:var(--gold); border:1px solid var(--gold); padding:8px 16px; font-size:13px; }
+  button:disabled { opacity:.5; cursor:default; }
+  .bar { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:16px; }
+  .tabs { display:flex; gap:8px; margin-bottom:16px; }
+  .tabs button { background:transparent; color:var(--gold); border:1px solid var(--line); }
+  .tabs button.on { background:var(--gold); color:#0a0a0a; }
+  .msg { margin-top:14px; font-size:14px; min-height:20px; white-space:pre-wrap; word-break:break-word; }
+  .msg.ok { color:var(--ok); } .msg.err { color:var(--err); }
+  code { background:rgba(255,255,255,.07); padding:1px 6px; border-radius:4px; font-size:12px; word-break:break-all; }
+  .hint { color:var(--dim); font-size:12px; margin-top:6px; }
+  .preview { margin-top:12px; font-size:12px; color:var(--dim); }
+  .results { margin-top:12px; max-height:260px; overflow:auto; border:1px solid var(--line); border-radius:8px; }
+  .results div { padding:8px 12px; cursor:pointer; border-bottom:1px solid rgba(255,255,255,.06); font-size:14px; }
+  .results div:hover { background:rgba(201,168,76,.12); }
+  .results small { color:var(--dim); }
+  details { margin-top:12px; color:var(--dim); font-size:13px; }
+  details summary { cursor:pointer; color:var(--gold); }
+  details ol { padding-left:20px; }
+  [hidden] { display:none !important; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Imastun — Երգերի խմբագիր</h1>
+  <div class="sub">Երգ ավելացնել կամ փոխել առանց ծրագրավորման։ Միայն քեզ համար։</div>
+
+  <!-- Step 1: GitHub key -->
+  <section class="card" id="auth">
+    <h2>1. Մուտք (GitHub բանալի)</h2>
+    <label for="token">GitHub personal access token</label>
+    <input id="token" type="password" autocomplete="off" placeholder="github_pat_...">
+    <div class="bar">
+      <button id="btn-token" type="button">Մուտք</button>
+      <button id="btn-forget" class="ghost" type="button" hidden>Մոռանալ բանալին</button>
+    </div>
+    <div class="hint">Բանալին պահվում է միայն այս բրաուզերում և ուղարկվում է միայն GitHub-ին։</div>
+    <details>
+      <summary>Ինչպես ստանալ բանալին (մեկ անգամ)</summary>
+      <ol>
+        <li>Բացիր <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener" style="color:var(--gold)">GitHub → New fine-grained token</a>։</li>
+        <li><b>Repository access</b> → <b>Only select repositories</b> → ընտրիր <code>Imastun_New_Site</code>։</li>
+        <li><b>Permissions → Repository permissions → Contents</b> → <b>Read and write</b>։</li>
+        <li>Սեղմիր <b>Generate token</b> և պատճենիր (սկսվում է <code>github_pat_</code>-ով), փակցրու վերևում։</li>
+      </ol>
+    </details>
+    <div class="msg" id="auth-msg"></div>
+  </section>
+
+  <section id="app" hidden>
+    <div class="tabs">
+      <button id="tab-add" class="on" type="button">Ավելացնել երգ</button>
+      <button id="tab-edit" type="button">Փոփոխել երգ</button>
+    </div>
+
+    <!-- Add a song -->
+    <section class="card" id="pane-add">
+      <h2>Նոր երգ</h2>
+      <div class="row">
+        <div>
+          <label for="a-artist">Արտիստ</label>
+          <select id="a-artist"></select>
+        </div>
+        <div id="a-poet-wrap" hidden>
+          <label for="a-poet">Բանաստեղծ</label>
+          <select id="a-poet"></select>
+        </div>
+      </div>
+      <div class="row" id="a-newpoet" hidden>
+        <div><label for="a-newpoet-slug">Նոր բանաստեղծ՝ թղթապանակ (լատինատառ)</label><input id="a-newpoet-slug" placeholder="paruyr-sevak"></div>
+        <div><label for="a-newpoet-name">Նոր բանաստեղծ՝ անուն</label><input id="a-newpoet-name" placeholder="Պարույր Սևակ"></div>
+      </div>
+      <label for="a-file">Ֆայլի անունը R2-ում (առանց <code>.mp3</code>)</label>
+      <input id="a-file" placeholder="օր.՝ Ոսկե աշուն">
+      <label for="a-hy">Վերնագիր (հայերեն)</label>
+      <input id="a-hy" placeholder="օր.՝ Ոսկե աշուն">
+      <div class="row">
+        <div><label for="a-en">Անգլերեն անուն</label><input id="a-en" placeholder="Golden Autumn"></div>
+        <div><label for="a-ru">Ռուսերեն անուն</label><input id="a-ru" placeholder="Золотая осень"></div>
+      </div>
+      <div class="row">
+        <div><label for="a-date">Ավելացնելու ամսաթիվ («NEW» 30 օր)</label><input id="a-date" type="date"></div>
+        <div></div>
+      </div>
+      <div class="preview" id="a-preview"></div>
+      <div class="bar">
+        <button id="a-check" class="ghost" type="button">Ստուգել ֆայլը R2-ում</button>
+        <button id="a-save" type="button">Պահպանել</button>
+      </div>
+      <div class="msg" id="a-msg"></div>
+    </section>
+
+    <!-- Edit a song -->
+    <section class="card" id="pane-edit" hidden>
+      <h2>Փոփոխել երգ</h2>
+      <label for="e-search">Որոնել (անուն կամ ֆայլի անուն)</label>
+      <input id="e-search" placeholder="օր.՝ Սոնետ 18 / Ժպտա">
+      <div class="results" id="e-results" hidden></div>
+      <div id="e-form" hidden>
+        <div class="hint" id="e-which"></div>
+        <label for="e-hy">Վերնագիր (հայերեն)</label><input id="e-hy">
+        <div class="row">
+          <div><label for="e-en">Անգլերեն անուն</label><input id="e-en"></div>
+          <div><label for="e-ru">Ռուսերեն անուն</label><input id="e-ru"></div>
+        </div>
+        <details>
+          <summary>Ընդլայնված</summary>
+          <label for="e-src">Ֆայլի հասցե (src)</label><input id="e-src">
+          <label for="e-date">Ամսաթիվ («NEW»)</label><input id="e-date" type="date">
+        </details>
+        <div class="bar"><button id="e-save" type="button">Պահպանել</button></div>
+      </div>
+      <div class="msg" id="e-msg"></div>
+    </section>
+
+    <div class="hint">Պահպանելուց հետո կայքը թարմանում է 1–2 րոպեում։ mp3 ֆայլը նախապես պետք է լինի R2-ում։</div>
+  </section>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  var OWNER = "vardevanyan1967-source", REPO = "Imastun_New_Site", BRANCH = "main";
+  var FILE = "artist-pages-data.json";
+  var R2 = "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio";
+  var KEY = "imastun_cms_token";
+
+  var $ = function (id) { return document.getElementById(id); };
+  var state = { token: "", data: null, sha: null, current: null };
+
+  /* ---------- helpers ---------- */
+  function say(id, text, kind) { var el = $(id); el.textContent = text || ""; el.className = "msg" + (kind ? " " + kind : ""); }
+  function readToken() { try { return localStorage.getItem(KEY) || ""; } catch (e) { return ""; } }
+  function saveToken(t) { try { if (t) localStorage.setItem(KEY, t); else localStorage.removeItem(KEY); } catch (e) {} }
+  function today() { var d = new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+  function toB64(text) {
+    var bytes = new TextEncoder().encode(text), bin = "", chunk = 0x8000;
+    for (var i = 0; i < bytes.length; i += chunk) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + chunk));
+    return btoa(bin);
+  }
+  function fromB64(b64) {
+    var bin = atob(b64.replace(/\s/g, "")), bytes = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    return new TextDecoder("utf-8").decode(bytes);
+  }
+
+  /* ---------- GitHub API ---------- */
+  function gh(path, opts) {
+    opts = opts || {};
+    var headers = { "Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28" };
+    if (state.token) headers["Authorization"] = "Bearer " + state.token;
+    if (opts.body) headers["Content-Type"] = "application/json";
+    return fetch("https://api.github.com" + path, { method: opts.method || "GET", headers: headers, body: opts.body });
+  }
+  function loadData() {
+    return gh("/repos/" + OWNER + "/" + REPO + "/contents/" + FILE + "?ref=" + BRANCH + "&t=" + Date.now()).then(function (r) {
+      if (!r.ok) throw new Error("GitHub " + r.status);
+      return r.json();
+    }).then(function (j) {
+      var text = fromB64(j.content);
+      var data = JSON.parse(text);
+      // safety: the file must round-trip exactly, otherwise we would reformat it
+      if (text.replace(/\r\n/g, "\n") !== JSON.stringify(data, null, 2)) throw new Error("Ֆայլի ձևաչափը անսպասելի է, չեմ փոփոխում։");
+      state.data = data; state.sha = j.sha;
+      return data;
+    });
+  }
+  function commit(message) {
+    var text = JSON.stringify(state.data, null, 2).replace(/\n/g, "\r\n");
+    return gh("/repos/" + OWNER + "/" + REPO + "/contents/" + FILE, {
+      method: "PUT",
+      body: JSON.stringify({ message: message, content: toB64(text), sha: state.sha, branch: BRANCH })
+    }).then(function (r) {
+      return r.json().then(function (j) {
+        if (r.status === 409 || r.status === 422) throw new Error("Ֆայլը մինչ այդ փոխվել է։ Թարմացրու էջը և կրկնիր։");
+        if (!r.ok) throw new Error("GitHub " + r.status + ": " + (j.message || ""));
+        state.sha = j.content.sha;
+        return j;
+      });
+    });
+  }
+
+  /* ---------- data rules ---------- */
+  function poetsOf(data) {
+    var map = {};
+    (data["haj-poetner"].tracks || []).forEach(function (t) {
+      var slug = t.id.split("/")[0];
+      if (t.id.indexOf("/") > 0 && !map[slug]) map[slug] = t.subtitle || slug;
+    });
+    return map;
+  }
+  function songId(artistKey, file, poetSlug) { return artistKey === "haj-poetner" ? poetSlug + "/" + file : file; }
+  function songSrc(artistKey, id) {
+    var base = R2 + "/" + encodeURIComponent(artistKey) + "/featured/";
+    return artistKey === "haj-poetner" ? base + encodeURIComponent(id + ".mp3") : base + encodeURIComponent(id) + ".mp3";
+  }
+  function buildTrack(form, data) {
+    var id = songId(form.artist, form.file, form.poetSlug);
+    var track = { id: id, label: form.hy };
+    if (form.artist === "haj-poetner") track.subtitle = form.poetName;
+    track.src = songSrc(form.artist, id);
+    var expl = {};
+    if (form.en) expl.en = form.en;
+    if (form.ru) expl.ru = form.ru;
+    track.explanation = expl;
+    if (form.added) track.added = form.added;
+    return track;
+  }
+  function idExists(data, id) {
+    return Object.keys(data).some(function (k) { return data[k].tracks.some(function (t) { return t.id === id; }); });
+  }
+
+  /* ---------- UI: add ---------- */
+  function fillArtists() {
+    var sel = $("a-artist"); sel.innerHTML = "";
+    Object.keys(state.data).forEach(function (k) {
+      var o = document.createElement("option"); o.value = k; o.textContent = state.data[k].name; sel.appendChild(o);
+    });
+    fillPoets(); refreshAdd();
+  }
+  function fillPoets() {
+    var sel = $("a-poet"); sel.innerHTML = "";
+    var poets = poetsOf(state.data);
+    Object.keys(poets).forEach(function (slug) {
+      var o = document.createElement("option"); o.value = slug; o.textContent = poets[slug]; sel.appendChild(o);
+    });
+    var n = document.createElement("option"); n.value = "__new"; n.textContent = "+ նոր բանաստեղծ"; sel.appendChild(n);
+  }
+  function readAdd() {
+    var artist = $("a-artist").value;
+    var f = { artist: artist, file: $("a-file").value.trim(), hy: $("a-hy").value.trim(), en: $("a-en").value.trim(), ru: $("a-ru").value.trim(), added: $("a-date").value };
+    if (artist === "haj-poetner") {
+      var p = $("a-poet").value;
+      if (p === "__new") { f.poetSlug = $("a-newpoet-slug").value.trim(); f.poetName = $("a-newpoet-name").value.trim(); }
+      else { f.poetSlug = p; f.poetName = poetsOf(state.data)[p]; }
+    }
+    return f;
+  }
+  function refreshAdd() {
+    var isPoets = $("a-artist").value === "haj-poetner";
+    $("a-poet-wrap").hidden = !isPoets;
+    $("a-newpoet").hidden = !(isPoets && $("a-poet").value === "__new");
+    var f = readAdd();
+    if (!f.file) { $("a-preview").textContent = ""; return; }
+    var id = songId(f.artist, f.file, f.poetSlug || "");
+    $("a-preview").innerHTML = "ID՝ <code>" + id.replace(/</g, "&lt;") + "</code><br>Ֆայլ՝ <code>" + songSrc(f.artist, id).replace(/</g, "&lt;") + "</code>";
+  }
+  function checkAudio(src) {
+    return new Promise(function (resolve) {
+      var a = new Audio(); a.preload = "metadata";
+      a.onloadedmetadata = function () { resolve({ ok: true, seconds: Math.round(a.duration) }); a.src = ""; };
+      a.onerror = function () { resolve({ ok: false }); };
+      setTimeout(function () { resolve({ ok: false, timeout: true }); }, 15000);
+      a.src = src;
+    });
+  }
+  function validateAdd(f) {
+    if (!f.file) return "Գրիր ֆայլի անունը։";
+    if (!f.hy) return "Գրիր հայերեն վերնագիրը։";
+    if (f.artist === "haj-poetner" && (!f.poetSlug || !f.poetName)) return "Ընտրիր կամ լրացրու բանաստեղծին։";
+    if (idExists(state.data, songId(f.artist, f.file, f.poetSlug))) return "Այս ID-ով երգ արդեն կա։";
+    return "";
+  }
+  $("a-check").addEventListener("click", function () {
+    var f = readAdd(); if (!f.file) { say("a-msg", "Գրիր ֆայլի անունը։", "err"); return; }
+    var src = songSrc(f.artist, songId(f.artist, f.file, f.poetSlug || ""));
+    say("a-msg", "Ստուգում եմ…");
+    checkAudio(src).then(function (r) {
+      if (r.ok) say("a-msg", "Ֆայլը կա R2-ում ✓ (տևողությունը՝ " + Math.floor(r.seconds / 60) + ":" + String(r.seconds % 60).padStart(2, "0") + ")", "ok");
+      else say("a-msg", "Ֆայլը R2-ում չի գտնվել։ Վերբեռնիր այն ճիշտ այս հասցեով՝\n" + src, "err");
+    });
+  });
+  $("a-save").addEventListener("click", function () {
+    var f = readAdd(), problem = validateAdd(f);
+    if (problem) { say("a-msg", problem, "err"); return; }
+    var btn = $("a-save"); btn.disabled = true; say("a-msg", "Ստուգում եմ ֆայլը…");
+    var track = buildTrack(f, state.data);
+    checkAudio(track.src).then(function (r) {
+      if (!r.ok) throw new Error("Ֆայլը R2-ում չի գտնվել, երգը չի պահպանվել։ Վերբեռնիր ֆայլը ճիշտ այս հասցեով՝\n" + track.src);
+      say("a-msg", "Պահպանում եմ…");
+      return loadData();   // always work on the latest file
+    }).then(function () {
+      if (idExists(state.data, track.id)) throw new Error("Այս ID-ով երգ արդեն կա։");
+      state.data[f.artist].tracks.push(track);
+      return commit("Add song: " + track.label + " (via editor)");
+    }).then(function () {
+      say("a-msg", "Պահպանվեց ✓ «" + track.label + "»։ Կայքը կթարմանա 1–2 րոպեում։", "ok");
+      ["a-file", "a-hy", "a-en", "a-ru"].forEach(function (id) { $(id).value = ""; });
+      refreshAdd(); fillPoets();
+    }).catch(function (e) { say("a-msg", e.message, "err"); }).then(function () { btn.disabled = false; });
+  });
+  ["a-artist", "a-poet", "a-file", "a-newpoet-slug", "a-newpoet-name"].forEach(function (id) {
+    $(id).addEventListener("input", refreshAdd); $(id).addEventListener("change", refreshAdd);
+  });
+
+  /* ---------- UI: edit ---------- */
+  function allTracks() {
+    var out = [];
+    Object.keys(state.data).forEach(function (k) { state.data[k].tracks.forEach(function (t) { out.push({ artist: k, track: t }); }); });
+    return out;
+  }
+  function norm(s) { return String(s || "").toLowerCase(); }
+  $("e-search").addEventListener("input", function () {
+    var q = norm($("e-search").value).trim(), box = $("e-results");
+    if (q.length < 2) { box.hidden = true; return; }
+    var hits = allTracks().filter(function (x) {
+      var t = x.track;
+      return norm(t.label).indexOf(q) >= 0 || norm(t.id).indexOf(q) >= 0 || norm((t.explanation || {}).en).indexOf(q) >= 0 || norm((t.explanation || {}).ru).indexOf(q) >= 0;
+    }).slice(0, 40);
+    box.innerHTML = ""; box.hidden = !hits.length;
+    hits.forEach(function (x) {
+      var d = document.createElement("div");
+      d.innerHTML = "";
+      d.textContent = x.track.label + " ";
+      var s = document.createElement("small"); s.textContent = "· " + state.data[x.artist].name; d.appendChild(s);
+      d.addEventListener("click", function () { openEdit(x); });
+      box.appendChild(d);
+    });
+  });
+  function openEdit(x) {
+    state.current = x;
+    var t = x.track, ex = t.explanation || {};
+    $("e-form").hidden = false; $("e-results").hidden = true;
+    $("e-which").textContent = state.data[x.artist].name + " · ID՝ " + t.id;
+    $("e-hy").value = t.label || ""; $("e-en").value = ex.en || ""; $("e-ru").value = ex.ru || "";
+    $("e-src").value = t.src || ""; $("e-date").value = t.added || "";
+    say("e-msg", "");
+  }
+  $("e-save").addEventListener("click", function () {
+    if (!state.current) return;
+    var btn = $("e-save"); btn.disabled = true; say("e-msg", "Պահպանում եմ…");
+    var cur = state.current, id = cur.track.id, artist = cur.artist;
+    var hy = $("e-hy").value.trim(), en = $("e-en").value.trim(), ru = $("e-ru").value.trim(), src = $("e-src").value.trim(), date = $("e-date").value;
+    if (!hy) { say("e-msg", "Վերնագիրը դատարկ է։", "err"); btn.disabled = false; return; }
+    loadData().then(function () {
+      var t = state.data[artist].tracks.filter(function (x) { return x.id === id; })[0];
+      if (!t) throw new Error("Երգը չի գտնվել։");
+      t.label = hy;
+      var ex = {};
+      Object.keys(t.explanation || {}).forEach(function (k) { if (k !== "en" && k !== "ru") ex[k] = t.explanation[k]; });
+      if (en) ex.en = en; if (ru) ex.ru = ru;
+      var ordered = {}; ["hy", "en", "ru"].forEach(function (k) { if (ex[k]) ordered[k] = ex[k]; });
+      Object.keys(ex).forEach(function (k) { if (!(k in ordered)) ordered[k] = ex[k]; });
+      t.explanation = ordered;
+      if (src) t.src = src;
+      if (date) t.added = date; else delete t.added;
+      return commit("Edit song: " + hy + " (via editor)");
+    }).then(function () {
+      say("e-msg", "Պահպանվեց ✓ Կայքը կթարմանա 1–2 րոպեում։", "ok");
+    }).catch(function (e) { say("e-msg", e.message, "err"); }).then(function () { btn.disabled = false; });
+  });
+
+  /* ---------- tabs and login ---------- */
+  function tab(which) {
+    $("pane-add").hidden = which !== "add"; $("pane-edit").hidden = which !== "edit";
+    $("tab-add").className = which === "add" ? "on" : ""; $("tab-edit").className = which === "edit" ? "on" : "";
+  }
+  $("tab-add").addEventListener("click", function () { tab("add"); });
+  $("tab-edit").addEventListener("click", function () { tab("edit"); });
+
+  function login(token) {
+    state.token = token; say("auth-msg", "Ստուգում եմ…");
+    return gh("/repos/" + OWNER + "/" + REPO).then(function (r) {
+      if (r.status === 401) throw new Error("Բանալին սխալ է կամ ժամկետանց։");
+      if (!r.ok) throw new Error("GitHub " + r.status);
+      return r.json();
+    }).then(function (repo) {
+      if (!repo.permissions || !repo.permissions.push) throw new Error("Այս բանալին չունի գրելու իրավունք այս repo-ում (Contents → Read and write)։");
+      return loadData();
+    }).then(function () {
+      saveToken(token);
+      $("token").value = ""; $("btn-forget").hidden = false;
+      $("app").hidden = false; $("a-date").value = today();
+      say("auth-msg", "Մուտքը հաջողվեց ✓ (" + allTracks().length + " երգ)", "ok");
+      fillArtists();
+    }).catch(function (e) { state.token = ""; $("app").hidden = true; say("auth-msg", e.message, "err"); });
+  }
+  $("btn-token").addEventListener("click", function () { var t = $("token").value.trim(); if (t) login(t); else say("auth-msg", "Փակցրու բանալին։", "err"); });
+  $("btn-forget").addEventListener("click", function () { saveToken(""); state.token = ""; $("app").hidden = true; $("btn-forget").hidden = true; say("auth-msg", "Բանալին ջնջվեց այս բրաուզերից։"); });
+
+  var saved = readToken();
+  if (saved) login(saved);
+
+  // exposed for testing only (does nothing without a token)
+  window.__cms = { songSrc: songSrc, songId: songId, buildTrack: buildTrack, poetsOf: poetsOf, fromB64: fromB64, toB64: toB64, state: state, loadData: loadData };
+})();
+</script>
+</body>
+</html>
