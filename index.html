@@ -2001,6 +2001,8 @@
     <li><a href="#videos" data-i18n="videos">Տեսանյութեր</a></li>
     <li><a href="#donate-section" data-i18n="support">Աջակցել</a></li>
     <li><a href="#comments-section" data-i18n="comments">Կարծիք</a></li>
+    <li class="nav-owner" hidden><a href="admin.html">Ադմին</a></li>
+    <li class="nav-owner" hidden><a href="cms.html">Երգերի խմբագիր</a></li>
   </ul>
 </nav>
 <nav class="quick-nav" aria-label="Արագ անցումներ" data-i18n-aria="quickNav">
@@ -2745,6 +2747,7 @@
   /* ══ AUTH & FAVORITES SYNC (Supabase) ══ */
   let supabaseClient = null;
   let currentUser = null;
+  const OWNER_EMAIL = 'vahanvardevanyan3@gmail.com';  // only decides whether the admin links are shown; the pages themselves are protected separately
   let currentSession = null;
 
   function favKey(artistId, song) { return artistId + '|' + song; }
@@ -2811,6 +2814,8 @@
       : 'Մուտք գործել Google-ով՝ սիրվածները սարքերի միջև սինխրոնացնելու համար';
     btn.title = label;
     btn.setAttribute('aria-label', label);
+    const isOwner = !!currentUser && String(currentUser.email || '').toLowerCase() === OWNER_EMAIL;
+    document.querySelectorAll('.nav-owner').forEach(el => { el.hidden = !isOwner; });
   }
 
   async function initAuth() {
