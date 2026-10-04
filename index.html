@@ -4020,7 +4020,13 @@
       const numOf = s => { const m = s.match(/(\d+)/); return m ? parseInt(m[1], 10) : 999; };
       songs = artist.songs.slice().sort((a, b) => numOf(a) - numOf(b));
     } else {
-      const newest = s => NEW_SONGS[s] ? new Date(NEW_SONGS[s]).getTime() : 0;
+      // songs added in the last 7 days go first (newest first); the rest stay alphabetical
+      const newest = s => {
+        const added = NEW_SONGS[s];
+        if (!added) return 0;
+        const days = (Date.now() - new Date(added).getTime()) / (1000*60*60*24);
+        return days >= 0 && days <= 7 ? new Date(added).getTime() : 0;
+      };
       songs = artist.songs.slice().sort((a, b) => {
         const d = newest(b) - newest(a);
         if (d !== 0) return d;
