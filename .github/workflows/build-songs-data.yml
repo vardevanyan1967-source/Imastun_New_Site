@@ -1,0 +1,56 @@
+name: Build songs data
+
+# artist-pages-data.json is the single place where songs are edited.
+# Whenever it changes on main, rebuild songs-data.js (used by the home page)
+# and publish the site.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'artist-pages-data.json'
+      - 'tools/build_songs_data.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: build-songs-data
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Build songs-data.js
+        run: python3 tools/build_songs_data.py
+
+      - name: Commit the generated files
+        run: |
+          if git diff --quiet -- songs-data.js index.html; then
+            echo "Nothing to commit."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add songs-data.js index.html
+            git commit -m "Auto-build songs-data.js from artist-pages-data.json"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: Trigger GitHub Pages rebuild
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          curl --fail-with-body -L \
+            -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/${{ github.repository }}/pages/builds"

@@ -996,6 +996,9 @@
   function applyArtist() {
     migrateLegacyFavorites();
     TRACKS = Array.isArray(artist.tracks) ? artist.tracks : [];
+    TRACKS.forEach(function (track) {
+      if (track.added && !NEW_SONGS[track.id]) NEW_SONGS[track.id] = track.added;
+    });
     document.documentElement.style.setProperty("--cover-position", artist.coverPosition || "center");
     document.getElementById("artist-name").textContent = artist.name;
     document.getElementById("cover").src = artist.cover;

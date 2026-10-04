@@ -2220,6 +2220,7 @@
 <audio id="audio-engine" preload="none"></audio>
 
 <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="songs-data.js?v=2fb8952cde"></script>
 <script>
   function copyDonateCard() {
     const num = '4578890080551169';
@@ -3461,41 +3462,21 @@
     if (Object.prototype.hasOwnProperty.call(SONG_NAMES, oldKey)) SONG_NAMES[exactKey] = SONG_NAMES[oldKey];
     if (Object.prototype.hasOwnProperty.call(SONG_SUBTITLES, oldKey)) SONG_SUBTITLES[exactKey] = SONG_SUBTITLES[oldKey];
   });
+  /* ══ One source of truth: songs-data.js is generated from artist-pages-data.json
+         (python tools/build_songs_data.py). Names, translations, "new" dates and any song
+         missing from the lists above come from there and override the older inline copies. ══ */
+  (function applySongData(D) {
+    if (!D) return;
+    Object.assign(SONG_NAMES, D.names);
+    Object.assign(SONG_EXPLANATIONS, D.explanations);
+    Object.assign(SONG_EXPLANATIONS_BY_LANG, D.byLang);
+    Object.assign(SONG_SUBTITLES, D.subtitles);
+    Object.keys(D.added).forEach(id => { if (!NEW_SONGS[id]) NEW_SONGS[id] = D.added[id]; });
+    ARTISTS.forEach(a => {
+      (D.order[a.id] || []).forEach(id => { if (!a.songs.includes(id)) a.songs.push(id); });
+    });
+  })(window.SONG_DATA);
   Object.assign(NEW_SONGS, { 'Դու եկար':'2026-08-21', 'Ты пришёл':'2026-08-21', 'You Came':'2026-08-21' });
-  Object.assign(SONG_NAMES, {
-    'Դու եկար':'Դու եկար', 'Ты пришёл':'Ты пришёл', 'You Came':'You Came',
-    'jpta hogis':'Ժպտա հոգիս',
-    'Տիեզերական կինը roc':'Տիեզերական կինը (ռոք)',
-    'Իմ Քնքուշ Սևան':'Իմ Քնքուշ Սևան',
-    'hamo-sahyan/tor vochvoqi chkanchen02roc':'Թող ոչ ոքի չկանչեն (02 ռոք)',
-    'parujr-sevak/ՍԵՐՆ ԻՆՉ ԳՈՒՅՆ ՈՒՆԻ':'Սերն ինչ գույն ունի',
-    'sirenq-hima':'Սիրել հիմա',
-    'Սոնետ  121':'Սոնետ 121',
-    'Ревую к комару':'Ревную к комару',
-    'On the Edge of Sin':'On the Edge of Sin',
-    'Ջրահարսեր Ремикс Рեմикс_2':'Ջրահարսեր Ռեմիքս 2',
-    'Ջրահարսեր Ремикс Рեմикс_3':'Ջրահարսեր Ռեմիքս 3',
-    'byur harvacneric':'Բյուր հարվածներից',
-    'erazi kyanq':'Երազի կայանք',
-    'erazi kyamq roc':'Երազի կայանք (ռոք)',
-    'xararutun ber':'Խաղաղություն բեր',
-    'mern zepur':'Մեղմ զեփյուռը',
-    'ser eir xarum':'Սեր էիր խաղում',
-    "The Night's Embrace":"The Night's Embrace",
-    'ti moy kislarod':'Ты мой кислород',
-    'ti pridyosh komne':'Ты придёшь ко мне',
-    'hamo-sahyan/Ամպ է Նորից':'Ամպ է Նորից',
-    'parujr-sevak/What Color Is Love':'What Color Is Love',
-    'parujr-sevak/Какого цвета любовь':'Какого цвета любовь',
-    'hamo-sahyan/Հայոց փշատենին':'Հայոց փշատենին',
-    'hamo-sahyan/Հայոց փշատենին ջազ':'Հայոց փշատենին (ջազ)',
-    'shiraz/Սիրո համար մահ չկա':'Սիրո համար մահ չկա',
-    'shiraz/Հայոց լեզուն':'Հայոց լեզուն',
-    'shiraz/Սիրո հիասթափություն':'Սիրո հիասթափություն',
-    'shiraz/Իմ Սուրբ Հայրենիք':'Իմ Սուրբ Հայրենիք',
-    'shiraz/Դու իմ միակ աստվածուհի':'Դու իմ միակ աստվածուհի',
-    'shiraz/Դու էլ ի՛մն ես':'Դու էլ ի՛մն ես'
-  });
   Object.assign(SONG_SUBTITLES, {
     'Դու եկար':{hy:'Խոսք՝ Գոհար Ասելեսյան'},
     'Ты пришёл':{ru:'Слова — Гоар Аселесян'},
@@ -3656,22 +3637,12 @@
 
   const AUDIO_BASE_URL = 'https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio';
 
-  const AUDIO_VERSIONS = Object.freeze({
+  const AUDIO_VERSIONS = Object.freeze(Object.assign({
     'go-hara|Սիրելով գնամ': 'b5e360f88c88',
     'go-hara|Я уйду любя': 'a4c22ad27185'
-  });
+  }, (window.SONG_DATA || {}).versions));
 
-  const AUDIO_SOURCE_OVERRIDES = Object.freeze({
-    'imastun|Կատակ յարի երգ պար 4 լեզվով': `${AUDIO_BASE_URL}/imastun/featured/${encodeURIComponent('Կատակ յարի երգ պար 4 լեզվով')}.mp3`,
-    'imastun|Իմ Գեղեցկուհի ընկերուհիները': `${AUDIO_BASE_URL}/imastun/featured/${encodeURIComponent('Իմ Գեղեցկուհի ընկերուհիները')}.mp3`,
-    'imastun|IM JEALOUS OF THE MOSQUITO': `${AUDIO_BASE_URL}/imastun/featured/mascito/${encodeURIComponent('IM JEALOUS OF THE MOSQUITO')}.mp3`,
-    'imastun|Նախանձում եմ': `${AUDIO_BASE_URL}/imastun/featured/mascito/${encodeURIComponent('Նախանձում եմ')}.mp3`,
-    'imastun|Ревую к комару': `${AUDIO_BASE_URL}/imastun/featured/mascito/${encodeURIComponent('Ревую к комару')}.mp3`,
-    'imastun|Meghki_ezrin_Remix': `${AUDIO_BASE_URL}/imastun/featured/meghki_ezrin_Remix.mp3`,
-    'go-hara|Անունդ կին է ֆրի տանգո': `${AUDIO_BASE_URL}/go-hara/featured/${encodeURIComponent('Անունդ կին է')}.mp3`,
-    'haj-poetner|shiraz/Սիրո համար մահ չկա': `${AUDIO_BASE_URL}/haj-poetner/featured/${encodeURIComponent('shiraz/Սիրո համար մահ չկա,For Love, There Is No Death')}.mp3`,
-    'haj-poetner|hamo-sahyan/Հայոց փշատենին ջազ': `${AUDIO_BASE_URL}/haj-poetner/featured/${encodeURIComponent('hamo-sahyan/Հայոց փշատենին jazz')}.mp3`
-  });
+  const AUDIO_SOURCE_OVERRIDES = Object.freeze(Object.assign({}, (window.SONG_DATA || {}).sources));
 
   const playlist = [];
   ARTISTS.forEach(a => a.songs.forEach(s => {
