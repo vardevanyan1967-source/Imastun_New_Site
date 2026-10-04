@@ -1507,7 +1507,7 @@
       .nav-actions { margin-left:auto; }
       #mobile-menu-toggle { display:flex; }
       #nav .nav-links { display:none; order:6; width:100%; flex-direction:column; align-items:stretch; gap:0; padding:8px 0 4px; }
-      #nav .nav-links.open { display:flex; }
+      #nav .nav-links.open { display:flex; max-height:max(180px, calc(100vh - 230px)); max-height:max(180px, calc(100dvh - 230px)); overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch; }
       #nav .nav-links li { width:100%; }
       #nav .nav-links a { display:flex; align-items:center; min-height:48px; width:100%; padding:10px 12px; border-bottom:1px solid var(--border); }
       .quick-nav { position:relative; top:0; justify-content:flex-start; overflow-x:auto; }
@@ -1994,6 +1994,8 @@
     <button id="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav-links" aria-label="Բացել մենյուն" data-i18n-aria="menuOpen"><span class="bars" aria-hidden="true"></span></button>
   </div>
   <ul class="nav-links" id="primary-nav-links">
+    <li class="nav-owner" hidden><a href="admin.html">Ադմին</a></li>
+    <li class="nav-owner" hidden><a href="cms.html">Երգերի խմբագիր</a></li>
     <li><a href="#artists" data-i18n="artists">Արտիստներ</a></li>
     <li><a href="#armenian-poets" data-i18n="poets">Հայ բանաստեղծներ</a></li>
     <li><a href="#world-poetry" data-i18n="worldPoetry">Համաշխարհային պոեզիա</a></li>
@@ -2001,8 +2003,6 @@
     <li><a href="#videos" data-i18n="videos">Տեսանյութեր</a></li>
     <li><a href="#donate-section" data-i18n="support">Աջակցել</a></li>
     <li><a href="#comments-section" data-i18n="comments">Կարծիք</a></li>
-    <li class="nav-owner" hidden><a href="admin.html">Ադմին</a></li>
-    <li class="nav-owner" hidden><a href="cms.html">Երգերի խմբագիր</a></li>
   </ul>
 </nav>
 <nav class="quick-nav" aria-label="Արագ անցումներ" data-i18n-aria="quickNav">
