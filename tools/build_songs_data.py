@@ -90,9 +90,7 @@ def main():
 
     parts = [
         block('names', names),
-        block('explanations', explanations),
         block('byLang', by_lang),
-        block('subtitles', subtitles),
         block('sources', sources),
         block('versions', versions),
         block('added', added),
