@@ -436,7 +436,7 @@
       if (artist && artist.id === "haj-poetner" && state.poet !== "all" && item.track.subtitle !== state.poet) return false;
       if (!term) return true;
       var explText = item.track.explanation ? Object.values(item.track.explanation).join(" ") : "";
-      return (item.track.label + " " + item.track.id + " " + (item.track.subtitle || "") + " " + explText).toLocaleLowerCase(locale).indexOf(term) >= 0;
+      return (item.track.label + " " + item.track.id + " " + poetNameAll(item.track.subtitle) + " " + explText).toLocaleLowerCase(locale).indexOf(term) >= 0;
     });
   }
 
@@ -479,14 +479,14 @@
         return (candidate.track.subtitle || artist.name) === groupName;
       }).length : 0;
       var divider = showDivider
-        ? '<div class="poet-divider"><span class="poet-divider-name">' + poetAvatarHtml(poetPhotoUrl(item.track), groupName) + escapeHtml(groupName) + '</span><small>' +
+        ? '<div class="poet-divider"><span class="poet-divider-name">' + poetAvatarHtml(poetPhotoUrl(item.track), poetNameL(groupName)) + escapeHtml(poetNameL(groupName)) + '</span><small>' +
           groupCount + ' ' + escapeHtml(tr("songWord")) + '</small></div>'
         : "";
       return divider + '<article class="track-row' + (state.current === item.index ? ' playing' : '') + '" data-index="' + item.index + '">' +
         '<span class="track-num">' + String(item.index + 1).padStart(2, "0") + '</span>' +
         '<button class="track-main" type="button" data-action="play">' +
         '<span class="track-title ' + languageCountClass(item.track) + '">' + escapeHtml(displayTitle(item.track)) + songBadge(item.track.id) + '</span>' +
-        '<span class="track-sub">' + escapeHtml(displaySubtitle(item.track, item.track.subtitle || artist.name)) + '</span>' + (item.track.subtitle && item.track.explanation ? '<span class="track-group">' + escapeHtml(item.track.subtitle) + '</span>' : '') + '</button>' +
+        '<span class="track-sub">' + escapeHtml(displaySubtitle(item.track, poetNameL(item.track.subtitle || artist.name))) + '</span>' + (item.track.subtitle && item.track.explanation ? '<span class="track-group">' + escapeHtml(poetNameL(item.track.subtitle)) + '</span>' : '') + '</button>' +
         '<button class="icon-btn' + (favorite ? ' favorite' : '') + '" type="button" data-action="favorite" aria-label="' +
         escapeHtml(favorite ? tr("unfavorite") : tr("favorite")) + '">' + (favorite ? "♥" : "♡") + '</button>' +
         '<button class="icon-btn share-btn" type="button" data-action="share" aria-label="' + escapeHtml(tr("share")) + '">' +
@@ -925,6 +925,7 @@
     }
     var donateButton = document.getElementById("donate-btn");
     if (donateButton) donateButton.setAttribute("aria-label", tr("donate"));
+    refreshPoetChips();
     setStatus(curAudio().paused ? (state.current >= 0 ? "paused" : "ready") : "playing");
     if (state.current >= 0 && TRACKS[state.current]) {
       var currentTrack = TRACKS[state.current];
@@ -982,7 +983,7 @@
     panel.hidden = false;
     var grid = panel.querySelector("#recent-added-grid");
     grid.innerHTML = newItems.slice(0, 12).map(function (item) {
-      var sub = displaySubtitle(item.track, item.track.subtitle || artist.name);
+      var sub = displaySubtitle(item.track, poetNameL(item.track.subtitle || artist.name));
       return '<div class="recent-card" data-index="' + item.index + '">' +
         '<div class="rc-top"><span class="rc-badge new-badge">NEW</span></div>' +
         '<div class="rc-title">' + escapeHtml(displayTitle(item.track)) + '</div>' +
@@ -996,6 +997,41 @@
         var row = document.querySelector('.track-row[data-index="' + index + '"]');
         if (row) row.scrollIntoView({ block:"center", behavior:"smooth" });
       });
+    });
+  }
+
+  // Poet names in the three site languages (the data keeps the Armenian name; ru/en are shown when that language is selected).
+  var POET_NAME_I18N = {
+    "Աննե Մարի": { ru: "Анне Мари", en: "Anne Mari" },
+    "Աշոտ Գրաշի": { ru: "Ашот Граши", en: "Ashot Grashi" },
+    "Ավետիք Իսահակյան": { ru: "Аветик Исаакян", en: "Avetik Isahakyan" },
+    "Արամայիս Սահակյան": { ru: "Арамаис Саакян", en: "Aramayis Sahakyan" },
+    "Եղիշե Չարենց": { ru: "Егише Чаренц", en: "Yeghishe Charents" },
+    "Համո Սահյան": { ru: "Амо Сагиян", en: "Hamo Sahyan" },
+    "Հովհաննես Թումանյան": { ru: "Ованес Туманян", en: "Hovhannes Tumanyan" },
+    "Հովհաննես Շիրազ": { ru: "Ованес Шираз", en: "Hovhannes Shiraz" },
+    "Միսաք Մեծարենց": { ru: "Мисак Мецаренц", en: "Misak Metsarents" },
+    "Պարույր Սևակ": { ru: "Паруйр Севак", en: "Paruyr Sevak" },
+    "Սիլվա Կապուտիկյան": { ru: "Сильва Капутикян", en: "Silva Kaputikyan" },
+    "Վահագն Դավթյան": { ru: "Ваагн Давтян", en: "Vahagn Davtyan" },
+    "Վահան Տերյան": { ru: "Ваан Терьян", en: "Vahan Teryan" },
+    "Վլադիմիր Ավետիսյան": { ru: "Владимир Аветисян", en: "Vladimir Avetisyan" }
+  };
+  function poetNameL(name) {
+    var entry = POET_NAME_I18N[name];
+    return (entry && state.lang !== "hy" && entry[state.lang]) || name;
+  }
+  function poetNameAll(name) {
+    var entry = POET_NAME_I18N[name];
+    return entry ? name + " " + entry.ru + " " + entry.en : String(name || "");
+  }
+  function refreshPoetChips() {
+    document.querySelectorAll(".poet-filters [data-poet-filter]").forEach(function (button) {
+      var label = poetNameL(button.dataset.poetFilter);
+      button.setAttribute("aria-label", label);
+      button.setAttribute("title", label);
+      var text = button.querySelector(".poet-card-name");
+      if (text) text.textContent = label;
     });
   }
 
@@ -1036,9 +1072,9 @@
       '<div class="poet-filters" role="group" aria-label="' + escapeHtml(tr("poets")) + '">' +
       poetNames.map(function (name) {
         return '<button class="poet-chip poet-card" type="button" data-poet-filter="' + escapeHtml(name) +
-          '" aria-label="' + escapeHtml(name) + '" title="' + escapeHtml(name) + '" aria-pressed="false">' +
+          '" aria-label="' + escapeHtml(poetNameL(name)) + '" title="' + escapeHtml(poetNameL(name)) + '" aria-pressed="false">' +
           '<img src="' + escapeHtml(poetCards[name]) + '" alt="" loading="lazy" onerror="this.parentNode.classList.add(\'no-card\')">' +
-          '<span class="poet-card-name">' + escapeHtml(name) + '</span></button>';
+          '<span class="poet-card-name">' + escapeHtml(poetNameL(name)) + '</span></button>';
       }).join("") + '</div>';
 
     document.querySelector(".toolbar").insertAdjacentElement("afterend", wrap);

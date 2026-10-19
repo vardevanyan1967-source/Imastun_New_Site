@@ -2686,6 +2686,27 @@
     'misak-metsarents/': 'Միսաք Մեծարենց', 'yeghishe-charents/': 'Եղիշե Չարենց', 'ashot-grashi/': 'Աշոտ Գրաշի',
     'vladimir-avetisyan/': 'Վլադիմիր Ավետիսյան', 'anne-mari/': 'Աննե Մարի'
   };
+  // Poet names in the three site languages (the Armenian name stays in the data; ru/en are shown when that language is selected)
+  const POET_NAME_I18N = {
+    "Աննե Մարի": { ru: "Анне Мари", en: "Anne Mari" },
+    "Աշոտ Գրաշի": { ru: "Ашот Граши", en: "Ashot Grashi" },
+    "Ավետիք Իսահակյան": { ru: "Аветик Исаакян", en: "Avetik Isahakyan" },
+    "Արամայիս Սահակյան": { ru: "Арамаис Саакян", en: "Aramayis Sahakyan" },
+    "Եղիշե Չարենց": { ru: "Егише Чаренц", en: "Yeghishe Charents" },
+    "Համո Սահյան": { ru: "Амо Сагиян", en: "Hamo Sahyan" },
+    "Հովհաննես Թումանյան": { ru: "Ованес Туманян", en: "Hovhannes Tumanyan" },
+    "Հովհաննես Շիրազ": { ru: "Ованес Шираз", en: "Hovhannes Shiraz" },
+    "Միսաք Մեծարենց": { ru: "Мисак Мецаренц", en: "Misak Metsarents" },
+    "Պարույր Սևակ": { ru: "Паруйр Севак", en: "Paruyr Sevak" },
+    "Սիլվա Կապուտիկյան": { ru: "Сильва Капутикян", en: "Silva Kaputikyan" },
+    "Վահագն Դավթյան": { ru: "Ваагн Давтян", en: "Vahagn Davtyan" },
+    "Վահան Տերյան": { ru: "Ваан Терьян", en: "Vahan Teryan" },
+    "Վլադիմիր Ավետիսյան": { ru: "Владимир Аветисян", en: "Vladimir Avetisyan" }
+  };
+  function poetNameLoc(name, loc) {
+    const e = POET_NAME_I18N[name];
+    return (e && loc && loc !== 'hy' && e[loc]) || name;
+  }
   // Round portraits live in authors/haj-poetner/poets/<poet-id>.jpg, poet-id = the part of the song key before "/".
   const POET_PHOTO_DIR = 'authors/haj-poetner/poets/';
   function poetPhotoUrl(artistId, song) {
@@ -4161,7 +4182,7 @@
         if (pn && pn !== lastPoet) {
           const photo = poetPhotoUrl(artist.id, song);
           const cnt = poetSongCount[pn] || 0;
-          header = `<div class="poet-header"><span class="poet-avatar" data-initials="${poetInitials(pn)}"><img src="${photo}" alt="" loading="lazy" onerror="this.remove()"></span><span class="poet-name">${pn}</span><span class="poet-count">${cnt} երգ</span></div>`;
+          header = `<div class="poet-header"><span class="poet-avatar" data-initials="${poetInitials(pn)}"><img src="${photo}" alt="" loading="lazy" onerror="this.remove()"></span><span class="poet-name" data-hy="${pn}" data-ru="${poetNameLoc(pn,'ru')}" data-en="${poetNameLoc(pn,'en')}">${pn}</span><span class="poet-count">${cnt} երգ</span></div>`;
           lastPoet = pn;
         }
       }
@@ -4510,6 +4531,7 @@
       document.querySelectorAll('[data-i18n-html]').forEach(el => { const key=el.dataset.i18nHtml; if(translations[locale][key]) el.innerHTML=translations[locale][key]; });
       document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { const key=el.dataset.i18nPlaceholder; if(translations[locale][key]) el.placeholder=translations[locale][key]; });
       document.querySelectorAll('[data-i18n-aria]').forEach(el => { const key=el.dataset.i18nAria; if(translations[locale][key]) el.setAttribute('aria-label',translations[locale][key]); });
+      document.querySelectorAll('.poet-name[data-hy]').forEach(el => { el.textContent = el.dataset[locale] || el.dataset.hy; });
       try { localStorage.setItem('imastun_language', locale); } catch (e) {}
       if (typeof currentIdx !== 'undefined' && currentIdx >= 0 && typeof playlist !== 'undefined' && playlist[currentIdx] && typeof songDisplayTitle === 'function' && typeof gpSong !== 'undefined') {
         gpSong.textContent = songDisplayTitle(playlist[currentIdx]);
