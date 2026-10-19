@@ -1071,12 +1071,6 @@ body[data-language] .player-progress input{
 .poet-filters{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));overflow:visible;scroll-snap-type:none;gap:8px}
 .poet-filters .poet-chip{width:100%;justify-content:flex-start;text-align:left;white-space:normal;line-height:1.25}
 .poet-filters .poet-chip > span:not(.poet-avatar){min-width:0;overflow-wrap:anywhere}
-/* poet names in the filter grid: gold and a little bolder */
-.poet-filters .poet-chip,.poet-filters .poet-chip:has(.poet-avatar),.poet-filter-head .poet-chip{color:var(--gold);font-weight:700;font-size:11px;letter-spacing:.02em}
-.poet-filters .poet-chip:hover,.poet-filter-head .poet-chip:hover{color:var(--gold-2)}
-.poet-filters .poet-chip.active,.poet-filter-head .poet-chip.active{color:var(--language-accent)}
-body.light-mode .poet-filters .poet-chip,body.light-mode .poet-filters .poet-chip:has(.poet-avatar),body.light-mode .poet-filter-head .poet-chip{color:#8a6a12}
-body.light-mode .poet-filters .poet-chip.active,body.light-mode .poet-filter-head .poet-chip.active{color:var(--language-accent)}
 /* "All" sits in the header row, so the grid holds only the portraits (14 = 2 x 7, always even) */
 .poet-filter-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .poet-filter-head .poet-chip{min-height:36px;padding:0 20px;border-radius:0}
