@@ -1169,3 +1169,40 @@ body[data-language] .player-progress input{
   .language-count-items{gap:9px}
 }
 
+/* ---- "framed vintage portraits": dark wood + gold double frame, sepia photo, name plaque (like the collection cover) ---- */
+.poet-filters .poet-chip,.poet-filters .poet-chip:has(.poet-avatar){
+  background:linear-gradient(160deg,#2a1b0f 0%,#150e07 100%);
+  border:2px solid #b8963f;
+  border-radius:0;
+  box-shadow:inset 0 0 0 3px #120b06,inset 0 0 0 4px rgba(201,168,76,.65),0 6px 14px rgba(0,0,0,.45);
+  padding:12px 10px 10px;
+  gap:10px;
+  cursor:pointer;
+  transition:transform .2s,box-shadow .2s
+}
+.poet-filters .poet-chip:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 3px #120b06,inset 0 0 0 4px #e8c97a,0 10px 18px rgba(0,0,0,.55)}
+.poet-filters .poet-chip.active{outline:2px solid var(--language-accent);outline-offset:3px}
+.poet-filters .poet-chip .poet-avatar img{filter:sepia(.9) contrast(1.05)}
+.poet-chip-name{
+  display:block;
+  flex:1 1 auto;
+  min-width:0;
+  width:100%;
+  box-sizing:border-box;
+  padding:6px 5px;
+  background:linear-gradient(#3b2915,#21160b);
+  border:1px solid rgba(201,168,76,.7);
+  color:#ecd28a;
+  font:600 11px/1.25 'Noto Serif Armenian','Cormorant Garamond',Georgia,serif;
+  letter-spacing:.02em;
+  text-align:center
+}
+.poet-filter-head .poet-chip{background:linear-gradient(#3b2915,#21160b);border:1px solid rgba(201,168,76,.7);color:#ecd28a;font-weight:600}
+.poet-filter-head .poet-chip.active{color:#ecd28a;outline:2px solid var(--language-accent);outline-offset:2px}
+@media(min-width:701px){
+  .poet-chip-name{width:100%}
+}
+@media(max-width:700px){
+  .poet-filters .poet-chip,.poet-filters .poet-chip:has(.poet-avatar){padding:8px;gap:8px}
+  .poet-chip-name{width:auto;flex:1 1 auto}
+}

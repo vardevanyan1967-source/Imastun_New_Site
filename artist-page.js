@@ -1032,7 +1032,7 @@
       '<div class="poet-filters" role="group" aria-label="' + escapeHtml(tr("poets")) + '">' +
       poetNames.map(function (name) {
         return '<button class="poet-chip" type="button" data-poet-filter="' + escapeHtml(name) +
-          '" aria-pressed="false">' + poetAvatarHtml(poetPhotos[name], name) + '<span>' + escapeHtml(name) + '</span></button>';
+          '" aria-pressed="false">' + poetAvatarHtml(poetPhotos[name], name) + '<span class="poet-chip-name">' + escapeHtml(name) + '</span></button>';
       }).join("") + '</div>';
 
     document.querySelector(".toolbar").insertAdjacentElement("afterend", wrap);
