@@ -2750,6 +2750,23 @@
   const SUPABASE_KEY = 'sb_publishable_7iNYB-HogL42o_luHkI-gg_KzPylN3c';
   const playCountCache = {};
 
+  // One "play" = one song starting. The same start can be reported by two code paths (e.g. a double click),
+  // so a start of the same song within 4 seconds is counted once. Every variant (Rock & Roll, Twist, Remix…) has its own id.
+  let lastCountedPlay = { song: '', at: 0 };
+  function recordPlay(t) {
+    if (!t || !t.song) return;
+    const now = Date.now();
+    if (lastCountedPlay.song === t.song && now - lastCountedPlay.at < 4000) return;
+    lastCountedPlay = { song: t.song, at: now };
+    if (typeof gtag === 'function') {
+      gtag('event', 'play_song', {
+        song_id: t.song, song_title: t.label, artist: t.artistName, artist_id: t.artistId,
+        song_name: t.label, artist_name: t.artistName   // older report names
+      });
+    }
+    incrementPlayCount(t.song);
+  }
+
   async function incrementPlayCount(songId) {
     try {
       const res = await fetch(`${SUPABASE_URL}/rest/v1/rpc/increment_play`, {
@@ -2759,13 +2776,14 @@
           'Authorization': `Bearer ${SUPABASE_KEY}`,
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ p_song_id: songId })
+        body: JSON.stringify({ p_song_id: songId }),
+        keepalive: true
       });
-      if (!res.ok) return;
+      if (!res.ok) { console.warn('play count not saved', res.status, songId); return; }
       const newCount = await res.json();
       playCountCache[songId] = newCount;
       updatePlayCountBadges(songId, newCount);
-    } catch (e) {}
+    } catch (e) { console.warn('play count not saved', songId, e); }
   }
 
   async function fetchAllPlayCounts() {
@@ -3308,11 +3326,7 @@
     if (idx === currentIdx && isPlaying) {
       active().pause(); return;
     }
-    const t = playlist[idx];
-    if (t && typeof gtag === 'function') {
-      gtag('event', 'play_song', { song_name: t.label, artist_name: t.artistName });
-    }
-    if (t) incrementPlayCount(t.song);
+    recordPlay(playlist[idx]);
     loadTrack(idx, true);
   }
 
@@ -3392,6 +3406,7 @@
           crossfadeNextIdx = -1;
           activeIdx = 1 - activeIdx;
           currentIdx = nextIdx;
+          recordPlay(t);   // a song that starts through a crossfade is a play too
           const nextArtist = t.artistName || (typeof ARTIST !== 'undefined' ? ARTIST.name : 'Imastun Studio');
           setGpCover(t.cover);
           gpCover.alt = nextArtist + ' — ' + t.label;
