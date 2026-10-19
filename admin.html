@@ -32,6 +32,13 @@
   td.n { text-align:right; font-variant-numeric:tabular-nums; }
   th.n { text-align:right; }
   .note { color:var(--dim); padding:14px 0; }
+  .views { display:flex; flex-wrap:wrap; align-items:center; gap:8px 14px; margin:0 0 10px; }
+  .seg { display:inline-flex; border:1px solid var(--gold); border-radius:999px; overflow:hidden; }
+  .seg button { background:transparent; color:var(--gold); border-radius:0; padding:7px 16px; font-size:13px; }
+  .seg button.on { background:var(--gold); color:var(--bg); }
+  .views label { color:var(--dim); font-size:13px; display:flex; align-items:center; gap:6px; cursor:pointer; }
+  .scroll.full { max-height:none; overflow:visible; }
+  .scroll.full th { position:static; }
   .find { width:100%; max-width:360px; padding:9px 14px; margin:0 0 10px; font:inherit; color:var(--text); background:var(--card); border:1px solid var(--line); border-radius:999px; }
   .scroll { max-height:70vh; overflow:auto; border:1px solid rgba(255,255,255,.07); border-radius:10px; }
   .scroll th { position:sticky; top:0; background:var(--card); }
@@ -73,8 +80,15 @@
     <div class="scroll"><table id="tbl-react"><thead><tr><th>Երգ</th><th class="n">❤️</th><th class="n">😢</th><th class="n">🔥</th><th class="n">😊</th><th class="n">Ընդհանուր</th></tr></thead><tbody></tbody></table></div>
 
     <h2>Լսումներ ըստ երգերի</h2>
+    <div class="views">
+      <div class="seg" role="group" aria-label="Ցանկի տեսակ">
+        <button id="view-played" type="button" class="on">Լսվածները</button>
+        <button id="view-all" type="button">Բոլոր երգերը</button>
+      </div>
+      <label><input id="view-full" type="checkbox"> Ամբողջ ցանկը մեկ էջով (առանց ոլորման)</label>
+    </div>
     <input id="find-plays" class="find" type="search" placeholder="Փնտրել երգ (հայերեն, ռուսերեն, անգլերեն, արտիստ)…" autocomplete="off">
-    <div class="scroll"><table id="tbl-plays"><thead><tr><th>Երգ</th><th class="n">Լսումներ</th></tr></thead><tbody></tbody></table></div>
+    <div id="plays-wrap" class="scroll"><table id="tbl-plays"><thead><tr><th>Երգ</th><th class="n">Լսումներ</th></tr></thead><tbody></tbody></table></div>
     <div id="plays-note" class="note"></div>
   </div>
 </main>
@@ -208,12 +222,33 @@
     drawPlays();
   }
 
+  var VIEW_ALL = false, VIEW_FULL = false;
+  try { VIEW_ALL = localStorage.getItem("admin_view_all") === "1"; VIEW_FULL = localStorage.getItem("admin_view_full") === "1"; } catch (error) {}
+
+  // "all songs" view: every song of the catalog (also the ones never played) + ids that are no longer in the catalog
+  function rowsForView() {
+    if (!VIEW_ALL) return PLAY_ROWS;
+    var seen = {};
+    var rows = PLAY_ROWS.map(function (row) { seen[row.song_id] = true; return row; });
+    Object.keys(CATALOG).forEach(function (id) { if (!seen[id]) rows.push({ song_id: id, play_count: 0 }); });
+    return rows;
+  }
+
+  function syncViewControls() {
+    $("view-played").className = VIEW_ALL ? "" : "on";
+    $("view-all").className = VIEW_ALL ? "on" : "";
+    $("view-full").checked = VIEW_FULL;
+    $("plays-wrap").className = "scroll" + (VIEW_FULL ? " full" : "");
+  }
+
   function drawPlays() {
+    syncViewControls();
     var term = $("find-plays").value.trim().toLowerCase();
     var body = $("tbl-plays").tBodies[0];
     body.textContent = "";
     var shown = 0, shownPlays = 0;
-    PLAY_ROWS.forEach(function (row) {
+    var source = rowsForView();
+    source.forEach(function (row) {
       var info = CATALOG[row.song_id];
       var text = info ? info.text : String(row.song_id).toLowerCase();
       if (term && text.indexOf(term) < 0) return;
@@ -224,10 +259,13 @@
       shown++; shownPlays += row.play_count;
     });
     $("plays-note").textContent = shown
-      ? "Ցուցադրված է " + shown + " երգ, " + shownPlays + " լսում (ընդհանուրը՝ " + PLAY_ROWS.length + " երգ)։"
+      ? "Ցուցադրված է " + shown + " երգ, " + shownPlays + " լսում։ Լսված երգեր՝ " + PLAY_ROWS.length + ", կայքում ընդհանուր երգեր՝ " + Object.keys(CATALOG).length + "։"
       : "Այդպիսի երգ չի գտնվել։";
   }
   $("find-plays").addEventListener("input", drawPlays);
+  $("view-played").addEventListener("click", function () { VIEW_ALL = false; try { localStorage.setItem("admin_view_all", "0"); } catch (error) {} drawPlays(); });
+  $("view-all").addEventListener("click", function () { VIEW_ALL = true; try { localStorage.setItem("admin_view_all", "1"); } catch (error) {} drawPlays(); });
+  $("view-full").addEventListener("change", function () { VIEW_FULL = this.checked; try { localStorage.setItem("admin_view_full", VIEW_FULL ? "1" : "0"); } catch (error) {} drawPlays(); });
 
   function load() {
     Promise.all([
