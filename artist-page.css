@@ -1219,3 +1219,15 @@ body[data-language] .player-progress input{
   .poet-filters .poet-chip,.poet-filters .poet-chip:has(.poet-avatar){padding:6px;gap:6px;min-height:0}
   .poet-chip .poet-avatar{flex-basis:40px;width:40px;height:40px}
 }
+
+/* even shorter tiles */
+@media(min-width:701px){
+  .poet-filters .poet-chip .poet-avatar{width:48px;height:48px}
+  .poet-filters .poet-chip,.poet-filters .poet-chip:has(.poet-avatar){padding:7px 7px 6px;gap:5px}
+}
+.poet-chip-name{padding:3px 3px;font-size:10px;line-height:1.15}
+.poet-chip-name small{min-height:1em;margin-top:0;font-size:8px;line-height:1.1}
+@media(max-width:700px){
+  .poet-filters .poet-chip,.poet-filters .poet-chip:has(.poet-avatar){padding:5px;gap:5px}
+  .poet-chip .poet-avatar{flex-basis:34px;width:34px;height:34px}
+}
