@@ -3627,7 +3627,7 @@
     card.className = 'video-card';
     card.innerHTML = `
       <button class="video-float-close" title="Փակել">✕</button>
-      <iframe class="yt-embed" id="yt-player-${vi}" src="https://www.youtube.com/embed/${v.id}?cc_load_policy=1&cc_lang_pref=hy&enablejsapi=1"
+      <iframe class="yt-embed" id="yt-player-${vi}" src="https://www.youtube.com/embed/${v.id}?cc_load_policy=1&cc_lang_pref=hy&enablejsapi=1&origin=${encodeURIComponent(location.origin)}"
         title="${v.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen loading="lazy"></iframe>
       <div class="video-meta">
@@ -4329,10 +4329,11 @@
     const ytIframes = document.querySelectorAll('.video-card .yt-embed[id^="yt-player-"]');
     if (!ytIframes.length) return;
     loadYouTubeAPI(() => {
-      ytIframes.forEach(iframe => {
+      // One YouTube player object per video is only worth creating when the video is near the screen:
+      // creating all of them at once made the API poll hidden, not yet loaded frames hundreds of times.
+      const setupYtPlayer = (iframe) => {
         if (ytPlayerInstances[iframe.id]) return;
         const card = iframe.closest('.video-card');
-        videoFloatObserver.observe(card);
         const player = new YT.Player(iframe.id, {
           events: {
             onStateChange: (e) => {
@@ -4347,6 +4348,17 @@
         ytPlayerInstances[iframe.id] = player;
         const closeBtn = card.querySelector('.video-float-close');
         if (closeBtn) closeBtn.addEventListener('click', () => { player.pauseVideo(); videoStoppedPlaying(card); });
+      };
+      const ytNearObserver = ('IntersectionObserver' in window) ? new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          ytNearObserver.unobserve(entry.target);
+          setupYtPlayer(entry.target);
+        });
+      }, { rootMargin: '600px 0px' }) : null;
+      ytIframes.forEach(iframe => {
+        videoFloatObserver.observe(iframe.closest('.video-card'));
+        if (ytNearObserver) ytNearObserver.observe(iframe); else setupYtPlayer(iframe);
       });
 
       // Robust fallback: poll actual player state every second in case an
