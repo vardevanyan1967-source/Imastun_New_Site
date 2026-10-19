@@ -1290,11 +1290,11 @@ body[data-language] .player-progress input{
 
 /* ---- "Հայ բանաստեղծներ" page: colours of the collection cover (dark wood, copper and bronze, parchment) instead of the blue accent; less yellow ---- */
 body[data-artist-id="haj-poetner"]{
-  --bg:#0f0a06;
-  --surface:#180f09;
-  --surface-2:#20150d;
-  --surface-3:#2b1c11;
-  --text:#ebddcc;
+  --bg:#24160c;
+  --surface:#301e10;
+  --surface-2:#3b2713;
+  --surface-3:#4a321a;
+  --text:#f0e2cf;
   --white:#f7ede2;
   --muted:#a38a6e;
   --gold:#b98650;
@@ -1326,4 +1326,8 @@ body.light-mode[data-artist-id="haj-poetner"][data-language="ru"],
 body.light-mode[data-artist-id="haj-poetner"][data-language="en"]{
   --language-accent:#7a4318;
   --language-soft:rgba(122,67,24,.14)
+}
+/* warm walnut background (not black) */
+body[data-artist-id="haj-poetner"]:not(.light-mode){
+  background:radial-gradient(ellipse at 50% 0%,#4a2f19 0%,#2c1a0e 48%,#1f120a 100%) fixed
 }
