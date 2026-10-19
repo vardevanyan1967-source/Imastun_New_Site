@@ -1121,6 +1121,11 @@
   }
 
   function applyArtist() {
+    // colour options for comparing on the preview (?theme=walnut|graphite|slate|olive|black); without the parameter the default colours are used
+    try {
+      var themeOption = new URLSearchParams(location.search).get("theme");
+      if (themeOption && /^[a-z]+$/.test(themeOption)) document.body.setAttribute("data-poet-theme", themeOption);
+    } catch (error) {}
     migrateLegacyFavorites();
     TRACKS = Array.isArray(artist.tracks) ? artist.tracks : [];
     TRACKS.forEach(function (track) {
