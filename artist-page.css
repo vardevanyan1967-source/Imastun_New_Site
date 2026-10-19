@@ -1030,6 +1030,78 @@ body[data-language] .player-progress input{
   font-weight:600
 }
 .poet-divider:first-child{margin-top:0}
+.poet-divider-name{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width:0
+}
+/* round poet portrait (initials show if the photo file is missing) */
+.poet-avatar{
+  position:relative;
+  flex:0 0 84px;
+  width:84px;
+  height:84px;
+  box-sizing:border-box;
+  border-radius:0;
+  overflow:hidden;
+  border:0;
+  background:var(--surface);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--gold, #c9a84c);
+  font:700 22px 'Syne',sans-serif;
+  letter-spacing:0
+}
+.poet-avatar::after{   /* the gold frame: a slowly rotating light sweep */
+  content:'';
+  position:absolute;
+  inset:-35%;
+  background:conic-gradient(from 0turn, #c9a84c 0%, #f0d88a 14%, rgba(201,168,76,.12) 32%, rgba(201,168,76,.12) 62%, #f0d88a 86%, #c9a84c 100%);
+  animation:poet-ring-spin 2.5s linear infinite;
+  z-index:0
+}
+.poet-avatar::before{   /* initials when there is no photo; sits inside the 2px frame */
+  content:attr(data-initials);
+  position:absolute;
+  inset:2px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--surface);
+  z-index:1
+}
+.poet-avatar img{
+  position:absolute;
+  inset:2px;
+  width:calc(100% - 4px);
+  height:calc(100% - 4px);
+  object-fit:cover;
+  display:block;
+  z-index:2
+}
+@keyframes poet-ring-spin{to{transform:rotate(1turn)}}
+@media (prefers-reduced-motion:reduce){.poet-avatar::after{animation:none}}
+.poet-chip{display:inline-flex;align-items:center;gap:7px}
+.poet-chip .poet-avatar{flex-basis:56px;width:56px;height:56px;border-width:2px;border-radius:0;font-size:15px}
+.poet-chip:has(.poet-avatar){min-height:66px;padding-left:5px;padding-right:14px}
+.poet-filters .poet-chip{border-radius:0;min-height:66px}   /* sharp chips, all the same height as the ones with a portrait */
+/* every poet is visible at once: the chips wrap onto several rows instead of scrolling sideways */
+.poet-filters{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));overflow:visible;scroll-snap-type:none;gap:8px}
+.poet-filters .poet-chip{width:100%;justify-content:flex-start;text-align:left;white-space:normal;line-height:1.25}
+.poet-filters .poet-chip > span:not(.poet-avatar){min-width:0;overflow-wrap:anywhere}
+/* "All" sits in the header row, so the grid holds only the portraits (14 = 2 x 7, always even) */
+.poet-filter-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.poet-filter-head .poet-chip{min-height:36px;padding:0 20px;border-radius:0}
+.poet-filters{grid-template-columns:repeat(2,minmax(0,1fr))}
+.poet-chip .poet-avatar{flex-basis:44px;width:44px;height:44px}
+.poet-filters .poet-chip,.poet-filters .poet-chip:has(.poet-avatar){min-height:56px;padding-right:8px}
+@media(min-width:701px){
+  .poet-filters{grid-template-columns:repeat(7,minmax(0,1fr))}
+  .poet-filters .poet-chip,.poet-filters .poet-chip:has(.poet-avatar){flex-direction:column;justify-content:flex-start;align-items:center;text-align:center;gap:8px;min-height:0;padding:10px 6px}
+  .poet-filters .poet-chip .poet-avatar{flex-basis:auto;width:72px;height:72px}
+}
 .poet-divider small{
   flex:0 0 auto;
   color:var(--muted);
@@ -1097,3 +1169,165 @@ body[data-language] .player-progress input{
   .language-count-items{gap:9px}
 }
 
+/* ---- "framed vintage portraits": dark wood + gold double frame, sepia photo, name plaque (like the collection cover) ---- */
+.poet-filters .poet-chip,.poet-filters .poet-chip:has(.poet-avatar){
+  background:linear-gradient(160deg,#2a1b0f 0%,#150e07 100%);
+  border:2px solid #b8963f;
+  border-radius:0;
+  box-shadow:inset 0 0 0 3px #120b06,inset 0 0 0 4px rgba(201,168,76,.65),0 6px 14px rgba(0,0,0,.45);
+  padding:12px 10px 10px;
+  gap:10px;
+  cursor:pointer;
+  transition:transform .2s,box-shadow .2s
+}
+.poet-filters .poet-chip:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 3px #120b06,inset 0 0 0 4px #e8c97a,0 10px 18px rgba(0,0,0,.55)}
+.poet-filters .poet-chip.active{outline:2px solid var(--language-accent);outline-offset:3px}
+.poet-filters .poet-chip .poet-avatar img{filter:sepia(.9) contrast(1.05)}
+.poet-chip-name{
+  display:block;
+  flex:1 1 auto;
+  min-width:0;
+  width:100%;
+  box-sizing:border-box;
+  padding:6px 5px;
+  background:linear-gradient(#3b2915,#21160b);
+  border:1px solid rgba(201,168,76,.7);
+  color:#ecd28a;
+  font:600 11px/1.25 'Noto Serif Armenian','Cormorant Garamond',Georgia,serif;
+  letter-spacing:.02em;
+  text-align:center
+}
+.poet-filter-head .poet-chip{background:linear-gradient(#3b2915,#21160b);border:1px solid rgba(201,168,76,.7);color:#ecd28a;font-weight:600}
+.poet-filter-head .poet-chip.active{color:#ecd28a;outline:2px solid var(--language-accent);outline-offset:2px}
+@media(min-width:701px){
+  .poet-chip-name{width:100%}
+}
+@media(max-width:700px){
+  .poet-filters .poet-chip,.poet-filters .poet-chip:has(.poet-avatar){padding:8px;gap:8px}
+  .poet-chip-name{width:auto;flex:1 1 auto}
+}
+.poet-chip-name small{display:block;min-height:1.25em;margin-top:2px;color:rgba(236,210,138,.7);font:500 9px/1.25 'Syne',sans-serif;letter-spacing:.08em}
+
+/* shorter tiles */
+@media(min-width:701px){
+  .poet-filters .poet-chip .poet-avatar{width:58px;height:58px}
+  .poet-filters .poet-chip,.poet-filters .poet-chip:has(.poet-avatar){padding:9px 8px 8px;gap:6px}
+}
+.poet-chip-name{padding:4px 4px;font-size:10.5px;line-height:1.2}
+.poet-chip-name small{min-height:1.1em;margin-top:1px;font-size:8.5px}
+@media(max-width:700px){
+  .poet-filters .poet-chip,.poet-filters .poet-chip:has(.poet-avatar){padding:6px;gap:6px;min-height:0}
+  .poet-chip .poet-avatar{flex-basis:40px;width:40px;height:40px}
+}
+
+/* even shorter tiles */
+@media(min-width:701px){
+  .poet-filters .poet-chip .poet-avatar{width:48px;height:48px}
+  .poet-filters .poet-chip,.poet-filters .poet-chip:has(.poet-avatar){padding:7px 7px 6px;gap:5px}
+}
+.poet-chip-name{padding:3px 3px;font-size:10px;line-height:1.15}
+.poet-chip-name small{min-height:1em;margin-top:0;font-size:8px;line-height:1.1}
+@media(max-width:700px){
+  .poet-filters .poet-chip,.poet-filters .poet-chip:has(.poet-avatar){padding:5px;gap:5px}
+  .poet-chip .poet-avatar{flex-basis:34px;width:34px;height:34px}
+}
+
+/* ---- carved wooden portrait cards (from the supplied artwork; name and years are part of the picture) ---- */
+.poet-filters{grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}
+.poet-filters .poet-chip.poet-card,.poet-filters .poet-chip.poet-card:hover{
+  display:block;
+  padding:0;
+  min-height:0;
+  border:0;
+  border-radius:0;
+  background:none;
+  box-shadow:none;
+  aspect-ratio:2/3;
+  position:relative;
+  overflow:visible;
+  transform:none
+}
+.poet-card img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:3px;
+  box-shadow:0 6px 16px rgba(0,0,0,.55);
+  transition:transform .2s,box-shadow .2s,filter .2s
+}
+.poet-card:hover img{transform:translateY(-4px);box-shadow:0 12px 22px rgba(0,0,0,.6);filter:brightness(1.07)}
+.poet-card.active img{outline:3px solid var(--language-accent);outline-offset:3px}
+.poet-card:focus-visible{outline:2px solid var(--language-accent);outline-offset:4px}
+.poet-card .poet-card-name{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* if the picture cannot load, show the name instead */
+.poet-card.no-card{aspect-ratio:auto;min-height:48px;padding:10px;background:#2a1b0f;border:1px solid rgba(201,168,76,.7);color:#ecd28a}
+.poet-card.no-card img{display:none}
+.poet-card.no-card .poet-card-name{position:static;width:auto;height:auto;clip:auto;overflow:visible;white-space:normal;font:600 12px/1.25 'Noto Serif Armenian',Georgia,serif;text-align:center}
+@media(min-width:701px) and (max-width:1000px){.poet-filters{grid-template-columns:repeat(5,minmax(0,1fr))}}
+@media(max-width:700px){.poet-filters{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
+
+/* phones: smaller cards, 3 per row, the last two centred */
+@media(max-width:700px){
+  .poet-filters{grid-template-columns:repeat(6,minmax(0,1fr));gap:10px 8px}
+  .poet-filters .poet-card{grid-column:span 2}
+  .poet-filters .poet-card:nth-last-child(2){grid-column:2 / 4}
+  .poet-filters .poet-card:nth-last-child(1){grid-column:4 / 6}
+}
+
+/* phones: a bit smaller still (cards about 100px wide), centred */
+@media(max-width:700px){
+  .poet-filters{grid-template-columns:repeat(6,46px);column-gap:8px;row-gap:10px;justify-content:center}
+}
+
+/* phones: 4 cards per row (14 = 4+4+4+2, the last two centred) */
+@media(max-width:700px){
+  .poet-filters{grid-template-columns:repeat(8,minmax(0,1fr));column-gap:8px;row-gap:10px;justify-content:stretch;max-width:340px;margin-left:auto;margin-right:auto}
+  .poet-filters .poet-card{grid-column:span 2}
+  .poet-filters .poet-card:nth-last-child(2){grid-column:3 / 5}
+  .poet-filters .poet-card:nth-last-child(1){grid-column:5 / 7}
+}
+
+/* ---- "Հայ բանաստեղծներ" page: colours of the collection cover (dark wood, copper and bronze, parchment) instead of the blue accent; less yellow ---- */
+body[data-artist-id="haj-poetner"]{
+  --bg:#1f1b17;
+  --surface:#2a2520;
+  --surface-2:#352f28;
+  --surface-3:#413a31;
+  --text:#ebe5db;
+  --white:#f5f0e8;
+  --muted:#9d9486;
+  --gold:#a58a62;
+  --gold-2:#cdb28b;
+  --border:rgba(190,165,125,.3);
+  --gold-dim:rgba(190,165,125,.13)
+}
+body[data-artist-id="haj-poetner"][data-language="hy"],
+body[data-artist-id="haj-poetner"][data-language="ru"],
+body[data-artist-id="haj-poetner"][data-language="en"]{
+  --language-accent:#cdb28b;
+  --language-soft:rgba(205,178,139,.14)
+}
+body.light-mode[data-artist-id="haj-poetner"]{
+  --bg:#eadccb;
+  --surface:#f4e9db;
+  --surface-2:#e2d0b8;
+  --surface-3:#d6c0a1;
+  --text:#2c1d10;
+  --white:#201409;
+  --muted:#6c5238;
+  --gold:#8c5a28;
+  --gold-2:#a8703a;
+  --border:rgba(110,70,30,.45);
+  --gold-dim:rgba(140,90,40,.16)
+}
+body.light-mode[data-artist-id="haj-poetner"][data-language="hy"],
+body.light-mode[data-artist-id="haj-poetner"][data-language="ru"],
+body.light-mode[data-artist-id="haj-poetner"][data-language="en"]{
+  --language-accent:#7a4318;
+  --language-soft:rgba(122,67,24,.14)
+}
+/* warm walnut background (not black) */
+body[data-artist-id="haj-poetner"]:not(.light-mode){
+  background:radial-gradient(ellipse at 50% 0%,#3b352d 0%,#26211c 50%,#1d1915 100%) fixed
+}

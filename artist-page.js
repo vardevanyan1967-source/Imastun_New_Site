@@ -27,8 +27,63 @@
   var player = document.getElementById("player");
   var playerCoverEl = document.getElementById("player-cover");
   var playerCoverRing = document.getElementById("player-cover-ring");
-  function setPlayerCover(coverSrc) {
-    playerCoverEl.src = coverSrc;
+  // Round poet portraits (Հայ Բանաստեղծներ page): authors/haj-poetner/poets/<poet-id>.jpg, poet-id = the part of the song id before "/".
+  var POET_PHOTO_DIR = "authors/haj-poetner/poets/";
+  function poetPhotoUrl(track) {
+    if (!artist || artist.id !== "haj-poetner" || !track) return "";
+    var i = String(track.id).indexOf("/");
+    return i > 0 ? POET_PHOTO_DIR + encodeURIComponent(String(track.id).slice(0, i)) + "-sq.jpg" : "";
+  }
+  function poetInitials(name) {
+    var parts = String(name).trim().split(/\s+/).filter(Boolean);
+    if (!parts.length) return "";
+    return (parts[0].charAt(0) + (parts.length > 1 ? parts[parts.length - 1].charAt(0) : "")).toUpperCase();
+  }
+  function poetCardUrl(trackId) {
+    var i = String(trackId).indexOf("/");
+    return i > 0 ? POET_PHOTO_DIR + encodeURIComponent(String(trackId).slice(0, i)) + "-card.webp" : "";
+  }
+  function poetAvatarHtml(photoUrl, name) {
+    return '<span class="poet-avatar" data-initials="' + escapeHtml(poetInitials(name)) + '">' +
+      (photoUrl ? '<img src="' + escapeHtml(photoUrl) + '" alt="" loading="lazy" onerror="this.remove()">' : "") + '</span>';
+  }
+  function setPlayerCover(coverSrc, portraitSrc) {
+    playerCoverEl.onerror = null;
+    playerCoverEl.style.borderRadius = portraitSrc ? "0" : "";   // poet portraits are sharp squares
+    if (portraitSrc) {
+      // the poet portrait first; if the file does not exist (yet) the collection cover is shown
+      playerCoverEl.onerror = function () { playerCoverEl.onerror = null; playerCoverEl.style.borderRadius = ""; playerCoverEl.src = coverSrc; };
+      playerCoverEl.src = portraitSrc;
+    } else {
+      playerCoverEl.src = coverSrc;
+    }
+  }
+  var portraitProbe = {};
+  function setMediaMetadata(track) {
+    if (!("mediaSession" in navigator) || !("MediaMetadata" in window)) return;
+    var portrait = poetPhotoUrl(track);
+    var fallback = new URL(artist.cover, location.href).href;
+    var apply = function (src) {
+      try {
+        navigator.mediaSession.metadata = new MediaMetadata({
+          title: displayTitle(track),
+          artist: artist.name,
+          album: "Imastun Studio",
+          artwork: [{ src: src, sizes: "500x500", type: "image/jpeg" }]
+        });
+      } catch (error) {}
+    };
+    if (portrait && portraitProbe[portrait] === true) { apply(new URL(portrait, location.href).href); return; }
+    apply(fallback);   // collection cover until we know the portrait exists
+    if (portrait && portraitProbe[portrait] === undefined) {
+      portraitProbe[portrait] = false;
+      var im = new Image();
+      im.onload = function () {
+        portraitProbe[portrait] = true;
+        if (TRACKS[state.current] === track) apply(new URL(portrait, location.href).href);
+      };
+      im.src = portrait;
+    }
   }
   var list = document.getElementById("track-list");
   var empty = document.getElementById("empty");
@@ -47,7 +102,7 @@
     hy: {
       back:"Գլխավոր էջ", catalog:"Երգացանկ", search:"Որոնել երգերում…",
       all:"Բոլորը", favorites:"Սիրված երգերը", poets:"Բանաստեղծներ", languageCount:"Երգի տեքստի լեզուների քանակը", playFirst:"Նվագարկել առաջին երգը",
-      songWord:"երգ", noResults:"Այս որոնմամբ երգ չի գտնվել։",
+      songWord:"երգ", noResults:"Այս որոնմամբ երգ չի գտնվել։", poetSoon:"Այս բանաստեղծի երգերը շուտով կհայտնվեն։",
       noFavorites:"Սիրված երգ դեռ չկա։ Սեղմեք ♡՝ երգն այստեղ պահելու համար։",
       play:"Նվագարկել", pause:"Դադար", previous:"Նախորդ երգը", next:"Հաջորդ երգը",
       close:"Փակել նվագարկիչը", favorite:"Ավելացնել սիրվածներին",
@@ -64,7 +119,7 @@
     ru: {
       back:"Главная", catalog:"Песни", search:"Поиск по песням…",
       all:"Все", favorites:"Любимые песни", poets:"Поэты", languageCount:"Число языков в тексте песни", playFirst:"Включить первую песню",
-      songWord:"песен", noResults:"По вашему запросу песен не найдено.",
+      songWord:"песен", noResults:"По вашему запросу песен не найдено.", poetSoon:"Песни на стихи этого поэта скоро появятся.",
       noFavorites:"Любимых песен пока нет. Нажмите ♡, чтобы сохранить песню здесь.",
       play:"Воспроизвести", pause:"Пауза", previous:"Предыдущая песня", next:"Следующая песня",
       close:"Закрыть плеер", favorite:"Добавить в избранное", unfavorite:"Убрать из избранного",
@@ -80,7 +135,7 @@
     en: {
       back:"Home", catalog:"Track list", search:"Search tracks…",
       all:"All", favorites:"Favorite songs", poets:"Poets", languageCount:"Song text language count", playFirst:"Play the first track",
-      songWord:"tracks", noResults:"No tracks match this search.",
+      songWord:"tracks", noResults:"No tracks match this search.", poetSoon:"Songs for this poet are coming soon.",
       noFavorites:"No favorite songs yet. Tap ♡ to save a song here.",
       play:"Play", pause:"Pause", previous:"Previous track", next:"Next track",
       close:"Close player", favorite:"Add to favorites", unfavorite:"Remove from favorites",
@@ -412,7 +467,8 @@
     var items = visibleTracks();
     resultCount.textContent = items.length + " " + tr("songWord");
     empty.hidden = items.length !== 0;
-    empty.textContent = state.filter === "favorites" && !state.query ? tr("noFavorites") : tr("noResults");
+    empty.textContent = state.filter === "favorites" && !state.query ? tr("noFavorites")
+      : (state.poet !== "all" && !state.query && artist && artist.id === "haj-poetner") ? tr("poetSoon") : tr("noResults");
     list.innerHTML = items.map(function (item, position) {
       var favorite = isFavorite(item.track.id);
       var playing = state.current === item.index && !curAudio().paused;
@@ -423,7 +479,7 @@
         return (candidate.track.subtitle || artist.name) === groupName;
       }).length : 0;
       var divider = showDivider
-        ? '<div class="poet-divider"><span>' + escapeHtml(groupName) + '</span><small>' +
+        ? '<div class="poet-divider"><span class="poet-divider-name">' + poetAvatarHtml(poetPhotoUrl(item.track), groupName) + escapeHtml(groupName) + '</span><small>' +
           groupCount + ' ' + escapeHtml(tr("songWord")) + '</small></div>'
         : "";
       return divider + '<article class="track-row' + (state.current === item.index ? ' playing' : '') + '" data-index="' + item.index + '">' +
@@ -596,7 +652,7 @@
     showPlayer();
     playerTitle.textContent = displayTitle(track);
     playerTitle.className = "player-title " + languageCountClass(track);
-    setPlayerCover(artist.cover);
+    setPlayerCover(artist.cover, poetPhotoUrl(track));
     progress.value = "0";
     currentTime.textContent = "0:00";
     duration.textContent = "0:00";
@@ -612,16 +668,7 @@
       artistId: artist.id, song: track.id, label: track.label, artistName: artist.name
     }));
 
-    if ("mediaSession" in navigator && "MediaMetadata" in window) {
-      try {
-        navigator.mediaSession.metadata = new MediaMetadata({
-          title: displayTitle(track),
-          artist: artist.name,
-          album: "Imastun Studio",
-          artwork: [{ src:new URL(artist.cover, location.href).href, sizes:"500x500", type:"image/jpeg" }]
-        });
-      } catch (error) {}
-    }
+    setMediaMetadata(track);
 
     syncPlayer();
     if (autoplay) {
@@ -743,22 +790,14 @@
     state.current = nextIndex;
     var track = TRACKS[nextIndex];
     recordPlay(track);   // a song that starts through a crossfade is a play too
+    setPlayerCover(artist.cover, poetPhotoUrl(track));
     playerTitle.textContent = displayTitle(track);
     playerTitle.className = "player-title " + languageCountClass(track);
     progress.value = "0";
     write("artistpage_" + artist.id + "_last_track", JSON.stringify({
       artistId: artist.id, song: track.id, label: track.label, artistName: artist.name
     }));
-    if ("mediaSession" in navigator && "MediaMetadata" in window) {
-      try {
-        navigator.mediaSession.metadata = new MediaMetadata({
-          title: displayTitle(track),
-          artist: artist.name,
-          album: "Imastun Studio",
-          artwork: [{ src:new URL(artist.cover, location.href).href, sizes:"500x500", type:"image/jpeg" }]
-        });
-      } catch (error) {}
-    }
+    setMediaMetadata(track);
     setStatus("playing");
     syncPlayer();
   }
@@ -960,24 +999,46 @@
     });
   }
 
+  // Poets that have a portrait but no songs yet still get a filter chip (their list says "coming soon").
+  var POET_REGISTRY = [
+    ["vahan-teryan", "Վահան Տերյան"], ["hamo-sahyan", "Համո Սահյան"], ["parujr-sevak", "Պարույր Սևակ"],
+    ["avetik-isahakyan", "Ավետիք Իսահակյան"], ["shiraz", "Հովհաննես Շիրազ"], ["silva-kaputikyan", "Սիլվա Կապուտիկյան"],
+    ["vahagn-davtyan", "Վահագն Դավթյան"], ["hovhannes-tumanyan", "Հովհաննես Թումանյան"],
+    ["misak-metsarents", "Միսաք Մեծարենց"], ["yeghishe-charents", "Եղիշե Չարենց"], ["ashot-grashi", "Աշոտ Գրաշի"],
+    ["vladimir-avetisyan", "Վլադիմիր Ավետիսյան"], ["anne-mari", "Աննե Մարի"]
+  ];
+
   function setupPoetFilters() {
     if (!artist || artist.id !== "haj-poetner" || document.getElementById("poet-filter-wrap")) return;
     var poetNames = [];
+    var poetCards = {};
     TRACKS.forEach(function (track) {
-      if (track.subtitle && poetNames.indexOf(track.subtitle) < 0) poetNames.push(track.subtitle);
+      if (track.subtitle && poetNames.indexOf(track.subtitle) < 0) {
+        poetNames.push(track.subtitle);
+        poetCards[track.subtitle] = poetCardUrl(track.id);
+      }
     });
+    POET_REGISTRY.forEach(function (entry) {
+      if (poetNames.indexOf(entry[1]) < 0) {
+        poetNames.push(entry[1]);
+        poetCards[entry[1]] = POET_PHOTO_DIR + encodeURIComponent(entry[0]) + "-card.webp";
+      }
+    });
+    poetNames.sort(function (a, b) { return a.localeCompare(b, "hy"); });   // alphabetical, same order as the list below
 
     var wrap = document.createElement("div");
     wrap.className = "poet-filter-wrap";
     wrap.id = "poet-filter-wrap";
     wrap.innerHTML =
-      '<span class="poet-filter-title" data-i18n="poets">' + escapeHtml(tr("poets")) + '</span>' +
-      '<div class="poet-filters" role="group" aria-label="' + escapeHtml(tr("poets")) + '">' +
+      '<div class="poet-filter-head"><span class="poet-filter-title" data-i18n="poets">' + escapeHtml(tr("poets")) + '</span>' +
       '<button class="poet-chip active" type="button" data-poet-filter="all" data-i18n="all" aria-pressed="true">' +
-      escapeHtml(tr("all")) + '</button>' +
+      escapeHtml(tr("all")) + '</button></div>' +
+      '<div class="poet-filters" role="group" aria-label="' + escapeHtml(tr("poets")) + '">' +
       poetNames.map(function (name) {
-        return '<button class="poet-chip" type="button" data-poet-filter="' + escapeHtml(name) +
-          '" aria-pressed="false">' + escapeHtml(name) + '</button>';
+        return '<button class="poet-chip poet-card" type="button" data-poet-filter="' + escapeHtml(name) +
+          '" aria-label="' + escapeHtml(name) + '" title="' + escapeHtml(name) + '" aria-pressed="false">' +
+          '<img src="' + escapeHtml(poetCards[name]) + '" alt="" loading="lazy" onerror="this.parentNode.classList.add(\'no-card\')">' +
+          '<span class="poet-card-name">' + escapeHtml(name) + '</span></button>';
       }).join("") + '</div>';
 
     document.querySelector(".toolbar").insertAdjacentElement("afterend", wrap);
@@ -1066,6 +1127,12 @@
       if (track.added && !NEW_SONGS[track.id]) NEW_SONGS[track.id] = track.added;
     });
     if (artist.id !== "haj-poetner" && artist.id !== "shakespeare-reimagined") TRACKS = sortTracks(TRACKS);
+    // the poets are listed in Armenian alphabetical order of their names (songs of one poet keep their order)
+    if (artist.id === "haj-poetner") {
+      TRACKS = TRACKS.map(function (track, i) { return { track: track, i: i }; }).sort(function (a, b) {
+        return String(a.track.subtitle || "").localeCompare(String(b.track.subtitle || ""), "hy") || a.i - b.i;
+      }).map(function (entry) { return entry.track; });
+    }
     document.documentElement.style.setProperty("--cover-position", artist.coverPosition || "center");
     document.getElementById("artist-name").textContent = artist.name;
     document.getElementById("cover").src = artist.cover;
