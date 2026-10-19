@@ -1358,3 +1358,8 @@ body[data-artist-id="haj-poetner"][data-poet-theme="black"]{
   --border:rgba(201,168,76,.32);--gold-dim:rgba(201,168,76,.13);--language-accent:#e0c07a;--language-soft:rgba(201,168,76,.14)
 }
 body[data-artist-id="haj-poetner"][data-poet-theme="black"]:not(.light-mode){background:radial-gradient(ellipse at 50% 0%,#1c1c1c 0%,#101010 50%,#080808 100%) fixed}
+
+/* the new carved cards are toned down to the older, darker look of the collection cover (less orange/yellow) */
+.poet-card img{filter:saturate(.55) brightness(.8) contrast(1.06) sepia(.12)}
+.poet-card:hover img{filter:saturate(.62) brightness(.9) contrast(1.06) sepia(.12)}
+.poet-avatar img{filter:saturate(.6) brightness(.85) contrast(1.05) sepia(.1)}
