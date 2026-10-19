@@ -1287,3 +1287,39 @@ body[data-language] .player-progress input{
   .poet-filters .poet-card:nth-last-child(2){grid-column:3 / 5}
   .poet-filters .poet-card:nth-last-child(1){grid-column:5 / 7}
 }
+
+/* ---- "Հայ բանաստեղծներ" page: colours of the collection cover (dark wood, bronze and gold, parchment) instead of the blue accent ---- */
+body[data-artist-id="haj-poetner"]{
+  --bg:#0e0905;
+  --surface:#171008;
+  --surface-2:#1f150b;
+  --surface-3:#2a1b0e;
+  --text:#ecdfc6;
+  --white:#f7ecd3;
+  --muted:#a08a64;
+  --border:rgba(201,168,76,.3);
+  --gold-dim:rgba(201,168,76,.14)
+}
+body[data-artist-id="haj-poetner"][data-language="hy"],
+body[data-artist-id="haj-poetner"][data-language="ru"],
+body[data-artist-id="haj-poetner"][data-language="en"]{
+  --language-accent:#e0b866;
+  --language-soft:rgba(224,184,102,.14)
+}
+body.light-mode[data-artist-id="haj-poetner"]{
+  --bg:#efe2c6;
+  --surface:#f7ecd4;
+  --surface-2:#e6d5b2;
+  --surface-3:#dcc79c;
+  --text:#2b1d0c;
+  --white:#1f1408;
+  --muted:#6b5430;
+  --border:rgba(110,75,20,.45);
+  --gold-dim:rgba(140,95,25,.16)
+}
+body.light-mode[data-artist-id="haj-poetner"][data-language="hy"],
+body.light-mode[data-artist-id="haj-poetner"][data-language="ru"],
+body.light-mode[data-artist-id="haj-poetner"][data-language="en"]{
+  --language-accent:#7a4a10;
+  --language-soft:rgba(122,74,16,.14)
+}
