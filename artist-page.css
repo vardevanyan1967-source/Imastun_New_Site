@@ -1279,3 +1279,11 @@ body[data-language] .player-progress input{
 @media(max-width:700px){
   .poet-filters{grid-template-columns:repeat(6,46px);column-gap:8px;row-gap:10px;justify-content:center}
 }
+
+/* phones: 4 cards per row (14 = 4+4+4+2, the last two centred) */
+@media(max-width:700px){
+  .poet-filters{grid-template-columns:repeat(8,minmax(0,1fr));column-gap:8px;row-gap:10px;justify-content:stretch;max-width:340px;margin-left:auto;margin-right:auto}
+  .poet-filters .poet-card{grid-column:span 2}
+  .poet-filters .poet-card:nth-last-child(2){grid-column:3 / 5}
+  .poet-filters .poet-card:nth-last-child(1){grid-column:5 / 7}
+}
