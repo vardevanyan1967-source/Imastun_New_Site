@@ -5207,6 +5207,29 @@
           "ru": "Одно сердце, два языка"
         },
         "added": "2026-10-10"
+      },
+      {
+        "id": "anne-mari/Բյուրեղ դարձիր",
+        "label": "Բյուրեղ դարձիր",
+        "subtitle": "Աննե Մարի",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/anne-mari%2F%D4%B2%D5%B5%D5%B8%D6%82%D6%80%D5%A5%D5%B2%20%D5%A4%D5%A1%D6%80%D5%B1%D5%AB%D6%80.m4a",
+        "explanation": {
+          "en": "Become Crystal",
+          "ru": "Стань кристаллом"
+        },
+        "added": "2026-10-19"
+      },
+      {
+        "id": "anne-mari/Deviens Cristal",
+        "label": "Deviens Cristal",
+        "subtitle": "Աննե Մարի",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/anne-mari%2FDeviens%20Cristal.m4a",
+        "explanation": {
+          "hy": "Բյուրեղ դարձիր",
+          "ru": "Стань кристаллом",
+          "en": "Become Crystal"
+        },
+        "added": "2026-10-19"
       }
     ]
   }
