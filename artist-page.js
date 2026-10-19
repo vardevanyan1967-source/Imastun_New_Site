@@ -1020,6 +1020,7 @@
         poetPhotos[entry[1]] = POET_PHOTO_DIR + encodeURIComponent(entry[0]) + ".jpg";
       }
     });
+    poetNames.sort(function (a, b) { return a.localeCompare(b, "hy"); });   // alphabetical, same order as the list below
 
     var wrap = document.createElement("div");
     wrap.className = "poet-filter-wrap";
@@ -1120,6 +1121,12 @@
       if (track.added && !NEW_SONGS[track.id]) NEW_SONGS[track.id] = track.added;
     });
     if (artist.id !== "haj-poetner" && artist.id !== "shakespeare-reimagined") TRACKS = sortTracks(TRACKS);
+    // the poets are listed in Armenian alphabetical order of their names (songs of one poet keep their order)
+    if (artist.id === "haj-poetner") {
+      TRACKS = TRACKS.map(function (track, i) { return { track: track, i: i }; }).sort(function (a, b) {
+        return String(a.track.subtitle || "").localeCompare(String(b.track.subtitle || ""), "hy") || a.i - b.i;
+      }).map(function (entry) { return entry.track; });
+    }
     document.documentElement.style.setProperty("--cover-position", artist.coverPosition || "center");
     document.getElementById("artist-name").textContent = artist.name;
     document.getElementById("cover").src = artist.cover;
