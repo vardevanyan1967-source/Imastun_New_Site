@@ -1004,6 +1004,12 @@
     ["vladimir-avetisyan", "Վլադիմիր Ավետիսյան"], ["anne-mari", "Աննե Մարի"]
   ];
 
+  // Life years shown on the plaques (as on the collection cover); poets without a known pair show an empty line so all plaques stay the same height.
+  var POET_YEARS = {
+    "Հովհաննես Թումանյան": "1869 – 1923", "Ավետիք Իսահակյան": "1875 – 1957", "Վահան Տերյան": "1885 – 1920",
+    "Եղիշե Չարենց": "1897 – 1937", "Համո Սահյան": "1914 – 1993", "Պարույր Սևակ": "1924 – 1971", "Հովհաննես Շիրազ": "1915 – 1984"
+  };
+
   function setupPoetFilters() {
     if (!artist || artist.id !== "haj-poetner" || document.getElementById("poet-filter-wrap")) return;
     var poetNames = [];
@@ -1032,7 +1038,7 @@
       '<div class="poet-filters" role="group" aria-label="' + escapeHtml(tr("poets")) + '">' +
       poetNames.map(function (name) {
         return '<button class="poet-chip" type="button" data-poet-filter="' + escapeHtml(name) +
-          '" aria-pressed="false">' + poetAvatarHtml(poetPhotos[name], name) + '<span class="poet-chip-name">' + escapeHtml(name) + '</span></button>';
+          '" aria-pressed="false">' + poetAvatarHtml(poetPhotos[name], name) + '<span class="poet-chip-name">' + escapeHtml(name) + '<small>' + escapeHtml(POET_YEARS[name] || "") + '</small></span></button>';
       }).join("") + '</div>';
 
     document.querySelector(".toolbar").insertAdjacentElement("afterend", wrap);

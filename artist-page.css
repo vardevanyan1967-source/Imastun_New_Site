@@ -1206,3 +1206,4 @@ body[data-language] .player-progress input{
   .poet-filters .poet-chip,.poet-filters .poet-chip:has(.poet-avatar){padding:8px;gap:8px}
   .poet-chip-name{width:auto;flex:1 1 auto}
 }
+.poet-chip-name small{display:block;min-height:1.25em;margin-top:2px;color:rgba(236,210,138,.7);font:500 9px/1.25 'Syne',sans-serif;letter-spacing:.08em}
