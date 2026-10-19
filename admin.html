@@ -32,6 +32,12 @@
   td.n { text-align:right; font-variant-numeric:tabular-nums; }
   th.n { text-align:right; }
   .note { color:var(--dim); padding:14px 0; }
+  .find { width:100%; max-width:360px; padding:9px 14px; margin:0 0 10px; font:inherit; color:var(--text); background:var(--card); border:1px solid var(--line); border-radius:999px; }
+  .scroll { max-height:70vh; overflow:auto; border:1px solid rgba(255,255,255,.07); border-radius:10px; }
+  .scroll th { position:sticky; top:0; background:var(--card); }
+  .t2 { display:block; color:var(--dim); font-size:12px; }
+  .id { display:block; color:var(--dim); font-size:11px; opacity:.7; word-break:break-all; }
+  .old { color:#e0b36a; }
   .err { color:#e07a6a; }
   [hidden] { display:none !important; }
 </style>
@@ -64,10 +70,12 @@
     <div id="messages"></div>
 
     <h2>Ռեակցիաներ (ամենաշատ արձագանք ստացած երգեր)</h2>
-    <table id="tbl-react"><thead><tr><th>Երգ</th><th class="n">❤️</th><th class="n">😢</th><th class="n">🔥</th><th class="n">😊</th><th class="n">Ընդհանուր</th></tr></thead><tbody></tbody></table>
+    <div class="scroll"><table id="tbl-react"><thead><tr><th>Երգ</th><th class="n">❤️</th><th class="n">😢</th><th class="n">🔥</th><th class="n">😊</th><th class="n">Ընդհանուր</th></tr></thead><tbody></tbody></table></div>
 
-    <h2>Ամենաշատ լսվածները</h2>
-    <table id="tbl-plays"><thead><tr><th>Երգ</th><th class="n">Լսումներ</th></tr></thead><tbody></tbody></table>
+    <h2>Լսումներ ըստ երգերի</h2>
+    <input id="find-plays" class="find" type="search" placeholder="Փնտրել երգ (հայերեն, ռուսերեն, անգլերեն, արտիստ)…" autocomplete="off">
+    <div class="scroll"><table id="tbl-plays"><thead><tr><th>Երգ</th><th class="n">Լսումներ</th></tr></thead><tbody></tbody></table></div>
+    <div id="plays-note" class="note"></div>
   </div>
 </main>
 
@@ -94,6 +102,40 @@
     status.hidden = !message;
     status.textContent = message || "";
     status.className = "note" + (isError ? " err" : "");
+  }
+
+  // song_id -> real titles (the same data file the artist pages use)
+  var CATALOG = {};
+  function loadCatalog() {
+    return fetch("artist-pages-data.json?t=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (data) {
+      Object.keys(data).forEach(function (key) {
+        var a = data[key];
+        (a.tracks || []).forEach(function (t) {
+          var others = [];
+          Object.keys(t.explanation || {}).forEach(function (lang) {
+            var v = t.explanation[lang];
+            if (v && v !== t.label && others.indexOf(v) < 0) others.push(v);
+          });
+          var poet = t.subtitle ? " · " + t.subtitle : "";
+          CATALOG[t.id] = { label: t.label, others: others, artist: (a.name || key) + poet,
+            text: (t.label + " " + others.join(" ") + " " + (a.name || key) + poet + " " + t.id).toLowerCase() };
+        });
+      });
+    }).catch(function () { /* titles stay as ids if the catalog cannot load */ });
+  }
+
+  function songCell(id) {
+    var td = document.createElement("td");
+    var info = CATALOG[id];
+    if (info) {
+      td.appendChild(el("span", info.label));
+      if (info.others.length) td.appendChild(el("span", info.others.join(" · "), "t2"));
+      td.appendChild(el("span", info.artist, "t2"));
+    } else {
+      td.appendChild(el("span", "Հին կամ անհայտ երգ", "old"));
+    }
+    td.appendChild(el("span", id, "id"));
+    return td;
   }
 
   function formatDate(iso) {
@@ -141,9 +183,9 @@
     $("c-react").textContent = total;
     var body = $("tbl-react").tBodies[0];
     body.textContent = "";
-    Object.keys(bySong).sort(function (a, b) { return bySong[b].total - bySong[a].total; }).slice(0, 30).forEach(function (id) {
+    Object.keys(bySong).sort(function (a, b) { return bySong[b].total - bySong[a].total; }).forEach(function (id) {
       var tr = document.createElement("tr");
-      tr.appendChild(el("td", id));
+      tr.appendChild(songCell(id));
       REACTION_KEYS.forEach(function (key) { tr.appendChild(el("td", bySong[id][key] || 0, "n")); });
       tr.appendChild(el("td", bySong[id].total, "n"));
       body.appendChild(tr);
@@ -157,26 +199,44 @@
     }
   }
 
+  var PLAY_ROWS = [];
   function renderPlays(rows) {
+    PLAY_ROWS = rows.slice().sort(function (a, b) { return b.play_count - a.play_count; });
     var total = 0;
     rows.forEach(function (row) { total += row.play_count; });
     $("c-plays").textContent = total;
+    drawPlays();
+  }
+
+  function drawPlays() {
+    var term = $("find-plays").value.trim().toLowerCase();
     var body = $("tbl-plays").tBodies[0];
     body.textContent = "";
-    rows.slice().sort(function (a, b) { return b.play_count - a.play_count; }).slice(0, 30).forEach(function (row) {
+    var shown = 0, shownPlays = 0;
+    PLAY_ROWS.forEach(function (row) {
+      var info = CATALOG[row.song_id];
+      var text = info ? info.text : String(row.song_id).toLowerCase();
+      if (term && text.indexOf(term) < 0) return;
       var tr = document.createElement("tr");
-      tr.appendChild(el("td", row.song_id));
+      tr.appendChild(songCell(row.song_id));
       tr.appendChild(el("td", row.play_count, "n"));
       body.appendChild(tr);
+      shown++; shownPlays += row.play_count;
     });
+    $("plays-note").textContent = shown
+      ? "Ցուցադրված է " + shown + " երգ, " + shownPlays + " լսում (ընդհանուրը՝ " + PLAY_ROWS.length + " երգ)։"
+      : "Այդպիսի երգ չի գտնվել։";
   }
+  $("find-plays").addEventListener("input", drawPlays);
 
   function load() {
     Promise.all([
+      loadCatalog(),
       client.from("feedback").select("id,message,contact,page,lang,created_at").order("created_at", { ascending: false }).limit(500),
       client.from("song_reactions").select("song_id,reaction,count"),
       client.from("song_plays").select("song_id,play_count")
-    ]).then(function (results) {
+    ]).then(function (all) {
+      var results = all.slice(1);
       if (results[0].error) { show("Կարծիքները չբացվեցին՝ " + results[0].error.message, true); return; }
       show("");
       renderMessages(results[0].data || []);

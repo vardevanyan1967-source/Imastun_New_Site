@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'imastun-shell-v11';
+const CACHE_VERSION = 'imastun-shell-v12';
 const PLAYER_FIX_VERSION = 'unified-crossfade-v10';
 const APP_SHELL = [
   './', './index.html', './manifest.json', './logo.png', './audio-player-fix.js',
