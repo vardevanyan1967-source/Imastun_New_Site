@@ -1071,10 +1071,16 @@ body[data-language] .player-progress input{
 .poet-filters{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));overflow:visible;scroll-snap-type:none;gap:8px}
 .poet-filters .poet-chip{width:100%;justify-content:flex-start;text-align:left;white-space:normal;line-height:1.25}
 .poet-filters .poet-chip > span:not(.poet-avatar){min-width:0;overflow-wrap:anywhere}
-@media(max-width:700px){
-  .poet-filters{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .poet-chip .poet-avatar{flex-basis:44px;width:44px;height:44px}
-  .poet-filters .poet-chip{min-height:56px;padding-right:8px}
+/* "All" sits in the header row, so the grid holds only the portraits (14 = 2 x 7, always even) */
+.poet-filter-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.poet-filter-head .poet-chip{min-height:36px;padding:0 20px;border-radius:0}
+.poet-filters{grid-template-columns:repeat(2,minmax(0,1fr))}
+.poet-chip .poet-avatar{flex-basis:44px;width:44px;height:44px}
+.poet-filters .poet-chip,.poet-filters .poet-chip:has(.poet-avatar){min-height:56px;padding-right:8px}
+@media(min-width:701px){
+  .poet-filters{grid-template-columns:repeat(7,minmax(0,1fr))}
+  .poet-filters .poet-chip,.poet-filters .poet-chip:has(.poet-avatar){flex-direction:column;justify-content:flex-start;align-items:center;text-align:center;gap:8px;min-height:0;padding:10px 6px}
+  .poet-filters .poet-chip .poet-avatar{flex-basis:auto;width:72px;height:72px}
 }
 .poet-divider small{
   flex:0 0 auto;

@@ -1026,10 +1026,10 @@
     wrap.className = "poet-filter-wrap";
     wrap.id = "poet-filter-wrap";
     wrap.innerHTML =
-      '<span class="poet-filter-title" data-i18n="poets">' + escapeHtml(tr("poets")) + '</span>' +
-      '<div class="poet-filters" role="group" aria-label="' + escapeHtml(tr("poets")) + '">' +
+      '<div class="poet-filter-head"><span class="poet-filter-title" data-i18n="poets">' + escapeHtml(tr("poets")) + '</span>' +
       '<button class="poet-chip active" type="button" data-poet-filter="all" data-i18n="all" aria-pressed="true">' +
-      escapeHtml(tr("all")) + '</button>' +
+      escapeHtml(tr("all")) + '</button></div>' +
+      '<div class="poet-filters" role="group" aria-label="' + escapeHtml(tr("poets")) + '">' +
       poetNames.map(function (name) {
         return '<button class="poet-chip" type="button" data-poet-filter="' + escapeHtml(name) +
           '" aria-pressed="false">' + poetAvatarHtml(poetPhotos[name], name) + '<span>' + escapeHtml(name) + '</span></button>';
