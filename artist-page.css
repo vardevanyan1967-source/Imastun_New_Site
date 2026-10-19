@@ -1288,38 +1288,42 @@ body[data-language] .player-progress input{
   .poet-filters .poet-card:nth-last-child(1){grid-column:5 / 7}
 }
 
-/* ---- "Հայ բանաստեղծներ" page: colours of the collection cover (dark wood, bronze and gold, parchment) instead of the blue accent ---- */
+/* ---- "Հայ բանաստեղծներ" page: colours of the collection cover (dark wood, copper and bronze, parchment) instead of the blue accent; less yellow ---- */
 body[data-artist-id="haj-poetner"]{
-  --bg:#0e0905;
-  --surface:#171008;
-  --surface-2:#1f150b;
-  --surface-3:#2a1b0e;
-  --text:#ecdfc6;
-  --white:#f7ecd3;
-  --muted:#a08a64;
-  --border:rgba(201,168,76,.3);
-  --gold-dim:rgba(201,168,76,.14)
+  --bg:#0f0a06;
+  --surface:#180f09;
+  --surface-2:#20150d;
+  --surface-3:#2b1c11;
+  --text:#ebddcc;
+  --white:#f7ede2;
+  --muted:#a38a6e;
+  --gold:#b98650;
+  --gold-2:#d8a56f;
+  --border:rgba(185,134,80,.34);
+  --gold-dim:rgba(185,134,80,.14)
 }
 body[data-artist-id="haj-poetner"][data-language="hy"],
 body[data-artist-id="haj-poetner"][data-language="ru"],
 body[data-artist-id="haj-poetner"][data-language="en"]{
-  --language-accent:#e0b866;
-  --language-soft:rgba(224,184,102,.14)
+  --language-accent:#d49d68;
+  --language-soft:rgba(212,157,104,.14)
 }
 body.light-mode[data-artist-id="haj-poetner"]{
-  --bg:#efe2c6;
-  --surface:#f7ecd4;
-  --surface-2:#e6d5b2;
-  --surface-3:#dcc79c;
-  --text:#2b1d0c;
-  --white:#1f1408;
-  --muted:#6b5430;
-  --border:rgba(110,75,20,.45);
-  --gold-dim:rgba(140,95,25,.16)
+  --bg:#eadccb;
+  --surface:#f4e9db;
+  --surface-2:#e2d0b8;
+  --surface-3:#d6c0a1;
+  --text:#2c1d10;
+  --white:#201409;
+  --muted:#6c5238;
+  --gold:#8c5a28;
+  --gold-2:#a8703a;
+  --border:rgba(110,70,30,.45);
+  --gold-dim:rgba(140,90,40,.16)
 }
 body.light-mode[data-artist-id="haj-poetner"][data-language="hy"],
 body.light-mode[data-artist-id="haj-poetner"][data-language="ru"],
 body.light-mode[data-artist-id="haj-poetner"][data-language="en"]{
-  --language-accent:#7a4a10;
-  --language-soft:rgba(122,74,16,.14)
+  --language-accent:#7a4318;
+  --language-soft:rgba(122,67,24,.14)
 }
