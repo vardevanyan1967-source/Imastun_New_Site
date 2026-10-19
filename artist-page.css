@@ -1331,3 +1331,8 @@ body.light-mode[data-artist-id="haj-poetner"][data-language="en"]{
 body[data-artist-id="haj-poetner"]:not(.light-mode){
   background:radial-gradient(ellipse at 50% 0%,#3b352d 0%,#26211c 50%,#1d1915 100%) fixed
 }
+
+/* the carved cards are toned down to the older, darker look of the collection cover (less orange/yellow) */
+.poet-card img{filter:saturate(.55) brightness(.8) contrast(1.06) sepia(.12)}
+.poet-card:hover img{filter:saturate(.62) brightness(.9) contrast(1.06) sepia(.12)}
+.poet-avatar img{filter:saturate(.6) brightness(.85) contrast(1.05) sepia(.1)}
