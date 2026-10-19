@@ -98,7 +98,7 @@
     hy: {
       back:"Գլխավոր էջ", catalog:"Երգացանկ", search:"Որոնել երգերում…",
       all:"Բոլորը", favorites:"Սիրված երգերը", poets:"Բանաստեղծներ", languageCount:"Երգի տեքստի լեզուների քանակը", playFirst:"Նվագարկել առաջին երգը",
-      songWord:"երգ", noResults:"Այս որոնմամբ երգ չի գտնվել։",
+      songWord:"երգ", noResults:"Այս որոնմամբ երգ չի գտնվել։", poetSoon:"Այս բանաստեղծի երգերը շուտով կհայտնվեն։",
       noFavorites:"Սիրված երգ դեռ չկա։ Սեղմեք ♡՝ երգն այստեղ պահելու համար։",
       play:"Նվագարկել", pause:"Դադար", previous:"Նախորդ երգը", next:"Հաջորդ երգը",
       close:"Փակել նվագարկիչը", favorite:"Ավելացնել սիրվածներին",
@@ -115,7 +115,7 @@
     ru: {
       back:"Главная", catalog:"Песни", search:"Поиск по песням…",
       all:"Все", favorites:"Любимые песни", poets:"Поэты", languageCount:"Число языков в тексте песни", playFirst:"Включить первую песню",
-      songWord:"песен", noResults:"По вашему запросу песен не найдено.",
+      songWord:"песен", noResults:"По вашему запросу песен не найдено.", poetSoon:"Песни на стихи этого поэта скоро появятся.",
       noFavorites:"Любимых песен пока нет. Нажмите ♡, чтобы сохранить песню здесь.",
       play:"Воспроизвести", pause:"Пауза", previous:"Предыдущая песня", next:"Следующая песня",
       close:"Закрыть плеер", favorite:"Добавить в избранное", unfavorite:"Убрать из избранного",
@@ -131,7 +131,7 @@
     en: {
       back:"Home", catalog:"Track list", search:"Search tracks…",
       all:"All", favorites:"Favorite songs", poets:"Poets", languageCount:"Song text language count", playFirst:"Play the first track",
-      songWord:"tracks", noResults:"No tracks match this search.",
+      songWord:"tracks", noResults:"No tracks match this search.", poetSoon:"Songs for this poet are coming soon.",
       noFavorites:"No favorite songs yet. Tap ♡ to save a song here.",
       play:"Play", pause:"Pause", previous:"Previous track", next:"Next track",
       close:"Close player", favorite:"Add to favorites", unfavorite:"Remove from favorites",
@@ -463,7 +463,8 @@
     var items = visibleTracks();
     resultCount.textContent = items.length + " " + tr("songWord");
     empty.hidden = items.length !== 0;
-    empty.textContent = state.filter === "favorites" && !state.query ? tr("noFavorites") : tr("noResults");
+    empty.textContent = state.filter === "favorites" && !state.query ? tr("noFavorites")
+      : (state.poet !== "all" && !state.query && artist && artist.id === "haj-poetner") ? tr("poetSoon") : tr("noResults");
     list.innerHTML = items.map(function (item, position) {
       var favorite = isFavorite(item.track.id);
       var playing = state.current === item.index && !curAudio().paused;
@@ -994,6 +995,15 @@
     });
   }
 
+  // Poets that have a portrait but no songs yet still get a filter chip (their list says "coming soon").
+  var POET_REGISTRY = [
+    ["vahan-teryan", "Վահան Տերյան"], ["hamo-sahyan", "Համո Սահյան"], ["parujr-sevak", "Պարույր Սևակ"],
+    ["avetik-isahakyan", "Ավետիք Իսահակյան"], ["shiraz", "Հովհաննես Շիրազ"], ["silva-kaputikyan", "Սիլվա Կապուտիկյան"],
+    ["vahagn-davtyan", "Վահագն Դավթյան"], ["hovhannes-tumanyan", "Հովհաննես Թումանյան"],
+    ["misak-metsarents", "Միսաք Մեծարենց"], ["yeghishe-charents", "Եղիշե Չարենց"], ["ashot-grashi", "Աշոտ Գրաշի"],
+    ["vladimir-avetisyan", "Վլադիմիր Ավետիսյան"]
+  ];
+
   function setupPoetFilters() {
     if (!artist || artist.id !== "haj-poetner" || document.getElementById("poet-filter-wrap")) return;
     var poetNames = [];
@@ -1002,6 +1012,12 @@
       if (track.subtitle && poetNames.indexOf(track.subtitle) < 0) {
         poetNames.push(track.subtitle);
         poetPhotos[track.subtitle] = poetPhotoUrl(track);
+      }
+    });
+    POET_REGISTRY.forEach(function (entry) {
+      if (poetNames.indexOf(entry[1]) < 0) {
+        poetNames.push(entry[1]);
+        poetPhotos[entry[1]] = POET_PHOTO_DIR + encodeURIComponent(entry[0]) + ".jpg";
       }
     });
 
