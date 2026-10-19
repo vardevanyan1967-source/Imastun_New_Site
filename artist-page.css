@@ -1059,7 +1059,7 @@ body[data-language] .player-progress input{
   position:absolute;
   inset:-35%;
   background:conic-gradient(from 0turn, #c9a84c 0%, #f0d88a 14%, rgba(201,168,76,.12) 32%, rgba(201,168,76,.12) 62%, #f0d88a 86%, #c9a84c 100%);
-  animation:poet-ring-spin 6s linear infinite;
+  animation:poet-ring-spin 2.5s linear infinite;
   z-index:0
 }
 .poet-avatar::before{   /* initials when there is no photo; sits inside the 2px frame */
