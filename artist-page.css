@@ -1207,3 +1207,15 @@ body[data-language] .player-progress input{
   .poet-chip-name{width:auto;flex:1 1 auto}
 }
 .poet-chip-name small{display:block;min-height:1.25em;margin-top:2px;color:rgba(236,210,138,.7);font:500 9px/1.25 'Syne',sans-serif;letter-spacing:.08em}
+
+/* shorter tiles */
+@media(min-width:701px){
+  .poet-filters .poet-chip .poet-avatar{width:58px;height:58px}
+  .poet-filters .poet-chip,.poet-filters .poet-chip:has(.poet-avatar){padding:9px 8px 8px;gap:6px}
+}
+.poet-chip-name{padding:4px 4px;font-size:10.5px;line-height:1.2}
+.poet-chip-name small{min-height:1.1em;margin-top:1px;font-size:8.5px}
+@media(max-width:700px){
+  .poet-filters .poet-chip,.poet-filters .poet-chip:has(.poet-avatar){padding:6px;gap:6px;min-height:0}
+  .poet-chip .poet-avatar{flex-basis:40px;width:40px;height:40px}
+}
