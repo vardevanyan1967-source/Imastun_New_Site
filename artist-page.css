@@ -1039,9 +1039,9 @@ body[data-language] .player-progress input{
 /* round poet portrait (initials show if the photo file is missing) */
 .poet-avatar{
   position:relative;
-  flex:0 0 68px;
-  width:68px;
-  height:68px;
+  flex:0 0 84px;
+  width:84px;
+  height:84px;
   box-sizing:border-box;
   border-radius:0;
   overflow:hidden;
@@ -1051,7 +1051,7 @@ body[data-language] .player-progress input{
   align-items:center;
   justify-content:center;
   color:var(--gold, #c9a84c);
-  font:700 18px 'Syne',sans-serif;
+  font:700 22px 'Syne',sans-serif;
   letter-spacing:0
 }
 .poet-avatar::before{content:attr(data-initials)}
@@ -1064,8 +1064,8 @@ body[data-language] .player-progress input{
   display:block
 }
 .poet-chip{display:inline-flex;align-items:center;gap:7px}
-.poet-chip .poet-avatar{flex-basis:44px;width:44px;height:44px;border-width:2px;border-radius:0;font-size:13px}
-.poet-chip:has(.poet-avatar){min-height:54px;padding-left:5px;padding-right:14px}
+.poet-chip .poet-avatar{flex-basis:56px;width:56px;height:56px;border-width:2px;border-radius:0;font-size:15px}
+.poet-chip:has(.poet-avatar){min-height:66px;padding-left:5px;padding-right:14px}
 .poet-divider small{
   flex:0 0 auto;
   color:var(--muted);

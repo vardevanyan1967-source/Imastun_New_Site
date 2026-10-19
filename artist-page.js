@@ -45,9 +45,10 @@
   }
   function setPlayerCover(coverSrc, portraitSrc) {
     playerCoverEl.onerror = null;
+    playerCoverEl.style.borderRadius = portraitSrc ? "0" : "";   // poet portraits are sharp squares
     if (portraitSrc) {
       // the poet portrait first; if the file does not exist (yet) the collection cover is shown
-      playerCoverEl.onerror = function () { playerCoverEl.onerror = null; playerCoverEl.src = coverSrc; };
+      playerCoverEl.onerror = function () { playerCoverEl.onerror = null; playerCoverEl.style.borderRadius = ""; playerCoverEl.src = coverSrc; };
       playerCoverEl.src = portraitSrc;
     } else {
       playerCoverEl.src = coverSrc;
