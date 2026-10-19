@@ -1001,7 +1001,7 @@
     ["avetik-isahakyan", "Ավետիք Իսահակյան"], ["shiraz", "Հովհաննես Շիրազ"], ["silva-kaputikyan", "Սիլվա Կապուտիկյան"],
     ["vahagn-davtyan", "Վահագն Դավթյան"], ["hovhannes-tumanyan", "Հովհաննես Թումանյան"],
     ["misak-metsarents", "Միսաք Մեծարենց"], ["yeghishe-charents", "Եղիշե Չարենց"], ["ashot-grashi", "Աշոտ Գրաշի"],
-    ["vladimir-avetisyan", "Վլադիմիր Ավետիսյան"]
+    ["vladimir-avetisyan", "Վլադիմիր Ավետիսյան"], ["anne-mari", "Աննե Մարի"]
   ];
 
   function setupPoetFilters() {

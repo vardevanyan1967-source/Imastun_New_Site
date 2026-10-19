@@ -2681,7 +2681,7 @@
     'shiraz/': 'Հովհաննես Շիրազ', 'silva-kaputikyan/': 'Սիլվա Կապուտիկյան',
     'vahagn-davtyan/': 'Վահագն Դավթյան', 'hovhannes-tumanyan/': 'Հովհաննես Թումանյան',
     'misak-metsarents/': 'Միսաք Մեծարենց', 'yeghishe-charents/': 'Եղիշե Չարենց', 'ashot-grashi/': 'Աշոտ Գրաշի',
-    'vladimir-avetisyan/': 'Վլադիմիր Ավետիսյան'
+    'vladimir-avetisyan/': 'Վլադիմիր Ավետիսյան', 'anne-mari/': 'Աննե Մարի'
   };
   // Round portraits live in authors/haj-poetner/poets/<poet-id>.jpg, poet-id = the part of the song key before "/".
   const POET_PHOTO_DIR = 'authors/haj-poetner/poets/';
@@ -4101,7 +4101,7 @@
     const rank = s => /[԰-֏]/.test(nameOf(s)) ? 0 : 1; // Armenian titles first
     const alpha = (a, b) => rank(a) - rank(b) || nameOf(a).localeCompare(nameOf(b), 'hy'); // Armenian alphabetical
     if (artist.id === 'haj-poetner') {
-      const POET_ORDER = ['vahan-teryan/','hamo-sahyan/','parujr-sevak/','avetik-isahakyan/','aramayis-sahakyan/','shiraz/','silva-kaputikyan/','vahagn-davtyan/','hovhannes-tumanyan/','misak-metsarents/','yeghishe-charents/','ashot-grashi/','vladimir-avetisyan/'];
+      const POET_ORDER = ['vahan-teryan/','hamo-sahyan/','parujr-sevak/','avetik-isahakyan/','aramayis-sahakyan/','shiraz/','silva-kaputikyan/','vahagn-davtyan/','hovhannes-tumanyan/','misak-metsarents/','yeghishe-charents/','ashot-grashi/','vladimir-avetisyan/','anne-mari/'];
       const poet = s => { const i = POET_ORDER.findIndex(p => s.startsWith(p)); return i === -1 ? POET_ORDER.length : i; };
       songs = artist.songs.slice().sort((a, b) => {
         if (poet(a) !== poet(b)) return poet(a) - poet(b);
