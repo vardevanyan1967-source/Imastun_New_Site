@@ -1043,7 +1043,7 @@ body[data-language] .player-progress input{
   width:52px;
   height:52px;
   box-sizing:border-box;
-  border-radius:50%;
+  border-radius:6px;
   overflow:hidden;
   border:2px solid #c9a84c;
   background:var(--surface);
@@ -1064,7 +1064,7 @@ body[data-language] .player-progress input{
   display:block
 }
 .poet-chip{display:inline-flex;align-items:center;gap:7px}
-.poet-chip .poet-avatar{flex-basis:34px;width:34px;height:34px;border-width:2px;font-size:11px}
+.poet-chip .poet-avatar{flex-basis:34px;width:34px;height:34px;border-width:2px;border-radius:5px;font-size:11px}
 .poet-chip:has(.poet-avatar){min-height:44px;padding-left:5px}
 .poet-divider small{
   flex:0 0 auto;
