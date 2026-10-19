@@ -1274,3 +1274,8 @@ body[data-language] .player-progress input{
   .poet-filters .poet-card:nth-last-child(2){grid-column:2 / 4}
   .poet-filters .poet-card:nth-last-child(1){grid-column:4 / 6}
 }
+
+/* phones: a bit smaller still (cards about 100px wide), centred */
+@media(max-width:700px){
+  .poet-filters{grid-template-columns:repeat(6,46px);column-gap:8px;row-gap:10px;justify-content:center}
+}
