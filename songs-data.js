@@ -1096,8 +1096,8 @@ window.SONG_DATA = {
     "go-hara|Անունդ կին է ֆրի տանգո": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D4%B1%D5%B6%D5%B8%D6%82%D5%B6%D5%A4%20%D5%AF%D5%AB%D5%B6%20%D5%A7.mp3",
     "haj-poetner|hamo-sahyan/Հայոց փշատենին ջազ": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/hamo-sahyan%2F%D5%80%D5%A1%D5%B5%D5%B8%D6%81%20%D6%83%D5%B7%D5%A1%D5%BF%D5%A5%D5%B6%D5%AB%D5%B6%20jazz.mp3",
     "haj-poetner|shiraz/Սիրո համար մահ չկա": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/shiraz%2F%D5%8D%D5%AB%D6%80%D5%B8%20%D5%B0%D5%A1%D5%B4%D5%A1%D6%80%20%D5%B4%D5%A1%D5%B0%20%D5%B9%D5%AF%D5%A1%2CFor%20Love%2C%20There%20Is%20No%20Death.mp3",
-    "haj-poetner|anne-mari/Բյուրեղ դարձիր": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/R2_upload/audio/haj-poetner/featured/anne-mari%2F%D4%B2%D5%B5%D5%B8%D6%82%D6%80%D5%A5%D5%B2%20%D5%A4%D5%A1%D6%80%D5%B1%D5%AB%D6%80.m4a",
-    "haj-poetner|anne-mari/Deviens Cristal": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/R2_upload/audio/haj-poetner/featured/anne-mari%2FDeviens%20Cristal.m4a"
+    "haj-poetner|anne-mari/Բյուրեղ դարձիր": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/anne-mari%2F%D4%B2%D5%B5%D5%B8%D6%82%D6%80%D5%A5%D5%B2%20%D5%A4%D5%A1%D6%80%D5%B1%D5%AB%D6%80.m4a",
+    "haj-poetner|anne-mari/Deviens Cristal": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/anne-mari%2FDeviens%20Cristal.m4a"
   },
   versions: {
     "go-hara|Սիրելով գնամ": "b5e360f88c88",
