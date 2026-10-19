@@ -1037,7 +1037,7 @@
       poetNames.map(function (name) {
         return '<button class="poet-chip poet-card" type="button" data-poet-filter="' + escapeHtml(name) +
           '" aria-label="' + escapeHtml(name) + '" title="' + escapeHtml(name) + '" aria-pressed="false">' +
-          '<img src="' + escapeHtml(poetCards[name]) + '" alt="" loading="lazy" onerror="this.parentNode.classList.add('no-card')">' +
+          '<img src="' + escapeHtml(poetCards[name]) + '" alt="" loading="lazy" onerror="this.parentNode.classList.add(\'no-card\')">' +
           '<span class="poet-card-name">' + escapeHtml(name) + '</span></button>';
       }).join("") + '</div>';
 
