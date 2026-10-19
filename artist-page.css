@@ -1231,3 +1231,38 @@ body[data-language] .player-progress input{
   .poet-filters .poet-chip,.poet-filters .poet-chip:has(.poet-avatar){padding:5px;gap:5px}
   .poet-chip .poet-avatar{flex-basis:34px;width:34px;height:34px}
 }
+
+/* ---- carved wooden portrait cards (from the supplied artwork; name and years are part of the picture) ---- */
+.poet-filters{grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}
+.poet-filters .poet-chip.poet-card,.poet-filters .poet-chip.poet-card:hover{
+  display:block;
+  padding:0;
+  min-height:0;
+  border:0;
+  border-radius:0;
+  background:none;
+  box-shadow:none;
+  aspect-ratio:2/3;
+  position:relative;
+  overflow:visible;
+  transform:none
+}
+.poet-card img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:3px;
+  box-shadow:0 6px 16px rgba(0,0,0,.55);
+  transition:transform .2s,box-shadow .2s,filter .2s
+}
+.poet-card:hover img{transform:translateY(-4px);box-shadow:0 12px 22px rgba(0,0,0,.6);filter:brightness(1.07)}
+.poet-card.active img{outline:3px solid var(--language-accent);outline-offset:3px}
+.poet-card:focus-visible{outline:2px solid var(--language-accent);outline-offset:4px}
+.poet-card .poet-card-name{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* if the picture cannot load, show the name instead */
+.poet-card.no-card{aspect-ratio:auto;min-height:48px;padding:10px;background:#2a1b0f;border:1px solid rgba(201,168,76,.7);color:#ecd28a}
+.poet-card.no-card img{display:none}
+.poet-card.no-card .poet-card-name{position:static;width:auto;height:auto;clip:auto;overflow:visible;white-space:normal;font:600 12px/1.25 'Noto Serif Armenian',Georgia,serif;text-align:center}
+@media(min-width:701px) and (max-width:1000px){.poet-filters{grid-template-columns:repeat(5,minmax(0,1fr))}}
+@media(max-width:700px){.poet-filters{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
