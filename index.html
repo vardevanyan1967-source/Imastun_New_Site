@@ -845,6 +845,13 @@
       flex-shrink: 0; white-space: nowrap;
     }
 
+    /* poet header inside the "Հայ Բանաստեղծներ" list: round portrait (initials if the photo is missing), name, song count */
+    .poet-header { display:flex; align-items:center; gap:10px; font-family:'Inter',sans-serif; font-size:13px; font-weight:700; color:var(--gold); letter-spacing:0.08em; text-transform:uppercase; margin:18px 0 8px; padding-bottom:6px; border-bottom:1px solid rgba(201,168,76,0.25); }
+    .poet-header .poet-name { flex:1 1 auto; min-width:0; }
+    .poet-header .poet-count { flex:0 0 auto; margin-left:auto; font-size:11px; font-weight:600; letter-spacing:0.06em; text-transform:none; color:var(--text-dim); white-space:nowrap; }
+    .poet-avatar { position:relative; flex:0 0 36px; width:36px; height:36px; box-sizing:border-box; border-radius:50%; overflow:hidden; border:2px solid #c9a84c; background:var(--surface); display:inline-flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; letter-spacing:0; color:var(--gold); }
+    .poet-avatar::before { content:attr(data-initials); }
+    .poet-avatar img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
     .recent-badge {
       font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
       color: var(--gold); border: 1px solid var(--gold); border-radius: 4px; padding: 1px 6px; opacity: .75;
@@ -2672,8 +2679,22 @@
     'vahan-teryan/': 'Վահան Տերյան', 'hamo-sahyan/': 'Համո Սահյան', 'parujr-sevak/': 'Պարույր Սևակ',
     'avetik-isahakyan/': 'Ավետիք Իսահակյան', 'aramayis-sahakyan/': 'Արամայիս Սահակյան',
     'shiraz/': 'Հովհաննես Շիրազ', 'silva-kaputikyan/': 'Սիլվա Կապուտիկյան',
-    'vahagn-davtyan/': 'Վահագն Դավթյան', 'hovhannes-tumanyan/': 'Հովհաննես Թումանյան'
+    'vahagn-davtyan/': 'Վահագն Դավթյան', 'hovhannes-tumanyan/': 'Հովհաննես Թումանյան',
+    'misak-metsarents/': 'Միսաք Մեծարենց', 'yeghishe-charents/': 'Եղիշե Չարենց', 'ashot-grashi/': 'Աշոտ Գրաշի',
+    'vladimir-avetisyan/': 'Վլադիմիր Ավետիսյան'
   };
+  // Round portraits live in authors/haj-poetner/poets/<poet-id>.jpg, poet-id = the part of the song key before "/".
+  const POET_PHOTO_DIR = 'authors/haj-poetner/poets/';
+  function poetPhotoUrl(artistId, song) {
+    if (artistId !== 'haj-poetner') return '';
+    const i = String(song).indexOf('/');
+    return i > 0 ? POET_PHOTO_DIR + encodeURIComponent(String(song).slice(0, i)) + '.jpg' : '';
+  }
+  function poetInitials(name) {
+    const parts = String(name).trim().split(/\s+/).filter(Boolean);
+    if (!parts.length) return '';
+    return (parts[0][0] + (parts.length > 1 ? parts[parts.length - 1][0] : '')).toUpperCase();
+  }
   const SONG_EXPLANATIONS = {};  /* filled from songs-data.js (generated from artist-pages-data.json) */
   const SONG_EXPLANATIONS_BY_LANG = {};  /* filled from songs-data.js (generated from artist-pages-data.json) */
 
@@ -2935,6 +2956,7 @@
       artistId: a.id, artistName: a.name, song: s,
       src:   sourceOverride || `${AUDIO_BASE_URL}/${encodeURIComponent(a.id)}/featured/${encodeURIComponent(s)}${ext}${version ? `?v=${version}` : ''}`,
       cover: a.cover || `authors/${a.id}/cover.jpg`,
+      portrait: poetPhotoUrl(a.id, s),   // only for poets; the normal cover is the fallback
       label: SONG_NAMES[s] || formatName(s)
     });
   }));
@@ -3001,8 +3023,15 @@
   const gpEl      = document.getElementById('global-player');
   const gpCover   = document.getElementById('gp-cover');
   const gpCoverRing = document.getElementById('gp-cover-ring');
-  function setGpCover(coverSrc) {
-    gpCover.src = coverSrc;
+  function setGpCover(coverSrc, portraitSrc) {
+    gpCover.onerror = null;
+    if (portraitSrc) {
+      // poet portrait first; if it does not exist (yet) the collection cover is used
+      gpCover.onerror = () => { gpCover.onerror = null; gpCover.src = coverSrc; };
+      gpCover.src = portraitSrc;
+    } else {
+      gpCover.src = coverSrc;
+    }
   }
   const gpArtist  = document.getElementById('gp-artist');
   const gpSong    = document.getElementById('gp-song');
@@ -3295,7 +3324,7 @@
     const eng = active();
     eng.src = t.src;
     eng.volume = 1;
-    setGpCover(t.cover);
+    setGpCover(t.cover, t.portrait);
     gpCover.alt = t.artistName + ' — ' + t.label;
     gpArtist.textContent = t.artistName;
     gpSong.textContent = songDisplayTitle(t);
@@ -3408,7 +3437,7 @@
           currentIdx = nextIdx;
           recordPlay(t);   // a song that starts through a crossfade is a play too
           const nextArtist = t.artistName || (typeof ARTIST !== 'undefined' ? ARTIST.name : 'Imastun Studio');
-          setGpCover(t.cover);
+          setGpCover(t.cover, t.portrait);
           gpCover.alt = nextArtist + ' — ' + t.label;
           gpArtist.textContent = nextArtist;
           gpSong.textContent = songDisplayTitle(t);
@@ -3531,18 +3560,27 @@
   setupEngine(engine2);
 
   /* ══ MEDIA SESSION (lock screen / headphone controls) ══ */
+  const portraitProbe = {};   // portrait url -> true/false once we know whether the file exists
   function updateMediaSession(t) {
     if (!('mediaSession' in navigator)) return;
-    try {
-      navigator.mediaSession.metadata = new MediaMetadata({
-        title: songDisplayTitle(t),
-        artist: t.artistName,
-        album: 'Imastun Studio',
-        artwork: t.cover ? [
-          { src: t.cover, sizes: '512x512', type: 'image/jpeg' }
-        ] : []
-      });
-    } catch (e) {}
+    const setMeta = (art) => {
+      try {
+        navigator.mediaSession.metadata = new MediaMetadata({
+          title: songDisplayTitle(t),
+          artist: t.artistName,
+          album: 'Imastun Studio',
+          artwork: art ? [{ src: art, sizes: '512x512', type: 'image/jpeg' }] : []
+        });
+      } catch (e) {}
+    };
+    if (t.portrait && portraitProbe[t.portrait] === true) { setMeta(t.portrait); return; }
+    setMeta(t.cover);   // collection cover until we know the portrait exists
+    if (t.portrait && portraitProbe[t.portrait] === undefined) {
+      portraitProbe[t.portrait] = false;
+      const im = new Image();
+      im.onload = () => { portraitProbe[t.portrait] = true; if (playlist[currentIdx] === t) setMeta(t.portrait); };
+      im.src = t.portrait;
+    }
   }
   if ('mediaSession' in navigator) {
     navigator.mediaSession.setActionHandler('play', () => gpPlayBtn.click());
@@ -4062,7 +4100,7 @@
     const rank = s => /[԰-֏]/.test(nameOf(s)) ? 0 : 1; // Armenian titles first
     const alpha = (a, b) => rank(a) - rank(b) || nameOf(a).localeCompare(nameOf(b), 'hy'); // Armenian alphabetical
     if (artist.id === 'haj-poetner') {
-      const POET_ORDER = ['vahan-teryan/','hamo-sahyan/','parujr-sevak/','avetik-isahakyan/','aramayis-sahakyan/','shiraz/','silva-kaputikyan/','vahagn-davtyan/','hovhannes-tumanyan/'];
+      const POET_ORDER = ['vahan-teryan/','hamo-sahyan/','parujr-sevak/','avetik-isahakyan/','aramayis-sahakyan/','shiraz/','silva-kaputikyan/','vahagn-davtyan/','hovhannes-tumanyan/','misak-metsarents/','yeghishe-charents/','ashot-grashi/','vladimir-avetisyan/'];
       const poet = s => { const i = POET_ORDER.findIndex(p => s.startsWith(p)); return i === -1 ? POET_ORDER.length : i; };
       songs = artist.songs.slice().sort((a, b) => {
         if (poet(a) !== poet(b)) return poet(a) - poet(b);
@@ -4086,6 +4124,8 @@
       });
     }
     const poetName = s => { const p = Object.keys(POET_NAMES).find(p => s.startsWith(p)); return p ? POET_NAMES[p] : ''; };
+    const poetSongCount = {};
+    if (artist.id === 'haj-poetner') songs.forEach(s => { const pn = poetName(s); if (pn) poetSongCount[pn] = (poetSongCount[pn] || 0) + 1; });
     const detectColor = txt => {
       const stripped = txt.replace(/\([^)]*\)/g, '');
       const hasHy = /[\u0530-\u058F]/.test(stripped);
@@ -4114,7 +4154,9 @@
       if (artist.id === 'haj-poetner') {
         const pn = poetName(song);
         if (pn && pn !== lastPoet) {
-          header = `<div class="poet-header" style="font-family:'Inter',sans-serif;font-size:13px;font-weight:700;color:#c9a84c;letter-spacing:0.08em;text-transform:uppercase;margin:18px 0 8px;padding-bottom:6px;border-bottom:1px solid rgba(201,168,76,0.25);">${pn}</div>`;
+          const photo = poetPhotoUrl(artist.id, song);
+          const cnt = poetSongCount[pn] || 0;
+          header = `<div class="poet-header"><span class="poet-avatar" data-initials="${poetInitials(pn)}"><img src="${photo}" alt="" loading="lazy" onerror="this.remove()"></span><span class="poet-name">${pn}</span><span class="poet-count">${cnt} երգ</span></div>`;
           lastPoet = pn;
         }
       }
