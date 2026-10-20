@@ -1114,7 +1114,9 @@ window.SONG_DATA = {
     "haj-poetner|shiraz/Սիրո համար մահ չկա": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/shiraz%2F%D5%8D%D5%AB%D6%80%D5%B8%20%D5%B0%D5%A1%D5%B4%D5%A1%D6%80%20%D5%B4%D5%A1%D5%B0%20%D5%B9%D5%AF%D5%A1%2CFor%20Love%2C%20There%20Is%20No%20Death.mp3",
     "haj-poetner|anne-mari/Բյուրեղ դարձիր": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/anne-mari%2F%D4%B2%D5%B5%D5%B8%D6%82%D6%80%D5%A5%D5%B2%20%D5%A4%D5%A1%D6%80%D5%B1%D5%AB%D6%80.m4a",
     "haj-poetner|anne-mari/Deviens Cristal": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/anne-mari%2FDeviens%20Cristal.m4a",
-    "haj-poetner|vladimir-avetisyan/Եվ դարձար հավատ": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vladimir-avetisyan%2F%D4%B5%D5%BE%20%D5%A4%D5%A1%D6%80%D5%B1%D5%A1%D6%80%20%D5%B0%D5%A1%D5%BE%D5%A1%D5%BF.m4a"
+    "haj-poetner|vladimir-avetisyan/Եվ դարձար հավատ": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vladimir-avetisyan%2F%D4%B5%D5%BE%20%D5%A4%D5%A1%D6%80%D5%B1%D5%A1%D6%80%20%D5%B0%D5%A1%D5%BE%D5%A1%D5%BF.m4a",
+    "haj-poetner|ashot-grashi/Սիրո մեղեդի": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/R2_upload_grashi/audio/haj-poetner/featured/ashot-grashi%2F%D5%8D%D5%AB%D6%80%D5%B8%20%D5%B4%D5%A5%D5%B2%D5%A5%D5%A4%D5%AB.mp3",
+    "haj-poetner|ashot-grashi/Գարուն Երևան": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/R2_upload_grashi/audio/haj-poetner/featured/ashot-grashi%2F%D4%B3%D5%A1%D6%80%D5%B8%D6%82%D5%B6%20%D4%B5%D6%80%D6%87%D5%A1%D5%B6.mp3"
   },
   versions: {
     "go-hara|Սիրելով գնամ": "b5e360f88c88",
