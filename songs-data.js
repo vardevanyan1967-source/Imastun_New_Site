@@ -1115,7 +1115,8 @@ window.SONG_DATA = {
     "haj-poetner|anne-mari/Բյուրեղ դարձիր": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/anne-mari%2F%D4%B2%D5%B5%D5%B8%D6%82%D6%80%D5%A5%D5%B2%20%D5%A4%D5%A1%D6%80%D5%B1%D5%AB%D6%80.m4a",
     "haj-poetner|anne-mari/Deviens Cristal": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/anne-mari%2FDeviens%20Cristal.m4a",
     "haj-poetner|vladimir-avetisyan/Եվ դարձար հավատ": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vladimir-avetisyan%2F%D4%B5%D5%BE%20%D5%A4%D5%A1%D6%80%D5%B1%D5%A1%D6%80%20%D5%B0%D5%A1%D5%BE%D5%A1%D5%BF.m4a",
-    "haj-poetner|parujr-sevak/Հիմա, երբ ողջը անցած է թվում": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/parujr-sevak%2F%D5%80%D4%BB%D5%84%D4%B1%2C%20%D4%B5%D5%90%D4%B2%20%D5%88%D5%82%D5%8B%D4%B8%20%D4%B1%D5%86%D5%91%D4%B1%D4%BE%20%D4%B7%20%D4%B9%D5%8E%D5%88%D5%92%D5%84.mp3"
+    "haj-poetner|parujr-sevak/Անծանոթներ ենք մենք իրար": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/R2_upload_sevak/audio/haj-poetner/featured/parujr-sevak%2F%D4%B1%D5%B6%D5%AE%D5%A1%D5%B6%D5%B8%D5%A9%D5%B6%D5%A5%D6%80%20%D5%A5%D5%B6%D6%84%20%D5%B4%D5%A5%D5%B6%D6%84%20%D5%AB%D6%80%D5%A1%D6%80.mp3",
+    "haj-poetner|parujr-sevak/Հիմա, երբ ողջը անցած է թվում": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/R2_upload_sevak/audio/haj-poetner/featured/parujr-sevak%2F%D5%80%D4%BB%D5%84%D4%B1%2C%20%D4%B5%D5%90%D4%B2%20%D5%88%D5%82%D5%8B%D4%B8%20%D4%B1%D5%86%D5%91%D4%B1%D4%BE%20%D4%B7%20%D4%B9%D5%8E%D5%88%D5%92%D5%84.mp3"
   },
   versions: {
     "go-hara|Սիրելով գնամ": "b5e360f88c88",
