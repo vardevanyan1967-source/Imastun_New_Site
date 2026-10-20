@@ -5296,6 +5296,28 @@
           "ru": "Ночь сладка"
         },
         "added": "2026-10-20"
+      },
+      {
+        "id": "ashot-grashi/Սիրո մեղեդի",
+        "label": "Սիրո մեղեդի",
+        "subtitle": "Աշոտ Գրաշի",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/ashot-grashi%2F%D5%8D%D5%AB%D6%80%D5%B8%20%D5%B4%D5%A5%D5%B2%D5%A5%D5%A4%D5%AB.mp3",
+        "explanation": {
+          "en": "Melody of Love",
+          "ru": "Мелодия любви"
+        },
+        "added": "2026-10-20"
+      },
+      {
+        "id": "ashot-grashi/Գարուն Երևան",
+        "label": "Գարուն Երևան",
+        "subtitle": "Աշոտ Գրաշի",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/ashot-grashi%2F%D4%B3%D5%A1%D6%80%D5%B8%D6%82%D5%B6%20%D4%B5%D6%80%D6%87%D5%A1%D5%B6.mp3",
+        "explanation": {
+          "en": "Spring, Yerevan",
+          "ru": "Весна, Ереван"
+        },
+        "added": "2026-10-20"
       }
     ]
   }
