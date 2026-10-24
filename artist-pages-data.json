@@ -527,6 +527,36 @@
           "ru": "Ответ Шамирам на зов Ары"
         },
         "added": "2026-10-04"
+      },
+      {
+        "id": "ov-kgri-siro-ergy",
+        "label": "Ո՞վ կգրի սիրո երգը",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/ov-kgri-siro-ergy.mp3",
+        "explanation": {
+          "en": "Who Will Write the Song of Love",
+          "ru": "Кто напишет песню о любви"
+        },
+        "added": "2026-10-24"
+      },
+      {
+        "id": "the-song-of-love",
+        "label": "The Song of Love",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/the-song-of-love.mp3",
+        "explanation": {
+          "hy": "Ո՞վ կգրի սիրո երգը (անգլ)",
+          "ru": "Песнь любви (англ)"
+        },
+        "added": "2026-10-24"
+      },
+      {
+        "id": "pesn-lyubvi",
+        "label": "Песнь любви",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/pesn-lyubvi.mp3",
+        "explanation": {
+          "hy": "Ո՞վ կգրի սիրո երգը (ռուս)",
+          "en": "The Song of Love (Russian)"
+        },
+        "added": "2026-10-24"
       }
     ]
   },
