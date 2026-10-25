@@ -559,6 +559,16 @@
         "added": "2026-10-24"
       },
       {
+        "id": "anmar-krak",
+        "label": "Անմար կրակ",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/anmar-krak.mp3",
+        "explanation": {
+          "en": "Undying Fire",
+          "ru": "Неугасимый огонь"
+        },
+        "added": "2026-10-25"
+      },
+      {
         "id": "une-rose-au-coeur-de-lautomne",
         "label": "Une rose au cœur de l'automne",
         "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/une-rose-au-coeur-de-lautomne.mp3",
@@ -576,17 +586,6 @@
         "explanation": {
           "hy": "Միայն քեզնով է ծաղկում",
           "en": "It Blooms Only Through You"
-        },
-        "added": "2026-10-25"
-      },
-      {
-        "id": "du-chqnagh-es-tikin",
-        "label": "Դու՛ չքնաղ ես տիկին",
-        "subtitle": "Գոհար Հովհաննիսյան",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/du-chqnagh-es-tikin.mp3",
-        "explanation": {
-          "en": "You Are Exquisite, My Lady",
-          "ru": "Ты прекрасна, госпожа"
         },
         "added": "2026-10-25"
       }
