@@ -592,20 +592,10 @@
       {
         "id": "nayir-indz-mi-angam",
         "label": "Նայիր ինձ մի անգամ",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/nayir-indz-mi-angam.mp3",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/Regarde-moi%20une%20fois.mp3",
         "explanation": {
           "en": "Look at Me Just Once",
           "ru": "Взгляни на меня хоть раз"
-        },
-        "added": "2026-10-29"
-      },
-      {
-        "id": "regarde-moi-une-fois",
-        "label": "Նայիր ինձ մի անգամ (ֆրանսերեն)",
-        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/Regarde-moi%20une%20fois.mp3",
-        "explanation": {
-          "fr": "Regarde-moi une fois",
-          "en": "Look at Me Just Once"
         },
         "added": "2026-10-29"
       }
