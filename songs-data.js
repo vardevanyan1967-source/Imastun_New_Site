@@ -621,7 +621,7 @@ window.SONG_DATA = {
     "anmar-krak": {"en":"Undying Fire","ru":"Неугасимый огонь"},
     "une-rose-au-coeur-de-lautomne": {"hy":"Վարդը աշնան սրտում","en":"A Rose in the Heart of Autumn","ru":"Роза в сердце осени"},
     "lish-toboyu-tsvetyot": {"hy":"Միայն քեզնով է ծաղկում","en":"It Blooms Only Through You"},
-    "nayir-indz-mi-angam": {"en":"Look at Me Just Once","ru":"Взгляни на меня хоть раз"},
+    "nayir-indz-mi-angam": {"hy":"Նայիր ինձ մի անգամ","en":"Look at Me Just Once","ru":"Взгляни на меня хоть раз","fr":"Regarde-moi une fois"},
     "Akh_inch_anem_sirud_het": {"en":"Oh, What Should I Do With Your Love","ru":"Ах, что мне делать с твоей любовью"},
     "agh & dagy": {"en":"Salt and the Wound","ru":"Соль и рана"},
     "Andzrevum_e": {"en":"It's Raining","ru":"Идёт дождь"},
