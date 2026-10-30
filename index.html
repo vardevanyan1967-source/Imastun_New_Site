@@ -620,7 +620,7 @@
 
     .card-page-link {
       display: inline-block; margin-top: 12px; color: var(--gold); text-decoration: none;
-      font-size: 9px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+      font-size: 10px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
       transition: color .2s;
     }
     .card-page-link:hover { color: var(--gold-light); }
@@ -670,7 +670,7 @@
     }
 
     .empty-role {
-      font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dim);
+      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dim);
     }
 
     .soon-badge {
@@ -1113,7 +1113,7 @@
     .react-btn:hover { background: rgba(201,168,76,0.1); }
     .react-btn.done { border-color: var(--gold); background: rgba(201,168,76,0.18); cursor: default; }
     .react-btn .re-icon { font-size: 22px; line-height: 1.1; }
-    .react-btn .re-name { font-size: 9px; color: var(--text-dim); text-align: center; }
+    .react-btn .re-name { font-size: 10px; color: var(--text-dim); text-align: center; }
     .react-btn .re-count { font-size: 11px; font-variant-numeric: tabular-nums; }
     .react-thanks { font-size: 11px; color: var(--gold); text-align: center; min-height: 14px; }
     #react-panel { max-height: 75vh; overflow-y: auto; }
@@ -1461,7 +1461,7 @@
       .video-card video { aspect-ratio: 16 / 9; max-height: none; }
       .video-meta { padding: 8px 10px; }
       .video-title { font-size: 12px; line-height: 1.3; }
-      .video-label { font-size: 8px; margin-top: 3px; }
+      .video-label { font-size: 10px; margin-top: 3px; }
     }
     /* ── RECENTLY ADDED ── */
     .recent-grid {
@@ -1803,7 +1803,7 @@
         min-width: 0;
       }
 
-      .gp-artist { font-size: 8px; letter-spacing: 0.14em; }
+      .gp-artist { font-size: 10px; letter-spacing: 0.14em; }
       .gp-song { font-size: 17px; }
 
       .gp-controls {
@@ -3787,13 +3787,13 @@
       <div class="card-body">
         <div class="card-index">${String(i+1).padStart(2,'0')}</div>
         <div class="card-name">${artist.name}</div>
-        <div class="card-role">${artist.role}</div>
+        <div class="card-role" data-role-key="${artist.role}">${artist.role}</div>
         ${artist.id === 'haj-poetner' ? '<div class="card-note">Վահան Տերյան · Համո Սահյան · Պարույր Սևակ · Ավետիք Իսահակյան · Արամայիս Սահակյան · Հովհաննես Շիրազ · Սիլվա Կապուտիկյան · Վահագն Դավթյան · Հովհաննես Թումանյան</div>' : ''}
         ${artist.id === 'shakespeare-reimagined' ? '<div class="card-note">Սոնետներ՝ հայերեն, ռուսերեն և անգլերեն երգային տարբերակներով</div>' : ''}
-        <div class="card-arrow">Listen
+        <div class="card-arrow"><span data-card-i18n="listen">Listen</span>
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        ${artist.page ? `<a class="card-page-link" href="${artist.page}" onclick="event.stopPropagation()">Open artist page ↗</a>` : ''}
+        ${artist.page ? `<a class="card-page-link" href="${artist.page}" onclick="event.stopPropagation()" data-card-i18n="openPage">Open artist page ↗</a>` : ''}
       </div>`;
 
     /* panel */
@@ -4522,6 +4522,23 @@
     try { locale = localStorage.getItem('imastun_language') || 'hy'; } catch (e) {}
     if (!translations[locale]) locale = 'hy';
 
+    // artist card captions in the three site languages
+    const CARD_ROLES = {
+      'Poet & Lead Artist & Producer': { hy: 'Բանաստեղծ · գլխավոր արտիստ · պրոդյուսեր', ru: 'Поэт · ведущий артист · продюсер', en: 'Poet · Lead Artist · Producer' },
+      'Vocalist & Songwriter': { hy: 'Երգչուհի · երգահան', ru: 'Вокалистка · автор песен', en: 'Vocalist · Songwriter' },
+      'Vocalist & Performer': { hy: 'Երգչուհի · կատարող', ru: 'Вокалистка · исполнитель', en: 'Vocalist · Performer' },
+      'Armenian Poets · Songs': { hy: 'Հայ պոեզիան · երգերով', ru: 'Армянская поэзия · в песнях', en: 'Armenian poetry · in songs' },
+      'Sonnets in Song': { hy: 'Սոնետները՝ երգերով', ru: 'Сонеты в песнях', en: 'Sonnets in song' }
+    };
+    const CARD_UI = {
+      listen: { hy: 'Լսել', ru: 'Слушать', en: 'Listen' },
+      openPage: { hy: 'Արտիստի էջը ↗', ru: 'Страница артиста ↗', en: 'Open artist page ↗' }
+    };
+    function applyCardLabels(loc) {
+      document.querySelectorAll('[data-role-key]').forEach(el => { const m = CARD_ROLES[el.dataset.roleKey]; if (m) el.textContent = m[loc] || m.en; });
+      document.querySelectorAll('[data-card-i18n]').forEach(el => { const m = CARD_UI[el.dataset.cardI18n]; if (m) el.textContent = m[loc] || m.en; });
+    }
+
     function applyLanguage(next) {
       locale = translations[next] ? next : 'hy';
       document.documentElement.lang = locale;
@@ -4539,6 +4556,7 @@
       if (typeof currentIdx !== 'undefined' && currentIdx >= 0 && typeof playlist !== 'undefined' && playlist[currentIdx] && typeof songDisplayTitle === 'function' && typeof gpSong !== 'undefined') {
         gpSong.textContent = songDisplayTitle(playlist[currentIdx]);
       }
+      applyCardLabels(locale);
       if (typeof refreshTrackTitles === 'function') refreshTrackTitles();
     }
     applyLanguage(locale);

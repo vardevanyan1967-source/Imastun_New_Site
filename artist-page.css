@@ -1336,3 +1336,26 @@ body[data-artist-id="haj-poetner"]:not(.light-mode){
 .poet-card img{filter:saturate(.55) brightness(.8) contrast(1.06) sepia(.12)}
 .poet-card:hover img{filter:saturate(.62) brightness(.9) contrast(1.06) sepia(.12)}
 .poet-avatar img{filter:saturate(.6) brightness(.85) contrast(1.05) sepia(.1)}
+
+/* ---- readability: nothing smaller than 10px; bigger track subtitles and legend ---- */
+.brand small{font-size:9px}
+.react-btn .re-name{font-size:10px}
+.player-progress span{font-size:10px}
+.language-count-label{font-size:10px;letter-spacing:.03em}
+.language-count-items{gap:14px}
+.language-count-items>span{font-size:11px}
+.language-dot{width:10px;height:10px}
+.poet-chip{font-size:11px}
+@media(max-width:700px){
+  .brand small{font-size:8px}
+  .role{font-size:10px}
+  .primary{font-size:10px}
+  .filter{font-size:10.5px}
+  .lang button{font-size:10.5px}
+  .track-sub{font-size:10px;letter-spacing:.03em}
+  .language-count-label{font-size:10px;max-width:none}
+  .language-count-legend{flex-wrap:wrap;row-gap:6px}
+  .poet-chip{font-size:10.5px}
+}
+/* the desktop/base track subtitle too (it was 9px) */
+.track-sub{font-size:10.5px;letter-spacing:.06em}
