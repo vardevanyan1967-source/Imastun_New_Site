@@ -101,7 +101,7 @@
   var I18N = {
     hy: {
       back:"Գլխավոր էջ", catalog:"Երգացանկ", search:"Որոնել երգերում…",
-      all:"Բոլորը", favorites:"Սիրված երգերը", poets:"Բանաստեղծներ", languageCount:"Երգի տեքստի լեզուների քանակը", playFirst:"Նվագարկել առաջին երգը",
+      all:"Բոլորը", favorites:"Սիրված երգերը", poets:"Բանաստեղծներ", languageCount:"Երգի տեքստի լեզուների քանակը", legend3:"3 լեզու", legend2:"2 լեզու", legend1:"1 լեզու", playFirst:"Նվագարկել առաջին երգը",
       songWord:"երգ", noResults:"Այս որոնմամբ երգ չի գտնվել։", poetSoon:"Այս բանաստեղծի երգերը շուտով կհայտնվեն։",
       noFavorites:"Սիրված երգ դեռ չկա։ Սեղմեք ♡՝ երգն այստեղ պահելու համար։",
       play:"Նվագարկել", pause:"Դադար", previous:"Նախորդ երգը", next:"Հաջորդ երգը",
@@ -118,7 +118,7 @@
     },
     ru: {
       back:"Главная", catalog:"Песни", search:"Поиск по песням…",
-      all:"Все", favorites:"Любимые песни", poets:"Поэты", languageCount:"Число языков в тексте песни", playFirst:"Включить первую песню",
+      all:"Все", favorites:"Любимые песни", poets:"Поэты", languageCount:"Число языков в тексте песни", legend3:"3 языка", legend2:"2 языка", legend1:"1 язык", playFirst:"Включить первую песню",
       songWord:"песен", noResults:"По вашему запросу песен не найдено.", poetSoon:"Песни на стихи этого поэта скоро появятся.",
       noFavorites:"Любимых песен пока нет. Нажмите ♡, чтобы сохранить песню здесь.",
       play:"Воспроизвести", pause:"Пауза", previous:"Предыдущая песня", next:"Следующая песня",
@@ -134,7 +134,7 @@
     },
     en: {
       back:"Home", catalog:"Track list", search:"Search tracks…",
-      all:"All", favorites:"Favorite songs", poets:"Poets", languageCount:"Song text language count", playFirst:"Play the first track",
+      all:"All", favorites:"Favorite songs", poets:"Poets", languageCount:"Song text language count", legend3:"3 languages", legend2:"2 languages", legend1:"1 language", playFirst:"Play the first track",
       songWord:"tracks", noResults:"No tracks match this search.", poetSoon:"Songs for this poet are coming soon.",
       noFavorites:"No favorite songs yet. Tap ♡ to save a song here.",
       play:"Play", pause:"Pause", previous:"Previous track", next:"Next track",
@@ -947,9 +947,9 @@
     legend.innerHTML =
       '<span class="language-count-label" data-i18n="languageCount">' + escapeHtml(tr("languageCount")) + '</span>' +
       '<span class="language-count-items">' +
-      '<span><i class="language-dot three"></i><b>3</b></span>' +
-      '<span><i class="language-dot two"></i><b>2</b></span>' +
-      '<span><i class="language-dot one"></i><b>1</b></span>' +
+      '<span><i class="language-dot three"></i><b data-i18n="legend3">' + escapeHtml(tr("legend3")) + '</b></span>' +
+      '<span><i class="language-dot two"></i><b data-i18n="legend2">' + escapeHtml(tr("legend2")) + '</b></span>' +
+      '<span><i class="language-dot one"></i><b data-i18n="legend1">' + escapeHtml(tr("legend1")) + '</b></span>' +
       '</span>';
     var anchor = document.getElementById("poet-filter-wrap") || document.querySelector(".toolbar");
     anchor.insertAdjacentElement("afterend", legend);
