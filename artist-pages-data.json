@@ -2091,6 +2091,16 @@
           "ru": "Не знаю, тебя ли я люблю?"
         },
         "added": "2026-10-04"
+      },
+      {
+        "id": "sery",
+        "label": "Սերը",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/silva-gulanyan/featured/sery.mp3",
+        "explanation": {
+          "en": "Love",
+          "ru": "Любовь"
+        },
+        "added": "2026-10-30"
       }
     ]
   },
