@@ -2555,6 +2555,37 @@
           "hy": "Սիրելով գնամ",
           "en": "I'll Leave Still Loving You"
         }
+      },
+      {
+        "id": "Весенняя осень",
+        "label": "Весенняя осень",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D0%92%D0%B5%D1%81%D0%B5%D0%BD%D0%BD%D1%8F%D1%8F%20%D0%BE%D1%81%D0%B5%D0%BD%D1%8C.mp3",
+        "explanation": {
+          "hy": "Գարունոտ աշուն",
+          "en": "Spring-like Autumn"
+        },
+        "added": "2026-10-31"
+      },
+      {
+        "id": "Գարունոտ Աշուն",
+        "label": "Գարունոտ Աշուն",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/%D4%B3%D5%A1%D6%80%D5%B8%D6%82%D5%B6%D5%B8%D5%BF%20%D4%B1%D5%B7%D5%B8%D6%82%D5%B6.mp3",
+        "explanation": {
+          "ru": "Весенняя осень",
+          "en": "Spring-like Autumn"
+        },
+        "added": "2026-10-31"
+      },
+      {
+        "id": "Regarde-moi une fois",
+        "label": "Regarde-moi une fois",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/go-hara/featured/Regarde-moi%20une%20fois.mp3",
+        "explanation": {
+          "hy": "Մեկ անգամ նայիր ինձ",
+          "ru": "Взгляни на меня хоть раз",
+          "en": "Look at Me Just Once"
+        },
+        "added": "2026-10-31"
       }
     ]
   },
