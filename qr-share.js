@@ -23,7 +23,8 @@
     ".qr-brand{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;padding:0;border:1px solid rgba(201,168,76,.55);background:transparent;color:#c9a84c;cursor:pointer;border-radius:0;flex:0 0 auto}" +
     ".qr-brand:hover,.qr-brand:focus-visible{background:rgba(201,168,76,.16);outline:none}" +
     ".brand-wrap{display:flex;align-items:center;justify-content:center;gap:10px;justify-self:center}" +
-    "@media(max-width:900px){nav#nav .qr-brand{display:none}}" +
+    "#nav .qr-brand{margin-left:-4px}" +
+    "@media(max-width:600px){#nav .qr-brand{display:none}}" +
     "@media(max-width:700px){.brand-wrap .qr-brand{display:none}}" +
     ".qr-box a,.qr-box button{display:inline-block;margin:4px 6px 0;padding:8px 14px;border:1px solid rgba(201,168,76,.6);background:transparent;color:#e0b866;font:inherit;font-size:13px;text-decoration:none;cursor:pointer;border-radius:0}" +
     ".qr-box a:hover,.qr-box button:hover{background:rgba(201,168,76,.14)}";
