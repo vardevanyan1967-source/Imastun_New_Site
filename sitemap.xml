@@ -2,31 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://imastun.org/</loc>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://imastun.org/imastun.html</loc>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://imastun.org/go-hara.html</loc>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://imastun.org/shakespeare.html</loc>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://imastun.org/silva-gulanyan.html</loc>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://imastun.org/haj-poetner.html</loc>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
