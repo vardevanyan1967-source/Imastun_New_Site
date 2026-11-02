@@ -600,6 +600,50 @@
           "fr": "Regarde-moi une fois"
         },
         "added": "2026-10-29"
+      },
+      {
+        "id": "imy-ches-du",
+        "label": "Իմը չես դու",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/imy-ches-du.mp3",
+        "explanation": {
+          "en": "You're Not Mine",
+          "ru": "Ты не моя",
+          "fr": "Tu n'es pas à moi"
+        },
+        "added": "2026-11-02"
+      },
+      {
+        "id": "youre-not-mine",
+        "label": "You're Not Mine",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/youre-not-mine.mp3",
+        "explanation": {
+          "hy": "Իմը չես դու",
+          "ru": "Ты не моя",
+          "fr": "Tu n'es pas à moi"
+        },
+        "added": "2026-11-02"
+      },
+      {
+        "id": "tu-nes-pas-a-moi",
+        "label": "Tu n'es pas à moi",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/tu-nes-pas-a-moi.mp3",
+        "explanation": {
+          "hy": "Իմը չես դու",
+          "en": "You're Not Mine",
+          "ru": "Ты не моя"
+        },
+        "added": "2026-11-02"
+      },
+      {
+        "id": "ty-ne-moya",
+        "label": "Ты не моя",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/imastun/featured/ty-ne-moya.mp3",
+        "explanation": {
+          "hy": "Իմը չես դու",
+          "en": "You're Not Mine",
+          "fr": "Tu n'es pas à moi"
+        },
+        "added": "2026-11-02"
       }
     ]
   },
