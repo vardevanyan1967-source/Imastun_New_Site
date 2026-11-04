@@ -1372,3 +1372,11 @@ body[data-artist-id="haj-poetner"]:not(.light-mode){
 .poet-filter-wrap{grid-template-columns:minmax(0,1fr)}
 .poet-filters{min-width:0;width:100%;box-sizing:border-box}
 @media(max-width:700px){.poet-filters{max-width:100%;padding-inline:4px}}
+
+/* bigger (taller) poet cards on wide screens: 5 per row instead of 7; phones keep 4 per row */
+@media(min-width:1001px){
+  .poet-filters .poet-card{flex-basis:calc((100% - 40px) / 5)}
+}
+@media(min-width:701px) and (max-width:1000px){
+  .poet-filters .poet-card{flex-basis:calc((100% - 30px) / 4)}
+}
