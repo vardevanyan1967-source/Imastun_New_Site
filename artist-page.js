@@ -480,7 +480,7 @@
       }).length : 0;
       var divider = showDivider
         ? '<div class="poet-divider"><span class="poet-divider-name">' + poetAvatarHtml(poetPhotoUrl(item.track), poetNameL(groupName)) + escapeHtml(poetNameL(groupName)) + '</span><small>' +
-          groupCount + ' ' + escapeHtml(tr("songWord")) + '</small></div>'
+          groupCount + ' ' + escapeHtml(tr("songWord")) + '</small></div>' + poetGalleryHtml(groupName)
         : "";
       return divider + '<article class="track-row' + (state.current === item.index ? ' playing' : '') + '" data-index="' + item.index + '">' +
         '<span class="track-num">' + String(item.index + 1).padStart(2, "0") + '</span>' +
@@ -1036,6 +1036,33 @@
     });
   }
 
+  // Extra pictures shown under a poet's name (small gallery with an enlarged view)
+  var POET_GALLERY = {
+    "Գոհար Հովհաննիսյան": [1, 2, 3, 4, 5].map(function (n) { return "authors/haj-poetner/gallery/gohar-hovhannisyan/" + n + ".jpg"; })
+  };
+  function poetGalleryHtml(name) {
+    var pics = POET_GALLERY[name];
+    if (!pics || !pics.length) return "";
+    return '<div class="poet-gallery" role="group" aria-label="' + escapeHtml(poetNameL(name)) + '">' + pics.map(function (src, i) {
+      return '<button type="button" class="poet-gallery-item" data-gallery-src="' + escapeHtml(src) + '" aria-label="' + (i + 1) + '/' + pics.length + '">' +
+        '<img src="' + escapeHtml(src) + '" alt="" loading="lazy"></button>';
+    }).join("") + '</div>';
+  }
+  function openGallery(src) {
+    var box = document.getElementById("gallery-lightbox");
+    if (!box) {
+      box = document.createElement("div");
+      box.id = "gallery-lightbox";
+      box.className = "gallery-lightbox";
+      box.innerHTML = '<button type="button" class="gallery-close" aria-label="×">×</button><img alt="">';
+      box.addEventListener("click", function () { box.classList.remove("open"); });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape") box.classList.remove("open"); });
+      document.body.appendChild(box);
+    }
+    box.querySelector("img").src = src;
+    box.classList.add("open");
+  }
+
   // Poets that have a portrait but no songs yet still get a filter chip (their list says "coming soon").
   var POET_REGISTRY = [
     ["vahan-teryan", "Վահան Տերյան"], ["hamo-sahyan", "Համո Սահյան"], ["parujr-sevak", "Պարույր Սևակ"],
@@ -1187,6 +1214,8 @@
 
   function bindEvents() {
     list.addEventListener("click", function (event) {
+      var pic = event.target.closest("[data-gallery-src]");
+      if (pic) { openGallery(pic.dataset.gallerySrc); return; }
       var button = event.target.closest("[data-action]");
       var row = event.target.closest(".track-row");
       if (!button || !row) return;

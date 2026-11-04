@@ -1372,3 +1372,13 @@ body[data-artist-id="haj-poetner"]:not(.light-mode){
 .poet-filter-wrap{grid-template-columns:minmax(0,1fr)}
 .poet-filters{min-width:0;width:100%;box-sizing:border-box}
 @media(max-width:700px){.poet-filters{max-width:100%;padding-inline:4px}}
+
+/* ---- poet picture gallery + enlarged view ---- */
+.poet-gallery{display:flex;gap:8px;overflow-x:auto;padding:8px 2px 12px;scrollbar-width:thin}
+.poet-gallery-item{flex:0 0 auto;padding:0;border:1px solid var(--border);background:var(--surface);cursor:zoom-in;line-height:0}
+.poet-gallery-item img{display:block;height:96px;width:auto;max-width:150px;object-fit:cover}
+.poet-gallery-item:hover,.poet-gallery-item:focus-visible{border-color:var(--language-accent);outline:none}
+.gallery-lightbox{position:fixed;inset:0;z-index:2147483000;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.86);padding:16px;cursor:zoom-out}
+.gallery-lightbox.open{display:flex}
+.gallery-lightbox img{max-width:100%;max-height:100%;object-fit:contain;box-shadow:0 10px 40px rgba(0,0,0,.6)}
+.gallery-close{position:absolute;top:12px;right:16px;width:40px;height:40px;border:1px solid rgba(255,255,255,.4);background:transparent;color:#fff;font-size:24px;line-height:1;cursor:pointer}
