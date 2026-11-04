@@ -1359,3 +1359,16 @@ body[data-artist-id="haj-poetner"]:not(.light-mode){
 }
 /* the desktop/base track subtitle too (it was 9px) */
 .track-sub{font-size:10.5px;letter-spacing:.06em}
+
+/* ---- card grid as centred rows: any number of poets looks tidy (last row centred) ---- */
+.poet-filters{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:none}
+.poet-filters .poet-card{flex:0 0 calc((100% - 60px) / 7);grid-column:auto !important;width:auto}
+@media(min-width:701px) and (max-width:1000px){.poet-filters .poet-card{flex-basis:calc((100% - 40px) / 5)}}
+@media(max-width:700px){
+  .poet-filters{gap:10px 8px;max-width:340px;margin-left:auto;margin-right:auto}
+  .poet-filters .poet-card{flex-basis:calc((100% - 24px) / 4)}
+}
+/* the grid item must be allowed to shrink so the card rows never push the page wider */
+.poet-filter-wrap{grid-template-columns:minmax(0,1fr)}
+.poet-filters{min-width:0;width:100%;box-sizing:border-box}
+@media(max-width:700px){.poet-filters{max-width:100%;padding-inline:4px}}

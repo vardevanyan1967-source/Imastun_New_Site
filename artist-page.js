@@ -1015,7 +1015,8 @@
     "Սիլվա Կապուտիկյան": { ru: "Сильва Капутикян", en: "Silva Kaputikyan" },
     "Վահագն Դավթյան": { ru: "Ваагн Давтян", en: "Vahagn Davtyan" },
     "Վահան Տերյան": { ru: "Ваан Терьян", en: "Vahan Teryan" },
-    "Վլադիմիր Ավետիսյան": { ru: "Владимир Аветисян", en: "Vladimir Avetisyan" }
+    "Վլադիմիր Ավետիսյան": { ru: "Владимир Аветисян", en: "Vladimir Avetisyan" },
+    "Գոհար Հովհաննիսյան": { ru: "Гоар Оганнисян", en: "Gohar Hovhannisyan" }
   };
   function poetNameL(name) {
     var entry = POET_NAME_I18N[name];
@@ -1041,7 +1042,7 @@
     ["avetik-isahakyan", "Ավետիք Իսահակյան"], ["shiraz", "Հովհաննես Շիրազ"], ["silva-kaputikyan", "Սիլվա Կապուտիկյան"],
     ["vahagn-davtyan", "Վահագն Դավթյան"], ["hovhannes-tumanyan", "Հովհաննես Թումանյան"],
     ["misak-metsarents", "Միսաք Մեծարենց"], ["yeghishe-charents", "Եղիշե Չարենց"], ["ashot-grashi", "Աշոտ Գրաշի"],
-    ["vladimir-avetisyan", "Վլադիմիր Ավետիսյան"], ["anne-mari", "Աննե Մարի"]
+    ["vladimir-avetisyan", "Վլադիմիր Ավետիսյան"], ["anne-mari", "Աննե Մարի"], ["gohar-hovhannisyan", "Գոհար Հովհաննիսյան"]
   ];
 
   function setupPoetFilters() {
