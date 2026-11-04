@@ -5498,6 +5498,72 @@
           "ru": "Весна, Ереван"
         },
         "added": "2026-10-20"
+      },
+      {
+        "id": "gohar-hovhannisyan/Մնա սիրելիս",
+        "label": "Մնա սիրելիս",
+        "subtitle": "Գոհար Հովհաննիսյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/gohar-hovhannisyan%2F%D5%84%D5%86%D4%B1%20%D5%8D%D4%BB%D5%90%D4%B5%D4%BC%D4%BB%D5%8D%E2%80%A6.mp3",
+        "explanation": {
+          "en": "Stay, My Love",
+          "ru": "Останься, любимый"
+        },
+        "added": "2026-11-05"
+      },
+      {
+        "id": "gohar-hovhannisyan/Ո՞վ է ասում",
+        "label": "Ո՞վ է ասում",
+        "subtitle": "Գոհար Հովհաննիսյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/gohar-hovhannisyan%2F%D5%88%D5%9E%D5%8E%20%D4%B7%20%D4%B1%D5%8D%D5%88%D5%92%D5%84%E2%80%A6.mp3",
+        "explanation": {
+          "en": "Who Says",
+          "ru": "Кто говорит"
+        },
+        "added": "2026-11-05"
+      },
+      {
+        "id": "gohar-hovhannisyan/Քեզանից առաջ",
+        "label": "Քեզանից առաջ",
+        "subtitle": "Գոհար Հովհաննիսյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/gohar-hovhannisyan%2F%D5%94%D5%A5%D5%A6%D5%A1%D5%B6%D5%AB%D6%81%20%D5%A1%D5%BC%D5%A1%D5%BB_.mp3",
+        "explanation": {
+          "en": "Before You",
+          "ru": "До тебя"
+        },
+        "added": "2026-11-05"
+      },
+      {
+        "id": "gohar-hovhannisyan/Դու՛ չքնաղ ես տիկին",
+        "label": "Դու՛ չքնաղ ես տիկին",
+        "subtitle": "Գոհար Հովհաննիսյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/gohar-hovhannisyan%2Fdu-chqnagh-es-tikin.mp3",
+        "explanation": {
+          "en": "You Are Exquisite, My Lady",
+          "ru": "Ты восхитительна, госпожа"
+        },
+        "added": "2026-11-05"
+      },
+      {
+        "id": "gohar-hovhannisyan/Ես իմ փյունիկն եմ",
+        "label": "Ես իմ փյունիկն եմ",
+        "subtitle": "Գոհար Հովհաննիսյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/gohar-hovhannisyan%2F%D4%B5%D5%BD%20%D5%AB%D5%B4%20%D6%83%D5%B5%D5%B8%D6%82%D5%B6%D5%AB%D5%AF%D5%B6%20%D5%A5%D5%B4.mp3",
+        "explanation": {
+          "en": "I Am My Own Phoenix",
+          "ru": "Я — мой собственный феникс"
+        },
+        "added": "2026-11-05"
+      },
+      {
+        "id": "gohar-hovhannisyan/Երազանք, իջի՛ր դարդերիս վրա",
+        "label": "Երազանք, իջի՛ր դարդերիս վրա",
+        "subtitle": "Գոհար Հովհաննիսյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/gohar-hovhannisyan%2F%D4%B5%D5%90%D4%B1%D4%B6%D4%B1%D5%86%D5%94%2C%20%D4%BB%D5%8B%D4%BB%D5%9B%D5%90%20%D4%B4%D4%B1%D5%90%D4%B4%D4%B5%D5%90%D4%BB%D5%8D%20%D5%8E%D5%90%D4%B1.mp3",
+        "explanation": {
+          "en": "Dream, Descend upon My Sorrows",
+          "ru": "Мечта, спустись на мои печали"
+        },
+        "added": "2026-11-05"
       }
     ]
   }
