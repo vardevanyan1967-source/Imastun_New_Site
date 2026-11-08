@@ -2029,20 +2029,20 @@
   <ul class="nav-links" id="primary-nav-links">
     <li class="nav-owner" hidden><a href="admin.html">Ադմին</a></li>
     <li class="nav-owner" hidden><a href="cms.html">Երգերի խմբագիր</a></li>
+    <li><a href="#recent" data-i18n="new">Նորություններ</a></li>
     <li><a href="#artists" data-i18n="artists">Արտիստներ</a></li>
     <li><a href="#armenian-poets" data-i18n="poets">Հայ բանաստեղծներ</a></li>
     <li><a href="#world-poetry" data-i18n="worldPoetry">Համաշխարհային պոեզիա</a></li>
-    <li><a href="#recent" data-i18n="new">Նորություններ</a></li>
     <li><a href="#videos" data-i18n="videos">Տեսանյութեր</a></li>
     <li><a href="#donate-section" data-i18n="support">Աջակցել</a></li>
     <li><a href="#comments-section" data-i18n="comments">Կարծիք</a></li>
   </ul>
 </nav>
 <nav class="quick-nav" aria-label="Արագ անցումներ" data-i18n-aria="quickNav">
+  <a href="#recent" data-i18n="new">Նորություններ</a>
   <a href="#artists" data-i18n="artists">Արտիստներ</a>
   <a href="#armenian-poets" data-i18n="poets">Հայ բանաստեղծներ</a>
   <a href="#world-poetry" data-i18n="worldPoetry">Համաշխարհային պոեզիա</a>
-  <a href="#recent" data-i18n="new">Նորություններ</a>
   <a href="#videos" data-i18n="videos">Տեսանյութեր</a>
   <a href="#donate-section" data-i18n="support">Աջակցել</a>
   <a href="#comments-section" data-i18n="comments">Կարծիք</a>
@@ -2051,6 +2051,16 @@
 </nav>
 
 <div class="gold-rule"></div>
+
+<section id="recent" class="section">
+  <div class="section-header reveal">
+    <span class="section-label">New</span>
+    <h2 class="section-heading">Վերջերս <em>Ավելացված</em></h2>
+  </div>
+  <div id="recent-grid" class="recent-grid"></div>
+</section>
+
+<div class="gold-rule" id="recent-rule"></div>
 
 <section id="artists" class="section catalog-section">
   <div class="section-header reveal">
@@ -2081,16 +2091,6 @@
 </section>
 
 <div class="gold-rule"></div>
-
-<section id="recent" class="section">
-  <div class="section-header reveal">
-    <span class="section-label">New</span>
-    <h2 class="section-heading">Վերջերս <em>Ավելացված</em></h2>
-  </div>
-  <div id="recent-grid" class="recent-grid"></div>
-</section>
-
-<div class="gold-rule" id="recent-rule"></div>
 
 <section id="videos" class="section">
   <div class="section-header reveal">
