@@ -1493,6 +1493,16 @@
       color: var(--white); line-height: 1.2;
     }
     .recent-card .rc-sub { font-size: 12px; color: var(--text-dim); font-family: 'Inter', sans-serif; }
+    /* compact "Recently added": less vertical space now that it sits above the artists */
+    #recent.section { padding-top: 6px; padding-bottom: 26px; margin-top: -62px; position: relative; z-index: 2; }
+    #recent .section-header { margin-bottom: 8px; }
+    #recent .section-heading { font-size: clamp(26px, 3vw, 38px); line-height: 1.1; }
+    #recent-rule { margin-bottom: 4px; }
+    #recent .recent-grid { padding: 2px 0 4px; gap: 10px; }
+    #recent .recent-card { padding: 7px 12px; gap: 2px; min-width: 180px; }
+    #recent .recent-card .rc-title { font-size: 16px; line-height: 1.12; }
+    #recent .recent-card .rc-sub { font-size: 11px; }
+    #recent-rule + #artists.catalog-section { padding-top: 24px; }
 
     /* Mobile navigation, visible search, language switcher and accessibility */
     .sr-only { position:absolute !important; width:1px !important; height:1px !important; padding:0 !important; margin:-1px !important; overflow:hidden !important; clip:rect(0,0,0,0) !important; white-space:nowrap !important; border:0 !important; }
@@ -1999,6 +2009,16 @@
 
 <div id="page-loader"><div class="loader-spinner"></div></div>
 
+<section id="recent" class="section">
+  <div class="section-header reveal">
+    <span class="section-label">New</span>
+    <h2 class="section-heading">Վերջերս <em>Ավելացված երգեր</em></h2>
+  </div>
+  <div id="recent-grid" class="recent-grid"></div>
+</section>
+
+<div class="gold-rule" id="recent-rule"></div>
+
 <nav id="nav" aria-label="Հիմնական նավիգացիա">
   <a class="nav-home" href="#hero" aria-label="Imastun Studio՝ գլխավոր էջ">
     <img src="logo.png" alt="" style="height:36px;width:auto;filter:drop-shadow(0 0 8px rgba(201,168,76,0.5));" />
@@ -2029,20 +2049,20 @@
   <ul class="nav-links" id="primary-nav-links">
     <li class="nav-owner" hidden><a href="admin.html">Ադմին</a></li>
     <li class="nav-owner" hidden><a href="cms.html">Երգերի խմբագիր</a></li>
+    <li><a href="#recent" data-i18n="new">Նորություններ</a></li>
     <li><a href="#artists" data-i18n="artists">Արտիստներ</a></li>
     <li><a href="#armenian-poets" data-i18n="poets">Հայ բանաստեղծներ</a></li>
     <li><a href="#world-poetry" data-i18n="worldPoetry">Համաշխարհային պոեզիա</a></li>
-    <li><a href="#recent" data-i18n="new">Նորություններ</a></li>
     <li><a href="#videos" data-i18n="videos">Տեսանյութեր</a></li>
     <li><a href="#donate-section" data-i18n="support">Աջակցել</a></li>
     <li><a href="#comments-section" data-i18n="comments">Կարծիք</a></li>
   </ul>
 </nav>
 <nav class="quick-nav" aria-label="Արագ անցումներ" data-i18n-aria="quickNav">
+  <a href="#recent" data-i18n="new">Նորություններ</a>
   <a href="#artists" data-i18n="artists">Արտիստներ</a>
   <a href="#armenian-poets" data-i18n="poets">Հայ բանաստեղծներ</a>
   <a href="#world-poetry" data-i18n="worldPoetry">Համաշխարհային պոեզիա</a>
-  <a href="#recent" data-i18n="new">Նորություններ</a>
   <a href="#videos" data-i18n="videos">Տեսանյութեր</a>
   <a href="#donate-section" data-i18n="support">Աջակցել</a>
   <a href="#comments-section" data-i18n="comments">Կարծիք</a>
@@ -2081,16 +2101,6 @@
 </section>
 
 <div class="gold-rule"></div>
-
-<section id="recent" class="section">
-  <div class="section-header reveal">
-    <span class="section-label">New</span>
-    <h2 class="section-heading">Վերջերս <em>Ավելացված</em></h2>
-  </div>
-  <div id="recent-grid" class="recent-grid"></div>
-</section>
-
-<div class="gold-rule" id="recent-rule"></div>
 
 <section id="videos" class="section">
   <div class="section-header reveal">
@@ -3964,7 +3974,7 @@
       return;
     }
     grid.innerHTML = '';
-    items.slice(0, 20).forEach(it => {
+    items.slice(0, 60).forEach(it => {
       const card = document.createElement('div');
       card.className = 'recent-card';
       card.innerHTML = `<div class="rc-top"><span class="rc-type">${it.type}</span>` +
