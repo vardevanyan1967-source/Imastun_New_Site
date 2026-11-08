@@ -1494,11 +1494,13 @@
     }
     .recent-card .rc-sub { font-size: 12px; color: var(--text-dim); font-family: 'Inter', sans-serif; }
     /* compact "Recently added": less vertical space now that it sits above the artists */
-    #recent.section { padding-top: 20px; padding-bottom: 8px; }
-    #recent .section-header { margin-bottom: 18px; }
-    #recent .recent-grid { padding: 2px 0 8px; gap: 12px; }
-    #recent .recent-card { padding: 10px 14px; gap: 4px; }
-    #recent .recent-card .rc-title { font-size: 17px; line-height: 1.15; }
+    #recent.section { padding-top: 14px; padding-bottom: 0; }
+    #recent .section-header { margin-bottom: 10px; }
+    #recent .recent-grid { padding: 2px 0 4px; gap: 10px; }
+    #recent .recent-card { padding: 7px 12px; gap: 2px; min-width: 180px; }
+    #recent .recent-card .rc-title { font-size: 16px; line-height: 1.12; }
+    #recent .recent-card .rc-sub { font-size: 11px; }
+    #recent-rule + #artists.catalog-section { padding-top: 24px; }
 
     /* Mobile navigation, visible search, language switcher and accessibility */
     .sr-only { position:absolute !important; width:1px !important; height:1px !important; padding:0 !important; margin:-1px !important; overflow:hidden !important; clip:rect(0,0,0,0) !important; white-space:nowrap !important; border:0 !important; }
