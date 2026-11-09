@@ -1188,9 +1188,9 @@ window.SONG_DATA = {
     "haj-poetner|vladimir-avetisyan/Իմ հայրենիք": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vladimir-avetisyan%2F%D4%BB%D5%84%20%D5%80%D4%B1%D5%85%D5%90%D4%B5%D5%86%D4%BB%D5%94.mp3",
     "haj-poetner|vladimir-avetisyan/Հայաստան": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vladimir-avetisyan%2F%D5%80%D4%B1%D5%85%D4%B1%D5%8D%D5%8F%D4%B1%D5%86.mp3",
     "haj-poetner|vladimir-avetisyan/Սովորեցրու ինձ": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vladimir-avetisyan%2F%D5%8D%D5%88%D5%8E%D5%88%D5%90%D4%B5%D5%91%D5%90%D5%88%D5%92%20%D4%BB%D5%86%D5%81.mp3",
-    "haj-poetner|vladimir-avetisyan/Իմ սուրբ հայրենիք": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vladimir-avetisyan%2F%D4%BB%D5%84%20%D5%8D%D5%88%D5%92%D5%90%D4%B2%20%D5%80%D4%B1%D5%85%D5%90%D4%B5%D5%86%D4%BB%D5%94.mp3",
-    "haj-poetner|vladimir-avetisyan/Սիրում եմ": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vladimir-avetisyan%2F%D5%8D%D4%BB%D5%90%D5%88%D5%92%D5%84%20%D4%B5%D5%84.mp3",
-    "haj-poetner|vladimir-avetisyan/Իմ դաշտերի մեջ": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vladimir-avetisyan%2F%D4%BB%D5%84%20%D4%B4%D4%B1%D5%87%D5%8F%D4%B5%D5%90%D4%BB%20%D5%84%D4%B5%D5%8B.mp3"
+    "haj-poetner|vladimir-avetisyan/Իմ սուրբ հայրենիք": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/%D4%BB%D5%84%20%D5%8D%D5%88%D5%92%D5%90%D4%B2%20%D5%80%D4%B1%D5%85%D5%90%D4%B5%D5%86%D4%BB%D5%94.mp3",
+    "haj-poetner|vladimir-avetisyan/Սիրում եմ": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/%D5%8D%D4%BB%D5%90%D5%88%D5%92%D5%84%20%D4%B5%D5%84.mp3",
+    "haj-poetner|vladimir-avetisyan/Իմ դաշտերի մեջ": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/%D4%BB%D5%84%20%D4%B4%D4%B1%D5%87%D5%8F%D4%B5%D5%90%D4%BB%20%D5%84%D4%B5%D5%8B.mp3"
   },
   versions: {
     "go-hara|Սիրելով գնամ": "b5e360f88c88",
