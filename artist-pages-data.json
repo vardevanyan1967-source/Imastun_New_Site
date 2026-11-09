@@ -5607,6 +5607,39 @@
           "ru": "Научи меня"
         },
         "added": "2026-11-07"
+      },
+      {
+        "id": "vladimir-avetisyan/Իմ սուրբ հայրենիք",
+        "label": "Իմ սուրբ հայրենիք",
+        "subtitle": "Վլադիմիր Ավետիսյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vladimir-avetisyan%2F%D4%BB%D5%84%20%D5%8D%D5%88%D5%92%D5%90%D4%B2%20%D5%80%D4%B1%D5%85%D5%90%D4%B5%D5%86%D4%BB%D5%94.mp3",
+        "explanation": {
+          "en": "My Holy Homeland",
+          "ru": "Моя святая Родина"
+        },
+        "added": "2026-11-09"
+      },
+      {
+        "id": "vladimir-avetisyan/Սիրում եմ",
+        "label": "Սիրում եմ",
+        "subtitle": "Վլադիմիր Ավետիսյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vladimir-avetisyan%2F%D5%8D%D4%BB%D5%90%D5%88%D5%92%D5%84%20%D4%B5%D5%84.mp3",
+        "explanation": {
+          "en": "I Love",
+          "ru": "Люблю"
+        },
+        "added": "2026-11-09"
+      },
+      {
+        "id": "vladimir-avetisyan/Իմ դաշտերի մեջ",
+        "label": "Իմ դաշտերի մեջ",
+        "subtitle": "Վլադիմիր Ավետիսյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vladimir-avetisyan%2F%D4%BB%D5%84%20%D4%B4%D4%B1%D5%87%D5%8F%D4%B5%D5%90%D4%BB%20%D5%84%D4%B5%D5%8B.mp3",
+        "explanation": {
+          "en": "In My Fields",
+          "ru": "В моих полях"
+        },
+        "added": "2026-11-09"
       }
     ]
   }
