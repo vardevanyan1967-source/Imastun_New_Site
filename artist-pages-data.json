@@ -5640,6 +5640,28 @@
           "ru": "В моих полях"
         },
         "added": "2026-11-09"
+      },
+      {
+        "id": "vladimir-avetisyan/Ես նա եմ",
+        "label": "Ես նա եմ",
+        "subtitle": "Վլադիմիր Ավետիսյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vladimir-avetisyan%2F%D4%B5%D5%BD%20%D5%B6%D5%A1%20%D5%A5%D5%B4.mp3",
+        "explanation": {
+          "en": "I Am the One",
+          "ru": "Я тот самый"
+        },
+        "added": "2026-11-10"
+      },
+      {
+        "id": "vladimir-avetisyan/Փոշեթաթախ",
+        "label": "Փոշեթաթախ",
+        "subtitle": "Վլադիմիր Ավետիսյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vladimir-avetisyan%2F%D5%93%D5%88%D5%87%D4%B5%D4%B9%D4%B1%D4%B9%D4%B1%D4%BD.mp3",
+        "explanation": {
+          "en": "Dust-Covered",
+          "ru": "Запылённый"
+        },
+        "added": "2026-11-10"
       }
     ]
   }
