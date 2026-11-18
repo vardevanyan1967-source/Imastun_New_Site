@@ -5662,6 +5662,17 @@
           "ru": "Запылённый"
         },
         "added": "2026-11-10"
+      },
+      {
+        "id": "vladimir-avetisyan/Թոռնիկիս",
+        "label": "Թոռնիկիս՝ Տաթևիկին",
+        "subtitle": "Վլադիմիր Ավետիսյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vladimir-avetisyan%2F%D4%B9%D5%88%D5%8C%D5%86%D4%BB%D4%BF%D4%BB%D5%8D%20%E2%80%94%20%D5%8F%D5%A1%D5%A9%D6%87%D5%AB%D5%AF%D5%AB%D5%B6.mp3",
+        "explanation": {
+          "en": "To My Granddaughter Tatevik",
+          "ru": "Моей внучке Татевик"
+        },
+        "added": "2026-11-18"
       }
     ]
   }
