@@ -1197,7 +1197,8 @@ window.SONG_DATA = {
     "haj-poetner|vladimir-avetisyan/Իմ սուրբ հայրենիք": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/%D4%BB%D5%84%20%D5%8D%D5%88%D5%92%D5%90%D4%B2%20%D5%80%D4%B1%D5%85%D5%90%D4%B5%D5%86%D4%BB%D5%94.mp3",
     "haj-poetner|vladimir-avetisyan/Սիրում եմ": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/%D5%8D%D4%BB%D5%90%D5%88%D5%92%D5%84%20%D4%B5%D5%84.mp3",
     "haj-poetner|vladimir-avetisyan/Իմ դաշտերի մեջ": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/%D4%BB%D5%84%20%D4%B4%D4%B1%D5%87%D5%8F%D4%B5%D5%90%D4%BB%20%D5%84%D4%B5%D5%8B.mp3",
-    "haj-poetner|vladimir-avetisyan/Փոշեթաթախ": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vladimir-avetisyan%2F%D5%93%D5%88%D5%87%D4%B5%D4%B9%D4%B1%D4%B9%D4%B1%D4%BD.mp3"
+    "haj-poetner|vladimir-avetisyan/Փոշեթաթախ": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vladimir-avetisyan%2F%D5%93%D5%88%D5%87%D4%B5%D4%B9%D4%B1%D4%B9%D4%B1%D4%BD.mp3",
+    "haj-poetner|vladimir-avetisyan/Թոռնիկիս": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vladimir-avetisyan%2F%D4%B9%D5%88%D5%8C%D5%86%D4%BB%D4%BF%D4%BB%D5%8D%20%E2%80%94%20%D5%8F%D5%A1%D5%A9%D6%87%D5%AB%D5%AF%D5%AB%D5%B6.mp3"
   },
   versions: {
     "go-hara|Սիրելով գնամ": "b5e360f88c88",
