@@ -5673,6 +5673,50 @@
           "ru": "Моей внучке Татевик"
         },
         "added": "2026-11-18"
+      },
+      {
+        "id": "vladimir-avetisyan/Իմ սեր",
+        "label": "Իմ սեր",
+        "subtitle": "Վլադիմիր Ավետիսյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vladimir-avetisyan%2F%D4%BB%D5%B4%20%D5%BD%D5%A5%D6%80.mp3",
+        "explanation": {
+          "en": "My Love",
+          "ru": "Моя любовь"
+        },
+        "added": "2026-11-24"
+      },
+      {
+        "id": "vladimir-avetisyan/Տառապանքի հազար",
+        "label": "Տառապանքի հազար",
+        "subtitle": "Վլադիմիր Ավետիսյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vladimir-avetisyan%2F%D5%8F%D4%B1%D5%8C%D4%B1%D5%8A%D4%B1%D5%86%D5%94%D4%BB%20%D5%80%D4%B1%D4%B6%D4%B1%D5%90.mp3",
+        "explanation": {
+          "en": "A Thousand Sorrows",
+          "ru": "Тысяча страданий"
+        },
+        "added": "2026-11-24"
+      },
+      {
+        "id": "vladimir-avetisyan/Հիշո՞ւմ ես",
+        "label": "Հիշո՞ւմ ես",
+        "subtitle": "Վլադիմիր Ավետիսյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vladimir-avetisyan%2F%D5%80%D4%BB%D5%87%D5%88%D5%9E%D5%92%D5%84%20%D4%B5%D5%8D.mp3",
+        "explanation": {
+          "en": "Do You Remember?",
+          "ru": "Помнишь?"
+        },
+        "added": "2026-11-24"
+      },
+      {
+        "id": "vladimir-avetisyan/Մի անմեղ երեկո",
+        "label": "Մի անմեղ երեկո",
+        "subtitle": "Վլադիմիր Ավետիսյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vladimir-avetisyan%2F%D5%84%D4%BB%20%D4%B1%D5%86%D5%84%D4%B5%D5%82%20%D4%B5%D5%90%D4%B5%D4%BF%D5%88.mp3",
+        "explanation": {
+          "en": "An Innocent Evening",
+          "ru": "Один невинный вечер"
+        },
+        "added": "2026-11-24"
       }
     ]
   }
