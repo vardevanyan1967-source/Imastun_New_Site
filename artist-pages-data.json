@@ -5785,6 +5785,28 @@
           "ru": "Один невинный вечер"
         },
         "added": "2026-11-24"
+      },
+      {
+        "id": "vladimir-avetisyan/Զավակներս",
+        "label": "Զավակներս",
+        "subtitle": "Վլադիմիր Ավետիսյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vladimir-avetisyan%2F%D4%B6%D4%B1%D5%8E%D4%B1%D4%BF%D5%86%D4%B5%D5%90%D5%8D.mp3",
+        "explanation": {
+          "en": "My Children",
+          "ru": "Мои дети"
+        },
+        "added": "2026-11-27"
+      },
+      {
+        "id": "vladimir-avetisyan/Հայկուհուն",
+        "label": "Հայկուհուն",
+        "subtitle": "Վլադիմիր Ավետիսյան",
+        "src": "https://pub-2d663d6d59994b7fa7390c9851966548.r2.dev/audio/haj-poetner/featured/vladimir-avetisyan%2F%D5%80%D4%B1%D5%85%D4%BF%D5%88%D5%92%D5%80%D5%88%D5%92%D5%86.mp3",
+        "explanation": {
+          "en": "To Haykuhi",
+          "ru": "Айкуи"
+        },
+        "added": "2026-11-27"
       }
     ]
   }
